@@ -1,0 +1,230 @@
+{
+  "files": [
+    {
+      "source": "Soul_Feature_Specification_MVP_v1.0.docx",
+      "output": "Soul_Feature_Specification_MVP_v1.0.md",
+      "type": "docx",
+      "paragraphs": 144,
+      "tables": 20
+    },
+    {
+      "source": "Soul_Owned_Content_Pack_v1.0.docx",
+      "output": "Soul_Owned_Content_Pack_v1.0.md",
+      "type": "docx",
+      "paragraphs": 355,
+      "tables": 10
+    },
+    {
+      "source": "Soul_Screen_List_User_Flow_Data_List_MVP_v1.0.docx",
+      "output": "Soul_Screen_List_User_Flow_Data_List_MVP_v1.0.md",
+      "type": "docx",
+      "paragraphs": 114,
+      "tables": 48
+    },
+    {
+      "source": "Soul_28_Day_Journey_Content_Dataset_v1.1.xlsx",
+      "output": "Soul_28_Day_Journey_Content_Dataset_v1.1.md",
+      "type": "xlsx",
+      "sheets": [
+        {
+          "name": "Overview",
+          "rows": 13,
+          "columns": 5
+        },
+        {
+          "name": "Journey Master",
+          "rows": 29,
+          "columns": 21
+        },
+        {
+          "name": "CMS Tasks",
+          "rows": 85,
+          "columns": 12
+        },
+        {
+          "name": "Notifications",
+          "rows": 85,
+          "columns": 9
+        },
+        {
+          "name": "Content Mapping",
+          "rows": 29,
+          "columns": 12
+        },
+        {
+          "name": "Affirmations",
+          "rows": 29,
+          "columns": 5
+        },
+        {
+          "name": "Import Notes",
+          "rows": 22,
+          "columns": 2
+        },
+        {
+          "name": "Energy Taxonomy",
+          "rows": 11,
+          "columns": 7
+        },
+        {
+          "name": "Music Picks",
+          "rows": 12,
+          "columns": 12
+        },
+        {
+          "name": "Frequency Library",
+          "rows": 11,
+          "columns": 13
+        },
+        {
+          "name": "Journey Energy Mapping",
+          "rows": 29,
+          "columns": 8
+        }
+      ]
+    },
+    {
+      "source": "Soul_External_Content_Library_v1.0.xlsx",
+      "output": "Soul_External_Content_Library_v1.0.md",
+      "type": "xlsx",
+      "sheets": [
+        {
+          "name": "External Library",
+          "rows": 28,
+          "columns": 12
+        },
+        {
+          "name": "Usage Notes",
+          "rows": 14,
+          "columns": 2
+        },
+        {
+          "name": "Audio Sources",
+          "rows": 6,
+          "columns": 5
+        },
+        {
+          "name": "Manifest & High-Vibe Music",
+          "rows": 11,
+          "columns": 12
+        },
+        {
+          "name": "Frequency & Relaxation",
+          "rows": 11,
+          "columns": 12
+        },
+        {
+          "name": "Sound Taxonomy",
+          "rows": 11,
+          "columns": 6
+        }
+      ]
+    },
+    {
+      "source": "Soul_Vision_Board_Content_Dataset_v1.2.xlsx",
+      "output": "Soul_Vision_Board_Content_Dataset_v1.2.md",
+      "type": "xlsx",
+      "sheets": [
+        {
+          "name": "Overview",
+          "rows": 20,
+          "columns": 2
+        },
+        {
+          "name": "Vision Categories",
+          "rows": 10,
+          "columns": 11
+        },
+        {
+          "name": "Guided Questions",
+          "rows": 82,
+          "columns": 12
+        },
+        {
+          "name": "Suggested Answers",
+          "rows": 373,
+          "columns": 7
+        },
+        {
+          "name": "Feelings",
+          "rows": 35,
+          "columns": 10
+        },
+        {
+          "name": "Statement Templates",
+          "rows": 19,
+          "columns": 9
+        },
+        {
+          "name": "Affirmations",
+          "rows": 73,
+          "columns": 8
+        },
+        {
+          "name": "Audio Mapping",
+          "rows": 19,
+          "columns": 10
+        },
+        {
+          "name": "External Mapping",
+          "rows": 19,
+          "columns": 11
+        },
+        {
+          "name": "Vision Sessions",
+          "rows": 10,
+          "columns": 10
+        },
+        {
+          "name": "CMS Import Notes",
+          "rows": 21,
+          "columns": 3
+        },
+        {
+          "name": "Energy Taxonomy",
+          "rows": 11,
+          "columns": 7
+        },
+        {
+          "name": "Music Picks",
+          "rows": 12,
+          "columns": 12
+        },
+        {
+          "name": "Frequency Library",
+          "rows": 11,
+          "columns": 13
+        },
+        {
+          "name": "Energy Mapping",
+          "rows": 10,
+          "columns": 7
+        }
+      ]
+    }
+  ],
+  "contact_sheets": {
+    "content": [
+      "/tmp/soul-spec-render/content/contact-1.jpg",
+      "/tmp/soul-spec-render/content/contact-2.jpg",
+      "/tmp/soul-spec-render/content/contact-3.jpg",
+      "/tmp/soul-spec-render/content/contact-4.jpg",
+      "/tmp/soul-spec-render/content/contact-5.jpg",
+      "/tmp/soul-spec-render/content/contact-6.jpg",
+      "/tmp/soul-spec-render/content/contact-7.jpg",
+      "/tmp/soul-spec-render/content/contact-8.jpg"
+    ],
+    "feature": [
+      "/tmp/soul-spec-render/feature/contact-1.jpg",
+      "/tmp/soul-spec-render/feature/contact-2.jpg",
+      "/tmp/soul-spec-render/feature/contact-3.jpg"
+    ],
+    "screens": [
+      "/tmp/soul-spec-render/screens/contact-1.jpg",
+      "/tmp/soul-spec-render/screens/contact-2.jpg",
+      "/tmp/soul-spec-render/screens/contact-3.jpg",
+      "/tmp/soul-spec-render/screens/contact-4.jpg",
+      "/tmp/soul-spec-render/screens/contact-5.jpg"
+    ]
+  }
+}

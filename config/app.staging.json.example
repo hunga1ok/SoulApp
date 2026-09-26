@@ -1,0 +1,6 @@
+{
+  "APP_ENV": "staging",
+  "API_BASE_URL": "https://api-staging.example.com/v1",
+  "GOOGLE_WEB_CLIENT_ID": "example.apps.googleusercontent.com",
+  "OAUTH_REDIRECT_SCHEME": "com.manifest.soul"
+}
