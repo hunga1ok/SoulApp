@@ -107,19 +107,23 @@
   - Liên kết: `REQ-UX-001`.
   - AC: màu, spacing, radius, shadow và typography bám prototype; serif cho tiêu đề cảm xúc, sans-serif cho control; không dùng màu vàng sticky note cũ.
   - Tiến độ 2026-09-26: màu, spacing, typography, surface và component state nền tảng đã được tạo.
+  - Tiến độ 2026-09-26: đã bổ sung token theo `styles.css` (brand system): màu CTA/soft/selected/input/sticky note, `SoulRadius`, `SoulShadows`, `SoulSizes` (touch target tối thiểu 48, nút 52), `SoulTypography` (serif cho tiêu đề cảm xúc, sans-serif cho control); sticky note là giấy trắng ấm kẻ ngang, không vàng, không có đường dọc. Còn lại: chưa bundle font thương hiệu Playfair Display/DM Sans (cần tải asset và kiểm tra license) nên hiện dùng serif/sans-serif hệ thống; nền gradient của hero/onboarding chưa làm; chưa so sánh trực quan trên thiết bị Android/iOS.
 
-- [ ] `APP-006` **P0 — Xây shared component library**
+- [x] `APP-006` **P0 — Xây shared component library**
   - AC: button, chip, card, sheet, dialog, input, empty/error/loading, progress, sticky note, audio row và app bar dùng chung.
+  - Hoàn tất 2026-09-26: `lib/core/design_system/components/` có `SoulButton` (primary/secondary), `SoulChip`, `SoulCard`, `showSoulBottomSheet`, `showSoulConfirmDialog`, `SoulTextField`, `SoulEmptyState`/`SoulErrorState` (có retry)/`SoulLoadingState`, `SoulProgressBar`, `SoulStickyNote`, `SoulAudioRow`, `SoulAppBar`; onboarding, shell, Today, Vision, Journal, Explore và Profile đã dùng các component này thay cho style lặp. Chip, dialog, error/loading chưa có màn hình tiêu thụ thật (sẽ dùng ở Vision builder và remote screens) nhưng đã có widget test và golden vi/en.
 
 - [~] `APP-007` **P0 — Chuẩn hóa logo và asset pipeline**
   - AC: logo nền trong suốt, crop bỏ khoảng trắng, căn trái chính xác; đủ density Android/iOS; có placeholder khi asset lỗi.
   - Tiến độ 2026-09-26: đã dùng logo ngang transparent cropped trong app header/gate; app icon pipeline còn chờ asset final.
 
-- [ ] `APP-008` **P0 — Responsive, SafeArea và accessibility layout**
+- [~] `APP-008` **P0 — Responsive, SafeArea và accessibility layout**
   - AC: không tràn ở màn hình nhỏ, text scale 200%, bàn phím, landscape hợp lý; touch target tối thiểu 44–48 px.
+  - Tiến độ 2026-09-26: màn onboarding cuộn được trong SafeArea (kể cả khi bàn phím mở), Vision/Explore/Journal không còn layout cố định; widget test xác nhận không overflow ở 320x568 (100% và 200%), 390x844 @200% và landscape 568x320 cho language gate, auth, preferred name, 4 tab và profile ở cả vi/en; test guideline tap target Android (48) / iOS (44) và nhãn semantics đạt cho onboarding và shell; nhãn logo/nút đều lấy từ ARB; tab được chọn dùng icon đặc để không chỉ dựa vào màu. Còn lại: nhãn bottom navigation được giới hạn ở 130% text scale (giống tab bar hệ điều hành) để không bị cắt — cần Product xác nhận; chưa kiểm tra trên thiết bị/simulator Android và iOS thật; contrast chưa đạt 4.5:1 ở hai token lấy từ prototype (`muted` trên nền paper ≈ 3.96:1; chữ trắng trên điểm cuối gradient CTA `#AA7188` ≈ 3.87:1) — cần Product/Design quyết định chỉnh màu; chưa kiểm tra reduced motion.
 
-- [ ] `APP-009` **P0 — Nền tảng widget/golden tests**
+- [x] `APP-009` **P0 — Nền tảng widget/golden tests**
   - AC: có test harness vi/en, light theme, kích thước điện thoại chuẩn và snapshot cho component lõi.
+  - Hoàn tất 2026-09-26: `test/helpers/soul_test_harness.dart` (`pumpSoulWidget`, `pumpSoulApp`) dựng ProviderScope + SharedPreferences mock + `soulTheme` + localization vi/en với kích thước điện thoại, text scale và device locale tùy chọn. Có widget test cho language gate, preferred name, tab shell, từng component, và golden vi/en cho 13 component lõi trong `test/core/design_system/goldens/`. Lưu ý: golden được tạo trên macOS với font test Ahem; CI Linux có thể lệch pixel và cần tạo lại golden trên cùng nền tảng nếu cần.
 
 - [~] `APP-010` **P0 — App shell 4 tab và header toàn app**
   - Liên kết: `REQ-UX-003`, `US-PRO-001`, `US-AUD-001`.
@@ -174,9 +178,10 @@
 
 ## Epic 3 — Authentication và onboarding song ngữ
 
-- [ ] `OB-001` **P0 — Màn chọn ngôn ngữ trung tính trước đăng nhập**
+- [x] `OB-001` **P0 — Màn chọn ngôn ngữ trung tính trước đăng nhập**
   - Liên kết: `US-OB-001`.
   - AC: hiển thị `Tiếng Việt` và `English` không phụ thuộc locale đã biết; có thể preselect theo device locale nhưng người dùng phải xác nhận.
+  - Hoàn tất 2026-09-26: hai lựa chọn luôn là tên gốc `Tiếng Việt`/`English` (cùng giá trị trong cả hai ARB). `suggestLocale()` + `suggestedLocaleProvider` chọn ngôn ngữ gợi ý từ device locale; lựa chọn gợi ý hiển thị dạng nút primary, lựa chọn còn lại dạng secondary, nếu device locale không hỗ trợ thì không gợi ý. Không lưu locale cho tới khi người dùng chạm vào một lựa chọn — cú chạm chính là bước xác nhận, không có nút “Tiếp tục” riêng để màn hình không cần câu chữ thuộc ngôn ngữ nào. Unit/widget test phủ cả hai hướng vi/en. Chưa kiểm tra trên thiết bị Android/iOS thật.
 
 - [ ] `OB-002` **P0 — Cấu hình Google Sign-In native**
   - Phụ thuộc: `EXT-001`, `EXT-004`.
