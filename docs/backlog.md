@@ -158,6 +158,7 @@
   - Liên kết: `US-OB-002`, `US-OB-003`, `PRO-001`.
   - AC: unique Google subject; session revoke/rotate; role `user/editor/admin`; preferred name không ghi đè Google profile.
   - Hoàn tất 2026-09-26: `users` (unique `google_subject`, role `user/editor/admin`), `profiles` (preferred name tách khỏi `google_display_name`), `auth_sessions` (chỉ lưu hash refresh token, `family_id`, `revoked_at`, `replaced_by_session_id` cho rotate/revoke). Logic rotate/revoke thuộc `OB-004`.
+  - Hoàn tất 2026-09-26: access token HS256 gắn session family; refresh token dùng một lần, chỉ lưu SHA-256, xoay vòng bằng UPDATE nguyên tử (hai refresh đồng thời chỉ một thành công); dùng lại token cũ thu hồi cả family; logout thu hồi family và vô hiệu access token ngay. Client (OB-005) chỉ refresh một lần cho mọi request 401 và không lặp vô hạn. Đã kiểm chứng bằng e2e test và smoke test server thật.
 
 - [x] `API-006` **P0 — Mô hình content/localization/category/feeling**
   - AC: nội dung có locale, publication status, version; feelings tách khỏi Vision Category; sound liên kết category.
@@ -187,8 +188,9 @@
   - AC: lint/typecheck/test/build; phát hiện schema drift; migration chạy được từ DB trống.
   - Tiến độ 2026-09-26 (đợt 1): workflow SoulApi chạy lint/typecheck, `db:check` (phát hiện schema drift), migrate DB Postgres trống + test, build. Chuyển `[x]` sau khi workflow chạy xanh trên GitHub.
 
-- [ ] `API-013` **P0 — API resilience và abuse protection**
+- [~] `API-013` **P0 — API resilience và abuse protection**
   - AC: idempotency cho command quan trọng, pagination, validation, rate limit auth/upload và payload size limit.
+  - Tiến độ 2026-09-26 (đợt 2): đã có rate limit theo IP cho `/v1/auth/*` (`AUTH_RATE_LIMIT_PER_MINUTE`), validation whitelist toàn cục, idempotency ở DB (`client_request_id`). Còn thiếu: pagination, payload size limit tường minh, rate limit upload, cấu hình `trust proxy` khi deploy.
 
 ## Epic 3 — Authentication và onboarding song ngữ
 
@@ -201,21 +203,24 @@
   - Phụ thuộc: `EXT-001`, `EXT-004`.
   - AC: Android/iOS callback đúng; cancel không tạo session; lỗi mạng/cấu hình có retry và thông báo phù hợp locale.
 
-- [ ] `OB-003` **P0 — Xác minh Google identity tại Backend**
+- [~] `OB-003` **P0 — Xác minh Google identity tại Backend**
   - Liên kết: `US-OB-002`.
   - AC: verify issuer/audience/expiry; upsert theo subject; không tin profile do client tự gửi.
+  - Tiến độ 2026-09-26 (đợt 2): `POST /v1/auth/google` xác minh ID token bằng `google-auth-library` (issuer, audience = `GOOGLE_CLIENT_IDS`, chữ ký, expiry), upsert user theo Google subject, từ chối mọi field identity/role do client gửi (400). E2E test dùng verifier giả; còn chờ OAuth client thật (`EXT-004`) để kiểm chứng với token Google thật. Có `POST /v1/auth/dev` cho dev, config từ chối bật trên staging/production.
 
-- [ ] `OB-004` **P0 — Access/refresh token rotation và sign-out**
+- [x] `OB-004` **P0 — Access/refresh token rotation và sign-out**
   - AC: refresh token rotate/revoke; sign-out vô hiệu session; token hết hạn được xử lý không lặp request vô hạn.
 
 - [~] `OB-005` **P0 — Dio auth client và secure storage**
   - AC: attach/refresh token an toàn, request queue khi refresh, xóa credential khi revoke; không lưu token trong plain preferences.
   - Tiến độ 2026-09-26 (đợt 2): thêm `dio` + `flutter_secure_storage`. Access token chỉ trong bộ nhớ, refresh token chỉ trong secure storage (`CredentialStore`). `AuthInterceptor` gắn `Authorization: Bearer`; khi 401 chỉ refresh một lần dùng chung cho mọi request đồng thời (request mới phát sinh trong lúc refresh sẽ chờ), retry request gốc đúng một lần; refresh bị từ chối (401/403) thì xóa credential và chuyển app về trạng thái đăng xuất, không lặp; lỗi tạm thời (mạng/429/5xx) giữ credential. Error envelope map sang `ApiException(code)`, UI map code sang copy vi/en. Khôi phục phiên khi mở app (refresh → `GET /me`) có màn loading và retry. Unit test bằng fake HTTP adapter phủ: refresh đơn cho 401 đồng thời, 401 đến muộn dùng token mới, retry một lần, refresh thất bại → đăng xuất, lỗi tạm thời giữ token, luôn lưu refresh token mới, map envelope. Còn lại: chưa chạy với SoulApi thật (endpoint auth thuộc `OB-003`/`OB-004` chưa có trong SoulApi); chưa kiểm tra Keychain/Keystore trên thiết bị Android/iOS thật; Android emulator gọi API local qua HTTP cần cấu hình cleartext cho debug.
+  - Tiến độ 2026-09-26 (đợt 2): SoulApi auth đã có (`3632ee6`); smoke test server thật xác nhận response khớp model Dart (login dev, `/me`, PATCH profile, refresh, reuse → 401). Còn thiếu: chạy app trên Android/iOS thật để kiểm Keychain/Keystore.
 
 - [~] `OB-006` **P0 — Hỏi preferred name ngay sau Google login**
   - Liên kết: `US-OB-003`.
   - AC: câu đầu tiên là “Bạn muốn được gọi với tên là gì?” theo locale; prefill tên Google chỉ là gợi ý; trim/validate; có thể sửa sau ở profile.
   - Tiến độ 2026-09-26 (đợt 2): sau đăng nhập, nếu profile server chưa có `preferredName` thì router đưa tới màn tên; ô nhập được điền sẵn `googleDisplayName` chỉ như gợi ý (không lưu cho tới khi người dùng bấm lưu); trim, 1–50 ký tự (code point, theo contract API); lưu bằng `PATCH /v1/me/profile`; lỗi server hiện thông báo vi/en và nút “Thử lại”; sửa lại được từ Profile (`/profile/name`). Widget test vi/en phủ prefill, validate, lưu, lỗi + thử lại và sửa từ Profile. Còn lại: đăng nhập thật bằng Google chờ `OB-002`/`EXT-004` (debug build hiện dùng development login `POST /auth/dev` của backend, release build để nút Google disabled); `requirements.md` (US-OB-003) vẫn ghi giới hạn 1–40 ký tự, khác contract API 1–50 — cần Product chốt; chưa kiểm tra trên thiết bị Android/iOS thật.
+  - Tiến độ 2026-09-26 (đợt 2): thống nhất độ dài preferred name 1–40 ký tự Unicode theo `requirements.md` ở cả app và API (trước đó hợp đồng ghi nhầm 1–50). Backend `PATCH /v1/me/profile` trim/validate và đã test tên tiếng Việt 40 ký tự.
 
 - [ ] `OB-007` **P0 — Chọn ý định/focus onboarding**
   - Liên kết: `US-OB-004`.
@@ -233,20 +238,24 @@
 
 ## Epic 4 — Dataset, content pipeline và localization
 
-- [ ] `DAT-001` **P0 — Kiểm kê và validate toàn bộ nguồn dữ liệu active**
+- [x] `DAT-001` **P0 — Kiểm kê và validate toàn bộ nguồn dữ liệu active**
   - Nguồn: workbook 28 ngày v1.1, Vision v1.2, External Library v1.0 và Owned Content Pack.
   - AC: báo cáo số hàng, duplicate ID, thiếu locale, thiếu category, URL lỗi và trường không hợp lệ; không import bản cũ khi đã có bản active mới.
+  - Hoàn tất 2026-09-26: `npm run content:import -- --validate` đọc Vision v1.2, 28 ngày v1.1, External v1.0 và Owned Content Pack (ID audio/affirmation); báo cáo số hàng mỗi sheet, duplicate ID, thiếu bản dịch, tham chiếu category/question/audio sai, enum, URL không HTTPS, placeholder template; mỗi lỗi có file › sheet › row › field. Chỉ đọc đúng các file active. Kết quả hiện tại: 2 lỗi — `ST01` dùng placeholder `{communication_style}` không có câu hỏi tương ứng; dataset 28 ngày không có bản tiếng Anh (tiêu đề ngày/task là tiếng Anh, nội dung là tiếng Việt).
 
-- [ ] `DAT-002` **P0 — Xây import CLI có dry-run**
+- [x] `DAT-002` **P0 — Xây import CLI có dry-run**
   - AC: đọc XLSX/Markdown chuẩn hóa; dry-run không ghi DB; lỗi chỉ rõ file/sheet/row/field; hỗ trợ transaction.
+  - Hoàn tất 2026-09-26: `npm run content:import` (`--validate`, `--dry-run` chạy trong transaction rồi rollback, `--json`); lỗi cấu trúc chặn toàn bộ import, lỗi cấp bản ghi giữ bản ghi ở `draft`. Đọc XLSX trực tiếp vì workbook dùng OOXML có tiền tố namespace mà `exceljs` không đọc được.
 
-- [ ] `DAT-003` **P0 — Seed Vision categories, questions, feelings và statements**
+- [x] `DAT-003` **P0 — Seed Vision categories, questions, feelings và statements**
   - Liên kết: `US-VIS-001..004`.
   - AC: nhóm cảm xúc mở rộng; người dùng chọn 1–3; feelings độc lập với category; vi/en đầy đủ.
+  - Hoàn tất 2026-09-26: import 9 category, 34 feelings, 81 câu hỏi, 372 đáp án gợi ý, 18 statement template song ngữ; feelings độc lập category (gợi ý qua `category_feeling_suggestions`); 1–3 feelings do DB enforce. `ST01` giữ `draft` cho đến khi sửa dataset.
 
-- [ ] `DAT-004` **P0 — Seed hành trình 28 ngày**
+- [!] `DAT-004` **P0 — Seed hành trình 28 ngày**
   - Liên kết: `US-JRN-001..005`.
   - AC: đủ 28 ngày; thứ tự task, copy, CTA, reflection và metadata đúng nguồn; validation không cho thiếu task bắt buộc.
+  - Bị chặn 2026-09-26: dataset 28 ngày không có bản tiếng Anh cho instruction/reflection/affirmation/notification và không có tiêu đề tiếng Việt cho ngày/task; import sẽ trộn ngôn ngữ. Chờ Product chọn: bổ sung EN + tiêu đề VI vào workbook, duyệt bản nháp do agent soạn, hoặc phát hành chỉ tiếng Việt.
 
 - [ ] `DAT-005` **P0 — Seed audio metadata và mapping theo category**
   - Liên kết: `US-AUD-001..003`.
@@ -258,11 +267,13 @@
 - [ ] `DAT-007` **P1 — Chuẩn hóa external content cho Explore**
   - AC: title, creator, source, official URL, locale, category, rights note và active status; không sao chép nội dung ngoài quyền.
 
-- [ ] `DAT-008` **P0 — Import idempotent và báo cáo đối soát**
+- [~] `DAT-008` **P0 — Import idempotent và báo cáo đối soát**
   - AC: chạy lại không nhân bản; có created/updated/skipped/failed counts; foreign key và category/audio references hợp lệ.
+  - Tiến độ 2026-09-26 (đợt 2): upsert theo code ổn định, chạy lại không nhân bản, chỉ tăng `version` khi nội dung đổi (kể cả bản dịch); báo cáo created/updated/unchanged; lỗi chặn = failed. Còn thiếu: tham chiếu audio (chờ `DAT-005`).
 
-- [ ] `DAT-009` **P0 — Public content APIs theo locale/publication**
+- [~] `DAT-009` **P0 — Public content APIs theo locale/publication**
   - AC: chỉ trả content published, đúng locale; fallback được quy định rõ; cache/version cho mobile; không lẫn content admin draft.
+  - Tiến độ 2026-09-26 (đợt 2): `GET /v1/content/vision?locale=vi|en` chỉ trả bản ghi published có bản dịch đúng locale, không fallback sang ngôn ngữ khác; ETag + `If-None-Match` → 304 để mobile cache. Còn thiếu: API cho journey/audio.
 
 - [ ] `DAT-010` **P0 — Dataset regression tests**
   - AC: test đủ 28 ngày, tối thiểu một playlist hợp lệ/category/locale, không orphan reference và không duplicate stable ID.

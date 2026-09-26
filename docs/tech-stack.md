@@ -86,7 +86,7 @@ Before the admin UI exists, a deterministic import CLI can seed content. Do not 
 
 Place import logic beside the API and make it repeatable:
 
-- TypeScript CLI using `exceljs` for XLSX and `mammoth` for DOCX.
+- TypeScript CLI (`npm run content:import` in SoulApi). XLSX is read directly with `jszip` + `fast-xml-parser`: the authoring workbooks use namespace-prefixed OOXML (`<x:workbook>`) that `exceljs` cannot parse. DOCX only needs heading IDs, read from `word/document.xml`; `mammoth` is not needed yet.
 - Stable source IDs and database upserts.
 - Dry-run mode, validation report, and transactional import.
 - Reject missing translations, broken category/audio references, duplicate IDs, and unpublished media mappings.

@@ -212,7 +212,7 @@ Me = {
 | `POST /auth/refresh` | — | `{ refreshToken: string }` | 200 `Session` |
 | `POST /auth/logout` | — | `{ refreshToken: string }` | 204 |
 | `GET /me` | Bearer | — | 200 `Me` |
-| `PATCH /me/profile` | Bearer | any subset of `{ preferredName: string (trimmed, 1–50), locale: "vi"\|"en", audioEnabled: boolean, timezone: IANA string }` | 200 `Me` |
+| `PATCH /me/profile` | Bearer | any subset of `{ preferredName: string (trimmed, 1–40 Unicode characters), locale: "vi"\|"en", audioEnabled: boolean, timezone: IANA string }` | 200 `Me` |
 
 - `POST /auth/dev` exists only on local/development servers. It is a development substitute for Google Sign-In; release app builds never call it.
 - Refresh tokens rotate: after `POST /auth/refresh` the old token is invalid and the client must store the new one. Presenting a used refresh token is treated as theft and revokes the whole session family, answering 401 `UNAUTHORIZED`. Invalid or expired tokens also answer 401.

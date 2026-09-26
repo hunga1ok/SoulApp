@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../auth/session_controller.dart';
 
 /// Maximum preferred-name length in Unicode code points (API contract).
-const preferredNameMaxLength = 50;
+const preferredNameMaxLength = 40;
 
 enum PreferredNameIssue { empty, tooLong }
 

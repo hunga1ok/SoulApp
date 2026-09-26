@@ -16,9 +16,9 @@ void main() {
       expect(validatePreferredName(''), PreferredNameIssue.empty);
       expect(validatePreferredName('  An  '), isNull);
       expect(validatePreferredName('Ngọc Ánh'), isNull);
-      expect(validatePreferredName('a' * 50), isNull);
-      expect(validatePreferredName(' ${'a' * 50} '), isNull);
-      expect(validatePreferredName('a' * 51), PreferredNameIssue.tooLong);
+      expect(validatePreferredName('a' * 40), isNull);
+      expect(validatePreferredName(' ${'a' * 40} '), isNull);
+      expect(validatePreferredName('a' * 41), PreferredNameIssue.tooLong);
     });
   });
 
@@ -28,7 +28,7 @@ void main() {
       google: 'Tiếp tục với Google',
       question: 'Bạn muốn được gọi với tên là gì?',
       save: 'Lưu và tiếp tục',
-      tooLong: 'Tên tối đa 50 ký tự thôi nhé.',
+      tooLong: 'Tên tối đa 40 ký tự thôi nhé.',
       error: 'Soul đang tạm gián đoạn. Bạn thử lại sau ít phút nhé.',
       retry: 'Thử lại',
       welcome: 'Chào An',
@@ -38,7 +38,7 @@ void main() {
       google: 'Continue with Google',
       question: 'What would you like Soul to call you?',
       save: 'Save and continue',
-      tooLong: 'Please keep it to 50 characters or fewer.',
+      tooLong: 'Please keep it to 40 characters or fewer.',
       error: 'Soul is briefly unavailable. Please try again soon.',
       retry: 'Try again',
       welcome: 'Welcome, An',
@@ -73,7 +73,7 @@ void main() {
       await tester.pump();
       expect(buttonWithLabel(tester, c.save).onPressed, isNull);
 
-      await tester.enterText(find.byType(TextField), 'a' * 51);
+      await tester.enterText(find.byType(TextField), 'a' * 41);
       await tester.pump();
       expect(find.text(c.tooLong), findsOneWidget);
       expect(buttonWithLabel(tester, c.save).onPressed, isNull);
