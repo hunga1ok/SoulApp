@@ -64,10 +64,11 @@
 - [~] `REP-002` **P0 — Chuẩn hóa `.gitignore` và secret policy**
   - AC: không commit secret, signing key, Google config production, file audio có hạn chế bản quyền hoặc dữ liệu người dùng.
   - Tiến độ 2026-09-26: Flutter/API ignore `.env`, signing keys và Google config production; policy cho audio/user data sẽ đi cùng storage pipeline.
+  - Tiến độ 2026-09-26 (đợt 1): sửa `.gitignore` của SoulApi để commit các template `.env.*.example` (trước đây bị bỏ qua) trong khi `.env.local` vẫn bị ignore.
 
 - [~] `REP-003` **P0 — Thiết lập CI cơ bản**
   - AC: chạy format, lint, unit test và build check cho Flutter, Backend, Admin trên pull request.
-  - Tiến độ 2026-09-26: workflow GitHub Actions cho Flutter và SoulApi đã sẵn tại root workspace; job Admin sẽ được thêm khi `SoulAdmin` được scaffold và workflow chỉ chạy sau khi workspace được khởi tạo/push lên Git repository.
+  - Tiến độ 2026-09-26: SoulApp và SoulApi đã tách thành repo riêng (submodule của workspace `Soul`), mỗi repo có `.github/workflows/verify.yml` riêng. SoulApp: format/analyze/test (loại trừ golden)/build web trên Ubuntu + job golden trên macOS. SoulApi: lint, drift check, migrate DB trống + test, build với Postgres service. Workflow chưa chạy thật vì repo chưa push; job Admin chờ `SoulAdmin`.
 
 
 - [x] `REP-004` **P0 — Chốt application identifiers**
@@ -132,46 +133,57 @@
 
 ## Epic 2 — Backend, PostgreSQL và API foundation
 
-- [~] `API-001` **P0 — Khởi tạo NestJS service theo module**
+- [x] `API-001` **P0 — Khởi tạo NestJS service theo module**
   - AC: config validation, health/readiness endpoint, graceful shutdown và cấu trúc module rõ ràng.
   - Tiến độ 2026-09-26: SoulApi NestJS module skeleton, config validation và `/v1/health` đã build/test; readiness/DB health chờ PostgreSQL.
+  - Hoàn tất 2026-09-26: thêm `/v1/health/ready` kiểm tra PostgreSQL (timeout 2s, lỗi trả 503 `SERVICE_UNAVAILABLE`), `enableShutdownHooks` + đóng pool khi shutdown, cấu trúc `common/`, `config/`, `database/`, `health/`.
 
 - [~] `API-002` **P0 — Chuẩn hóa REST API `/v1` và OpenAPI**
   - AC: request/response schema, auth scheme, pagination và error examples được sinh/kiểm tra tự động.
   - Tiến độ 2026-09-26: global `/v1` prefix và Swagger base document đã chạy; contract chi tiết được thêm theo từng module.
+  - Tiến độ 2026-09-26 (đợt 1): OpenAPI đã có schema `ErrorEnvelope` cho error examples; còn thiếu pagination contract và kiểm tra contract tự động (làm cùng endpoint đầu tiên có danh sách).
 
-- [ ] `API-003` **P0 — Kết nối PostgreSQL riêng**
+- [x] `API-003` **P0 — Kết nối PostgreSQL riêng**
   - Phụ thuộc: `EXT-002`.
   - AC: SSL/configurable pool, health check, timeout và transaction conventions.
+  - Hoàn tất 2026-09-26: `DatabaseModule` dùng `pg` pool với `DATABASE_SSL` (bắt buộc `require` ở production), `DATABASE_POOL_MAX`, `DATABASE_STATEMENT_TIMEOUT_MS`, connection timeout; quy ước transaction `db.transaction(tx)` ghi trong code. Kiểm chứng trên DB local/test; DB staging/production vẫn chờ `EXT-002`.
 
-- [ ] `API-004` **P0 — Thiết lập Drizzle schema và migration**
+- [x] `API-004` **P0 — Thiết lập Drizzle schema và migration**
   - AC: migration forward-only, có migration history, seed tách khỏi migration và chạy được trên DB trống.
+  - Hoàn tất 2026-09-26: schema Drizzle trong `src/database/schema/`, migration forward-only trong `drizzle/` (history ở `drizzle.__drizzle_migrations`), `db:generate`/`db:migrate`/`db:check`; test rebuild DB test từ trống rồi migrate trước mỗi lần chạy và kiểm tra migrate lại là no-op. Chưa có seed (thuộc Epic 4).
 
-- [ ] `API-005` **P0 — Mô hình user, auth session, profile và role**
+- [x] `API-005` **P0 — Mô hình user, auth session, profile và role**
   - Liên kết: `US-OB-002`, `US-OB-003`, `PRO-001`.
   - AC: unique Google subject; session revoke/rotate; role `user/editor/admin`; preferred name không ghi đè Google profile.
+  - Hoàn tất 2026-09-26: `users` (unique `google_subject`, role `user/editor/admin`), `profiles` (preferred name tách khỏi `google_display_name`), `auth_sessions` (chỉ lưu hash refresh token, `family_id`, `revoked_at`, `replaced_by_session_id` cho rotate/revoke). Logic rotate/revoke thuộc `OB-004`.
 
-- [ ] `API-006` **P0 — Mô hình content/localization/category/feeling**
+- [x] `API-006` **P0 — Mô hình content/localization/category/feeling**
   - AC: nội dung có locale, publication status, version; feelings tách khỏi Vision Category; sound liên kết category.
+  - Hoàn tất 2026-09-26: category/feeling/question/statement template/audio đều có `code` ổn định, `status` draft/published/archived, `version` và bảng `*_translations` theo locale; feelings độc lập với category (`category_feeling_suggestions` chỉ là gợi ý); `category_audio_tracks` gắn sound theo category; DB chặn audio spoken `neutral` và publish audio khi chưa duyệt quyền.
 
-- [ ] `API-007` **P0 — Mô hình journey và progress**
+- [x] `API-007` **P0 — Mô hình journey và progress**
   - AC: journey, day, task, response, completion, restart; unique constraint ngăn ghi trùng; hỗ trợ missed day.
+  - Hoàn tất 2026-09-26: `journeys`, `journey_days`, `journey_tasks` (+ translations), `user_journeys` (chỉ một run `active`/user, restart giữ lịch sử), `user_journey_days`, `task_responses` (unique theo run+task và theo `client_request_id`), `journey_progress_events` để audit. Missed day được suy ra từ `started_on` + timezone; logic ở `JRN-010`.
 
-- [ ] `API-008` **P0 — Mô hình Vision, playlist, audio và media metadata**
+- [x] `API-008` **P0 — Mô hình Vision, playlist, audio và media metadata**
   - AC: Vision có category, statement, feelings 1–3, image optional; nhiều track/category/locale; archive thay vì xóa cứng mặc định.
+  - Hoàn tất 2026-09-26: `visions` (category, statement 1–500 ký tự, ảnh optional qua `media_objects`, archive thay vì xóa, idempotent theo `client_request_id`), `vision_feelings` với constraint trigger deferred bắt buộc 1–3 feelings, `vision_answers`, `media_objects` chỉ lưu object key; playlist resolve từ category.
 
-- [ ] `API-009` **P0 — Mô hình Journal, Future Letter và reminder**
+- [x] `API-009` **P0 — Mô hình Journal, Future Letter và reminder**
   - AC: journal entry, free note, future letter, unlock date, status, notification preference và timezone.
+  - Hoàn tất 2026-09-26: `journal_entries` (free note + projection, unique `source_task_response_id` chống trùng), `future_letters` (draft/sealed/opened, `unlock_at` + timezone, DB chặn `opened_at` trước `unlock_at`), `reminder_preferences` (theo kind, giờ local + timezone, bật thì bắt buộc có giờ).
 
-- [ ] `API-010` **P0 — Error contract, structured logging và request ID**
+- [x] `API-010` **P0 — Error contract, structured logging và request ID**
   - AC: không log token/private text; mọi lỗi có code ổn định, localized message key và correlation ID.
+  - Hoàn tất 2026-09-26: error envelope `{ error: { code, messageKey, message, requestId, details } }` với `ErrorCode` ổn định; `X-Request-Id` nhận từ client hoặc tự sinh; log pino không ghi body, query string hay header xác thực; lỗi 5xx và 404 không lộ chi tiết nội bộ/URL. Đã kiểm chứng bằng e2e test và smoke test trên server build.
 
 - [x] `API-011` **P0 — Local Docker và test database**
   - AC: một lệnh dựng API + PostgreSQL; test dùng DB riêng; reset test data không tác động local dev data.
   - Hoàn tất 2026-09-26: `docker compose --env-file .env.local up -d` chạy `soul-api-local`, `soul_dev` (`5432`) và `soul_test` (`5433`) với volume riêng; cả ba health check pass và `/v1/health` trả `{"status":"ok"}`.
 
-- [ ] `API-012` **P0 — Backend CI và migration check**
+- [~] `API-012` **P0 — Backend CI và migration check**
   - AC: lint/typecheck/test/build; phát hiện schema drift; migration chạy được từ DB trống.
+  - Tiến độ 2026-09-26 (đợt 1): workflow SoulApi chạy lint/typecheck, `db:check` (phát hiện schema drift), migrate DB Postgres trống + test, build. Chuyển `[x]` sau khi workflow chạy xanh trên GitHub.
 
 - [ ] `API-013` **P0 — API resilience và abuse protection**
   - AC: idempotency cho command quan trọng, pagination, validation, rate limit auth/upload và payload size limit.

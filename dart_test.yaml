@@ -1,0 +1,3 @@
+tags:
+  golden:
+    description: Pixel comparisons generated on macOS; CI runs them on a macOS runner.
