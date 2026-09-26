@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/errors/api_exception.dart';
+import '../../core/errors/error_messages.dart';
 import '../../l10n/app_localizations.dart';
+import '../auth/session_controller.dart';
 
 class AppShell extends ConsumerWidget {
   const AppShell({super.key, required this.navigationShell});
@@ -16,7 +18,8 @@ class AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final state = ref.watch(appStateProvider);
+    final profile = ref.watch(sessionControllerProvider).valueOrNull?.profile;
+    final soundEnabled = profile?.audioEnabled ?? true;
     final labels = [l10n.today, l10n.vision, l10n.journal, l10n.explore];
     const icons = [
       Icons.wb_sunny_outlined,
@@ -36,11 +39,11 @@ class AppShell extends ConsumerWidget {
       appBar: SoulAppBar(
         actions: [
           IconButton(
-            tooltip: state.soundEnabled ? l10n.soundOn : l10n.soundOff,
-            onPressed: () => ref.read(appStateProvider).toggleSound(),
-            isSelected: state.soundEnabled,
+            tooltip: soundEnabled ? l10n.soundOn : l10n.soundOff,
+            onPressed: () => toggleSound(context, ref, !soundEnabled),
+            isSelected: soundEnabled,
             icon: Icon(
-              state.soundEnabled
+              soundEnabled
                   ? Icons.volume_up_outlined
                   : Icons.volume_off_outlined,
             ),
@@ -54,7 +57,8 @@ class AppShell extends ConsumerWidget {
                 backgroundColor: SoulColors.lilac,
                 foregroundColor: SoulColors.plum,
                 child: Text(
-                  (state.preferredName ?? 'S').characters.first.toUpperCase(),
+                  (profile?.preferredName ?? 'S').characters.first
+                      .toUpperCase(),
                 ),
               ),
             ),
@@ -87,5 +91,21 @@ class AppShell extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+/// Optimistically switches the global sound setting; a failed save is
+/// reverted by the controller and reported here.
+Future<void> toggleSound(
+  BuildContext context,
+  WidgetRef ref,
+  bool enabled,
+) async {
+  try {
+    await ref
+        .read(sessionControllerProvider.notifier)
+        .updateAudioEnabled(enabled);
+  } on ApiException catch (error) {
+    if (context.mounted) showErrorSnackBar(context, error);
   }
 }

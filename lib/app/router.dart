@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/auth/session_controller.dart';
+import '../features/auth/session_restore_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/journal/journal_screen.dart';
 import '../features/onboarding/onboarding_screens.dart';
@@ -10,31 +13,50 @@ import '../features/today/today_screen.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
+const _entryRoutes = {'/splash', '/language', '/auth', '/onboarding/name'};
+
 final routerProvider = Provider<GoRouter>((ref) {
   final state = ref.read(appStateProvider);
+  final sessionChanges = ValueNotifier(0);
+  // Re-run guards only when a routing input changes, not on every profile
+  // edit (a refresh while a pushed route pops would restore that route).
+  ref.listen(
+    sessionControllerProvider.select(
+      (session) => (
+        session.isLoading,
+        session.hasError,
+        session.valueOrNull?.profile.hasPreferredName,
+      ),
+    ),
+    (_, _) => sessionChanges.value++,
+  );
+  ref.onDispose(sessionChanges.dispose);
+
+  String? only(String path, String target) => path == target ? null : target;
 
   final router = GoRouter(
     initialLocation: '/language',
-    refreshListenable: state,
+    refreshListenable: Listenable.merge([state, sessionChanges]),
     redirect: (context, route) {
       final path = route.matchedLocation;
-      if (state.locale == null) {
-        return path == '/language' ? null : '/language';
+      final session = ref.read(sessionControllerProvider);
+      if (session.isLoading || session.hasError) return only(path, '/splash');
+
+      final me = session.value;
+      if (me == null) {
+        return state.locale == null
+            ? only(path, '/language')
+            : only(path, '/auth');
       }
-      if (!state.isAuthenticated) {
-        return path == '/auth' ? null : '/auth';
-      }
-      if (!state.hasCompletedName) {
-        return path == '/onboarding/name' ? null : '/onboarding/name';
-      }
-      if (path == '/language' ||
-          path == '/auth' ||
-          path == '/onboarding/name') {
-        return '/app/today';
-      }
+      if (!me.profile.hasPreferredName) return only(path, '/onboarding/name');
+      if (_entryRoutes.contains(path)) return '/app/today';
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/splash',
+        builder: (context, route) => const SessionRestoreScreen(),
+      ),
       GoRoute(
         path: '/language',
         builder: (context, route) => const LanguageGateScreen(),
@@ -47,6 +69,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/profile',
         builder: (context, route) => const ProfileScreen(),
+        routes: [
+          GoRoute(
+            path: 'name',
+            builder:
+                (context, route) => const PreferredNameScreen(isEditing: true),
+          ),
+        ],
       ),
       StatefulShellRoute.indexedStack(
         builder:

@@ -45,7 +45,7 @@
   },
   "authTagline": "A private, gentle space for you.",
   "continueWithGoogle": "Continue with Google",
-  "developmentAuthHint": "Development mode: this button simulates a Google callback.",
+  "developmentAuthHint": "Development mode: signs in through the local API's development login.",
   "morningGratitude": "Morning Gratitude",
   "neutralInstrumentalFiveMinutes": "Neutral instrumental · 5 min",
   "play": "Play",
@@ -63,5 +63,20 @@
   "loading": "Loading",
   "pause": "Pause",
   "cancel": "Cancel",
-  "somethingWentWrong": "Something went wrong. Please try again."
+  "somethingWentWrong": "Something went wrong. Please try again.",
+  "save": "Save",
+  "nameTooLong": "Please keep it to {max} characters or fewer.",
+  "@nameTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "errorNetwork": "Soul can't connect right now. Check your connection and try again.",
+  "errorSessionEnded": "Your session has ended. Please sign in again.",
+  "errorForbidden": "You don't have access to this.",
+  "errorValidation": "Please check what you entered and try again.",
+  "errorRateLimited": "Too many attempts. Please wait a moment and try again.",
+  "errorServiceUnavailable": "Soul is briefly unavailable. Please try again soon."
 }

@@ -28,7 +28,11 @@ void main() {
     testWidgets('${c.locale.name}: four tabs navigate to their screens', (
       tester,
     ) async {
-      await pumpSoulApp(tester, preferences: onboardedPreferences(c.locale));
+      await pumpSoulApp(
+        tester,
+        preferences: onboardedPreferences(c.locale),
+        backend: FakeSoulBackend.signedIn(locale: c.locale),
+      );
 
       expect(find.byType(TodayScreen), findsOneWidget);
       for (final label in c.tabs) {
@@ -47,7 +51,11 @@ void main() {
     testWidgets('${c.locale.name}: avatar opens profile and back returns', (
       tester,
     ) async {
-      await pumpSoulApp(tester, preferences: onboardedPreferences(c.locale));
+      await pumpSoulApp(
+        tester,
+        preferences: onboardedPreferences(c.locale),
+        backend: FakeSoulBackend.signedIn(locale: c.locale),
+      );
 
       await tester.tap(find.byTooltip(c.profile));
       await tester.pumpAndSettle();

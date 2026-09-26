@@ -52,10 +52,11 @@ void main() {
           tester,
           size: viewport.size,
           textScale: viewport.textScale,
-          preferences: {
-            'selected_locale': locale.name,
-            'local_authenticated': true,
-          },
+          preferences: {'selected_locale': locale.name},
+          backend: FakeSoulBackend.signedIn(
+            locale: locale,
+            preferredName: null,
+          ),
         );
         expect(find.byType(PreferredNameScreen), findsOneWidget);
         expect(tester.takeException(), isNull);
@@ -84,6 +85,7 @@ void main() {
           size: viewport.size,
           textScale: viewport.textScale,
           preferences: onboardedPreferences(locale),
+          backend: FakeSoulBackend.signedIn(locale: locale),
         );
         expect(tester.takeException(), isNull);
 
@@ -110,16 +112,21 @@ void main() {
       });
     }
 
-    final screens = <String, (Type, Map<String, Object>)>{
-      'language gate': (LanguageGateScreen, const {}),
-      'auth': (AuthScreen, {'selected_locale': locale.name}),
+    final screens = <String, (Type, Map<String, Object>, FakeSoulBackend?)>{
+      'language gate': (LanguageGateScreen, const {}, null),
+      'auth': (AuthScreen, {'selected_locale': locale.name}, null),
       'preferred name': (
         PreferredNameScreen,
-        {'selected_locale': locale.name, 'local_authenticated': true},
+        {'selected_locale': locale.name},
+        FakeSoulBackend.signedIn(locale: locale, preferredName: null),
       ),
-      'shell': (TodayScreen, onboardedPreferences(locale)),
+      'shell': (
+        TodayScreen,
+        onboardedPreferences(locale),
+        FakeSoulBackend.signedIn(locale: locale),
+      ),
     };
-    for (final MapEntry(key: screenName, value: (screen, preferences))
+    for (final MapEntry(key: screenName, value: (screen, preferences, backend))
         in screens.entries) {
       testWidgets('${locale.name}: $screenName meets tap-target and label '
           'guidelines', (tester) async {
@@ -127,6 +134,7 @@ void main() {
         await pumpSoulApp(
           tester,
           preferences: preferences,
+          backend: backend,
           deviceLocales: [Locale(locale.name)],
         );
         expect(find.byType(screen), findsOneWidget);

@@ -4,7 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/errors/api_exception.dart';
+import '../../core/errors/error_messages.dart';
 import '../../l10n/app_localizations.dart';
+import '../auth/session_controller.dart';
+import '../shell/app_shell.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -12,7 +16,9 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final state = ref.watch(appStateProvider);
+    final profile = ref.watch(sessionControllerProvider).valueOrNull?.profile;
+    final preferredName = profile?.preferredName;
+    final soundEnabled = profile?.audioEnabled ?? true;
     return Scaffold(
       appBar: SoulAppBar(title: l10n.profile, onBack: () => context.pop()),
       body: ListView(
@@ -23,23 +29,28 @@ class ProfileScreen extends ConsumerWidget {
             backgroundColor: SoulColors.lilac,
             foregroundColor: SoulColors.plum,
             child: Text(
-              (state.preferredName ?? 'S').characters.first.toUpperCase(),
+              (preferredName ?? 'S').characters.first.toUpperCase(),
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           const SizedBox(height: SoulSpace.sm),
           Text(
-            state.preferredName ?? '',
+            preferredName ?? '',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: SoulSpace.lg),
           _SettingRow(
+            icon: Icons.edit_outlined,
+            label: l10n.editName,
+            onTap: () => context.push('/profile/name'),
+          ),
+          _SettingRow(
             icon:
-                state.soundEnabled
+                soundEnabled
                     ? Icons.volume_up_outlined
                     : Icons.volume_off_outlined,
-            label: state.soundEnabled ? l10n.soundOn : l10n.soundOff,
-            onTap: () => ref.read(appStateProvider).toggleSound(),
+            label: soundEnabled ? l10n.soundOn : l10n.soundOff,
+            onTap: () => toggleSound(context, ref, !soundEnabled),
           ),
           _SettingRow(
             icon: Icons.language_outlined,
@@ -49,10 +60,8 @@ class ProfileScreen extends ConsumerWidget {
           _SettingRow(
             icon: Icons.logout_outlined,
             label: l10n.signOut,
-            onTap: () async {
-              await ref.read(appStateProvider).signOut();
-              if (context.mounted) context.go('/auth');
-            },
+            // The router guard returns to sign-in once the session ends.
+            onTap: () => ref.read(sessionControllerProvider.notifier).signOut(),
           ),
         ],
       ),
@@ -68,21 +77,35 @@ class ProfileScreen extends ConsumerWidget {
             children: [
               ListTile(
                 title: Text(AppLocalizations.of(context)!.vietnameseLanguage),
-                onTap: () async {
-                  await ref.read(appStateProvider).selectLocale(SoulLocale.vi);
-                  if (sheetContext.mounted) Navigator.pop(sheetContext);
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _updateLocale(context, ref, SoulLocale.vi);
                 },
               ),
               ListTile(
                 title: Text(AppLocalizations.of(context)!.englishLanguage),
-                onTap: () async {
-                  await ref.read(appStateProvider).selectLocale(SoulLocale.en);
-                  if (sheetContext.mounted) Navigator.pop(sheetContext);
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _updateLocale(context, ref, SoulLocale.en);
                 },
               ),
             ],
           ),
     );
+  }
+}
+
+/// Optimistic locale change; a failed save is reverted by the controller and
+/// reported here.
+Future<void> _updateLocale(
+  BuildContext context,
+  WidgetRef ref,
+  SoulLocale locale,
+) async {
+  try {
+    await ref.read(sessionControllerProvider.notifier).updateLocale(locale);
+  } on ApiException catch (error) {
+    if (context.mounted) showErrorSnackBar(context, error);
   }
 }
 

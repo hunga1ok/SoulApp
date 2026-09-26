@@ -5,8 +5,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/errors/error_messages.dart';
 import '../../l10n/app_localizations.dart';
+import '../auth/session_controller.dart';
+import '../auth/sign_in_controller.dart';
 import 'language_suggestion.dart';
+import 'preferred_name_controller.dart';
 
 /// Language-neutral gate. Both choices are always shown as endonyms. The
 /// device-suggested language is highlighted as the primary button, but no
@@ -60,6 +64,7 @@ class AuthScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
+    final signIn = ref.watch(signInControllerProvider);
     return _OnboardingLayout(
       children: [
         Align(
@@ -71,19 +76,24 @@ class AuthScreen extends ConsumerWidget {
         const SizedBox(height: SoulSpace.sm),
         Text(l10n.authTagline, style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: SoulSpace.xl + SoulSpace.xs),
+        // DEVELOPMENT BOUNDARY: debug builds sign in through the backend's
+        // development login; release builds keep the button disabled until
+        // Google Sign-In (OB-002) is configured.
         SoulButton(
           label: l10n.continueWithGoogle,
           icon: const Icon(Icons.g_mobiledata, size: 28),
           onPressed:
-              kDebugMode
-                  ? () async {
-                    await ref
-                        .read(appStateProvider)
-                        .completeDevelopmentSignIn();
-                    if (context.mounted) context.go('/onboarding/name');
-                  }
+              kDebugMode && !signIn.isLoading
+                  ? () =>
+                      ref
+                          .read(signInControllerProvider.notifier)
+                          .signInForDevelopment()
                   : null,
         ),
+        if (signIn.hasError) ...[
+          const SizedBox(height: SoulSpace.sm),
+          _ErrorText(errorMessage(l10n, signIn.error)),
+        ],
         if (kDebugMode) ...[
           const SizedBox(height: SoulSpace.sm),
           Text(
@@ -97,8 +107,14 @@ class AuthScreen extends ConsumerWidget {
   }
 }
 
+/// Asks what Soul should call the user, right after the first sign-in
+/// ([isEditing] false) or from Profile ([isEditing] true). The Google
+/// account name may prefill the field as a suggestion; nothing is saved
+/// until the user confirms.
 class PreferredNameScreen extends ConsumerStatefulWidget {
-  const PreferredNameScreen({super.key});
+  const PreferredNameScreen({super.key, this.isEditing = false});
+
+  final bool isEditing;
 
   @override
   ConsumerState<PreferredNameScreen> createState() =>
@@ -111,8 +127,9 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
   @override
   void initState() {
     super.initState();
+    final me = ref.read(sessionControllerProvider).valueOrNull;
     _controller = TextEditingController(
-      text: ref.read(appStateProvider).preferredName,
+      text: me?.profile.preferredName ?? me?.googleDisplayName,
     );
   }
 
@@ -122,18 +139,21 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
     super.dispose();
   }
 
-  bool get _canSave => _controller.text.trim().isNotEmpty;
-
   Future<void> _save() async {
-    if (!_canSave) return;
-    await ref.read(appStateProvider).savePreferredName(_controller.text);
-    if (mounted) context.go('/app/today');
+    final saved = await ref
+        .read(preferredNameControllerProvider.notifier)
+        .save(_controller.text);
+    // After onboarding the router guard moves on to Today by itself.
+    if (saved && widget.isEditing && mounted) context.pop();
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return _OnboardingLayout(
+    final saveState = ref.watch(preferredNameControllerProvider);
+    final issue = validatePreferredName(_controller.text);
+    final canSave = issue == null && !saveState.isLoading;
+    final layout = _OnboardingLayout(
       children: [
         const Spacer(),
         Text(
@@ -144,19 +164,58 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
         SoulTextField(
           controller: _controller,
           label: l10n.nameHint,
+          errorText:
+              issue == PreferredNameIssue.tooLong
+                  ? l10n.nameTooLong(preferredNameMaxLength)
+                  : null,
           textCapitalization: TextCapitalization.words,
           textInputAction: TextInputAction.done,
           autofocus: true,
           onChanged: (_) => setState(() {}),
-          onSubmitted: (_) => _save(),
+          onSubmitted: (_) => canSave ? _save() : null,
         ),
+        if (saveState.hasError) ...[
+          const SizedBox(height: SoulSpace.sm),
+          _ErrorText(errorMessage(l10n, saveState.error)),
+        ],
         const Spacer(),
         const SizedBox(height: SoulSpace.lg),
         SoulButton(
-          label: l10n.saveAndContinue,
-          onPressed: _canSave ? _save : null,
+          label:
+              saveState.hasError
+                  ? l10n.retry
+                  : widget.isEditing
+                  ? l10n.save
+                  : l10n.saveAndContinue,
+          onPressed: canSave ? _save : null,
         ),
       ],
+    );
+    if (!widget.isEditing) return layout;
+    return Scaffold(
+      appBar: SoulAppBar(title: l10n.editName, onBack: () => context.pop()),
+      body: layout,
+    );
+  }
+}
+
+/// Localized error announced to assistive technology when it appears.
+class _ErrorText extends StatelessWidget {
+  const _ErrorText(this.message);
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      liveRegion: true,
+      child: Text(
+        message,
+        textAlign: TextAlign.center,
+        style: Theme.of(
+          context,
+        ).textTheme.bodyMedium?.copyWith(color: SoulColors.error),
+      ),
     );
   }
 }

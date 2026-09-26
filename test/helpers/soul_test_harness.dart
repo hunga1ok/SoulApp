@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:soul_app/app/app.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/core/config/app_environment.dart';
 import 'package:soul_app/core/design_system/soul_theme.dart';
+import 'package:soul_app/data/api/api_client.dart';
 import 'package:soul_app/l10n/app_localizations.dart';
+
+import 'fake_soul_backend.dart';
+
+export 'fake_soul_backend.dart';
 
 /// Smallest supported phone used for overflow checks.
 const smallPhone = Size(320, 568);
@@ -15,11 +21,9 @@ const smallPhone = Size(320, 568);
 /// Representative modern phone.
 const standardPhone = Size(390, 844);
 
-/// Preferences of a signed-in user who has finished onboarding.
+/// Preferences of a returning user; pair with [FakeSoulBackend.signedIn].
 Map<String, Object> onboardedPreferences(SoulLocale locale) => {
   'selected_locale': locale.name,
-  'local_authenticated': true,
-  'preferred_name': 'An',
 };
 
 /// Configures the test view as a phone of [size] logical pixels with the
@@ -82,10 +86,13 @@ Future<SharedPreferences> pumpSoulWidget(
 }
 
 /// Pumps the whole app (router, guards, shell) with the given stored
-/// preferences, phone size, text scale and device locales.
+/// preferences, phone size, text scale and device locales. [backend] fakes
+/// SoulApi; its stored credentials seed the mocked secure storage, so a
+/// [FakeSoulBackend.signedIn] backend restores a session on start.
 Future<SharedPreferences> pumpSoulApp(
   WidgetTester tester, {
   Map<String, Object> preferences = const {},
+  FakeSoulBackend? backend,
   Size size = standardPhone,
   double textScale = 1,
   List<Locale> deviceLocales = const [Locale('en', 'US')],
@@ -97,9 +104,14 @@ Future<SharedPreferences> pumpSoulApp(
     deviceLocales: deviceLocales,
   );
   final prefs = await _mockPreferences(preferences);
+  final api = backend ?? FakeSoulBackend();
+  FlutterSecureStorage.setMockInitialValues({...api.storedCredentials});
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [preferencesProvider.overrideWithValue(prefs)],
+      overrides: [
+        preferencesProvider.overrideWithValue(prefs),
+        dioProvider.overrideWithValue(fakeDio(api)),
+      ],
       child: SoulApp(configuration: AppConfiguration.fromDartDefines()),
     ),
   );
