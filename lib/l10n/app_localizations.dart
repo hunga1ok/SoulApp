@@ -290,18 +290,6 @@ abstract class AppLocalizations {
   /// **'A private, gentle space for you.'**
   String get authTagline;
 
-  /// No description provided for @continueWithGoogle.
-  ///
-  /// In en, this message translates to:
-  /// **'Continue with Google'**
-  String get continueWithGoogle;
-
-  /// No description provided for @developmentAuthHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Development mode: signs in through the local API\'s development login.'**
-  String get developmentAuthHint;
-
   /// No description provided for @morningGratitude.
   ///
   /// In en, this message translates to:
@@ -385,42 +373,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please keep it to {max} characters or fewer.'**
   String nameTooLong(int max);
-
-  /// No description provided for @errorNetwork.
-  ///
-  /// In en, this message translates to:
-  /// **'Soul can\'t connect right now. Check your connection and try again.'**
-  String get errorNetwork;
-
-  /// No description provided for @errorSessionEnded.
-  ///
-  /// In en, this message translates to:
-  /// **'Your session has ended. Please sign in again.'**
-  String get errorSessionEnded;
-
-  /// No description provided for @errorForbidden.
-  ///
-  /// In en, this message translates to:
-  /// **'You don\'t have access to this.'**
-  String get errorForbidden;
-
-  /// No description provided for @errorValidation.
-  ///
-  /// In en, this message translates to:
-  /// **'Please check what you entered and try again.'**
-  String get errorValidation;
-
-  /// No description provided for @errorRateLimited.
-  ///
-  /// In en, this message translates to:
-  /// **'Too many attempts. Please wait a moment and try again.'**
-  String get errorRateLimited;
-
-  /// No description provided for @errorServiceUnavailable.
-  ///
-  /// In en, this message translates to:
-  /// **'Soul is briefly unavailable. Please try again soon.'**
-  String get errorServiceUnavailable;
 }
 
 class _AppLocalizationsDelegate

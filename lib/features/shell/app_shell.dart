@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
-import '../../core/errors/api_exception.dart';
-import '../../core/errors/error_messages.dart';
 import '../../l10n/app_localizations.dart';
-import '../auth/session_controller.dart';
 
 class AppShell extends ConsumerWidget {
   const AppShell({super.key, required this.navigationShell});
@@ -18,8 +16,8 @@ class AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final profile = ref.watch(sessionControllerProvider).valueOrNull?.profile;
-    final soundEnabled = profile?.audioEnabled ?? true;
+    final state = ref.watch(appStateProvider);
+    final soundEnabled = state.soundEnabled;
     final labels = [l10n.today, l10n.vision, l10n.journal, l10n.explore];
     const icons = [
       Icons.wb_sunny_outlined,
@@ -40,7 +38,7 @@ class AppShell extends ConsumerWidget {
         actions: [
           IconButton(
             tooltip: soundEnabled ? l10n.soundOn : l10n.soundOff,
-            onPressed: () => toggleSound(context, ref, !soundEnabled),
+            onPressed: () => state.setSoundEnabled(!soundEnabled),
             isSelected: soundEnabled,
             icon: Icon(
               soundEnabled
@@ -57,8 +55,7 @@ class AppShell extends ConsumerWidget {
                 backgroundColor: SoulColors.lilac,
                 foregroundColor: SoulColors.plum,
                 child: Text(
-                  (profile?.preferredName ?? 'S').characters.first
-                      .toUpperCase(),
+                  (state.preferredName ?? 'S').characters.first.toUpperCase(),
                 ),
               ),
             ),
@@ -91,21 +88,5 @@ class AppShell extends ConsumerWidget {
         ),
       ),
     );
-  }
-}
-
-/// Optimistically switches the global sound setting; a failed save is
-/// reverted by the controller and reported here.
-Future<void> toggleSound(
-  BuildContext context,
-  WidgetRef ref,
-  bool enabled,
-) async {
-  try {
-    await ref
-        .read(sessionControllerProvider.notifier)
-        .updateAudioEnabled(enabled);
-  } on ApiException catch (error) {
-    if (context.mounted) showErrorSnackBar(context, error);
   }
 }

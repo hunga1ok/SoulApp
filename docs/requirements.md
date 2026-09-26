@@ -1,8 +1,22 @@
 # Soul normalized implementation requirements
 
-Updated: 2026-09-25
+Updated: 2026-09-26
 
 This document resolves the supplied specifications, datasets, owned-content pack, and approved HTML prototype into requirements that can be implemented and tested without guessing.
+
+## 0. Delivery mode: app-only (decision 2026-09-26)
+
+The MVP ships as an app-only product without a backend. This decision overrides any requirement below that depends on a server:
+
+- All user data (profile, locale, sound preference, journey progress and responses, Journal, Visions and images, Future Letters, reminder settings) is stored on the device. There is no account and no sign-in.
+- Onboarding is language → preferred name → intention → reminders → Today.
+- Published content (journey, Vision catalog, feelings, notification copy, audio mapping) ships as versioned read-only data inside the app. Delivering content and audio through a remote manifest is under discussion and not decided.
+- Reminders are local notifications scheduled on the device.
+- **Deferred until sync is reintroduced:** Google sign-in (US-OB-002), cross-device sync, server-side authorization, object-storage upload, sign-out, server account deletion, and the Admin CMS (REQ-ADM-001).
+- Local data is modeled so sync can be added later without a schema rewrite: client-generated UUIDs, `created_at`/`updated_at`, and archive instead of hard delete.
+- Accepted limitations: data lives on one device (OS backup only); a Future Letter lock is enforced on the device only; content changes need an app release.
+
+The `SoulApi` repository is kept as the reference design for the future sync backend. It is not part of the MVP.
 
 ## 1. Requirement authority
 
@@ -48,13 +62,13 @@ Every remote or persisted screen explicitly supports loading, content, empty, re
 
 - The first screen contains only the logo and the choices `Tiếng Việt` and `English` (each language's own name, identical in every locale); no Vietnamese or English sentence appears before selection.
 - Device locale may pre-highlight a choice (shown as the primary button) but must never commit it automatically; the locale is committed only when the user taps a choice.
-- The selected locale is persisted locally immediately and later synchronized to the profile.
+- The selected locale is persisted locally immediately.
 
 ### REQ-L10N-002 One application tree
 
 - Vietnamese and English use the same routes, widgets, state machines, and validations.
 - UI copy comes from generated ARB resources.
-- Journey, Vision, notification, and content-resource copy comes from localized backend content.
+- Journey, Vision, notification, and content-resource copy comes from the localized content bundle, never from widget constants.
 - Missing content translation is an editorial error; the app must not silently mix locales.
 
 ### REQ-L10N-003 Audio language
@@ -73,10 +87,12 @@ As a new user, I want to choose Tiếng Việt or English before seeing language
 Acceptance:
 
 - Given no saved locale, when the app starts, then the language gate is the only available route.
-- When the user selects a locale, then the app persists it and opens Google sign-in in that locale.
-- Given OAuth is cancelled, when the user returns, then the selected locale remains unchanged and sign-in can be retried.
+- When the user selects a locale, then the app persists it and opens the preferred-name question in that locale.
 
-### US-OB-002 Sign in with Google
+### US-OB-002 Sign in with Google — deferred (app-only MVP)
+
+Not part of the app-only MVP; kept for when cross-device sync returns.
+
 
 As a user, I want to authenticate with Google so my private content can sync across devices.
 
@@ -94,11 +110,11 @@ Acceptance:
 
 ### US-OB-003 Preferred name
 
-As a user, I want to choose how Soul addresses me instead of using my Google account name.
+As a user, I want to choose how Soul addresses me.
 
 Rules and validation:
 
-- This is the first step immediately after initial authentication.
+- This is the first step immediately after the language choice.
 - Required after trimming; 1 to 40 Unicode characters.
 - Preserve accents and letter case entered by the user.
 - It is editable later from profile.
@@ -112,7 +128,7 @@ Acceptance:
 
 As a user, I want to select what brings me to Soul so the experience can be relevant.
 
-- Present localized intention options from managed content.
+- Present localized intention options from the content bundle.
 - Require at least one selection; support multiple when the content definition allows it.
 - Do not infer medical conditions or make therapeutic claims.
 
@@ -143,7 +159,7 @@ The primary CTA always resumes the first incomplete required task rather than re
 
 ### US-JRN-002 Schema-driven practice
 
-- Render journey tasks from backend schemas; do not hardcode Day 1 forms in widgets.
+- Render journey tasks from the content bundle's task schemas; do not hardcode Day 1 forms in widgets.
 - Prefer decomposed fields such as gratitude item plus reason over an undifferentiated blank canvas.
 - Supported MVP task types include information, gratitude text, input, multi-input, mood, intention, checklist, reflection, Vision, audio, and external action.
 - Save each task independently so the user can resume after interruption.
@@ -166,10 +182,10 @@ The primary CTA always resumes the first incomplete required task rather than re
 
 ### US-JRN-005 Persistence and offline
 
-- Persist completed tasks and user-written responses after app restart.
-- Cached day content remains readable offline.
-- Queue eligible writes with idempotency keys and retry when requests succeed again.
-- Never silently overwrite user-written text during conflict resolution.
+- Persist completed tasks and user-written responses in the local database after app restart.
+- Day content is bundled and always readable offline.
+- Writes are idempotent (one response per task and run) so repeated taps never duplicate records.
+- When sync is added later, never silently overwrite user-written text during conflict resolution.
 
 ## 6. Guided Vision Board
 
@@ -197,9 +213,9 @@ Rules:
 
 - Accept a gallery image or camera capture after the guided answers.
 - Show preview, replace, and remove before saving.
-- Upload only after API authorization; validate ownership, media type, and configured size limit.
-- Store the object key rather than public permanent URL.
-- When upload fails, preserve the completed builder state and allow retry or save without image.
+- Copy the image into app storage; validate media type and configured size limit.
+- Store a path relative to the app storage directory, never an absolute path.
+- When copying fails, preserve the completed builder state and allow retry or save without image.
 
 ### US-VIS-003 Vision Board and detail
 
@@ -214,7 +230,7 @@ Rules:
 - User may edit goal answers, statement, feelings, and image.
 - Category change re-resolves the playlist; feelings change does not.
 - Archive/soft delete removes a Vision from the active board without deleting historical journal/session records.
-- Permanent deletion, if later offered, requires explicit confirmation and server ownership checks.
+- Permanent deletion, if later offered, requires explicit confirmation.
 
 ## 7. Native audio and Vision Session
 
@@ -223,7 +239,7 @@ Rules:
 - A sound toggle appears beside the avatar throughout authenticated app screens.
 - Off immediately pauses/stops current playback and prevents unexpected autoplay.
 - On restores preference but does not automatically start spoken audio.
-- Preference is persisted locally and synchronized to profile.
+- Preference is persisted locally.
 
 ### US-AUD-002 Eligible playback
 
@@ -283,10 +299,9 @@ Rules:
 
 - Avatar opens the user space shown in the prototype.
 - Show journey days, active Vision count, and journal count.
-- Provide preferred name, language, per-category reminder settings, global sound, privacy, sign-out, and account-deletion entry points.
-- Language change updates UI immediately and refetches localized content without reinstall.
-- Sign-out removes local secrets and private cached data from the session boundary.
-- Account deletion requires re-authentication/confirmation and a documented retention/deletion result.
+- Provide preferred name, language, per-category reminder settings, global sound, privacy, and delete-all-local-data entry points. Sign-out and account deletion are deferred with sync.
+- Language change updates UI immediately and reloads localized content without reinstall.
+- Deleting local data requires explicit confirmation, removes every private record and stored image, cancels scheduled reminders, and returns to the language gate.
 
 ## 11. Notifications
 
@@ -303,9 +318,9 @@ Support `MORNING_RITUAL`, `DAILY_TASK`, `EVENING_REFLECTION`, `VISION_SESSION`, 
 
 ## 12. Admin CMS
 
-### REQ-ADM-001 Basic P0 administration
+### REQ-ADM-001 Basic P0 administration — deferred (app-only MVP)
 
-Admin basics are part of the MVP because journey and localized content must change without an app release. Required modules:
+The app-only MVP has no Admin CMS; content is authored in `Specs/` and shipped in the app's content bundle. The modules below apply when a backend returns:
 
 - Journey days, task order/type/schema, required flag, schedule, and translations.
 - Vision categories, questions, suggested answers, feelings, statements, affirmations, sessions, and category-audio mappings.

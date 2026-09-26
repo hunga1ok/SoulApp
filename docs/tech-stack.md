@@ -1,19 +1,19 @@
 # Soul technology stack
 
-Reviewed: 2026-09-25
+Reviewed: 2026-09-26
 
 ## 1. System boundary
 
+Decision 2026-09-26: the MVP is **app-only**.
+
 ```text
-SoulApp (Flutter) ─┐
-                  ├─ HTTPS REST API ─ SoulApi ─ PostgreSQL
-SoulAdmin (Web) ──┘                     └─ S3-compatible object storage
+SoulApp (Flutter) ─ Drift/SQLite + app files (user data)
+                  └ bundled JSON content (read-only catalog)
 ```
 
-- Mobile and admin never connect directly to PostgreSQL.
-- The API owns authentication, authorization, validation, and content rules.
-- PostgreSQL stores structured data and metadata; images/audio live in object storage.
-- The supplied spreadsheets and DOCX files are authoring sources, not runtime assets.
+- No backend, account, or sign-in. User data never leaves the device.
+- The supplied spreadsheets and DOCX files are authoring sources, not runtime assets; a build-time step turns them into the bundled JSON.
+- Sections 3–4 describe the backend and admin that return together with cross-device sync. `SoulApi` is kept as that reference design.
 
 ## 2. Mobile application — required for MVP
 
@@ -21,21 +21,20 @@ SoulAdmin (Web) ──┘                     └─ S3-compatible object storag
 |---|---|---|
 | Framework | Flutter 3.44.8 / Dart 3.12.2 | One iOS/Android codebase using the installed baseline. |
 | State and dependency injection | `flutter_riverpod` | Screen state, controllers, and dependency wiring. |
-| Navigation | `go_router` | Auth/onboarding guards, deep links, and reliable back stacks. |
-| API client | `dio` | REST calls, token interceptor, timeouts, upload progress, and typed error mapping. |
+| Navigation | `go_router` | Onboarding guards, deep links, and reliable back stacks. |
 | Localization | `flutter_localizations`, `intl`, generated ARB | One widget tree for Vietnamese and English. |
-| Google login | `google_sign_in` | Obtain Google identity proof for backend verification. |
-| Secure secrets | `flutter_secure_storage` | Store refresh token/device secrets. |
-| Small preferences | `shared_preferences` | Locale, audio toggle, onboarding checkpoint, and non-sensitive settings. |
+| Small preferences | `shared_preferences` | Locale, preferred name, audio toggle, and onboarding checkpoint. |
+| Local database | `drift` (+ `drift_flutter`, `drift_dev`/`build_runner`) | Typed SQLite for journey progress, Journal, Visions, Future Letters, reminders; versioned migrations. Add with the first persisted feature. |
+| App files | `path_provider` | Vision images and attachments in the app support directory. |
 | Audio | `just_audio`, `audio_session` | Playlist playback, audio focus, interruptions, and lifecycle. |
 | Vision image | `image_picker` | Select or capture the optional Vision image. |
 | Reminders | `flutter_local_notifications`, `timezone` | Locale-aware local journey reminders. Add in the Journey phase. |
 | External content | `url_launcher` | Open approved YouTube/Spotify links outside native playback. |
 | Tests | `flutter_test`, `integration_test`, golden tests | Unit, widget, device-flow, and bilingual visual regression. |
 
-Add `sqflite` and `path_provider` only when the first offline write queue is implemented. Do not introduce a second state-management or service-locator package.
+Deferred with sync: `dio` (API client), `google_sign_in`, and `flutter_secure_storage`. `dio` and `flutter_secure_storage` were removed from the app on 2026-09-26; all three return with the sync backend. Do not introduce a second state-management or service-locator package.
 
-## 3. Backend API — required before synced user data
+## 3. Backend API — deferred (returns with cross-device sync)
 
 | Area | Choice | Purpose |
 |---|---|---|
@@ -54,13 +53,9 @@ Add `sqflite` and `path_provider` only when the first offline write queue is imp
 
 Use short-lived access tokens and rotating refresh tokens whose server-side values are hashed. The backend verifies Google identity tokens; it must not trust a user ID, email, role, or ownership claim sent by the app.
 
-### Backend not needed on day one
+## 4. Administration application — deferred
 
-The Flutter shell, design system, localization, static onboarding, and static content prototypes can be built without a running server. Backend becomes mandatory for real Google sessions, cross-device data, image upload, content publishing, and admin workflows.
-
-## 4. Administration application — recommended, staged
-
-Soul needs content administration because category-to-audio mappings, bilingual copy, journey content, publication state, and license review will change without an app release.
+The app-only MVP ships content inside the app, so there is no admin application. It returns with the backend, when content must change without an app release.
 
 | Area | Choice | Purpose |
 |---|---|---|
@@ -84,7 +79,7 @@ Before the admin UI exists, a deterministic import CLI can seed content. Do not 
 
 ## 5. Content import
 
-Place import logic beside the API and make it repeatable:
+App-only MVP: a deterministic build-time step validates the active datasets and writes versioned JSON assets into the app. Where that generator lives (a JSON export added to the existing SoulApi validator, or a standalone script) is not decided yet. The existing SoulApi importer is described below:
 
 - TypeScript CLI (`npm run content:import` in SoulApi). XLSX is read directly with `jszip` + `fast-xml-parser`: the authoring workbooks use namespace-prefixed OOXML (`<x:workbook>`) that `exceljs` cannot parse. DOCX only needs heading IDs, read from `word/document.xml`; `mammoth` is not needed yet.
 - Stable source IDs and database upserts.
@@ -97,24 +92,14 @@ The existing source workbooks remain unchanged and are never parsed by the mobil
 
 | Area | MVP decision |
 |---|---|
-| Source layout | Keep three deployables: `SoulApp/`, `SoulApi/`, and `SoulAdmin/`. |
-| Local development | Docker Compose for API dependencies; Flutter runs on simulator/device. |
+| Source layout | One deployable for the MVP: `SoulApp/`. `SoulApi/` is kept but paused; `SoulAdmin/` is deferred. |
+| Local development | Flutter runs on simulator/device; no services required. |
 | CI | GitHub Actions: format, lint/analyze, tests, migrations check, and builds. |
-| Environments | Development, staging, production with separate databases and storage buckets. |
+| Environments | Debug and signed release builds; separate server environments return with the backend. |
 | Secrets | CI/deployment secret manager only; commit example configuration without real values. |
 | Monitoring | Structured logs first; add error tracking after privacy/consent review. |
 
-Required Flutter configuration:
-
-```json
-{
-  "API_BASE_URL": "https://api.example.com/v1",
-  "GOOGLE_WEB_CLIENT_ID": "example.apps.googleusercontent.com",
-  "OAUTH_REDIRECT_SCHEME": "com.manifest.soul"
-}
-```
-
-Platform-specific Google client IDs belong in the native Android/iOS configuration. No database password, object-storage secret, or JWT signing key may ship in the app.
+The app-only build needs no runtime configuration. No secret may ship in the app.
 
 ## 7. Deliberately deferred
 
@@ -129,9 +114,9 @@ Platform-specific Google client IDs belong in the native Android/iOS configurati
 ## 8. Recommended delivery order
 
 1. Flutter shell: design system, localization, routing, local preferences.
-2. API skeleton: health endpoint, configuration, OpenAPI, PostgreSQL migrations.
-3. Google auth and preferred-name onboarding end to end.
-4. Deterministic content import and read-only catalog endpoints.
-5. Today/Journey and Vision user data, image upload, and audio catalog.
-6. Focused admin application for content maintenance and publishing.
-7. Offline queue, operational monitoring, and release hardening.
+2. Content bundle: dataset validation and JSON generation, read-only catalog in the app.
+3. Local database (Drift) and onboarding: intention, reminders, journey start.
+4. Today/Journey, Vision with local images, audio playback, local notifications.
+5. Journal and Future Letter.
+6. Release hardening.
+7. Later: sync backend, sign-in, and admin application.

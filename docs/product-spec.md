@@ -6,7 +6,7 @@ Soul is a private, bilingual wellbeing application that helps a user practice gr
 
 ## 2. MVP platforms and languages
 
-- Flutter mobile app for iOS and Android.
+- Flutter mobile app for iOS and Android, app-only: no backend, no account; all user data stays on the device (decision 2026-09-26, see `requirements.md` §0). Cross-device sync is deferred.
 - Vietnamese (`vi`) and English (`en`) at launch.
 - Device locale suggests the initial language. The user explicitly confirms it.
 - Language can be changed later from profile settings.
@@ -22,24 +22,24 @@ Four bottom tabs:
 
 Profile and settings open from the avatar in the app header. Global sound can be toggled beside the avatar.
 
-## 4. Onboarding and authentication
+## 4. Onboarding
 
 ### Flow
 
 1. Language-neutral locale chooser: `Tiếng Việt` or `English` (endonyms; the device-suggested language is highlighted, and the user's tap confirms).
-2. Google sign-in, with demo mode available only in non-production builds.
-3. Preferred name: “Soul should call you…”. This is independent of the Google account name.
-4. Primary intention for using Soul.
-5. Morning and evening reminder preferences.
-6. Journey-ready confirmation.
-7. Enter Today.
+2. Preferred name: “Soul should call you…”.
+3. Primary intention for using Soul.
+4. Morning and evening reminder preferences.
+5. Journey-ready confirmation.
+6. Enter Today.
+
+Google sign-in is deferred until cross-device sync returns.
 
 ### Acceptance criteria
 
 - No Vietnamese or English sentence appears before language choice.
-- Returning authenticated users skip completed onboarding.
+- Returning users skip completed onboarding.
 - Preferred name is required, trimmed, limited to 40 characters, editable later, and used in greetings.
-- OAuth cancellation and retry are handled without losing the chosen locale.
 
 ## 5. Today
 
@@ -102,8 +102,7 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 
 - Gratitude and reflection entries appear as lined-paper sticky notes without a vertical margin line.
 - Tapping a note opens a readable detail view.
-- Notes are private by default and sync to the authenticated user.
-- Offline-created entries remain available and sync when connectivity returns.
+- Notes are private and stored on the device; they work fully offline. Sync is deferred.
 
 ### Future Letter
 
@@ -125,7 +124,7 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Global audio toggle.
 - Reminder times and permission status.
 - Journey, Vision, and journal counts.
-- Sign out and account deletion entry points.
+- Delete all local data (sign-out and account deletion are deferred with sync).
 
 ## 11. Notifications
 
@@ -137,7 +136,7 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 
 ## 12. Administration
 
-A focused internal admin application is part of the MVP operational scope. It manages Journey content, Vision templates, category-audio mappings, localized notification copy, native audio rights/publication, external-resource metadata, and translation completeness without requiring a mobile release.
+Deferred for the app-only MVP: content is authored in `Specs/` and shipped as a versioned content bundle inside the app, so content changes need an app release. A focused admin application returns together with a backend.
 
 ## 13. Analytics
 
@@ -155,4 +154,4 @@ When consent and privacy policy permit, emit versioned funnel events for onboard
 - Social feed, sharing, comments, or public profiles.
 - User-selected Vision soundtrack catalogs.
 - In-app subscription and payment.
-- Advanced editorial workflows beyond the focused P0 admin modules.
+- Backend, account, cross-device sync, and Admin CMS (deferred, not excluded permanently).

@@ -50,7 +50,6 @@ void main() {
         other: 'English',
         tap: 'English',
         stored: 'en',
-        authCta: 'Continue with Google',
       ),
       (
         device: Locale('en', 'US'),
@@ -58,7 +57,6 @@ void main() {
         other: 'Tiếng Việt',
         tap: 'Tiếng Việt',
         stored: 'vi',
-        authCta: 'Tiếp tục với Google',
       ),
       (
         device: Locale('vi', 'VN'),
@@ -66,7 +64,6 @@ void main() {
         other: 'English',
         tap: 'Tiếng Việt',
         stored: 'vi',
-        authCta: 'Tiếp tục với Google',
       ),
       (
         device: Locale('en', 'US'),
@@ -74,7 +71,6 @@ void main() {
         other: 'Tiếng Việt',
         tap: 'English',
         stored: 'en',
-        authCta: 'Continue with Google',
       ),
     ];
 
@@ -94,8 +90,7 @@ void main() {
           await tester.pumpAndSettle();
 
           expect(prefs.getString('selected_locale'), c.stored);
-          expect(find.byType(AuthScreen), findsOneWidget);
-          expect(find.text(c.authCta), findsOneWidget);
+          expect(find.byType(PreferredNameScreen), findsOneWidget);
         },
       );
     }

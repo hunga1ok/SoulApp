@@ -44,8 +44,6 @@
     }
   },
   "authTagline": "Một khoảng riêng tư dành cho bạn.",
-  "continueWithGoogle": "Tiếp tục với Google",
-  "developmentAuthHint": "Chế độ phát triển: đăng nhập qua development login của API local.",
   "morningGratitude": "Biết ơn buổi sáng",
   "neutralInstrumentalFiveMinutes": "Nhạc không lời · 5 phút",
   "play": "Phát",
@@ -59,11 +57,5 @@
   "cancel": "Hủy",
   "somethingWentWrong": "Đã có lỗi xảy ra. Bạn thử lại nhé.",
   "save": "Lưu",
-  "nameTooLong": "Tên tối đa {max} ký tự thôi nhé.",
-  "errorNetwork": "Soul chưa kết nối được. Bạn kiểm tra mạng rồi thử lại nhé.",
-  "errorSessionEnded": "Phiên đăng nhập đã kết thúc. Bạn đăng nhập lại nhé.",
-  "errorForbidden": "Bạn không có quyền truy cập nội dung này.",
-  "errorValidation": "Bạn kiểm tra lại thông tin vừa nhập rồi thử lại nhé.",
-  "errorRateLimited": "Bạn đã thử quá nhiều lần. Chờ một chút rồi thử lại nhé.",
-  "errorServiceUnavailable": "Soul đang tạm gián đoạn. Bạn thử lại sau ít phút nhé."
+  "nameTooLong": "Tên tối đa {max} ký tự thôi nhé."
 }

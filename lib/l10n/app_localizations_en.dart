@@ -109,13 +109,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authTagline => 'A private, gentle space for you.';
 
   @override
-  String get continueWithGoogle => 'Continue with Google';
-
-  @override
-  String get developmentAuthHint =>
-      'Development mode: signs in through the local API\'s development login.';
-
-  @override
   String get morningGratitude => 'Morning Gratitude';
 
   @override
@@ -158,26 +151,4 @@ class AppLocalizationsEn extends AppLocalizations {
   String nameTooLong(int max) {
     return 'Please keep it to $max characters or fewer.';
   }
-
-  @override
-  String get errorNetwork =>
-      'Soul can\'t connect right now. Check your connection and try again.';
-
-  @override
-  String get errorSessionEnded =>
-      'Your session has ended. Please sign in again.';
-
-  @override
-  String get errorForbidden => 'You don\'t have access to this.';
-
-  @override
-  String get errorValidation => 'Please check what you entered and try again.';
-
-  @override
-  String get errorRateLimited =>
-      'Too many attempts. Please wait a moment and try again.';
-
-  @override
-  String get errorServiceUnavailable =>
-      'Soul is briefly unavailable. Please try again soon.';
 }

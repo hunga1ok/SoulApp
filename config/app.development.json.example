@@ -1,6 +1,0 @@
-{
-  "APP_ENV": "development",
-  "API_BASE_URL": "http://localhost:3000/v1",
-  "GOOGLE_WEB_CLIENT_ID": "example.apps.googleusercontent.com",
-  "OAUTH_REDIRECT_SCHEME": "com.manifest.soul"
-}

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/core/design_system/design_system.dart';
 import 'package:soul_app/features/onboarding/onboarding_screens.dart';
-import 'package:soul_app/features/onboarding/preferred_name_controller.dart';
+import 'package:soul_app/features/onboarding/preferred_name_validation.dart';
 import 'package:soul_app/features/profile/profile_screen.dart';
 import 'package:soul_app/features/today/today_screen.dart';
 
@@ -11,7 +11,7 @@ import '../../helpers/soul_test_harness.dart';
 
 void main() {
   group('validatePreferredName', () {
-    test('trims and accepts 1 to 50 code points', () {
+    test('trims and accepts 1 to 40 code points', () {
       expect(validatePreferredName('   '), PreferredNameIssue.empty);
       expect(validatePreferredName(''), PreferredNameIssue.empty);
       expect(validatePreferredName('  An  '), isNull);
@@ -25,22 +25,18 @@ void main() {
   const cases = [
     (
       locale: SoulLocale.vi,
-      google: 'Tiếp tục với Google',
+      language: 'Tiếng Việt',
       question: 'Bạn muốn được gọi với tên là gì?',
       save: 'Lưu và tiếp tục',
       tooLong: 'Tên tối đa 40 ký tự thôi nhé.',
-      error: 'Soul đang tạm gián đoạn. Bạn thử lại sau ít phút nhé.',
-      retry: 'Thử lại',
       welcome: 'Chào An',
     ),
     (
       locale: SoulLocale.en,
-      google: 'Continue with Google',
+      language: 'English',
       question: 'What would you like Soul to call you?',
       save: 'Save and continue',
       tooLong: 'Please keep it to 40 characters or fewer.',
-      error: 'Soul is briefly unavailable. Please try again soon.',
-      retry: 'Try again',
       welcome: 'Welcome, An',
     ),
   ];
@@ -49,25 +45,17 @@ void main() {
       tester.widget<SoulButton>(find.widgetWithText(SoulButton, label));
 
   for (final c in cases) {
-    testWidgets('${c.locale.name}: first sign-in asks for a name, suggests the '
-        'Google name without saving it, validates and saves the trimmed '
-        'name', (tester) async {
-      final backend = FakeSoulBackend();
-      await pumpSoulApp(
-        tester,
-        preferences: {'selected_locale': c.locale.name},
-        backend: backend,
-      );
+    testWidgets('${c.locale.name}: the language choice leads to the name '
+        'question, which validates and saves the trimmed name on the '
+        'device', (tester) async {
+      final prefs = await pumpSoulApp(tester);
 
-      await tester.tap(find.text(c.google));
+      await tester.tap(find.text(c.language));
       await tester.pumpAndSettle();
 
-      expect(backend.devLogins.single['locale'], c.locale.name);
       expect(find.byType(PreferredNameScreen), findsOneWidget);
       expect(find.text(c.question), findsOneWidget);
-      // The Google name is only a suggestion: prefilled, never saved.
-      expect(find.widgetWithText(TextField, 'Minh Anh'), findsOneWidget);
-      expect(backend.profilePatches, isEmpty);
+      expect(find.widgetWithText(TextField, ''), findsOneWidget);
 
       await tester.enterText(find.byType(TextField), '   ');
       await tester.pump();
@@ -84,50 +72,23 @@ void main() {
       await tester.tap(find.text(c.save));
       await tester.pumpAndSettle();
 
-      expect(backend.profilePatches, [
-        {'preferredName': 'An'},
-      ]);
-      expect(find.byType(TodayScreen), findsOneWidget);
-      expect(find.text(c.welcome), findsOneWidget);
-    });
-
-    testWidgets('${c.locale.name}: a failed save shows a localized error and '
-        'can be retried', (tester) async {
-      final backend = FakeSoulBackend.signedIn(
-        locale: c.locale,
-        preferredName: null,
-      );
-      await pumpSoulApp(
-        tester,
-        preferences: {'selected_locale': c.locale.name},
-        backend: backend,
-      );
-      expect(find.byType(PreferredNameScreen), findsOneWidget);
-      expect(find.widgetWithText(TextField, 'An Nguyen'), findsOneWidget);
-
-      backend.failNext('PATCH /me/profile');
-      await tester.enterText(find.byType(TextField), 'An');
-      await tester.tap(find.text(c.save));
-      await tester.pumpAndSettle();
-
-      expect(find.text(c.error), findsOneWidget);
-      expect(find.byType(PreferredNameScreen), findsOneWidget);
-      expect(backend.profile?['preferredName'], isNull);
-
-      await tester.tap(find.widgetWithText(SoulButton, c.retry));
-      await tester.pumpAndSettle();
-
+      expect(prefs.getString('preferred_name'), 'An');
       expect(find.byType(TodayScreen), findsOneWidget);
       expect(find.text(c.welcome), findsOneWidget);
     });
   }
 
+  testWidgets('a relaunch before the name is saved resumes at the name '
+      'question', (tester) async {
+    await pumpSoulApp(tester, preferences: {'selected_locale': 'en'});
+
+    expect(find.byType(PreferredNameScreen), findsOneWidget);
+  });
+
   testWidgets('the name can be edited later from Profile', (tester) async {
-    final backend = FakeSoulBackend.signedIn();
-    await pumpSoulApp(
+    final prefs = await pumpSoulApp(
       tester,
       preferences: onboardedPreferences(SoulLocale.en),
-      backend: backend,
     );
 
     await tester.tap(find.byTooltip('Profile & settings'));
@@ -142,9 +103,7 @@ void main() {
     await tester.tap(find.widgetWithText(SoulButton, 'Save'));
     await tester.pumpAndSettle();
 
-    expect(backend.profilePatches, [
-      {'preferredName': 'Bình'},
-    ]);
+    expect(prefs.getString('preferred_name'), 'Bình');
     expect(find.byType(ProfileScreen), findsOneWidget);
     expect(find.text('Bình'), findsOneWidget);
 

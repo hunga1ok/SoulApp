@@ -14,26 +14,46 @@ final appStateProvider = ChangeNotifierProvider<AppState>((ref) {
   return AppState(ref.watch(preferencesProvider));
 });
 
-/// Device-local, non-sensitive state: the locale cached for startup. The
-/// signed-in user's profile lives in `sessionControllerProvider`.
+/// Device-local profile and settings. Soul is app-only for now: nothing here
+/// is synchronized to a server.
 class AppState extends ChangeNotifier {
-  AppState(this._preferences) : _locale = _readLocale(_preferences);
+  AppState(this._preferences)
+    : _locale = SoulLocale.tryParse(_preferences.getString(_localeKey)),
+      _preferredName = _preferences.getString(_nameKey),
+      _soundEnabled = _preferences.getBool(_soundKey) ?? true;
 
   static const _localeKey = 'selected_locale';
+  static const _nameKey = 'preferred_name';
+  static const _soundKey = 'sound_enabled';
 
   final SharedPreferences _preferences;
   SoulLocale? _locale;
+  String? _preferredName;
+  bool _soundEnabled;
 
   SoulLocale? get locale => _locale;
-
-  static SoulLocale? _readLocale(SharedPreferences preferences) {
-    return SoulLocale.tryParse(preferences.getString(_localeKey));
-  }
+  String? get preferredName => _preferredName;
+  bool get hasPreferredName => _preferredName?.trim().isNotEmpty ?? false;
+  bool get soundEnabled => _soundEnabled;
 
   Future<void> selectLocale(SoulLocale value) async {
     if (_locale == value) return;
     _locale = value;
     await _preferences.setString(_localeKey, value.name);
+    notifyListeners();
+  }
+
+  /// Saves an already validated preferred name.
+  Future<void> savePreferredName(String value) async {
+    _preferredName = value.trim();
+    await _preferences.setString(_nameKey, _preferredName!);
+    notifyListeners();
+  }
+
+  Future<void> setSoundEnabled(bool enabled) async {
+    if (_soundEnabled == enabled) return;
+    _soundEnabled = enabled;
+    await _preferences.setBool(_soundKey, enabled);
     notifyListeners();
   }
 }

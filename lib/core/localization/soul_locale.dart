@@ -3,7 +3,7 @@ enum SoulLocale {
   vi,
   en;
 
-  /// Parses the backend/profile code; returns `null` for anything else.
+  /// Parses a stored locale code; returns `null` for anything else.
   static SoulLocale? tryParse(String? code) {
     for (final locale in values) {
       if (locale.name == code) return locale;

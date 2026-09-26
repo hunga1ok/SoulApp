@@ -1,10 +1,12 @@
 # Flutter implementation plan
 
+> Decision 2026-09-26: the MVP is app-only (no backend, account, or sync; see `requirements.md` §0). Phases 2–3 were rewritten accordingly; backend work is deferred until sync returns.
+
 ## Delivery principles
 
 - Ship vertical slices that can be demonstrated on a device.
 - Keep one bilingual screen tree; do not maintain separate Vietnamese and English apps.
-- Integrate backend contracts early so prototype-only state does not spread through the codebase.
+- Keep local data sync-ready (UUIDs, timestamps, archive) so a backend can be added later without a schema rewrite.
 - A phase is complete only when its exit criteria pass.
 
 ## Phase 0 — Repository baseline
@@ -31,8 +33,7 @@ The repository can be cloned and validated from documented commands without open
 ### Work
 
 - Replace the sample counter app with `SoulApp` bootstrap.
-- Add environment configuration through `--dart-define-from-file`.
-- Add `go_router`, Riverpod, generated localization, `dio`, secure token storage, and small-preference persistence as defined in `tech-stack.md`.
+- Add `go_router`, Riverpod, generated localization, and small-preference persistence as defined in `tech-stack.md`.
 - Create design tokens and shared components from the approved web prototype.
 - Add Vietnamese and English ARB resources.
 - Copy approved logo assets into Flutter assets and configure app icons/splash separately.
@@ -47,42 +48,37 @@ The repository can be cloned and validated from documented commands without open
 
 The shell, theme, localization, routing, and dependency boundaries are stable enough for feature work.
 
-## Phase 2 — API and PostgreSQL foundation
+## Phase 2 — Content bundle and local database
 
 ### Work
 
-- Create the modular NestJS API with configuration validation, health endpoint, OpenAPI, and Docker development setup.
-- Add Drizzle schema/migrations for profiles, visions, feelings, journal, journey progress/responses, audio, and publication metadata.
-- Normalize source datasets into content tables.
-- Add deterministic content import and S3-compatible object-storage integration.
-- Add API authorization tests for private ownership, editorial roles, and published catalog reads.
-- Configure local development and CI migration/test databases.
+- Validate the active datasets and generate versioned JSON content (journey, Vision catalog, feelings, intentions, notification copy, audio mapping) into app assets.
+- Load the bundled catalog through a read-only content repository.
+- Add the Drift database with sync-ready tables for journey runs/responses, Journal, Visions and feelings, Future Letters, and reminder settings.
+- Store Vision images in the app support directory.
 
 ### Verify
 
-- A clean PostgreSQL instance migrates to the latest schema without manual changes.
-- Seed import is idempotent and meets the counts in `data-backend-spec.md`.
-- API tests prove that one user cannot read or modify another user’s private records.
+- Content generation is deterministic and fails on missing translations, broken references, and duplicate codes.
+- Drift migrations are tested from an empty database and between versions.
+- Data survives app relaunch.
 
 ### Exit criteria
 
-The Flutter app can read published content and perform authenticated owner-scoped writes against the reproducible API.
+Features can read published content and write private user data on the device.
 
-## Phase 3 — Locale gate, Google Auth, and onboarding
+## Phase 3 — Locale gate and onboarding
 
 ### Work
 
 - Implement language-neutral `Tiếng Việt`/`English` entry screen with device-locale suggestion.
-- Configure Google sign-in, verify identity in the API, and issue revocable Soul sessions.
 - Implement preferred-name, intention, reminders, and completion screens.
-- Persist profile and onboarding progress; resume interrupted onboarding.
-- Remove demo auth from release builds.
+- Persist onboarding progress on the device; resume interrupted onboarding.
 
 ### Verify
 
 - Widget tests cover both locale branches and preferred-name validation.
-- Integration test covers sign-in callback and profile creation/update.
-- Canceling OAuth returns to a recoverable state.
+- Relaunching at each step resumes at the correct screen.
 
 ### Exit criteria
 
@@ -93,15 +89,15 @@ New and returning users reach the correct destination with the chosen locale and
 ### Work
 
 - Build personalized Today screen, mood selection, progress, and today’s rhythm.
-- Render journey tasks from backend content rather than hardcoded day-one copy.
+- Render journey tasks from the content bundle rather than hardcoded day-one copy.
 - Implement gratitude forms, one-small-action flow, completion, and journal creation.
-- Add local cache and retry queue for progress/response writes.
+- Persist progress and responses in the local database with idempotent writes.
 - Add reminder permission flow and locale-specific notification scheduling.
 
 ### Verify
 
 - Day content, completion rules, and persisted progress work for representative early, middle, and final days.
-- Offline completion syncs once without duplicate entries.
+- Repeated taps and relaunches never create duplicate entries.
 - Vietnamese and English content never mix.
 
 ### Exit criteria
@@ -112,7 +108,7 @@ A user can complete and revisit all supported task types in the 28-day journey.
 
 ### Work
 
-- Implement category selection, guided prompt, one-to-three feelings, image upload, preview, and save.
+- Implement category selection, guided prompt, one-to-three feelings, local image, preview, and save.
 - Render multiple Visions as a board.
 - Implement Vision detail and reliable router-based back navigation.
 - Assign playlists from Category mappings only.
@@ -120,12 +116,12 @@ A user can complete and revisit all supported task types in the 28-day journey.
 ### Verify
 
 - Widget tests enforce feeling limits and category soundtrack behavior.
-- Image upload uses the private user folder and survives app restart.
+- The Vision image is stored in app storage and survives app restart.
 - Creating multiple Visions renders all of them and back returns to the board.
 
 ### Exit criteria
 
-The full Vision create/read/archive flow works with private synced data.
+The full Vision create/read/archive flow works with private on-device data.
 
 ## Phase 6 — Audio and Vision Session
 
@@ -152,8 +148,8 @@ Eligible audio plays reliably and the user never receives a mismatched spoken la
 
 - Build sticky-note list and detail views.
 - Build Explore with locale/editorial filters and official external links.
-- Implement profile, preferred-name edit, language switching, reminders, sign out, and account deletion entry points.
-- Re-render cached and remote content immediately after locale change.
+- Implement profile, preferred-name edit, language switching, reminders, and delete-all-local-data.
+- Re-render content immediately after locale change.
 
 ### Verify
 
@@ -177,8 +173,8 @@ All four tabs and avatar settings meet the MVP product specification.
 ### Verify
 
 - Full automated suite and manual bilingual regression pass.
-- No analyzer warnings, exposed secrets, open authorization findings, or unlicensed production audio.
-- Cold start, navigation, image upload, and audio meet agreed performance budgets.
+- No analyzer warnings, exposed secrets, private text in logs or notifications, or unlicensed production audio.
+- Cold start, navigation, image loading, and audio meet agreed performance budgets.
 
 ### Exit criteria
 
@@ -186,14 +182,13 @@ Signed Android and iOS internal-test builds are installable and pass the release
 
 ## Recommended first implementation slice
 
-Start with Phases 0–3, ending in a real API-authenticated bilingual onboarding flow and a placeholder Today shell. This validates the highest-risk foundations—routing, localization, Google identity, application sessions, profile identity, and authorization—before feature volume grows.
+Start with Phases 0–3, ending in a complete on-device bilingual onboarding flow backed by the content bundle and local database. This validates routing, localization, content generation, and local persistence before feature volume grows.
 
 ## Open decisions before Phase 1 completes
 
 - Final iOS bundle ID and Android application ID.
-- API host and PostgreSQL environments: development, staging, production.
-- S3-compatible object-storage provider and buckets for each environment.
-- Admin delivery timing: import CLI first, focused admin UI after core content endpoints.
+- Audio delivery: bundled in the app or downloaded from a remote manifest.
+- Where the content generator lives (SoulApi validator export or a standalone script).
 - Licensed font files and usage rights.
 - Notification default times and whether reminders are opt-in by default.
 - Audio files and license evidence for each native track.

@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/auth/session_controller.dart';
-import '../features/auth/session_restore_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/journal/journal_screen.dart';
 import '../features/onboarding/onboarding_screens.dart';
@@ -13,55 +11,44 @@ import '../features/today/today_screen.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
-const _entryRoutes = {'/splash', '/language', '/auth', '/onboarding/name'};
+const _entryRoutes = {'/language', '/onboarding/name'};
 
 final routerProvider = Provider<GoRouter>((ref) {
   final state = ref.read(appStateProvider);
-  final sessionChanges = ValueNotifier(0);
-  // Re-run guards only when a routing input changes, not on every profile
+  // Re-run guards only when a routing input changes, not on every settings
   // edit (a refresh while a pushed route pops would restore that route).
-  ref.listen(
-    sessionControllerProvider.select(
-      (session) => (
-        session.isLoading,
-        session.hasError,
-        session.valueOrNull?.profile.hasPreferredName,
-      ),
-    ),
-    (_, _) => sessionChanges.value++,
-  );
-  ref.onDispose(sessionChanges.dispose);
+  final routingChanges = ValueNotifier(0);
+  var routingInputs = (state.locale != null, state.hasPreferredName);
+  void onStateChanged() {
+    final next = (state.locale != null, state.hasPreferredName);
+    if (next == routingInputs) return;
+    routingInputs = next;
+    routingChanges.value++;
+  }
+
+  state.addListener(onStateChanged);
+  ref.onDispose(() {
+    state.removeListener(onStateChanged);
+    routingChanges.dispose();
+  });
 
   String? only(String path, String target) => path == target ? null : target;
 
   final router = GoRouter(
     initialLocation: '/language',
-    refreshListenable: Listenable.merge([state, sessionChanges]),
+    refreshListenable: routingChanges,
     redirect: (context, route) {
       final path = route.matchedLocation;
-      final session = ref.read(sessionControllerProvider);
-      if (session.isLoading || session.hasError) return only(path, '/splash');
-
-      final me = session.value;
-      if (me == null) {
-        return state.locale == null
-            ? only(path, '/language')
-            : only(path, '/auth');
-      }
-      if (!me.profile.hasPreferredName) return only(path, '/onboarding/name');
+      if (state.locale == null) return only(path, '/language');
+      if (!state.hasPreferredName) return only(path, '/onboarding/name');
       if (_entryRoutes.contains(path)) return '/app/today';
       return null;
     },
     routes: [
       GoRoute(
-        path: '/splash',
-        builder: (context, route) => const SessionRestoreScreen(),
-      ),
-      GoRoute(
         path: '/language',
         builder: (context, route) => const LanguageGateScreen(),
       ),
-      GoRoute(path: '/auth', builder: (context, route) => const AuthScreen()),
       GoRoute(
         path: '/onboarding/name',
         builder: (context, route) => const PreferredNameScreen(),

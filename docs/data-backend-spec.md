@@ -1,5 +1,7 @@
 # Data and backend specification
 
+> Deferred (decision 2026-09-26): the MVP is app-only and uses no backend. This document describes the future sync backend. Until then it is the reference for the on-device schema: local tables mirror these entities, and the content, audio-locale, and privacy rules apply unchanged. See `requirements.md` §0 and `architecture.md` §7.
+
 ## 1. Backend boundary
 
 `SoulApi` is the only application allowed to access PostgreSQL and object-storage credentials. Flutter and the admin web app communicate with it through versioned HTTPS REST endpoints.

@@ -111,13 +111,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String get authTagline => 'Một khoảng riêng tư dành cho bạn.';
 
   @override
-  String get continueWithGoogle => 'Tiếp tục với Google';
-
-  @override
-  String get developmentAuthHint =>
-      'Chế độ phát triển: đăng nhập qua development login của API local.';
-
-  @override
   String get morningGratitude => 'Biết ơn buổi sáng';
 
   @override
@@ -160,27 +153,4 @@ class AppLocalizationsVi extends AppLocalizations {
   String nameTooLong(int max) {
     return 'Tên tối đa $max ký tự thôi nhé.';
   }
-
-  @override
-  String get errorNetwork =>
-      'Soul chưa kết nối được. Bạn kiểm tra mạng rồi thử lại nhé.';
-
-  @override
-  String get errorSessionEnded =>
-      'Phiên đăng nhập đã kết thúc. Bạn đăng nhập lại nhé.';
-
-  @override
-  String get errorForbidden => 'Bạn không có quyền truy cập nội dung này.';
-
-  @override
-  String get errorValidation =>
-      'Bạn kiểm tra lại thông tin vừa nhập rồi thử lại nhé.';
-
-  @override
-  String get errorRateLimited =>
-      'Bạn đã thử quá nhiều lần. Chờ một chút rồi thử lại nhé.';
-
-  @override
-  String get errorServiceUnavailable =>
-      'Soul đang tạm gián đoạn. Bạn thử lại sau ít phút nhé.';
 }

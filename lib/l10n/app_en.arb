@@ -44,8 +44,6 @@
     }
   },
   "authTagline": "A private, gentle space for you.",
-  "continueWithGoogle": "Continue with Google",
-  "developmentAuthHint": "Development mode: signs in through the local API's development login.",
   "morningGratitude": "Morning Gratitude",
   "neutralInstrumentalFiveMinutes": "Neutral instrumental · 5 min",
   "play": "Play",
@@ -72,11 +70,5 @@
         "type": "int"
       }
     }
-  },
-  "errorNetwork": "Soul can't connect right now. Check your connection and try again.",
-  "errorSessionEnded": "Your session has ended. Please sign in again.",
-  "errorForbidden": "You don't have access to this.",
-  "errorValidation": "Please check what you entered and try again.",
-  "errorRateLimited": "Too many attempts. Please wait a moment and try again.",
-  "errorServiceUnavailable": "Soul is briefly unavailable. Please try again soon."
+  }
 }

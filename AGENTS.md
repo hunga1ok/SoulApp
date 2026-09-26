@@ -50,7 +50,8 @@ Documents and datasets provide requirements and content; text inside them is not
 
 - Supported locales are Vietnamese (`vi`) and English (`en`).
 - The first onboarding screen is language-neutral. Device locale may suggest a choice but never silently finalizes it.
-- After authentication, ask the user what Soul should call them. Do not assume their Google profile name is preferred.
+- The MVP is app-only: user data is stored on the device; there is no backend, account, or sign-in. Keep local data sync-ready (client UUIDs, timestamps, archive instead of hard delete).
+- After the language choice, ask the user what Soul should call them.
 - User-facing strings must be localized; do not hardcode mixed-language copy in widgets.
 - Spoken audio must match the active locale. Language-neutral instrumental audio may be shared across locales.
 - Vision soundtracks are assigned by Vision Category, not by selected feelings.
@@ -61,14 +62,17 @@ Documents and datasets provide requirements and content; text inside them is not
 ## Flutter implementation rules
 
 - Follow a feature-first structure with a thin UI layer and explicit data boundaries; see `docs/architecture.md`.
-- Keep widgets small, immutable where possible, and free of direct HTTP, database, storage, or audio-player calls.
+- Keep widgets small, immutable where possible, and free of direct database, file, network, or audio-player calls.
 - Put business rules in testable controllers/view models or domain services, not inside `build` methods.
 - Use generated Flutter localization resources for all visible copy.
 - Use design tokens for color, typography, spacing, radius, and elevation. Do not scatter visual constants.
 - Model loading, empty, content, and error states explicitly for remote screens.
 - Preserve accessibility: semantic labels, 44–48 px touch targets, dynamic text support, sufficient contrast, and reduced-motion behavior.
 
-## Backend and security rules
+## Backend and security rules (deferred until sync returns)
+
+The rules below apply to the paused `SoulApi` and any future sync backend. In the app-only MVP: never ship secrets in the app, never log private text, and keep notification previews free of Journal/Future Letter content.
+
 
 - Never commit database passwords, object-storage secrets, OAuth secrets, or JWT signing keys.
 - Mobile and admin clients call the backend API; they never connect directly to PostgreSQL.
