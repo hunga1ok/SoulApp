@@ -4,8 +4,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
+import '../../data/content/content_repository.dart';
+import '../../data/repositories/reminder_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'language_suggestion.dart';
+import 'onboarding_controllers.dart';
 import 'preferred_name_validation.dart';
 
 /// Language-neutral gate. Both choices are always shown as endonyms. The
@@ -129,6 +132,257 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
     return Scaffold(
       appBar: SoulAppBar(title: l10n.editName, onBack: () => context.pop()),
       body: layout,
+    );
+  }
+}
+
+/// Asks what brings the user to Soul. At least one intention is required;
+/// several may be chosen.
+class IntentionScreen extends ConsumerStatefulWidget {
+  const IntentionScreen({super.key});
+
+  @override
+  ConsumerState<IntentionScreen> createState() => _IntentionScreenState();
+}
+
+class _IntentionScreenState extends ConsumerState<IntentionScreen> {
+  late final Set<String> _selected = {...ref.read(appStateProvider).intentions};
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final locale = ref.watch(appStateProvider).locale ?? SoulLocale.en;
+    final intentions = ref.watch(intentionsProvider(locale));
+    return _OnboardingLayout(
+      children: [
+        _StepHeading(title: l10n.intentionTitle, body: l10n.intentionBody),
+        const SizedBox(height: SoulSpace.lg),
+        switch (intentions) {
+          AsyncData(:final value) => Wrap(
+            spacing: SoulSpace.xs,
+            runSpacing: SoulSpace.xs,
+            children: [
+              for (final intention in value)
+                SoulChip(
+                  label: intention.label,
+                  selected: _selected.contains(intention.code),
+                  onSelected:
+                      (selected) => setState(
+                        () =>
+                            selected
+                                ? _selected.add(intention.code)
+                                : _selected.remove(intention.code),
+                      ),
+                ),
+            ],
+          ),
+          // The state views scroll, so they cannot sit in this column.
+          AsyncError() => Column(
+            children: [
+              Text(l10n.somethingWentWrong, textAlign: TextAlign.center),
+              TextButton(
+                onPressed: () => ref.invalidate(intentionsProvider(locale)),
+                child: Text(l10n.retry),
+              ),
+            ],
+          ),
+          _ => const SoulLoadingState(),
+        },
+        const SizedBox(height: SoulSpace.lg),
+        if (_selected.isEmpty && intentions.hasValue) ...[
+          Text(
+            l10n.intentionChooseOne,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          const SizedBox(height: SoulSpace.xs),
+        ],
+        SoulButton(
+          label: l10n.continueLabel,
+          onPressed:
+              _selected.isEmpty
+                  ? null
+                  : () => ref
+                      .read(appStateProvider)
+                      .saveIntentions(_selected.toList()),
+        ),
+      ],
+    );
+  }
+}
+
+/// Morning and evening reminder times, each of which can be turned off; the
+/// whole step can be skipped.
+class ReminderScreen extends ConsumerStatefulWidget {
+  const ReminderScreen({super.key});
+
+  @override
+  ConsumerState<ReminderScreen> createState() => _ReminderScreenState();
+}
+
+class _ReminderScreenState extends ConsumerState<ReminderScreen> {
+  var _saving = false;
+
+  Future<void> _finish(Future<void> Function() action) async {
+    if (_saving) return;
+    setState(() => _saving = true);
+    try {
+      await action();
+    } finally {
+      if (mounted) setState(() => _saving = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final choices = ref.watch(reminderStepProvider);
+    final controller = ref.read(reminderStepProvider.notifier);
+    final labels = {
+      ReminderKind.morning: l10n.reminderMorning,
+      ReminderKind.evening: l10n.reminderEvening,
+    };
+    return _OnboardingLayout(
+      children: [
+        _StepHeading(title: l10n.remindersTitle, body: l10n.remindersBody),
+        const SizedBox(height: SoulSpace.lg),
+        for (final MapEntry(key: kind, value: label) in labels.entries)
+          _ReminderRow(
+            label: label,
+            choice: choices[kind]!,
+            onEnabled: (enabled) => controller.setEnabled(kind, enabled),
+            onTime: (time) => controller.setTime(kind, time),
+          ),
+        const SizedBox(height: SoulSpace.lg),
+        SoulButton(
+          label: l10n.continueLabel,
+          onPressed: _saving ? null : () => _finish(controller.confirm),
+        ),
+        const SizedBox(height: SoulSpace.xs),
+        SoulButton(
+          label: l10n.skipForNow,
+          variant: SoulButtonVariant.secondary,
+          onPressed: _saving ? null : () => _finish(controller.skip),
+        ),
+      ],
+    );
+  }
+}
+
+class _ReminderRow extends StatelessWidget {
+  const _ReminderRow({
+    required this.label,
+    required this.choice,
+    required this.onEnabled,
+    required this.onTime,
+  });
+
+  final String label;
+  final ReminderChoice choice;
+  final ValueChanged<bool> onEnabled;
+  final ValueChanged<TimeOfDay> onTime;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final time = MaterialLocalizations.of(
+      context,
+    ).formatTimeOfDay(choice.time, alwaysUse24HourFormat: true);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: SoulSpace.xs),
+      child: SoulCard(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SoulSpace.md,
+          vertical: SoulSpace.xxs,
+        ),
+        child: Row(
+          children: [
+            Expanded(child: Text(label)),
+            Semantics(
+              button: true,
+              label: l10n.changeReminderTime(label, time),
+              excludeSemantics: true,
+              child: TextButton(
+                onPressed:
+                    choice.enabled
+                        ? () async {
+                          final picked = await showTimePicker(
+                            context: context,
+                            initialTime: choice.time,
+                          );
+                          if (picked != null) onTime(picked);
+                        }
+                        : null,
+                child: Text(time),
+              ),
+            ),
+            Semantics(
+              label: label,
+              child: Switch(value: choice.enabled, onChanged: onEnabled),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Final onboarding step: starts Day 1 of the journey.
+class JourneyReadyScreen extends ConsumerWidget {
+  const JourneyReadyScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
+    final start = ref.watch(journeyStartProvider);
+    return _OnboardingLayout(
+      children: [
+        _StepHeading(
+          title: l10n.journeyReadyTitle,
+          body: l10n.journeyReadyBody,
+        ),
+        const SizedBox(height: SoulSpace.xl),
+        if (start.hasError) ...[
+          Semantics(
+            liveRegion: true,
+            child: Text(
+              l10n.somethingWentWrong,
+              textAlign: TextAlign.center,
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: SoulColors.error),
+            ),
+          ),
+          const SizedBox(height: SoulSpace.sm),
+        ],
+        SoulButton(
+          label: start.hasError ? l10n.retry : l10n.beginDayOne,
+          onPressed:
+              start.isLoading
+                  ? null
+                  : () => ref.read(journeyStartProvider.notifier).start(),
+        ),
+      ],
+    );
+  }
+}
+
+class _StepHeading extends StatelessWidget {
+  const _StepHeading({required this.title, required this.body});
+
+  final String title;
+  final String body;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(title, style: textTheme.displaySmall),
+        const SizedBox(height: SoulSpace.sm),
+        Text(body, style: textTheme.bodyLarge),
+      ],
     );
   }
 }

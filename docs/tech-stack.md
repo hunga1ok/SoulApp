@@ -24,11 +24,11 @@ SoulApp (Flutter) ─ Drift/SQLite + app files (user data)
 | Navigation | `go_router` | Onboarding guards, deep links, and reliable back stacks. |
 | Localization | `flutter_localizations`, `intl`, generated ARB | One widget tree for Vietnamese and English. |
 | Small preferences | `shared_preferences` | Locale, preferred name, audio toggle, and onboarding checkpoint. |
-| Local database | `drift` (+ `drift_flutter`, `drift_dev`/`build_runner`) | Typed SQLite for journey progress, Journal, Visions, Future Letters, reminders; versioned migrations. Add with the first persisted feature. |
+| Local database | `drift` (+ `drift_flutter`, `drift_dev`/`build_runner`), `uuid` | Typed SQLite for journey progress, Journal, Visions, Future Letters, reminders; versioned migrations. Regenerate with `dart run build_runner build`; generated `*.g.dart` files are committed. |
 | App files | `path_provider` | Vision images and attachments in the app support directory. |
 | Audio | `just_audio`, `audio_session` | Playlist playback, audio focus, interruptions, and lifecycle. |
 | Vision image | `image_picker` | Select or capture the optional Vision image. |
-| Reminders | `flutter_local_notifications`, `timezone` | Locale-aware local journey reminders. Add in the Journey phase. |
+| Reminders | `flutter_local_notifications`, `flutter_timezone` (+ `timezone` when scheduling) | Notification permission and device IANA timezone at onboarding; locale-aware local reminders in the Journey phase. |
 | External content | `url_launcher` | Open approved YouTube/Spotify links outside native playback. |
 | Tests | `flutter_test`, `integration_test`, golden tests | Unit, widget, device-flow, and bilingual visual regression. |
 

@@ -70,5 +70,23 @@
         "type": "int"
       }
     }
-  }
+  },
+  "intentionTitle": "What brings you here today?",
+  "intentionBody": "Soul will gently shape the journey around what matters to you.",
+  "intentionChooseOne": "Choose at least one.",
+  "remindersTitle": "A small rhythm for each day.",
+  "remindersBody": "Choose two gentle moments to begin and close your day.",
+  "reminderMorning": "Morning",
+  "reminderEvening": "Evening",
+  "changeReminderTime": "Change {reminder} time, currently {time}",
+  "@changeReminderTime": {
+    "placeholders": {
+      "reminder": {},
+      "time": {}
+    }
+  },
+  "skipForNow": "Skip for now",
+  "journeyReadyTitle": "Your 28-day journey is ready.",
+  "journeyReadyBody": "You do not need to be perfect. Just begin with today.",
+  "beginDayOne": "Begin Day 1"
 }

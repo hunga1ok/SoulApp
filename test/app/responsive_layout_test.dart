@@ -99,6 +99,27 @@ void main() {
     final screens = <String, (Type, Map<String, Object>)>{
       'language gate': (LanguageGateScreen, const {}),
       'preferred name': (PreferredNameScreen, {'selected_locale': locale.name}),
+      'intention': (
+        IntentionScreen,
+        {'selected_locale': locale.name, 'preferred_name': 'An'},
+      ),
+      'reminders': (
+        ReminderScreen,
+        {
+          'selected_locale': locale.name,
+          'preferred_name': 'An',
+          'onboarding_intentions': ['FIND_PEACE'],
+        },
+      ),
+      'journey ready': (
+        JourneyReadyScreen,
+        {
+          'selected_locale': locale.name,
+          'preferred_name': 'An',
+          'onboarding_intentions': ['FIND_PEACE'],
+          'onboarding_reminders_decided': true,
+        },
+      ),
       'shell': (TodayScreen, onboardedPreferences(locale)),
     };
     for (final MapEntry(key: screenName, value: (screen, preferences))

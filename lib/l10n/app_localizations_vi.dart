@@ -153,4 +153,45 @@ class AppLocalizationsVi extends AppLocalizations {
   String nameTooLong(int max) {
     return 'Tên tối đa $max ký tự thôi nhé.';
   }
+
+  @override
+  String get intentionTitle => 'Điều gì đưa bạn đến đây?';
+
+  @override
+  String get intentionBody =>
+      'Soul sẽ nhẹ nhàng điều chỉnh hành trình theo điều quan trọng với bạn.';
+
+  @override
+  String get intentionChooseOne => 'Chọn ít nhất một điều nhé.';
+
+  @override
+  String get remindersTitle => 'Một nhịp nhỏ cho mỗi ngày.';
+
+  @override
+  String get remindersBody =>
+      'Chọn hai thời điểm dịu dàng để bắt đầu và khép lại ngày.';
+
+  @override
+  String get reminderMorning => 'Buổi sáng';
+
+  @override
+  String get reminderEvening => 'Buổi tối';
+
+  @override
+  String changeReminderTime(Object reminder, Object time) {
+    return 'Đổi giờ nhắc $reminder, hiện là $time';
+  }
+
+  @override
+  String get skipForNow => 'Để sau';
+
+  @override
+  String get journeyReadyTitle => 'Hành trình 28 ngày đã sẵn sàng.';
+
+  @override
+  String get journeyReadyBody =>
+      'Bạn không cần hoàn hảo. Chỉ cần bắt đầu từ ngày hôm nay.';
+
+  @override
+  String get beginDayOne => 'Bắt đầu Ngày 1';
 }

@@ -11,16 +11,29 @@ import '../features/today/today_screen.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
-const _entryRoutes = {'/language', '/onboarding/name'};
+const _entryRoutes = {
+  '/language',
+  '/onboarding/name',
+  '/onboarding/intention',
+  '/onboarding/reminders',
+  '/onboarding/ready',
+};
 
 final routerProvider = Provider<GoRouter>((ref) {
   final state = ref.read(appStateProvider);
   // Re-run guards only when a routing input changes, not on every settings
   // edit (a refresh while a pushed route pops would restore that route).
   final routingChanges = ValueNotifier(0);
-  var routingInputs = (state.locale != null, state.hasPreferredName);
+  (bool, bool, bool, bool, bool) inputs() => (
+    state.locale != null,
+    state.hasPreferredName,
+    state.intentions.isNotEmpty,
+    state.remindersDecided,
+    state.onboardingCompleted,
+  );
+  var routingInputs = inputs();
   void onStateChanged() {
-    final next = (state.locale != null, state.hasPreferredName);
+    final next = inputs();
     if (next == routingInputs) return;
     routingInputs = next;
     routingChanges.value++;
@@ -40,7 +53,16 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, route) {
       final path = route.matchedLocation;
       if (state.locale == null) return only(path, '/language');
-      if (!state.hasPreferredName) return only(path, '/onboarding/name');
+      if (!state.onboardingCompleted) {
+        if (!state.hasPreferredName) return only(path, '/onboarding/name');
+        if (state.intentions.isEmpty) {
+          return only(path, '/onboarding/intention');
+        }
+        if (!state.remindersDecided) {
+          return only(path, '/onboarding/reminders');
+        }
+        return only(path, '/onboarding/ready');
+      }
       if (_entryRoutes.contains(path)) return '/app/today';
       return null;
     },
@@ -52,6 +74,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/onboarding/name',
         builder: (context, route) => const PreferredNameScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding/intention',
+        builder: (context, route) => const IntentionScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding/reminders',
+        builder: (context, route) => const ReminderScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding/ready',
+        builder: (context, route) => const JourneyReadyScreen(),
       ),
       GoRoute(
         path: '/profile',

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "source": "Approved web prototype (app.js onboarding reasons), vi/en",
+  "intentions": [
+    {
+      "code": "FIND_PEACE",
+      "sortOrder": 1,
+      "text": { "vi": { "label": "Tìm lại sự bình an" }, "en": { "label": "Find more peace" } }
+    },
+    {
+      "code": "NURTURE_GRATITUDE",
+      "sortOrder": 2,
+      "text": { "vi": { "label": "Nuôi dưỡng lòng biết ơn" }, "en": { "label": "Nurture gratitude" } }
+    },
+    {
+      "code": "BUILD_FUTURE_SELF",
+      "sortOrder": 3,
+      "text": { "vi": { "label": "Xây dựng phiên bản tương lai" }, "en": { "label": "Build my future self" } }
+    },
+    {
+      "code": "CARE_FOR_RELATIONSHIPS",
+      "sortOrder": 4,
+      "text": { "vi": { "label": "Chăm sóc các mối quan hệ" }, "en": { "label": "Care for my relationships" } }
+    }
+  ]
+}

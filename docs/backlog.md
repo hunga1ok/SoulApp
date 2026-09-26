@@ -108,6 +108,7 @@
   - AC: guard cho language/auth/onboarding; mỗi tab giữ back stack; back hoạt động đúng ở Vision detail và Journal detail.
   - Tiến độ 2026-09-26: language/auth/name guards và indexed tab shell đã chạy; sẽ bổ sung detail routes khi Vision/Journal có dữ liệu thật.
   - Chuyển app-only 2026-09-26: guard chỉ còn language → preferred name → app; bỏ `/splash` và `/auth`. Router chỉ refresh khi input điều hướng đổi.
+  - Tiến độ 2026-09-26 (app-only đợt 1): guard onboarding: ngôn ngữ → tên → ý định → nhắc nhở → sẵn sàng → Today, theo checkpoint lưu local.
 
 - [~] `APP-004` **P0 — Localization vi/en bằng ARB**
   - Liên kết: `REQ-L10N-002`.
@@ -143,12 +144,14 @@
 
 ## Epic 2A — Lưu trữ local và content bundle (app-only)
 
-- [ ] `LOC-001` **P0 — Sinh content bundle JSON từ dataset**
+- [~] `LOC-001` **P0 — Sinh content bundle JSON từ dataset**
   - Phạm vi: journey 28 ngày, Vision catalog (category, câu hỏi, gợi ý, feelings, statement), intention, notification copy, audio mapping; tách vi/en; có `contentVersion`.
   - AC: chạy lặp lại cho kết quả giống hệt; fail khi thiếu bản dịch, sai tham chiếu, trùng code; app đọc bundle qua repository chỉ đọc, không parse XLSX/DOCX lúc chạy. Nơi đặt generator (mở rộng CLI validate của SoulApi hay script riêng) cần chốt khi bắt đầu.
+  - Tiến độ 2026-09-26 (app-only đợt 1): mới có `assets/content/intentions.json` (4 ý định vi/en lấy từ prototype vì dataset không có) và `ContentRepository` đọc bundle. Generator từ `Specs/` chưa làm.
 
-- [ ] `LOC-002` **P0 — Database local bằng Drift**
+- [~] `LOC-002` **P0 — Database local bằng Drift**
   - AC: bảng journey run, task response, journal entry, Vision + feelings + answers, Future Letter, reminder settings theo `data-backend-spec.md`; UUID tạo trên máy, `created_at`/`updated_at`, archive thay vì xóa cứng; unique chống ghi trùng; migration có test từ DB trống và giữa các version.
+  - Tiến độ 2026-09-26 (app-only đợt 1): thêm Drift (`lib/data/local/soul_database.dart`, schema v1) với `user_journeys` (UUID, `started_on` theo ngày local + timezone, partial unique index chỉ một run `active`/journey) và `reminder_preferences` (CHECK bật thì phải có giờ). Test unit phủ idempotent, unique index và CHECK. Còn lại: bảng task response, Journal, Vision, Future Letter (thêm cùng feature tương ứng) và test migration khi có schema v2.
 
 - [ ] `LOC-003` **P0 — Lưu ảnh trong thư mục app**
   - AC: copy/nén ảnh vào app support directory, DB lưu đường dẫn tương đối; thay/xóa ảnh không để lại file mồ côi; ảnh không nằm trong thư mục người dùng khác truy cập được.
@@ -255,23 +258,27 @@
   - Tiến độ 2026-09-26 (đợt 2): thống nhất độ dài preferred name 1–40 ký tự Unicode theo `requirements.md` ở cả app và API (trước đó hợp đồng ghi nhầm 1–50). Backend `PATCH /v1/me/profile` trim/validate và đã test tên tiếng Việt 40 ký tự.
   - Chuyển app-only 2026-09-26: màn tên mở ngay sau khi chọn ngôn ngữ, lưu tên đã trim (1–40 ký tự) vào SharedPreferences; không còn prefill tên Google và trạng thái lỗi server. Sửa được từ Profile. Widget test vi/en phủ validate, lưu, relaunch giữa chừng và sửa từ Profile. Còn lại: kiểm tra trên thiết bị Android/iOS thật.
 
-- [ ] `OB-007` **P0 — Chọn ý định/focus onboarding**
+- [x] `OB-007` **P0 — Chọn ý định/focus onboarding**
   - Liên kết: `US-OB-004`.
   - AC: nội dung đúng dataset; lưu server; không nhầm focus với feeling hoặc Vision Category.
   - Chuyển app-only 2026-09-26: lựa chọn intention lấy từ content bundle, lưu local.
+  - Hoàn tất 2026-09-26 (app-only đợt 1): màn “Điều gì đưa bạn đến đây?” đọc 4 ý định từ content bundle theo locale, chọn nhiều, bắt buộc ít nhất một (nút tắt kèm lời nhắc), lưu mã ổn định vào SharedPreferences; tách biệt với feeling và Vision Category. Lưu ý: copy prototype nói Soul “điều chỉnh hành trình” theo ý định nhưng hiện chưa có quy tắc nào dùng ý định — cần Product chốt hoặc sửa copy.
 
-- [ ] `OB-008` **P0 — Thiết lập nhắc nhở trong onboarding**
+- [~] `OB-008` **P0 — Thiết lập nhắc nhở trong onboarding**
   - Liên kết: `US-OB-005`, `REQ-NTF-001`.
   - AC: chọn giờ/bỏ qua; xin quyền hệ điều hành đúng thời điểm; lưu timezone; từ chối quyền không chặn dùng app.
   - Chuyển app-only 2026-09-26: dùng local notification (`EXT-011` đã chốt: local).
+  - Tiến độ 2026-09-26 (app-only đợt 1): màn nhắc nhở buổi sáng 07:00 / buổi tối 21:30 (mặc định prototype), bật/tắt và đổi giờ từng loại, “Để sau” lưu cả hai là tắt và không xin quyền; “Tiếp tục” lưu vào Drift kèm IANA timezone (`flutter_timezone`) rồi mới xin quyền (`flutter_local_notifications`, Android 13 `POST_NOTIFICATIONS`); từ chối quyền vẫn đi tiếp. Chưa lập lịch thông báo (thuộc `NTF-002`). Còn lại: kiểm tra hộp thoại quyền trên thiết bị Android 13+ và iOS thật.
 
-- [ ] `OB-009` **P0 — Hoàn tất onboarding và tạo journey**
+- [x] `OB-009` **P0 — Hoàn tất onboarding và tạo journey**
   - AC: thao tác idempotent; tạo journey ngày 1 đúng locale; route tới Today và không hiện onboarding lại.
   - Chuyển app-only 2026-09-26: tạo journey run trong DB local (Drift), idempotent khi bấm lặp hoặc relaunch.
+  - Hoàn tất 2026-09-26 (app-only đợt 1): “Bắt đầu Ngày 1” tạo run `GRATITUDE_28` trong Drift (idempotent trong transaction; relaunch giữa chừng không tạo run thứ hai), rồi đánh dấu onboarding xong và router đưa tới Today; onboarding không hiện lại. Lỗi ghi DB hiện thông báo + “Thử lại”.
 
-- [ ] `OB-010` **P0 — Kiểm thử onboarding và returning user**
+- [~] `OB-010` **P0 — Kiểm thử onboarding và returning user**
   - AC: vi/en, app relaunch ở từng bước, Google cancel/error, token expired, đổi máy và user đã hoàn tất onboarding.
   - Chuyển app-only 2026-09-26: phạm vi test còn: vi/en, relaunch ở từng bước, user đã hoàn tất onboarding; bỏ các case Google/token/đổi máy.
+  - Tiến độ 2026-09-26 (app-only đợt 1): widget test vi/en cho toàn luồng ý định → nhắc nhở → bắt đầu → Today, bỏ qua nhắc nhở, từ chối quyền, relaunch ở từng bước, không overflow ở 320x568 @200% và đạt guideline tap target/label cho cả 3 màn mới. Còn lại: chạy trên thiết bị thật.
 
 ## Epic 4 — Dataset, content pipeline và localization
 
@@ -666,7 +673,7 @@
 - [-] `EXT-003` S3-compatible Object Storage, CDN/domain nếu có và lifecycle policy.
 - [-] `EXT-004` Google OAuth clients cho Android, iOS và Backend audience.
 - [ ] `EXT-005` Quyền sử dụng font/logo/brand assets và file nguồn đã crop nền trong suốt.
-- [ ] `EXT-006` Giờ nhắc mặc định, timezone behavior và nội dung notification được duyệt.
+- [ ] `EXT-006` Giờ nhắc mặc định, timezone behavior và nội dung notification được duyệt. Tạm dùng mặc định prototype 07:00 / 21:30 (2026-09-26).
 - [ ] `EXT-007` Audio files cuối, nguồn, giấy phép, phạm vi lãnh thổ và ngày hết hạn nếu có.
 - [-] `EXT-008` Hosting/domain/TLS/secret manager cho Backend và Admin Portal.
 - [ ] `EXT-009` Privacy Policy, Terms, chính sách dữ liệu local/xóa dữ liệu và email hỗ trợ.

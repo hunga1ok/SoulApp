@@ -37,6 +37,11 @@ dependencies:
   go_router: ^14.8.1
   intl: ^0.20.2
   shared_preferences: ^2.5.3
+  drift: ^2.35.0
+  drift_flutter: ^0.3.1
+  uuid: ^4.6.0
+  flutter_local_notifications: ^22.3.1
+  flutter_timezone: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +53,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  drift_dev: ^2.35.0
+  build_runner: ^2.15.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +71,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/content/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

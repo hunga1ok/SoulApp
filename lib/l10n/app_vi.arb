@@ -57,5 +57,17 @@
   "cancel": "Hủy",
   "somethingWentWrong": "Đã có lỗi xảy ra. Bạn thử lại nhé.",
   "save": "Lưu",
-  "nameTooLong": "Tên tối đa {max} ký tự thôi nhé."
+  "nameTooLong": "Tên tối đa {max} ký tự thôi nhé.",
+  "intentionTitle": "Điều gì đưa bạn đến đây?",
+  "intentionBody": "Soul sẽ nhẹ nhàng điều chỉnh hành trình theo điều quan trọng với bạn.",
+  "intentionChooseOne": "Chọn ít nhất một điều nhé.",
+  "remindersTitle": "Một nhịp nhỏ cho mỗi ngày.",
+  "remindersBody": "Chọn hai thời điểm dịu dàng để bắt đầu và khép lại ngày.",
+  "reminderMorning": "Buổi sáng",
+  "reminderEvening": "Buổi tối",
+  "changeReminderTime": "Đổi giờ nhắc {reminder}, hiện là {time}",
+  "skipForNow": "Để sau",
+  "journeyReadyTitle": "Hành trình 28 ngày đã sẵn sàng.",
+  "journeyReadyBody": "Bạn không cần hoàn hảo. Chỉ cần bắt đầu từ ngày hôm nay.",
+  "beginDayOne": "Bắt đầu Ngày 1"
 }

@@ -1,4 +1,7 @@
+import 'package:drift/drift.dart' show driftRuntimeOptions;
+import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,6 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:soul_app/app/app.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/core/design_system/soul_theme.dart';
+import 'package:soul_app/core/platform/device_services.dart';
+import 'package:soul_app/data/content/content_repository.dart';
+import 'package:soul_app/data/local/soul_database.dart';
 import 'package:soul_app/l10n/app_localizations.dart';
 
 /// Smallest supported phone used for overflow checks.
@@ -18,7 +24,41 @@ const standardPhone = Size(390, 844);
 Map<String, Object> onboardedPreferences(SoulLocale locale) => {
   'selected_locale': locale.name,
   'preferred_name': 'An',
+  'onboarding_intentions': ['NURTURE_GRATITUDE'],
+  'onboarding_reminders_decided': true,
+  'onboarding_completed': true,
 };
+
+const testTimezone = 'Asia/Ho_Chi_Minh';
+
+class FakeDeviceTimezone implements DeviceTimezone {
+  const FakeDeviceTimezone();
+
+  @override
+  Future<String> current() async => testTimezone;
+}
+
+/// Records permission requests and answers with [granted].
+class FakeNotificationPermissions implements NotificationPermissions {
+  FakeNotificationPermissions({this.granted = true});
+
+  bool granted;
+  var requests = 0;
+
+  @override
+  Future<bool> request() async {
+    requests++;
+    return granted;
+  }
+}
+
+/// A fresh in-memory database, closed after the test.
+SoulDatabase testDatabase() {
+  driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
+  final database = SoulDatabase(NativeDatabase.memory());
+  addTearDown(database.close);
+  return database;
+}
 
 /// Configures the test view as a phone of [size] logical pixels with the
 /// given text scale and device locales. Resets automatically after the test.
@@ -80,10 +120,13 @@ Future<SharedPreferences> pumpSoulWidget(
 }
 
 /// Pumps the whole app (router, guards, shell) with the given stored
-/// preferences, phone size, text scale and device locales.
+/// preferences, phone size, text scale and device locales. The database is
+/// in memory and platform services are faked unless passed in.
 Future<SharedPreferences> pumpSoulApp(
   WidgetTester tester, {
   Map<String, Object> preferences = const {},
+  SoulDatabase? database,
+  FakeNotificationPermissions? permissions,
   Size size = standardPhone,
   double textScale = 1,
   List<Locale> deviceLocales = const [Locale('en', 'US')],
@@ -97,7 +140,18 @@ Future<SharedPreferences> pumpSoulApp(
   final prefs = await _mockPreferences(preferences);
   await tester.pumpWidget(
     ProviderScope(
-      overrides: [preferencesProvider.overrideWithValue(prefs)],
+      overrides: [
+        preferencesProvider.overrideWithValue(prefs),
+        soulDatabaseProvider.overrideWithValue(database ?? testDatabase()),
+        // A fresh bundle per test: `rootBundle` caches futures across tests.
+        contentRepositoryProvider.overrideWithValue(
+          ContentRepository(PlatformAssetBundle()),
+        ),
+        deviceTimezoneProvider.overrideWithValue(const FakeDeviceTimezone()),
+        notificationPermissionsProvider.overrideWithValue(
+          permissions ?? FakeNotificationPermissions(),
+        ),
+      ],
       child: const SoulApp(),
     ),
   );

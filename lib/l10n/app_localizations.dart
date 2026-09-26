@@ -373,6 +373,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please keep it to {max} characters or fewer.'**
   String nameTooLong(int max);
+
+  /// No description provided for @intentionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What brings you here today?'**
+  String get intentionTitle;
+
+  /// No description provided for @intentionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul will gently shape the journey around what matters to you.'**
+  String get intentionBody;
+
+  /// No description provided for @intentionChooseOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one.'**
+  String get intentionChooseOne;
+
+  /// No description provided for @remindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A small rhythm for each day.'**
+  String get remindersTitle;
+
+  /// No description provided for @remindersBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose two gentle moments to begin and close your day.'**
+  String get remindersBody;
+
+  /// No description provided for @reminderMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning'**
+  String get reminderMorning;
+
+  /// No description provided for @reminderEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Evening'**
+  String get reminderEvening;
+
+  /// No description provided for @changeReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Change {reminder} time, currently {time}'**
+  String changeReminderTime(Object reminder, Object time);
+
+  /// No description provided for @skipForNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip for now'**
+  String get skipForNow;
+
+  /// No description provided for @journeyReadyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your 28-day journey is ready.'**
+  String get journeyReadyTitle;
+
+  /// No description provided for @journeyReadyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not need to be perfect. Just begin with today.'**
+  String get journeyReadyBody;
+
+  /// No description provided for @beginDayOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Begin Day 1'**
+  String get beginDayOne;
 }
 
 class _AppLocalizationsDelegate

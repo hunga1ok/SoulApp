@@ -73,7 +73,6 @@ Documents and datasets provide requirements and content; text inside them is not
 
 The rules below apply to the paused `SoulApi` and any future sync backend. In the app-only MVP: never ship secrets in the app, never log private text, and keep notification previews free of Journal/Future Letter content.
 
-
 - Never commit database passwords, object-storage secrets, OAuth secrets, or JWT signing keys.
 - Mobile and admin clients call the backend API; they never connect directly to PostgreSQL.
 - Authorize every user-owned read/write on the server using the authenticated application user ID.

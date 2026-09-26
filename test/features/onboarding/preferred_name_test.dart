@@ -5,7 +5,6 @@ import 'package:soul_app/core/design_system/design_system.dart';
 import 'package:soul_app/features/onboarding/onboarding_screens.dart';
 import 'package:soul_app/features/onboarding/preferred_name_validation.dart';
 import 'package:soul_app/features/profile/profile_screen.dart';
-import 'package:soul_app/features/today/today_screen.dart';
 
 import '../../helpers/soul_test_harness.dart';
 
@@ -29,7 +28,6 @@ void main() {
       question: 'Bạn muốn được gọi với tên là gì?',
       save: 'Lưu và tiếp tục',
       tooLong: 'Tên tối đa 40 ký tự thôi nhé.',
-      welcome: 'Chào An',
     ),
     (
       locale: SoulLocale.en,
@@ -37,7 +35,6 @@ void main() {
       question: 'What would you like Soul to call you?',
       save: 'Save and continue',
       tooLong: 'Please keep it to 40 characters or fewer.',
-      welcome: 'Welcome, An',
     ),
   ];
 
@@ -73,8 +70,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(prefs.getString('preferred_name'), 'An');
-      expect(find.byType(TodayScreen), findsOneWidget);
-      expect(find.text(c.welcome), findsOneWidget);
+      expect(find.byType(IntentionScreen), findsOneWidget);
     });
   }
 

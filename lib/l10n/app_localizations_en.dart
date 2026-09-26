@@ -151,4 +151,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String nameTooLong(int max) {
     return 'Please keep it to $max characters or fewer.';
   }
+
+  @override
+  String get intentionTitle => 'What brings you here today?';
+
+  @override
+  String get intentionBody =>
+      'Soul will gently shape the journey around what matters to you.';
+
+  @override
+  String get intentionChooseOne => 'Choose at least one.';
+
+  @override
+  String get remindersTitle => 'A small rhythm for each day.';
+
+  @override
+  String get remindersBody =>
+      'Choose two gentle moments to begin and close your day.';
+
+  @override
+  String get reminderMorning => 'Morning';
+
+  @override
+  String get reminderEvening => 'Evening';
+
+  @override
+  String changeReminderTime(Object reminder, Object time) {
+    return 'Change $reminder time, currently $time';
+  }
+
+  @override
+  String get skipForNow => 'Skip for now';
+
+  @override
+  String get journeyReadyTitle => 'Your 28-day journey is ready.';
+
+  @override
+  String get journeyReadyBody =>
+      'You do not need to be perfect. Just begin with today.';
+
+  @override
+  String get beginDayOne => 'Begin Day 1';
 }
