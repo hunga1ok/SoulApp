@@ -17,7 +17,7 @@ cp config/app.development.json.example config/app.development.json
 flutter run --dart-define-from-file=config/app.development.json
 ```
 
-The first screen is the language-neutral `VI`/`EN` gate. Google identity is deliberately simulated only in debug until the API, OAuth clients and bundle IDs are configured; release builds do not treat the development path as authentication.
+The first screen is the language-neutral `Tiếng Việt`/`English` gate. Google identity is deliberately simulated only in debug until the API, OAuth clients and bundle IDs are configured; release builds do not treat the development path as authentication.
 
 ## Verify
 
@@ -26,6 +26,8 @@ dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test
 ```
+
+Component goldens live in `test/core/design_system/goldens/` and were generated on macOS. After an intended visual change, regenerate them with `flutter test --update-goldens test/core/design_system/components_golden_test.dart` and review the images before committing.
 
 ## API setup
 
