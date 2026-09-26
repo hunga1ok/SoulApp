@@ -122,7 +122,7 @@ An `AudioService` exposes play, pause, stop, current track, and playback state. 
 eligible = track.locale == activeLocale || track.locale == neutral
 ```
 
-Spoken audio requires an exact locale match. Instrumental tracks may be `neutral`. Category-to-track mapping comes from the content bundle, not widget constants. How audio files are delivered (bundled or downloaded from a remote manifest) is not decided yet.
+Spoken audio requires an exact locale match. Instrumental tracks may be `neutral`. Category-to-track mapping comes from the content bundle, not widget constants. MVP1 bundles audio in the app while the total stays within about 50 MB; beyond that it moves to a remote manifest with one or two bundled `neutral` fallback tracks. A track's source is either an asset or a URL, so switching does not change the player or playlist logic.
 
 ## 9. Configuration
 

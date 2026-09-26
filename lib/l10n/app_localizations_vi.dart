@@ -159,7 +159,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get intentionBody =>
-      'Soul sẽ nhẹ nhàng điều chỉnh hành trình theo điều quan trọng với bạn.';
+      'Chọn điều bạn mong muốn nhất lúc này. Không có câu trả lời sai.';
 
   @override
   String get intentionChooseOne => 'Chọn ít nhất một điều nhé.';
@@ -194,4 +194,102 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get beginDayOne => 'Bắt đầu Ngày 1';
+
+  @override
+  String get chooseCategoryTitle => 'Chọn một lĩnh vực';
+
+  @override
+  String get chooseCategoryBody =>
+      'Bạn muốn dành sự chú ý cho điều gì lúc này?';
+
+  @override
+  String visionStepLabel(Object category, int step, int total) {
+    return '$category · $step/$total';
+  }
+
+  @override
+  String chooseUpTo(int max) {
+    return 'Chọn tối đa $max.';
+  }
+
+  @override
+  String get answerRequiredHint =>
+      'Chọn một gợi ý hoặc thêm câu trả lời của bạn.';
+
+  @override
+  String get feelingsTitle =>
+      'Bạn muốn cảm thấy thế nào khi điều đó đang diễn ra?';
+
+  @override
+  String get feelingsHint => 'Chọn từ 1 đến 3 cảm xúc.';
+
+  @override
+  String get feelingsLimitReached =>
+      'Bạn đã chọn 3 cảm xúc. Bỏ chọn một cảm xúc để chọn cái khác.';
+
+  @override
+  String get statementTitle => 'Tầm nhìn của bạn';
+
+  @override
+  String get statementBody =>
+      'Soul đã gợi ý một câu từ lựa chọn của bạn. Bạn có thể sửa lại cho đúng với mình.';
+
+  @override
+  String get statementLabel => 'Câu tầm nhìn';
+
+  @override
+  String get statementEmpty => 'Viết tầm nhìn của bạn trong một hoặc hai câu.';
+
+  @override
+  String statementTooLong(int max) {
+    return 'Tối đa $max ký tự thôi nhé.';
+  }
+
+  @override
+  String get visionImageTitle => 'Đưa tầm nhìn vào cảm nhận';
+
+  @override
+  String get visionImageBody =>
+      'Thêm một bức ảnh nếu bạn muốn. Không bắt buộc.';
+
+  @override
+  String get chooseFromLibrary => 'Chọn từ thư viện';
+
+  @override
+  String get takePhoto => 'Chụp ảnh';
+
+  @override
+  String get removePhoto => 'Bỏ ảnh';
+
+  @override
+  String get visionPhoto => 'Ảnh tầm nhìn';
+
+  @override
+  String get photoUnavailable => 'Không hiển thị được ảnh này.';
+
+  @override
+  String get reviewVisionTitle => 'Xem lại tầm nhìn';
+
+  @override
+  String get saveToVisionBoard => 'Lưu vào vision board';
+
+  @override
+  String get visionSaveFailed =>
+      'Chưa lưu được tầm nhìn. Lựa chọn của bạn vẫn còn đây — bạn thử lại nhé.';
+
+  @override
+  String get archiveVision => 'Lưu trữ tầm nhìn';
+
+  @override
+  String get archiveVisionTitle => 'Lưu trữ tầm nhìn này?';
+
+  @override
+  String get archiveVisionBody =>
+      'Tầm nhìn sẽ rời khỏi board nhưng không bị xóa.';
+
+  @override
+  String get archive => 'Lưu trữ';
+
+  @override
+  String get visionNotFound => 'Tầm nhìn này không còn trên board của bạn.';
 }

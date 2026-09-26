@@ -187,8 +187,6 @@ Start with Phases 0–3, ending in a complete on-device bilingual onboarding flo
 ## Open decisions before Phase 1 completes
 
 - Final iOS bundle ID and Android application ID.
-- Audio delivery: bundled in the app or downloaded from a remote manifest.
-- Where the content generator lives (SoulApi validator export or a standalone script).
 - Licensed font files and usage rights.
 - Notification default times and whether reminders are opt-in by default.
 - Audio files and license evidence for each native track.

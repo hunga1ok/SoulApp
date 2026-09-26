@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart' show driftRuntimeOptions;
 import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ import 'package:soul_app/app/app.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/core/design_system/soul_theme.dart';
 import 'package:soul_app/core/platform/device_services.dart';
+import 'package:soul_app/core/platform/image_picking.dart';
 import 'package:soul_app/data/content/content_repository.dart';
 import 'package:soul_app/data/local/soul_database.dart';
 import 'package:soul_app/l10n/app_localizations.dart';
@@ -50,6 +53,29 @@ class FakeNotificationPermissions implements NotificationPermissions {
     requests++;
     return granted;
   }
+}
+
+/// Returns [path] for every pick, or `null` as if the user cancelled.
+class FakeImagePicking implements ImagePicking {
+  FakeImagePicking([this.path]);
+
+  String? path;
+  final picks = <bool>[];
+
+  @override
+  Future<String?> pick({required bool fromCamera}) async {
+    picks.add(fromCamera);
+    return path;
+  }
+}
+
+/// A fresh, uncached bundle per test (`rootBundle` caches futures across
+/// tests) that decodes on the test's own zone: the default bundle decodes
+/// large files in an isolate, which never completes under fake async.
+class _TestAssetBundle extends PlatformAssetBundle {
+  @override
+  Future<String> loadString(String key, {bool cache = true}) async =>
+      utf8.decode((await load(key)).buffer.asUint8List());
 }
 
 /// A fresh in-memory database, closed after the test.
@@ -127,6 +153,7 @@ Future<SharedPreferences> pumpSoulApp(
   Map<String, Object> preferences = const {},
   SoulDatabase? database,
   FakeNotificationPermissions? permissions,
+  FakeImagePicking? imagePicking,
   Size size = standardPhone,
   double textScale = 1,
   List<Locale> deviceLocales = const [Locale('en', 'US')],
@@ -143,13 +170,15 @@ Future<SharedPreferences> pumpSoulApp(
       overrides: [
         preferencesProvider.overrideWithValue(prefs),
         soulDatabaseProvider.overrideWithValue(database ?? testDatabase()),
-        // A fresh bundle per test: `rootBundle` caches futures across tests.
         contentRepositoryProvider.overrideWithValue(
-          ContentRepository(PlatformAssetBundle()),
+          ContentRepository(_TestAssetBundle()),
         ),
         deviceTimezoneProvider.overrideWithValue(const FakeDeviceTimezone()),
         notificationPermissionsProvider.overrideWithValue(
           permissions ?? FakeNotificationPermissions(),
+        ),
+        imagePickingProvider.overrideWithValue(
+          imagePicking ?? FakeImagePicking(),
         ),
       ],
       child: const SoulApp(),

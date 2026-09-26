@@ -72,7 +72,7 @@
     }
   },
   "intentionTitle": "What brings you here today?",
-  "intentionBody": "Soul will gently shape the journey around what matters to you.",
+  "intentionBody": "Choose what matters most to you right now. There's no wrong answer.",
   "intentionChooseOne": "Choose at least one.",
   "remindersTitle": "A small rhythm for each day.",
   "remindersBody": "Choose two gentle moments to begin and close your day.",
@@ -88,5 +88,58 @@
   "skipForNow": "Skip for now",
   "journeyReadyTitle": "Your 28-day journey is ready.",
   "journeyReadyBody": "You do not need to be perfect. Just begin with today.",
-  "beginDayOne": "Begin Day 1"
+  "beginDayOne": "Begin Day 1",
+  "chooseCategoryTitle": "Choose an area",
+  "chooseCategoryBody": "Where would you like to place your attention right now?",
+  "visionStepLabel": "{category} · {step}/{total}",
+  "@visionStepLabel": {
+    "placeholders": {
+      "category": {},
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseUpTo": "Choose up to {max}.",
+  "@chooseUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "answerRequiredHint": "Choose an option or add your own answer.",
+  "feelingsTitle": "How do you want to feel when this is happening?",
+  "feelingsHint": "Choose 1 to 3 feelings.",
+  "feelingsLimitReached": "You have chosen 3 feelings. Deselect one to choose another.",
+  "statementTitle": "Your vision",
+  "statementBody": "Soul drafted this from your choices. Make it your own.",
+  "statementLabel": "Vision statement",
+  "statementEmpty": "Write your vision in one or two sentences.",
+  "statementTooLong": "Please keep it to {max} characters or fewer.",
+  "@statementTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "visionImageTitle": "Make it feel real",
+  "visionImageBody": "Add a photo if you like. It's optional.",
+  "chooseFromLibrary": "Choose from library",
+  "takePhoto": "Take a photo",
+  "removePhoto": "Remove photo",
+  "visionPhoto": "Vision photo",
+  "photoUnavailable": "This photo can't be shown.",
+  "reviewVisionTitle": "Review your vision",
+  "saveToVisionBoard": "Save to vision board",
+  "visionSaveFailed": "Your vision wasn't saved. Your choices are still here — please try again.",
+  "archiveVision": "Archive vision",
+  "archiveVisionTitle": "Archive this vision?",
+  "archiveVisionBody": "It will leave your board but won't be deleted.",
+  "archive": "Archive",
+  "visionNotFound": "This vision is no longer on your board."
 }

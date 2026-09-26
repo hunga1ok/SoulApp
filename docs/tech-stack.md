@@ -79,7 +79,7 @@ Before the admin UI exists, a deterministic import CLI can seed content. Do not 
 
 ## 5. Content import
 
-App-only MVP: a deterministic build-time step validates the active datasets and writes versioned JSON assets into the app. Where that generator lives (a JSON export added to the existing SoulApi validator, or a standalone script) is not decided yet. The existing SoulApi importer is described below:
+App-only MVP: a deterministic build-time step validates the active datasets and writes versioned JSON assets into the app. The generator is `npm run content:export` in SoulApi, reusing its tested parser and validation as a build tool only; its JSON is committed under `SoulApp/assets/content/`. The importer is described below:
 
 - TypeScript CLI (`npm run content:import` in SoulApi). XLSX is read directly with `jszip` + `fast-xml-parser`: the authoring workbooks use namespace-prefixed OOXML (`<x:workbook>`) that `exceljs` cannot parse. DOCX only needs heading IDs, read from `word/document.xml`; `mammoth` is not needed yet.
 - Stable source IDs and database upserts.

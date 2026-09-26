@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/soul_locale.dart';
+import 'vision_catalog.dart';
 
 /// A localized onboarding intention from the content bundle.
 class Intention {
@@ -30,10 +31,15 @@ class ContentRepository {
 
   final AssetBundle _bundle;
 
+  Future<Map<String, dynamic>> _load(String name) async =>
+      jsonDecode(await _bundle.loadString('assets/content/$name'))
+          as Map<String, dynamic>;
+
+  Future<VisionCatalog> visionCatalog(SoulLocale locale) async =>
+      VisionCatalog.fromJson(await _load('vision.json'), locale);
+
   Future<List<Intention>> intentions(SoulLocale locale) async {
-    final json =
-        jsonDecode(await _bundle.loadString('assets/content/intentions.json'))
-            as Map<String, dynamic>;
+    final json = await _load('intentions.json');
     final items =
         (json['intentions'] as List).cast<Map<String, dynamic>>()..sort(
           (a, b) => (a['sortOrder'] as int).compareTo(b['sortOrder'] as int),

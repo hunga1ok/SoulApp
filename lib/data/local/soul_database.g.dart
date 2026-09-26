@@ -913,12 +913,1221 @@ class ReminderPreferencesCompanion
   }
 }
 
+class $VisionsTable extends Visions with TableInfo<$VisionsTable, VisionRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisionsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryCodeMeta = const VerificationMeta(
+    'categoryCode',
+  );
+  @override
+  late final GeneratedColumn<String> categoryCode = GeneratedColumn<String>(
+    'category_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statementMeta = const VerificationMeta(
+    'statement',
+  );
+  @override
+  late final GeneratedColumn<String> statement = GeneratedColumn<String>(
+    'statement',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 500,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _imagePathMeta = const VerificationMeta(
+    'imagePath',
+  );
+  @override
+  late final GeneratedColumn<String> imagePath = GeneratedColumn<String>(
+    'image_path',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _localeMeta = const VerificationMeta('locale');
+  @override
+  late final GeneratedColumn<String> locale = GeneratedColumn<String>(
+    'locale',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+    'status',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _archivedAtMeta = const VerificationMeta(
+    'archivedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> archivedAt = GeneratedColumn<DateTime>(
+    'archived_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    categoryCode,
+    statement,
+    imagePath,
+    locale,
+    status,
+    createdAt,
+    updatedAt,
+    archivedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'visions';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<VisionRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('category_code')) {
+      context.handle(
+        _categoryCodeMeta,
+        categoryCode.isAcceptableOrUnknown(
+          data['category_code']!,
+          _categoryCodeMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryCodeMeta);
+    }
+    if (data.containsKey('statement')) {
+      context.handle(
+        _statementMeta,
+        statement.isAcceptableOrUnknown(data['statement']!, _statementMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statementMeta);
+    }
+    if (data.containsKey('image_path')) {
+      context.handle(
+        _imagePathMeta,
+        imagePath.isAcceptableOrUnknown(data['image_path']!, _imagePathMeta),
+      );
+    }
+    if (data.containsKey('locale')) {
+      context.handle(
+        _localeMeta,
+        locale.isAcceptableOrUnknown(data['locale']!, _localeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_localeMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(
+        _statusMeta,
+        status.isAcceptableOrUnknown(data['status']!, _statusMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('archived_at')) {
+      context.handle(
+        _archivedAtMeta,
+        archivedAt.isAcceptableOrUnknown(data['archived_at']!, _archivedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  VisionRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisionRow(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      categoryCode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}category_code'],
+          )!,
+      statement:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}statement'],
+          )!,
+      imagePath: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}image_path'],
+      ),
+      locale:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}locale'],
+          )!,
+      status:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}status'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
+      updatedAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}updated_at'],
+          )!,
+      archivedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}archived_at'],
+      ),
+    );
+  }
+
+  @override
+  $VisionsTable createAlias(String alias) {
+    return $VisionsTable(attachedDatabase, alias);
+  }
+}
+
+class VisionRow extends DataClass implements Insertable<VisionRow> {
+  final String id;
+  final String categoryCode;
+  final String statement;
+
+  /// Image path relative to the app support directory.
+  final String? imagePath;
+
+  /// Locale of the statement and answers when written.
+  final String locale;
+
+  /// `active` or `archived`.
+  final String status;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final DateTime? archivedAt;
+  const VisionRow({
+    required this.id,
+    required this.categoryCode,
+    required this.statement,
+    this.imagePath,
+    required this.locale,
+    required this.status,
+    required this.createdAt,
+    required this.updatedAt,
+    this.archivedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['category_code'] = Variable<String>(categoryCode);
+    map['statement'] = Variable<String>(statement);
+    if (!nullToAbsent || imagePath != null) {
+      map['image_path'] = Variable<String>(imagePath);
+    }
+    map['locale'] = Variable<String>(locale);
+    map['status'] = Variable<String>(status);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    if (!nullToAbsent || archivedAt != null) {
+      map['archived_at'] = Variable<DateTime>(archivedAt);
+    }
+    return map;
+  }
+
+  VisionsCompanion toCompanion(bool nullToAbsent) {
+    return VisionsCompanion(
+      id: Value(id),
+      categoryCode: Value(categoryCode),
+      statement: Value(statement),
+      imagePath:
+          imagePath == null && nullToAbsent
+              ? const Value.absent()
+              : Value(imagePath),
+      locale: Value(locale),
+      status: Value(status),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      archivedAt:
+          archivedAt == null && nullToAbsent
+              ? const Value.absent()
+              : Value(archivedAt),
+    );
+  }
+
+  factory VisionRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return VisionRow(
+      id: serializer.fromJson<String>(json['id']),
+      categoryCode: serializer.fromJson<String>(json['categoryCode']),
+      statement: serializer.fromJson<String>(json['statement']),
+      imagePath: serializer.fromJson<String?>(json['imagePath']),
+      locale: serializer.fromJson<String>(json['locale']),
+      status: serializer.fromJson<String>(json['status']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      archivedAt: serializer.fromJson<DateTime?>(json['archivedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'categoryCode': serializer.toJson<String>(categoryCode),
+      'statement': serializer.toJson<String>(statement),
+      'imagePath': serializer.toJson<String?>(imagePath),
+      'locale': serializer.toJson<String>(locale),
+      'status': serializer.toJson<String>(status),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'archivedAt': serializer.toJson<DateTime?>(archivedAt),
+    };
+  }
+
+  VisionRow copyWith({
+    String? id,
+    String? categoryCode,
+    String? statement,
+    Value<String?> imagePath = const Value.absent(),
+    String? locale,
+    String? status,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    Value<DateTime?> archivedAt = const Value.absent(),
+  }) => VisionRow(
+    id: id ?? this.id,
+    categoryCode: categoryCode ?? this.categoryCode,
+    statement: statement ?? this.statement,
+    imagePath: imagePath.present ? imagePath.value : this.imagePath,
+    locale: locale ?? this.locale,
+    status: status ?? this.status,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    archivedAt: archivedAt.present ? archivedAt.value : this.archivedAt,
+  );
+  VisionRow copyWithCompanion(VisionsCompanion data) {
+    return VisionRow(
+      id: data.id.present ? data.id.value : this.id,
+      categoryCode:
+          data.categoryCode.present
+              ? data.categoryCode.value
+              : this.categoryCode,
+      statement: data.statement.present ? data.statement.value : this.statement,
+      imagePath: data.imagePath.present ? data.imagePath.value : this.imagePath,
+      locale: data.locale.present ? data.locale.value : this.locale,
+      status: data.status.present ? data.status.value : this.status,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      archivedAt:
+          data.archivedAt.present ? data.archivedAt.value : this.archivedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionRow(')
+          ..write('id: $id, ')
+          ..write('categoryCode: $categoryCode, ')
+          ..write('statement: $statement, ')
+          ..write('imagePath: $imagePath, ')
+          ..write('locale: $locale, ')
+          ..write('status: $status, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('archivedAt: $archivedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    categoryCode,
+    statement,
+    imagePath,
+    locale,
+    status,
+    createdAt,
+    updatedAt,
+    archivedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is VisionRow &&
+          other.id == this.id &&
+          other.categoryCode == this.categoryCode &&
+          other.statement == this.statement &&
+          other.imagePath == this.imagePath &&
+          other.locale == this.locale &&
+          other.status == this.status &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.archivedAt == this.archivedAt);
+}
+
+class VisionsCompanion extends UpdateCompanion<VisionRow> {
+  final Value<String> id;
+  final Value<String> categoryCode;
+  final Value<String> statement;
+  final Value<String?> imagePath;
+  final Value<String> locale;
+  final Value<String> status;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<DateTime?> archivedAt;
+  final Value<int> rowid;
+  const VisionsCompanion({
+    this.id = const Value.absent(),
+    this.categoryCode = const Value.absent(),
+    this.statement = const Value.absent(),
+    this.imagePath = const Value.absent(),
+    this.locale = const Value.absent(),
+    this.status = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.archivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VisionsCompanion.insert({
+    required String id,
+    required String categoryCode,
+    required String statement,
+    this.imagePath = const Value.absent(),
+    required String locale,
+    required String status,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    this.archivedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       categoryCode = Value(categoryCode),
+       statement = Value(statement),
+       locale = Value(locale),
+       status = Value(status),
+       createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt);
+  static Insertable<VisionRow> custom({
+    Expression<String>? id,
+    Expression<String>? categoryCode,
+    Expression<String>? statement,
+    Expression<String>? imagePath,
+    Expression<String>? locale,
+    Expression<String>? status,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<DateTime>? archivedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (categoryCode != null) 'category_code': categoryCode,
+      if (statement != null) 'statement': statement,
+      if (imagePath != null) 'image_path': imagePath,
+      if (locale != null) 'locale': locale,
+      if (status != null) 'status': status,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (archivedAt != null) 'archived_at': archivedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VisionsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? categoryCode,
+    Value<String>? statement,
+    Value<String?>? imagePath,
+    Value<String>? locale,
+    Value<String>? status,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<DateTime?>? archivedAt,
+    Value<int>? rowid,
+  }) {
+    return VisionsCompanion(
+      id: id ?? this.id,
+      categoryCode: categoryCode ?? this.categoryCode,
+      statement: statement ?? this.statement,
+      imagePath: imagePath ?? this.imagePath,
+      locale: locale ?? this.locale,
+      status: status ?? this.status,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      archivedAt: archivedAt ?? this.archivedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (categoryCode.present) {
+      map['category_code'] = Variable<String>(categoryCode.value);
+    }
+    if (statement.present) {
+      map['statement'] = Variable<String>(statement.value);
+    }
+    if (imagePath.present) {
+      map['image_path'] = Variable<String>(imagePath.value);
+    }
+    if (locale.present) {
+      map['locale'] = Variable<String>(locale.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (archivedAt.present) {
+      map['archived_at'] = Variable<DateTime>(archivedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionsCompanion(')
+          ..write('id: $id, ')
+          ..write('categoryCode: $categoryCode, ')
+          ..write('statement: $statement, ')
+          ..write('imagePath: $imagePath, ')
+          ..write('locale: $locale, ')
+          ..write('status: $status, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('archivedAt: $archivedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $VisionFeelingsTable extends VisionFeelings
+    with TableInfo<$VisionFeelingsTable, VisionFeelingRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisionFeelingsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _visionIdMeta = const VerificationMeta(
+    'visionId',
+  );
+  @override
+  late final GeneratedColumn<String> visionId = GeneratedColumn<String>(
+    'vision_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES visions (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _feelingCodeMeta = const VerificationMeta(
+    'feelingCode',
+  );
+  @override
+  late final GeneratedColumn<String> feelingCode = GeneratedColumn<String>(
+    'feeling_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _positionMeta = const VerificationMeta(
+    'position',
+  );
+  @override
+  late final GeneratedColumn<int> position = GeneratedColumn<int>(
+    'position',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [visionId, feelingCode, position];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'vision_feelings';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<VisionFeelingRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('vision_id')) {
+      context.handle(
+        _visionIdMeta,
+        visionId.isAcceptableOrUnknown(data['vision_id']!, _visionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_visionIdMeta);
+    }
+    if (data.containsKey('feeling_code')) {
+      context.handle(
+        _feelingCodeMeta,
+        feelingCode.isAcceptableOrUnknown(
+          data['feeling_code']!,
+          _feelingCodeMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_feelingCodeMeta);
+    }
+    if (data.containsKey('position')) {
+      context.handle(
+        _positionMeta,
+        position.isAcceptableOrUnknown(data['position']!, _positionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_positionMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {visionId, feelingCode};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+    {visionId, position},
+  ];
+  @override
+  VisionFeelingRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisionFeelingRow(
+      visionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}vision_id'],
+          )!,
+      feelingCode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}feeling_code'],
+          )!,
+      position:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}position'],
+          )!,
+    );
+  }
+
+  @override
+  $VisionFeelingsTable createAlias(String alias) {
+    return $VisionFeelingsTable(attachedDatabase, alias);
+  }
+}
+
+class VisionFeelingRow extends DataClass
+    implements Insertable<VisionFeelingRow> {
+  final String visionId;
+  final String feelingCode;
+  final int position;
+  const VisionFeelingRow({
+    required this.visionId,
+    required this.feelingCode,
+    required this.position,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['vision_id'] = Variable<String>(visionId);
+    map['feeling_code'] = Variable<String>(feelingCode);
+    map['position'] = Variable<int>(position);
+    return map;
+  }
+
+  VisionFeelingsCompanion toCompanion(bool nullToAbsent) {
+    return VisionFeelingsCompanion(
+      visionId: Value(visionId),
+      feelingCode: Value(feelingCode),
+      position: Value(position),
+    );
+  }
+
+  factory VisionFeelingRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return VisionFeelingRow(
+      visionId: serializer.fromJson<String>(json['visionId']),
+      feelingCode: serializer.fromJson<String>(json['feelingCode']),
+      position: serializer.fromJson<int>(json['position']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'visionId': serializer.toJson<String>(visionId),
+      'feelingCode': serializer.toJson<String>(feelingCode),
+      'position': serializer.toJson<int>(position),
+    };
+  }
+
+  VisionFeelingRow copyWith({
+    String? visionId,
+    String? feelingCode,
+    int? position,
+  }) => VisionFeelingRow(
+    visionId: visionId ?? this.visionId,
+    feelingCode: feelingCode ?? this.feelingCode,
+    position: position ?? this.position,
+  );
+  VisionFeelingRow copyWithCompanion(VisionFeelingsCompanion data) {
+    return VisionFeelingRow(
+      visionId: data.visionId.present ? data.visionId.value : this.visionId,
+      feelingCode:
+          data.feelingCode.present ? data.feelingCode.value : this.feelingCode,
+      position: data.position.present ? data.position.value : this.position,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionFeelingRow(')
+          ..write('visionId: $visionId, ')
+          ..write('feelingCode: $feelingCode, ')
+          ..write('position: $position')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(visionId, feelingCode, position);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is VisionFeelingRow &&
+          other.visionId == this.visionId &&
+          other.feelingCode == this.feelingCode &&
+          other.position == this.position);
+}
+
+class VisionFeelingsCompanion extends UpdateCompanion<VisionFeelingRow> {
+  final Value<String> visionId;
+  final Value<String> feelingCode;
+  final Value<int> position;
+  final Value<int> rowid;
+  const VisionFeelingsCompanion({
+    this.visionId = const Value.absent(),
+    this.feelingCode = const Value.absent(),
+    this.position = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VisionFeelingsCompanion.insert({
+    required String visionId,
+    required String feelingCode,
+    required int position,
+    this.rowid = const Value.absent(),
+  }) : visionId = Value(visionId),
+       feelingCode = Value(feelingCode),
+       position = Value(position);
+  static Insertable<VisionFeelingRow> custom({
+    Expression<String>? visionId,
+    Expression<String>? feelingCode,
+    Expression<int>? position,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (visionId != null) 'vision_id': visionId,
+      if (feelingCode != null) 'feeling_code': feelingCode,
+      if (position != null) 'position': position,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VisionFeelingsCompanion copyWith({
+    Value<String>? visionId,
+    Value<String>? feelingCode,
+    Value<int>? position,
+    Value<int>? rowid,
+  }) {
+    return VisionFeelingsCompanion(
+      visionId: visionId ?? this.visionId,
+      feelingCode: feelingCode ?? this.feelingCode,
+      position: position ?? this.position,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (visionId.present) {
+      map['vision_id'] = Variable<String>(visionId.value);
+    }
+    if (feelingCode.present) {
+      map['feeling_code'] = Variable<String>(feelingCode.value);
+    }
+    if (position.present) {
+      map['position'] = Variable<int>(position.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionFeelingsCompanion(')
+          ..write('visionId: $visionId, ')
+          ..write('feelingCode: $feelingCode, ')
+          ..write('position: $position, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $VisionAnswersTable extends VisionAnswers
+    with TableInfo<$VisionAnswersTable, VisionAnswerRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisionAnswersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _visionIdMeta = const VerificationMeta(
+    'visionId',
+  );
+  @override
+  late final GeneratedColumn<String> visionId = GeneratedColumn<String>(
+    'vision_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES visions (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _questionCodeMeta = const VerificationMeta(
+    'questionCode',
+  );
+  @override
+  late final GeneratedColumn<String> questionCode = GeneratedColumn<String>(
+    'question_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _valueCodesMeta = const VerificationMeta(
+    'valueCodes',
+  );
+  @override
+  late final GeneratedColumn<String> valueCodes = GeneratedColumn<String>(
+    'value_codes',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _customTextMeta = const VerificationMeta(
+    'customText',
+  );
+  @override
+  late final GeneratedColumn<String> customText = GeneratedColumn<String>(
+    'custom_text',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    visionId,
+    questionCode,
+    valueCodes,
+    customText,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'vision_answers';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<VisionAnswerRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('vision_id')) {
+      context.handle(
+        _visionIdMeta,
+        visionId.isAcceptableOrUnknown(data['vision_id']!, _visionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_visionIdMeta);
+    }
+    if (data.containsKey('question_code')) {
+      context.handle(
+        _questionCodeMeta,
+        questionCode.isAcceptableOrUnknown(
+          data['question_code']!,
+          _questionCodeMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_questionCodeMeta);
+    }
+    if (data.containsKey('value_codes')) {
+      context.handle(
+        _valueCodesMeta,
+        valueCodes.isAcceptableOrUnknown(data['value_codes']!, _valueCodesMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_valueCodesMeta);
+    }
+    if (data.containsKey('custom_text')) {
+      context.handle(
+        _customTextMeta,
+        customText.isAcceptableOrUnknown(data['custom_text']!, _customTextMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {visionId, questionCode};
+  @override
+  VisionAnswerRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisionAnswerRow(
+      visionId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}vision_id'],
+          )!,
+      questionCode:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}question_code'],
+          )!,
+      valueCodes:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}value_codes'],
+          )!,
+      customText: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}custom_text'],
+      ),
+    );
+  }
+
+  @override
+  $VisionAnswersTable createAlias(String alias) {
+    return $VisionAnswersTable(attachedDatabase, alias);
+  }
+}
+
+class VisionAnswerRow extends DataClass implements Insertable<VisionAnswerRow> {
+  final String visionId;
+  final String questionCode;
+
+  /// JSON array of suggested-answer value codes.
+  final String valueCodes;
+  final String? customText;
+  const VisionAnswerRow({
+    required this.visionId,
+    required this.questionCode,
+    required this.valueCodes,
+    this.customText,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['vision_id'] = Variable<String>(visionId);
+    map['question_code'] = Variable<String>(questionCode);
+    map['value_codes'] = Variable<String>(valueCodes);
+    if (!nullToAbsent || customText != null) {
+      map['custom_text'] = Variable<String>(customText);
+    }
+    return map;
+  }
+
+  VisionAnswersCompanion toCompanion(bool nullToAbsent) {
+    return VisionAnswersCompanion(
+      visionId: Value(visionId),
+      questionCode: Value(questionCode),
+      valueCodes: Value(valueCodes),
+      customText:
+          customText == null && nullToAbsent
+              ? const Value.absent()
+              : Value(customText),
+    );
+  }
+
+  factory VisionAnswerRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return VisionAnswerRow(
+      visionId: serializer.fromJson<String>(json['visionId']),
+      questionCode: serializer.fromJson<String>(json['questionCode']),
+      valueCodes: serializer.fromJson<String>(json['valueCodes']),
+      customText: serializer.fromJson<String?>(json['customText']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'visionId': serializer.toJson<String>(visionId),
+      'questionCode': serializer.toJson<String>(questionCode),
+      'valueCodes': serializer.toJson<String>(valueCodes),
+      'customText': serializer.toJson<String?>(customText),
+    };
+  }
+
+  VisionAnswerRow copyWith({
+    String? visionId,
+    String? questionCode,
+    String? valueCodes,
+    Value<String?> customText = const Value.absent(),
+  }) => VisionAnswerRow(
+    visionId: visionId ?? this.visionId,
+    questionCode: questionCode ?? this.questionCode,
+    valueCodes: valueCodes ?? this.valueCodes,
+    customText: customText.present ? customText.value : this.customText,
+  );
+  VisionAnswerRow copyWithCompanion(VisionAnswersCompanion data) {
+    return VisionAnswerRow(
+      visionId: data.visionId.present ? data.visionId.value : this.visionId,
+      questionCode:
+          data.questionCode.present
+              ? data.questionCode.value
+              : this.questionCode,
+      valueCodes:
+          data.valueCodes.present ? data.valueCodes.value : this.valueCodes,
+      customText:
+          data.customText.present ? data.customText.value : this.customText,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionAnswerRow(')
+          ..write('visionId: $visionId, ')
+          ..write('questionCode: $questionCode, ')
+          ..write('valueCodes: $valueCodes, ')
+          ..write('customText: $customText')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(visionId, questionCode, valueCodes, customText);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is VisionAnswerRow &&
+          other.visionId == this.visionId &&
+          other.questionCode == this.questionCode &&
+          other.valueCodes == this.valueCodes &&
+          other.customText == this.customText);
+}
+
+class VisionAnswersCompanion extends UpdateCompanion<VisionAnswerRow> {
+  final Value<String> visionId;
+  final Value<String> questionCode;
+  final Value<String> valueCodes;
+  final Value<String?> customText;
+  final Value<int> rowid;
+  const VisionAnswersCompanion({
+    this.visionId = const Value.absent(),
+    this.questionCode = const Value.absent(),
+    this.valueCodes = const Value.absent(),
+    this.customText = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  VisionAnswersCompanion.insert({
+    required String visionId,
+    required String questionCode,
+    required String valueCodes,
+    this.customText = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : visionId = Value(visionId),
+       questionCode = Value(questionCode),
+       valueCodes = Value(valueCodes);
+  static Insertable<VisionAnswerRow> custom({
+    Expression<String>? visionId,
+    Expression<String>? questionCode,
+    Expression<String>? valueCodes,
+    Expression<String>? customText,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (visionId != null) 'vision_id': visionId,
+      if (questionCode != null) 'question_code': questionCode,
+      if (valueCodes != null) 'value_codes': valueCodes,
+      if (customText != null) 'custom_text': customText,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  VisionAnswersCompanion copyWith({
+    Value<String>? visionId,
+    Value<String>? questionCode,
+    Value<String>? valueCodes,
+    Value<String?>? customText,
+    Value<int>? rowid,
+  }) {
+    return VisionAnswersCompanion(
+      visionId: visionId ?? this.visionId,
+      questionCode: questionCode ?? this.questionCode,
+      valueCodes: valueCodes ?? this.valueCodes,
+      customText: customText ?? this.customText,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (visionId.present) {
+      map['vision_id'] = Variable<String>(visionId.value);
+    }
+    if (questionCode.present) {
+      map['question_code'] = Variable<String>(questionCode.value);
+    }
+    if (valueCodes.present) {
+      map['value_codes'] = Variable<String>(valueCodes.value);
+    }
+    if (customText.present) {
+      map['custom_text'] = Variable<String>(customText.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisionAnswersCompanion(')
+          ..write('visionId: $visionId, ')
+          ..write('questionCode: $questionCode, ')
+          ..write('valueCodes: $valueCodes, ')
+          ..write('customText: $customText, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$SoulDatabase extends GeneratedDatabase {
   _$SoulDatabase(QueryExecutor e) : super(e);
   $SoulDatabaseManager get managers => $SoulDatabaseManager(this);
   late final $UserJourneysTable userJourneys = $UserJourneysTable(this);
   late final $ReminderPreferencesTable reminderPreferences =
       $ReminderPreferencesTable(this);
+  late final $VisionsTable visions = $VisionsTable(this);
+  late final $VisionFeelingsTable visionFeelings = $VisionFeelingsTable(this);
+  late final $VisionAnswersTable visionAnswers = $VisionAnswersTable(this);
   late final Index userJourneysOneActive = Index(
     'user_journeys_one_active',
     'CREATE UNIQUE INDEX user_journeys_one_active ON user_journeys (journey_code) WHERE status = \'active\'',
@@ -930,8 +2139,28 @@ abstract class _$SoulDatabase extends GeneratedDatabase {
   List<DatabaseSchemaEntity> get allSchemaEntities => [
     userJourneys,
     reminderPreferences,
+    visions,
+    visionFeelings,
+    visionAnswers,
     userJourneysOneActive,
   ];
+  @override
+  StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'visions',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('vision_feelings', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'visions',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('vision_answers', kind: UpdateKind.delete)],
+    ),
+  ]);
 }
 
 typedef $$UserJourneysTableCreateCompanionBuilder =
@@ -1442,6 +2671,1104 @@ typedef $$ReminderPreferencesTableProcessedTableManager =
       ReminderPreferenceRow,
       PrefetchHooks Function()
     >;
+typedef $$VisionsTableCreateCompanionBuilder =
+    VisionsCompanion Function({
+      required String id,
+      required String categoryCode,
+      required String statement,
+      Value<String?> imagePath,
+      required String locale,
+      required String status,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      Value<DateTime?> archivedAt,
+      Value<int> rowid,
+    });
+typedef $$VisionsTableUpdateCompanionBuilder =
+    VisionsCompanion Function({
+      Value<String> id,
+      Value<String> categoryCode,
+      Value<String> statement,
+      Value<String?> imagePath,
+      Value<String> locale,
+      Value<String> status,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<DateTime?> archivedAt,
+      Value<int> rowid,
+    });
+
+final class $$VisionsTableReferences
+    extends BaseReferences<_$SoulDatabase, $VisionsTable, VisionRow> {
+  $$VisionsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$VisionFeelingsTable, List<VisionFeelingRow>>
+  _visionFeelingsRefsTable(_$SoulDatabase db) => MultiTypedResultKey.fromTable(
+    db.visionFeelings,
+    aliasName: 'visions__id__vision_feelings__vision_id',
+  );
+
+  $$VisionFeelingsTableProcessedTableManager get visionFeelingsRefs {
+    final manager = $$VisionFeelingsTableTableManager(
+      $_db,
+      $_db.visionFeelings,
+    ).filter((f) => f.visionId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_visionFeelingsRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$VisionAnswersTable, List<VisionAnswerRow>>
+  _visionAnswersRefsTable(_$SoulDatabase db) => MultiTypedResultKey.fromTable(
+    db.visionAnswers,
+    aliasName: 'visions__id__vision_answers__vision_id',
+  );
+
+  $$VisionAnswersTableProcessedTableManager get visionAnswersRefs {
+    final manager = $$VisionAnswersTableTableManager(
+      $_db,
+      $_db.visionAnswers,
+    ).filter((f) => f.visionId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_visionAnswersRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$VisionsTableFilterComposer
+    extends Composer<_$SoulDatabase, $VisionsTable> {
+  $$VisionsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get categoryCode => $composableBuilder(
+    column: $table.categoryCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get statement => $composableBuilder(
+    column: $table.statement,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get imagePath => $composableBuilder(
+    column: $table.imagePath,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get locale => $composableBuilder(
+    column: $table.locale,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> visionFeelingsRefs(
+    Expression<bool> Function($$VisionFeelingsTableFilterComposer f) f,
+  ) {
+    final $$VisionFeelingsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.visionFeelings,
+      getReferencedColumn: (t) => t.visionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionFeelingsTableFilterComposer(
+            $db: $db,
+            $table: $db.visionFeelings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> visionAnswersRefs(
+    Expression<bool> Function($$VisionAnswersTableFilterComposer f) f,
+  ) {
+    final $$VisionAnswersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.visionAnswers,
+      getReferencedColumn: (t) => t.visionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionAnswersTableFilterComposer(
+            $db: $db,
+            $table: $db.visionAnswers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$VisionsTableOrderingComposer
+    extends Composer<_$SoulDatabase, $VisionsTable> {
+  $$VisionsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get categoryCode => $composableBuilder(
+    column: $table.categoryCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get statement => $composableBuilder(
+    column: $table.statement,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get imagePath => $composableBuilder(
+    column: $table.imagePath,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get locale => $composableBuilder(
+    column: $table.locale,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$VisionsTableAnnotationComposer
+    extends Composer<_$SoulDatabase, $VisionsTable> {
+  $$VisionsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get categoryCode => $composableBuilder(
+    column: $table.categoryCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get statement =>
+      $composableBuilder(column: $table.statement, builder: (column) => column);
+
+  GeneratedColumn<String> get imagePath =>
+      $composableBuilder(column: $table.imagePath, builder: (column) => column);
+
+  GeneratedColumn<String> get locale =>
+      $composableBuilder(column: $table.locale, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get archivedAt => $composableBuilder(
+    column: $table.archivedAt,
+    builder: (column) => column,
+  );
+
+  Expression<T> visionFeelingsRefs<T extends Object>(
+    Expression<T> Function($$VisionFeelingsTableAnnotationComposer a) f,
+  ) {
+    final $$VisionFeelingsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.visionFeelings,
+      getReferencedColumn: (t) => t.visionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionFeelingsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.visionFeelings,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<T> visionAnswersRefs<T extends Object>(
+    Expression<T> Function($$VisionAnswersTableAnnotationComposer a) f,
+  ) {
+    final $$VisionAnswersTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.visionAnswers,
+      getReferencedColumn: (t) => t.visionId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionAnswersTableAnnotationComposer(
+            $db: $db,
+            $table: $db.visionAnswers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$VisionsTableTableManager
+    extends
+        RootTableManager<
+          _$SoulDatabase,
+          $VisionsTable,
+          VisionRow,
+          $$VisionsTableFilterComposer,
+          $$VisionsTableOrderingComposer,
+          $$VisionsTableAnnotationComposer,
+          $$VisionsTableCreateCompanionBuilder,
+          $$VisionsTableUpdateCompanionBuilder,
+          (VisionRow, $$VisionsTableReferences),
+          VisionRow,
+          PrefetchHooks Function({
+            bool visionFeelingsRefs,
+            bool visionAnswersRefs,
+          })
+        > {
+  $$VisionsTableTableManager(_$SoulDatabase db, $VisionsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer:
+              () => $$VisionsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$VisionsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$VisionsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> categoryCode = const Value.absent(),
+                Value<String> statement = const Value.absent(),
+                Value<String?> imagePath = const Value.absent(),
+                Value<String> locale = const Value.absent(),
+                Value<String> status = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<DateTime?> archivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisionsCompanion(
+                id: id,
+                categoryCode: categoryCode,
+                statement: statement,
+                imagePath: imagePath,
+                locale: locale,
+                status: status,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                archivedAt: archivedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String categoryCode,
+                required String statement,
+                Value<String?> imagePath = const Value.absent(),
+                required String locale,
+                required String status,
+                required DateTime createdAt,
+                required DateTime updatedAt,
+                Value<DateTime?> archivedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisionsCompanion.insert(
+                id: id,
+                categoryCode: categoryCode,
+                statement: statement,
+                imagePath: imagePath,
+                locale: locale,
+                status: status,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                archivedAt: archivedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable<$VisionsTable, VisionRow>(table),
+                          $$VisionsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({
+            visionFeelingsRefs = false,
+            visionAnswersRefs = false,
+          }) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (visionFeelingsRefs) db.visionFeelings,
+                if (visionAnswersRefs) db.visionAnswers,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (visionFeelingsRefs)
+                    await $_getPrefetchedData<
+                      VisionRow,
+                      $VisionsTable,
+                      VisionFeelingRow
+                    >(
+                      currentTable: table,
+                      referencedTable: $$VisionsTableReferences
+                          ._visionFeelingsRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$VisionsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).visionFeelingsRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.visionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                  if (visionAnswersRefs)
+                    await $_getPrefetchedData<
+                      VisionRow,
+                      $VisionsTable,
+                      VisionAnswerRow
+                    >(
+                      currentTable: table,
+                      referencedTable: $$VisionsTableReferences
+                          ._visionAnswersRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$VisionsTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).visionAnswersRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.visionId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$VisionsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$SoulDatabase,
+      $VisionsTable,
+      VisionRow,
+      $$VisionsTableFilterComposer,
+      $$VisionsTableOrderingComposer,
+      $$VisionsTableAnnotationComposer,
+      $$VisionsTableCreateCompanionBuilder,
+      $$VisionsTableUpdateCompanionBuilder,
+      (VisionRow, $$VisionsTableReferences),
+      VisionRow,
+      PrefetchHooks Function({bool visionFeelingsRefs, bool visionAnswersRefs})
+    >;
+typedef $$VisionFeelingsTableCreateCompanionBuilder =
+    VisionFeelingsCompanion Function({
+      required String visionId,
+      required String feelingCode,
+      required int position,
+      Value<int> rowid,
+    });
+typedef $$VisionFeelingsTableUpdateCompanionBuilder =
+    VisionFeelingsCompanion Function({
+      Value<String> visionId,
+      Value<String> feelingCode,
+      Value<int> position,
+      Value<int> rowid,
+    });
+
+final class $$VisionFeelingsTableReferences
+    extends
+        BaseReferences<_$SoulDatabase, $VisionFeelingsTable, VisionFeelingRow> {
+  $$VisionFeelingsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $VisionsTable _visionIdTable(_$SoulDatabase db) =>
+      db.visions.createAlias('vision_feelings__vision_id__visions__id');
+
+  $$VisionsTableProcessedTableManager get visionId {
+    final $_column = $_itemColumn<String>('vision_id')!;
+
+    final manager = $$VisionsTableTableManager(
+      $_db,
+      $_db.visions,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_visionIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$VisionFeelingsTableFilterComposer
+    extends Composer<_$SoulDatabase, $VisionFeelingsTable> {
+  $$VisionFeelingsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get feelingCode => $composableBuilder(
+    column: $table.feelingCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$VisionsTableFilterComposer get visionId {
+    final $$VisionsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableFilterComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionFeelingsTableOrderingComposer
+    extends Composer<_$SoulDatabase, $VisionFeelingsTable> {
+  $$VisionFeelingsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get feelingCode => $composableBuilder(
+    column: $table.feelingCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$VisionsTableOrderingComposer get visionId {
+    final $$VisionsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableOrderingComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionFeelingsTableAnnotationComposer
+    extends Composer<_$SoulDatabase, $VisionFeelingsTable> {
+  $$VisionFeelingsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get feelingCode => $composableBuilder(
+    column: $table.feelingCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get position =>
+      $composableBuilder(column: $table.position, builder: (column) => column);
+
+  $$VisionsTableAnnotationComposer get visionId {
+    final $$VisionsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionFeelingsTableTableManager
+    extends
+        RootTableManager<
+          _$SoulDatabase,
+          $VisionFeelingsTable,
+          VisionFeelingRow,
+          $$VisionFeelingsTableFilterComposer,
+          $$VisionFeelingsTableOrderingComposer,
+          $$VisionFeelingsTableAnnotationComposer,
+          $$VisionFeelingsTableCreateCompanionBuilder,
+          $$VisionFeelingsTableUpdateCompanionBuilder,
+          (VisionFeelingRow, $$VisionFeelingsTableReferences),
+          VisionFeelingRow,
+          PrefetchHooks Function({bool visionId})
+        > {
+  $$VisionFeelingsTableTableManager(
+    _$SoulDatabase db,
+    $VisionFeelingsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer:
+              () => $$VisionFeelingsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () =>
+                  $$VisionFeelingsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$VisionFeelingsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> visionId = const Value.absent(),
+                Value<String> feelingCode = const Value.absent(),
+                Value<int> position = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisionFeelingsCompanion(
+                visionId: visionId,
+                feelingCode: feelingCode,
+                position: position,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String visionId,
+                required String feelingCode,
+                required int position,
+                Value<int> rowid = const Value.absent(),
+              }) => VisionFeelingsCompanion.insert(
+                visionId: visionId,
+                feelingCode: feelingCode,
+                position: position,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable<$VisionFeelingsTable, VisionFeelingRow>(
+                            table,
+                          ),
+                          $$VisionFeelingsTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({visionId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (visionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.visionId,
+                            referencedTable: $$VisionFeelingsTableReferences
+                                ._visionIdTable(db),
+                            referencedColumn:
+                                $$VisionFeelingsTableReferences
+                                    ._visionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$VisionFeelingsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$SoulDatabase,
+      $VisionFeelingsTable,
+      VisionFeelingRow,
+      $$VisionFeelingsTableFilterComposer,
+      $$VisionFeelingsTableOrderingComposer,
+      $$VisionFeelingsTableAnnotationComposer,
+      $$VisionFeelingsTableCreateCompanionBuilder,
+      $$VisionFeelingsTableUpdateCompanionBuilder,
+      (VisionFeelingRow, $$VisionFeelingsTableReferences),
+      VisionFeelingRow,
+      PrefetchHooks Function({bool visionId})
+    >;
+typedef $$VisionAnswersTableCreateCompanionBuilder =
+    VisionAnswersCompanion Function({
+      required String visionId,
+      required String questionCode,
+      required String valueCodes,
+      Value<String?> customText,
+      Value<int> rowid,
+    });
+typedef $$VisionAnswersTableUpdateCompanionBuilder =
+    VisionAnswersCompanion Function({
+      Value<String> visionId,
+      Value<String> questionCode,
+      Value<String> valueCodes,
+      Value<String?> customText,
+      Value<int> rowid,
+    });
+
+final class $$VisionAnswersTableReferences
+    extends
+        BaseReferences<_$SoulDatabase, $VisionAnswersTable, VisionAnswerRow> {
+  $$VisionAnswersTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $VisionsTable _visionIdTable(_$SoulDatabase db) =>
+      db.visions.createAlias('vision_answers__vision_id__visions__id');
+
+  $$VisionsTableProcessedTableManager get visionId {
+    final $_column = $_itemColumn<String>('vision_id')!;
+
+    final manager = $$VisionsTableTableManager(
+      $_db,
+      $_db.visions,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_visionIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$VisionAnswersTableFilterComposer
+    extends Composer<_$SoulDatabase, $VisionAnswersTable> {
+  $$VisionAnswersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get questionCode => $composableBuilder(
+    column: $table.questionCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get valueCodes => $composableBuilder(
+    column: $table.valueCodes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get customText => $composableBuilder(
+    column: $table.customText,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$VisionsTableFilterComposer get visionId {
+    final $$VisionsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableFilterComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionAnswersTableOrderingComposer
+    extends Composer<_$SoulDatabase, $VisionAnswersTable> {
+  $$VisionAnswersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get questionCode => $composableBuilder(
+    column: $table.questionCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get valueCodes => $composableBuilder(
+    column: $table.valueCodes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get customText => $composableBuilder(
+    column: $table.customText,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$VisionsTableOrderingComposer get visionId {
+    final $$VisionsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableOrderingComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionAnswersTableAnnotationComposer
+    extends Composer<_$SoulDatabase, $VisionAnswersTable> {
+  $$VisionAnswersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get questionCode => $composableBuilder(
+    column: $table.questionCode,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get valueCodes => $composableBuilder(
+    column: $table.valueCodes,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get customText => $composableBuilder(
+    column: $table.customText,
+    builder: (column) => column,
+  );
+
+  $$VisionsTableAnnotationComposer get visionId {
+    final $$VisionsTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.visionId,
+      referencedTable: $db.visions,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$VisionsTableAnnotationComposer(
+            $db: $db,
+            $table: $db.visions,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$VisionAnswersTableTableManager
+    extends
+        RootTableManager<
+          _$SoulDatabase,
+          $VisionAnswersTable,
+          VisionAnswerRow,
+          $$VisionAnswersTableFilterComposer,
+          $$VisionAnswersTableOrderingComposer,
+          $$VisionAnswersTableAnnotationComposer,
+          $$VisionAnswersTableCreateCompanionBuilder,
+          $$VisionAnswersTableUpdateCompanionBuilder,
+          (VisionAnswerRow, $$VisionAnswersTableReferences),
+          VisionAnswerRow,
+          PrefetchHooks Function({bool visionId})
+        > {
+  $$VisionAnswersTableTableManager(_$SoulDatabase db, $VisionAnswersTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer:
+              () => $$VisionAnswersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () =>
+                  $$VisionAnswersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer:
+              () => $$VisionAnswersTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> visionId = const Value.absent(),
+                Value<String> questionCode = const Value.absent(),
+                Value<String> valueCodes = const Value.absent(),
+                Value<String?> customText = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisionAnswersCompanion(
+                visionId: visionId,
+                questionCode: questionCode,
+                valueCodes: valueCodes,
+                customText: customText,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String visionId,
+                required String questionCode,
+                required String valueCodes,
+                Value<String?> customText = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => VisionAnswersCompanion.insert(
+                visionId: visionId,
+                questionCode: questionCode,
+                valueCodes: valueCodes,
+                customText: customText,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable<$VisionAnswersTable, VisionAnswerRow>(
+                            table,
+                          ),
+                          $$VisionAnswersTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({visionId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (visionId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.visionId,
+                            referencedTable: $$VisionAnswersTableReferences
+                                ._visionIdTable(db),
+                            referencedColumn:
+                                $$VisionAnswersTableReferences
+                                    ._visionIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$VisionAnswersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$SoulDatabase,
+      $VisionAnswersTable,
+      VisionAnswerRow,
+      $$VisionAnswersTableFilterComposer,
+      $$VisionAnswersTableOrderingComposer,
+      $$VisionAnswersTableAnnotationComposer,
+      $$VisionAnswersTableCreateCompanionBuilder,
+      $$VisionAnswersTableUpdateCompanionBuilder,
+      (VisionAnswerRow, $$VisionAnswersTableReferences),
+      VisionAnswerRow,
+      PrefetchHooks Function({bool visionId})
+    >;
 
 class $SoulDatabaseManager {
   final _$SoulDatabase _db;
@@ -1450,4 +3777,10 @@ class $SoulDatabaseManager {
       $$UserJourneysTableTableManager(_db, _db.userJourneys);
   $$ReminderPreferencesTableTableManager get reminderPreferences =>
       $$ReminderPreferencesTableTableManager(_db, _db.reminderPreferences);
+  $$VisionsTableTableManager get visions =>
+      $$VisionsTableTableManager(_db, _db.visions);
+  $$VisionFeelingsTableTableManager get visionFeelings =>
+      $$VisionFeelingsTableTableManager(_db, _db.visionFeelings);
+  $$VisionAnswersTableTableManager get visionAnswers =>
+      $$VisionAnswersTableTableManager(_db, _db.visionAnswers);
 }

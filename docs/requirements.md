@@ -10,7 +10,7 @@ The MVP ships as an app-only product without a backend. This decision overrides 
 
 - All user data (profile, locale, sound preference, journey progress and responses, Journal, Visions and images, Future Letters, reminder settings) is stored on the device. There is no account and no sign-in.
 - Onboarding is language → preferred name → intention → reminders → Today.
-- Published content (journey, Vision catalog, feelings, notification copy, audio mapping) ships as versioned read-only data inside the app. Delivering content and audio through a remote manifest is under discussion and not decided.
+- Published content (journey, Vision catalog, feelings, notification copy, audio mapping) ships as versioned read-only data inside the app. Audio is bundled in the app while its total size stays within about 50 MB; beyond that it moves to a remote manifest of files on a static host, with one or two bundled `neutral` fallback tracks.
 - Reminders are local notifications scheduled on the device.
 - **Deferred until sync is reintroduced:** Google sign-in (US-OB-002), cross-device sync, server-side authorization, object-storage upload, sign-out, server account deletion, and the Admin CMS (REQ-ADM-001).
 - Local data is modeled so sync can be added later without a schema rewrite: client-generated UUIDs, `created_at`/`updated_at`, and archive instead of hard delete.

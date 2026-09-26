@@ -146,15 +146,18 @@
 
 - [~] `LOC-001` **P0 — Sinh content bundle JSON từ dataset**
   - Phạm vi: journey 28 ngày, Vision catalog (category, câu hỏi, gợi ý, feelings, statement), intention, notification copy, audio mapping; tách vi/en; có `contentVersion`.
-  - AC: chạy lặp lại cho kết quả giống hệt; fail khi thiếu bản dịch, sai tham chiếu, trùng code; app đọc bundle qua repository chỉ đọc, không parse XLSX/DOCX lúc chạy. Nơi đặt generator (mở rộng CLI validate của SoulApi hay script riêng) cần chốt khi bắt đầu.
+  - AC: chạy lặp lại cho kết quả giống hệt; fail khi thiếu bản dịch, sai tham chiếu, trùng code; app đọc bundle qua repository chỉ đọc, không parse XLSX/DOCX lúc chạy. Đã chốt 2026-09-26: generator là lệnh `content:export` trong CLI của SoulApi (dùng lại parser/validate đã test, chỉ là công cụ build, không cần chạy server); JSON sinh ra được commit vào `SoulApp/assets/content/`; `npm run content:export -- --check` báo lỗi khi bản commit cũ hơn `Specs/` (chạy thủ công vì CI của từng repo không có đủ `Specs/` và SoulApp).
   - Tiến độ 2026-09-26 (app-only đợt 1): mới có `assets/content/intentions.json` (4 ý định vi/en lấy từ prototype vì dataset không có) và `ContentRepository` đọc bundle. Generator từ `Specs/` chưa làm.
+  - Tiến độ 2026-09-26 (app-only đợt 2): `npm run content:export` (SoulApi) sinh `assets/content/vision.json`: 9 category, 34 feelings, 81 câu hỏi, 372 gợi ý, 17 template (ST01 còn draft nên không xuất); chỉ bản ghi published có tham chiếu published, thứ tự ổn định, `--check` báo file cũ. Còn: journey 28 ngày (chờ duyệt bản dịch `DAT-004`), notification copy, audio mapping.
 
 - [~] `LOC-002` **P0 — Database local bằng Drift**
   - AC: bảng journey run, task response, journal entry, Vision + feelings + answers, Future Letter, reminder settings theo `data-backend-spec.md`; UUID tạo trên máy, `created_at`/`updated_at`, archive thay vì xóa cứng; unique chống ghi trùng; migration có test từ DB trống và giữa các version.
   - Tiến độ 2026-09-26 (app-only đợt 1): thêm Drift (`lib/data/local/soul_database.dart`, schema v1) với `user_journeys` (UUID, `started_on` theo ngày local + timezone, partial unique index chỉ một run `active`/journey) và `reminder_preferences` (CHECK bật thì phải có giờ). Test unit phủ idempotent, unique index và CHECK. Còn lại: bảng task response, Journal, Vision, Future Letter (thêm cùng feature tương ứng) và test migration khi có schema v2.
+  - Tiến độ 2026-09-26 (app-only đợt 2): schema v2 thêm `visions` (statement 1–500, `image_path` tương đối, archive), `vision_feelings` (vị trí 1–3, CHECK + unique), `vision_answers`; bật `PRAGMA foreign_keys`. Migration theo `drift_dev make-migrations` (`drift_schemas/`), test tự động schema v1→v2 và giữ nguyên dữ liệu cũ.
 
-- [ ] `LOC-003` **P0 — Lưu ảnh trong thư mục app**
+- [~] `LOC-003` **P0 — Lưu ảnh trong thư mục app**
   - AC: copy/nén ảnh vào app support directory, DB lưu đường dẫn tương đối; thay/xóa ảnh không để lại file mồ côi; ảnh không nằm trong thư mục người dùng khác truy cập được.
+  - Tiến độ 2026-09-26 (app-only đợt 2): `ImageStore` copy ảnh vào `visions/<uuid>.<ext>` trong app support directory khi lưu Vision, DB lưu đường dẫn tương đối; lưu thất bại thì xóa bản copy. Ảnh được nén khi chọn (tối đa 2048 px, chất lượng 85). Còn: dọn file khi thay/bỏ ảnh của Vision đã lưu (cùng `VIS-010`).
 
 - [ ] `LOC-004` **P0 — Xóa toàn bộ dữ liệu local**
   - AC: confirm rõ hậu quả; xóa DB, ảnh, preferences, hủy lịch nhắc; quay về màn chọn ngôn ngữ; có test.
@@ -262,7 +265,7 @@
   - Liên kết: `US-OB-004`.
   - AC: nội dung đúng dataset; lưu server; không nhầm focus với feeling hoặc Vision Category.
   - Chuyển app-only 2026-09-26: lựa chọn intention lấy từ content bundle, lưu local.
-  - Hoàn tất 2026-09-26 (app-only đợt 1): màn “Điều gì đưa bạn đến đây?” đọc 4 ý định từ content bundle theo locale, chọn nhiều, bắt buộc ít nhất một (nút tắt kèm lời nhắc), lưu mã ổn định vào SharedPreferences; tách biệt với feeling và Vision Category. Lưu ý: copy prototype nói Soul “điều chỉnh hành trình” theo ý định nhưng hiện chưa có quy tắc nào dùng ý định — cần Product chốt hoặc sửa copy.
+  - Hoàn tất 2026-09-26 (app-only đợt 1): màn “Điều gì đưa bạn đến đây?” đọc 4 ý định từ content bundle theo locale, chọn nhiều, bắt buộc ít nhất một (nút tắt kèm lời nhắc), lưu mã ổn định vào SharedPreferences; tách biệt với feeling và Vision Category. Quyết định 2026-09-26: bỏ copy prototype “Soul sẽ điều chỉnh hành trình…” vì ý định chưa thay đổi hành trình; dùng “Chọn điều bạn mong muốn nhất lúc này. Không có câu trả lời sai.” / “Choose what matters most to you right now. There's no wrong answer.” Ý định sẽ dùng cho gợi ý Explore (`EXP-004`).
 
 - [~] `OB-008` **P0 — Thiết lập nhắc nhở trong onboarding**
   - Liên kết: `US-OB-005`, `REQ-NTF-001`.
@@ -299,6 +302,7 @@
   - Hoàn tất 2026-09-26: import 9 category, 34 feelings, 81 câu hỏi, 372 đáp án gợi ý, 18 statement template song ngữ; feelings độc lập category (gợi ý qua `category_feeling_suggestions`); 1–3 feelings do DB enforce. `ST01` giữ `draft` cho đến khi sửa dataset.
 
 - [!] `DAT-004` **P0 — Seed hành trình 28 ngày**
+  - Quyết định 2026-09-26: chọn phương án agent soạn bản nháp EN (và tiêu đề VI) để người song ngữ duyệt; nháp nằm trong `Specs/drafts/`, chỉ ghi vào workbook sau khi duyệt. Duyệt nội dung là điều kiện phát hành (`QAR-005`).
   - Liên kết: `US-JRN-001..005`.
   - AC: đủ 28 ngày; thứ tự task, copy, CTA, reflection và metadata đúng nguồn; validation không cho thiếu task bắt buộc.
   - Bị chặn 2026-09-26: dataset 28 ngày không có bản tiếng Anh cho instruction/reflection/affirmation/notification và không có tiêu đề tiếng Việt cho ngày/task; import sẽ trộn ngôn ngữ. Chờ Product chọn: bổ sung EN + tiêu đề VI vào workbook, duyệt bản nháp do agent soạn, hoặc phát hành chỉ tiếng Việt.
@@ -399,48 +403,59 @@
 
 ## Epic 7 — Vision creation và Vision Board
 
-- [ ] `VIS-001` **P0 — Chọn Vision Category**
+- [~] `VIS-001` **P0 — Chọn Vision Category**
   - Liên kết: `US-VIS-001`.
   - AC: category từ API/dataset, đúng locale, có selected state; không hiển thị lựa chọn sound.
+  - Tiến độ 2026-09-26 (app-only đợt 2): 9 lĩnh vực từ content bundle theo locale, không có lựa chọn sound; chạm để chọn và sang bước tiếp. Còn: đánh dấu lựa chọn khi quay lại bước này.
 
-- [ ] `VIS-002` **P0 — Guided questions theo category**
+- [~] `VIS-002` **P0 — Guided questions theo category**
   - Liên kết: `US-VIS-001`.
   - AC: câu hỏi động theo dataset; autosave/resume; validate bắt buộc; back không mất câu trả lời.
+  - Tiến độ 2026-09-26 (app-only đợt 2): câu hỏi của lĩnh vực hiện theo dataset (9 câu/lĩnh vực, đều bắt buộc), gợi ý dạng chip (chọn một hoặc tối đa N) + ô tự nhập; nút Tiếp tục tắt kèm lời nhắc khi chưa trả lời; Back (header/hệ thống) giữ câu trả lời. Còn: lưu nháp khi app bị tắt giữa chừng. Lưu ý cho Product: 9 câu bắt buộc mỗi lĩnh vực khá dài so với prototype (1 câu tự do + cảm xúc).
 
-- [ ] `VIS-003` **P0 — Chọn 1–3 cảm xúc mong muốn**
+- [x] `VIS-003` **P0 — Chọn 1–3 cảm xúc mong muốn**
   - Liên kết: `US-VIS-001`.
   - AC: danh sách cảm xúc mở rộng; min 1/max 3; disabled state dễ hiểu; lưu ID độc lập category.
+  - Hoàn tất 2026-09-26 (app-only đợt 2): 34 cảm xúc, gợi ý của lĩnh vực xếp trước nhưng chọn được tất cả; 1–3, đủ 3 thì các chip khác tắt kèm lời giải thích; lưu mã ổn định theo thứ tự chọn, độc lập lĩnh vực.
 
-- [ ] `VIS-004` **P0 — Tạo và chỉnh sửa Vision statement**
+- [~] `VIS-004` **P0 — Tạo và chỉnh sửa Vision statement**
   - Liên kết: `US-VIS-001`, `US-VIS-004`.
   - AC: tạo từ answer/category/feelings theo rule; người dùng chỉnh sửa được; giới hạn hợp lý; vi/en không trộn ngôn ngữ.
+  - Tiến độ 2026-09-26 (app-only đợt 2): câu tầm nhìn được ghép từ template primary (đủ placeholder) hoặc short, nối danh sách theo ngôn ngữ; sửa được, 1–500 ký tự; đã sửa thì không bị ghép lại. Mọi lĩnh vực × vi/en đều ghép được câu không sót placeholder (test). Còn: sửa sau khi lưu (`VIS-010`).
 
-- [ ] `VIS-005` **P0 — Đính kèm một ảnh optional**
+- [~] `VIS-005` **P0 — Đính kèm một ảnh optional**
   - AC: camera/library permission, crop/preview/replace/remove, compress; upload retry; không mất draft nếu upload lỗi.
   - Chuyển app-only 2026-09-26: ảnh được copy vào thư mục app (`LOC-003`), không upload.
+  - Tiến độ 2026-09-26 (app-only đợt 2): chọn từ thư viện hoặc chụp ảnh (`image_picker`), xem trước, bỏ ảnh; ảnh chỉ copy khi lưu; mô tả quyền iOS (tiếng Anh). Còn: crop, bản dịch tiếng Việt cho mô tả quyền iOS (`InfoPlist.strings`), kiểm tra trên thiết bị thật.
 
-- [ ] `VIS-006` **P0 — Tự động gán playlist nhiều sound theo category**
+- [!] `VIS-006` **P0 — Tự động gán playlist nhiều sound theo category**
   - Liên kết: `US-VIS-001`, `US-AUD-002`.
   - AC: user không chọn track; server trả nhiều eligible tracks theo category + locale; thay category cập nhật playlist; fallback không lẫn ngôn ngữ.
   - Chuyển app-only 2026-09-26: playlist resolve trên máy từ mapping trong content bundle.
+  - Bị chặn 2026-09-26: chưa có file audio có giấy phép (`EXT-007`) nên chưa có mapping lĩnh vực → track trong content bundle.
 
-- [ ] `VIS-007` **P0 — Preview và save Vision**
+- [~] `VIS-007` **P0 — Preview và save Vision**
   - AC: preview gồm statement/feelings/image/audio availability; save idempotent; lỗi có retry; save xong trở về board/detail đúng ngữ cảnh.
+  - Tiến độ 2026-09-26 (app-only đợt 2): bước xem lại gồm câu tầm nhìn, cảm xúc, ảnh; lưu idempotent theo UUID tạo khi mở builder; lỗi giữ nguyên lựa chọn và có Thử lại; lưu xong về board. Còn: hiển thị playlist (chờ `VIS-006`).
 
-- [ ] `VIS-008` **P0 — Multi-Vision Board**
+- [~] `VIS-008` **P0 — Multi-Vision Board**
   - AC: khi có nhiều Vision, tab Vision mở board; card layout bám prototype; empty/one/many states; sort ổn định.
+  - Tiến độ 2026-09-26 (app-only đợt 2): tab Vision có empty state có hướng dẫn và danh sách thẻ (lĩnh vực, câu, cảm xúc, ảnh) mới nhất trước. Còn: bố cục board trực quan như prototype.
 
-- [ ] `VIS-009` **P0 — Vision detail và back navigation**
+- [~] `VIS-009` **P0 — Vision detail và back navigation**
   - AC: back button và system back đều hoạt động; không bị overlay chặn pointer; quay lại đúng board/tab và giữ scroll state.
+  - Tiến độ 2026-09-26 (app-only đợt 2): chi tiết Vision mở từ thẻ; nút back và back hệ thống về board (route cha giữ trạng thái). Còn: test back riêng và kiểm tra giữ vị trí cuộn.
 
 - [ ] `VIS-010` **P0 — Chỉnh sửa Vision và đổi category**
   - AC: edit statement/feelings/image/category; đổi category cập nhật playlist; confirm khi rời màn hình có unsaved change.
 
-- [ ] `VIS-011` **P0 — Archive Vision**
+- [x] `VIS-011` **P0 — Archive Vision**
   - AC: confirm rõ; Vision archive không hiện ở active board/session; dữ liệu lịch sử không bị xóa cứng; có khả năng restore nếu spec cho phép.
+  - Hoàn tất 2026-09-26 (app-only đợt 2): lưu trữ có xác nhận, Vision rời board nhưng vẫn còn trong DB (`status = archived`, `archived_at`). Spec không yêu cầu khôi phục.
 
-- [ ] `VIS-012` **P0 — Vision regression tests**
+- [~] `VIS-012` **P0 — Vision regression tests**
   - AC: vi/en, 1–3 feelings, image lỗi, category đổi, nhiều Vision, archive và back navigation đều có test.
+  - Tiến độ 2026-09-26 (app-only đợt 2): test vi/en: tạo đủ các bước, giới hạn 3 cảm xúc, lưu DB, mở chi tiết, lưu trữ; back giữ câu trả lời; chọn/bỏ ảnh; không overflow 320x568 @200%; unit test catalog, ghép câu, repository và image store.
 
 ## Epic 8 — Audio engine và Vision Session (Object Storage hoãn)
 
@@ -679,7 +694,7 @@
 - [ ] `EXT-009` Privacy Policy, Terms, chính sách dữ liệu local/xóa dữ liệu và email hỗ trợ.
 - [ ] `EXT-010` Quyết định analytics provider, consent model và quyền truy cập dashboard.
 - [x] `EXT-011` Quyết định local notification hay server push; nếu server push thì cần APNs/FCM credentials và provider. Đã chốt 2026-09-26: local notification (app-only).
-- [ ] `EXT-012` Cách phân phối audio: đóng gói trong app hay tải dần qua remote manifest (file JSON liệt kê resource trên host tĩnh). Đang thảo luận, chưa quyết định.
+- [x] `EXT-012` Cách phân phối audio: đóng gói trong app hay tải dần qua remote manifest (file JSON liệt kê resource trên host tĩnh). Đã chốt 2026-09-26: MVP1 đóng gói audio trong app nếu tổng dung lượng ≤ ~50 MB (AAC 64–96 kbps); vượt ngưỡng thì chuyển sang remote manifest và vẫn đóng gói 1–2 track `neutral` dự phòng. Nguồn phát của track được trừu tượng hóa (asset hoặc URL) để chuyển đổi không phải sửa player/playlist.
 
 ## 4. Critical path đề xuất
 

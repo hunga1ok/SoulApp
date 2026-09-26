@@ -16,7 +16,7 @@ The rules above are the canonical agent instructions for this repository. The no
 
 - `lib/app/` — app widget, router, app-level state.
 - `lib/core/` — design tokens (`design_system/`), localization helpers (`localization/`) and device services (`platform/`: timezone, notification permission).
-- `lib/data/` — on-device data: Drift database (`local/`, generated `*.g.dart` committed; run `dart run build_runner build` after schema changes), bundled read-only content (`content/`, assets in `assets/content/`) and repositories.
+- `lib/data/` — on-device data: Drift database (`local/`, generated `*.g.dart` committed; after a schema change bump `schemaVersion`, write the step in `migration`, then run `dart run drift_dev make-migrations` and `dart run build_runner build`; schema snapshots live in `drift_schemas/`, generated migration tests in `test/drift/`), bundled read-only content (`content/`, assets in `assets/content/`) and repositories.
 - `lib/features/<feature>/` — feature-first screens (onboarding, shell, today, vision, journal, explore, profile).
 - `lib/l10n/` — ARB files. Edit `app_en.arb` (template) and `app_vi.arb`, then run `flutter gen-l10n`; never hand-edit the generated `app_localizations*.dart`.
 

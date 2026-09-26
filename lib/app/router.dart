@@ -8,6 +8,8 @@ import '../features/onboarding/onboarding_screens.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/shell/app_shell.dart';
 import '../features/today/today_screen.dart';
+import '../features/vision/vision_builder_screen.dart';
+import '../features/vision/vision_detail_screen.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
@@ -116,6 +118,18 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/app/vision',
                 builder: (context, route) => const VisionScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'new',
+                    builder: (context, route) => const VisionBuilderScreen(),
+                  ),
+                  GoRoute(
+                    path: ':id',
+                    builder:
+                        (context, route) =>
+                            VisionDetailScreen(id: route.pathParameters['id']!),
+                  ),
+                ],
               ),
             ],
           ),

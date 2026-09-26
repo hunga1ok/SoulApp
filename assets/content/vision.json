@@ -1,0 +1,7791 @@
+{
+  "schemaVersion": 1,
+  "source": "Soul_Vision_Board_Content_Dataset_v1.2.xlsx",
+  "categories": [
+    {
+      "code": "LOVE",
+      "icon": "❤️",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "name": "Love & Relationships"
+        },
+        "vi": {
+          "name": "Tình yêu & Mối quan hệ"
+        }
+      }
+    },
+    {
+      "code": "CAREER",
+      "icon": "💼",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "name": "Career & Purpose"
+        },
+        "vi": {
+          "name": "Sự nghiệp & Mục đích"
+        }
+      }
+    },
+    {
+      "code": "MONEY",
+      "icon": "💰",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "name": "Money & Abundance"
+        },
+        "vi": {
+          "name": "Tài chính & Sự đủ đầy"
+        }
+      }
+    },
+    {
+      "code": "HEALTH",
+      "icon": "🌿",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "name": "Health & Wellness"
+        },
+        "vi": {
+          "name": "Sức khỏe & Thể chất"
+        }
+      }
+    },
+    {
+      "code": "HOME",
+      "icon": "🏡",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "name": "Home"
+        },
+        "vi": {
+          "name": "Ngôi nhà"
+        }
+      }
+    },
+    {
+      "code": "TRAVEL",
+      "icon": "✈️",
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "name": "Travel & Experiences"
+        },
+        "vi": {
+          "name": "Du lịch & Trải nghiệm"
+        }
+      }
+    },
+    {
+      "code": "FAMILY",
+      "icon": "👨‍👩‍👧",
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "name": "Family"
+        },
+        "vi": {
+          "name": "Gia đình"
+        }
+      }
+    },
+    {
+      "code": "GROWTH",
+      "icon": "✨",
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "name": "Personal Growth & Confidence"
+        },
+        "vi": {
+          "name": "Phát triển bản thân & Tự tin"
+        }
+      }
+    },
+    {
+      "code": "PEACE",
+      "icon": "🧘",
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "name": "Inner Peace"
+        },
+        "vi": {
+          "name": "Bình an nội tâm"
+        }
+      }
+    }
+  ],
+  "feelings": [
+    {
+      "code": "LOVED",
+      "sortOrder": 1,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Loved",
+          "affirmation": "I feel cared for and emotionally valued."
+        },
+        "vi": {
+          "label": "Được yêu thương",
+          "affirmation": "Tôi cảm thấy được yêu thương và trân trọng."
+        }
+      }
+    },
+    {
+      "code": "SAFE",
+      "sortOrder": 2,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "HOME",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Safe",
+          "affirmation": "I feel emotionally or practically secure."
+        },
+        "vi": {
+          "label": "An toàn",
+          "affirmation": "Tôi cảm thấy an toàn về cảm xúc hoặc thực tế."
+        }
+      }
+    },
+    {
+      "code": "CONNECTED",
+      "sortOrder": 3,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Connected",
+          "affirmation": "I feel genuinely close to people or life around me."
+        },
+        "vi": {
+          "label": "Gắn kết",
+          "affirmation": "Tôi cảm thấy kết nối chân thành với mọi người và cuộc sống."
+        }
+      }
+    },
+    {
+      "code": "CONFIDENT",
+      "sortOrder": 4,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Confident",
+          "affirmation": "I trust my ability to handle what comes next."
+        },
+        "vi": {
+          "label": "Tự tin",
+          "affirmation": "Tôi tin vào khả năng xử lý điều tiếp theo."
+        }
+      }
+    },
+    {
+      "code": "FREE",
+      "sortOrder": 5,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "MONEY",
+        "TRAVEL"
+      ],
+      "text": {
+        "en": {
+          "label": "Free",
+          "affirmation": "I have meaningful choice over my time and direction."
+        },
+        "vi": {
+          "label": "Tự do",
+          "affirmation": "Tôi có quyền lựa chọn về thời gian và hướng đi."
+        }
+      }
+    },
+    {
+      "code": "INSPIRED",
+      "sortOrder": 6,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Inspired",
+          "affirmation": "I feel energized by possibility and ideas."
+        },
+        "vi": {
+          "label": "Có cảm hứng",
+          "affirmation": "Tôi có năng lượng từ những khả năng và ý tưởng mới."
+        }
+      }
+    },
+    {
+      "code": "SECURE",
+      "sortOrder": 7,
+      "suggestedCategoryCodes": [
+        "MONEY",
+        "CAREER"
+      ],
+      "text": {
+        "en": {
+          "label": "Secure",
+          "affirmation": "My basic needs and plans feel supported."
+        },
+        "vi": {
+          "label": "Vững vàng",
+          "affirmation": "Các nhu cầu và kế hoạch cơ bản của tôi được đảm bảo."
+        }
+      }
+    },
+    {
+      "code": "ABUNDANT",
+      "sortOrder": 8,
+      "suggestedCategoryCodes": [
+        "MONEY"
+      ],
+      "text": {
+        "en": {
+          "label": "Abundant",
+          "affirmation": "I notice resources, opportunities and enoughness."
+        },
+        "vi": {
+          "label": "Đủ đầy",
+          "affirmation": "Tôi nhận ra nguồn lực, cơ hội và cảm giác đủ đầy."
+        }
+      }
+    },
+    {
+      "code": "ENERGIZED",
+      "sortOrder": 9,
+      "suggestedCategoryCodes": [
+        "HEALTH",
+        "TRAVEL"
+      ],
+      "text": {
+        "en": {
+          "label": "Energized",
+          "affirmation": "My body and mind feel ready to engage with life."
+        },
+        "vi": {
+          "label": "Tràn năng lượng",
+          "affirmation": "Cơ thể và tinh thần sẵn sàng tham gia vào cuộc sống."
+        }
+      }
+    },
+    {
+      "code": "STRONG",
+      "sortOrder": 10,
+      "suggestedCategoryCodes": [
+        "HEALTH",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Strong",
+          "affirmation": "I feel capable and resilient."
+        },
+        "vi": {
+          "label": "Mạnh mẽ",
+          "affirmation": "Tôi cảm thấy có năng lực và kiên cường."
+        }
+      }
+    },
+    {
+      "code": "PEACEFUL",
+      "sortOrder": 11,
+      "suggestedCategoryCodes": [
+        "HOME",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Peaceful",
+          "affirmation": "Life feels gentle and less rushed."
+        },
+        "vi": {
+          "label": "Bình yên",
+          "affirmation": "Cuộc sống nhẹ nhàng và ít vội vã hơn."
+        }
+      }
+    },
+    {
+      "code": "WARM",
+      "sortOrder": 12,
+      "suggestedCategoryCodes": [
+        "HOME",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Warm",
+          "affirmation": "My environment and relationships feel welcoming."
+        },
+        "vi": {
+          "label": "Ấm áp",
+          "affirmation": "Không gian và mối quan hệ tạo cảm giác ấm áp."
+        }
+      }
+    },
+    {
+      "code": "CURIOUS",
+      "sortOrder": 13,
+      "suggestedCategoryCodes": [
+        "TRAVEL",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Curious",
+          "affirmation": "I feel open to new places, ideas and experiences."
+        },
+        "vi": {
+          "label": "Tò mò",
+          "affirmation": "Tôi cởi mở với nơi chốn, ý tưởng và trải nghiệm mới."
+        }
+      }
+    },
+    {
+      "code": "ALIVE",
+      "sortOrder": 14,
+      "suggestedCategoryCodes": [
+        "TRAVEL",
+        "HEALTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Alive",
+          "affirmation": "I feel present and engaged with life."
+        },
+        "vi": {
+          "label": "Sống động",
+          "affirmation": "Tôi cảm thấy hiện diện và sống động."
+        }
+      }
+    },
+    {
+      "code": "GRATEFUL",
+      "sortOrder": 15,
+      "suggestedCategoryCodes": [
+        "FAMILY",
+        "MONEY",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Grateful",
+          "affirmation": "I notice and appreciate what is already meaningful."
+        },
+        "vi": {
+          "label": "Biết ơn",
+          "affirmation": "Tôi nhận ra và trân trọng những gì đang có ý nghĩa."
+        }
+      }
+    },
+    {
+      "code": "PROUD",
+      "sortOrder": 16,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Proud",
+          "affirmation": "I recognize my effort, growth and contribution."
+        },
+        "vi": {
+          "label": "Tự hào",
+          "affirmation": "Tôi ghi nhận nỗ lực, sự trưởng thành và đóng góp của mình."
+        }
+      }
+    },
+    {
+      "code": "COURAGEOUS",
+      "sortOrder": 17,
+      "suggestedCategoryCodes": [
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Courageous",
+          "affirmation": "I act even when uncertainty is present."
+        },
+        "vi": {
+          "label": "Dũng cảm",
+          "affirmation": "Tôi vẫn hành động dù có sự không chắc chắn."
+        }
+      }
+    },
+    {
+      "code": "GROUNDED",
+      "sortOrder": 18,
+      "suggestedCategoryCodes": [
+        "PEACE",
+        "HOME"
+      ],
+      "text": {
+        "en": {
+          "label": "Grounded",
+          "affirmation": "I feel present, stable and not pulled in every direction."
+        },
+        "vi": {
+          "label": "Vững tâm",
+          "affirmation": "Tôi hiện diện, ổn định và không bị kéo đi quá nhiều hướng."
+        }
+      }
+    },
+    {
+      "code": "UNDERSTOOD",
+      "sortOrder": 19,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Understood",
+          "affirmation": "I feel seen and understood without needing to explain everything."
+        },
+        "vi": {
+          "label": "Thấu hiểu",
+          "affirmation": "Tôi cảm thấy được lắng nghe và thấu hiểu."
+        }
+      }
+    },
+    {
+      "code": "GENTLE",
+      "sortOrder": 20,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "HEALTH",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Gentle",
+          "affirmation": "I can move through this experience with softness and care."
+        },
+        "vi": {
+          "label": "Dịu dàng",
+          "affirmation": "Tôi có thể đi qua trải nghiệm này một cách dịu dàng và đầy quan tâm."
+        }
+      }
+    },
+    {
+      "code": "TRUSTING",
+      "sortOrder": 21,
+      "suggestedCategoryCodes": [
+        "LOVE",
+        "CAREER"
+      ],
+      "text": {
+        "en": {
+          "label": "Trusting",
+          "affirmation": "I trust myself, the process and the people I choose."
+        },
+        "vi": {
+          "label": "Tin tưởng",
+          "affirmation": "Tôi tin vào bản thân, hành trình và những người mình lựa chọn."
+        }
+      }
+    },
+    {
+      "code": "RECOGNIZED",
+      "sortOrder": 22,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Recognized",
+          "affirmation": "My effort and contribution are noticed and valued."
+        },
+        "vi": {
+          "label": "Được ghi nhận",
+          "affirmation": "Nỗ lực và đóng góp của tôi được nhìn nhận và trân trọng."
+        }
+      }
+    },
+    {
+      "code": "FOCUSED",
+      "sortOrder": 23,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Focused",
+          "affirmation": "I can give my attention to what matters most."
+        },
+        "vi": {
+          "label": "Tập trung",
+          "affirmation": "Tôi có thể dành sự chú ý cho điều quan trọng nhất."
+        }
+      }
+    },
+    {
+      "code": "PROACTIVE",
+      "sortOrder": 24,
+      "suggestedCategoryCodes": [
+        "CAREER",
+        "MONEY"
+      ],
+      "text": {
+        "en": {
+          "label": "Proactive",
+          "affirmation": "I take practical steps toward what I value."
+        },
+        "vi": {
+          "label": "Chủ động",
+          "affirmation": "Tôi chủ động thực hiện những bước thiết thực cho điều mình coi trọng."
+        }
+      }
+    },
+    {
+      "code": "RELIEVED",
+      "sortOrder": 25,
+      "suggestedCategoryCodes": [
+        "HEALTH",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Relieved",
+          "affirmation": "I have space to breathe and release pressure."
+        },
+        "vi": {
+          "label": "Nhẹ nhõm",
+          "affirmation": "Tôi có không gian để thở và buông bớt áp lực."
+        }
+      }
+    },
+    {
+      "code": "BALANCED",
+      "sortOrder": 26,
+      "suggestedCategoryCodes": [
+        "HEALTH",
+        "HOME",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Balanced",
+          "affirmation": "My energy, time and needs are in a sustainable rhythm."
+        },
+        "vi": {
+          "label": "Cân bằng",
+          "affirmation": "Năng lượng, thời gian và nhu cầu của tôi ở trong một nhịp bền vững."
+        }
+      }
+    },
+    {
+      "code": "CARED_FOR",
+      "sortOrder": 27,
+      "suggestedCategoryCodes": [
+        "HEALTH",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Cared for",
+          "affirmation": "I receive care and also make room to care for myself."
+        },
+        "vi": {
+          "label": "Được chăm sóc",
+          "affirmation": "Tôi đón nhận sự chăm sóc và dành chỗ để tự chăm sóc mình."
+        }
+      }
+    },
+    {
+      "code": "BELONGING",
+      "sortOrder": 28,
+      "suggestedCategoryCodes": [
+        "HOME",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Belonging",
+          "affirmation": "I feel at home with the people and places around me."
+        },
+        "vi": {
+          "label": "Thuộc về",
+          "affirmation": "Tôi cảm thấy mình thuộc về những người và không gian quanh mình."
+        }
+      }
+    },
+    {
+      "code": "RESTED",
+      "sortOrder": 29,
+      "suggestedCategoryCodes": [
+        "HOME",
+        "TRAVEL",
+        "PEACE"
+      ],
+      "text": {
+        "en": {
+          "label": "Rested",
+          "affirmation": "My body and mind have room to slow down and restore."
+        },
+        "vi": {
+          "label": "Thư thái",
+          "affirmation": "Cơ thể và tâm trí của tôi có không gian để chậm lại và hồi phục."
+        }
+      }
+    },
+    {
+      "code": "EXCITED",
+      "sortOrder": 30,
+      "suggestedCategoryCodes": [
+        "TRAVEL",
+        "CAREER"
+      ],
+      "text": {
+        "en": {
+          "label": "Excited",
+          "affirmation": "I feel a bright sense of anticipation for what is ahead."
+        },
+        "vi": {
+          "label": "Hào hứng",
+          "affirmation": "Tôi cảm thấy háo hức một cách tươi sáng về điều đang chờ phía trước."
+        }
+      }
+    },
+    {
+      "code": "STEADY",
+      "sortOrder": 31,
+      "suggestedCategoryCodes": [
+        "GROWTH",
+        "CAREER"
+      ],
+      "text": {
+        "en": {
+          "label": "Steady",
+          "affirmation": "I stay connected to my direction through small consistent steps."
+        },
+        "vi": {
+          "label": "Kiên định",
+          "affirmation": "Tôi gắn bó với hướng đi của mình qua những bước nhỏ đều đặn."
+        }
+      }
+    },
+    {
+      "code": "EXPANSIVE",
+      "sortOrder": 32,
+      "suggestedCategoryCodes": [
+        "MONEY",
+        "TRAVEL",
+        "GROWTH"
+      ],
+      "text": {
+        "en": {
+          "label": "Expansive",
+          "affirmation": "I can see possibilities beyond my current limits."
+        },
+        "vi": {
+          "label": "Rộng mở",
+          "affirmation": "Tôi có thể nhìn thấy những khả năng vượt ra ngoài giới hạn hiện tại."
+        }
+      }
+    },
+    {
+      "code": "STILL",
+      "sortOrder": 33,
+      "suggestedCategoryCodes": [
+        "PEACE",
+        "HOME"
+      ],
+      "text": {
+        "en": {
+          "label": "Still",
+          "affirmation": "I feel quiet and present within myself."
+        },
+        "vi": {
+          "label": "Tĩnh tại",
+          "affirmation": "Tôi cảm thấy tĩnh lặng và hiện diện bên trong mình."
+        }
+      }
+    },
+    {
+      "code": "REASSURED",
+      "sortOrder": 34,
+      "suggestedCategoryCodes": [
+        "MONEY",
+        "FAMILY"
+      ],
+      "text": {
+        "en": {
+          "label": "Reassured",
+          "affirmation": "I trust that my needs and next steps are supported."
+        },
+        "vi": {
+          "label": "An tâm",
+          "affirmation": "Tôi an tâm rằng nhu cầu và những bước tiếp theo của mình được nâng đỡ."
+        }
+      }
+    }
+  ],
+  "questions": [
+    {
+      "code": "CAT02_Q01",
+      "categoryCode": "CAREER",
+      "fieldKey": "work_type",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What kind of work do you want to spend your time on?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn dành thời gian cho loại công việc nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q02",
+      "categoryCode": "CAREER",
+      "fieldKey": "impact",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "What impact do you want your work to create?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn công việc tạo ra tác động gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03",
+      "categoryCode": "CAREER",
+      "fieldKey": "environment",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What work environment suits you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Môi trường làm việc nào phù hợp với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q04",
+      "categoryCode": "CAREER",
+      "fieldKey": "time",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "How much freedom do you want over your schedule?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn mong muốn mức độ tự do về thời gian như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q05",
+      "categoryCode": "CAREER",
+      "fieldKey": "income",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What income or financial milestone would support this vision?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Mốc thu nhập nào hỗ trợ cho tầm nhìn này?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06",
+      "categoryCode": "CAREER",
+      "fieldKey": "growth",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "What would you like to become better at?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn giỏi hơn ở điều gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q07",
+      "categoryCode": "CAREER",
+      "fieldKey": "recognition",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "How do you want your contribution to be recognized?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn đóng góp của mình được ghi nhận như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08",
+      "categoryCode": "CAREER",
+      "fieldKey": "work_feeling",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "How do you want to feel at the end of a good workday?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Cuối một ngày làm việc tốt, bạn muốn cảm thấy thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q09",
+      "categoryCode": "CAREER",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one step your future self would take this week?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một bước mà phiên bản tương lai của bạn sẽ làm trong tuần này là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q01",
+      "categoryCode": "FAMILY",
+      "fieldKey": "connection",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What kind of family connection do you want to cultivate?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn vun đắp kiểu kết nối gia đình nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q02",
+      "categoryCode": "FAMILY",
+      "fieldKey": "rituals",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "Which family rituals would you love to have?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn có những nghi thức gia đình nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03",
+      "categoryCode": "FAMILY",
+      "fieldKey": "home_feeling",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "How do you want family gatherings to feel?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn những buổi tụ họp gia đình mang cảm giác gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q04",
+      "categoryCode": "FAMILY",
+      "fieldKey": "support",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "How do you want family members to support one another?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn các thành viên hỗ trợ nhau thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q05",
+      "categoryCode": "FAMILY",
+      "fieldKey": "boundaries",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What healthy boundaries matter to you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ranh giới lành mạnh nào quan trọng?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06",
+      "categoryCode": "FAMILY",
+      "fieldKey": "memories",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "What memories do you want to create together?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cùng nhau tạo những ký ức nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07",
+      "categoryCode": "FAMILY",
+      "fieldKey": "role",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "Who do you want to be in your family?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn trở thành người như thế nào trong gia đình?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q08",
+      "categoryCode": "FAMILY",
+      "fieldKey": "future",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What would make you feel proud of your family life?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Điều gì khiến bạn tự hào về đời sống gia đình?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q09",
+      "categoryCode": "FAMILY",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What can you do this week for one person you love?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Tuần này bạn có thể làm gì cho một người mình yêu?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01",
+      "categoryCode": "GROWTH",
+      "fieldKey": "future_self",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "Which qualities define the person you are becoming?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Những phẩm chất nào định nghĩa con người bạn đang trở thành?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02",
+      "categoryCode": "GROWTH",
+      "fieldKey": "voice",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "How do you want to speak and express yourself?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn nói và thể hiện bản thân như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03",
+      "categoryCode": "GROWTH",
+      "fieldKey": "courage",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What would you do if you trusted yourself more?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn sẽ làm gì nếu tin vào bản thân hơn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04",
+      "categoryCode": "GROWTH",
+      "fieldKey": "skill",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "Which skill would change your life if you practiced it consistently?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Kỹ năng nào có thể thay đổi cuộc sống nếu bạn luyện đều?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05",
+      "categoryCode": "GROWTH",
+      "fieldKey": "habit",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "Which habit belongs to your future self?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Thói quen nào thuộc về phiên bản tương lai của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06",
+      "categoryCode": "GROWTH",
+      "fieldKey": "self_talk",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "How do you want your inner voice to sound?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn tiếng nói bên trong mình như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07",
+      "categoryCode": "GROWTH",
+      "fieldKey": "visibility",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "Where do you want to be more visible or expressive?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn hiện diện và thể hiện nhiều hơn ở đâu?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q08",
+      "categoryCode": "GROWTH",
+      "fieldKey": "proof",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What would show you that you've grown?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Điều gì cho thấy bạn đã trưởng thành?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q09",
+      "categoryCode": "GROWTH",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one brave but manageable action for today?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một hành động dũng cảm nhưng vừa sức hôm nay là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01",
+      "categoryCode": "HEALTH",
+      "fieldKey": "wellbeing",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What does feeling well mean to you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Cảm thấy khỏe mạnh có ý nghĩa gì với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02",
+      "categoryCode": "HEALTH",
+      "fieldKey": "movement",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "What kind of movement would you enjoy regularly?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn duy trì kiểu vận động nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q03",
+      "categoryCode": "HEALTH",
+      "fieldKey": "sleep",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What would a supportive sleep routine look like?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một thói quen ngủ tốt sẽ như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q04",
+      "categoryCode": "HEALTH",
+      "fieldKey": "food",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "How do you want to approach food and nourishment?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn tiếp cận ăn uống và dinh dưỡng như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05",
+      "categoryCode": "HEALTH",
+      "fieldKey": "stress",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What helps you recover from stress?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Điều gì giúp bạn hồi phục sau căng thẳng?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q06",
+      "categoryCode": "HEALTH",
+      "fieldKey": "environment",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "What environment supports your wellbeing?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Môi trường nào hỗ trợ sức khỏe của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07",
+      "categoryCode": "HEALTH",
+      "fieldKey": "body_relation",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "How do you want to relate to your body?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn có mối quan hệ như thế nào với cơ thể mình?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q08",
+      "categoryCode": "HEALTH",
+      "fieldKey": "support",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What support would help you stay consistent?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Hỗ trợ nào giúp bạn duy trì đều đặn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09",
+      "categoryCode": "HEALTH",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one small wellbeing action for today?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một hành động nhỏ cho sức khỏe hôm nay là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01",
+      "categoryCode": "HOME",
+      "fieldKey": "location",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "Where does your ideal home feel like it belongs?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ngôi nhà lý tưởng của bạn thuộc về nơi như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02",
+      "categoryCode": "HOME",
+      "fieldKey": "space",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "What spaces matter most in your home?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Những không gian nào quan trọng nhất trong nhà?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03",
+      "categoryCode": "HOME",
+      "fieldKey": "style",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What atmosphere do you want your home to have?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn ngôi nhà mang bầu không khí nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04",
+      "categoryCode": "HOME",
+      "fieldKey": "morning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "What does a peaceful morning at home look like?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một buổi sáng bình yên ở nhà trông như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05",
+      "categoryCode": "HOME",
+      "fieldKey": "evening",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What does an ideal evening at home feel like?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một buổi tối lý tưởng ở nhà mang cảm giác gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06",
+      "categoryCode": "HOME",
+      "fieldKey": "people",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "Who shares this home with you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ai sẽ cùng bạn sống trong ngôi nhà này?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07",
+      "categoryCode": "HOME",
+      "fieldKey": "function",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "What should your home make easier?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ngôi nhà nên giúp điều gì trở nên dễ dàng hơn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08",
+      "categoryCode": "HOME",
+      "fieldKey": "feeling",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What feeling should greet you when you walk in?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cảm giác nào chào đón khi bước vào nhà?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q09",
+      "categoryCode": "HOME",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What can you do now to bring a little of this home into today?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn có thể làm gì ngay để mang một phần cảm giác ngôi nhà đó vào hôm nay?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q01",
+      "categoryCode": "LOVE",
+      "fieldKey": "relationship_type",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What kind of relationship are you creating?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn xây dựng một mối quan hệ như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q02",
+      "categoryCode": "LOVE",
+      "fieldKey": "daily_connection",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "What would everyday connection look like?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Sự kết nối trong đời sống hằng ngày sẽ trông như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03",
+      "categoryCode": "LOVE",
+      "fieldKey": "communication",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "How do you want communication to feel?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cách giao tiếp mang lại cảm giác gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04",
+      "categoryCode": "LOVE",
+      "fieldKey": "quality_time",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "What do you want to enjoy together?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cùng nhau tận hưởng điều gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q05",
+      "categoryCode": "LOVE",
+      "fieldKey": "support",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What kind of support matters most?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Sự hỗ trợ nào quan trọng nhất với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q06",
+      "categoryCode": "LOVE",
+      "fieldKey": "boundaries",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "Which boundaries help this relationship stay healthy?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ranh giới nào giúp mối quan hệ lành mạnh?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07",
+      "categoryCode": "LOVE",
+      "fieldKey": "future",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "What future do you hope to build together?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn hy vọng cùng nhau xây dựng tương lai như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08",
+      "categoryCode": "LOVE",
+      "fieldKey": "self_role",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "Who do you want to be in this relationship?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn trở thành phiên bản nào của mình trong mối quan hệ?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q09",
+      "categoryCode": "LOVE",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one small action you can practice now?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một hành động nhỏ bạn có thể thực hành ngay là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01",
+      "categoryCode": "MONEY",
+      "fieldKey": "meaning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What does financial abundance mean to you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Sự đủ đầy tài chính có ý nghĩa gì với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02",
+      "categoryCode": "MONEY",
+      "fieldKey": "target",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "Is there a financial milestone you want to work toward?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Có cột mốc tài chính nào bạn muốn hướng tới không?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03",
+      "categoryCode": "MONEY",
+      "fieldKey": "lifestyle",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What would financial stability allow you to do?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Sự ổn định tài chính sẽ cho phép bạn làm gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q04",
+      "categoryCode": "MONEY",
+      "fieldKey": "habits",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "Which money habits belong in this vision?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Thói quen tài chính nào thuộc về tầm nhìn này?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q05",
+      "categoryCode": "MONEY",
+      "fieldKey": "earning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "How would you like to grow your earning capacity?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn phát triển khả năng tạo thu nhập như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06",
+      "categoryCode": "MONEY",
+      "fieldKey": "relationship_money",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "How do you want to feel when dealing with money?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cảm thấy thế nào khi xử lý tiền bạc?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q07",
+      "categoryCode": "MONEY",
+      "fieldKey": "giving",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "Does generosity have a place in your financial vision?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Sự hào phóng có vị trí nào trong tầm nhìn tài chính của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q08",
+      "categoryCode": "MONEY",
+      "fieldKey": "future_scene",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "Picture a financially peaceful day. What is different?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Hình dung một ngày bình yên về tài chính. Điều gì khác đi?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q09",
+      "categoryCode": "MONEY",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one grounded money action you can take now?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một hành động tài chính thực tế bạn có thể làm ngay là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01",
+      "categoryCode": "PEACE",
+      "fieldKey": "peace_meaning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What does inner peace look like in your real life?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bình an nội tâm trông như thế nào trong cuộc sống thật của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02",
+      "categoryCode": "PEACE",
+      "fieldKey": "morning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "How would a peaceful morning begin?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một buổi sáng bình yên bắt đầu thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03",
+      "categoryCode": "PEACE",
+      "fieldKey": "noise",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "What creates unnecessary noise in your life?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Điều gì tạo ra quá nhiều nhiễu trong cuộc sống?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q04",
+      "categoryCode": "PEACE",
+      "fieldKey": "boundary",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "Which boundary would protect your peace?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Ranh giới nào bảo vệ sự bình yên của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05",
+      "categoryCode": "PEACE",
+      "fieldKey": "reset",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What helps you return to yourself?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Điều gì giúp bạn trở về với chính mình?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06",
+      "categoryCode": "PEACE",
+      "fieldKey": "space",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "What kind of physical space helps you feel calm?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Không gian vật lý nào giúp bạn thấy bình tĩnh?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07",
+      "categoryCode": "PEACE",
+      "fieldKey": "relationships",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "How do peaceful relationships feel?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Những mối quan hệ bình yên mang cảm giác gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08",
+      "categoryCode": "PEACE",
+      "fieldKey": "self_permission",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What do you want to give yourself permission to do?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn cho phép bản thân điều gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q09",
+      "categoryCode": "PEACE",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one thing you can remove or soften today?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một điều bạn có thể bỏ bớt hoặc làm nhẹ đi hôm nay là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "destination",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "prompt": "What kind of places do you want to experience?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn trải nghiệm những nơi như thế nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "pace",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "prompt": "How do you like to travel?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn thích du lịch theo nhịp nào?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q03",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "people",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "prompt": "Who would you love to travel with?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn đi cùng ai?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q04",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "frequency",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "prompt": "What travel rhythm fits your life?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Nhịp du lịch nào phù hợp với cuộc sống của bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "experience",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "prompt": "What experiences do you want to remember years later?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Trải nghiệm nào bạn muốn nhớ nhiều năm sau?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q06",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "comfort",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 6,
+      "text": {
+        "en": {
+          "prompt": "What level of comfort matters?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Mức độ thoải mái nào quan trọng với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "meaning",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 7,
+      "text": {
+        "en": {
+          "prompt": "Why does travel matter to you?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Tại sao du lịch quan trọng với bạn?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "memory",
+      "type": "multi_select",
+      "maxSelect": 3,
+      "required": true,
+      "sortOrder": 8,
+      "text": {
+        "en": {
+          "prompt": "What would you love to bring home from these experiences?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Bạn muốn mang điều gì trở về từ những trải nghiệm đó?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q09",
+      "categoryCode": "TRAVEL",
+      "fieldKey": "first_action",
+      "type": "single_select",
+      "maxSelect": 1,
+      "required": true,
+      "sortOrder": 9,
+      "text": {
+        "en": {
+          "prompt": "What is one step toward your next experience?",
+          "helper": "Add your own answer"
+        },
+        "vi": {
+          "prompt": "Một bước hướng tới trải nghiệm tiếp theo là gì?",
+          "helper": "Thêm câu trả lời của bạn"
+        }
+      }
+    }
+  ],
+  "answers": [
+    {
+      "code": "CAT01_Q01_A01",
+      "questionCode": "CAT01_Q01",
+      "valueCode": "SUPPORTIVE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Supportive"
+        },
+        "vi": {
+          "label": "Biết hỗ trợ nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q01_A02",
+      "questionCode": "CAT01_Q01",
+      "valueCode": "PLAYFUL",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Playful"
+        },
+        "vi": {
+          "label": "Vui vẻ"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q01_A03",
+      "questionCode": "CAT01_Q01",
+      "valueCode": "COMMITTED",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Committed"
+        },
+        "vi": {
+          "label": "Cam kết lâu dài"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q01_A04",
+      "questionCode": "CAT01_Q01",
+      "valueCode": "EMOTIONALLY_OPEN",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Emotionally open"
+        },
+        "vi": {
+          "label": "Cởi mở cảm xúc"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q01_A05",
+      "questionCode": "CAT01_Q01",
+      "valueCode": "GROWING_TOGETHER",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Growing together"
+        },
+        "vi": {
+          "label": "Cùng nhau phát triển"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q02_A01",
+      "questionCode": "CAT01_Q02",
+      "valueCode": "WE_TALK_OPENLY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "We talk openly"
+        },
+        "vi": {
+          "label": "Trò chuyện cởi mở"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q02_A02",
+      "questionCode": "CAT01_Q02",
+      "valueCode": "WE_MAKE_TIME_FOR_EACH_OTHER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "We make time for each other"
+        },
+        "vi": {
+          "label": "Dành thời gian cho nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q02_A03",
+      "questionCode": "CAT01_Q02",
+      "valueCode": "WE_LAUGH_OFTEN",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "We laugh often"
+        },
+        "vi": {
+          "label": "Thường xuyên cười cùng nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q02_A04",
+      "questionCode": "CAT01_Q02",
+      "valueCode": "WE_SUPPORT_EACH_OTHER'S_GOALS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "We support each other's goals"
+        },
+        "vi": {
+          "label": "Ủng hộ mục tiêu của nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03_A01",
+      "questionCode": "CAT01_Q03",
+      "valueCode": "HONEST",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Honest"
+        },
+        "vi": {
+          "label": "Chân thành"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03_A02",
+      "questionCode": "CAT01_Q03",
+      "valueCode": "KIND",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Kind"
+        },
+        "vi": {
+          "label": "Tử tế"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03_A03",
+      "questionCode": "CAT01_Q03",
+      "valueCode": "SAFE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Safe"
+        },
+        "vi": {
+          "label": "An toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03_A04",
+      "questionCode": "CAT01_Q03",
+      "valueCode": "CLEAR",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Clear"
+        },
+        "vi": {
+          "label": "Rõ ràng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q03_A05",
+      "questionCode": "CAT01_Q03",
+      "valueCode": "RESPECTFUL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Respectful"
+        },
+        "vi": {
+          "label": "Tôn trọng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04_A01",
+      "questionCode": "CAT01_Q04",
+      "valueCode": "QUIET_TIME_AT_HOME",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Quiet time at home"
+        },
+        "vi": {
+          "label": "Thời gian yên tĩnh ở nhà"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04_A02",
+      "questionCode": "CAT01_Q04",
+      "valueCode": "TRAVEL",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Travel"
+        },
+        "vi": {
+          "label": "Du lịch"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04_A03",
+      "questionCode": "CAT01_Q04",
+      "valueCode": "SHARED_HOBBIES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Shared hobbies"
+        },
+        "vi": {
+          "label": "Sở thích chung"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04_A04",
+      "questionCode": "CAT01_Q04",
+      "valueCode": "DATES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Dates"
+        },
+        "vi": {
+          "label": "Những buổi hẹn"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q04_A05",
+      "questionCode": "CAT01_Q04",
+      "valueCode": "FAMILY_TIME",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Family time"
+        },
+        "vi": {
+          "label": "Thời gian với gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q05_A01",
+      "questionCode": "CAT01_Q05",
+      "valueCode": "EMOTIONAL_SUPPORT",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Emotional support"
+        },
+        "vi": {
+          "label": "Hỗ trợ cảm xúc"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q05_A02",
+      "questionCode": "CAT01_Q05",
+      "valueCode": "ENCOURAGEMENT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Encouragement"
+        },
+        "vi": {
+          "label": "Khích lệ"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q05_A03",
+      "questionCode": "CAT01_Q05",
+      "valueCode": "PRACTICAL_SUPPORT",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Practical support"
+        },
+        "vi": {
+          "label": "Hỗ trợ thực tế"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q05_A04",
+      "questionCode": "CAT01_Q05",
+      "valueCode": "RESPECT_FOR_INDEPENDENCE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Respect for independence"
+        },
+        "vi": {
+          "label": "Tôn trọng sự độc lập"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q06_A01",
+      "questionCode": "CAT01_Q06",
+      "valueCode": "PERSONAL_SPACE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Personal space"
+        },
+        "vi": {
+          "label": "Không gian riêng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q06_A02",
+      "questionCode": "CAT01_Q06",
+      "valueCode": "RESPECTFUL_CONFLICT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Respectful conflict"
+        },
+        "vi": {
+          "label": "Tranh luận tôn trọng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q06_A03",
+      "questionCode": "CAT01_Q06",
+      "valueCode": "TIME_FOR_FRIENDS_FAMILY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Time for friends/family"
+        },
+        "vi": {
+          "label": "Thời gian cho bạn bè/gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q06_A04",
+      "questionCode": "CAT01_Q06",
+      "valueCode": "NO_CONTROLLING_BEHAVIOR",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "No controlling behavior"
+        },
+        "vi": {
+          "label": "Không kiểm soát"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07_A01",
+      "questionCode": "CAT01_Q07",
+      "valueCode": "STABLE_PARTNERSHIP",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Stable partnership"
+        },
+        "vi": {
+          "label": "Mối quan hệ ổn định"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07_A02",
+      "questionCode": "CAT01_Q07",
+      "valueCode": "SHARED_HOME",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Shared home"
+        },
+        "vi": {
+          "label": "Cùng xây dựng tổ ấm"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07_A03",
+      "questionCode": "CAT01_Q07",
+      "valueCode": "FAMILY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Family"
+        },
+        "vi": {
+          "label": "Gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07_A04",
+      "questionCode": "CAT01_Q07",
+      "valueCode": "SHARED_ADVENTURES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Shared adventures"
+        },
+        "vi": {
+          "label": "Trải nghiệm chung"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q07_A05",
+      "questionCode": "CAT01_Q07",
+      "valueCode": "GROWING_OLD_TOGETHER",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Growing old together"
+        },
+        "vi": {
+          "label": "Đồng hành lâu dài"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08_A01",
+      "questionCode": "CAT01_Q08",
+      "valueCode": "PRESENT",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Present"
+        },
+        "vi": {
+          "label": "Hiện diện"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08_A02",
+      "questionCode": "CAT01_Q08",
+      "valueCode": "LOVING",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Loving"
+        },
+        "vi": {
+          "label": "Yêu thương"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08_A03",
+      "questionCode": "CAT01_Q08",
+      "valueCode": "SECURE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Secure"
+        },
+        "vi": {
+          "label": "Vững vàng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08_A04",
+      "questionCode": "CAT01_Q08",
+      "valueCode": "HONEST",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Honest"
+        },
+        "vi": {
+          "label": "Thành thật"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q08_A05",
+      "questionCode": "CAT01_Q08",
+      "valueCode": "INDEPENDENT",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Independent"
+        },
+        "vi": {
+          "label": "Độc lập"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q09_A01",
+      "questionCode": "CAT01_Q09",
+      "valueCode": "COMMUNICATE_CLEARLY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Communicate clearly"
+        },
+        "vi": {
+          "label": "Giao tiếp rõ ràng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q09_A02",
+      "questionCode": "CAT01_Q09",
+      "valueCode": "SHOW_APPRECIATION",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Show appreciation"
+        },
+        "vi": {
+          "label": "Thể hiện sự trân trọng"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q09_A03",
+      "questionCode": "CAT01_Q09",
+      "valueCode": "SET_A_BOUNDARY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Set a boundary"
+        },
+        "vi": {
+          "label": "Thiết lập ranh giới"
+        }
+      }
+    },
+    {
+      "code": "CAT01_Q09_A04",
+      "questionCode": "CAT01_Q09",
+      "valueCode": "MAKE_QUALITY_TIME",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Make quality time"
+        },
+        "vi": {
+          "label": "Tạo thời gian chất lượng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q01_A01",
+      "questionCode": "CAT02_Q01",
+      "valueCode": "BUILD_PRODUCTS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Build products"
+        },
+        "vi": {
+          "label": "Xây dựng sản phẩm"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q01_A02",
+      "questionCode": "CAT02_Q01",
+      "valueCode": "CREATE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Create"
+        },
+        "vi": {
+          "label": "Sáng tạo"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q01_A03",
+      "questionCode": "CAT02_Q01",
+      "valueCode": "LEAD",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Lead"
+        },
+        "vi": {
+          "label": "Dẫn dắt"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q01_A04",
+      "questionCode": "CAT02_Q01",
+      "valueCode": "SOLVE_PROBLEMS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Solve problems"
+        },
+        "vi": {
+          "label": "Giải quyết vấn đề"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q01_A05",
+      "questionCode": "CAT02_Q01",
+      "valueCode": "HELP_PEOPLE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Help people"
+        },
+        "vi": {
+          "label": "Giúp đỡ người khác"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q02_A01",
+      "questionCode": "CAT02_Q02",
+      "valueCode": "USEFUL_PRODUCTS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Useful products"
+        },
+        "vi": {
+          "label": "Sản phẩm hữu ích"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q02_A02",
+      "questionCode": "CAT02_Q02",
+      "valueCode": "BETTER_EXPERIENCES",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Better experiences"
+        },
+        "vi": {
+          "label": "Trải nghiệm tốt hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q02_A03",
+      "questionCode": "CAT02_Q02",
+      "valueCode": "GROWTH_FOR_A_TEAM",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Growth for a team"
+        },
+        "vi": {
+          "label": "Giúp đội ngũ phát triển"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q02_A04",
+      "questionCode": "CAT02_Q02",
+      "valueCode": "POSITIVE_CHANGE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Positive change"
+        },
+        "vi": {
+          "label": "Tạo thay đổi tích cực"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03_A01",
+      "questionCode": "CAT02_Q03",
+      "valueCode": "REMOTE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Remote"
+        },
+        "vi": {
+          "label": "Từ xa"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03_A02",
+      "questionCode": "CAT02_Q03",
+      "valueCode": "HYBRID",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Hybrid"
+        },
+        "vi": {
+          "label": "Linh hoạt"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03_A03",
+      "questionCode": "CAT02_Q03",
+      "valueCode": "COLLABORATIVE_TEAM",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Collaborative team"
+        },
+        "vi": {
+          "label": "Đội ngũ hợp tác"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03_A04",
+      "questionCode": "CAT02_Q03",
+      "valueCode": "INDEPENDENT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Independent"
+        },
+        "vi": {
+          "label": "Tự chủ"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q03_A05",
+      "questionCode": "CAT02_Q03",
+      "valueCode": "INTERNATIONAL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "International"
+        },
+        "vi": {
+          "label": "Quốc tế"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q04_A01",
+      "questionCode": "CAT02_Q04",
+      "valueCode": "FLEXIBLE_HOURS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Flexible hours"
+        },
+        "vi": {
+          "label": "Giờ linh hoạt"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q04_A02",
+      "questionCode": "CAT02_Q04",
+      "valueCode": "PREDICTABLE_SCHEDULE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Predictable schedule"
+        },
+        "vi": {
+          "label": "Lịch ổn định"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q04_A03",
+      "questionCode": "CAT02_Q04",
+      "valueCode": "FOUR-DAY_WEEK",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Four-day week"
+        },
+        "vi": {
+          "label": "Tuần làm việc ngắn hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q04_A04",
+      "questionCode": "CAT02_Q04",
+      "valueCode": "LOCATION_FREEDOM",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Location freedom"
+        },
+        "vi": {
+          "label": "Tự do địa điểm"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q05_A01",
+      "questionCode": "CAT02_Q05",
+      "valueCode": "STABLE_MONTHLY_INCOME",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Stable monthly income"
+        },
+        "vi": {
+          "label": "Thu nhập ổn định"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q05_A02",
+      "questionCode": "CAT02_Q05",
+      "valueCode": "HIGHER_SALARY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Higher salary"
+        },
+        "vi": {
+          "label": "Mức lương cao hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q05_A03",
+      "questionCode": "CAT02_Q05",
+      "valueCode": "MULTIPLE_INCOME_STREAMS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Multiple income streams"
+        },
+        "vi": {
+          "label": "Nhiều nguồn thu"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q05_A04",
+      "questionCode": "CAT02_Q05",
+      "valueCode": "CUSTOM_AMOUNT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Custom amount"
+        },
+        "vi": {
+          "label": "Nhập con số riêng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06_A01",
+      "questionCode": "CAT02_Q06",
+      "valueCode": "LEADERSHIP",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Leadership"
+        },
+        "vi": {
+          "label": "Lãnh đạo"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06_A02",
+      "questionCode": "CAT02_Q06",
+      "valueCode": "COMMUNICATION",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Communication"
+        },
+        "vi": {
+          "label": "Giao tiếp"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06_A03",
+      "questionCode": "CAT02_Q06",
+      "valueCode": "PRODUCT_THINKING",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Product thinking"
+        },
+        "vi": {
+          "label": "Tư duy sản phẩm"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06_A04",
+      "questionCode": "CAT02_Q06",
+      "valueCode": "TECHNICAL_KNOWLEDGE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Technical knowledge"
+        },
+        "vi": {
+          "label": "Kiến thức kỹ thuật"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q06_A05",
+      "questionCode": "CAT02_Q06",
+      "valueCode": "BUSINESS_STRATEGY",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Business strategy"
+        },
+        "vi": {
+          "label": "Chiến lược kinh doanh"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q07_A01",
+      "questionCode": "CAT02_Q07",
+      "valueCode": "TRUSTED_EXPERTISE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Trusted expertise"
+        },
+        "vi": {
+          "label": "Được tin tưởng về chuyên môn"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q07_A02",
+      "questionCode": "CAT02_Q07",
+      "valueCode": "MEANINGFUL_OWNERSHIP",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Meaningful ownership"
+        },
+        "vi": {
+          "label": "Có quyền sở hữu công việc"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q07_A03",
+      "questionCode": "CAT02_Q07",
+      "valueCode": "FAIR_REWARDS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Fair rewards"
+        },
+        "vi": {
+          "label": "Được ghi nhận xứng đáng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q07_A04",
+      "questionCode": "CAT02_Q07",
+      "valueCode": "CAREER_PROGRESSION",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Career progression"
+        },
+        "vi": {
+          "label": "Phát triển sự nghiệp"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08_A01",
+      "questionCode": "CAT02_Q08",
+      "valueCode": "PROUD",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Proud"
+        },
+        "vi": {
+          "label": "Tự hào"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08_A02",
+      "questionCode": "CAT02_Q08",
+      "valueCode": "ENERGIZED",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Energized"
+        },
+        "vi": {
+          "label": "Có năng lượng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08_A03",
+      "questionCode": "CAT02_Q08",
+      "valueCode": "CALM",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Calm"
+        },
+        "vi": {
+          "label": "Bình tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08_A04",
+      "questionCode": "CAT02_Q08",
+      "valueCode": "USEFUL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Useful"
+        },
+        "vi": {
+          "label": "Có ích"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q08_A05",
+      "questionCode": "CAT02_Q08",
+      "valueCode": "INSPIRED",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Inspired"
+        },
+        "vi": {
+          "label": "Có cảm hứng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q09_A01",
+      "questionCode": "CAT02_Q09",
+      "valueCode": "LEARN_ONE_SKILL",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Learn one skill"
+        },
+        "vi": {
+          "label": "Học một kỹ năng"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q09_A02",
+      "questionCode": "CAT02_Q09",
+      "valueCode": "APPLY_FOR_AN_OPPORTUNITY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Apply for an opportunity"
+        },
+        "vi": {
+          "label": "Ứng tuyển một cơ hội"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q09_A03",
+      "questionCode": "CAT02_Q09",
+      "valueCode": "FINISH_A_PORTFOLIO_PIECE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Finish a portfolio piece"
+        },
+        "vi": {
+          "label": "Hoàn thiện một sản phẩm portfolio"
+        }
+      }
+    },
+    {
+      "code": "CAT02_Q09_A04",
+      "questionCode": "CAT02_Q09",
+      "valueCode": "TALK_TO_SOMEONE_IN_THE_FIELD",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Talk to someone in the field"
+        },
+        "vi": {
+          "label": "Trao đổi với người trong ngành"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01_A01",
+      "questionCode": "CAT03_Q01",
+      "valueCode": "SECURITY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Security"
+        },
+        "vi": {
+          "label": "An toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01_A02",
+      "questionCode": "CAT03_Q01",
+      "valueCode": "FREEDOM",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Freedom"
+        },
+        "vi": {
+          "label": "Tự do"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01_A03",
+      "questionCode": "CAT03_Q01",
+      "valueCode": "CHOICE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Choice"
+        },
+        "vi": {
+          "label": "Có nhiều lựa chọn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01_A04",
+      "questionCode": "CAT03_Q01",
+      "valueCode": "SUPPORTING_FAMILY",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Supporting family"
+        },
+        "vi": {
+          "label": "Chăm lo gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q01_A05",
+      "questionCode": "CAT03_Q01",
+      "valueCode": "CREATING_EXPERIENCES",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Creating experiences"
+        },
+        "vi": {
+          "label": "Tạo trải nghiệm"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02_A01",
+      "questionCode": "CAT03_Q02",
+      "valueCode": "EMERGENCY_FUND",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Emergency fund"
+        },
+        "vi": {
+          "label": "Quỹ dự phòng"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02_A02",
+      "questionCode": "CAT03_Q02",
+      "valueCode": "DEBT-FREE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Debt-free"
+        },
+        "vi": {
+          "label": "Không nợ"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02_A03",
+      "questionCode": "CAT03_Q02",
+      "valueCode": "MONTHLY_INCOME_GOAL",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Monthly income goal"
+        },
+        "vi": {
+          "label": "Mục tiêu thu nhập tháng"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02_A04",
+      "questionCode": "CAT03_Q02",
+      "valueCode": "SAVINGS_GOAL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Savings goal"
+        },
+        "vi": {
+          "label": "Mục tiêu tiết kiệm"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q02_A05",
+      "questionCode": "CAT03_Q02",
+      "valueCode": "INVESTMENT_GOAL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Investment goal"
+        },
+        "vi": {
+          "label": "Mục tiêu đầu tư"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03_A01",
+      "questionCode": "CAT03_Q03",
+      "valueCode": "REST_WITHOUT_WORRY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Rest without worry"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi không lo lắng"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03_A02",
+      "questionCode": "CAT03_Q03",
+      "valueCode": "TRAVEL",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Travel"
+        },
+        "vi": {
+          "label": "Du lịch"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03_A03",
+      "questionCode": "CAT03_Q03",
+      "valueCode": "OWN_A_HOME",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Own a home"
+        },
+        "vi": {
+          "label": "Có nhà"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03_A04",
+      "questionCode": "CAT03_Q03",
+      "valueCode": "SUPPORT_LOVED_ONES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Support loved ones"
+        },
+        "vi": {
+          "label": "Hỗ trợ người thân"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q03_A05",
+      "questionCode": "CAT03_Q03",
+      "valueCode": "CHOOSE_MEANINGFUL_WORK",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Choose meaningful work"
+        },
+        "vi": {
+          "label": "Chọn công việc có ý nghĩa"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q04_A01",
+      "questionCode": "CAT03_Q04",
+      "valueCode": "TRACK_SPENDING",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Track spending"
+        },
+        "vi": {
+          "label": "Theo dõi chi tiêu"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q04_A02",
+      "questionCode": "CAT03_Q04",
+      "valueCode": "SAVE_CONSISTENTLY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Save consistently"
+        },
+        "vi": {
+          "label": "Tiết kiệm đều"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q04_A03",
+      "questionCode": "CAT03_Q04",
+      "valueCode": "LEARN_INVESTING_BASICS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Learn investing basics"
+        },
+        "vi": {
+          "label": "Học kiến thức đầu tư cơ bản"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q04_A04",
+      "questionCode": "CAT03_Q04",
+      "valueCode": "SPEND_INTENTIONALLY",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Spend intentionally"
+        },
+        "vi": {
+          "label": "Chi tiêu có chủ đích"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q05_A01",
+      "questionCode": "CAT03_Q05",
+      "valueCode": "BUILD_VALUABLE_SKILLS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Build valuable skills"
+        },
+        "vi": {
+          "label": "Xây kỹ năng có giá trị"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q05_A02",
+      "questionCode": "CAT03_Q05",
+      "valueCode": "NEGOTIATE_BETTER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Negotiate better"
+        },
+        "vi": {
+          "label": "Đàm phán tốt hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q05_A03",
+      "questionCode": "CAT03_Q05",
+      "valueCode": "CREATE_A_BUSINESS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Create a business"
+        },
+        "vi": {
+          "label": "Xây doanh nghiệp"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q05_A04",
+      "questionCode": "CAT03_Q05",
+      "valueCode": "DEVELOP_ANOTHER_INCOME_STREAM",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Develop another income stream"
+        },
+        "vi": {
+          "label": "Tạo thêm nguồn thu"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06_A01",
+      "questionCode": "CAT03_Q06",
+      "valueCode": "CALM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Calm"
+        },
+        "vi": {
+          "label": "Bình tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06_A02",
+      "questionCode": "CAT03_Q06",
+      "valueCode": "CAPABLE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Capable"
+        },
+        "vi": {
+          "label": "Có năng lực"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06_A03",
+      "questionCode": "CAT03_Q06",
+      "valueCode": "IN_CONTROL",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "In control"
+        },
+        "vi": {
+          "label": "Chủ động"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06_A04",
+      "questionCode": "CAT03_Q06",
+      "valueCode": "GRATEFUL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Grateful"
+        },
+        "vi": {
+          "label": "Biết ơn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q06_A05",
+      "questionCode": "CAT03_Q06",
+      "valueCode": "PATIENT",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Patient"
+        },
+        "vi": {
+          "label": "Kiên nhẫn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q07_A01",
+      "questionCode": "CAT03_Q07",
+      "valueCode": "SUPPORT_FAMILY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Support family"
+        },
+        "vi": {
+          "label": "Hỗ trợ gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q07_A02",
+      "questionCode": "CAT03_Q07",
+      "valueCode": "DONATE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Donate"
+        },
+        "vi": {
+          "label": "Đóng góp"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q07_A03",
+      "questionCode": "CAT03_Q07",
+      "valueCode": "TREAT_PEOPLE_I_LOVE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Treat people I love"
+        },
+        "vi": {
+          "label": "Chăm sóc người mình yêu"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q07_A04",
+      "questionCode": "CAT03_Q07",
+      "valueCode": "SHARE_KNOWLEDGE_RESOURCES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Share knowledge/resources"
+        },
+        "vi": {
+          "label": "Chia sẻ kiến thức/nguồn lực"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q08_A01",
+      "questionCode": "CAT03_Q08",
+      "valueCode": "BILLS_HANDLED",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Bills handled"
+        },
+        "vi": {
+          "label": "Các khoản chi được kiểm soát"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q08_A02",
+      "questionCode": "CAT03_Q08",
+      "valueCode": "SAVINGS_GROWING",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Savings growing"
+        },
+        "vi": {
+          "label": "Tiết kiệm tăng dần"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q08_A03",
+      "questionCode": "CAT03_Q08",
+      "valueCode": "NO_CONSTANT_MONEY_STRESS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "No constant money stress"
+        },
+        "vi": {
+          "label": "Không căng thẳng liên tục về tiền"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q08_A04",
+      "questionCode": "CAT03_Q08",
+      "valueCode": "CHOICES_FEEL_SPACIOUS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Choices feel spacious"
+        },
+        "vi": {
+          "label": "Có nhiều lựa chọn hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q09_A01",
+      "questionCode": "CAT03_Q09",
+      "valueCode": "REVIEW_BUDGET",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Review budget"
+        },
+        "vi": {
+          "label": "Xem lại ngân sách"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q09_A02",
+      "questionCode": "CAT03_Q09",
+      "valueCode": "AUTOMATE_SAVINGS",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Automate savings"
+        },
+        "vi": {
+          "label": "Tự động tiết kiệm"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q09_A03",
+      "questionCode": "CAT03_Q09",
+      "valueCode": "LEARN_ONE_CONCEPT",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Learn one concept"
+        },
+        "vi": {
+          "label": "Học một khái niệm"
+        }
+      }
+    },
+    {
+      "code": "CAT03_Q09_A04",
+      "questionCode": "CAT03_Q09",
+      "valueCode": "SET_A_REALISTIC_TARGET",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Set a realistic target"
+        },
+        "vi": {
+          "label": "Đặt mục tiêu thực tế"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01_A01",
+      "questionCode": "CAT04_Q01",
+      "valueCode": "STEADY_ENERGY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Steady energy"
+        },
+        "vi": {
+          "label": "Năng lượng ổn định"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01_A02",
+      "questionCode": "CAT04_Q01",
+      "valueCode": "RESTFUL_SLEEP",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Restful sleep"
+        },
+        "vi": {
+          "label": "Ngủ ngon"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01_A03",
+      "questionCode": "CAT04_Q01",
+      "valueCode": "COMFORTABLE_MOVEMENT",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Comfortable movement"
+        },
+        "vi": {
+          "label": "Vận động dễ chịu"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01_A04",
+      "questionCode": "CAT04_Q01",
+      "valueCode": "CLEAR_MIND",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Clear mind"
+        },
+        "vi": {
+          "label": "Tinh thần sáng rõ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q01_A05",
+      "questionCode": "CAT04_Q01",
+      "valueCode": "BALANCED_ROUTINE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Balanced routine"
+        },
+        "vi": {
+          "label": "Nhịp sống cân bằng"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02_A01",
+      "questionCode": "CAT04_Q02",
+      "valueCode": "WALKING",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Walking"
+        },
+        "vi": {
+          "label": "Đi bộ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02_A02",
+      "questionCode": "CAT04_Q02",
+      "valueCode": "RUNNING",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Running"
+        },
+        "vi": {
+          "label": "Chạy"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02_A03",
+      "questionCode": "CAT04_Q02",
+      "valueCode": "YOGA",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Yoga"
+        },
+        "vi": {
+          "label": "Yoga"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02_A04",
+      "questionCode": "CAT04_Q02",
+      "valueCode": "STRENGTH_TRAINING",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Strength training"
+        },
+        "vi": {
+          "label": "Tập sức mạnh"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q02_A05",
+      "questionCode": "CAT04_Q02",
+      "valueCode": "DANCE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Dance"
+        },
+        "vi": {
+          "label": "Nhảy"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q03_A01",
+      "questionCode": "CAT04_Q03",
+      "valueCode": "CONSISTENT_BEDTIME",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Consistent bedtime"
+        },
+        "vi": {
+          "label": "Giờ ngủ ổn định"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q03_A02",
+      "questionCode": "CAT04_Q03",
+      "valueCode": "LESS_SCREEN_TIME",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Less screen time"
+        },
+        "vi": {
+          "label": "Ít màn hình hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q03_A03",
+      "questionCode": "CAT04_Q03",
+      "valueCode": "CALM_WIND-DOWN",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Calm wind-down"
+        },
+        "vi": {
+          "label": "Thư giãn trước ngủ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q03_A04",
+      "questionCode": "CAT04_Q03",
+      "valueCode": "ENOUGH_SLEEP",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Enough sleep"
+        },
+        "vi": {
+          "label": "Ngủ đủ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q04_A01",
+      "questionCode": "CAT04_Q04",
+      "valueCode": "REGULAR_MEALS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Regular meals"
+        },
+        "vi": {
+          "label": "Ăn đều"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q04_A02",
+      "questionCode": "CAT04_Q04",
+      "valueCode": "MORE_WHOLE_FOODS",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "More whole foods"
+        },
+        "vi": {
+          "label": "Nhiều thực phẩm nguyên bản hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q04_A03",
+      "questionCode": "CAT04_Q04",
+      "valueCode": "ENJOY_FOOD_WITHOUT_GUILT",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Enjoy food without guilt"
+        },
+        "vi": {
+          "label": "Ăn uống không tội lỗi"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q04_A04",
+      "questionCode": "CAT04_Q04",
+      "valueCode": "STAY_HYDRATED",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Stay hydrated"
+        },
+        "vi": {
+          "label": "Uống đủ nước"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05_A01",
+      "questionCode": "CAT04_Q05",
+      "valueCode": "QUIET_TIME",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Quiet time"
+        },
+        "vi": {
+          "label": "Thời gian yên tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05_A02",
+      "questionCode": "CAT04_Q05",
+      "valueCode": "NATURE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Nature"
+        },
+        "vi": {
+          "label": "Thiên nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05_A03",
+      "questionCode": "CAT04_Q05",
+      "valueCode": "BREATHING",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Breathing"
+        },
+        "vi": {
+          "label": "Hít thở"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05_A04",
+      "questionCode": "CAT04_Q05",
+      "valueCode": "TALKING_TO_SOMEONE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Talking to someone"
+        },
+        "vi": {
+          "label": "Trò chuyện"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q05_A05",
+      "questionCode": "CAT04_Q05",
+      "valueCode": "REST",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q06_A01",
+      "questionCode": "CAT04_Q06",
+      "valueCode": "CLEAN_SPACE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Clean space"
+        },
+        "vi": {
+          "label": "Không gian sạch"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q06_A02",
+      "questionCode": "CAT04_Q06",
+      "valueCode": "SUNLIGHT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Sunlight"
+        },
+        "vi": {
+          "label": "Ánh sáng tự nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q06_A03",
+      "questionCode": "CAT04_Q06",
+      "valueCode": "FRESH_AIR",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Fresh air"
+        },
+        "vi": {
+          "label": "Không khí trong lành"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q06_A04",
+      "questionCode": "CAT04_Q06",
+      "valueCode": "LESS_CLUTTER",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Less clutter"
+        },
+        "vi": {
+          "label": "Ít lộn xộn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07_A01",
+      "questionCode": "CAT04_Q07",
+      "valueCode": "RESPECT",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Respect"
+        },
+        "vi": {
+          "label": "Tôn trọng"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07_A02",
+      "questionCode": "CAT04_Q07",
+      "valueCode": "PATIENCE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Patience"
+        },
+        "vi": {
+          "label": "Kiên nhẫn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07_A03",
+      "questionCode": "CAT04_Q07",
+      "valueCode": "CARE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Care"
+        },
+        "vi": {
+          "label": "Chăm sóc"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07_A04",
+      "questionCode": "CAT04_Q07",
+      "valueCode": "ACCEPTANCE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Acceptance"
+        },
+        "vi": {
+          "label": "Chấp nhận"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q07_A05",
+      "questionCode": "CAT04_Q07",
+      "valueCode": "STRENGTH",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Strength"
+        },
+        "vi": {
+          "label": "Sức mạnh"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q08_A01",
+      "questionCode": "CAT04_Q08",
+      "valueCode": "REMINDER",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Reminder"
+        },
+        "vi": {
+          "label": "Nhắc nhở"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q08_A02",
+      "questionCode": "CAT04_Q08",
+      "valueCode": "SIMPLE_ROUTINE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Simple routine"
+        },
+        "vi": {
+          "label": "Routine đơn giản"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q08_A03",
+      "questionCode": "CAT04_Q08",
+      "valueCode": "FRIEND_PARTNER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Friend/partner"
+        },
+        "vi": {
+          "label": "Bạn đồng hành"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q08_A04",
+      "questionCode": "CAT04_Q08",
+      "valueCode": "PROFESSIONAL_GUIDANCE_WHEN_NEEDED",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Professional guidance when needed"
+        },
+        "vi": {
+          "label": "Hướng dẫn chuyên môn khi cần"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09_A01",
+      "questionCode": "CAT04_Q09",
+      "valueCode": "TAKE_A_WALK",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Take a walk"
+        },
+        "vi": {
+          "label": "Đi bộ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09_A02",
+      "questionCode": "CAT04_Q09",
+      "valueCode": "DRINK_WATER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Drink water"
+        },
+        "vi": {
+          "label": "Uống nước"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09_A03",
+      "questionCode": "CAT04_Q09",
+      "valueCode": "SLEEP_EARLIER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Sleep earlier"
+        },
+        "vi": {
+          "label": "Ngủ sớm hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09_A04",
+      "questionCode": "CAT04_Q09",
+      "valueCode": "STRETCH",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Stretch"
+        },
+        "vi": {
+          "label": "Giãn cơ"
+        }
+      }
+    },
+    {
+      "code": "CAT04_Q09_A05",
+      "questionCode": "CAT04_Q09",
+      "valueCode": "TAKE_A_REAL_BREAK",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Take a real break"
+        },
+        "vi": {
+          "label": "Nghỉ thật sự"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01_A01",
+      "questionCode": "CAT05_Q01",
+      "valueCode": "QUIET_NEIGHBORHOOD",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Quiet neighborhood"
+        },
+        "vi": {
+          "label": "Khu yên tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01_A02",
+      "questionCode": "CAT05_Q01",
+      "valueCode": "CITY_CENTER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "City center"
+        },
+        "vi": {
+          "label": "Trung tâm thành phố"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01_A03",
+      "questionCode": "CAT05_Q01",
+      "valueCode": "NEAR_NATURE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Near nature"
+        },
+        "vi": {
+          "label": "Gần thiên nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01_A04",
+      "questionCode": "CAT05_Q01",
+      "valueCode": "NEAR_FAMILY",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Near family"
+        },
+        "vi": {
+          "label": "Gần gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q01_A05",
+      "questionCode": "CAT05_Q01",
+      "valueCode": "BY_THE_SEA",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "By the sea"
+        },
+        "vi": {
+          "label": "Gần biển"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02_A01",
+      "questionCode": "CAT05_Q02",
+      "valueCode": "BRIGHT_BEDROOM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Bright bedroom"
+        },
+        "vi": {
+          "label": "Phòng ngủ sáng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02_A02",
+      "questionCode": "CAT05_Q02",
+      "valueCode": "COZY_LIVING_ROOM",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Cozy living room"
+        },
+        "vi": {
+          "label": "Phòng khách ấm cúng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02_A03",
+      "questionCode": "CAT05_Q02",
+      "valueCode": "READING_CORNER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Reading corner"
+        },
+        "vi": {
+          "label": "Góc đọc sách"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02_A04",
+      "questionCode": "CAT05_Q02",
+      "valueCode": "KITCHEN",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Kitchen"
+        },
+        "vi": {
+          "label": "Bếp"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q02_A05",
+      "questionCode": "CAT05_Q02",
+      "valueCode": "GARDEN_BALCONY",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Garden/balcony"
+        },
+        "vi": {
+          "label": "Vườn/ban công"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03_A01",
+      "questionCode": "CAT05_Q03",
+      "valueCode": "WARM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Warm"
+        },
+        "vi": {
+          "label": "Ấm áp"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03_A02",
+      "questionCode": "CAT05_Q03",
+      "valueCode": "MINIMAL",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Minimal"
+        },
+        "vi": {
+          "label": "Tối giản"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03_A03",
+      "questionCode": "CAT05_Q03",
+      "valueCode": "NATURAL",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Natural"
+        },
+        "vi": {
+          "label": "Tự nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03_A04",
+      "questionCode": "CAT05_Q03",
+      "valueCode": "ELEGANT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Elegant"
+        },
+        "vi": {
+          "label": "Thanh lịch"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q03_A05",
+      "questionCode": "CAT05_Q03",
+      "valueCode": "PLAYFUL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Playful"
+        },
+        "vi": {
+          "label": "Vui tươi"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04_A01",
+      "questionCode": "CAT05_Q04",
+      "valueCode": "COFFEE_TEA",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Coffee/tea"
+        },
+        "vi": {
+          "label": "Cà phê/trà"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04_A02",
+      "questionCode": "CAT05_Q04",
+      "valueCode": "SUNLIGHT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Sunlight"
+        },
+        "vi": {
+          "label": "Ánh nắng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04_A03",
+      "questionCode": "CAT05_Q04",
+      "valueCode": "MUSIC",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Music"
+        },
+        "vi": {
+          "label": "Âm nhạc"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04_A04",
+      "questionCode": "CAT05_Q04",
+      "valueCode": "SLOW_BREAKFAST",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Slow breakfast"
+        },
+        "vi": {
+          "label": "Bữa sáng chậm rãi"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q04_A05",
+      "questionCode": "CAT05_Q04",
+      "valueCode": "QUIET_PLANNING",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Quiet planning"
+        },
+        "vi": {
+          "label": "Lên kế hoạch yên tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05_A01",
+      "questionCode": "CAT05_Q05",
+      "valueCode": "SOFT_LIGHTS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Soft lights"
+        },
+        "vi": {
+          "label": "Ánh sáng dịu"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05_A02",
+      "questionCode": "CAT05_Q05",
+      "valueCode": "DINNER_TOGETHER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Dinner together"
+        },
+        "vi": {
+          "label": "Ăn tối cùng nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05_A03",
+      "questionCode": "CAT05_Q05",
+      "valueCode": "READING",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Reading"
+        },
+        "vi": {
+          "label": "Đọc sách"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05_A04",
+      "questionCode": "CAT05_Q05",
+      "valueCode": "MOVIE_NIGHT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Movie night"
+        },
+        "vi": {
+          "label": "Xem phim"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q05_A05",
+      "questionCode": "CAT05_Q05",
+      "valueCode": "QUIET_REST",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Quiet rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06_A01",
+      "questionCode": "CAT05_Q06",
+      "valueCode": "PARTNER",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Partner"
+        },
+        "vi": {
+          "label": "Bạn đời"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06_A02",
+      "questionCode": "CAT05_Q06",
+      "valueCode": "FAMILY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Family"
+        },
+        "vi": {
+          "label": "Gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06_A03",
+      "questionCode": "CAT05_Q06",
+      "valueCode": "PET",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Pet"
+        },
+        "vi": {
+          "label": "Thú cưng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06_A04",
+      "questionCode": "CAT05_Q06",
+      "valueCode": "JUST_ME",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Just me"
+        },
+        "vi": {
+          "label": "Một mình"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q06_A05",
+      "questionCode": "CAT05_Q06",
+      "valueCode": "FRIENDS_VISITING_OFTEN",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Friends visiting often"
+        },
+        "vi": {
+          "label": "Bạn bè thường ghé"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07_A01",
+      "questionCode": "CAT05_Q07",
+      "valueCode": "REST",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07_A02",
+      "questionCode": "CAT05_Q07",
+      "valueCode": "WORK_FROM_HOME",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Work from home"
+        },
+        "vi": {
+          "label": "Làm việc tại nhà"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07_A03",
+      "questionCode": "CAT05_Q07",
+      "valueCode": "HOST_LOVED_ONES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Host loved ones"
+        },
+        "vi": {
+          "label": "Đón người thân"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07_A04",
+      "questionCode": "CAT05_Q07",
+      "valueCode": "CREATE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Create"
+        },
+        "vi": {
+          "label": "Sáng tạo"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q07_A05",
+      "questionCode": "CAT05_Q07",
+      "valueCode": "STAY_ORGANIZED",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Stay organized"
+        },
+        "vi": {
+          "label": "Sống ngăn nắp"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08_A01",
+      "questionCode": "CAT05_Q08",
+      "valueCode": "SAFE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Safe"
+        },
+        "vi": {
+          "label": "An toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08_A02",
+      "questionCode": "CAT05_Q08",
+      "valueCode": "PEACEFUL",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Peaceful"
+        },
+        "vi": {
+          "label": "Bình yên"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08_A03",
+      "questionCode": "CAT05_Q08",
+      "valueCode": "WARM",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Warm"
+        },
+        "vi": {
+          "label": "Ấm áp"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08_A04",
+      "questionCode": "CAT05_Q08",
+      "valueCode": "PROUD",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Proud"
+        },
+        "vi": {
+          "label": "Tự hào"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q08_A05",
+      "questionCode": "CAT05_Q08",
+      "valueCode": "GROUNDED",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Grounded"
+        },
+        "vi": {
+          "label": "Vững vàng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q09_A01",
+      "questionCode": "CAT05_Q09",
+      "valueCode": "DECLUTTER_ONE_AREA",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Declutter one area"
+        },
+        "vi": {
+          "label": "Dọn một khu vực"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q09_A02",
+      "questionCode": "CAT05_Q09",
+      "valueCode": "ADD_A_PLANT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Add a plant"
+        },
+        "vi": {
+          "label": "Thêm cây"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q09_A03",
+      "questionCode": "CAT05_Q09",
+      "valueCode": "CREATE_A_COZY_CORNER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Create a cozy corner"
+        },
+        "vi": {
+          "label": "Tạo góc ấm cúng"
+        }
+      }
+    },
+    {
+      "code": "CAT05_Q09_A04",
+      "questionCode": "CAT05_Q09",
+      "valueCode": "SAVE_INSPIRATION_IMAGES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Save inspiration images"
+        },
+        "vi": {
+          "label": "Lưu ảnh cảm hứng"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01_A01",
+      "questionCode": "CAT06_Q01",
+      "valueCode": "BEACH",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Beach"
+        },
+        "vi": {
+          "label": "Biển"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01_A02",
+      "questionCode": "CAT06_Q01",
+      "valueCode": "MOUNTAINS",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Mountains"
+        },
+        "vi": {
+          "label": "Núi"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01_A03",
+      "questionCode": "CAT06_Q01",
+      "valueCode": "HISTORIC_CITIES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Historic cities"
+        },
+        "vi": {
+          "label": "Thành phố lịch sử"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01_A04",
+      "questionCode": "CAT06_Q01",
+      "valueCode": "NATURE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Nature"
+        },
+        "vi": {
+          "label": "Thiên nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q01_A05",
+      "questionCode": "CAT06_Q01",
+      "valueCode": "BIG_CITIES",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Big cities"
+        },
+        "vi": {
+          "label": "Thành phố lớn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02_A01",
+      "questionCode": "CAT06_Q02",
+      "valueCode": "SLOW_TRAVEL",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Slow travel"
+        },
+        "vi": {
+          "label": "Đi chậm"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02_A02",
+      "questionCode": "CAT06_Q02",
+      "valueCode": "ADVENTURE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Adventure"
+        },
+        "vi": {
+          "label": "Phiêu lưu"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02_A03",
+      "questionCode": "CAT06_Q02",
+      "valueCode": "LUXURY_&_REST",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Luxury & rest"
+        },
+        "vi": {
+          "label": "Nghỉ dưỡng"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02_A04",
+      "questionCode": "CAT06_Q02",
+      "valueCode": "FOOD-FOCUSED",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Food-focused"
+        },
+        "vi": {
+          "label": "Ẩm thực"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q02_A05",
+      "questionCode": "CAT06_Q02",
+      "valueCode": "CULTURE-FOCUSED",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Culture-focused"
+        },
+        "vi": {
+          "label": "Văn hóa"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q03_A01",
+      "questionCode": "CAT06_Q03",
+      "valueCode": "SOLO",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Solo"
+        },
+        "vi": {
+          "label": "Một mình"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q03_A02",
+      "questionCode": "CAT06_Q03",
+      "valueCode": "PARTNER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Partner"
+        },
+        "vi": {
+          "label": "Bạn đời"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q03_A03",
+      "questionCode": "CAT06_Q03",
+      "valueCode": "FAMILY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Family"
+        },
+        "vi": {
+          "label": "Gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q03_A04",
+      "questionCode": "CAT06_Q03",
+      "valueCode": "FRIENDS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Friends"
+        },
+        "vi": {
+          "label": "Bạn bè"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q04_A01",
+      "questionCode": "CAT06_Q04",
+      "valueCode": "ONE_BIG_TRIP_YEAR",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "One big trip/year"
+        },
+        "vi": {
+          "label": "Một chuyến lớn/năm"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q04_A02",
+      "questionCode": "CAT06_Q04",
+      "valueCode": "SEVERAL_SHORT_TRIPS",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Several short trips"
+        },
+        "vi": {
+          "label": "Nhiều chuyến ngắn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q04_A03",
+      "questionCode": "CAT06_Q04",
+      "valueCode": "WEEKEND_ESCAPES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Weekend escapes"
+        },
+        "vi": {
+          "label": "Đi cuối tuần"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q04_A04",
+      "questionCode": "CAT06_Q04",
+      "valueCode": "LONG-TERM_TRAVEL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Long-term travel"
+        },
+        "vi": {
+          "label": "Du lịch dài ngày"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05_A01",
+      "questionCode": "CAT06_Q05",
+      "valueCode": "SUNRISE_SOMEWHERE_NEW",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Sunrise somewhere new"
+        },
+        "vi": {
+          "label": "Ngắm bình minh nơi mới"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05_A02",
+      "questionCode": "CAT06_Q05",
+      "valueCode": "LOCAL_FOOD",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Local food"
+        },
+        "vi": {
+          "label": "Ăn món địa phương"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05_A03",
+      "questionCode": "CAT06_Q05",
+      "valueCode": "NATURE_ADVENTURE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Nature adventure"
+        },
+        "vi": {
+          "label": "Khám phá thiên nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05_A04",
+      "questionCode": "CAT06_Q05",
+      "valueCode": "MEANINGFUL_CONVERSATIONS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Meaningful conversations"
+        },
+        "vi": {
+          "label": "Những cuộc trò chuyện đáng nhớ"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q05_A05",
+      "questionCode": "CAT06_Q05",
+      "valueCode": "PHOTOGRAPHY",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Photography"
+        },
+        "vi": {
+          "label": "Chụp ảnh"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q06_A01",
+      "questionCode": "CAT06_Q06",
+      "valueCode": "SIMPLE_&_CLEAN",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Simple & clean"
+        },
+        "vi": {
+          "label": "Đơn giản sạch sẽ"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q06_A02",
+      "questionCode": "CAT06_Q06",
+      "valueCode": "BOUTIQUE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Boutique"
+        },
+        "vi": {
+          "label": "Boutique"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q06_A03",
+      "questionCode": "CAT06_Q06",
+      "valueCode": "LUXURY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Luxury"
+        },
+        "vi": {
+          "label": "Cao cấp"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q06_A04",
+      "questionCode": "CAT06_Q06",
+      "valueCode": "FLEXIBLE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Flexible"
+        },
+        "vi": {
+          "label": "Linh hoạt"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07_A01",
+      "questionCode": "CAT06_Q07",
+      "valueCode": "FREEDOM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Freedom"
+        },
+        "vi": {
+          "label": "Tự do"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07_A02",
+      "questionCode": "CAT06_Q07",
+      "valueCode": "LEARNING",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Learning"
+        },
+        "vi": {
+          "label": "Học hỏi"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07_A03",
+      "questionCode": "CAT06_Q07",
+      "valueCode": "CONNECTION",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Connection"
+        },
+        "vi": {
+          "label": "Kết nối"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07_A04",
+      "questionCode": "CAT06_Q07",
+      "valueCode": "REST",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q07_A05",
+      "questionCode": "CAT06_Q07",
+      "valueCode": "WONDER",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Wonder"
+        },
+        "vi": {
+          "label": "Cảm giác kỳ diệu"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08_A01",
+      "questionCode": "CAT06_Q08",
+      "valueCode": "CONFIDENCE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Confidence"
+        },
+        "vi": {
+          "label": "Tự tin"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08_A02",
+      "questionCode": "CAT06_Q08",
+      "valueCode": "STORIES",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Stories"
+        },
+        "vi": {
+          "label": "Câu chuyện"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08_A03",
+      "questionCode": "CAT06_Q08",
+      "valueCode": "PHOTOS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Photos"
+        },
+        "vi": {
+          "label": "Ảnh"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08_A04",
+      "questionCode": "CAT06_Q08",
+      "valueCode": "NEW_PERSPECTIVE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "New perspective"
+        },
+        "vi": {
+          "label": "Góc nhìn mới"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q08_A05",
+      "questionCode": "CAT06_Q08",
+      "valueCode": "GRATITUDE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Gratitude"
+        },
+        "vi": {
+          "label": "Biết ơn"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q09_A01",
+      "questionCode": "CAT06_Q09",
+      "valueCode": "CREATE_A_TRAVEL_FUND",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Create a travel fund"
+        },
+        "vi": {
+          "label": "Tạo quỹ du lịch"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q09_A02",
+      "questionCode": "CAT06_Q09",
+      "valueCode": "RESEARCH_A_DESTINATION",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Research a destination"
+        },
+        "vi": {
+          "label": "Tìm hiểu điểm đến"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q09_A03",
+      "questionCode": "CAT06_Q09",
+      "valueCode": "CHOOSE_DATES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Choose dates"
+        },
+        "vi": {
+          "label": "Chọn ngày"
+        }
+      }
+    },
+    {
+      "code": "CAT06_Q09_A04",
+      "questionCode": "CAT06_Q09",
+      "valueCode": "SAVE_INSPIRATION",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Save inspiration"
+        },
+        "vi": {
+          "label": "Lưu cảm hứng"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q01_A01",
+      "questionCode": "CAT07_Q01",
+      "valueCode": "OPEN_CONVERSATIONS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Open conversations"
+        },
+        "vi": {
+          "label": "Trò chuyện cởi mở"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q01_A02",
+      "questionCode": "CAT07_Q01",
+      "valueCode": "MORE_QUALITY_TIME",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "More quality time"
+        },
+        "vi": {
+          "label": "Nhiều thời gian chất lượng"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q01_A03",
+      "questionCode": "CAT07_Q01",
+      "valueCode": "MUTUAL_SUPPORT",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Mutual support"
+        },
+        "vi": {
+          "label": "Hỗ trợ lẫn nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q01_A04",
+      "questionCode": "CAT07_Q01",
+      "valueCode": "MORE_LAUGHTER",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "More laughter"
+        },
+        "vi": {
+          "label": "Nhiều tiếng cười"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q02_A01",
+      "questionCode": "CAT07_Q02",
+      "valueCode": "WEEKLY_MEAL",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Weekly meal"
+        },
+        "vi": {
+          "label": "Bữa ăn hàng tuần"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q02_A02",
+      "questionCode": "CAT07_Q02",
+      "valueCode": "TRIPS_TOGETHER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Trips together"
+        },
+        "vi": {
+          "label": "Du lịch cùng nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q02_A03",
+      "questionCode": "CAT07_Q02",
+      "valueCode": "CELEBRATIONS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Celebrations"
+        },
+        "vi": {
+          "label": "Những dịp kỷ niệm"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q02_A04",
+      "questionCode": "CAT07_Q02",
+      "valueCode": "CALLS_CHECK-INS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Calls/check-ins"
+        },
+        "vi": {
+          "label": "Gọi hỏi thăm"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03_A01",
+      "questionCode": "CAT07_Q03",
+      "valueCode": "WARM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Warm"
+        },
+        "vi": {
+          "label": "Ấm áp"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03_A02",
+      "questionCode": "CAT07_Q03",
+      "valueCode": "EASY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Easy"
+        },
+        "vi": {
+          "label": "Thoải mái"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03_A03",
+      "questionCode": "CAT07_Q03",
+      "valueCode": "SAFE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Safe"
+        },
+        "vi": {
+          "label": "An toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03_A04",
+      "questionCode": "CAT07_Q03",
+      "valueCode": "FUN",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Fun"
+        },
+        "vi": {
+          "label": "Vui vẻ"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q03_A05",
+      "questionCode": "CAT07_Q03",
+      "valueCode": "CONNECTED",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Connected"
+        },
+        "vi": {
+          "label": "Gắn kết"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q04_A01",
+      "questionCode": "CAT07_Q04",
+      "valueCode": "LISTEN",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Listen"
+        },
+        "vi": {
+          "label": "Lắng nghe"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q04_A02",
+      "questionCode": "CAT07_Q04",
+      "valueCode": "ENCOURAGE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Encourage"
+        },
+        "vi": {
+          "label": "Khích lệ"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q04_A03",
+      "questionCode": "CAT07_Q04",
+      "valueCode": "HELP_PRACTICALLY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Help practically"
+        },
+        "vi": {
+          "label": "Giúp đỡ thực tế"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q04_A04",
+      "questionCode": "CAT07_Q04",
+      "valueCode": "RESPECT_CHOICES",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Respect choices"
+        },
+        "vi": {
+          "label": "Tôn trọng lựa chọn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q05_A01",
+      "questionCode": "CAT07_Q05",
+      "valueCode": "RESPECT_PRIVACY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Respect privacy"
+        },
+        "vi": {
+          "label": "Tôn trọng riêng tư"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q05_A02",
+      "questionCode": "CAT07_Q05",
+      "valueCode": "NO_GUILT-BASED_PRESSURE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "No guilt-based pressure"
+        },
+        "vi": {
+          "label": "Không gây áp lực bằng cảm giác tội lỗi"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q05_A03",
+      "questionCode": "CAT07_Q05",
+      "valueCode": "CLEAR_COMMUNICATION",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Clear communication"
+        },
+        "vi": {
+          "label": "Giao tiếp rõ ràng"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q05_A04",
+      "questionCode": "CAT07_Q05",
+      "valueCode": "TIME_FOR_SELF",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Time for self"
+        },
+        "vi": {
+          "label": "Có thời gian riêng"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06_A01",
+      "questionCode": "CAT07_Q06",
+      "valueCode": "TRAVEL",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Travel"
+        },
+        "vi": {
+          "label": "Du lịch"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06_A02",
+      "questionCode": "CAT07_Q06",
+      "valueCode": "FAMILY_DINNERS",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Family dinners"
+        },
+        "vi": {
+          "label": "Bữa cơm gia đình"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06_A03",
+      "questionCode": "CAT07_Q06",
+      "valueCode": "PHOTOS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Photos"
+        },
+        "vi": {
+          "label": "Chụp ảnh"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06_A04",
+      "questionCode": "CAT07_Q06",
+      "valueCode": "CELEBRATIONS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Celebrations"
+        },
+        "vi": {
+          "label": "Kỷ niệm"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q06_A05",
+      "questionCode": "CAT07_Q06",
+      "valueCode": "ORDINARY_PEACEFUL_DAYS",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Ordinary peaceful days"
+        },
+        "vi": {
+          "label": "Những ngày bình thường yên vui"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07_A01",
+      "questionCode": "CAT07_Q07",
+      "valueCode": "PRESENT",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Present"
+        },
+        "vi": {
+          "label": "Hiện diện"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07_A02",
+      "questionCode": "CAT07_Q07",
+      "valueCode": "PATIENT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Patient"
+        },
+        "vi": {
+          "label": "Kiên nhẫn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07_A03",
+      "questionCode": "CAT07_Q07",
+      "valueCode": "SUPPORTIVE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Supportive"
+        },
+        "vi": {
+          "label": "Biết hỗ trợ"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07_A04",
+      "questionCode": "CAT07_Q07",
+      "valueCode": "HONEST",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Honest"
+        },
+        "vi": {
+          "label": "Thành thật"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q07_A05",
+      "questionCode": "CAT07_Q07",
+      "valueCode": "GRATEFUL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Grateful"
+        },
+        "vi": {
+          "label": "Biết ơn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q08_A01",
+      "questionCode": "CAT07_Q08",
+      "valueCode": "WE_STAY_CONNECTED",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "We stay connected"
+        },
+        "vi": {
+          "label": "Luôn gắn kết"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q08_A02",
+      "questionCode": "CAT07_Q08",
+      "valueCode": "WE_RESPECT_EACH_OTHER",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "We respect each other"
+        },
+        "vi": {
+          "label": "Tôn trọng nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q08_A03",
+      "questionCode": "CAT07_Q08",
+      "valueCode": "WE_CREATE_A_SAFE_HOME",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "We create a safe home"
+        },
+        "vi": {
+          "label": "Tạo tổ ấm an toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q08_A04",
+      "questionCode": "CAT07_Q08",
+      "valueCode": "WE_GROW_TOGETHER",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "We grow together"
+        },
+        "vi": {
+          "label": "Cùng phát triển"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q09_A01",
+      "questionCode": "CAT07_Q09",
+      "valueCode": "CALL_THEM",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Call them"
+        },
+        "vi": {
+          "label": "Gọi điện"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q09_A02",
+      "questionCode": "CAT07_Q09",
+      "valueCode": "SAY_THANK_YOU",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Say thank you"
+        },
+        "vi": {
+          "label": "Nói cảm ơn"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q09_A03",
+      "questionCode": "CAT07_Q09",
+      "valueCode": "SPEND_TIME_TOGETHER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Spend time together"
+        },
+        "vi": {
+          "label": "Dành thời gian cùng nhau"
+        }
+      }
+    },
+    {
+      "code": "CAT07_Q09_A04",
+      "questionCode": "CAT07_Q09",
+      "valueCode": "HELP_WITH_SOMETHING",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Help with something"
+        },
+        "vi": {
+          "label": "Giúp một việc"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01_A01",
+      "questionCode": "CAT08_Q01",
+      "valueCode": "CONFIDENT",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Confident"
+        },
+        "vi": {
+          "label": "Tự tin"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01_A02",
+      "questionCode": "CAT08_Q01",
+      "valueCode": "DISCIPLINED",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Disciplined"
+        },
+        "vi": {
+          "label": "Kỷ luật"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01_A03",
+      "questionCode": "CAT08_Q01",
+      "valueCode": "KIND",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Kind"
+        },
+        "vi": {
+          "label": "Tử tế"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01_A04",
+      "questionCode": "CAT08_Q01",
+      "valueCode": "COURAGEOUS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Courageous"
+        },
+        "vi": {
+          "label": "Dũng cảm"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q01_A05",
+      "questionCode": "CAT08_Q01",
+      "valueCode": "CALM",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Calm"
+        },
+        "vi": {
+          "label": "Điềm tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02_A01",
+      "questionCode": "CAT08_Q02",
+      "valueCode": "CLEARLY",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Clearly"
+        },
+        "vi": {
+          "label": "Rõ ràng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02_A02",
+      "questionCode": "CAT08_Q02",
+      "valueCode": "CONFIDENTLY",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Confidently"
+        },
+        "vi": {
+          "label": "Tự tin"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02_A03",
+      "questionCode": "CAT08_Q02",
+      "valueCode": "HONESTLY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Honestly"
+        },
+        "vi": {
+          "label": "Thành thật"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02_A04",
+      "questionCode": "CAT08_Q02",
+      "valueCode": "WITHOUT_OVER-EXPLAINING",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Without over-explaining"
+        },
+        "vi": {
+          "label": "Không giải thích quá mức"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q02_A05",
+      "questionCode": "CAT08_Q02",
+      "valueCode": "WITH_WARMTH",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "With warmth"
+        },
+        "vi": {
+          "label": "Ấm áp"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03_A01",
+      "questionCode": "CAT08_Q03",
+      "valueCode": "SPEAK_UP",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Speak up"
+        },
+        "vi": {
+          "label": "Lên tiếng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03_A02",
+      "questionCode": "CAT08_Q03",
+      "valueCode": "TRY_SOMETHING_NEW",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Try something new"
+        },
+        "vi": {
+          "label": "Thử điều mới"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03_A03",
+      "questionCode": "CAT08_Q03",
+      "valueCode": "APPLY_FOR_OPPORTUNITIES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Apply for opportunities"
+        },
+        "vi": {
+          "label": "Nắm bắt cơ hội"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03_A04",
+      "questionCode": "CAT08_Q03",
+      "valueCode": "CREATE_PUBLICLY",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Create publicly"
+        },
+        "vi": {
+          "label": "Chia sẻ sản phẩm/công việc"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q03_A05",
+      "questionCode": "CAT08_Q03",
+      "valueCode": "SET_BOUNDARIES",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Set boundaries"
+        },
+        "vi": {
+          "label": "Đặt ranh giới"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04_A01",
+      "questionCode": "CAT08_Q04",
+      "valueCode": "COMMUNICATION",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Communication"
+        },
+        "vi": {
+          "label": "Giao tiếp"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04_A02",
+      "questionCode": "CAT08_Q04",
+      "valueCode": "LEADERSHIP",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Leadership"
+        },
+        "vi": {
+          "label": "Lãnh đạo"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04_A03",
+      "questionCode": "CAT08_Q04",
+      "valueCode": "LANGUAGE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Language"
+        },
+        "vi": {
+          "label": "Ngoại ngữ"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04_A04",
+      "questionCode": "CAT08_Q04",
+      "valueCode": "CREATIVE_SKILL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Creative skill"
+        },
+        "vi": {
+          "label": "Kỹ năng sáng tạo"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q04_A05",
+      "questionCode": "CAT08_Q04",
+      "valueCode": "TECHNICAL_SKILL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Technical skill"
+        },
+        "vi": {
+          "label": "Kỹ năng kỹ thuật"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05_A01",
+      "questionCode": "CAT08_Q05",
+      "valueCode": "READ",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Read"
+        },
+        "vi": {
+          "label": "Đọc"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05_A02",
+      "questionCode": "CAT08_Q05",
+      "valueCode": "EXERCISE",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Exercise"
+        },
+        "vi": {
+          "label": "Tập luyện"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05_A03",
+      "questionCode": "CAT08_Q05",
+      "valueCode": "PLAN_MY_DAY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Plan my day"
+        },
+        "vi": {
+          "label": "Lên kế hoạch"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05_A04",
+      "questionCode": "CAT08_Q05",
+      "valueCode": "PRACTICE_A_SKILL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Practice a skill"
+        },
+        "vi": {
+          "label": "Luyện kỹ năng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q05_A05",
+      "questionCode": "CAT08_Q05",
+      "valueCode": "REFLECT",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Reflect"
+        },
+        "vi": {
+          "label": "Tự nhìn lại"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06_A01",
+      "questionCode": "CAT08_Q06",
+      "valueCode": "ENCOURAGING",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Encouraging"
+        },
+        "vi": {
+          "label": "Khích lệ"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06_A02",
+      "questionCode": "CAT08_Q06",
+      "valueCode": "REALISTIC",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Realistic"
+        },
+        "vi": {
+          "label": "Thực tế"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06_A03",
+      "questionCode": "CAT08_Q06",
+      "valueCode": "COMPASSIONATE",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Compassionate"
+        },
+        "vi": {
+          "label": "Bao dung"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06_A04",
+      "questionCode": "CAT08_Q06",
+      "valueCode": "STRONG",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Strong"
+        },
+        "vi": {
+          "label": "Vững vàng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q06_A05",
+      "questionCode": "CAT08_Q06",
+      "valueCode": "CURIOUS",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Curious"
+        },
+        "vi": {
+          "label": "Tò mò"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07_A01",
+      "questionCode": "CAT08_Q07",
+      "valueCode": "WORK",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Work"
+        },
+        "vi": {
+          "label": "Công việc"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07_A02",
+      "questionCode": "CAT08_Q07",
+      "valueCode": "CAMERA_CONTENT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Camera/content"
+        },
+        "vi": {
+          "label": "Trước camera/nội dung"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07_A03",
+      "questionCode": "CAT08_Q07",
+      "valueCode": "RELATIONSHIPS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Relationships"
+        },
+        "vi": {
+          "label": "Mối quan hệ"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07_A04",
+      "questionCode": "CAT08_Q07",
+      "valueCode": "CREATIVE_PROJECTS",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Creative projects"
+        },
+        "vi": {
+          "label": "Dự án sáng tạo"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q07_A05",
+      "questionCode": "CAT08_Q07",
+      "valueCode": "COMMUNITY",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Community"
+        },
+        "vi": {
+          "label": "Cộng đồng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q08_A01",
+      "questionCode": "CAT08_Q08",
+      "valueCode": "I_ACT_DESPITE_FEAR",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "I act despite fear"
+        },
+        "vi": {
+          "label": "Hành động dù còn sợ"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q08_A02",
+      "questionCode": "CAT08_Q08",
+      "valueCode": "I_KEEP_PROMISES_TO_MYSELF",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "I keep promises to myself"
+        },
+        "vi": {
+          "label": "Giữ lời với bản thân"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q08_A03",
+      "questionCode": "CAT08_Q08",
+      "valueCode": "I_RECOVER_FASTER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "I recover faster"
+        },
+        "vi": {
+          "label": "Phục hồi nhanh hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q08_A04",
+      "questionCode": "CAT08_Q08",
+      "valueCode": "I_COMMUNICATE_DIRECTLY",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "I communicate directly"
+        },
+        "vi": {
+          "label": "Giao tiếp trực tiếp"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q09_A01",
+      "questionCode": "CAT08_Q09",
+      "valueCode": "SHARE_AN_IDEA",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Share an idea"
+        },
+        "vi": {
+          "label": "Chia sẻ một ý tưởng"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q09_A02",
+      "questionCode": "CAT08_Q09",
+      "valueCode": "ASK_A_QUESTION",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Ask a question"
+        },
+        "vi": {
+          "label": "Đặt câu hỏi"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q09_A03",
+      "questionCode": "CAT08_Q09",
+      "valueCode": "PRACTICE_ON_CAMERA",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Practice on camera"
+        },
+        "vi": {
+          "label": "Luyện nói trước camera"
+        }
+      }
+    },
+    {
+      "code": "CAT08_Q09_A04",
+      "questionCode": "CAT08_Q09",
+      "valueCode": "FINISH_ONE_TASK",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Finish one task"
+        },
+        "vi": {
+          "label": "Hoàn thành một việc"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01_A01",
+      "questionCode": "CAT09_Q01",
+      "valueCode": "LESS_RUSHING",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Less rushing"
+        },
+        "vi": {
+          "label": "Ít vội vã"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01_A02",
+      "questionCode": "CAT09_Q01",
+      "valueCode": "CLEAR_BOUNDARIES",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Clear boundaries"
+        },
+        "vi": {
+          "label": "Ranh giới rõ"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01_A03",
+      "questionCode": "CAT09_Q01",
+      "valueCode": "MORE_REST",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "More rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi nhiều hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01_A04",
+      "questionCode": "CAT09_Q01",
+      "valueCode": "QUIET_MIND",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Quiet mind"
+        },
+        "vi": {
+          "label": "Tâm trí yên hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q01_A05",
+      "questionCode": "CAT09_Q01",
+      "valueCode": "SIMPLE_DAYS",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Simple days"
+        },
+        "vi": {
+          "label": "Những ngày đơn giản"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02_A01",
+      "questionCode": "CAT09_Q02",
+      "valueCode": "NO_PHONE_FIRST",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "No phone first"
+        },
+        "vi": {
+          "label": "Không xem điện thoại ngay"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02_A02",
+      "questionCode": "CAT09_Q02",
+      "valueCode": "SLOW_BREAKFAST",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Slow breakfast"
+        },
+        "vi": {
+          "label": "Ăn sáng chậm"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02_A03",
+      "questionCode": "CAT09_Q02",
+      "valueCode": "BREATHING",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Breathing"
+        },
+        "vi": {
+          "label": "Hít thở"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02_A04",
+      "questionCode": "CAT09_Q02",
+      "valueCode": "SUNLIGHT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Sunlight"
+        },
+        "vi": {
+          "label": "Ánh sáng"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q02_A05",
+      "questionCode": "CAT09_Q02",
+      "valueCode": "JOURNALING",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Journaling"
+        },
+        "vi": {
+          "label": "Viết journal"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03_A01",
+      "questionCode": "CAT09_Q03",
+      "valueCode": "NOTIFICATIONS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Notifications"
+        },
+        "vi": {
+          "label": "Thông báo"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03_A02",
+      "questionCode": "CAT09_Q03",
+      "valueCode": "OVERCOMMITMENT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Overcommitment"
+        },
+        "vi": {
+          "label": "Nhận quá nhiều việc"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03_A03",
+      "questionCode": "CAT09_Q03",
+      "valueCode": "CLUTTER",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Clutter"
+        },
+        "vi": {
+          "label": "Bừa bộn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03_A04",
+      "questionCode": "CAT09_Q03",
+      "valueCode": "COMPARISON",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Comparison"
+        },
+        "vi": {
+          "label": "So sánh"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q03_A05",
+      "questionCode": "CAT09_Q03",
+      "valueCode": "CONSTANT_NEWS_SOCIAL_MEDIA",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Constant news/social media"
+        },
+        "vi": {
+          "label": "Tin tức/mạng xã hội liên tục"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q04_A01",
+      "questionCode": "CAT09_Q04",
+      "valueCode": "SAY_NO_EARLIER",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Say no earlier"
+        },
+        "vi": {
+          "label": "Nói không sớm hơn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q04_A02",
+      "questionCode": "CAT09_Q04",
+      "valueCode": "LIMIT_SCREEN_TIME",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Limit screen time"
+        },
+        "vi": {
+          "label": "Giới hạn màn hình"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q04_A03",
+      "questionCode": "CAT09_Q04",
+      "valueCode": "PROTECT_SLEEP",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Protect sleep"
+        },
+        "vi": {
+          "label": "Bảo vệ giấc ngủ"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q04_A04",
+      "questionCode": "CAT09_Q04",
+      "valueCode": "AVOID_UNNECESSARY_CONFLICT",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Avoid unnecessary conflict"
+        },
+        "vi": {
+          "label": "Tránh xung đột không cần thiết"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05_A01",
+      "questionCode": "CAT09_Q05",
+      "valueCode": "WALK",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Walk"
+        },
+        "vi": {
+          "label": "Đi bộ"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05_A02",
+      "questionCode": "CAT09_Q05",
+      "valueCode": "MUSIC",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Music"
+        },
+        "vi": {
+          "label": "Âm nhạc"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05_A03",
+      "questionCode": "CAT09_Q05",
+      "valueCode": "BREATHING",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Breathing"
+        },
+        "vi": {
+          "label": "Hít thở"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05_A04",
+      "questionCode": "CAT09_Q05",
+      "valueCode": "WRITING",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Writing"
+        },
+        "vi": {
+          "label": "Viết"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q05_A05",
+      "questionCode": "CAT09_Q05",
+      "valueCode": "NATURE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Nature"
+        },
+        "vi": {
+          "label": "Thiên nhiên"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06_A01",
+      "questionCode": "CAT09_Q06",
+      "valueCode": "CLEAN",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Clean"
+        },
+        "vi": {
+          "label": "Gọn gàng"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06_A02",
+      "questionCode": "CAT09_Q06",
+      "valueCode": "SOFT_LIGHT",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Soft light"
+        },
+        "vi": {
+          "label": "Ánh sáng dịu"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06_A03",
+      "questionCode": "CAT09_Q06",
+      "valueCode": "PLANTS",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Plants"
+        },
+        "vi": {
+          "label": "Cây xanh"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06_A04",
+      "questionCode": "CAT09_Q06",
+      "valueCode": "QUIET",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Quiet"
+        },
+        "vi": {
+          "label": "Yên tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q06_A05",
+      "questionCode": "CAT09_Q06",
+      "valueCode": "MINIMAL",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Minimal"
+        },
+        "vi": {
+          "label": "Tối giản"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07_A01",
+      "questionCode": "CAT09_Q07",
+      "valueCode": "SAFE",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Safe"
+        },
+        "vi": {
+          "label": "An toàn"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07_A02",
+      "questionCode": "CAT09_Q07",
+      "valueCode": "NO_GUESSING_GAMES",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "No guessing games"
+        },
+        "vi": {
+          "label": "Không phải đoán ý"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07_A03",
+      "questionCode": "CAT09_Q07",
+      "valueCode": "RESPECTFUL",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Respectful"
+        },
+        "vi": {
+          "label": "Tôn trọng"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07_A04",
+      "questionCode": "CAT09_Q07",
+      "valueCode": "MUTUAL",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Mutual"
+        },
+        "vi": {
+          "label": "Hai chiều"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q07_A05",
+      "questionCode": "CAT09_Q07",
+      "valueCode": "EASY_TO_COMMUNICATE",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Easy to communicate"
+        },
+        "vi": {
+          "label": "Dễ giao tiếp"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08_A01",
+      "questionCode": "CAT09_Q08",
+      "valueCode": "REST",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Rest"
+        },
+        "vi": {
+          "label": "Nghỉ ngơi"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08_A02",
+      "questionCode": "CAT09_Q08",
+      "valueCode": "CHANGE_MY_MIND",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Change my mind"
+        },
+        "vi": {
+          "label": "Đổi ý"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08_A03",
+      "questionCode": "CAT09_Q08",
+      "valueCode": "MOVE_SLOWLY",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Move slowly"
+        },
+        "vi": {
+          "label": "Đi chậm"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08_A04",
+      "questionCode": "CAT09_Q08",
+      "valueCode": "ASK_FOR_HELP",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Ask for help"
+        },
+        "vi": {
+          "label": "Nhờ giúp đỡ"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q08_A05",
+      "questionCode": "CAT09_Q08",
+      "valueCode": "LEAVE_WHAT_DRAINS_ME",
+      "sortOrder": 5,
+      "text": {
+        "en": {
+          "label": "Leave what drains me"
+        },
+        "vi": {
+          "label": "Rời khỏi điều làm mình cạn năng lượng"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q09_A01",
+      "questionCode": "CAT09_Q09",
+      "valueCode": "MUTE_NOTIFICATIONS",
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "label": "Mute notifications"
+        },
+        "vi": {
+          "label": "Tắt bớt thông báo"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q09_A02",
+      "questionCode": "CAT09_Q09",
+      "valueCode": "CANCEL_A_NONESSENTIAL_TASK",
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "label": "Cancel a nonessential task"
+        },
+        "vi": {
+          "label": "Bỏ một việc không cần thiết"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q09_A03",
+      "questionCode": "CAT09_Q09",
+      "valueCode": "TAKE_10_QUIET_MINUTES",
+      "sortOrder": 3,
+      "text": {
+        "en": {
+          "label": "Take 10 quiet minutes"
+        },
+        "vi": {
+          "label": "Dành 10 phút yên tĩnh"
+        }
+      }
+    },
+    {
+      "code": "CAT09_Q09_A04",
+      "questionCode": "CAT09_Q09",
+      "valueCode": "CLEAN_ONE_SPACE",
+      "sortOrder": 4,
+      "text": {
+        "en": {
+          "label": "Clean one space"
+        },
+        "vi": {
+          "label": "Dọn một không gian"
+        }
+      }
+    }
+  ],
+  "templates": [
+    {
+      "code": "ST03",
+      "categoryCode": "CAREER",
+      "kind": "primary",
+      "placeholders": [
+        "impact",
+        "work_feeling",
+        "work_type"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I am building meaningful work where I {work_type}, create {impact}, and have the freedom to work in a way that feels {work_feeling}."
+        },
+        "vi": {
+          "body": "Tôi đang xây dựng công việc có ý nghĩa, nơi tôi {work_type}, tạo ra {impact} và có sự tự do để làm việc theo cách khiến tôi cảm thấy {work_feeling}."
+        }
+      }
+    },
+    {
+      "code": "ST04",
+      "categoryCode": "CAREER",
+      "kind": "short",
+      "placeholders": [
+        "feeling_1"
+      ],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "My work gives me growth, purpose and {feeling_1}."
+        },
+        "vi": {
+          "body": "Công việc mang cho tôi sự phát triển, ý nghĩa và {feeling_1}."
+        }
+      }
+    },
+    {
+      "code": "ST13",
+      "categoryCode": "FAMILY",
+      "kind": "primary",
+      "placeholders": [
+        "boundaries",
+        "connection",
+        "feeling_1"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "My family life is built on {connection}, healthy {boundaries}, and moments that help us feel {feeling_1} and connected."
+        },
+        "vi": {
+          "body": "Đời sống gia đình của tôi được xây trên {connection}, những {boundaries} lành mạnh và các khoảnh khắc giúp chúng tôi cảm thấy {feeling_1} và gắn kết."
+        }
+      }
+    },
+    {
+      "code": "ST14",
+      "categoryCode": "FAMILY",
+      "kind": "short",
+      "placeholders": [],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "We create a family life filled with respect, warmth and connection."
+        },
+        "vi": {
+          "body": "Chúng tôi tạo nên một đời sống gia đình đầy tôn trọng, ấm áp và gắn kết."
+        }
+      }
+    },
+    {
+      "code": "ST15",
+      "categoryCode": "GROWTH",
+      "kind": "primary",
+      "placeholders": [
+        "future_self",
+        "voice"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I am becoming someone who is {future_self}, speaks {voice}, and takes brave action toward what matters."
+        },
+        "vi": {
+          "body": "Tôi đang trở thành một người {future_self}, thể hiện bản thân {voice} và dũng cảm hành động vì điều quan trọng."
+        }
+      }
+    },
+    {
+      "code": "ST16",
+      "categoryCode": "GROWTH",
+      "kind": "short",
+      "placeholders": [],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "I trust myself enough to take the next meaningful step."
+        },
+        "vi": {
+          "body": "Tôi đủ tin vào bản thân để thực hiện bước đi có ý nghĩa tiếp theo."
+        }
+      }
+    },
+    {
+      "code": "ST07",
+      "categoryCode": "HEALTH",
+      "kind": "primary",
+      "placeholders": [
+        "feeling_1",
+        "feeling_2",
+        "movement"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I care for my wellbeing through {movement}, supportive rest and routines that help me feel {feeling_1} and {feeling_2}."
+        },
+        "vi": {
+          "body": "Tôi chăm sóc sức khỏe bằng {movement}, nghỉ ngơi phù hợp và những thói quen giúp tôi cảm thấy {feeling_1} và {feeling_2}."
+        }
+      }
+    },
+    {
+      "code": "ST08",
+      "categoryCode": "HEALTH",
+      "kind": "short",
+      "placeholders": [],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "I treat my body with care, patience and respect."
+        },
+        "vi": {
+          "body": "Tôi đối xử với cơ thể bằng sự chăm sóc, kiên nhẫn và tôn trọng."
+        }
+      }
+    },
+    {
+      "code": "ST09",
+      "categoryCode": "HOME",
+      "kind": "primary",
+      "placeholders": [
+        "feeling_1",
+        "function",
+        "people",
+        "style"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "My home is a {style} space where I can {function}, share life with {people}, and feel {feeling_1} when I walk through the door."
+        },
+        "vi": {
+          "body": "Ngôi nhà của tôi là một không gian {style}, nơi tôi có thể {function}, sẻ chia cuộc sống với {people} và cảm thấy {feeling_1} khi bước vào."
+        }
+      }
+    },
+    {
+      "code": "ST10",
+      "categoryCode": "HOME",
+      "kind": "short",
+      "placeholders": [
+        "feeling_1"
+      ],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "Home feels {feeling_1}, warm and deeply mine."
+        },
+        "vi": {
+          "body": "Nhà mang cảm giác {feeling_1}, ấm áp và thực sự thuộc về tôi."
+        }
+      }
+    },
+    {
+      "code": "ST02",
+      "categoryCode": "LOVE",
+      "kind": "short",
+      "placeholders": [
+        "feeling_1"
+      ],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "Love in my life feels {feeling_1}, mutual and safe."
+        },
+        "vi": {
+          "body": "Tình yêu trong cuộc sống của tôi mang cảm giác {feeling_1}, hai chiều và an toàn."
+        }
+      }
+    },
+    {
+      "code": "ST05",
+      "categoryCode": "MONEY",
+      "kind": "primary",
+      "placeholders": [
+        "meaning",
+        "target"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I am building a calm and capable relationship with money, working toward {target} so I can create more {meaning} in my life."
+        },
+        "vi": {
+          "body": "Tôi đang xây dựng mối quan hệ bình tĩnh và chủ động với tiền bạc, hướng tới {target} để tạo thêm {meaning} trong cuộc sống."
+        }
+      }
+    },
+    {
+      "code": "ST06",
+      "categoryCode": "MONEY",
+      "kind": "short",
+      "placeholders": [
+        "feeling_1"
+      ],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "I make grounded financial choices that support greater {feeling_1}."
+        },
+        "vi": {
+          "body": "Tôi đưa ra những lựa chọn tài chính thực tế để tạo thêm {feeling_1}."
+        }
+      }
+    },
+    {
+      "code": "ST17",
+      "categoryCode": "PEACE",
+      "kind": "primary",
+      "placeholders": [
+        "boundary",
+        "peace_meaning",
+        "reset"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I am creating a life with more {peace_meaning}, protected by {boundary}, and supported by simple ways to return to myself such as {reset}."
+        },
+        "vi": {
+          "body": "Tôi đang tạo một cuộc sống có nhiều {peace_meaning}, được bảo vệ bởi {boundary} và được nâng đỡ bởi những cách đơn giản để trở về với chính mình như {reset}."
+        }
+      }
+    },
+    {
+      "code": "ST18",
+      "categoryCode": "PEACE",
+      "kind": "short",
+      "placeholders": [],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "I give myself permission to move through life with more calm and space."
+        },
+        "vi": {
+          "body": "Tôi cho phép bản thân đi qua cuộc sống với nhiều bình tĩnh và khoảng thở hơn."
+        }
+      }
+    },
+    {
+      "code": "ST11",
+      "categoryCode": "TRAVEL",
+      "kind": "primary",
+      "placeholders": [
+        "destination",
+        "meaning",
+        "pace"
+      ],
+      "sortOrder": 1,
+      "text": {
+        "en": {
+          "body": "I create space for {pace} experiences in {destination}, traveling in a way that gives me {meaning} and memories I will carry for years."
+        },
+        "vi": {
+          "body": "Tôi tạo không gian cho những trải nghiệm {pace} tại {destination}, du lịch theo cách mang lại {meaning} và những ký ức tôi sẽ mang theo nhiều năm."
+        }
+      }
+    },
+    {
+      "code": "ST12",
+      "categoryCode": "TRAVEL",
+      "kind": "short",
+      "placeholders": [
+        "feeling_1"
+      ],
+      "sortOrder": 2,
+      "text": {
+        "en": {
+          "body": "My life has room for wonder, discovery and {feeling_1}."
+        },
+        "vi": {
+          "body": "Cuộc sống của tôi có chỗ cho sự kỳ diệu, khám phá và {feeling_1}."
+        }
+      }
+    }
+  ]
+}

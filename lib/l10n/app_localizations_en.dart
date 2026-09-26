@@ -157,7 +157,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get intentionBody =>
-      'Soul will gently shape the journey around what matters to you.';
+      'Choose what matters most to you right now. There\'s no wrong answer.';
 
   @override
   String get intentionChooseOne => 'Choose at least one.';
@@ -192,4 +192,99 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get beginDayOne => 'Begin Day 1';
+
+  @override
+  String get chooseCategoryTitle => 'Choose an area';
+
+  @override
+  String get chooseCategoryBody =>
+      'Where would you like to place your attention right now?';
+
+  @override
+  String visionStepLabel(Object category, int step, int total) {
+    return '$category · $step/$total';
+  }
+
+  @override
+  String chooseUpTo(int max) {
+    return 'Choose up to $max.';
+  }
+
+  @override
+  String get answerRequiredHint => 'Choose an option or add your own answer.';
+
+  @override
+  String get feelingsTitle => 'How do you want to feel when this is happening?';
+
+  @override
+  String get feelingsHint => 'Choose 1 to 3 feelings.';
+
+  @override
+  String get feelingsLimitReached =>
+      'You have chosen 3 feelings. Deselect one to choose another.';
+
+  @override
+  String get statementTitle => 'Your vision';
+
+  @override
+  String get statementBody =>
+      'Soul drafted this from your choices. Make it your own.';
+
+  @override
+  String get statementLabel => 'Vision statement';
+
+  @override
+  String get statementEmpty => 'Write your vision in one or two sentences.';
+
+  @override
+  String statementTooLong(int max) {
+    return 'Please keep it to $max characters or fewer.';
+  }
+
+  @override
+  String get visionImageTitle => 'Make it feel real';
+
+  @override
+  String get visionImageBody => 'Add a photo if you like. It\'s optional.';
+
+  @override
+  String get chooseFromLibrary => 'Choose from library';
+
+  @override
+  String get takePhoto => 'Take a photo';
+
+  @override
+  String get removePhoto => 'Remove photo';
+
+  @override
+  String get visionPhoto => 'Vision photo';
+
+  @override
+  String get photoUnavailable => 'This photo can\'t be shown.';
+
+  @override
+  String get reviewVisionTitle => 'Review your vision';
+
+  @override
+  String get saveToVisionBoard => 'Save to vision board';
+
+  @override
+  String get visionSaveFailed =>
+      'Your vision wasn\'t saved. Your choices are still here — please try again.';
+
+  @override
+  String get archiveVision => 'Archive vision';
+
+  @override
+  String get archiveVisionTitle => 'Archive this vision?';
+
+  @override
+  String get archiveVisionBody =>
+      'It will leave your board but won\'t be deleted.';
+
+  @override
+  String get archive => 'Archive';
+
+  @override
+  String get visionNotFound => 'This vision is no longer on your board.';
 }

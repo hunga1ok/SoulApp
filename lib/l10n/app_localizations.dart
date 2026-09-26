@@ -383,7 +383,7 @@ abstract class AppLocalizations {
   /// No description provided for @intentionBody.
   ///
   /// In en, this message translates to:
-  /// **'Soul will gently shape the journey around what matters to you.'**
+  /// **'Choose what matters most to you right now. There\'s no wrong answer.'**
   String get intentionBody;
 
   /// No description provided for @intentionChooseOne.
@@ -445,6 +445,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Begin Day 1'**
   String get beginDayOne;
+
+  /// No description provided for @chooseCategoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an area'**
+  String get chooseCategoryTitle;
+
+  /// No description provided for @chooseCategoryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Where would you like to place your attention right now?'**
+  String get chooseCategoryBody;
+
+  /// No description provided for @visionStepLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{category} · {step}/{total}'**
+  String visionStepLabel(Object category, int step, int total);
+
+  /// No description provided for @chooseUpTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose up to {max}.'**
+  String chooseUpTo(int max);
+
+  /// No description provided for @answerRequiredHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an option or add your own answer.'**
+  String get answerRequiredHint;
+
+  /// No description provided for @feelingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How do you want to feel when this is happening?'**
+  String get feelingsTitle;
+
+  /// No description provided for @feelingsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose 1 to 3 feelings.'**
+  String get feelingsHint;
+
+  /// No description provided for @feelingsLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'You have chosen 3 feelings. Deselect one to choose another.'**
+  String get feelingsLimitReached;
+
+  /// No description provided for @statementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your vision'**
+  String get statementTitle;
+
+  /// No description provided for @statementBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul drafted this from your choices. Make it your own.'**
+  String get statementBody;
+
+  /// No description provided for @statementLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Vision statement'**
+  String get statementLabel;
+
+  /// No description provided for @statementEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your vision in one or two sentences.'**
+  String get statementEmpty;
+
+  /// No description provided for @statementTooLong.
+  ///
+  /// In en, this message translates to:
+  /// **'Please keep it to {max} characters or fewer.'**
+  String statementTooLong(int max);
+
+  /// No description provided for @visionImageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make it feel real'**
+  String get visionImageTitle;
+
+  /// No description provided for @visionImageBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a photo if you like. It\'s optional.'**
+  String get visionImageBody;
+
+  /// No description provided for @chooseFromLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from library'**
+  String get chooseFromLibrary;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a photo'**
+  String get takePhoto;
+
+  /// No description provided for @removePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove photo'**
+  String get removePhoto;
+
+  /// No description provided for @visionPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Vision photo'**
+  String get visionPhoto;
+
+  /// No description provided for @photoUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This photo can\'t be shown.'**
+  String get photoUnavailable;
+
+  /// No description provided for @reviewVisionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review your vision'**
+  String get reviewVisionTitle;
+
+  /// No description provided for @saveToVisionBoard.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to vision board'**
+  String get saveToVisionBoard;
+
+  /// No description provided for @visionSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Your vision wasn\'t saved. Your choices are still here — please try again.'**
+  String get visionSaveFailed;
+
+  /// No description provided for @archiveVision.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive vision'**
+  String get archiveVision;
+
+  /// No description provided for @archiveVisionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive this vision?'**
+  String get archiveVisionTitle;
+
+  /// No description provided for @archiveVisionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It will leave your board but won\'t be deleted.'**
+  String get archiveVisionBody;
+
+  /// No description provided for @archive.
+  ///
+  /// In en, this message translates to:
+  /// **'Archive'**
+  String get archive;
+
+  /// No description provided for @visionNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This vision is no longer on your board.'**
+  String get visionNotFound;
 }
 
 class _AppLocalizationsDelegate
