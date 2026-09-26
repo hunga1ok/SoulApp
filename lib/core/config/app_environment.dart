@@ -1,4 +1,10 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+/// Build-time configuration, provided at bootstrap.
+final appConfigurationProvider = Provider<AppConfiguration>((ref) {
+  throw UnimplementedError('AppConfiguration must be provided at bootstrap.');
+});
 
 enum AppEnvironment { development, staging, production }
 

@@ -13,7 +13,10 @@ Future<void> main() async {
 
   runApp(
     ProviderScope(
-      overrides: [preferencesProvider.overrideWithValue(preferences)],
+      overrides: [
+        preferencesProvider.overrideWithValue(preferences),
+        appConfigurationProvider.overrideWithValue(configuration),
+      ],
       child: SoulApp(configuration: configuration),
     ),
   );
