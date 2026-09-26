@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
-import '../../core/design_system/soul_theme.dart';
+import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -14,14 +14,7 @@ class ProfileScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(appStateProvider);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: const Icon(Icons.arrow_back),
-          tooltip: l10n.back,
-        ),
-        title: Text(l10n.profile),
-      ),
+      appBar: SoulAppBar(title: l10n.profile, onBack: () => context.pop()),
       body: ListView(
         padding: const EdgeInsets.all(SoulSpace.lg),
         children: [
@@ -67,33 +60,27 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Future<void> _showLanguagePicker(BuildContext context, WidgetRef ref) async {
-    await showModalBottomSheet<void>(
+    await showSoulBottomSheet<void>(
       context: context,
       builder:
-          (sheetContext) => SafeArea(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  title: Text(AppLocalizations.of(context)!.vietnameseLanguage),
-                  onTap: () async {
-                    await ref
-                        .read(appStateProvider)
-                        .selectLocale(SoulLocale.vi);
-                    if (sheetContext.mounted) Navigator.pop(sheetContext);
-                  },
-                ),
-                ListTile(
-                  title: Text(AppLocalizations.of(context)!.englishLanguage),
-                  onTap: () async {
-                    await ref
-                        .read(appStateProvider)
-                        .selectLocale(SoulLocale.en);
-                    if (sheetContext.mounted) Navigator.pop(sheetContext);
-                  },
-                ),
-              ],
-            ),
+          (sheetContext) => Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: Text(AppLocalizations.of(context)!.vietnameseLanguage),
+                onTap: () async {
+                  await ref.read(appStateProvider).selectLocale(SoulLocale.vi);
+                  if (sheetContext.mounted) Navigator.pop(sheetContext);
+                },
+              ),
+              ListTile(
+                title: Text(AppLocalizations.of(context)!.englishLanguage),
+                onTap: () async {
+                  await ref.read(appStateProvider).selectLocale(SoulLocale.en);
+                  if (sheetContext.mounted) Navigator.pop(sheetContext);
+                },
+              ),
+            ],
           ),
     );
   }
