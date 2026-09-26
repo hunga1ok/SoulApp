@@ -331,6 +331,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'English'**
   String get englishLanguage;
+
+  /// Language gate option. Always the Vietnamese endonym, identical in every locale.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiếng Việt'**
+  String get languageEndonymVi;
+
+  /// Language gate option. Always the English endonym, identical in every locale.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEndonymEn;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retry;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @pause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get pause;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get somethingWentWrong;
 }
 
 class _AppLocalizationsDelegate

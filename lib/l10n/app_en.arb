@@ -7,7 +7,11 @@
   "explore": "Explore",
   "continueLabel": "Continue",
   "welcome": "Welcome, {name}",
-  "@welcome": {"placeholders": {"name": {}}},
+  "@welcome": {
+    "placeholders": {
+      "name": {}
+    }
+  },
   "whatShouldWeCallYou": "What would you like Soul to call you?",
   "nameHint": "Your preferred name",
   "saveAndContinue": "Save and continue",
@@ -32,7 +36,13 @@
   "signOut": "Sign out",
   "back": "Back",
   "dayProgress": "Day {day} of 28",
-  "@dayProgress": {"placeholders": {"day": {"type": "int"}}},
+  "@dayProgress": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
   "authTagline": "A private, gentle space for you.",
   "continueWithGoogle": "Continue with Google",
   "developmentAuthHint": "Development mode: this button simulates a Google callback.",
@@ -40,5 +50,18 @@
   "neutralInstrumentalFiveMinutes": "Neutral instrumental · 5 min",
   "play": "Play",
   "vietnameseLanguage": "Vietnamese",
-  "englishLanguage": "English"
+  "englishLanguage": "English",
+  "languageEndonymVi": "Tiếng Việt",
+  "@languageEndonymVi": {
+    "description": "Language gate option. Always the Vietnamese endonym, identical in every locale."
+  },
+  "languageEndonymEn": "English",
+  "@languageEndonymEn": {
+    "description": "Language gate option. Always the English endonym, identical in every locale."
+  },
+  "retry": "Try again",
+  "loading": "Loading",
+  "pause": "Pause",
+  "cancel": "Cancel",
+  "somethingWentWrong": "Something went wrong. Please try again."
 }

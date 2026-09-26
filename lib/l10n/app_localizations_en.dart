@@ -129,4 +129,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get englishLanguage => 'English';
+
+  @override
+  String get languageEndonymVi => 'Tiếng Việt';
+
+  @override
+  String get languageEndonymEn => 'English';
+
+  @override
+  String get retry => 'Try again';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get pause => 'Pause';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong. Please try again.';
 }

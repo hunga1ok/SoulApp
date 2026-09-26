@@ -7,7 +7,11 @@
   "explore": "Khám phá",
   "continueLabel": "Tiếp tục",
   "welcome": "Chào {name}",
-  "@welcome": {"placeholders": {"name": {}}},
+  "@welcome": {
+    "placeholders": {
+      "name": {}
+    }
+  },
   "whatShouldWeCallYou": "Bạn muốn được gọi với tên là gì?",
   "nameHint": "Tên bạn muốn được gọi",
   "saveAndContinue": "Lưu và tiếp tục",
@@ -15,7 +19,7 @@
   "oneSmallAction": "Một hành động nhỏ",
   "smallActionText": "Hãy hít một hơi thật dịu trước khi bước tiếp.",
   "recent": "Gần đây",
-  "oneNote": "1 note",
+  "oneNote": "1 ghi chú",
   "gratitudeToday": "BIẾT ƠN · HÔM NAY",
   "gratitudeNote": "Tôi biết ơn cuộc sống này",
   "yourVisions": "Những tầm nhìn của bạn",
@@ -32,7 +36,13 @@
   "signOut": "Đăng xuất",
   "back": "Quay lại",
   "dayProgress": "Ngày {day} trên 28",
-  "@dayProgress": {"placeholders": {"day": {"type": "int"}}},
+  "@dayProgress": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
   "authTagline": "Một khoảng riêng tư dành cho bạn.",
   "continueWithGoogle": "Tiếp tục với Google",
   "developmentAuthHint": "Chế độ phát triển: nút này mô phỏng callback Google.",
@@ -40,5 +50,12 @@
   "neutralInstrumentalFiveMinutes": "Nhạc không lời · 5 phút",
   "play": "Phát",
   "vietnameseLanguage": "Tiếng Việt",
-  "englishLanguage": "Tiếng Anh"
+  "englishLanguage": "Tiếng Anh",
+  "languageEndonymVi": "Tiếng Việt",
+  "languageEndonymEn": "English",
+  "retry": "Thử lại",
+  "loading": "Đang tải",
+  "pause": "Tạm dừng",
+  "cancel": "Hủy",
+  "somethingWentWrong": "Đã có lỗi xảy ra. Bạn thử lại nhé."
 }

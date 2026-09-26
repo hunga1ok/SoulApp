@@ -53,7 +53,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get recent => 'Gần đây';
 
   @override
-  String get oneNote => '1 note';
+  String get oneNote => '1 ghi chú';
 
   @override
   String get gratitudeToday => 'BIẾT ƠN · HÔM NAY';
@@ -131,4 +131,25 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get englishLanguage => 'Tiếng Anh';
+
+  @override
+  String get languageEndonymVi => 'Tiếng Việt';
+
+  @override
+  String get languageEndonymEn => 'English';
+
+  @override
+  String get retry => 'Thử lại';
+
+  @override
+  String get loading => 'Đang tải';
+
+  @override
+  String get pause => 'Tạm dừng';
+
+  @override
+  String get cancel => 'Hủy';
+
+  @override
+  String get somethingWentWrong => 'Đã có lỗi xảy ra. Bạn thử lại nhé.';
 }
