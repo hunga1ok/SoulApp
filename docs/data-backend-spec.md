@@ -152,3 +152,76 @@ An import is accepted when:
 - Every native audio mapping references a reviewed published asset or remains explicitly unavailable.
 - Locale and editorial filters exclude mismatched or unverified content.
 - The import can run in dry-run mode and reports row-level errors before any write.
+
+## 11. Auth and profile API (v1)
+
+Base URL: `API_BASE_URL`, which already ends in `/v1`. Request and response bodies are JSON.
+
+### Error envelope
+
+Every non-2xx response uses:
+
+```json
+{
+  "error": {
+    "code": "UNAUTHORIZED",
+    "messageKey": "errors.unauthorized",
+    "message": "Developer hint; never shown to users",
+    "requestId": "…",
+    "details": null
+  }
+}
+```
+
+Stable `code` values include `UNAUTHORIZED`, `VALIDATION_FAILED`, `RATE_LIMITED`, `NOT_FOUND`, `CONFLICT`, `FORBIDDEN`, `SERVICE_UNAVAILABLE` and `INTERNAL_ERROR`; clients must tolerate new codes. Flutter maps `code` to a typed exception and to localized copy in the UI layer; it never displays `message`.
+
+### Types
+
+```text
+Session = {
+  accessToken: string,
+  accessTokenExpiresAt: ISO-8601,
+  refreshToken: string,
+  refreshTokenExpiresAt: ISO-8601,
+  me: Me
+}
+
+Me = {
+  id: uuid,
+  role: "user" | "editor" | "admin",
+  email: string | null,
+  googleDisplayName: string | null,
+  profile: {
+    preferredName: string | null,
+    locale: "vi" | "en",
+    audioEnabled: boolean,
+    timezone: string,
+    onboardingCompletedAt: ISO-8601 | null
+  }
+}
+```
+
+`googleDisplayName` is Google metadata. The app may prefill it as a suggestion for `preferredName` but never saves it without the user's confirmation.
+
+### Endpoints
+
+| Method and path | Auth | Body | Success |
+|---|---|---|---|
+| `POST /auth/google` | — | `{ idToken: string, locale: "vi"\|"en", deviceLabel?: string }` | 200 `Session` |
+| `POST /auth/dev` | — | `{ subject: string (8–64 chars, [A-Za-z0-9_-]), email?: string, name?: string, locale: "vi"\|"en", deviceLabel?: string }` | 200 `Session`; 404 when disabled |
+| `POST /auth/refresh` | — | `{ refreshToken: string }` | 200 `Session` |
+| `POST /auth/logout` | — | `{ refreshToken: string }` | 204 |
+| `GET /me` | Bearer | — | 200 `Me` |
+| `PATCH /me/profile` | Bearer | any subset of `{ preferredName: string (trimmed, 1–50), locale: "vi"\|"en", audioEnabled: boolean, timezone: IANA string }` | 200 `Me` |
+
+- `POST /auth/dev` exists only on local/development servers. It is a development substitute for Google Sign-In; release app builds never call it.
+- Refresh tokens rotate: after `POST /auth/refresh` the old token is invalid and the client must store the new one. Presenting a used refresh token is treated as theft and revokes the whole session family, answering 401 `UNAUTHORIZED`. Invalid or expired tokens also answer 401.
+- Authentication endpoints are rate limited and answer 429 `RATE_LIMITED`.
+
+### Client session rules (SoulApp)
+
+- The access token is kept only in memory; the refresh token only in platform secure storage (`flutter_secure_storage`), never in SharedPreferences.
+- Requests carry `Authorization: Bearer <accessToken>`. On a 401 the client performs one refresh shared by all concurrent requests (requests started during the refresh wait for it) and retries each original request once.
+- A 401/403 from `/auth/refresh` clears the stored credentials and signs the user out. Network, 429 and 5xx failures keep the credentials so the session can be restored later.
+- On start, a stored refresh token is refreshed, then `GET /me` decides routing: no `preferredName` → preferred-name screen, otherwise Today. The profile `locale` replaces the locally cached locale.
+- The locale chosen on the language gate is sent at login. Later locale and sound changes are applied optimistically and sent with `PATCH /me/profile`; a failed save reverts the change and shows a localized error.

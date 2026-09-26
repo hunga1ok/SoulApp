@@ -89,10 +89,12 @@
 - [~] `APP-001` **P0 — Bootstrap kiến trúc Flutter theo feature**
   - AC: có lớp `app`, `core`, `features`, `data`, `domain`, `presentation`; dependency chỉ đi theo hướng đã định trong architecture.
   - Tiến độ 2026-09-26: đã dựng `app`, `core` và các feature UI đầu tiên; tiếp tục tách data/domain/presentation khi API repositories được thêm.
+  - Tiến độ 2026-09-26 (đợt 2): thêm lớp `lib/data/` (`api/` Dio client + auth interceptor + map error envelope, `local/` credential store trên secure storage, `models/` `Me`/`Session`, `repositories/` auth/profile), `lib/core/errors/` (`ApiException` + map code → copy vi/en) và `lib/core/localization/` (`SoulLocale`); `features/auth/` chứa session controller. Hướng phụ thuộc: widget → controller → repository → API. Chưa tách lớp domain/presentation riêng vì theo `architecture.md` chưa có business logic cần lớp domain.
 
 - [~] `APP-002` **P0 — Thiết lập Riverpod và state conventions**
   - AC: có mẫu AsyncValue/loading/error/retry; không giữ state nghiệp vụ quan trọng trong widget cục bộ.
   - Tiến độ 2026-09-26: Riverpod đã bootstrap `AppState`; chuẩn AsyncValue được thực hiện cùng remote repositories.
+  - Tiến độ 2026-09-26 (đợt 2): quy ước đã dùng thật: state phiên là `AsyncNotifier<Me?>` (`SessionController`; loading/error khi khôi phục phiên có màn `SoulLoadingState`/`SoulErrorState` + thử lại), thao tác form là `Notifier<AsyncValue<void>>` autoDispose (`SignInController`, `PreferredNameController`); controller ném `ApiException`, widget map `code` sang thông báo đã bản địa hóa; cập nhật optimistic + hoàn tác cho locale/âm thanh. Tên, locale server và âm thanh không còn nằm trong `AppState`/SharedPreferences (chỉ còn locale cache cho lúc khởi động). Còn lại: áp dụng cùng mẫu cho các màn remote khác khi có API.
 
 - [~] `APP-003` **P0 — Thiết lập GoRouter và route guards**
   - Liên kết: `US-OB-001..005`, `REQ-UX-003`.
@@ -206,12 +208,14 @@
 - [ ] `OB-004` **P0 — Access/refresh token rotation và sign-out**
   - AC: refresh token rotate/revoke; sign-out vô hiệu session; token hết hạn được xử lý không lặp request vô hạn.
 
-- [ ] `OB-005` **P0 — Dio auth client và secure storage**
+- [~] `OB-005` **P0 — Dio auth client và secure storage**
   - AC: attach/refresh token an toàn, request queue khi refresh, xóa credential khi revoke; không lưu token trong plain preferences.
+  - Tiến độ 2026-09-26 (đợt 2): thêm `dio` + `flutter_secure_storage`. Access token chỉ trong bộ nhớ, refresh token chỉ trong secure storage (`CredentialStore`). `AuthInterceptor` gắn `Authorization: Bearer`; khi 401 chỉ refresh một lần dùng chung cho mọi request đồng thời (request mới phát sinh trong lúc refresh sẽ chờ), retry request gốc đúng một lần; refresh bị từ chối (401/403) thì xóa credential và chuyển app về trạng thái đăng xuất, không lặp; lỗi tạm thời (mạng/429/5xx) giữ credential. Error envelope map sang `ApiException(code)`, UI map code sang copy vi/en. Khôi phục phiên khi mở app (refresh → `GET /me`) có màn loading và retry. Unit test bằng fake HTTP adapter phủ: refresh đơn cho 401 đồng thời, 401 đến muộn dùng token mới, retry một lần, refresh thất bại → đăng xuất, lỗi tạm thời giữ token, luôn lưu refresh token mới, map envelope. Còn lại: chưa chạy với SoulApi thật (endpoint auth thuộc `OB-003`/`OB-004` chưa có trong SoulApi); chưa kiểm tra Keychain/Keystore trên thiết bị Android/iOS thật; Android emulator gọi API local qua HTTP cần cấu hình cleartext cho debug.
 
-- [ ] `OB-006` **P0 — Hỏi preferred name ngay sau Google login**
+- [~] `OB-006` **P0 — Hỏi preferred name ngay sau Google login**
   - Liên kết: `US-OB-003`.
   - AC: câu đầu tiên là “Bạn muốn được gọi với tên là gì?” theo locale; prefill tên Google chỉ là gợi ý; trim/validate; có thể sửa sau ở profile.
+  - Tiến độ 2026-09-26 (đợt 2): sau đăng nhập, nếu profile server chưa có `preferredName` thì router đưa tới màn tên; ô nhập được điền sẵn `googleDisplayName` chỉ như gợi ý (không lưu cho tới khi người dùng bấm lưu); trim, 1–50 ký tự (code point, theo contract API); lưu bằng `PATCH /v1/me/profile`; lỗi server hiện thông báo vi/en và nút “Thử lại”; sửa lại được từ Profile (`/profile/name`). Widget test vi/en phủ prefill, validate, lưu, lỗi + thử lại và sửa từ Profile. Còn lại: đăng nhập thật bằng Google chờ `OB-002`/`EXT-004` (debug build hiện dùng development login `POST /auth/dev` của backend, release build để nút Google disabled); `requirements.md` (US-OB-003) vẫn ghi giới hạn 1–40 ký tự, khác contract API 1–50 — cần Product chốt; chưa kiểm tra trên thiết bị Android/iOS thật.
 
 - [ ] `OB-007` **P0 — Chọn ý định/focus onboarding**
   - Liên kết: `US-OB-004`.
