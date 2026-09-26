@@ -46,8 +46,8 @@ Every remote or persisted screen explicitly supports loading, content, empty, re
 
 ### REQ-L10N-001 Language gate
 
-- The first screen contains only the logo and the choices `VI` and `EN`; no Vietnamese or English sentence appears before selection.
-- Device locale may pre-highlight a choice but must never commit it automatically.
+- The first screen contains only the logo and the choices `Tiếng Việt` and `English` (each language's own name, identical in every locale); no Vietnamese or English sentence appears before selection.
+- Device locale may pre-highlight a choice (shown as the primary button) but must never commit it automatically; the locale is committed only when the user taps a choice.
 - The selected locale is persisted locally immediately and later synchronized to the profile.
 
 ### REQ-L10N-002 One application tree
@@ -68,7 +68,7 @@ Every remote or persisted screen explicitly supports loading, content, empty, re
 
 ### US-OB-001 Select language
 
-As a new user, I want to choose VI or EN before seeing language-specific copy.
+As a new user, I want to choose Tiếng Việt or English before seeing language-specific copy.
 
 Acceptance:
 

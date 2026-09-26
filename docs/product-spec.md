@@ -26,7 +26,7 @@ Profile and settings open from the avatar in the app header. Global sound can be
 
 ### Flow
 
-1. Language-neutral locale chooser: `VI` or `EN`.
+1. Language-neutral locale chooser: `Tiếng Việt` or `English` (endonyms; the device-suggested language is highlighted, and the user's tap confirms).
 2. Google sign-in, with demo mode available only in non-production builds.
 3. Preferred name: “Soul should call you…”. This is independent of the Google account name.
 4. Primary intention for using Soul.

@@ -4,81 +4,52 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
-import '../../core/design_system/soul_theme.dart';
+import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
+import 'language_suggestion.dart';
 
+/// Language-neutral gate. Both choices are always shown as endonyms. The
+/// device-suggested language is highlighted as the primary button, but no
+/// locale is stored until the user taps one of the choices.
 class LanguageGateScreen extends ConsumerWidget {
   const LanguageGateScreen({super.key});
 
+  static const _maxChoiceWidth = 240.0;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(SoulSpace.xl),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/soul_logo.png',
-                  width: 138,
-                  semanticLabel: 'Soul',
-                ),
-                const SizedBox(height: 52),
-                _LanguageChoice(
-                  label: 'VI',
-                  onPressed: () async {
-                    await ref
-                        .read(appStateProvider)
-                        .selectLocale(SoulLocale.vi);
-                    if (context.mounted) context.go('/auth');
-                  },
-                ),
-                const SizedBox(height: SoulSpace.sm),
-                _LanguageChoice(
-                  label: 'EN',
-                  onPressed: () async {
-                    await ref
-                        .read(appStateProvider)
-                        .selectLocale(SoulLocale.en);
-                    if (context.mounted) context.go('/auth');
-                  },
-                ),
-              ],
+    final l10n = AppLocalizations.of(context)!;
+    final suggested = ref.watch(suggestedLocaleProvider);
+    final choices = {
+      SoulLocale.vi: l10n.languageEndonymVi,
+      SoulLocale.en: l10n.languageEndonymEn,
+    };
+
+    return _OnboardingLayout(
+      padding: const EdgeInsets.all(SoulSpace.xl),
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        _Logo(width: 138, semanticLabel: l10n.appTitle),
+        const SizedBox(height: SoulSpace.xl + SoulSpace.lg),
+        for (final MapEntry(key: locale, value: label) in choices.entries)
+          Padding(
+            padding: const EdgeInsets.only(bottom: SoulSpace.sm),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: _maxChoiceWidth),
+              child: SoulButton(
+                label: label,
+                variant:
+                    locale == suggested
+                        ? SoulButtonVariant.primary
+                        : SoulButtonVariant.secondary,
+                onPressed: () async {
+                  await ref.read(appStateProvider).selectLocale(locale);
+                  if (context.mounted) context.go('/auth');
+                },
+              ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _LanguageChoice extends StatelessWidget {
-  const _LanguageChoice({required this.label, required this.onPressed});
-
-  final String label;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 160,
-      child: OutlinedButton(
-        onPressed: onPressed,
-        style: OutlinedButton.styleFrom(
-          minimumSize: const Size.fromHeight(52),
-          foregroundColor: SoulColors.plum,
-          side: const BorderSide(color: SoulColors.line),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-        ),
-        child: Text(
-          label,
-          style: const TextStyle(fontWeight: FontWeight.w700, letterSpacing: 2),
-        ),
-      ),
+      ],
     );
   }
 }
@@ -89,58 +60,39 @@ class AuthScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(SoulSpace.lg),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image.asset(
-                  'assets/images/soul_logo.png',
-                  width: 130,
-                  alignment: Alignment.centerLeft,
-                  semanticLabel: 'Soul',
-                ),
-                const SizedBox(height: SoulSpace.xl),
-                Text(
-                  l10n.appTitle,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                const SizedBox(height: SoulSpace.sm),
-                Text(
-                  l10n.authTagline,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const SizedBox(height: 42),
-                ElevatedButton.icon(
-                  onPressed:
-                      kDebugMode
-                          ? () async {
-                            await ref
-                                .read(appStateProvider)
-                                .completeDevelopmentSignIn();
-                            if (context.mounted) context.go('/onboarding/name');
-                          }
-                          : null,
-                  icon: const Icon(Icons.g_mobiledata, size: 28),
-                  label: Text(l10n.continueWithGoogle),
-                ),
-                if (kDebugMode) ...[
-                  const SizedBox(height: SoulSpace.sm),
-                  Text(
-                    l10n.developmentAuthHint,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ],
-            ),
-          ),
+    return _OnboardingLayout(
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: _Logo(width: 130, semanticLabel: l10n.appTitle),
         ),
-      ),
+        const SizedBox(height: SoulSpace.xl),
+        Text(l10n.appTitle, style: Theme.of(context).textTheme.displaySmall),
+        const SizedBox(height: SoulSpace.sm),
+        Text(l10n.authTagline, style: Theme.of(context).textTheme.bodyLarge),
+        const SizedBox(height: SoulSpace.xl + SoulSpace.xs),
+        SoulButton(
+          label: l10n.continueWithGoogle,
+          icon: const Icon(Icons.g_mobiledata, size: 28),
+          onPressed:
+              kDebugMode
+                  ? () async {
+                    await ref
+                        .read(appStateProvider)
+                        .completeDevelopmentSignIn();
+                    if (context.mounted) context.go('/onboarding/name');
+                  }
+                  : null,
+        ),
+        if (kDebugMode) ...[
+          const SizedBox(height: SoulSpace.sm),
+          Text(
+            l10n.developmentAuthHint,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ],
+      ],
     );
   }
 }
@@ -170,46 +122,95 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
     super.dispose();
   }
 
+  bool get _canSave => _controller.text.trim().isNotEmpty;
+
+  Future<void> _save() async {
+    if (!_canSave) return;
+    await ref.read(appStateProvider).savePreferredName(_controller.text);
+    if (mounted) context.go('/app/today');
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    return _OnboardingLayout(
+      children: [
+        const Spacer(),
+        Text(
+          l10n.whatShouldWeCallYou,
+          style: Theme.of(context).textTheme.displaySmall,
+        ),
+        const SizedBox(height: SoulSpace.lg),
+        SoulTextField(
+          controller: _controller,
+          label: l10n.nameHint,
+          textCapitalization: TextCapitalization.words,
+          textInputAction: TextInputAction.done,
+          autofocus: true,
+          onChanged: (_) => setState(() {}),
+          onSubmitted: (_) => _save(),
+        ),
+        const Spacer(),
+        const SizedBox(height: SoulSpace.lg),
+        SoulButton(
+          label: l10n.saveAndContinue,
+          onPressed: _canSave ? _save : null,
+        ),
+      ],
+    );
+  }
+}
+
+/// Scrollable onboarding page: content is centered when it fits and scrolls
+/// on small screens, at large text scales and above the keyboard.
+class _OnboardingLayout extends StatelessWidget {
+  const _OnboardingLayout({
+    required this.children,
+    this.padding = const EdgeInsets.all(SoulSpace.lg),
+    this.crossAxisAlignment = CrossAxisAlignment.stretch,
+  });
+
+  final List<Widget> children;
+  final EdgeInsetsGeometry padding;
+  final CrossAxisAlignment crossAxisAlignment;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(SoulSpace.lg),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Spacer(),
-              Text(
-                l10n.whatShouldWeCallYou,
-                style: Theme.of(context).textTheme.displaySmall,
+        child: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: Padding(
+                padding: padding,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: crossAxisAlignment,
+                  children: children,
+                ),
               ),
-              const SizedBox(height: SoulSpace.lg),
-              TextField(
-                controller: _controller,
-                textCapitalization: TextCapitalization.words,
-                autofocus: true,
-                onChanged: (_) => setState(() {}),
-                decoration: InputDecoration(hintText: l10n.nameHint),
-              ),
-              const Spacer(),
-              ElevatedButton(
-                onPressed:
-                    _controller.text.trim().isEmpty
-                        ? null
-                        : () async {
-                          await ref
-                              .read(appStateProvider)
-                              .savePreferredName(_controller.text);
-                          if (context.mounted) context.go('/app/today');
-                        },
-                child: Text(l10n.saveAndContinue),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class _Logo extends StatelessWidget {
+  const _Logo({required this.width, required this.semanticLabel});
+
+  final double width;
+  final String semanticLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'assets/images/soul_logo.png',
+      width: width,
+      semanticLabel: semanticLabel,
+      errorBuilder: (context, error, stackTrace) => Text(semanticLabel),
     );
   }
 }

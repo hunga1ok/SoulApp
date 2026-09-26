@@ -72,7 +72,7 @@ The Flutter app can read published content and perform authenticated owner-scope
 
 ### Work
 
-- Implement language-neutral `VI`/`EN` entry screen with device-locale suggestion.
+- Implement language-neutral `Tiếng Việt`/`English` entry screen with device-locale suggestion.
 - Configure Google sign-in, verify identity in the API, and issue revocable Soul sessions.
 - Implement preferred-name, intention, reminders, and completion screens.
 - Persist profile and onboarding progress; resume interrupted onboarding.
