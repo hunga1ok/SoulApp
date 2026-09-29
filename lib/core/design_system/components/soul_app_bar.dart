@@ -42,11 +42,14 @@ class SoulAppBar extends StatelessWidget implements PreferredSizeWidget {
                 errorBuilder:
                     (context, error, stackTrace) => Text(l10n.appTitle),
               )
-              : Text(
-                title!,
-                style: Theme.of(context).textTheme.titleLarge,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+              : MediaQuery.withClampedTextScaling(
+                maxScaleFactor: 1.3,
+                child: Text(
+                  title!,
+                  style: Theme.of(context).textTheme.titleLarge,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
       actions: [...?actions, const SizedBox(width: SoulSpace.xs)],
     );

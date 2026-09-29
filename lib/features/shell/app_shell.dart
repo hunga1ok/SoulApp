@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
+import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -38,7 +39,11 @@ class AppShell extends ConsumerWidget {
         actions: [
           IconButton(
             tooltip: soundEnabled ? l10n.soundOn : l10n.soundOff,
-            onPressed: () => state.setSoundEnabled(!soundEnabled),
+            onPressed: () async {
+              final enabled = !soundEnabled;
+              await state.setSoundEnabled(enabled);
+              if (!enabled) await ref.read(audioPlaybackProvider).stop();
+            },
             isSelected: soundEnabled,
             icon: Icon(
               soundEnabled

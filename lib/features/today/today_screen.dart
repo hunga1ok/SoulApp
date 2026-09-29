@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app_state.dart';
+import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -19,6 +20,8 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final name = ref.watch(appStateProvider).preferredName ?? '…';
+    final soundEnabled = ref.watch(appStateProvider).soundEnabled;
+    final audio = ref.watch(audioPlaybackProvider);
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         SoulSpace.lg,
@@ -49,7 +52,17 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         SoulAudioRow(
           title: l10n.morningGratitude,
           subtitle: l10n.neutralInstrumentalFiveMinutes,
-          onPlayPause: () {},
+          isPlaying:
+              audio.isPlaying &&
+              audio.assetPath == 'assets/audio/music/so-11-warm-felt-piano.m4a',
+          onPlayPause:
+              soundEnabled
+                  ? () => ref
+                      .read(audioPlaybackProvider)
+                      .toggleAsset(
+                        'assets/audio/music/so-11-warm-felt-piano.m4a',
+                      )
+                  : null,
         ),
         const SizedBox(height: SoulSpace.lg),
         Text(

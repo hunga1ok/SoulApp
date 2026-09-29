@@ -20,12 +20,9 @@ Future<void> _openVisionTab(WidgetTester tester) async {
 
 Future<void> _tapButton(WidgetTester tester, String label) async {
   final button = find.widgetWithText(SoulButton, label);
-  // Lazy lists build the footer button only once it scrolls into view.
-  await tester.scrollUntilVisible(
-    button,
-    200,
-    scrollable: find.byType(Scrollable).last,
-  );
+  // The primary action is pinned below the scrollable content so it remains
+  // reachable on screens with a long list of feeling chips.
+  await tester.ensureVisible(button);
   await tester.pumpAndSettle();
   await tester.tap(button);
   await tester.pumpAndSettle();
@@ -42,18 +39,25 @@ Future<void> _tapText(WidgetTester tester, String text) async {
 }
 
 /// Answers every guided question with its first suggestion.
-Future<void> _answerQuestions(WidgetTester tester, String next) async {
-  while (find.byType(TextField).evaluate().isNotEmpty &&
-      find.text(next).evaluate().isNotEmpty &&
-      find.byType(SoulChip).evaluate().isNotEmpty &&
-      tester
-              .widget<SoulButton>(find.widgetWithText(SoulButton, next))
-              .onPressed ==
-          null) {
-    await tester.tap(find.byType(SoulChip).first);
-    await tester.pump();
+///
+/// An optional question can already be continued, while a required question
+/// needs an option first. Continue through both kinds until feelings appear.
+Future<void> _answerQuestions(
+  WidgetTester tester,
+  String next,
+  String feelingsTitle,
+) async {
+  for (var step = 0; step < 20; step++) {
+    if (find.text(feelingsTitle).evaluate().isNotEmpty) return;
+    final continueButton = find.widgetWithText(SoulButton, next);
+    final button = tester.widget<SoulButton>(continueButton);
+    if (button.onPressed == null) {
+      await tester.tap(find.byType(SoulChip).first);
+      await tester.pump();
+    }
     await _tapButton(tester, next);
   }
+  throw TestFailure('The guided questions did not reach the feelings step.');
 }
 
 void main() {
@@ -96,7 +100,7 @@ void main() {
       expect(find.byType(VisionBuilderScreen), findsOneWidget);
 
       await _tapText(tester, c.category);
-      await _answerQuestions(tester, c.next);
+      await _answerQuestions(tester, c.next, c.feelingsTitle);
 
       // Feelings: at least one, at most three.
       expect(find.text(c.feelingsTitle), findsOneWidget);
@@ -187,7 +191,11 @@ void main() {
     await _openVisionTab(tester);
     await _tapButton(tester, 'Create a vision');
     await _tapText(tester, 'Inner Peace');
-    await _answerQuestions(tester, 'Continue');
+    await _answerQuestions(
+      tester,
+      'Continue',
+      'How do you want to feel when this is happening?',
+    );
     await tester.tap(find.byType(SoulChip).first);
     await tester.pump();
     await _tapButton(tester, 'Continue');
