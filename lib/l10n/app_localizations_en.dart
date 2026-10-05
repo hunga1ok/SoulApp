@@ -62,6 +62,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gratitudeNote => 'I am grateful for this life.';
 
   @override
+  String get gratitudeJournalTitle => 'Gratitude notes';
+
+  @override
+  String get gratitudeJournalHint =>
+      'Write it as you would in your phone notes. A thought, a moment, or a list is enough.';
+
+  @override
+  String get gratitudeNoteLabel => 'What are you grateful for?';
+
+  @override
+  String get saveNote => 'Save note';
+
+  @override
+  String get gratitudeNotesEmpty => 'Your notes will appear here.';
+
+  @override
   String get yourVisions => 'Your visions';
 
   @override
@@ -75,6 +91,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get audioPending => 'Awaiting final audio';
+
+  @override
+  String get visionAudio => 'Soundtrack for this vision';
+
+  @override
+  String get visionAudioBody =>
+      'Choose a Soul track, an audio file on this device, or record something private for this vision.';
+
+  @override
+  String get visionAudioEmpty => 'No audio has been added yet.';
+
+  @override
+  String get visionAudioPersonal => 'Only on this device';
+
+  @override
+  String get addAudio => 'Add audio';
+
+  @override
+  String get audioLibrary => 'Audio library';
+
+  @override
+  String get chooseFromAudioLibrary => 'Choose from Soul\'s library';
+
+  @override
+  String get chooseAudioFile => 'Choose an audio file';
+
+  @override
+  String get recordAudio => 'Record audio';
+
+  @override
+  String get stopRecording => 'Stop and save recording';
+
+  @override
+  String get myRecording => 'My recording';
+
+  @override
+  String get removeAudio => 'Remove audio';
 
   @override
   String get audioGuided => 'Guided audio';

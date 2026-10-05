@@ -50,6 +50,21 @@ class AudioPlaybackController extends ChangeNotifier {
     player.play();
   }
 
+  Future<void> toggleFile(String path) async {
+    final player = await _ensurePlayer();
+    if (_assetPath == path && player.playing) {
+      await player.pause();
+      return;
+    }
+    if (_assetPath != path) {
+      await player.setFilePath(path);
+      _assetPath = path;
+    } else if (player.processingState == ProcessingState.completed) {
+      await player.seek(Duration.zero);
+    }
+    player.play();
+  }
+
   Future<void> stop() async {
     await _player?.stop();
     _assetPath = null;

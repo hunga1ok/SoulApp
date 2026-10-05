@@ -6,6 +6,7 @@ import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../data/content/audio_catalog.dart';
 import '../../data/content/content_repository.dart';
+import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
 
 class TodayScreen extends ConsumerStatefulWidget {
@@ -16,7 +17,21 @@ class TodayScreen extends ConsumerStatefulWidget {
 }
 
 class _TodayScreenState extends ConsumerState<TodayScreen> {
-  var _smallActionDone = false;
+  final _gratitudeController = TextEditingController();
+
+  @override
+  void dispose() {
+    _gratitudeController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _saveGratitude() async {
+    await ref
+        .read(gratitudeNotesProvider.notifier)
+        .add(_gratitudeController.text);
+    _gratitudeController.clear();
+    if (mounted) setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +40,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     final soundEnabled = ref.watch(appStateProvider).soundEnabled;
     final audio = ref.watch(audioPlaybackProvider);
     final track = ref.watch(audioCatalogProvider).valueOrNull?.asset('SO-11');
+    final gratitudeNotes = ref.watch(gratitudeNotesProvider);
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         SoulSpace.lg,
@@ -72,36 +88,40 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         ),
         const SizedBox(height: SoulSpace.lg),
         Text(
-          l10n.oneSmallAction,
+          l10n.gratitudeJournalTitle,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         const SizedBox(height: SoulSpace.sm),
-        Semantics(
-          button: true,
-          selected: _smallActionDone,
-          label: l10n.oneSmallAction,
-          child: SoulCard(
-            color: _smallActionDone ? SoulColors.lilac : SoulColors.surface,
-            onTap: () => setState(() => _smallActionDone = !_smallActionDone),
-            child: Row(
-              children: [
-                Icon(
-                  _smallActionDone
-                      ? Icons.check_circle
-                      : Icons.auto_awesome_outlined,
-                  color: SoulColors.lilacStrong,
-                ),
-                const SizedBox(width: SoulSpace.sm),
-                Expanded(
-                  child: Text(
-                    l10n.smallActionText,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        Text(
+          l10n.gratitudeJournalHint,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
+        const SizedBox(height: SoulSpace.sm),
+        SoulTextField(
+          controller: _gratitudeController,
+          label: l10n.gratitudeNoteLabel,
+          maxLines: 4,
+          textCapitalization: TextCapitalization.sentences,
+          onChanged: (_) => setState(() {}),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+        SoulButton(
+          label: l10n.saveNote,
+          onPressed:
+              _gratitudeController.text.trim().isEmpty ? null : _saveGratitude,
+        ),
+        if (gratitudeNotes.valueOrNull case final notes?
+            when notes.isNotEmpty) ...[
+          const SizedBox(height: SoulSpace.lg),
+          for (final note in notes.take(3))
+            Padding(
+              padding: const EdgeInsets.only(bottom: SoulSpace.sm),
+              child: SoulStickyNote(
+                eyebrow: l10n.gratitudeToday,
+                body: note.body,
+              ),
+            ),
+        ],
       ],
     );
   }

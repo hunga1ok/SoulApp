@@ -47,6 +47,8 @@ dependencies:
   path: ^1.9.1
   just_audio: ^0.9.46
   audio_session: ^0.1.25
+  file_picker: ^11.0.3
+  record: ^6.2.1
 
 dev_dependencies:
   flutter_test:

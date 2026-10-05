@@ -6,6 +6,8 @@
 	<string>Soul uses the camera only when you choose to take a photo for a vision. Photos stay on this device.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Soul opens your photo library only when you choose a photo for a vision. Photos stay on this device.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Soul uses the microphone only when you choose to record a private vision audio note. Recordings stay on this device.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -37,29 +37,40 @@ class VisionScreen extends ConsumerWidget {
         action: SoulButton(label: l10n.createVision, onPressed: create),
       );
     }
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(
-        SoulSpace.lg,
-        SoulSpace.md,
-        SoulSpace.lg,
-        SoulSpace.xl,
-      ),
+    return Stack(
       children: [
-        Text(l10n.yourVisions, style: Theme.of(context).textTheme.displaySmall),
-        const SizedBox(height: SoulSpace.lg),
-        for (final vision in visions.value!)
-          Padding(
-            padding: const EdgeInsets.only(bottom: SoulSpace.md),
-            child: _VisionCard(vision: vision, catalog: catalog.value!),
+        ListView(
+          padding: const EdgeInsets.fromLTRB(
+            SoulSpace.lg,
+            SoulSpace.md,
+            SoulSpace.lg,
+            SoulSpace.xl + 72,
           ),
-        const SizedBox(height: SoulSpace.sm),
-        Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 220),
-            child: SoulButton(
-              label: l10n.createVision,
-              variant: SoulButtonVariant.secondary,
+          children: [
+            Text(
+              l10n.yourVisions,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: SoulSpace.lg),
+            for (final vision in visions.value!)
+              Padding(
+                padding: const EdgeInsets.only(bottom: SoulSpace.md),
+                child: _VisionCard(vision: vision, catalog: catalog.value!),
+              ),
+          ],
+        ),
+        Positioned(
+          right: SoulSpace.lg,
+          bottom: SoulSpace.lg,
+          child: Semantics(
+            button: true,
+            label: l10n.createVision,
+            child: FloatingActionButton.small(
+              tooltip: l10n.createVision,
+              backgroundColor: SoulColors.ctaStart,
+              foregroundColor: Colors.white,
               onPressed: create,
+              child: const Icon(Icons.add),
             ),
           ),
         ),

@@ -200,6 +200,36 @@ abstract class AppLocalizations {
   /// **'I am grateful for this life.'**
   String get gratitudeNote;
 
+  /// No description provided for @gratitudeJournalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gratitude notes'**
+  String get gratitudeJournalTitle;
+
+  /// No description provided for @gratitudeJournalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write it as you would in your phone notes. A thought, a moment, or a list is enough.'**
+  String get gratitudeJournalHint;
+
+  /// No description provided for @gratitudeNoteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'What are you grateful for?'**
+  String get gratitudeNoteLabel;
+
+  /// No description provided for @saveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save note'**
+  String get saveNote;
+
+  /// No description provided for @gratitudeNotesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your notes will appear here.'**
+  String get gratitudeNotesEmpty;
+
   /// No description provided for @yourVisions.
   ///
   /// In en, this message translates to:
@@ -229,6 +259,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Awaiting final audio'**
   String get audioPending;
+
+  /// No description provided for @visionAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Soundtrack for this vision'**
+  String get visionAudio;
+
+  /// No description provided for @visionAudioBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a Soul track, an audio file on this device, or record something private for this vision.'**
+  String get visionAudioBody;
+
+  /// No description provided for @visionAudioEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No audio has been added yet.'**
+  String get visionAudioEmpty;
+
+  /// No description provided for @visionAudioPersonal.
+  ///
+  /// In en, this message translates to:
+  /// **'Only on this device'**
+  String get visionAudioPersonal;
+
+  /// No description provided for @addAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Add audio'**
+  String get addAudio;
+
+  /// No description provided for @audioLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Audio library'**
+  String get audioLibrary;
+
+  /// No description provided for @chooseFromAudioLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from Soul\'s library'**
+  String get chooseFromAudioLibrary;
+
+  /// No description provided for @chooseAudioFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an audio file'**
+  String get chooseAudioFile;
+
+  /// No description provided for @recordAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Record audio'**
+  String get recordAudio;
+
+  /// No description provided for @stopRecording.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop and save recording'**
+  String get stopRecording;
+
+  /// No description provided for @myRecording.
+  ///
+  /// In en, this message translates to:
+  /// **'My recording'**
+  String get myRecording;
+
+  /// No description provided for @removeAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove audio'**
+  String get removeAudio;
 
   /// No description provided for @audioGuided.
   ///

@@ -62,6 +62,22 @@ class AppLocalizationsVi extends AppLocalizations {
   String get gratitudeNote => 'Tôi biết ơn cuộc sống này';
 
   @override
+  String get gratitudeJournalTitle => 'Ghi chú biết ơn';
+
+  @override
+  String get gratitudeJournalHint =>
+      'Hãy viết như đang ghi note trên điện thoại. Một ý nghĩ, một khoảnh khắc hoặc một danh sách đều được.';
+
+  @override
+  String get gratitudeNoteLabel => 'Hôm nay bạn biết ơn điều gì?';
+
+  @override
+  String get saveNote => 'Lưu ghi chú';
+
+  @override
+  String get gratitudeNotesEmpty => 'Những ghi chú của bạn sẽ xuất hiện ở đây.';
+
+  @override
   String get yourVisions => 'Những tầm nhìn của bạn';
 
   @override
@@ -76,6 +92,43 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get audioPending => 'Đang chờ bản audio hoàn chỉnh';
+
+  @override
+  String get visionAudio => 'Âm thanh cho tầm nhìn';
+
+  @override
+  String get visionAudioBody =>
+      'Chọn nhạc từ Soul, một file trên thiết bị hoặc ghi âm riêng cho tầm nhìn này.';
+
+  @override
+  String get visionAudioEmpty => 'Chưa có âm thanh nào được thêm.';
+
+  @override
+  String get visionAudioPersonal => 'Chỉ có trên thiết bị này';
+
+  @override
+  String get addAudio => 'Thêm audio';
+
+  @override
+  String get audioLibrary => 'Thư viện audio';
+
+  @override
+  String get chooseFromAudioLibrary => 'Chọn từ thư viện Soul';
+
+  @override
+  String get chooseAudioFile => 'Chọn file audio từ thiết bị';
+
+  @override
+  String get recordAudio => 'Tự ghi âm';
+
+  @override
+  String get stopRecording => 'Dừng và lưu bản ghi';
+
+  @override
+  String get myRecording => 'Bản ghi của tôi';
+
+  @override
+  String get removeAudio => 'Bỏ audio';
 
   @override
   String get audioGuided => 'Audio hướng dẫn';
