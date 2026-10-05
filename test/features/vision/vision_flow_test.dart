@@ -20,8 +20,15 @@ Future<void> _openVisionTab(WidgetTester tester) async {
 
 Future<void> _tapButton(WidgetTester tester, String label) async {
   final button = find.widgetWithText(SoulButton, label);
-  // The primary action is pinned below the scrollable content so it remains
-  // reachable on screens with a long list of feeling chips.
+  if (find.byType(Scrollable).evaluate().isNotEmpty) {
+    try {
+      await tester.scrollUntilVisible(
+        button,
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+    } catch (_) {}
+  }
   await tester.ensureVisible(button);
   await tester.pumpAndSettle();
   await tester.tap(button);
