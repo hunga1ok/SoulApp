@@ -17,6 +17,7 @@ class SoulAudioAsset {
     required this.delivery,
     this.assetPath,
     this.localePaths = const {},
+    this.titles = const {},
   });
 
   final String id;
@@ -24,6 +25,9 @@ class SoulAudioAsset {
   final AudioDelivery delivery;
   final String? assetPath;
   final Map<SoulLocale, String> localePaths;
+  final Map<SoulLocale, String> titles;
+
+  String titleFor(SoulLocale locale) => titles[locale] ?? id;
 
   bool get isGuided => localePaths.isNotEmpty;
 
@@ -60,6 +64,11 @@ class AudioCatalog {
           type: raw['type'] as String,
           delivery: _deliveryFromJson(raw['delivery'] as String),
           assetPath: raw['assetPath'] as String?,
+          titles: {
+            for (final entry
+                in (raw['titles'] as Map<String, dynamic>? ?? {}).entries)
+              SoulLocale.values.byName(entry.key): entry.value as String,
+          },
           localePaths: {
             for (final entry
                 in (raw['localePaths'] as Map<String, dynamic>? ?? {}).entries)

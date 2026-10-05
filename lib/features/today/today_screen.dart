@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../app/app_state.dart';
 import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
+import '../../data/content/audio_catalog.dart';
+import '../../data/content/content_repository.dart';
 import '../../l10n/app_localizations.dart';
 
 class TodayScreen extends ConsumerStatefulWidget {
@@ -22,6 +24,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     final name = ref.watch(appStateProvider).preferredName ?? '…';
     final soundEnabled = ref.watch(appStateProvider).soundEnabled;
     final audio = ref.watch(audioPlaybackProvider);
+    final track = ref.watch(audioCatalogProvider).valueOrNull?.asset('SO-11');
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         SoulSpace.lg,
@@ -51,12 +54,15 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         const SizedBox(height: SoulSpace.sm),
         SoulAudioRow(
           title: l10n.morningGratitude,
-          subtitle: l10n.neutralInstrumentalFiveMinutes,
+          subtitle:
+              track?.delivery == AudioDelivery.published
+                  ? l10n.neutralInstrumentalFiveMinutes
+                  : l10n.audioPending,
           isPlaying:
               audio.isPlaying &&
               audio.assetPath == 'assets/audio/music/so-11-warm-felt-piano.m4a',
           onPlayPause:
-              soundEnabled
+              soundEnabled && track?.delivery == AudioDelivery.published
                   ? () => ref
                       .read(audioPlaybackProvider)
                       .toggleAsset(

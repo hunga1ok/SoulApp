@@ -10,6 +10,7 @@ import '../features/shell/app_shell.dart';
 import '../features/today/today_screen.dart';
 import '../features/vision/vision_builder_screen.dart';
 import '../features/vision/vision_detail_screen.dart';
+import '../data/repositories/vision_repository.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
@@ -126,8 +127,13 @@ final routerProvider = Provider<GoRouter>((ref) {
                   GoRoute(
                     path: ':id',
                     builder:
-                        (context, route) =>
-                            VisionDetailScreen(id: route.pathParameters['id']!),
+                        (context, route) => VisionDetailScreen(
+                          id: route.pathParameters['id']!,
+                          initialVision:
+                              route.extra is Vision
+                                  ? route.extra as Vision
+                                  : null,
+                        ),
                   ),
                 ],
               ),

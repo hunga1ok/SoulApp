@@ -74,10 +74,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get visionEmptyBody => 'A vision can begin with one honest feeling.';
 
   @override
+  String get audioPending => 'Awaiting final audio';
+
+  @override
+  String get audioGuided => 'Guided audio';
+
+  @override
+  String get audioMusic => 'Music for your vision';
+
+  @override
+  String get audioRest => 'Rest, nature & sound baths';
+
+  @override
+  String get audioLibraryNote =>
+      'Every track is shown here. Only approved, licensed tracks can play.';
+
+  @override
   String get exploreTitle => 'A gentler way forward';
 
   @override
-  String get exploreBody => 'Curated practices and stories will live here.';
+  String get exploreBody =>
+      'All available sounds and guided audio. Prototype tracks are awaiting final recordings.';
 
   @override
   String get profile => 'Profile & settings';
@@ -212,6 +229,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get answerRequiredHint => 'Choose an option or add your own answer.';
+
+  @override
+  String get visionQuickStart => 'Continue with feelings instead';
 
   @override
   String get feelingsTitle => 'How do you want to feel when this is happening?';

@@ -23,7 +23,8 @@ class AudioPlaybackController extends ChangeNotifier {
     await session.configure(const AudioSessionConfiguration.music());
     final player = AudioPlayer();
     player.playerStateStream.listen((state) {
-      final playing = state.playing;
+      final playing =
+          state.playing && state.processingState != ProcessingState.completed;
       if (playing != _isPlaying) {
         _isPlaying = playing;
         notifyListeners();
@@ -39,11 +40,14 @@ class AudioPlaybackController extends ChangeNotifier {
       await player.pause();
       return;
     }
-    _assetPath = path;
-    await player.setAsset(path);
-    await player.play();
-    _isPlaying = true;
-    notifyListeners();
+    if (_assetPath != path) {
+      await player.setAsset(path);
+      _assetPath = path;
+    } else if (player.processingState == ProcessingState.completed) {
+      await player.seek(Duration.zero);
+    }
+    // play() completes when playback stops, not when it starts.
+    player.play();
   }
 
   Future<void> stop() async {

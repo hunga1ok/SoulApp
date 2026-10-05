@@ -3,20 +3,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/design_system/design_system.dart';
+import '../../data/repositories/vision_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'vision_controllers.dart';
 import 'vision_widgets.dart';
 
 /// One Vision: photo, statement, feelings and archive.
 class VisionDetailScreen extends ConsumerWidget {
-  const VisionDetailScreen({super.key, required this.id});
+  const VisionDetailScreen({super.key, required this.id, this.initialVision});
 
   final String id;
+  final Vision? initialVision;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final vision = ref.watch(visionProvider(id));
+    final vision =
+        initialVision == null
+            ? ref.watch(visionProvider(id))
+            : AsyncData<Vision?>(initialVision);
     final catalog = ref.watch(activeVisionCatalogProvider);
     void back() => context.go('/app/vision');
 

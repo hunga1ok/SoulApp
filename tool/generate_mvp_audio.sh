@@ -48,7 +48,7 @@ make_guided() {
   ffmpeg -hide_banner -loglevel error -y -i "$voice_file" \
     -f lavfi -i "anoisesrc=color=pink:amplitude=0.025:sample_rate=44100" \
     -f lavfi -i "sine=frequency=${frequency}:sample_rate=44100" \
-    -filter_complex "[1:a]lowpass=f=220,volume=0.20[air];[2:a]volume=0.009[bed];[0:a][air][bed]amix=inputs=3:duration=first:normalize=0,afade=t=in:st=0:d=1,afade=t=out:st=0:d=2" \
+    -filter_complex "[1:a]lowpass=f=220,volume=0.20[air];[2:a]volume=0.009[bed];[0:a][air][bed]amix=inputs=3:duration=first:normalize=0,afade=t=in:st=0:d=1,areverse,afade=t=in:st=0:d=2,areverse" \
     -shortest -c:a aac -b:a 96k -metadata title="$code Soul guided preview" "$output"
 }
 
@@ -83,7 +83,7 @@ make_guided_from_production_script() {
   ffmpeg -hide_banner -loglevel error -y -i "$voice_file" \
     -f lavfi -i "anoisesrc=color=pink:amplitude=0.025:sample_rate=44100" \
     -f lavfi -i "sine=frequency=${frequency}:sample_rate=44100" \
-    -filter_complex "[1:a]lowpass=f=220,volume=0.20[air];[2:a]volume=0.009[bed];[0:a][air][bed]amix=inputs=3:duration=first:normalize=0,afade=t=in:st=0:d=1,afade=t=out:st=0:d=2" \
+    -filter_complex "[1:a]lowpass=f=220,volume=0.20[air];[2:a]volume=0.009[bed];[0:a][air][bed]amix=inputs=3:duration=first:normalize=0,afade=t=in:st=0:d=1,areverse,afade=t=in:st=0:d=2,areverse" \
     -shortest -c:a aac -b:a 96k -metadata title="$code Soul guided audio" "$output"
 }
 

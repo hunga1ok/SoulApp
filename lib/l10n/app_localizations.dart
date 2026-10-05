@@ -224,6 +224,36 @@ abstract class AppLocalizations {
   /// **'A vision can begin with one honest feeling.'**
   String get visionEmptyBody;
 
+  /// No description provided for @audioPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting final audio'**
+  String get audioPending;
+
+  /// No description provided for @audioGuided.
+  ///
+  /// In en, this message translates to:
+  /// **'Guided audio'**
+  String get audioGuided;
+
+  /// No description provided for @audioMusic.
+  ///
+  /// In en, this message translates to:
+  /// **'Music for your vision'**
+  String get audioMusic;
+
+  /// No description provided for @audioRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Rest, nature & sound baths'**
+  String get audioRest;
+
+  /// No description provided for @audioLibraryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Every track is shown here. Only approved, licensed tracks can play.'**
+  String get audioLibraryNote;
+
   /// No description provided for @exploreTitle.
   ///
   /// In en, this message translates to:
@@ -233,7 +263,7 @@ abstract class AppLocalizations {
   /// No description provided for @exploreBody.
   ///
   /// In en, this message translates to:
-  /// **'Curated practices and stories will live here.'**
+  /// **'All available sounds and guided audio. Prototype tracks are awaiting final recordings.'**
   String get exploreBody;
 
   /// No description provided for @profile.
@@ -475,6 +505,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose an option or add your own answer.'**
   String get answerRequiredHint;
+
+  /// No description provided for @visionQuickStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with feelings instead'**
+  String get visionQuickStart;
 
   /// No description provided for @feelingsTitle.
   ///

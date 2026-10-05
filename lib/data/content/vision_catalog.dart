@@ -44,6 +44,7 @@ class VisionQuestion {
     required this.prompt,
     required this.helper,
     required this.options,
+    this.summaryPrefix = '',
   });
 
   final String code;
@@ -52,6 +53,7 @@ class VisionQuestion {
   final int maxSelect;
   final bool required;
   final String prompt;
+  final String summaryPrefix;
 
   /// Hint for the user's own answer.
   final String helper;
@@ -125,6 +127,7 @@ class VisionCatalog {
             maxSelect: item['maxSelect'] as int,
             required: item['required'] as bool,
             prompt: text(item, 'prompt'),
+            summaryPrefix: text(item, 'summaryPrefix'),
             helper: text(item, 'helper'),
             options: options[item['code']] ?? const [],
           ),

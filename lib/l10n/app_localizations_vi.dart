@@ -75,11 +75,27 @@ class AppLocalizationsVi extends AppLocalizations {
       'Một tầm nhìn có thể bắt đầu từ một cảm xúc thật lòng.';
 
   @override
+  String get audioPending => 'Đang chờ bản audio hoàn chỉnh';
+
+  @override
+  String get audioGuided => 'Audio hướng dẫn';
+
+  @override
+  String get audioMusic => 'Âm nhạc cho tầm nhìn';
+
+  @override
+  String get audioRest => 'Thư giãn, thiên nhiên & tắm âm thanh';
+
+  @override
+  String get audioLibraryNote =>
+      'Toàn bộ track hiện có được liệt kê ở đây. Chỉ track đã duyệt và có licence mới phát được.';
+
+  @override
   String get exploreTitle => 'Một nhịp điệu dịu dàng hơn';
 
   @override
   String get exploreBody =>
-      'Những thực hành và câu chuyện được chọn lọc sẽ ở đây.';
+      'Toàn bộ âm thanh và bài hướng dẫn hiện có. Các bản thử nghiệm đang chờ thay bằng bản thu hoàn chỉnh.';
 
   @override
   String get profile => 'Hồ sơ & cài đặt';
@@ -215,6 +231,9 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get answerRequiredHint =>
       'Chọn một gợi ý hoặc thêm câu trả lời của bạn.';
+
+  @override
+  String get visionQuickStart => 'Tiếp tục với cảm xúc';
 
   @override
   String get feelingsTitle =>

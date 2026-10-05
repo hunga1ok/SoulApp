@@ -62,28 +62,34 @@ void main() {
     });
   }
 
-  test('the primary template is used when every placeholder is answered, '
-      'and lists are joined in the active language', () {
-    final catalog = _catalog(SoulLocale.vi);
-    final questions = catalog.questionsFor('CAREER');
-    final workType = questions.firstWhere((q) => q.fieldKey == 'work_type');
-    final answers = _firstOptions(catalog, 'CAREER')
-      ..[workType.code] = VisionAnswer(
-        valueCodes: [workType.options[0].valueCode],
-        customText: 'Viết sách',
+  test(
+    'the draft keeps every answer and joins lists in the active language',
+    () {
+      final catalog = _catalog(SoulLocale.vi);
+      final questions = catalog.questionsFor('CAREER');
+      final workType = questions.firstWhere((q) => q.fieldKey == 'work_type');
+      final answers = _firstOptions(catalog, 'CAREER')
+        ..[workType.code] = VisionAnswer(
+          valueCodes: [workType.options[0].valueCode],
+          customText: 'Viết sách',
+        );
+
+      final statement = draftVisionStatement(
+        catalog: catalog,
+        categoryCode: 'CAREER',
+        answers: answers,
+        feelingCodes: const [],
+        locale: SoulLocale.vi,
       );
 
-    final statement = draftVisionStatement(
-      catalog: catalog,
-      categoryCode: 'CAREER',
-      answers: answers,
-      feelingCodes: const [],
-      locale: SoulLocale.vi,
-    );
-
-    expect(statement, startsWith('Tôi đang xây dựng công việc có ý nghĩa'));
-    expect(statement, contains(' và Viết sách'));
-  });
+      expect(statement, startsWith('Tầm nhìn của tôi'));
+      expect(statement, contains(' và Viết sách'));
+      for (final question in questions) {
+        expect(statement, contains(question.options.first.label.toLowerCase()));
+      }
+      expect(statement, contains('Bước đầu tiên tôi chọn là'));
+    },
+  );
 
   test('LOVE falls back to its short template while its primary one is a '
       'draft', () {

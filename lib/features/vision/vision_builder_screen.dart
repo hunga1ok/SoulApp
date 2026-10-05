@@ -80,6 +80,7 @@ class _VisionBuilderScreenState extends ConsumerState<VisionBuilderScreen> {
           onToggle: (value) => controller.toggleOption(question, value),
           onCustomText: (text) => controller.setCustomText(question, text),
           onNext: next,
+          onQuickStart: () => setState(() => _step = feelingsStep),
         );
       } else if (_step == feelingsStep) {
         content = _FeelingsStep(
@@ -260,6 +261,7 @@ class _QuestionStep extends StatefulWidget {
     required this.onToggle,
     required this.onCustomText,
     required this.onNext,
+    required this.onQuickStart,
   });
 
   final String eyebrow;
@@ -268,6 +270,7 @@ class _QuestionStep extends StatefulWidget {
   final ValueChanged<String> onToggle;
   final ValueChanged<String> onCustomText;
   final VoidCallback onNext;
+  final VoidCallback onQuickStart;
 
   @override
   State<_QuestionStep> createState() => _QuestionStepState();
@@ -307,6 +310,11 @@ class _QuestionStepState extends State<_QuestionStep> {
           SoulButton(
             label: l10n.continueLabel,
             onPressed: canContinue ? widget.onNext : null,
+          ),
+          const SizedBox(height: SoulSpace.xs),
+          TextButton(
+            onPressed: widget.onQuickStart,
+            child: Text(l10n.visionQuickStart),
           ),
         ],
       ),

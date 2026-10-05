@@ -46,14 +46,23 @@ class VisionScreen extends ConsumerWidget {
       ),
       children: [
         Text(l10n.yourVisions, style: Theme.of(context).textTheme.displaySmall),
-        const SizedBox(height: SoulSpace.md),
-        SoulButton(label: l10n.createVision, onPressed: create),
         const SizedBox(height: SoulSpace.lg),
         for (final vision in visions.value!)
           Padding(
             padding: const EdgeInsets.only(bottom: SoulSpace.md),
             child: _VisionCard(vision: vision, catalog: catalog.value!),
           ),
+        const SizedBox(height: SoulSpace.sm),
+        Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 220),
+            child: SoulButton(
+              label: l10n.createVision,
+              variant: SoulButtonVariant.secondary,
+              onPressed: create,
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -70,7 +79,7 @@ class _VisionCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final category = catalog.category(vision.categoryCode);
     return SoulCard(
-      onTap: () => context.go('/app/vision/${vision.id}'),
+      onTap: () => context.push('/app/vision/${vision.id}', extra: vision),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

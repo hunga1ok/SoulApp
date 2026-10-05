@@ -750,10 +750,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "I want to spend my time on",
           "prompt": "What kind of work do you want to spend your time on?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn dành thời gian cho",
           "prompt": "Bạn muốn dành thời gian cho loại công việc nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -769,10 +771,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "I want to create",
           "prompt": "What impact do you want your work to create?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn tạo ra",
           "prompt": "Bạn muốn công việc tạo ra tác động gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -788,10 +792,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "My supportive environment includes",
           "prompt": "What work environment suits you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Môi trường nâng đỡ tôi có",
           "prompt": "Môi trường làm việc nào phù hợp với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -807,10 +813,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "My desired work rhythm is",
           "prompt": "How much freedom do you want over your schedule?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Nhịp làm việc tôi mong muốn là",
           "prompt": "Bạn mong muốn mức độ tự do về thời gian như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -826,10 +834,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "The income I am aiming for is",
           "prompt": "What income or financial milestone would support this vision?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Thu nhập tôi hướng tới là",
           "prompt": "Mốc thu nhập nào hỗ trợ cho tầm nhìn này?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -845,10 +855,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "I want to develop",
           "prompt": "What would you like to become better at?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn phát triển",
           "prompt": "Bạn muốn giỏi hơn ở điều gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -864,10 +876,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "I want to be recognized for",
           "prompt": "How do you want your contribution to be recognized?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn được ghi nhận về",
           "prompt": "Bạn muốn đóng góp của mình được ghi nhận như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -883,10 +897,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "At work, I want to feel",
           "prompt": "How do you want to feel at the end of a good workday?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Trong công việc, tôi muốn cảm thấy",
           "prompt": "Cuối một ngày làm việc tốt, bạn muốn cảm thấy thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -902,10 +918,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one step your future self would take this week?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một bước mà phiên bản tương lai của bạn sẽ làm trong tuần này là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -921,10 +939,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "The connection I want is",
           "prompt": "What kind of family connection do you want to cultivate?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sự gắn kết tôi mong muốn là",
           "prompt": "Bạn muốn vun đắp kiểu kết nối gia đình nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -940,10 +960,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "I want to maintain",
           "prompt": "Which family rituals would you love to have?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn duy trì",
           "prompt": "Bạn muốn có những nghi thức gia đình nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -959,10 +981,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "With family, I want to feel",
           "prompt": "How do you want family gatherings to feel?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Ở bên gia đình, tôi muốn cảm thấy",
           "prompt": "Bạn muốn những buổi tụ họp gia đình mang cảm giác gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -978,10 +1002,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "The support I want is",
           "prompt": "How do you want family members to support one another?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sự hỗ trợ tôi mong muốn là",
           "prompt": "Bạn muốn các thành viên hỗ trợ nhau thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -997,10 +1023,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "The boundaries I want to keep are",
           "prompt": "What healthy boundaries matter to you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Ranh giới tôi muốn giữ là",
           "prompt": "Ranh giới lành mạnh nào quan trọng?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1016,10 +1044,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "I want to create memories of",
           "prompt": "What memories do you want to create together?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn tạo những kỷ niệm về",
           "prompt": "Bạn muốn cùng nhau tạo những ký ức nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1035,10 +1065,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "The role I want to cultivate is",
           "prompt": "Who do you want to be in your family?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Vai trò tôi muốn vun đắp là",
           "prompt": "Bạn muốn trở thành người như thế nào trong gia đình?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1054,10 +1086,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "The future I want includes",
           "prompt": "What would make you feel proud of your family life?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tương lai tôi mong muốn có",
           "prompt": "Điều gì khiến bạn tự hào về đời sống gia đình?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1073,10 +1107,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What can you do this week for one person you love?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Tuần này bạn có thể làm gì cho một người mình yêu?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1092,10 +1128,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "I want to become someone who is",
           "prompt": "Which qualities define the person you are becoming?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn trở thành một người",
           "prompt": "Những phẩm chất nào định nghĩa con người bạn đang trở thành?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1111,10 +1149,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "I want to express myself with",
           "prompt": "How do you want to speak and express yourself?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn thể hiện bản thân với",
           "prompt": "Bạn muốn nói và thể hiện bản thân như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1130,10 +1170,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "I want the courage to",
           "prompt": "What would you do if you trusted yourself more?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn có can đảm để",
           "prompt": "Bạn sẽ làm gì nếu tin vào bản thân hơn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1149,10 +1191,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "I want to practice",
           "prompt": "Which skill would change your life if you practiced it consistently?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn rèn luyện",
           "prompt": "Kỹ năng nào có thể thay đổi cuộc sống nếu bạn luyện đều?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1168,10 +1212,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "The habit I want to build is",
           "prompt": "Which habit belongs to your future self?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Thói quen tôi muốn xây dựng là",
           "prompt": "Thói quen nào thuộc về phiên bản tương lai của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1187,10 +1233,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "I want to speak to myself with",
           "prompt": "How do you want your inner voice to sound?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn nói với bản thân bằng",
           "prompt": "Bạn muốn tiếng nói bên trong mình như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1206,10 +1254,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "I want to allow myself to",
           "prompt": "Where do you want to be more visible or expressive?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn cho phép mình",
           "prompt": "Bạn muốn hiện diện và thể hiện nhiều hơn ở đâu?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1225,10 +1275,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "The progress I want to see is",
           "prompt": "What would show you that you've grown?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Dấu hiệu tiến bộ tôi muốn thấy là",
           "prompt": "Điều gì cho thấy bạn đã trưởng thành?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1244,10 +1296,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one brave but manageable action for today?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một hành động dũng cảm nhưng vừa sức hôm nay là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1263,10 +1317,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "The wellbeing I am aiming for is",
           "prompt": "What does feeling well mean to you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sức khỏe tôi hướng tới là",
           "prompt": "Cảm thấy khỏe mạnh có ý nghĩa gì với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1282,10 +1338,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "I want to move through",
           "prompt": "What kind of movement would you enjoy regularly?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn vận động qua",
           "prompt": "Bạn muốn duy trì kiểu vận động nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1301,10 +1359,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "I want to support my sleep with",
           "prompt": "What would a supportive sleep routine look like?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn chăm sóc giấc ngủ bằng",
           "prompt": "Một thói quen ngủ tốt sẽ như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1320,10 +1380,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "I want to nourish my body with",
           "prompt": "How do you want to approach food and nourishment?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn nuôi dưỡng cơ thể bằng",
           "prompt": "Bạn muốn tiếp cận ăn uống và dinh dưỡng như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1339,10 +1401,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "I want to manage stress with",
           "prompt": "What helps you recover from stress?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn giảm căng thẳng bằng",
           "prompt": "Điều gì giúp bạn hồi phục sau căng thẳng?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1358,10 +1422,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "My supportive environment includes",
           "prompt": "What environment supports your wellbeing?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Môi trường nâng đỡ tôi có",
           "prompt": "Môi trường nào hỗ trợ sức khỏe của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1377,10 +1443,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "I want to relate to my body with",
           "prompt": "How do you want to relate to your body?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn đối xử với cơ thể bằng",
           "prompt": "Bạn muốn có mối quan hệ như thế nào với cơ thể mình?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1396,10 +1464,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "The support I want is",
           "prompt": "What support would help you stay consistent?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sự hỗ trợ tôi mong muốn là",
           "prompt": "Hỗ trợ nào giúp bạn duy trì đều đặn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1415,10 +1485,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one small wellbeing action for today?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một hành động nhỏ cho sức khỏe hôm nay là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1434,10 +1506,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "I want to live in",
           "prompt": "Where does your ideal home feel like it belongs?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn sống ở",
           "prompt": "Ngôi nhà lý tưởng của bạn thuộc về nơi như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1453,10 +1527,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "The space I want includes",
           "prompt": "What spaces matter most in your home?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Không gian tôi mong muốn có",
           "prompt": "Những không gian nào quan trọng nhất trong nhà?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1472,10 +1548,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "My preferred style is",
           "prompt": "What atmosphere do you want your home to have?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Phong cách tôi yêu thích là",
           "prompt": "Bạn muốn ngôi nhà mang bầu không khí nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1491,10 +1569,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "My desired morning includes",
           "prompt": "What does a peaceful morning at home look like?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Buổi sáng tôi mong muốn có",
           "prompt": "Một buổi sáng bình yên ở nhà trông như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1510,10 +1590,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "My desired evening includes",
           "prompt": "What does an ideal evening at home feel like?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Buổi tối tôi mong muốn có",
           "prompt": "Một buổi tối lý tưởng ở nhà mang cảm giác gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1529,10 +1611,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "I want to share this with",
           "prompt": "Who shares this home with you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn sẻ chia cùng",
           "prompt": "Ai sẽ cùng bạn sống trong ngôi nhà này?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1548,10 +1632,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "I want space for",
           "prompt": "What should your home make easier?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn có không gian cho",
           "prompt": "Ngôi nhà nên giúp điều gì trở nên dễ dàng hơn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1567,10 +1653,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "I want to feel",
           "prompt": "What feeling should greet you when you walk in?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn cảm thấy",
           "prompt": "Bạn muốn cảm giác nào chào đón khi bước vào nhà?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1586,10 +1674,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What can you do now to bring a little of this home into today?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Bạn có thể làm gì ngay để mang một phần cảm giác ngôi nhà đó vào hôm nay?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1605,10 +1695,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "The relationship I want is",
           "prompt": "What kind of relationship are you creating?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Mối quan hệ tôi mong muốn là",
           "prompt": "Bạn muốn xây dựng một mối quan hệ như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1624,10 +1716,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "I want to connect daily through",
           "prompt": "What would everyday connection look like?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn kết nối mỗi ngày qua",
           "prompt": "Sự kết nối trong đời sống hằng ngày sẽ trông như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1643,10 +1737,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "I want to communicate with",
           "prompt": "How do you want communication to feel?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn giao tiếp với",
           "prompt": "Bạn muốn cách giao tiếp mang lại cảm giác gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1662,10 +1758,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "Our quality time includes",
           "prompt": "What do you want to enjoy together?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Thời gian bên nhau tôi mong muốn có",
           "prompt": "Bạn muốn cùng nhau tận hưởng điều gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1681,10 +1779,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "The support I want is",
           "prompt": "What kind of support matters most?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sự hỗ trợ tôi mong muốn là",
           "prompt": "Sự hỗ trợ nào quan trọng nhất với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1700,10 +1800,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "The boundaries I want to keep are",
           "prompt": "Which boundaries help this relationship stay healthy?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Ranh giới tôi muốn giữ là",
           "prompt": "Ranh giới nào giúp mối quan hệ lành mạnh?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1719,10 +1821,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "The future I want includes",
           "prompt": "What future do you hope to build together?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tương lai tôi mong muốn có",
           "prompt": "Bạn hy vọng cùng nhau xây dựng tương lai như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1738,10 +1842,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "I want to show up in my relationship with",
           "prompt": "Who do you want to be in this relationship?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn có mặt trong mối quan hệ với",
           "prompt": "Bạn muốn trở thành phiên bản nào của mình trong mối quan hệ?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1757,10 +1863,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one small action you can practice now?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một hành động nhỏ bạn có thể thực hành ngay là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1776,10 +1884,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "What matters to me is",
           "prompt": "What does financial abundance mean to you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Điều có ý nghĩa với tôi là",
           "prompt": "Sự đủ đầy tài chính có ý nghĩa gì với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1795,10 +1905,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "My goal is",
           "prompt": "Is there a financial milestone you want to work toward?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Mục tiêu tôi hướng tới là",
           "prompt": "Có cột mốc tài chính nào bạn muốn hướng tới không?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1814,10 +1926,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "My desired lifestyle includes",
           "prompt": "What would financial stability allow you to do?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Lối sống tôi mong muốn có",
           "prompt": "Sự ổn định tài chính sẽ cho phép bạn làm gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1833,10 +1947,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "I want to build habits of",
           "prompt": "Which money habits belong in this vision?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn xây dựng những thói quen",
           "prompt": "Thói quen tài chính nào thuộc về tầm nhìn này?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1852,10 +1968,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "I want to earn through",
           "prompt": "How would you like to grow your earning capacity?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn tạo thu nhập qua",
           "prompt": "Bạn muốn phát triển khả năng tạo thu nhập như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1871,10 +1989,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "I want to approach money with",
           "prompt": "How do you want to feel when dealing with money?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn tiếp cận tiền bạc với",
           "prompt": "Bạn muốn cảm thấy thế nào khi xử lý tiền bạc?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1890,10 +2010,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "I want to give through",
           "prompt": "Does generosity have a place in your financial vision?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn sẻ chia bằng",
           "prompt": "Sự hào phóng có vị trí nào trong tầm nhìn tài chính của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1909,10 +2031,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "My future scene includes",
           "prompt": "Picture a financially peaceful day. What is different?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bức tranh tương lai của tôi có",
           "prompt": "Hình dung một ngày bình yên về tài chính. Điều gì khác đi?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1928,10 +2052,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one grounded money action you can take now?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một hành động tài chính thực tế bạn có thể làm ngay là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1947,10 +2073,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "Peace means",
           "prompt": "What does inner peace look like in your real life?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bình yên với tôi là",
           "prompt": "Bình an nội tâm trông như thế nào trong cuộc sống thật của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1966,10 +2094,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "My desired morning includes",
           "prompt": "How would a peaceful morning begin?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Buổi sáng tôi mong muốn có",
           "prompt": "Một buổi sáng bình yên bắt đầu thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -1985,10 +2115,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "I want to reduce",
           "prompt": "What creates unnecessary noise in your life?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn giảm bớt",
           "prompt": "Điều gì tạo ra quá nhiều nhiễu trong cuộc sống?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2004,10 +2136,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "The boundary I want to keep is",
           "prompt": "Which boundary would protect your peace?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Ranh giới tôi muốn giữ là",
           "prompt": "Ranh giới nào bảo vệ sự bình yên của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2023,10 +2157,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "I want to return to myself through",
           "prompt": "What helps you return to yourself?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn trở về với mình bằng",
           "prompt": "Điều gì giúp bạn trở về với chính mình?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2042,10 +2178,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "The space I want includes",
           "prompt": "What kind of physical space helps you feel calm?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Không gian tôi mong muốn có",
           "prompt": "Không gian vật lý nào giúp bạn thấy bình tĩnh?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2061,10 +2199,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "The relationships I want to cultivate include",
           "prompt": "How do peaceful relationships feel?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Những mối quan hệ tôi muốn vun đắp có",
           "prompt": "Những mối quan hệ bình yên mang cảm giác gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2080,10 +2220,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "I give myself permission to",
           "prompt": "What do you want to give yourself permission to do?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi cho phép bản thân",
           "prompt": "Bạn muốn cho phép bản thân điều gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2099,10 +2241,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one thing you can remove or soften today?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một điều bạn có thể bỏ bớt hoặc làm nhẹ đi hôm nay là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2118,10 +2262,12 @@
       "sortOrder": 1,
       "text": {
         "en": {
+          "summaryPrefix": "I want to explore",
           "prompt": "What kind of places do you want to experience?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn khám phá",
           "prompt": "Bạn muốn trải nghiệm những nơi như thế nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2137,10 +2283,12 @@
       "sortOrder": 2,
       "text": {
         "en": {
+          "summaryPrefix": "My desired travel pace is",
           "prompt": "How do you like to travel?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Nhịp trải nghiệm tôi mong muốn là",
           "prompt": "Bạn thích du lịch theo nhịp nào?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2156,10 +2304,12 @@
       "sortOrder": 3,
       "text": {
         "en": {
+          "summaryPrefix": "I want to share this with",
           "prompt": "Who would you love to travel with?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn sẻ chia cùng",
           "prompt": "Bạn muốn đi cùng ai?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2175,10 +2325,12 @@
       "sortOrder": 4,
       "text": {
         "en": {
+          "summaryPrefix": "My desired frequency is",
           "prompt": "What travel rhythm fits your life?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tần suất tôi mong muốn là",
           "prompt": "Nhịp du lịch nào phù hợp với cuộc sống của bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2194,10 +2346,12 @@
       "sortOrder": 5,
       "text": {
         "en": {
+          "summaryPrefix": "I want to experience",
           "prompt": "What experiences do you want to remember years later?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Tôi muốn trải nghiệm",
           "prompt": "Trải nghiệm nào bạn muốn nhớ nhiều năm sau?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2213,10 +2367,12 @@
       "sortOrder": 6,
       "text": {
         "en": {
+          "summaryPrefix": "The comfort I want includes",
           "prompt": "What level of comfort matters?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Sự thoải mái tôi mong muốn có",
           "prompt": "Mức độ thoải mái nào quan trọng với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2232,10 +2388,12 @@
       "sortOrder": 7,
       "text": {
         "en": {
+          "summaryPrefix": "What matters to me is",
           "prompt": "Why does travel matter to you?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Điều có ý nghĩa với tôi là",
           "prompt": "Tại sao du lịch quan trọng với bạn?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2251,10 +2409,12 @@
       "sortOrder": 8,
       "text": {
         "en": {
+          "summaryPrefix": "The memory I want to carry is",
           "prompt": "What would you love to bring home from these experiences?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Kỷ niệm tôi muốn mang theo là",
           "prompt": "Bạn muốn mang điều gì trở về từ những trải nghiệm đó?",
           "helper": "Thêm câu trả lời của bạn"
         }
@@ -2270,10 +2430,12 @@
       "sortOrder": 9,
       "text": {
         "en": {
+          "summaryPrefix": "My first step is",
           "prompt": "What is one step toward your next experience?",
           "helper": "Add your own answer"
         },
         "vi": {
+          "summaryPrefix": "Bước đầu tiên tôi chọn là",
           "prompt": "Một bước hướng tới trải nghiệm tiếp theo là gì?",
           "helper": "Thêm câu trả lời của bạn"
         }

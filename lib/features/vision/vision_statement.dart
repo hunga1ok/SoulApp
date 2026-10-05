@@ -13,7 +13,7 @@ class VisionAnswer {
 }
 
 /// Maximum Vision statement length in characters.
-const visionStatementMaxLength = 500;
+const visionStatementMaxLength = 2000;
 
 /// Drafts a statement from the category's templates: the primary template
 /// when every placeholder can be filled, otherwise the short one, otherwise
@@ -36,6 +36,32 @@ String draftVisionStatement({
       if (answer.customText.trim().isNotEmpty) answer.customText.trim(),
     ];
     values[question.fieldKey] = _joinList(labels, locale);
+  }
+  // Never fall back to generic aspirations when the user supplied answers.
+  // Keep each answer in its question's context, including the concrete action.
+  if (values.isNotEmpty) {
+    final category = catalog.category(categoryCode)?.name ?? '';
+    final parts = <String>[
+      locale == SoulLocale.vi
+          ? 'Tầm nhìn của tôi — $category.'
+          : 'My vision — $category.',
+      for (final question in catalog.questionsFor(categoryCode))
+        if (values[question.fieldKey] case final value?)
+          '${question.summaryPrefix} $value.',
+    ];
+    final feelings = [
+      for (final code in feelingCodes)
+        if (catalog.feeling(code) case final feeling?)
+          _lowerFirst(feeling.label),
+    ];
+    if (feelings.isNotEmpty) {
+      parts.add(
+        locale == SoulLocale.vi
+            ? 'Tôi muốn cảm thấy ${_joinList(feelings, locale)} khi sống với tầm nhìn này.'
+            : 'I want to feel ${_joinList(feelings, locale)} as I live this vision.',
+      );
+    }
+    return parts.join('\n\n');
   }
   for (final (index, code) in feelingCodes.indexed) {
     final feeling = catalog.feeling(code);
