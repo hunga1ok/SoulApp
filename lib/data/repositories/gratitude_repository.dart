@@ -1,70 +1,108 @@
-import 'dart:convert';
-
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../app/app_state.dart';
+import '../local/soul_database.dart';
 
-class GratitudeNote {
-  const GratitudeNote({
-    required this.id,
-    required this.body,
-    required this.createdAt,
+class GratitudeDraftItem {
+  GratitudeDraftItem({
+    this.gratitudeText = '',
+    this.reasonText = '',
+    this.thankYouTaps = 0,
   });
 
-  final String id;
-  final String body;
-  final DateTime createdAt;
+  String gratitudeText;
+  String reasonText;
+  int thankYouTaps;
 
-  Map<String, String> toJson() => {
-    'id': id,
-    'body': body,
-    'createdAt': createdAt.toIso8601String(),
-  };
+  bool get isFilled => gratitudeText.trim().isNotEmpty;
 
-  factory GratitudeNote.fromJson(Map<String, dynamic> json) => GratitudeNote(
-    id: json['id'] as String,
-    body: json['body'] as String,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-  );
+  bool get isComplete => isFilled && thankYouTaps >= 1;
 }
 
-final gratitudeNotesProvider =
-    AsyncNotifierProvider<GratitudeNotesController, List<GratitudeNote>>(
-      GratitudeNotesController.new,
-    );
+final gratitudeRepositoryProvider = Provider<GratitudeRepository>((ref) {
+  return GratitudeRepository(ref.watch(soulDatabaseProvider));
+});
 
-class GratitudeNotesController extends AsyncNotifier<List<GratitudeNote>> {
-  static const _key = 'gratitude_notes_v1';
+final todayGratitudeEntriesProvider =
+    FutureProvider.autoDispose<List<GratitudeEntryRow>>((ref) {
+      return ref.watch(gratitudeRepositoryProvider).getEntriesForDay(1);
+    });
 
-  @override
-  Future<List<GratitudeNote>> build() async {
-    final raw = ref.read(preferencesProvider).getString(_key);
-    if (raw == null) return const [];
-    final notes =
-        (jsonDecode(raw) as List)
-            .cast<Map<String, dynamic>>()
-            .map(GratitudeNote.fromJson)
-            .toList()
-          ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    return notes;
+final recentGratitudeEntriesProvider =
+    FutureProvider.autoDispose<List<GratitudeEntryRow>>((ref) {
+      return ref.watch(gratitudeRepositoryProvider).getRecentEntries();
+    });
+
+class GratitudeRepository {
+  GratitudeRepository(this._database, {DateTime Function()? now})
+    : _now = now ?? DateTime.now;
+
+  final SoulDatabase _database;
+  final DateTime Function() _now;
+
+  Future<List<GratitudeEntryRow>> getRecentEntries({int limit = 50}) {
+    return (_database.select(_database.gratitudeEntries)
+          ..orderBy([(row) => OrderingTerm.desc(row.createdAt)])
+          ..limit(limit))
+        .get();
   }
 
-  Future<void> add(String body) async {
-    final text = body.trim();
-    if (text.isEmpty) return;
-    final notes = [...(state.valueOrNull ?? await future)];
-    notes.insert(
-      0,
-      GratitudeNote(
-        id: const Uuid().v4(),
-        body: text,
-        createdAt: DateTime.now(),
-      ),
+  Future<List<GratitudeEntryRow>> getEntriesForDay(int journeyDay) {
+    return (_database.select(_database.gratitudeEntries)
+          ..where((row) => row.journeyDay.equals(journeyDay))
+          ..orderBy([(row) => OrderingTerm.asc(row.createdAt)]))
+        .get();
+  }
+
+  Future<bool> hasCompletedDay(int journeyDay) async {
+    final entries = await getEntriesForDay(journeyDay);
+    return entries.isNotEmpty;
+  }
+
+  Future<void> addSingleEntry({
+    required String gratitudeText,
+    String? reasonText,
+    int? journeyDay,
+    String? userJourneyId,
+  }) async {
+    final row = GratitudeEntryRow(
+      id: const Uuid().v4(),
+      userJourneyId: userJourneyId,
+      journeyDay: journeyDay,
+      gratitudeText: gratitudeText.trim(),
+      reasonText: reasonText?.trim() ?? '',
+      createdAt: _now(),
     );
-    state = AsyncData(notes);
-    await ref
-        .read(preferencesProvider)
-        .setString(_key, jsonEncode([for (final note in notes) note.toJson()]));
+    await _database.into(_database.gratitudeEntries).insert(row);
+  }
+
+  Future<void> deleteEntry(String id) async {
+    await (_database.delete(_database.gratitudeEntries)
+      ..where((row) => row.id.equals(id))).go();
+  }
+
+  Future<void> saveEntries({
+    required int journeyDay,
+    String? userJourneyId,
+    required List<GratitudeDraftItem> items,
+  }) {
+    return _database.transaction(() async {
+      final now = _now();
+      for (final item in items) {
+        if (item.gratitudeText.trim().isEmpty) {
+          continue;
+        }
+        final row = GratitudeEntryRow(
+          id: const Uuid().v4(),
+          userJourneyId: userJourneyId,
+          journeyDay: journeyDay,
+          gratitudeText: item.gratitudeText.trim(),
+          reasonText: item.reasonText.trim(),
+          createdAt: now,
+        );
+        await _database.into(_database.gratitudeEntries).insert(row);
+      }
+    });
   }
 }

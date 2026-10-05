@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:soul_app/core/localization/soul_locale.dart';
+import 'package:soul_app/data/content/audio_catalog.dart';
 import 'package:soul_app/data/content/content_repository.dart';
 
 void main() {
@@ -23,10 +24,36 @@ void main() {
     expect(guided.pathFor(SoulLocale.vi), isNot(guided.pathFor(SoulLocale.en)));
   });
 
-  test('unreviewed files are excluded from playback', () async {
-    final catalog = await ContentRepository(rootBundle).audioCatalog();
+  test('unreviewed files are excluded from playback', () {
+    const unreviewed = AudioCatalog(
+      assets: [
+        SoulAudioAsset(
+          id: 'TEST-SOUND',
+          type: 'music',
+          delivery: AudioDelivery.pendingAsset,
+          assetPath: 'assets/audio/music/test.m4a',
+        ),
+        SoulAudioAsset(
+          id: 'TEST-GUIDED',
+          type: 'guided',
+          delivery: AudioDelivery.pendingAsset,
+          localePaths: {
+            SoulLocale.vi: 'assets/audio/guided/vi/test.m4a',
+            SoulLocale.en: 'assets/audio/guided/en/test.m4a',
+          },
+        ),
+      ],
+      visionBundles: [
+        VisionAudioBundle(
+          categoryCode: 'TEST_CAT',
+          guidedAudioId: 'TEST-GUIDED',
+          affirmationCollectionId: 'AF-TEST',
+          soundIds: ['TEST-SOUND'],
+        ),
+      ],
+    );
 
-    expect(catalog.playableSoundsFor('PEACE'), isEmpty);
-    expect(catalog.playableGuidedFor('PEACE', SoulLocale.vi), isNull);
+    expect(unreviewed.playableSoundsFor('TEST_CAT'), isEmpty);
+    expect(unreviewed.playableGuidedFor('TEST_CAT', SoulLocale.vi), isNull);
   });
 }

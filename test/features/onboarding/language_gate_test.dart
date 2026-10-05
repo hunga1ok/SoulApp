@@ -90,7 +90,7 @@ void main() {
           await tester.pumpAndSettle();
 
           expect(prefs.getString('selected_locale'), c.stored);
-          expect(find.byType(PreferredNameScreen), findsOneWidget);
+          expect(find.byType(WelcomeIntroScreen), findsOneWidget);
         },
       );
     }

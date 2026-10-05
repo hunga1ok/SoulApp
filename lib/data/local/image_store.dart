@@ -19,7 +19,7 @@ class ImageStore {
   /// Copies [sourcePath] into `visions/` and returns its relative path.
   Future<String> saveVisionImage(String sourcePath) async {
     final extension = p.extension(sourcePath).toLowerCase();
-    final relative = p.join(
+    final relative = p.posix.join(
       'visions',
       '${const Uuid().v4()}${extension.isEmpty ? '.jpg' : extension}',
     );

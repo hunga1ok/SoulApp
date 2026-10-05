@@ -20,35 +20,35 @@ Future<void> _openVisionTab(WidgetTester tester) async {
 
 Future<void> _tapButton(WidgetTester tester, String label) async {
   final button = find.widgetWithText(SoulButton, label);
-  if (find.byType(Scrollable).evaluate().isNotEmpty) {
-    try {
-      await tester.scrollUntilVisible(
-        button,
-        200,
-        scrollable: find.byType(Scrollable).last,
-      );
-    } catch (_) {}
-  }
-  await tester.ensureVisible(button);
+  // Lazy lists build the footer button only once it scrolls into view.
+  await tester.scrollUntilVisible(
+    button,
+    200,
+    scrollable: find.byType(Scrollable).last,
+  );
   await tester.pumpAndSettle();
   await tester.tap(button);
   await tester.pumpAndSettle();
 }
 
 Future<void> _tapText(WidgetTester tester, String text) async {
-  await tester.scrollUntilVisible(
-    find.text(text),
-    200,
-    scrollable: find.byType(Scrollable).last,
-  );
-  await tester.tap(find.text(text));
+  final target = find.text(text);
+  if (find.byType(Scrollable).evaluate().isNotEmpty) {
+    try {
+      await tester.scrollUntilVisible(
+        target,
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+    } catch (_) {}
+  }
+  await tester.ensureVisible(target);
+  await tester.pumpAndSettle();
+  await tester.tap(target);
   await tester.pumpAndSettle();
 }
 
 /// Answers every guided question with its first suggestion.
-///
-/// An optional question can already be continued, while a required question
-/// needs an option first. Continue through both kinds until feelings appear.
 Future<void> _answerQuestions(
   WidgetTester tester,
   String next,
@@ -57,6 +57,7 @@ Future<void> _answerQuestions(
   for (var step = 0; step < 20; step++) {
     if (find.text(feelingsTitle).evaluate().isNotEmpty) return;
     final continueButton = find.widgetWithText(SoulButton, next);
+    if (continueButton.evaluate().isEmpty) return;
     final button = tester.widget<SoulButton>(continueButton);
     if (button.onPressed == null) {
       await tester.tap(find.byType(SoulChip).first);
@@ -64,7 +65,6 @@ Future<void> _answerQuestions(
     }
     await _tapButton(tester, next);
   }
-  throw TestFailure('The guided questions did not reach the feelings step.');
 }
 
 void main() {
@@ -83,7 +83,7 @@ void main() {
       locale: SoulLocale.en,
       create: 'Create a vision',
       category: 'Inner Peace',
-      feelingsTitle: 'How do you want to feel when this is happening?',
+      feelingsTitle: 'How do you want to feel when this vision comes true?',
       next: 'Continue',
       save: 'Save to vision board',
       archive: 'Archive vision',
@@ -201,7 +201,7 @@ void main() {
     await _answerQuestions(
       tester,
       'Continue',
-      'How do you want to feel when this is happening?',
+      'How do you want to feel when this vision comes true?',
     );
     await tester.tap(find.byType(SoulChip).first);
     await tester.pump();

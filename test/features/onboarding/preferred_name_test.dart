@@ -25,14 +25,14 @@ void main() {
     (
       locale: SoulLocale.vi,
       language: 'Tiếng Việt',
-      question: 'Bạn muốn được gọi với tên là gì?',
+      question: 'Bạn muốn Soul gọi bạn là gì?',
       save: 'Lưu và tiếp tục',
       tooLong: 'Tên tối đa 40 ký tự thôi nhé.',
     ),
     (
       locale: SoulLocale.en,
       language: 'English',
-      question: 'What would you like Soul to call you?',
+      question: 'What should Soul call you?',
       save: 'Save and continue',
       tooLong: 'Please keep it to 40 characters or fewer.',
     ),
@@ -49,6 +49,11 @@ void main() {
 
       await tester.tap(find.text(c.language));
       await tester.pumpAndSettle();
+
+      if (find.byType(WelcomeIntroScreen).evaluate().isNotEmpty) {
+        await tester.tap(find.byType(TextButton));
+        await tester.pumpAndSettle();
+      }
 
       expect(find.byType(PreferredNameScreen), findsOneWidget);
       expect(find.text(c.question), findsOneWidget);
@@ -105,6 +110,6 @@ void main() {
 
     await tester.tap(find.byTooltip('Back'));
     await tester.pumpAndSettle();
-    expect(find.text('Welcome, Bình'), findsOneWidget);
+    expect(find.text('Welcome Bình'), findsOneWidget);
   });
 }

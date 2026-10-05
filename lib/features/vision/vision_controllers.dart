@@ -2,8 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../app/app_state.dart';
+import '../../data/content/content_repository.dart';
 import '../../data/content/vision_catalog.dart';
 import '../../data/local/image_store.dart';
+import '../../data/repositories/vision_audio_repository.dart';
 import '../../data/repositories/vision_repository.dart';
 import 'vision_statement.dart';
 
@@ -203,6 +205,26 @@ class VisionBuilderController extends AutoDisposeNotifier<VisionBuilderState> {
                 imagePath: imagePath,
               ),
             );
+        // Pre-attach category soundtrack
+        try {
+          final audioCatalog = await ref.read(audioCatalogProvider.future);
+          final defaultSound =
+              audioCatalog.playableSoundsFor(state.categoryCode!).firstOrNull;
+          if (defaultSound != null) {
+            final locale = ref.read(appStateProvider).locale ?? SoulLocale.vi;
+            final path = defaultSound.pathFor(locale);
+            if (path != null) {
+              await ref
+                  .read(visionAudioRepositoryProvider)
+                  .add(
+                    state.id,
+                    title: defaultSound.titleFor(locale),
+                    path: path,
+                    isAsset: true,
+                  );
+            }
+          }
+        } catch (_) {}
       } catch (_) {
         // Do not leave an unreferenced copy behind; the retry copies again.
         if (imagePath != null) {

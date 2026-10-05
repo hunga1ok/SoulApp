@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
+import 'journal_note_detail_screen.dart';
+import 'journal_note_models.dart';
+import 'new_journal_note_screen.dart';
 
-class JournalScreen extends ConsumerStatefulWidget {
+class JournalScreen extends ConsumerWidget {
   const JournalScreen({super.key});
 
   @override
-  ConsumerState<JournalScreen> createState() => _JournalScreenState();
-}
-
-class _JournalScreenState extends ConsumerState<JournalScreen> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Future<void> _save() async {
-    await ref.read(gratitudeNotesProvider.notifier).add(_controller.text);
-    _controller.clear();
-    if (mounted) setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context)!;
-    final notes = ref.watch(gratitudeNotesProvider);
+    final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
+    final entries =
+        ref.watch(recentGratitudeEntriesProvider).valueOrNull ?? const [];
+    final notes = groupGratitudeEntries(entries, locale);
+
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         SoulSpace.lg,
@@ -39,53 +28,236 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
         SoulSpace.xl,
       ),
       children: [
-        Text(
-          l10n.gratitudeJournalTitle,
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        const SizedBox(height: SoulSpace.xs),
-        Text(
-          l10n.gratitudeJournalHint,
-          style: Theme.of(context).textTheme.bodyLarge,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.recent,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    notes.isEmpty
+                        ? l10n.oneNote
+                        : l10n.notesCount(notes.length),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium?.copyWith(color: SoulColors.muted),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: SoulSpace.xs),
+            Material(
+              color: SoulColors.plum.withValues(alpha: 0.08),
+              shape: const CircleBorder(),
+              clipBehavior: Clip.antiAlias,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.add_rounded,
+                  color: SoulColors.plum,
+                  size: 22,
+                ),
+                tooltip: l10n.addNote,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const NewJournalNoteScreen(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: SoulSpace.lg),
-        SoulTextField(
-          controller: _controller,
-          label: l10n.gratitudeNoteLabel,
-          maxLines: 6,
-          textCapitalization: TextCapitalization.sentences,
-          onChanged: (_) => setState(() {}),
+        if (notes.isEmpty)
+          _LinedNote(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const NewJournalNoteScreen()),
+              );
+            },
+          )
+        else
+          for (final note in notes) ...[
+            _JournalNoteCard(
+              note: note,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => JournalNoteDetailScreen(note: note),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: SoulSpace.md),
+          ],
+      ],
+    );
+  }
+}
+
+class _JournalNoteCard extends StatelessWidget {
+  const _JournalNoteCard({required this.note, required this.onTap});
+
+  final JournalNote note;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final dateStr =
+        '${note.createdAt.day}/${note.createdAt.month}/${note.createdAt.year}';
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(SoulRadius.card),
+      child: Container(
+        decoration: BoxDecoration(
+          color: SoulColors.surface,
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          border: Border.all(color: SoulColors.line),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.03),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
-        const SizedBox(height: SoulSpace.sm),
-        SoulButton(
-          label: l10n.saveNote,
-          onPressed: _controller.text.trim().isEmpty ? null : _save,
-        ),
-        const SizedBox(height: SoulSpace.xl),
-        Text(l10n.recent, style: Theme.of(context).textTheme.headlineSmall),
-        const SizedBox(height: SoulSpace.sm),
-        switch (notes) {
-          AsyncData(:final value) when value.isEmpty => Text(
-            l10n.gratitudeNotesEmpty,
-          ),
-          AsyncData(:final value) => Column(
-            children: [
-              for (final note in value)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: SoulSpace.sm),
-                  child: SoulStickyNote(
-                    eyebrow: l10n.gratitudeToday,
-                    body: note.body,
+        padding: const EdgeInsets.all(SoulSpace.md),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header: Category badge + Date
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (note.journeyDay != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: SoulSpace.xs,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: SoulColors.lilac,
+                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                    ),
+                    child: Text(
+                      l10n.dayProgress(note.journeyDay!).toUpperCase(),
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: SoulColors.plum,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 10,
+                      ),
+                    ),
+                  )
+                else
+                  Expanded(
+                    child: Text(
+                      l10n.gratitudeNote.toUpperCase(),
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: SoulColors.muted,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 10,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                Text(
+                  dateStr,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall?.copyWith(color: SoulColors.muted),
+                ),
+              ],
+            ),
+            const SizedBox(height: SoulSpace.xs),
+
+            // Note title
+            Text(
+              note.title,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: SoulColors.softInk,
+              ),
+            ),
+            const SizedBox(height: SoulSpace.sm),
+
+            // Sentences preview (up to 2 sentences)
+            for (int i = 0; i < note.sentences.take(2).length; i++) ...[
+              Padding(
+                padding: const EdgeInsets.only(bottom: SoulSpace.xxs),
+                child: Text(
+                  '${i + 1}. ${note.sentences[i]}',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: SoulColors.softInk,
+                    height: 1.4,
                   ),
                 ),
+              ),
             ],
-          ),
-          AsyncError() => SoulErrorState(
-            onRetry: () => ref.invalidate(gratitudeNotesProvider),
-          ),
-          _ => const SoulLoadingState(),
-        },
-      ],
+            if (note.sentences.length > 2) ...[
+              const SizedBox(height: SoulSpace.xxs),
+              Text(
+                '+ ${note.sentences.length - 2} ${l10n.gratitudeSentenceCount(note.sentences.length - 2)}',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: SoulColors.plum,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ],
+            const SizedBox(height: SoulSpace.sm),
+
+            // Footer
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  l10n.gratitudeSentenceCount(note.sentences.length),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelSmall?.copyWith(color: SoulColors.muted),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 14,
+                  color: SoulColors.muted,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LinedNote extends StatelessWidget {
+  const _LinedNote({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return SoulStickyNote(
+      eyebrow: l10n.gratitudeToday,
+      body: l10n.gratitudeNote,
+      onTap: onTap,
     );
   }
 }

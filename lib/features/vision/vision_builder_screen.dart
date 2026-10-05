@@ -155,58 +155,29 @@ class _StepLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Column(
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(
+        SoulSpace.lg,
+        SoulSpace.xs,
+        SoulSpace.lg,
+        SoulSpace.xl,
+      ),
       children: [
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(
-              SoulSpace.lg,
-              SoulSpace.xs,
-              SoulSpace.lg,
-              SoulSpace.lg,
-            ),
-            children: [
-              if (eyebrow != null) ...[
-                Text(
-                  eyebrow!,
-                  style: textTheme.bodyMedium?.copyWith(letterSpacing: 1.1),
-                ),
-                const SizedBox(height: SoulSpace.xs),
-              ],
-              Text(title, style: textTheme.headlineSmall),
-              if (body != null) ...[
-                const SizedBox(height: SoulSpace.xs),
-                Text(body!, style: textTheme.bodyLarge),
-              ],
-              const SizedBox(height: SoulSpace.lg),
-              ...children,
-            ],
+        if (eyebrow != null) ...[
+          Text(
+            eyebrow!,
+            style: textTheme.bodyMedium?.copyWith(letterSpacing: 1.1),
           ),
-        ),
-        if (footer != null)
-          SafeArea(
-            top: false,
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(
-                SoulSpace.lg,
-                SoulSpace.sm,
-                SoulSpace.lg,
-                SoulSpace.md,
-              ),
-              decoration: const BoxDecoration(
-                color: SoulColors.paper,
-                border: Border(top: BorderSide(color: SoulColors.line)),
-              ),
-              // Keep fixed controls usable on compact devices at very large
-              // accessibility text sizes. The scrollable content itself is
-              // still free to use the user's full text scale.
-              child: MediaQuery.withClampedTextScaling(
-                maxScaleFactor: 1.3,
-                child: footer!,
-              ),
-            ),
-          ),
+          const SizedBox(height: SoulSpace.xs),
+        ],
+        Text(title, style: textTheme.headlineSmall),
+        if (body != null) ...[
+          const SizedBox(height: SoulSpace.xs),
+          Text(body!, style: textTheme.bodyLarge),
+        ],
+        const SizedBox(height: SoulSpace.lg),
+        ...children,
+        if (footer != null) ...[const SizedBox(height: SoulSpace.lg), footer!],
       ],
     );
   }

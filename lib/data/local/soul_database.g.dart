@@ -2119,6 +2119,449 @@ class VisionAnswersCompanion extends UpdateCompanion<VisionAnswerRow> {
   }
 }
 
+class $GratitudeEntriesTable extends GratitudeEntries
+    with TableInfo<$GratitudeEntriesTable, GratitudeEntryRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $GratitudeEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userJourneyIdMeta = const VerificationMeta(
+    'userJourneyId',
+  );
+  @override
+  late final GeneratedColumn<String> userJourneyId = GeneratedColumn<String>(
+    'user_journey_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES user_journeys (id) ON DELETE SET NULL',
+    ),
+  );
+  static const VerificationMeta _journeyDayMeta = const VerificationMeta(
+    'journeyDay',
+  );
+  @override
+  late final GeneratedColumn<int> journeyDay = GeneratedColumn<int>(
+    'journey_day',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _gratitudeTextMeta = const VerificationMeta(
+    'gratitudeText',
+  );
+  @override
+  late final GeneratedColumn<String> gratitudeText = GeneratedColumn<String>(
+    'gratitude_text',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _reasonTextMeta = const VerificationMeta(
+    'reasonText',
+  );
+  @override
+  late final GeneratedColumn<String> reasonText = GeneratedColumn<String>(
+    'reason_text',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    userJourneyId,
+    journeyDay,
+    gratitudeText,
+    reasonText,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'gratitude_entries';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<GratitudeEntryRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('user_journey_id')) {
+      context.handle(
+        _userJourneyIdMeta,
+        userJourneyId.isAcceptableOrUnknown(
+          data['user_journey_id']!,
+          _userJourneyIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('journey_day')) {
+      context.handle(
+        _journeyDayMeta,
+        journeyDay.isAcceptableOrUnknown(data['journey_day']!, _journeyDayMeta),
+      );
+    }
+    if (data.containsKey('gratitude_text')) {
+      context.handle(
+        _gratitudeTextMeta,
+        gratitudeText.isAcceptableOrUnknown(
+          data['gratitude_text']!,
+          _gratitudeTextMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_gratitudeTextMeta);
+    }
+    if (data.containsKey('reason_text')) {
+      context.handle(
+        _reasonTextMeta,
+        reasonText.isAcceptableOrUnknown(data['reason_text']!, _reasonTextMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_reasonTextMeta);
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  GratitudeEntryRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return GratitudeEntryRow(
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      userJourneyId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}user_journey_id'],
+      ),
+      journeyDay: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}journey_day'],
+      ),
+      gratitudeText:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}gratitude_text'],
+          )!,
+      reasonText:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}reason_text'],
+          )!,
+      createdAt:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.dateTime,
+            data['${effectivePrefix}created_at'],
+          )!,
+    );
+  }
+
+  @override
+  $GratitudeEntriesTable createAlias(String alias) {
+    return $GratitudeEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class GratitudeEntryRow extends DataClass
+    implements Insertable<GratitudeEntryRow> {
+  final String id;
+  final String? userJourneyId;
+  final int? journeyDay;
+  final String gratitudeText;
+  final String reasonText;
+  final DateTime createdAt;
+  const GratitudeEntryRow({
+    required this.id,
+    this.userJourneyId,
+    this.journeyDay,
+    required this.gratitudeText,
+    required this.reasonText,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    if (!nullToAbsent || userJourneyId != null) {
+      map['user_journey_id'] = Variable<String>(userJourneyId);
+    }
+    if (!nullToAbsent || journeyDay != null) {
+      map['journey_day'] = Variable<int>(journeyDay);
+    }
+    map['gratitude_text'] = Variable<String>(gratitudeText);
+    map['reason_text'] = Variable<String>(reasonText);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  GratitudeEntriesCompanion toCompanion(bool nullToAbsent) {
+    return GratitudeEntriesCompanion(
+      id: Value(id),
+      userJourneyId:
+          userJourneyId == null && nullToAbsent
+              ? const Value.absent()
+              : Value(userJourneyId),
+      journeyDay:
+          journeyDay == null && nullToAbsent
+              ? const Value.absent()
+              : Value(journeyDay),
+      gratitudeText: Value(gratitudeText),
+      reasonText: Value(reasonText),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory GratitudeEntryRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return GratitudeEntryRow(
+      id: serializer.fromJson<String>(json['id']),
+      userJourneyId: serializer.fromJson<String?>(json['userJourneyId']),
+      journeyDay: serializer.fromJson<int?>(json['journeyDay']),
+      gratitudeText: serializer.fromJson<String>(json['gratitudeText']),
+      reasonText: serializer.fromJson<String>(json['reasonText']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'userJourneyId': serializer.toJson<String?>(userJourneyId),
+      'journeyDay': serializer.toJson<int?>(journeyDay),
+      'gratitudeText': serializer.toJson<String>(gratitudeText),
+      'reasonText': serializer.toJson<String>(reasonText),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  GratitudeEntryRow copyWith({
+    String? id,
+    Value<String?> userJourneyId = const Value.absent(),
+    Value<int?> journeyDay = const Value.absent(),
+    String? gratitudeText,
+    String? reasonText,
+    DateTime? createdAt,
+  }) => GratitudeEntryRow(
+    id: id ?? this.id,
+    userJourneyId:
+        userJourneyId.present ? userJourneyId.value : this.userJourneyId,
+    journeyDay: journeyDay.present ? journeyDay.value : this.journeyDay,
+    gratitudeText: gratitudeText ?? this.gratitudeText,
+    reasonText: reasonText ?? this.reasonText,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  GratitudeEntryRow copyWithCompanion(GratitudeEntriesCompanion data) {
+    return GratitudeEntryRow(
+      id: data.id.present ? data.id.value : this.id,
+      userJourneyId:
+          data.userJourneyId.present
+              ? data.userJourneyId.value
+              : this.userJourneyId,
+      journeyDay:
+          data.journeyDay.present ? data.journeyDay.value : this.journeyDay,
+      gratitudeText:
+          data.gratitudeText.present
+              ? data.gratitudeText.value
+              : this.gratitudeText,
+      reasonText:
+          data.reasonText.present ? data.reasonText.value : this.reasonText,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GratitudeEntryRow(')
+          ..write('id: $id, ')
+          ..write('userJourneyId: $userJourneyId, ')
+          ..write('journeyDay: $journeyDay, ')
+          ..write('gratitudeText: $gratitudeText, ')
+          ..write('reasonText: $reasonText, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    userJourneyId,
+    journeyDay,
+    gratitudeText,
+    reasonText,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is GratitudeEntryRow &&
+          other.id == this.id &&
+          other.userJourneyId == this.userJourneyId &&
+          other.journeyDay == this.journeyDay &&
+          other.gratitudeText == this.gratitudeText &&
+          other.reasonText == this.reasonText &&
+          other.createdAt == this.createdAt);
+}
+
+class GratitudeEntriesCompanion extends UpdateCompanion<GratitudeEntryRow> {
+  final Value<String> id;
+  final Value<String?> userJourneyId;
+  final Value<int?> journeyDay;
+  final Value<String> gratitudeText;
+  final Value<String> reasonText;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const GratitudeEntriesCompanion({
+    this.id = const Value.absent(),
+    this.userJourneyId = const Value.absent(),
+    this.journeyDay = const Value.absent(),
+    this.gratitudeText = const Value.absent(),
+    this.reasonText = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  GratitudeEntriesCompanion.insert({
+    required String id,
+    this.userJourneyId = const Value.absent(),
+    this.journeyDay = const Value.absent(),
+    required String gratitudeText,
+    required String reasonText,
+    required DateTime createdAt,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       gratitudeText = Value(gratitudeText),
+       reasonText = Value(reasonText),
+       createdAt = Value(createdAt);
+  static Insertable<GratitudeEntryRow> custom({
+    Expression<String>? id,
+    Expression<String>? userJourneyId,
+    Expression<int>? journeyDay,
+    Expression<String>? gratitudeText,
+    Expression<String>? reasonText,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (userJourneyId != null) 'user_journey_id': userJourneyId,
+      if (journeyDay != null) 'journey_day': journeyDay,
+      if (gratitudeText != null) 'gratitude_text': gratitudeText,
+      if (reasonText != null) 'reason_text': reasonText,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  GratitudeEntriesCompanion copyWith({
+    Value<String>? id,
+    Value<String?>? userJourneyId,
+    Value<int?>? journeyDay,
+    Value<String>? gratitudeText,
+    Value<String>? reasonText,
+    Value<DateTime>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return GratitudeEntriesCompanion(
+      id: id ?? this.id,
+      userJourneyId: userJourneyId ?? this.userJourneyId,
+      journeyDay: journeyDay ?? this.journeyDay,
+      gratitudeText: gratitudeText ?? this.gratitudeText,
+      reasonText: reasonText ?? this.reasonText,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (userJourneyId.present) {
+      map['user_journey_id'] = Variable<String>(userJourneyId.value);
+    }
+    if (journeyDay.present) {
+      map['journey_day'] = Variable<int>(journeyDay.value);
+    }
+    if (gratitudeText.present) {
+      map['gratitude_text'] = Variable<String>(gratitudeText.value);
+    }
+    if (reasonText.present) {
+      map['reason_text'] = Variable<String>(reasonText.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('GratitudeEntriesCompanion(')
+          ..write('id: $id, ')
+          ..write('userJourneyId: $userJourneyId, ')
+          ..write('journeyDay: $journeyDay, ')
+          ..write('gratitudeText: $gratitudeText, ')
+          ..write('reasonText: $reasonText, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$SoulDatabase extends GeneratedDatabase {
   _$SoulDatabase(QueryExecutor e) : super(e);
   $SoulDatabaseManager get managers => $SoulDatabaseManager(this);
@@ -2128,6 +2571,9 @@ abstract class _$SoulDatabase extends GeneratedDatabase {
   late final $VisionsTable visions = $VisionsTable(this);
   late final $VisionFeelingsTable visionFeelings = $VisionFeelingsTable(this);
   late final $VisionAnswersTable visionAnswers = $VisionAnswersTable(this);
+  late final $GratitudeEntriesTable gratitudeEntries = $GratitudeEntriesTable(
+    this,
+  );
   late final Index userJourneysOneActive = Index(
     'user_journeys_one_active',
     'CREATE UNIQUE INDEX user_journeys_one_active ON user_journeys (journey_code) WHERE status = \'active\'',
@@ -2142,6 +2588,7 @@ abstract class _$SoulDatabase extends GeneratedDatabase {
     visions,
     visionFeelings,
     visionAnswers,
+    gratitudeEntries,
     userJourneysOneActive,
   ];
   @override
@@ -2159,6 +2606,13 @@ abstract class _$SoulDatabase extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('vision_answers', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'user_journeys',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('gratitude_entries', kind: UpdateKind.update)],
     ),
   ]);
 }
@@ -2187,6 +2641,32 @@ typedef $$UserJourneysTableUpdateCompanionBuilder =
       Value<DateTime> updatedAt,
       Value<int> rowid,
     });
+
+final class $$UserJourneysTableReferences
+    extends BaseReferences<_$SoulDatabase, $UserJourneysTable, UserJourneyRow> {
+  $$UserJourneysTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$GratitudeEntriesTable, List<GratitudeEntryRow>>
+  _gratitudeEntriesRefsTable(_$SoulDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.gratitudeEntries,
+        aliasName: 'user_journeys__id__gratitude_entries__user_journey_id',
+      );
+
+  $$GratitudeEntriesTableProcessedTableManager get gratitudeEntriesRefs {
+    final manager = $$GratitudeEntriesTableTableManager(
+      $_db,
+      $_db.gratitudeEntries,
+    ).filter((f) => f.userJourneyId.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _gratitudeEntriesRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
 
 class $$UserJourneysTableFilterComposer
     extends Composer<_$SoulDatabase, $UserJourneysTable> {
@@ -2236,6 +2716,31 @@ class $$UserJourneysTableFilterComposer
     column: $table.updatedAt,
     builder: (column) => ColumnFilters(column),
   );
+
+  Expression<bool> gratitudeEntriesRefs(
+    Expression<bool> Function($$GratitudeEntriesTableFilterComposer f) f,
+  ) {
+    final $$GratitudeEntriesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.gratitudeEntries,
+      getReferencedColumn: (t) => t.userJourneyId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GratitudeEntriesTableFilterComposer(
+            $db: $db,
+            $table: $db.gratitudeEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$UserJourneysTableOrderingComposer
@@ -2322,6 +2827,31 @@ class $$UserJourneysTableAnnotationComposer
 
   GeneratedColumn<DateTime> get updatedAt =>
       $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  Expression<T> gratitudeEntriesRefs<T extends Object>(
+    Expression<T> Function($$GratitudeEntriesTableAnnotationComposer a) f,
+  ) {
+    final $$GratitudeEntriesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.gratitudeEntries,
+      getReferencedColumn: (t) => t.userJourneyId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$GratitudeEntriesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.gratitudeEntries,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$UserJourneysTableTableManager
@@ -2335,12 +2865,9 @@ class $$UserJourneysTableTableManager
           $$UserJourneysTableAnnotationComposer,
           $$UserJourneysTableCreateCompanionBuilder,
           $$UserJourneysTableUpdateCompanionBuilder,
-          (
-            UserJourneyRow,
-            BaseReferences<_$SoulDatabase, $UserJourneysTable, UserJourneyRow>,
-          ),
+          (UserJourneyRow, $$UserJourneysTableReferences),
           UserJourneyRow,
-          PrefetchHooks Function()
+          PrefetchHooks Function({bool gratitudeEntriesRefs})
         > {
   $$UserJourneysTableTableManager(_$SoulDatabase db, $UserJourneysTable table)
     : super(
@@ -2406,15 +2933,45 @@ class $$UserJourneysTableTableManager
                           e.readTable<$UserJourneysTable, UserJourneyRow>(
                             table,
                           ),
-                          BaseReferences<
-                            _$SoulDatabase,
-                            $UserJourneysTable,
-                            UserJourneyRow
-                          >(db, table, e),
+                          $$UserJourneysTableReferences(db, table, e),
                         ),
                       )
                       .toList(),
-          prefetchHooksCallback: null,
+          prefetchHooksCallback: ({gratitudeEntriesRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (gratitudeEntriesRefs) db.gratitudeEntries,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (gratitudeEntriesRefs)
+                    await $_getPrefetchedData<
+                      UserJourneyRow,
+                      $UserJourneysTable,
+                      GratitudeEntryRow
+                    >(
+                      currentTable: table,
+                      referencedTable: $$UserJourneysTableReferences
+                          ._gratitudeEntriesRefsTable(db),
+                      managerFromTypedResult:
+                          (p0) =>
+                              $$UserJourneysTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).gratitudeEntriesRefs,
+                      referencedItemsForCurrentItem:
+                          (item, referencedItems) => referencedItems.where(
+                            (e) => e.userJourneyId == item.id,
+                          ),
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
         ),
       );
 }
@@ -2429,12 +2986,9 @@ typedef $$UserJourneysTableProcessedTableManager =
       $$UserJourneysTableAnnotationComposer,
       $$UserJourneysTableCreateCompanionBuilder,
       $$UserJourneysTableUpdateCompanionBuilder,
-      (
-        UserJourneyRow,
-        BaseReferences<_$SoulDatabase, $UserJourneysTable, UserJourneyRow>,
-      ),
+      (UserJourneyRow, $$UserJourneysTableReferences),
       UserJourneyRow,
-      PrefetchHooks Function()
+      PrefetchHooks Function({bool gratitudeEntriesRefs})
     >;
 typedef $$ReminderPreferencesTableCreateCompanionBuilder =
     ReminderPreferencesCompanion Function({
@@ -3769,6 +4323,372 @@ typedef $$VisionAnswersTableProcessedTableManager =
       VisionAnswerRow,
       PrefetchHooks Function({bool visionId})
     >;
+typedef $$GratitudeEntriesTableCreateCompanionBuilder =
+    GratitudeEntriesCompanion Function({
+      required String id,
+      Value<String?> userJourneyId,
+      Value<int?> journeyDay,
+      required String gratitudeText,
+      required String reasonText,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$GratitudeEntriesTableUpdateCompanionBuilder =
+    GratitudeEntriesCompanion Function({
+      Value<String> id,
+      Value<String?> userJourneyId,
+      Value<int?> journeyDay,
+      Value<String> gratitudeText,
+      Value<String> reasonText,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+
+final class $$GratitudeEntriesTableReferences
+    extends
+        BaseReferences<
+          _$SoulDatabase,
+          $GratitudeEntriesTable,
+          GratitudeEntryRow
+        > {
+  $$GratitudeEntriesTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $UserJourneysTable _userJourneyIdTable(_$SoulDatabase db) => db
+      .userJourneys
+      .createAlias('gratitude_entries__user_journey_id__user_journeys__id');
+
+  $$UserJourneysTableProcessedTableManager? get userJourneyId {
+    final $_column = $_itemColumn<String>('user_journey_id');
+    if ($_column == null) return null;
+    final manager = $$UserJourneysTableTableManager(
+      $_db,
+      $_db.userJourneys,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_userJourneyIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$GratitudeEntriesTableFilterComposer
+    extends Composer<_$SoulDatabase, $GratitudeEntriesTable> {
+  $$GratitudeEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get journeyDay => $composableBuilder(
+    column: $table.journeyDay,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get gratitudeText => $composableBuilder(
+    column: $table.gratitudeText,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get reasonText => $composableBuilder(
+    column: $table.reasonText,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$UserJourneysTableFilterComposer get userJourneyId {
+    final $$UserJourneysTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userJourneyId,
+      referencedTable: $db.userJourneys,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UserJourneysTableFilterComposer(
+            $db: $db,
+            $table: $db.userJourneys,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$GratitudeEntriesTableOrderingComposer
+    extends Composer<_$SoulDatabase, $GratitudeEntriesTable> {
+  $$GratitudeEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get journeyDay => $composableBuilder(
+    column: $table.journeyDay,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get gratitudeText => $composableBuilder(
+    column: $table.gratitudeText,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get reasonText => $composableBuilder(
+    column: $table.reasonText,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$UserJourneysTableOrderingComposer get userJourneyId {
+    final $$UserJourneysTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userJourneyId,
+      referencedTable: $db.userJourneys,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UserJourneysTableOrderingComposer(
+            $db: $db,
+            $table: $db.userJourneys,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$GratitudeEntriesTableAnnotationComposer
+    extends Composer<_$SoulDatabase, $GratitudeEntriesTable> {
+  $$GratitudeEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get journeyDay => $composableBuilder(
+    column: $table.journeyDay,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get gratitudeText => $composableBuilder(
+    column: $table.gratitudeText,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get reasonText => $composableBuilder(
+    column: $table.reasonText,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  $$UserJourneysTableAnnotationComposer get userJourneyId {
+    final $$UserJourneysTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userJourneyId,
+      referencedTable: $db.userJourneys,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UserJourneysTableAnnotationComposer(
+            $db: $db,
+            $table: $db.userJourneys,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$GratitudeEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$SoulDatabase,
+          $GratitudeEntriesTable,
+          GratitudeEntryRow,
+          $$GratitudeEntriesTableFilterComposer,
+          $$GratitudeEntriesTableOrderingComposer,
+          $$GratitudeEntriesTableAnnotationComposer,
+          $$GratitudeEntriesTableCreateCompanionBuilder,
+          $$GratitudeEntriesTableUpdateCompanionBuilder,
+          (GratitudeEntryRow, $$GratitudeEntriesTableReferences),
+          GratitudeEntryRow,
+          PrefetchHooks Function({bool userJourneyId})
+        > {
+  $$GratitudeEntriesTableTableManager(
+    _$SoulDatabase db,
+    $GratitudeEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer:
+              () =>
+                  $$GratitudeEntriesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer:
+              () => $$GratitudeEntriesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer:
+              () => $$GratitudeEntriesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String?> userJourneyId = const Value.absent(),
+                Value<int?> journeyDay = const Value.absent(),
+                Value<String> gratitudeText = const Value.absent(),
+                Value<String> reasonText = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => GratitudeEntriesCompanion(
+                id: id,
+                userJourneyId: userJourneyId,
+                journeyDay: journeyDay,
+                gratitudeText: gratitudeText,
+                reasonText: reasonText,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                Value<String?> userJourneyId = const Value.absent(),
+                Value<int?> journeyDay = const Value.absent(),
+                required String gratitudeText,
+                required String reasonText,
+                required DateTime createdAt,
+                Value<int> rowid = const Value.absent(),
+              }) => GratitudeEntriesCompanion.insert(
+                id: id,
+                userJourneyId: userJourneyId,
+                journeyDay: journeyDay,
+                gratitudeText: gratitudeText,
+                reasonText: reasonText,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper:
+              (p0) =>
+                  p0
+                      .map(
+                        (e) => (
+                          e.readTable<
+                            $GratitudeEntriesTable,
+                            GratitudeEntryRow
+                          >(table),
+                          $$GratitudeEntriesTableReferences(db, table, e),
+                        ),
+                      )
+                      .toList(),
+          prefetchHooksCallback: ({userJourneyId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                T extends TableManagerState<
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic,
+                  dynamic
+                >
+              >(state) {
+                if (userJourneyId) {
+                  state =
+                      state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.userJourneyId,
+                            referencedTable: $$GratitudeEntriesTableReferences
+                                ._userJourneyIdTable(db),
+                            referencedColumn:
+                                $$GratitudeEntriesTableReferences
+                                    ._userJourneyIdTable(db)
+                                    .id,
+                          )
+                          as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$GratitudeEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$SoulDatabase,
+      $GratitudeEntriesTable,
+      GratitudeEntryRow,
+      $$GratitudeEntriesTableFilterComposer,
+      $$GratitudeEntriesTableOrderingComposer,
+      $$GratitudeEntriesTableAnnotationComposer,
+      $$GratitudeEntriesTableCreateCompanionBuilder,
+      $$GratitudeEntriesTableUpdateCompanionBuilder,
+      (GratitudeEntryRow, $$GratitudeEntriesTableReferences),
+      GratitudeEntryRow,
+      PrefetchHooks Function({bool userJourneyId})
+    >;
 
 class $SoulDatabaseManager {
   final _$SoulDatabase _db;
@@ -3783,4 +4703,6 @@ class $SoulDatabaseManager {
       $$VisionFeelingsTableTableManager(_db, _db.visionFeelings);
   $$VisionAnswersTableTableManager get visionAnswers =>
       $$VisionAnswersTableTableManager(_db, _db.visionAnswers);
+  $$GratitudeEntriesTableTableManager get gratitudeEntries =>
+      $$GratitudeEntriesTableTableManager(_db, _db.gratitudeEntries);
 }

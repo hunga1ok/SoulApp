@@ -32,10 +32,10 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get whatShouldWeCallYou => 'Bạn muốn được gọi với tên là gì?';
+  String get whatShouldWeCallYou => 'Bạn muốn Soul gọi bạn là gì?';
 
   @override
-  String get nameHint => 'Tên bạn muốn được gọi';
+  String get nameHint => 'Tên hoặc cách xưng hô bạn yêu thích';
 
   @override
   String get saveAndContinue => 'Lưu và tiếp tục';
@@ -47,10 +47,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get oneSmallAction => 'Một hành động nhỏ';
 
   @override
-  String get smallActionText => 'Hãy hít một hơi thật dịu trước khi bước tiếp.';
+  String get smallActionText =>
+      'Gửi một lời tri ân thầm lặng hoặc trao nụ cười dịu dàng cho người bạn gặp hôm nay.';
 
   @override
-  String get recent => 'Gần đây';
+  String get recent => 'Ghi chú gần đây';
 
   @override
   String get oneNote => '1 ghi chú';
@@ -62,11 +63,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get gratitudeNote => 'Tôi biết ơn cuộc sống này';
 
   @override
-  String get gratitudeJournalTitle => 'Ghi chú biết ơn';
+  String get gratitudeJournalTitle => 'Nhật ký biết ơn';
 
   @override
   String get gratitudeJournalHint =>
-      'Hãy viết như đang ghi note trên điện thoại. Một ý nghĩ, một khoảnh khắc hoặc một danh sách đều được.';
+      'Mỗi khoảnh khắc biết ơn là một hạt mầm bình an gieo vào tâm trí.';
 
   @override
   String get gratitudeNoteLabel => 'Hôm nay bạn biết ơn điều gì?';
@@ -75,80 +76,102 @@ class AppLocalizationsVi extends AppLocalizations {
   String get saveNote => 'Lưu ghi chú';
 
   @override
-  String get gratitudeNotesEmpty => 'Những ghi chú của bạn sẽ xuất hiện ở đây.';
+  String get gratitudeNotesEmpty =>
+      'Bạn chưa có ghi chú nào. Hãy chạm nút bên dưới để viết ghi chú đầu tiên nhé.';
 
   @override
-  String get yourVisions => 'Những tầm nhìn của bạn';
+  String get yourVisions => 'Bảng tầm nhìn của bạn';
 
   @override
   String get createVision => 'Tạo một tầm nhìn';
 
   @override
-  String get visionEmptyTitle => 'Dành chỗ cho điều quan trọng';
+  String get visionEmptyTitle => 'Dành chỗ cho những ước mơ';
 
   @override
   String get visionEmptyBody =>
-      'Một tầm nhìn có thể bắt đầu từ một cảm xúc thật lòng.';
+      'Một tầm nhìn tươi đẹp bắt đầu từ những ước nguyện chân thật nhất của trái tim.';
 
   @override
-  String get audioPending => 'Đang chờ bản audio hoàn chỉnh';
+  String get audioPending => 'Đang cập nhật audio';
 
   @override
   String get visionAudio => 'Âm thanh cho tầm nhìn';
 
   @override
   String get visionAudioBody =>
-      'Chọn nhạc từ Soul, một file trên thiết bị hoặc ghi âm riêng cho tầm nhìn này.';
+      'Chọn nhạc từ Soul, chọn file từ máy hoặc tự ghi âm lời khẳng định cho tầm nhìn này.';
 
   @override
-  String get visionAudioEmpty => 'Chưa có âm thanh nào được thêm.';
+  String get visionAudioEmpty => 'Chưa có âm thanh đồng hành.';
 
   @override
-  String get visionAudioPersonal => 'Chỉ có trên thiết bị này';
+  String get visionAudioPersonal => 'Chỉ lưu trên thiết bị này';
 
   @override
   String get addAudio => 'Thêm audio';
 
   @override
-  String get audioLibrary => 'Thư viện audio';
+  String get audioLibrary => 'Thư viện âm thanh';
 
   @override
   String get chooseFromAudioLibrary => 'Chọn từ thư viện Soul';
 
   @override
-  String get chooseAudioFile => 'Chọn file audio từ thiết bị';
+  String get chooseAudioFile => 'Chọn file audio từ máy';
 
   @override
-  String get recordAudio => 'Tự ghi âm';
+  String get recordAudio => 'Tự ghi âm giọng nói';
 
   @override
   String get stopRecording => 'Dừng và lưu bản ghi';
 
   @override
-  String get myRecording => 'Bản ghi của tôi';
+  String get myRecording => 'Bản ghi âm của tôi';
 
   @override
   String get removeAudio => 'Bỏ audio';
 
   @override
-  String get audioGuided => 'Audio hướng dẫn';
+  String get audioGuided => 'Audio hướng dẫn tĩnh tâm';
 
   @override
-  String get audioMusic => 'Âm nhạc cho tầm nhìn';
+  String get audioMusic => 'Âm nhạc trị liệu & Tần số';
 
   @override
-  String get audioRest => 'Thư giãn, thiên nhiên & tắm âm thanh';
+  String get audioRest => 'Thiên nhiên & Thư giãn sâu';
 
   @override
   String get audioLibraryNote =>
-      'Toàn bộ track hiện có được liệt kê ở đây. Chỉ track đã duyệt và có licence mới phát được.';
+      'Tuyển tập những thanh âm dịu nhẹ, tần số 432Hz/528Hz giúp tĩnh tâm và nâng cao tần số rung động.';
 
   @override
-  String get exploreTitle => 'Một nhịp điệu dịu dàng hơn';
+  String get exploreTitle => 'Góc nuôi dưỡng tâm hồn';
 
   @override
   String get exploreBody =>
-      'Toàn bộ âm thanh và bài hướng dẫn hiện có. Các bản thử nghiệm đang chờ thay bằng bản thu hoàn chỉnh.';
+      'Khám phá thanh âm chữa lành, bài thiền định và những câu chuyện truyền cảm hứng sống đẹp.';
+
+  @override
+  String get exploreTabAll => 'Tất cả';
+
+  @override
+  String get exploreTabAudio => 'Âm thanh Soul';
+
+  @override
+  String get exploreTabMeditation => 'Bài thiền định';
+
+  @override
+  String get exploreTabPodcast => 'Podcast & Cảm hứng';
+
+  @override
+  String get exploreTabFrequency => 'Tần số năng lượng';
+
+  @override
+  String get exploreOpenYouTube => 'Mở trên YouTube';
+
+  @override
+  String get exploreOpenSpotify => 'Nghe trên Spotify';
 
   @override
   String get profile => 'Hồ sơ & cài đặt';
@@ -177,13 +200,14 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get authTagline => 'Một khoảng riêng tư dành cho bạn.';
+  String get authTagline =>
+      'Một khoảng không gian riêng tư và dịu lành cho tâm hồn bạn.';
 
   @override
   String get morningGratitude => 'Biết ơn buổi sáng';
 
   @override
-  String get neutralInstrumentalFiveMinutes => 'Nhạc không lời · 5 phút';
+  String get neutralInstrumentalFiveMinutes => 'Piano dịu êm · 5 phút';
 
   @override
   String get play => 'Phát';
@@ -192,7 +216,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get vietnameseLanguage => 'Tiếng Việt';
 
   @override
-  String get englishLanguage => 'Tiếng Anh';
+  String get englishLanguage => 'English';
 
   @override
   String get languageEndonymVi => 'Tiếng Việt';
@@ -204,7 +228,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get retry => 'Thử lại';
 
   @override
-  String get loading => 'Đang tải';
+  String get loading => 'Đang tải...';
 
   @override
   String get pause => 'Tạm dừng';
@@ -224,27 +248,27 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get intentionTitle => 'Điều gì đưa bạn đến đây?';
+  String get intentionTitle => 'Điều gì đưa bạn đến với Soul?';
 
   @override
   String get intentionBody =>
-      'Chọn điều bạn mong muốn nhất lúc này. Không có câu trả lời sai.';
+      'Hãy chọn những điều bạn mong muốn nuôi dưỡng lúc này. Không có câu trả lời nào là sai.';
 
   @override
-  String get intentionChooseOne => 'Chọn ít nhất một điều nhé.';
+  String get intentionChooseOne => 'Chọn ít nhất một điều để bắt đầu nhé.';
 
   @override
-  String get remindersTitle => 'Một nhịp nhỏ cho mỗi ngày.';
+  String get remindersTitle => 'Một nhịp nhỏ cho mỗi ngày';
 
   @override
   String get remindersBody =>
-      'Chọn hai thời điểm dịu dàng để bắt đầu và khép lại ngày.';
+      'Chọn hai khoảng thời gian dịu dàng để bắt đầu và khép lại ngày an yên.';
 
   @override
-  String get reminderMorning => 'Buổi sáng';
+  String get reminderMorning => 'Nhắc nhở buổi sáng';
 
   @override
-  String get reminderEvening => 'Buổi tối';
+  String get reminderEvening => 'Nhìn lại buổi tối';
 
   @override
   String changeReminderTime(Object reminder, Object time) {
@@ -255,11 +279,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get skipForNow => 'Để sau';
 
   @override
-  String get journeyReadyTitle => 'Hành trình 28 ngày đã sẵn sàng.';
+  String get journeyReadyTitle => 'Hành trình 28 ngày đã sẵn sàng';
 
   @override
   String get journeyReadyBody =>
-      'Bạn không cần hoàn hảo. Chỉ cần bắt đầu từ ngày hôm nay.';
+      'Bạn không cần phải hoàn hảo. Chỉ cần mỗi ngày dành ra 5 phút quay về với chính mình.';
 
   @override
   String get beginDayOne => 'Bắt đầu Ngày 1';
@@ -269,7 +293,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get chooseCategoryBody =>
-      'Bạn muốn dành sự chú ý cho điều gì lúc này?';
+      'Bạn muốn hướng trọn sự chú ý và năng lượng vào điều gì lúc này?';
 
   @override
   String visionStepLabel(Object category, int step, int total) {
@@ -283,7 +307,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get answerRequiredHint =>
-      'Chọn một gợi ý hoặc thêm câu trả lời của bạn.';
+      'Chọn một gợi ý gần gũi hoặc viết mong ước của riêng bạn.';
 
   @override
   String get visionQuickStart => 'Tiếp tục với cảm xúc';
@@ -293,24 +317,25 @@ class AppLocalizationsVi extends AppLocalizations {
       'Bạn muốn cảm thấy thế nào khi điều đó đang diễn ra?';
 
   @override
-  String get feelingsHint => 'Chọn từ 1 đến 3 cảm xúc.';
+  String get feelingsHint => 'Chọn từ 1 đến 3 cảm xúc sâu lắng nhất.';
 
   @override
   String get feelingsLimitReached =>
-      'Bạn đã chọn 3 cảm xúc. Bỏ chọn một cảm xúc để chọn cái khác.';
+      'Bạn đã chọn đủ 3 cảm xúc. Hãy bỏ bớt một cảm xúc nếu muốn đổi.';
 
   @override
-  String get statementTitle => 'Tầm nhìn của bạn';
+  String get statementTitle => 'Tuyên ngôn tầm nhìn của bạn';
 
   @override
   String get statementBody =>
-      'Soul đã gợi ý một câu từ lựa chọn của bạn. Bạn có thể sửa lại cho đúng với mình.';
+      'Soul đã xâu chuỗi những ước nguyện của bạn thành câu khẳng định này. Bạn hoàn toàn có thể chỉnh sửa lại cho thật vừa vặn.';
 
   @override
-  String get statementLabel => 'Câu tầm nhìn';
+  String get statementLabel => 'Câu khẳng định tầm nhìn';
 
   @override
-  String get statementEmpty => 'Viết tầm nhìn của bạn trong một hoặc hai câu.';
+  String get statementEmpty =>
+      'Hãy viết câu tầm nhìn của bạn trong 1 - 2 câu truyền cảm hứng.';
 
   @override
   String statementTooLong(int max) {
@@ -322,22 +347,22 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get visionImageBody =>
-      'Thêm một bức ảnh nếu bạn muốn. Không bắt buộc.';
+      'Một bức ảnh đẹp sẽ giúp tâm trí bạn dễ dàng hình dung và rung động hơn.';
 
   @override
-  String get chooseFromLibrary => 'Chọn từ thư viện';
+  String get chooseFromLibrary => 'Chọn từ thư viện ảnh';
 
   @override
-  String get takePhoto => 'Chụp ảnh';
+  String get takePhoto => 'Chụp ảnh mới';
 
   @override
-  String get removePhoto => 'Bỏ ảnh';
+  String get removePhoto => 'Bỏ ảnh này';
 
   @override
   String get visionPhoto => 'Ảnh tầm nhìn';
 
   @override
-  String get photoUnavailable => 'Không hiển thị được ảnh này.';
+  String get photoUnavailable => 'Không thể hiển thị ảnh này.';
 
   @override
   String get reviewVisionTitle => 'Xem lại tầm nhìn';
@@ -347,7 +372,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get visionSaveFailed =>
-      'Chưa lưu được tầm nhìn. Lựa chọn của bạn vẫn còn đây — bạn thử lại nhé.';
+      'Chưa lưu được tầm nhìn. Lựa chọn của bạn vẫn còn nguyên — hãy thử lại nhé.';
 
   @override
   String get archiveVision => 'Lưu trữ tầm nhìn';
@@ -357,11 +382,296 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get archiveVisionBody =>
-      'Tầm nhìn sẽ rời khỏi board nhưng không bị xóa.';
+      'Tầm nhìn sẽ rời khỏi bảng hiện tại và lưu vào kho lưu trữ an toàn.';
 
   @override
   String get archive => 'Lưu trữ';
 
   @override
-  String get visionNotFound => 'Tầm nhìn này không còn trên board của bạn.';
+  String get visionNotFound => 'Tầm nhìn này không còn trên bảng của bạn.';
+
+  @override
+  String get visionSoundtrack => 'Âm thanh đồng hành';
+
+  @override
+  String get visionBoardSubtitle =>
+      'Nơi neo giữ những mục tiêu, hình ảnh và cảm xúc tươi đẹp bạn muốn chạm tới mỗi ngày.';
+
+  @override
+  String get welcomeTitle1 => 'Chào mừng bạn đến với Soul';
+
+  @override
+  String get welcomeSubtitle1 =>
+      'Một không gian dịu lành để bạn lắng lại, kết nối sâu sắc và nuôi dưỡng sự bình an trong tâm hồn mỗi ngày.';
+
+  @override
+  String get welcomeTitle2 => '28 Ngày Nuôi Dưỡng Lòng Biết Ơn';
+
+  @override
+  String get welcomeSubtitle2 =>
+      'Thực hành chuyển hóa tư duy từ những điều dung dị, đánh thức nguồn năng lượng an vui và tích cực.';
+
+  @override
+  String get welcomeTitle3 => 'Bảng Tầm Nhìn & Âm Thanh Trị Liệu';
+
+  @override
+  String get welcomeSubtitle3 =>
+      'Hiện thực hóa ước mơ bằng bảng tầm nhìn sống động cùng những bản nhạc tần số nâng cao rung cảm.';
+
+  @override
+  String get startJourney => 'Bắt đầu hành trình';
+
+  @override
+  String get revisitOnboarding => 'Trải nghiệm lại phần Giới thiệu';
+
+  @override
+  String get todayGreeting => 'Chúc bạn một ngày an yên và trọn vẹn ✨';
+
+  @override
+  String get todayJourneyHeroTitle => '10 Điều Biết Ơn Hôm Nay';
+
+  @override
+  String get todayJourneyHeroSubtitle =>
+      'Dành vài phút buổi sáng để gọi tên những phúc lành đang hiện diện và cảm nhận ý nghĩa sâu xa của chúng.';
+
+  @override
+  String get todayStartPractice => 'Bắt đầu thực hành';
+
+  @override
+  String get todayContinuePractice => 'Tiếp tục thực hành';
+
+  @override
+  String get todayPracticeCompleted => 'Đã hoàn thành hôm nay ✨';
+
+  @override
+  String get moodCheckInTitle => 'Cảm xúc của bạn lúc này?';
+
+  @override
+  String get moodPeaceful => 'Bình an 🕊️';
+
+  @override
+  String get moodGrateful => 'Biết ơn 🌸';
+
+  @override
+  String get moodEnergized => 'Năng lượng ☀️';
+
+  @override
+  String get moodRelieved => 'Nhẹ nhõm 🍃';
+
+  @override
+  String get moodReflective => 'Lắng đọng 🌙';
+
+  @override
+  String get eveningReflectionTitle => 'Nhìn lại buổi tối';
+
+  @override
+  String get eveningReflectionBody =>
+      'Trước khi chìm vào giấc ngủ, hãy nghĩ về điều tuyệt vời nhất đã đến với bạn trong ngày hôm nay.';
+
+  @override
+  String get gratitudePracticeTitle => 'Buổi sáng biết ơn';
+
+  @override
+  String get gratitudePracticeIntroTitle =>
+      'Bắt đầu ngày mới bằng sự trân trọng';
+
+  @override
+  String get gratitudePracticeIntroBody =>
+      'Dành vài phút để nhận ra 10 điều đang nâng đỡ bạn hôm nay, và ghi lại vì sao điều đó có ý nghĩa với bạn.';
+
+  @override
+  String get gratitudeStartPractice => 'Bắt đầu bài tập';
+
+  @override
+  String gratitudeItemProgress(int current, int total) {
+    return 'Điều $current trên $total';
+  }
+
+  @override
+  String get gratitudeFieldPrompt => 'Tôi biết ơn...';
+
+  @override
+  String get gratitudeFieldPlaceholder =>
+      'Ghi lại một điều bạn trân trọng hôm nay';
+
+  @override
+  String get gratitudeReasonPrompt => 'Vì sao...';
+
+  @override
+  String get gratitudeReasonPlaceholder =>
+      'Vì sao điều này quan trọng với bạn?';
+
+  @override
+  String gratitudeTapThankYou(int count) {
+    return 'Nói lời \"Cảm ơn\" ($count/3)';
+  }
+
+  @override
+  String get gratitudeTapHint => 'Chạm 3 lần để khắc sâu cảm xúc biết ơn';
+
+  @override
+  String get gratitudeAddAndNext => 'Thêm & Tiếp tục';
+
+  @override
+  String get gratitudeReviewTitle => '10 điều biết ơn của bạn hôm nay';
+
+  @override
+  String get gratitudeReviewSubtitle =>
+      'Xem lại danh sách trước khi khép lại bài tập.';
+
+  @override
+  String get gratitudeCompletePractice => 'Hoàn tất bài tập';
+
+  @override
+  String get gratitudeCompletedTitle => 'Hoàn thành bài tập ✨';
+
+  @override
+  String get gratitudeCompletedBody =>
+      'Bạn đã gieo 10 hạt mầm biết ơn vào ngày mới. Các mục này đã được lưu vào nhật ký của bạn.';
+
+  @override
+  String get gratitudeBackToToday => 'Về trang Hôm nay';
+
+  @override
+  String get gratitudeStatusIncomplete => 'Chưa hoàn thành';
+
+  @override
+  String get gratitudeStatusCompleted => 'Đã hoàn thành 10/10 điều';
+
+  @override
+  String get gratitudeCardTapToStart => 'Bắt đầu bài tập sáng';
+
+  @override
+  String get gratitudeCardTapToReview => 'Xem lại 10 điều biết ơn';
+
+  @override
+  String get editEntry => 'Sửa';
+
+  @override
+  String get done => 'Xong';
+
+  @override
+  String gratitudeReasonLabel(String reason) {
+    return 'Lý do: $reason';
+  }
+
+  @override
+  String get gratitudeFinishEarly => 'Hoàn thành sớm';
+
+  @override
+  String get gratitudeSkipItem => 'Bỏ qua điều này';
+
+  @override
+  String get gratitudeSkipProgress => 'Bỏ qua tiến trình';
+
+  @override
+  String get gratitudeSkippedTitle => 'Đã bỏ qua bài thực hành';
+
+  @override
+  String get gratitudeSkippedBody =>
+      'Bạn đã bỏ qua bài thực hành biết ơn hôm nay. Bạn có thể quay lại thực hành bất cứ khi nào sẵn sàng.';
+
+  @override
+  String gratitudeReviewTitleCount(int count) {
+    return '$count điều biết ơn của bạn hôm nay';
+  }
+
+  @override
+  String gratitudeCompletedBodyCount(int count) {
+    return 'Bạn đã gieo $count hạt mầm biết ơn vào ngày mới. Các mục này đã được lưu vào nhật ký của bạn.';
+  }
+
+  @override
+  String gratitudeStatusCompletedCount(int count) {
+    return 'Đã hoàn thành $count điều biết ơn';
+  }
+
+  @override
+  String get gratitudeLevelLow => 'Cảm ơn';
+
+  @override
+  String get gratitudeLevelMedium => 'Rất cảm ơn';
+
+  @override
+  String get gratitudeLevelHigh => 'Biết ơn sâu sắc';
+
+  @override
+  String get gratitudeTapLevelHint => 'Chọn mức độ biết ơn';
+
+  @override
+  String get signOutConfirmTitle => 'Đăng xuất khỏi Soul?';
+
+  @override
+  String get signOutConfirmBody =>
+      'Bạn có chắc chắn muốn đăng xuất? Thiết bị sẽ quay về màn hình ban đầu.';
+
+  @override
+  String get addNote => 'Thêm ghi chú mới';
+
+  @override
+  String get newGratitudeNote => 'Ghi chú biết ơn mới';
+
+  @override
+  String get notePromptPlaceholder => 'Hôm nay bạn biết ơn điều gì?';
+
+  @override
+  String get noteReasonPlaceholder =>
+      'Vì sao điều này có ý nghĩa với bạn? (tùy chọn)';
+
+  @override
+  String get deleteNote => 'Xóa ghi chú';
+
+  @override
+  String get deleteNoteConfirmTitle => 'Xóa ghi chú này?';
+
+  @override
+  String get deleteNoteConfirmBody =>
+      'Ghi chú này sẽ bị xóa vĩnh viễn khỏi nhật ký của bạn.';
+
+  @override
+  String get noteSaved => 'Đã lưu ghi chú vào nhật ký';
+
+  @override
+  String get noteDeleted => 'Đã xóa ghi chú';
+
+  @override
+  String notesCount(int count) {
+    return '$count ghi chú';
+  }
+
+  @override
+  String get reminderSettingsTitle => 'Giờ gửi thông báo';
+
+  @override
+  String get reminderSettingsSubtitle =>
+      'Soul sẽ gửi lời nhắc nhẹ nhàng vào những thời điểm bạn chọn.';
+
+  @override
+  String get settingsSectionTitle => 'Cài đặt';
+
+  @override
+  String get accountSectionTitle => 'Tài khoản';
+
+  @override
+  String get saveSettings => 'Lưu thay đổi';
+
+  @override
+  String get settingsSaved => 'Đã lưu cài đặt';
+
+  @override
+  String get close => 'Đóng';
+
+  @override
+  String get customNoteDefaultTheme => 'Khoảnh khắc biết ơn';
+
+  @override
+  String gratitudeSentenceCount(int count) {
+    return '$count điều biết ơn';
+  }
+
+  @override
+  String get allGratitudesInNote => 'Những điều biết ơn trong bài viết này';
+
+  @override
+  String get sentencePreview => 'Xem trước câu hoàn chỉnh:';
 }

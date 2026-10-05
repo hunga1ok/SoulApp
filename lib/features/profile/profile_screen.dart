@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
+import '../onboarding/onboarding_screens.dart';
+import 'reminder_settings_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -49,13 +51,59 @@ class ProfileScreen extends ConsumerWidget {
             onTap: () => state.setSoundEnabled(!soundEnabled),
           ),
           _SettingRow(
-            icon: Icons.language_outlined,
+            icon: Icons.language_rounded,
             label: l10n.language,
             onTap: () => _showLanguagePicker(context, ref),
+          ),
+          _SettingRow(
+            icon: Icons.notifications_none_rounded,
+            label: l10n.reminderSettingsTitle,
+            onTap:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const ReminderSettingsScreen(),
+                  ),
+                ),
+          ),
+          _SettingRow(
+            icon: Icons.auto_awesome_outlined,
+            label: l10n.revisitOnboarding,
+            onTap:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (_) => const WelcomeIntroScreen(isRevisiting: true),
+                  ),
+                ),
+          ),
+          _SettingRow(
+            icon: Icons.logout_rounded,
+            label: l10n.signOut,
+            onTap: () => _confirmSignOut(context, ref, l10n),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _confirmSignOut(
+    BuildContext context,
+    WidgetRef ref,
+    AppLocalizations l10n,
+  ) async {
+    final confirmed = await showSoulConfirmDialog(
+      context: context,
+      title: l10n.signOutConfirmTitle,
+      message: l10n.signOutConfirmBody,
+      confirmLabel: l10n.signOut,
+    );
+    if (!confirmed) return;
+    await ref.read(appStateProvider).resetAll();
+    if (context.mounted) {
+      context.go('/language');
+    }
   }
 
   Future<void> _showLanguagePicker(BuildContext context, WidgetRef ref) async {

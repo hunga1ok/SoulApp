@@ -16,6 +16,7 @@ import 'app_state.dart';
 
 const _entryRoutes = {
   '/language',
+  '/onboarding/welcome',
   '/onboarding/name',
   '/onboarding/intention',
   '/onboarding/reminders',
@@ -57,7 +58,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       final path = route.matchedLocation;
       if (state.locale == null) return only(path, '/language');
       if (!state.onboardingCompleted) {
-        if (!state.hasPreferredName) return only(path, '/onboarding/name');
+        if (!state.hasPreferredName) {
+          if (path == '/onboarding/welcome' || path == '/onboarding/name') {
+            return null;
+          }
+          return only(path, '/onboarding/name');
+        }
         if (state.intentions.isEmpty) {
           return only(path, '/onboarding/intention');
         }
@@ -73,6 +79,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/language',
         builder: (context, route) => const LanguageGateScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding/welcome',
+        builder: (context, route) => const WelcomeIntroScreen(),
       ),
       GoRoute(
         path: '/onboarding/name',

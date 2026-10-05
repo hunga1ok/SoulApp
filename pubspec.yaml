@@ -49,6 +49,7 @@ dependencies:
   audio_session: ^0.1.25
   file_picker: ^11.0.3
   record: ^6.2.1
+  url_launcher: ^6.3.3
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,10 @@ flutter:
     - assets/images/
     - assets/content/
     - assets/audio/
+    - assets/audio/ambience/
+    - assets/audio/music/
+    - assets/audio/guided/vi/
+    - assets/audio/guided/en/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

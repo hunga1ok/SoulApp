@@ -47,12 +47,239 @@ class LanguageGateScreen extends ConsumerWidget {
                         : SoulButtonVariant.secondary,
                 onPressed: () async {
                   await ref.read(appStateProvider).selectLocale(locale);
-                  if (context.mounted) context.go('/onboarding/name');
+                  if (context.mounted) context.go('/onboarding/welcome');
                 },
               ),
             ),
           ),
       ],
+    );
+  }
+}
+
+/// Core value presentation: Welcome intro carousel introducing Soul,
+/// the 28-day gratitude journey, and the vision board & soundscapes.
+class WelcomeIntroScreen extends StatefulWidget {
+  const WelcomeIntroScreen({super.key, this.isRevisiting = false});
+
+  final bool isRevisiting;
+
+  @override
+  State<WelcomeIntroScreen> createState() => _WelcomeIntroScreenState();
+}
+
+class _WelcomeIntroScreenState extends State<WelcomeIntroScreen> {
+  final _pageController = PageController();
+  int _currentPage = 0;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onNext() {
+    if (_currentPage < 2) {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      _finish();
+    }
+  }
+
+  void _finish() {
+    if (widget.isRevisiting) {
+      Navigator.pop(context);
+    } else {
+      context.go('/onboarding/name');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final slides = [
+      (
+        icon: Icons.spa_outlined,
+        title: l10n.welcomeTitle1,
+        subtitle: l10n.welcomeSubtitle1,
+        tag: 'SOUL SANCTUARY',
+      ),
+      (
+        icon: Icons.favorite_outline_rounded,
+        title: l10n.welcomeTitle2,
+        subtitle: l10n.welcomeSubtitle2,
+        tag: '28-DAY JOURNEY',
+      ),
+      (
+        icon: Icons.auto_awesome_outlined,
+        title: l10n.welcomeTitle3,
+        subtitle: l10n.welcomeSubtitle3,
+        tag: 'VISION & SOUND',
+      ),
+    ];
+
+    return Scaffold(
+      appBar:
+          widget.isRevisiting
+              ? SoulAppBar(
+                title: l10n.revisitOnboarding,
+                onBack: () => Navigator.pop(context),
+              )
+              : null,
+      body: SafeArea(
+        child: Column(
+          children: [
+            if (!widget.isRevisiting)
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: SoulSpace.sm,
+                    right: SoulSpace.md,
+                  ),
+                  child: TextButton(
+                    onPressed: _finish,
+                    child: Text(
+                      l10n.skipForNow,
+                      style: const TextStyle(
+                        color: SoulColors.muted,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: slides.length,
+                onPageChanged: (page) => setState(() => _currentPage = page),
+                itemBuilder: (context, index) {
+                  final slide = slides[index];
+                  return Center(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: SoulSpace.xl,
+                        vertical: SoulSpace.sm,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 110,
+                            height: 110,
+                            decoration: BoxDecoration(
+                              color: SoulColors.lilac,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: SoulColors.plum.withValues(
+                                    alpha: 0.12,
+                                  ),
+                                  blurRadius: 24,
+                                  offset: const Offset(0, 8),
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              slide.icon,
+                              size: 52,
+                              color: SoulColors.plum,
+                            ),
+                          ),
+                          const SizedBox(height: SoulSpace.xl),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: SoulSpace.sm,
+                              vertical: SoulSpace.xxs,
+                            ),
+                            decoration: BoxDecoration(
+                              color: SoulColors.surface,
+                              borderRadius: BorderRadius.circular(
+                                SoulRadius.button,
+                              ),
+                              border: Border.all(color: SoulColors.line),
+                            ),
+                            child: Text(
+                              slide.tag,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.labelSmall?.copyWith(
+                                letterSpacing: 1.5,
+                                fontWeight: FontWeight.w700,
+                                color: SoulColors.muted,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: SoulSpace.md),
+                          Text(
+                            slide.title,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.displaySmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              height: 1.25,
+                            ),
+                          ),
+                          const SizedBox(height: SoulSpace.md),
+                          Text(
+                            slide.subtitle,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(
+                              context,
+                            ).textTheme.bodyLarge?.copyWith(
+                              color: SoulColors.softInk.withValues(alpha: 0.8),
+                              height: 1.55,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                slides.length,
+                (i) => AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: _currentPage == i ? 24 : 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color:
+                        _currentPage == i ? SoulColors.plum : SoulColors.line,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: SoulSpace.xl),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                SoulSpace.xl,
+                0,
+                SoulSpace.xl,
+                SoulSpace.xl,
+              ),
+              child: SoulButton(
+                label:
+                    _currentPage == slides.length - 1
+                        ? l10n.startJourney
+                        : l10n.continueLabel,
+                onPressed: _onNext,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -16,6 +16,7 @@ part 'soul_database.g.dart';
     Visions,
     VisionFeelings,
     VisionAnswers,
+    GratitudeEntries,
   ],
 )
 class SoulDatabase extends _$SoulDatabase {
@@ -23,7 +24,7 @@ class SoulDatabase extends _$SoulDatabase {
     : super(executor ?? driftDatabase(name: 'soul'));
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -32,6 +33,9 @@ class SoulDatabase extends _$SoulDatabase {
         await m.createTable(schema.visions);
         await m.createTable(schema.visionFeelings);
         await m.createTable(schema.visionAnswers);
+      },
+      from2To3: (m, schema) async {
+        await m.createTable(schema.gratitudeEntries);
       },
     ),
     beforeOpen: (details) async {
@@ -150,4 +154,24 @@ class VisionAnswers extends Table {
 
   @override
   Set<Column> get primaryKey => {visionId, questionCode};
+}
+
+/// Core gratitude entries written during journey or daily practice.
+/// Matches `docs/source-specs/Soul_Screen_List_User_Flow_Data_List_MVP_v1.0.md`.
+@DataClassName('GratitudeEntryRow')
+class GratitudeEntries extends Table {
+  TextColumn get id => text()();
+  TextColumn get userJourneyId =>
+      text().nullable().references(
+        UserJourneys,
+        #id,
+        onDelete: KeyAction.setNull,
+      )();
+  IntColumn get journeyDay => integer().nullable()();
+  TextColumn get gratitudeText => text()();
+  TextColumn get reasonText => text()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }

@@ -93,4 +93,15 @@ class AppState extends ChangeNotifier {
     await _preferences.setBool(_onboardingCompletedKey, true);
     notifyListeners();
   }
+
+  Future<void> resetAll() async {
+    _locale = null;
+    _preferredName = null;
+    _soundEnabled = true;
+    _intentions = const [];
+    _remindersDecided = false;
+    _onboardingCompleted = false;
+    await _preferences.clear();
+    notifyListeners();
+  }
 }
