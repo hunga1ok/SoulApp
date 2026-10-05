@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:soul_app/app/app_state.dart';
@@ -21,11 +24,16 @@ Future<void> _openVisionTab(WidgetTester tester) async {
 Future<void> _tapButton(WidgetTester tester, String label) async {
   final button = find.widgetWithText(SoulButton, label);
   // Lazy lists build the footer button only once it scrolls into view.
-  await tester.scrollUntilVisible(
-    button,
-    200,
-    scrollable: find.byType(Scrollable).last,
-  );
+  if (find.byType(Scrollable).evaluate().isNotEmpty) {
+    try {
+      await tester.scrollUntilVisible(
+        button,
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+    } catch (_) {}
+  }
+  await tester.ensureVisible(button);
   await tester.pumpAndSettle();
   await tester.tap(button);
   await tester.pumpAndSettle();
@@ -216,6 +224,47 @@ void main() {
     await tester.tap(find.text('Remove photo'));
     await tester.pumpAndSettle();
     expect(find.text('Remove photo'), findsNothing);
+  });
+
+  testWidgets('a picked photo can be saved to vision board and displayed', (
+    tester,
+  ) async {
+    final tempDir = Directory.systemTemp.createTempSync('soul_picked_test');
+    addTearDown(() => tempDir.deleteSync(recursive: true));
+    final testImageFile = File('${tempDir.path}/picked_photo.png');
+    testImageFile.writeAsBytesSync(
+      base64Decode(
+        'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
+      ),
+    );
+
+    final picking = FakeImagePicking(testImageFile.path);
+    await pumpSoulApp(
+      tester,
+      preferences: onboardedPreferences(SoulLocale.en),
+      imagePicking: picking,
+    );
+    await _openVisionTab(tester);
+    await _tapButton(tester, 'Create a vision');
+    await _tapText(tester, 'Inner Peace');
+    await _answerQuestions(
+      tester,
+      'Continue',
+      'How do you want to feel when this vision comes true?',
+    );
+    await tester.tap(find.byType(SoulChip).first);
+    await tester.pump();
+    await _tapButton(tester, 'Continue');
+    await _tapButton(tester, 'Continue');
+
+    await _tapButton(tester, 'Choose from library');
+    expect(picking.picks, [false]);
+
+    await _tapButton(tester, 'Continue');
+    await _tapButton(tester, 'Save to vision board');
+    await tester.pumpAndSettle();
+
+    expect(find.byType(VisionScreen), findsOneWidget);
   });
 
   testWidgets('builder steps do not overflow at 200% text on a small phone', (

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -18,14 +19,20 @@ class ImageStore {
 
   /// Copies [sourcePath] into `visions/` and returns its relative path.
   Future<String> saveVisionImage(String sourcePath) async {
-    final extension = p.extension(sourcePath).toLowerCase();
-    final relative = p.posix.join(
-      'visions',
-      '${const Uuid().v4()}${extension.isEmpty ? '.jpg' : extension}',
-    );
+    final rawExt = p.extension(sourcePath).toLowerCase();
+    final extension =
+        (rawExt.isEmpty || rawExt.contains('?')) ? '.jpg' : rawExt;
+    final relative = p.posix.join('visions', '${const Uuid().v4()}$extension');
     final target = File(p.join((await _root()).path, relative));
-    await target.parent.create(recursive: true);
-    await File(sourcePath).copy(target.path);
+    target.parent.createSync(recursive: true);
+
+    final sourceFile = File(sourcePath);
+    if (sourceFile.existsSync()) {
+      target.writeAsBytesSync(sourceFile.readAsBytesSync(), flush: true);
+    } else {
+      final bytes = await XFile(sourcePath).readAsBytes();
+      await target.writeAsBytes(bytes, flush: true);
+    }
     return relative;
   }
 

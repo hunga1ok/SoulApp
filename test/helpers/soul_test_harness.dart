@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:drift/drift.dart' show driftRuntimeOptions;
 import 'package:drift/native.dart';
@@ -14,6 +15,7 @@ import 'package:soul_app/core/design_system/soul_theme.dart';
 import 'package:soul_app/core/platform/device_services.dart';
 import 'package:soul_app/core/platform/image_picking.dart';
 import 'package:soul_app/data/content/content_repository.dart';
+import 'package:soul_app/data/local/image_store.dart';
 import 'package:soul_app/data/local/soul_database.dart';
 import 'package:soul_app/l10n/app_localizations.dart';
 
@@ -154,6 +156,7 @@ Future<SharedPreferences> pumpSoulApp(
   SoulDatabase? database,
   FakeNotificationPermissions? permissions,
   FakeImagePicking? imagePicking,
+  ImageStore? imageStore,
   Size size = standardPhone,
   double textScale = 1,
   List<Locale> deviceLocales = const [Locale('en', 'US')],
@@ -179,6 +182,9 @@ Future<SharedPreferences> pumpSoulApp(
         ),
         imagePickingProvider.overrideWithValue(
           imagePicking ?? FakeImagePicking(),
+        ),
+        imageStoreProvider.overrideWithValue(
+          imageStore ?? ImageStore(() async => Directory.systemTemp),
         ),
       ],
       child: const SoulApp(),
