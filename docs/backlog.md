@@ -476,21 +476,25 @@
   - AC: temp upload hết hạn được dọn; retention đúng privacy policy; job có dry-run/metrics và không xóa object đang tham chiếu.
   - Chuyển app-only 2026-09-26: hoãn cùng backend.
 
-- [ ] `AUD-001` **P0 — Audio domain service và playback state**
+- [x] `AUD-001` **P0 — Audio domain service và playback state**
   - AC: một nguồn state cho current track/queue/playback/global mute; UI không tự quản lý player riêng lẻ.
+  - Hoàn tất 2026-10-06: `AudioPlaybackController` quản lý thống nhất trạng thái phát (currentTrack, position, duration, isPlaying, isLooping, global mute), đồng bộ trên toàn bộ UI qua Riverpod.
 
-- [ ] `AUD-002` **P0 — Tích hợp `just_audio` và `audio_session`**
+- [x] `AUD-002` **P0 — Tích hợp `just_audio` và `audio_session`**
   - AC: play/pause/seek/next; background/lock screen theo phạm vi; interruption/headphone unplug/audio focus hoạt động đúng.
+  - Hoàn tất 2026-10-06: tích hợp đầy đủ `just_audio` kết hợp cấu hình `AudioSession.music()`, hỗ trợ seek relative, loop mode và background playback.
 
-- [ ] `AUD-003` **P0 — Eligible playlist resolver**
+- [x] `AUD-003` **P0 — Eligible playlist resolver**
   - AC: filter category, locale, publication, rights, availability; trả nhiều track và thứ tự ổn định/rule-based; không trả track sai locale.
-  - Chuyển app-only 2026-09-26: resolver chạy trên máy từ content bundle, không còn API.
+  - Hoàn tất 2026-10-06: phân loại 24 tracks chuẩn Soul sở hữu (`SO-03..SO-20`, `GA-18..GA-31`) theo nhóm Thiên nhiên, Nhạc & Tần số, Bài dẫn thiền (song ngữ vi/en), lọc chính xác theo locale người dùng.
 
-- [ ] `AUD-004` **P0 — Global sound toggle cạnh avatar**
+- [x] `AUD-004` **P0 — Global sound toggle cạnh avatar**
   - AC: trạng thái rõ, persisted; mute/pause behavior được thống nhất; screen reader label; không ảnh hưởng âm hệ thống khác.
+  - Hoàn tất 2026-10-06: nút sound toggle cạnh avatar điều khiển trực tiếp mute/pause trạng thái âm thanh toàn cục.
 
-- [ ] `AUD-005` **P0 — Mini player và trải nghiệm nhiều sound**
+- [x] `AUD-005` **P0 — Mini player và trải nghiệm nhiều sound**
   - AC: hiển thị current track/progress/next; playlist tự động; người dùng có thể điều khiển phát nhưng không chỉnh mapping category.
+  - Hoàn tất 2026-10-06: widget `SoulMiniPlayer` nổi phía trên navigation bar xuyên suốt app, kèm sheet điều khiển chi tiết `SoulAudioDetailSheet` (seek, loop, tua 10s, xem tiến trình mm:ss). Tích hợp một chạm phát thanh từ Explore và nghe thử trong Vision modal.
 
 - [ ] `AUD-006` **P0 — Sound trong Today’s Rhythm**
   - AC: đúng track/locale/category rule; loading/error/retry; completion event không bị ghi trùng.
