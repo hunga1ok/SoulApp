@@ -486,7 +486,7 @@
 
 - [x] `AUD-003` **P0 — Eligible playlist resolver**
   - AC: filter category, locale, publication, rights, availability; trả nhiều track và thứ tự ổn định/rule-based; không trả track sai locale.
-  - Hoàn tất 2026-10-06: phân loại 24 tracks chuẩn Soul sở hữu (`SO-03..SO-20`, `GA-18..GA-31`) theo nhóm Thiên nhiên, Nhạc & Tần số, Bài dẫn thiền (song ngữ vi/en), lọc chính xác theo locale người dùng.
+  - Hoàn tất 2026-10-06: thư viện đạt 34 tracks chuẩn Soul sở hữu (`SO-03..SO-20`, `GA-01..GA-10`, `GA-18..GA-31`) gồm Thiên nhiên, Nhạc & Tần số, Bộ dẫn thiền hàng ngày (1-phút reset, buổi sáng, lòng biết ơn, thả lỏng, giấc ngủ) và Bộ dẫn thiền Vision, đầy đủ song ngữ vi/en lọc chuẩn xác theo locale.
 
 - [x] `AUD-004` **P0 — Global sound toggle cạnh avatar**
   - AC: trạng thái rõ, persisted; mute/pause behavior được thống nhất; screen reader label; không ảnh hưởng âm hệ thống khác.
@@ -494,7 +494,7 @@
 
 - [x] `AUD-005` **P0 — Mini player và trải nghiệm nhiều sound**
   - AC: hiển thị current track/progress/next; playlist tự động; người dùng có thể điều khiển phát nhưng không chỉnh mapping category.
-  - Hoàn tất 2026-10-06: widget `SoulMiniPlayer` nổi phía trên navigation bar xuyên suốt app, kèm sheet điều khiển chi tiết `SoulAudioDetailSheet` (seek, loop, tua 10s, xem tiến trình mm:ss). Tích hợp một chạm phát thanh từ Explore và nghe thử trong Vision modal.
+  - Hoàn tất 2026-10-06: widget `SoulMiniPlayer` nổi phía trên navigation bar xuyên suốt app, kèm sheet điều khiển chi tiết `SoulAudioDetailSheet` (seek, loop, tua 10s, xem tiến trình mm:ss). Tích hợp sóng âm thanh động `SoulAudioWave`, hiệu ứng vòng thở thiền `SoulBreathingOrb` và tương tác nén thẻ tactile trên Vision. Khắc phục quyền package queries mở link YouTube/Spotify ngoài.
 
 - [ ] `AUD-006` **P0 — Sound trong Today’s Rhythm**
   - AC: đúng track/locale/category rule; loading/error/retry; completion event không bị ghi trùng.

@@ -271,9 +271,8 @@ class _VisionBoardCard extends ConsumerWidget {
 
     final hasImage = vision.imagePath != null && vision.imagePath!.isNotEmpty;
 
-    return GestureDetector(
+    return _InteractiveCardPress(
       onTap: () => context.push('/app/vision/${vision.id}', extra: vision),
-      behavior: HitTestBehavior.opaque,
       child:
           hasImage
               ? _PhotoBoardCard(
@@ -298,6 +297,37 @@ class _VisionBoardCard extends ConsumerWidget {
                 onToggleAudio: onToggleAudio,
                 isFullWidth: isFullWidth,
               ),
+    );
+  }
+}
+
+class _InteractiveCardPress extends StatefulWidget {
+  const _InteractiveCardPress({required this.child, required this.onTap});
+
+  final Widget child;
+  final VoidCallback onTap;
+
+  @override
+  State<_InteractiveCardPress> createState() => _InteractiveCardPressState();
+}
+
+class _InteractiveCardPressState extends State<_InteractiveCardPress> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) => setState(() => _isPressed = false),
+      onTapCancel: () => setState(() => _isPressed = false),
+      onTap: widget.onTap,
+      behavior: HitTestBehavior.opaque,
+      child: AnimatedScale(
+        scale: _isPressed ? 0.965 : 1.0,
+        duration: const Duration(milliseconds: 140),
+        curve: Curves.easeOutCubic,
+        child: widget.child,
+      ),
     );
   }
 }
@@ -707,6 +737,15 @@ class _SoundtrackPill extends StatelessWidget {
               color: isPlaying ? accentColor : SoulColors.ctaStart,
             ),
             const SizedBox(width: 4),
+            if (isPlaying) ...[
+              SoulAudioWave(
+                isPlaying: true,
+                barColor: accentColor,
+                barCount: 3,
+                height: 10,
+              ),
+              const SizedBox(width: 4),
+            ],
             Flexible(
               child: Text(
                 soundTitle,

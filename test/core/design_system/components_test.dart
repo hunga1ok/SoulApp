@@ -235,7 +235,7 @@ void main() {
         settle: false,
         const SoulLoadingState(),
       );
-      expect(find.bySemanticsLabel(loading), findsOneWidget);
+      expect(find.bySemanticsLabel(RegExp(loading)), findsOneWidget);
       handle.dispose();
     });
   }

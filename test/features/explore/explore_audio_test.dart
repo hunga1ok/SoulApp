@@ -51,7 +51,7 @@ void main() {
     await tester.tap(find.text('Bài dẫn thiền'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Tương lai tài chính của tôi'), findsOneWidget);
+    expect(find.text('1 phút tái tạo'), findsOneWidget);
     expect(find.text('Mưa bên cửa sổ'), findsNothing);
   });
 

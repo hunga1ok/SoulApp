@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../soul_theme.dart';
+import 'soul_audio_animations.dart';
 
 /// Sound row (`.playlist-item`): icon tile, title, subtitle and a
 /// play/pause control with a localized label.
@@ -55,10 +56,15 @@ class SoulAudioRow extends StatelessWidget {
                     colors: [SoulColors.iconTileStart, SoulColors.iconTileEnd],
                   ),
                 ),
-                child: Icon(
-                  isPlaying ? Icons.graphic_eq_rounded : icon,
-                  size: 18,
-                  color: SoulColors.plum,
+                child: Center(
+                  child:
+                      isPlaying
+                          ? const SoulAudioWave(
+                            isPlaying: true,
+                            barColor: SoulColors.plum,
+                            height: 15,
+                          )
+                          : Icon(icon, size: 18, color: SoulColors.plum),
                 ),
               ),
               const SizedBox(width: SoulSpace.sm),

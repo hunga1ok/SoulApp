@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../audio/audio_playback_controller.dart';
 import '../soul_theme.dart';
+import 'soul_audio_animations.dart';
 
 /// Floating mini player bar displayed above the bottom navigation bar when an
 /// audio track is loaded or active.
@@ -87,13 +88,18 @@ class SoulMiniPlayer extends ConsumerWidget {
                       ),
                     ),
                     child: Center(
-                      child: Icon(
-                        audio.isPlaying
-                            ? Icons.graphic_eq_rounded
-                            : Icons.music_note_rounded,
-                        color: SoulColors.plum,
-                        size: 20,
-                      ),
+                      child:
+                          audio.isPlaying
+                              ? const SoulAudioWave(
+                                isPlaying: true,
+                                barColor: SoulColors.plum,
+                                height: 16,
+                              )
+                              : const Icon(
+                                Icons.music_note_rounded,
+                                color: SoulColors.plum,
+                                size: 20,
+                              ),
                     ),
                   ),
                   const SizedBox(width: SoulSpace.sm),
@@ -211,34 +217,15 @@ class _SoulAudioDetailSheet extends ConsumerWidget {
               ),
             ),
 
-            // Cover Art Box
-            Container(
-              width: 140,
-              height: 140,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                gradient: LinearGradient(
-                  colors: [
-                    SoulColors.plum.withValues(alpha: 0.15),
-                    SoulColors.rose.withValues(alpha: 0.25),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                border: Border.all(color: SoulColors.line),
-                boxShadow: [
-                  BoxShadow(
-                    color: SoulColors.plum.withValues(alpha: 0.08),
-                    blurRadius: 20,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
+            // Meditative Breathing Orb Art Box
+            SoulBreathingOrb(
+              isPlaying: audio.isPlaying,
+              size: 156,
               child: const Center(
                 child: Icon(
                   Icons.graphic_eq_rounded,
                   color: SoulColors.plum,
-                  size: 56,
+                  size: 52,
                 ),
               ),
             ),

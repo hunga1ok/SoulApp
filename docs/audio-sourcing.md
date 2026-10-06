@@ -1,6 +1,6 @@
 # Audio sourcing register
 
-Updated: 2026-10-05
+Updated: 2026-10-06
 
 ## Release rule
 
@@ -46,6 +46,16 @@ Rendered with meditative cadence, paced breathing pauses, and layered with licen
 
 | ID | Title (VI / EN) | Category | Voice (VI) | Voice (EN) | Ambient Bed | Status |
 | --- | --- | --- | --- | --- | --- | --- |
+| `GA-01` | 1 phút tái tạo / 1-Minute Reset | Breathing | HoaiMy Neural | Ava Neural | `SO-14` Rooted Calm | Published |
+| `GA-02` | Khởi đầu buổi sáng / Morning Arrival | Morning Grounding | HoaiMy Neural | Ava Neural | `SO-11` Warm Felt Piano | Published |
+| `GA-03` | Biết ơn buổi sáng / Morning Gratitude | Daily Gratitude | HoaiMy Neural | Ava Neural | `SO-13` Golden Flow | Published |
+| `GA-04` | Nhận ra điều tốt lành / Notice What Is Good | Reflection | HoaiMy Neural | Ava Neural | `SO-11` Warm Felt Piano | Published |
+| `GA-05` | Gặp gỡ phiên bản tương lai / Meet Your Future Self | Visualization | HoaiMy Neural | Ava Neural | `SO-12` Future Horizon | Published |
+| `GA-06` | Một ngày lý tưởng của bạn / Your Ideal Day | Visualization | HoaiMy Neural | Ava Neural | `SO-16` Open Sky Handpan | Published |
+| `GA-07` | Sự tự tin tĩnh lặng / Quiet Confidence | Confidence | HoaiMy Neural | Ava Neural | `SO-19` Quiet Momentum | Published |
+| `GA-08` | Yêu thương bản thân dịu dàng / Soft Self-Love | Self-Love | HoaiMy Neural | Ava Neural | `SO-18` Heart Space | Published |
+| `GA-09` | Thả lỏng buổi tối / Evening Release | Evening Reflection | HoaiMy Neural | Ava Neural | `SO-03` Window Rain | Published |
+| `GA-10` | Biết ơn trước giờ ngủ / Gratitude Before Sleep | Sleep Gratitude | HoaiMy Neural | Ava Neural | `SO-10` Soft Sound Bath | Published |
 | `GA-18` | Bước vào tương lai của bạn / Step into your future | Guided Visualization | HoaiMy Neural | Ava Neural | `SO-12` Future Horizon | Published |
 | `GA-21` | Tương lai tài chính của tôi / My financial future | Guided Abundance | HoaiMy Neural | Ava Neural | `SO-15` Abundance Current | Published |
 | `GA-23` | Mở lòng với tình yêu lành mạnh / Open to healthy love | Guided Love | HoaiMy Neural | Ava Neural | `SO-18` Heart Space | Published |
@@ -55,4 +65,3 @@ Rendered with meditative cadence, paced breathing pauses, and layered with licen
 | `GA-29` | Cuộc sống thêm điều kỳ diệu / A life with more wonder | Guided Travel | HoaiMy Neural | Ava Neural | `SO-16` Open Sky Handpan | Published |
 | `GA-30` | Mái nhà giữa chúng ta / A home between us | Guided Family | HoaiMy Neural | Ava Neural | `SO-11` Warm Felt Piano | Published |
 | `GA-31` | Trở về với chính mình / Return to yourself | Guided Peace | HoaiMy Neural | Ava Neural | `SO-14` Rooted Calm | Published |
-

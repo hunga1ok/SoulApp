@@ -146,8 +146,24 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
   Future<void> _openUrl(String? url) async {
     if (url == null) return;
     final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    try {
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+      if (!launched) {
+        // Fallback to platform default / in-app browser
+        await launchUrl(uri, mode: LaunchMode.platformDefault);
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Không thể mở liên kết. Vui lòng thử lại sau.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
     }
   }
 

@@ -18,6 +18,303 @@ MUSIC_DIR = BASE_DIR / "assets" / "audio" / "music"
 AMBIENCE_DIR = BASE_DIR / "assets" / "audio" / "ambience"
 
 TRACKS = [
+    # Foundational daily practices (GA-01 to GA-10)
+    {
+        "id": "GA-01",
+        "slug": "1-minute-reset",
+        "bed": MUSIC_DIR / "so-14-rooted-calm.m4a",
+        "bed_volume": 0.18,
+        "vi_paragraphs": [
+            "Dừng lại một chút.",
+            "Không cần sửa chữa điều gì ngay bây giờ. Chỉ cần ở đây.",
+            "Hít vào chậm qua mũi. Giữ một nhịp. Và thở ra thật nhẹ.",
+            "Một lần nữa. Hít vào. Cảm nhận vai của bạn mềm xuống. Thở ra. Cho phép những gì vừa xảy ra được ở lại phía sau trong một phút.",
+            "Hãy tự hỏi: Ngay lúc này, mình cần điều gì nhất? Bạn không cần có câu trả lời hoàn hảo.",
+            "Chọn một từ cho phút tiếp theo: bình yên, rõ ràng, kiên nhẫn, hoặc đơn giản là có mặt.",
+            "Hít vào. Thở ra.",
+            "Bạn có thể bắt đầu lại từ khoảnh khắc này."
+        ],
+        "en_paragraphs": [
+            "Pause for a moment.",
+            "You do not need to fix anything right now. Just be here.",
+            "Breathe in slowly through your nose. Hold for a beat. And breathe out gently.",
+            "Again. Breathe in. Let your shoulders soften. Breathe out. For one minute, allow what just happened to stay behind you.",
+            "Ask yourself: What do I need most right now? You do not need a perfect answer.",
+            "Choose one word for the next moment: peace, clarity, patience, or simply presence.",
+            "Breathe in. Breathe out.",
+            "You can begin again from here."
+        ]
+    },
+    {
+        "id": "GA-02",
+        "slug": "morning-arrival",
+        "bed": MUSIC_DIR / "so-11-warm-felt-piano.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Chào buổi sáng.",
+            "Trước khi bước vào những tin nhắn, công việc và kế hoạch của hôm nay, hãy dành vài phút để trở về với chính mình.",
+            "Hít vào thật chậm. Cảm nhận cơ thể đang thức dậy. Thở ra và để nhịp độ của buổi sáng chậm lại một chút.",
+            "Hãy để ý ba điều đang hiện diện quanh bạn. Có thể là ánh sáng trong phòng, âm thanh bên ngoài cửa sổ, hay cảm giác chiếc chăn vẫn còn ấm.",
+            "Bạn đang ở đây. Một ngày mới đang bắt đầu.",
+            "Hãy đặt tay lên ngực hoặc bụng nếu điều đó dễ chịu với bạn. Tự hỏi: Hôm nay mình muốn xuất hiện như một người thế nào?",
+            "Không phải hôm nay bạn phải làm được bao nhiêu. Mà là cách bạn muốn sống trong ngày này.",
+            "Có thể là bình tĩnh. Có thể là can đảm. Có thể là tử tế với chính mình.",
+            "Chọn một ý định nhỏ. Hít vào với ý định đó. Thở ra những áp lực không cần thiết.",
+            "Hôm nay không cần hoàn hảo. Chỉ cần là một ngày bạn có mặt trong chính cuộc đời mình."
+        ],
+        "en_paragraphs": [
+            "Good morning.",
+            "Before messages, work, and plans begin to fill your day, take a few minutes to come back to yourself.",
+            "Breathe in slowly. Notice your body waking up. Breathe out and let the morning move a little more gently.",
+            "Notice three things already here with you. The light in the room, a sound beyond the window, or the warmth that still remains around you.",
+            "You are here. A new day is beginning.",
+            "If it feels comfortable, place a hand on your chest or your belly. Ask yourself: How do I want to show up today?",
+            "Not how much you need to accomplish. How you want to live inside this day.",
+            "Maybe calm. Maybe courage. Maybe kindness toward yourself.",
+            "Choose one small intention. Breathe it in. Breathe out the pressure you do not need.",
+            "Today does not have to be perfect. It only needs to be a day you are present in your own life."
+        ]
+    },
+    {
+        "id": "GA-03",
+        "slug": "morning-gratitude",
+        "bed": MUSIC_DIR / "so-13-golden-flow.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Hãy bắt đầu bằng một hơi thở chậm.",
+            "Hôm nay, bạn không cần tìm điều gì quá lớn để biết ơn. Chúng ta chỉ cần nhận ra những điều đang nâng đỡ cuộc sống của mình.",
+            "Hãy nghĩ đến một điều đơn giản mà bạn đang có ngay lúc này. Một nơi để nghỉ ngơi. Một người vẫn quan tâm đến bạn. Một cơ thể đang đưa bạn qua từng ngày. Một cơ hội mà trước đây bạn từng mong muốn.",
+            "Chọn điều đầu tiên xuất hiện trong tâm trí. Thầm nói: Mình biết ơn vì điều này.",
+            "Và hỏi thêm: Điều này đã mang lại cho mình điều gì? Dành vài giây để cảm nhận lý do, thay vì chỉ nói ra từ biết ơn.",
+            "Bây giờ nghĩ đến một người. Có thể họ đang ở bên bạn, hoặc từng đi qua cuộc đời bạn. Nhớ lại một hành động nhỏ, một lời nói, một khoảnh khắc khiến bạn thấy được quan tâm. Hãy để cảm giác ấy ở lại một chút.",
+            "Cuối cùng, hãy nghĩ về một điều bạn thường xem là hiển nhiên: nước sạch, một bữa ăn, đôi chân có thể đưa bạn đi, hay một buổi sáng bình thường.",
+            "Cuộc sống không cần hoàn hảo để vẫn có những điều đáng trân trọng.",
+            "Trước khi kết thúc, hãy chọn một điều bạn muốn mang theo vào hôm nay. Nhẹ nhàng nói: Cảm ơn vì điều này đang có mặt trong cuộc sống của mình.",
+            "Hít vào. Và bắt đầu ngày mới từ cảm giác đủ đầy của điều đang có."
+        ],
+        "en_paragraphs": [
+            "Begin with one slow breath.",
+            "Today, you do not need to find something extraordinary to be grateful for. We are simply noticing what is already supporting your life.",
+            "Think of one simple thing you have right now. A place to rest. Someone who cares about you. A body carrying you through your days. An opportunity you once hoped for.",
+            "Choose the first thing that comes to mind. Quietly say: I am grateful for this.",
+            "Then ask: What has this given me? Take a few seconds to feel the reason, instead of only saying the word gratitude.",
+            "Now think of one person. They may be in your life today, or someone who once crossed your path. Remember one small act, one sentence, one moment that made you feel cared for. Let that feeling stay for a moment.",
+            "Finally, notice something you usually take for granted: clean water, a meal, feet that carry you, or simply an ordinary morning.",
+            "Life does not have to be perfect for there to be something worth appreciating.",
+            "Before we finish, choose one thing you want to carry into today. Gently say: Thank you for being part of my life.",
+            "Breathe in, and begin your day from the fullness of what is already here."
+        ]
+    },
+    {
+        "id": "GA-04",
+        "slug": "notice-what-is-good",
+        "bed": MUSIC_DIR / "so-11-warm-felt-piano.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Có những ngày điều tốt đẹp rất dễ nhìn thấy. Cũng có những ngày chúng nằm ở những nơi rất nhỏ.",
+            "Hôm nay, chúng ta không ép bản thân phải thấy tích cực. Chúng ta chỉ luyện khả năng nhận ra điều tốt khi nó xuất hiện.",
+            "Nhớ lại từ lúc bạn thức dậy đến bây giờ. Có khoảnh khắc nào khiến mọi thứ dễ chịu hơn một chút không? Một ly nước đúng lúc. Một tin nhắn. Một con đường ít đông. Một bữa ăn ngon. Một người mỉm cười với bạn.",
+            "Chọn một khoảnh khắc. Hãy nhìn lại nó như thể bạn đang xem một tấm ảnh. Bạn ở đâu? Có âm thanh gì? Bạn cảm thấy thế nào?",
+            "Bây giờ hãy nghĩ đến một điều đã diễn ra tốt hơn bạn dự đoán, dù chỉ một chút.",
+            "Cuối cùng, nghĩ đến một điều bạn đã làm cho chính mình hôm nay. Có thể rất nhỏ: nghỉ đúng lúc, hoàn thành một việc, nói không, bắt đầu lại, hoặc đơn giản là vẫn tiếp tục.",
+            "Hãy công nhận điều đó.",
+            "Điều tốt đẹp không xoá đi phần khó khăn. Nhưng khả năng nhìn thấy cả hai giúp chúng ta sống một ngày đầy đủ hơn.",
+            "Ghi lại một điều bạn muốn nhớ về hôm nay."
+        ],
+        "en_paragraphs": [
+            "Some days, good things are easy to notice. On other days, they live in very small places.",
+            "Today, we are not forcing ourselves to be positive. We are practicing the ability to notice what is good when it appears.",
+            "Think back from the moment you woke up until now. Was there a moment that made the day feel a little easier? A glass of water at the right time. A message. A quieter road. A good meal. Someone smiling at you.",
+            "Choose one moment. Look at it as if it were a photograph. Where were you? What could you hear? How did you feel?",
+            "Now think of one thing that went slightly better than you expected.",
+            "Finally, think of one thing you did for yourself today. It can be very small: resting when you needed to, finishing one task, saying no, beginning again, or simply continuing.",
+            "Acknowledge it.",
+            "The good does not erase what was difficult. But being able to see both can help us experience the day more fully.",
+            "Write down one thing you want to remember about today."
+        ]
+    },
+    {
+        "id": "GA-05",
+        "slug": "meet-your-future-self",
+        "bed": MUSIC_DIR / "so-12-future-horizon.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Hãy tìm một tư thế thoải mái. Bạn không cần nhìn thấy hình ảnh thật rõ. Chỉ cần cho phép trí tưởng tượng mở ra theo cách tự nhiên nhất.",
+            "Hít vào chậm. Thở ra.",
+            "Hãy tưởng tượng một ngày trong tương lai. Không cần biết chính xác là ngày nào. Chỉ cần đủ xa để bạn đã có thời gian trưởng thành thành phiên bản mà mình đang hướng tới.",
+            "Bạn thức dậy ở đâu? Không gian quanh bạn có cảm giác như thế nào? Ánh sáng, màu sắc, âm thanh của buổi sáng ấy ra sao?",
+            "Quan sát phiên bản tương lai của bạn bắt đầu ngày mới. Cách họ bước đi. Cách họ nói với chính mình. Điều gì dường như đã trở nên nhẹ nhàng hơn?",
+            "Bây giờ hãy nhìn vào một lĩnh vực quan trọng với bạn: công việc, tình yêu, sức khỏe, gia đình, tài chính, hoặc sự bình yên bên trong.",
+            "Không cần tưởng tượng một cuộc đời hoàn hảo. Hãy nhìn một cuộc đời phù hợp hơn với điều bạn thực sự coi trọng.",
+            "Phiên bản tương lai ấy đã học được điều gì mà bạn hôm nay vẫn đang học? Họ đã ngừng làm điều gì? Họ làm điều nhỏ nào một cách đều đặn?",
+            "Hãy tưởng tượng bạn ngồi xuống cạnh phiên bản đó. Bạn không cần hỏi cách đạt được tất cả mọi thứ. Chỉ hỏi một câu: Bước nhỏ tiếp theo của mình là gì?",
+            "Đừng ép một câu trả lời xuất hiện. Có thể đó là một hành động. Một cuộc trò chuyện. Một giới hạn. Một thói quen. Một sự nghỉ ngơi.",
+            "Khi đã sẵn sàng, hãy quay trở lại với hơi thở.",
+            "Tương lai không được tạo nên trong một khoảnh khắc duy nhất. Nó được xây bằng những lựa chọn nhỏ lặp lại.",
+            "Ghi lại điều bạn vừa nhận ra và chọn một bước mà bạn có thể làm trong hôm nay."
+        ],
+        "en_paragraphs": [
+            "Find a comfortable position. You do not need to see everything clearly. Let your imagination open in whatever way feels natural.",
+            "Breathe in slowly. Breathe out.",
+            "Imagine a day in your future. You do not need to know the exact date. Only far enough ahead that you have had time to grow into the person you are becoming.",
+            "Where do you wake up? What does the space around you feel like? What is the light, color, and sound of that morning?",
+            "Notice your future self beginning the day. The way they move. The way they speak to themselves. What seems to have become lighter?",
+            "Now look at one area that matters to you: work, love, health, family, money, or inner peace.",
+            "You do not need to picture a perfect life. Picture a life that feels more aligned with what you truly value.",
+            "What has this future version of you learned that you are still learning today? What have they stopped doing? What small thing do they do consistently?",
+            "Imagine sitting beside them. You do not need to ask how to achieve everything. Ask only: What is my next small step?",
+            "Do not force an answer. It may be an action, a conversation, a boundary, a habit, or rest.",
+            "When you are ready, return to your breath.",
+            "Your future is not created in one dramatic moment. It is built through small choices repeated over time.",
+            "Write down what you noticed and choose one step you can take today."
+        ]
+    },
+    {
+        "id": "GA-06",
+        "slug": "your-ideal-day",
+        "bed": MUSIC_DIR / "so-16-open-sky-handpan.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Hôm nay, hãy tưởng tượng không phải một cuộc đời hoàn hảo, mà là một ngày khiến bạn cảm thấy mình đang sống đúng hơn với điều mình muốn.",
+            "Buổi sáng bắt đầu thế nào? Bạn thức dậy lúc mấy giờ? Điều đầu tiên bạn nhìn thấy là gì? Bạn có vội vàng không, hay có một khoảng nhỏ dành cho chính mình?",
+            "Tiếp tục đi qua ngày đó. Bạn đang làm công việc gì? Không nhất thiết là chức danh. Hãy chú ý cảm giác: bạn đang tập trung, sáng tạo, kết nối, hay tự do?",
+            "Ai xuất hiện trong ngày của bạn? Bạn muốn các mối quan hệ ấy mang lại cảm giác gì?",
+            "Bạn chăm sóc cơ thể như thế nào? Bạn ăn, di chuyển, nghỉ và thở ra sao?",
+            "Khi ngày kết thúc, điều gì khiến bạn nghĩ: Hôm nay là một ngày đáng sống?",
+            "Bây giờ nhìn lại. Trong ngày lý tưởng đó, có điều nào bạn có thể đưa vào cuộc sống hiện tại chỉ với 10 phút?",
+            "Một bữa sáng chậm hơn. Một cuộc đi bộ. Một giờ không cầm điện thoại. Một lời nhắn cho người mình yêu. Hai mươi phút cho dự án quan trọng.",
+            "Vision không chỉ để nhìn. Nó giúp chúng ta nhận ra điều gì có thể bắt đầu ngay bây giờ.",
+            "Chọn một mảnh nhỏ của ngày lý tưởng và mang nó vào hôm nay."
+        ],
+        "en_paragraphs": [
+            "Today, imagine not a perfect life, but a day that feels more aligned with the way you want to live.",
+            "How does the morning begin? What time do you wake up? What is the first thing you see? Are you rushing, or is there a small pocket of time that belongs to you?",
+            "Move through the day. What kind of work are you doing? You do not need a job title. Notice the feeling: focused, creative, connected, free?",
+            "Who appears in your day? How do you want those relationships to feel?",
+            "How are you caring for your body? How do you eat, move, rest, and breathe?",
+            "As the day ends, what makes you think, This was a day worth living?",
+            "Now look back. Is there one part of that ideal day you could bring into your current life with only ten minutes?",
+            "A slower breakfast. A walk. One phone-free hour. A message to someone you love. Twenty minutes for a meaningful project.",
+            "A vision is not only something to look at. It helps us notice what can begin now.",
+            "Choose one small piece of your ideal day and bring it into today."
+        ]
+    },
+    {
+        "id": "GA-07",
+        "slug": "quiet-confidence",
+        "bed": MUSIC_DIR / "so-19-quiet-momentum.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Tự tin không phải lúc nào cũng có cảm giác mạnh mẽ. Đôi khi nó chỉ là quyết định không rời bỏ chính mình khi chưa chắc chắn.",
+            "Hít vào. Nhớ lại một việc bạn từng nghĩ mình không làm được, nhưng cuối cùng bạn đã học được cách làm.",
+            "Có thể bạn không làm hoàn hảo. Nhưng bạn đã tiến bộ bằng cách thử, sai, điều chỉnh và tiếp tục. Đó cũng là bằng chứng về bạn.",
+            "Bây giờ nghĩ đến một điều bạn đang muốn làm nhưng vẫn còn ngại, sợ hoặc nghi ngờ.",
+            "Thay vì hỏi mình có đủ giỏi không, hãy thử hỏi: Mình có sẵn sàng học bước tiếp theo không?",
+            "Bạn không cần cảm thấy tự tin hoàn toàn trước khi hành động. Nhiều khi sự tự tin đến sau khi bạn đã hành động vài lần.",
+            "Thầm nhắc: Mình có thể chưa biết hết. Nhưng mình có thể học. Mình có thể hỏi. Mình có thể thử lại.",
+            "Hãy nghĩ về một hành động nhỏ sẽ khiến bạn tôn trọng bản thân hơn vào cuối ngày. Chọn nó.",
+            "Hít vào. Thở ra. Không cần trở thành một người khác. Hôm nay chỉ cần đứng về phía chính mình."
+        ],
+        "en_paragraphs": [
+            "Confidence does not always feel powerful. Sometimes it is simply the decision not to abandon yourself when you are uncertain.",
+            "Breathe in. Remember something you once thought you could not do, but eventually learned.",
+            "Maybe you never did it perfectly. But you improved by trying, making mistakes, adjusting, and continuing. That is evidence about you, too.",
+            "Now think of something you want to do but still feel hesitant, afraid, or unsure about.",
+            "Instead of asking, Am I good enough?, try asking: Am I willing to learn the next step?",
+            "You do not need to feel completely confident before acting. Often, confidence arrives after you have acted a few times.",
+            "Remind yourself: I may not know everything yet. I can learn. I can ask. I can try again.",
+            "Think of one small action that would make you respect yourself a little more by the end of today. Choose it.",
+            "Breathe in. Breathe out. You do not need to become someone else. Today, simply stay on your own side."
+        ]
+    },
+    {
+        "id": "GA-08",
+        "slug": "soft-self-love",
+        "bed": MUSIC_DIR / "so-18-heart-space.m4a",
+        "bed_volume": 0.22,
+        "vi_paragraphs": [
+            "Hãy để vài phút này không phải là lúc bạn cố trở nên tốt hơn. Chỉ là lúc bạn ngừng đối xử với mình như một dự án cần sửa.",
+            "Hít vào chậm. Hãy nhận ra cơ thể bạn đang ở đây, đã đưa bạn qua rất nhiều ngày mà không ai khác có thể sống thay bạn.",
+            "Có thể bạn có những điều về mình chưa hài lòng. Điều đó không ngăn bạn đối xử với bản thân bằng sự tôn trọng ngay hôm nay.",
+            "Hãy nghĩ về cách bạn sẽ nói chuyện với một người bạn đang mệt mỏi, thất vọng hoặc chưa đạt được điều họ muốn. Bạn có thể không nói với họ những câu gay gắt mà bạn thường nói với chính mình.",
+            "Bây giờ thử dành cùng một chất giọng đó cho bản thân.",
+            "Mình đang học. Mình được phép mệt. Mình vẫn có giá trị ngay cả trong những ngày không hiệu quả. Mình có thể vừa muốn phát triển, vừa trân trọng con người hiện tại.",
+            "Chọn một điều cơ thể hoặc tâm trí bạn cần trong hôm nay. Nước. Thức ăn. Nghỉ ngơi. Một cuộc trò chuyện. Một ranh giới. Một khoảng yên tĩnh.",
+            "Yêu bản thân không nhất thiết là cảm giác. Đôi khi nó là một hành động chăm sóc rất nhỏ. Hãy chọn một hành động đó cho hôm nay."
+        ],
+        "en_paragraphs": [
+            "Let these few minutes be a time when you are not trying to become better. Just a time when you stop treating yourself like a project that constantly needs fixing.",
+            "Breathe in slowly. Notice that your body is here, carrying you through days no one else can live for you.",
+            "There may be things about yourself you are still working on. That does not prevent you from treating yourself with respect today.",
+            "Think about how you would speak to a friend who was tired, disappointed, or not yet where they wanted to be. You might not use the same harsh words you sometimes use with yourself.",
+            "Now offer yourself that same tone.",
+            "I am learning. I am allowed to be tired. My worth is not measured by how productive I am today. I can want to grow and still appreciate who I am now.",
+            "Choose one thing your body or mind needs today. Water. Food. Rest. A conversation. A boundary. A little quiet.",
+            "Self-love does not always have to be a feeling. Sometimes it is one small act of care. Choose that act for today."
+        ]
+    },
+    {
+        "id": "GA-09",
+        "slug": "evening-release",
+        "bed": AMBIENCE_DIR / "so-03-window-rain.m4a",
+        "bed_volume": 0.20,
+        "vi_paragraphs": [
+            "Ngày hôm nay sắp kết thúc. Bạn không cần mang mọi thứ của hôm nay vào ngày mai.",
+            "Hít vào. Thở ra dài hơn một chút.",
+            "Nhớ lại một điều khiến bạn thấy nặng lòng hôm nay. Không cần phân tích lại toàn bộ. Chỉ cần gọi tên nó.",
+            "Điều này đã khó với mình. Cho phép câu đó đủ.",
+            "Bây giờ nhớ lại một việc bạn đã làm tốt, dù nhỏ. Một việc bạn hoàn thành. Một lần bạn kiên nhẫn hơn. Một khoảnh khắc bạn chăm sóc ai đó hoặc chăm sóc mình. Ghi nhận nó.",
+            "Tiếp theo, hỏi: Có điều gì hôm nay mình không thể kiểm soát nhưng vẫn đang cố giữ lại không?",
+            "Nếu có, hãy tưởng tượng đặt nó xuống cạnh mình, chỉ trong đêm nay. Bạn có thể quay lại với nó khi cần. Không nhất thiết phải giải quyết ngay lúc này.",
+            "Cuối cùng, chọn một điều khiến hôm nay vẫn đáng nhớ. Một tiếng cười. Một bữa ăn. Một người. Một nỗ lực. Một khoảnh khắc yên tĩnh.",
+            "Thầm nói: Hôm nay đã đủ. Mình được phép nghỉ.",
+            "Thở ra và để ngày này khép lại."
+        ],
+        "en_paragraphs": [
+            "Today is coming to an end. You do not need to carry every part of it into tomorrow.",
+            "Breathe in. Let your exhale be a little longer.",
+            "Remember one thing that felt heavy today. You do not need to analyze the whole story again. Just name it.",
+            "This was hard for me. Let that sentence be enough.",
+            "Now remember one thing you did well, however small. Something you completed. A moment you were more patient. A moment you cared for someone or cared for yourself. Acknowledge it.",
+            "Next ask: Is there something I could not control today that I am still trying to hold?",
+            "If there is, imagine setting it down beside you, just for tonight. You can return to it when you need to. You do not have to solve it right now.",
+            "Finally, choose one thing that still made today worth remembering. A laugh. A meal. A person. An effort. A quiet moment.",
+            "Say to yourself: Today was enough. I am allowed to rest.",
+            "Breathe out and let the day close."
+        ]
+    },
+    {
+        "id": "GA-10",
+        "slug": "gratitude-before-sleep",
+        "bed": AMBIENCE_DIR / "so-10-soft-sound-bath.m4a",
+        "bed_volume": 0.22,
+        "vi_paragraphs": [
+            "Nằm xuống thật thoải mái. Không cần cố gắng để ngủ ngay. Chỉ cần cho cơ thể biết rằng hôm nay đã kết thúc.",
+            "Hít vào nhẹ. Thở ra chậm.",
+            "Hãy nghĩ về một điều nhỏ đã giúp bạn trong ngày hôm nay. Có thể ai đó đã trả lời một tin nhắn. Có thể bạn có một bữa ăn ấm. Có thể bạn đã đến nơi an toàn. Thầm nói lời cảm ơn cho điều đó.",
+            "Bây giờ nghĩ đến cơ thể mình. Có một phần nào đã làm việc cho bạn cả ngày mà bạn thường quên? Đôi mắt. Bàn tay. Đôi chân. Hơi thở. Chỉ cần nhận ra: cơ thể này đã ở bên bạn suốt hôm nay.",
+            "Tiếp theo, nhớ lại khoảnh khắc dễ chịu nhất trong ngày. Không cần phải đặc biệt. Hãy để hình ảnh đó xuất hiện một lần nữa.",
+            "Nếu hôm nay là một ngày khó khăn, bạn không cần biến nó thành một ngày tốt. Chỉ cần công nhận rằng bạn đã đi đến tận đây. Thầm nói: Cảm ơn mình vì đã tiếp tục.",
+            "Bây giờ bạn không cần nghĩ thêm về ngày mai. Những việc chưa xong có thể chờ đến sáng.",
+            "Hít vào. Thở ra.",
+            "Cảm ơn ngày hôm nay vì những gì nó đã cho bạn, cả những điều dễ chịu và những điều giúp bạn học thêm về mình.",
+            "Đêm nay, bạn được phép nghỉ."
+        ],
+        "en_paragraphs": [
+            "Make yourself comfortable. You do not need to force sleep. Simply let your body know that today is over.",
+            "Breathe in gently. Breathe out slowly.",
+            "Think of one small thing that helped you today. Maybe someone answered a message. Maybe you had a warm meal. Maybe you arrived somewhere safely. Quietly offer thanks for that.",
+            "Now think of your body. Is there one part that worked for you all day that you usually forget? Your eyes. Your hands. Your feet. Your breath. Simply notice: this body stayed with you through today.",
+            "Next, remember the most pleasant moment of your day. It does not have to be special. Let the image return once more.",
+            "If today was difficult, you do not need to turn it into a good day. Simply acknowledge that you made it here. Say quietly: Thank you to myself for continuing.",
+            "You do not need to think about tomorrow right now. What is unfinished can wait until morning.",
+            "Breathe in. Breathe out.",
+            "Thank this day for what it gave you, both what felt good and what helped you learn more about yourself.",
+            "Tonight, you are allowed to rest."
+        ]
+    },
+
+    # Vision sessions (GA-18 to GA-31)
     {
         "id": "GA-18",
         "slug": "step-into-your-future",

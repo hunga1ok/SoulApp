@@ -86,10 +86,14 @@ class SoulLoadingState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final label = AppLocalizations.of(context)!.loading;
     return Center(
-      child: CircularProgressIndicator(
-        color: SoulColors.lilacStrong,
-        semanticsLabel: AppLocalizations.of(context)!.loading,
+      child: Semantics(
+        label: label,
+        child: CircularProgressIndicator(
+          color: SoulColors.lilacStrong,
+          semanticsLabel: label,
+        ),
       ),
     );
   }

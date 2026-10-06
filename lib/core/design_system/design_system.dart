@@ -1,5 +1,6 @@
 export 'components/soul_app_bar.dart';
 export 'components/soul_audio_row.dart';
+export 'components/soul_audio_animations.dart';
 export 'components/soul_mini_player.dart';
 export 'components/soul_button.dart';
 export 'components/soul_card.dart';
