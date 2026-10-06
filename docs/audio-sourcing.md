@@ -40,3 +40,19 @@ describe a spiritual/wellness listening category only.
 | `SO-19` | Động lực tĩnh lặng (Quiet momentum) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Meditation Impromptu 03](https://incompetech.com/) |
 | `SO-20` | Không gian mơ màng (Dreamy ethereal) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Ethereal Relaxation](https://incompetech.com/) |
 
+## Registered Guided Audio Assets (Bilingual VI & EN)
+
+Rendered with meditative cadence, paced breathing pauses, and layered with licensed background music beds:
+
+| ID | Title (VI / EN) | Category | Voice (VI) | Voice (EN) | Ambient Bed | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| `GA-18` | Bước vào tương lai của bạn / Step into your future | Guided Visualization | HoaiMy Neural | Ava Neural | `SO-12` Future Horizon | Published |
+| `GA-21` | Tương lai tài chính của tôi / My financial future | Guided Abundance | HoaiMy Neural | Ava Neural | `SO-15` Abundance Current | Published |
+| `GA-23` | Mở lòng với tình yêu lành mạnh / Open to healthy love | Guided Love | HoaiMy Neural | Ava Neural | `SO-18` Heart Space | Published |
+| `GA-25` | Phiên bản sự nghiệp tương lai / Future career self | Guided Career | HoaiMy Neural | Ava Neural | `SO-19` Quiet Momentum | Published |
+| `GA-27` | Cơ thể tôi chăm sóc / A body I care for | Guided Health | HoaiMy Neural | Ava Neural | `SO-10` Soft Sound Bath | Published |
+| `GA-28` | Trở về ngôi nhà tương lai / Come home to your future | Guided Home | HoaiMy Neural | Ava Neural | `SO-14` Rooted Calm | Published |
+| `GA-29` | Cuộc sống thêm điều kỳ diệu / A life with more wonder | Guided Travel | HoaiMy Neural | Ava Neural | `SO-16` Open Sky Handpan | Published |
+| `GA-30` | Mái nhà giữa chúng ta / A home between us | Guided Family | HoaiMy Neural | Ava Neural | `SO-11` Warm Felt Piano | Published |
+| `GA-31` | Trở về với chính mình / Return to yourself | Guided Peace | HoaiMy Neural | Ava Neural | `SO-14` Rooted Calm | Published |
+
