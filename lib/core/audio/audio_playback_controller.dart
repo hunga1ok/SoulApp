@@ -87,6 +87,20 @@ class AudioPlaybackController extends ChangeNotifier {
     return player;
   }
 
+  Future<void> _safeSetAsset(AudioPlayer player, String path) async {
+    try {
+      await player.setAsset(path);
+    } catch (e) {
+      debugPrint(
+        'AudioPlaybackController: Failed to load asset "$path": $e. Clearing cache and retrying...',
+      );
+      try {
+        await AudioPlayer.clearAssetCache();
+      } catch (_) {}
+      await player.setAsset(path);
+    }
+  }
+
   Future<void> playTrack({
     required String path,
     required String title,
@@ -94,32 +108,38 @@ class AudioPlaybackController extends ChangeNotifier {
     bool isAsset = true,
     bool loop = true,
   }) async {
-    final player = await _ensurePlayer();
-    _isLooping = loop;
-    await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
+    try {
+      final player = await _ensurePlayer();
+      _isLooping = loop;
+      await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
 
-    if (_assetPath == path && player.playing) {
-      await player.pause();
-      return;
-    }
-
-    _currentTitle = title;
-    _currentSubtitle = subtitle;
-    _isAsset = isAsset;
-
-    if (_assetPath != path) {
-      _assetPath = path;
-      if (isAsset) {
-        await player.setAsset(path);
-      } else {
-        await player.setFilePath(path);
+      if (_assetPath == path && player.playing) {
+        await player.pause();
+        return;
       }
-    } else if (player.processingState == ProcessingState.completed) {
-      await player.seek(Duration.zero);
-    }
 
-    notifyListeners();
-    player.play();
+      _currentTitle = title;
+      _currentSubtitle = subtitle;
+      _isAsset = isAsset;
+
+      if (_assetPath != path) {
+        _assetPath = path;
+        if (isAsset) {
+          await _safeSetAsset(player, path);
+        } else {
+          await player.setFilePath(path);
+        }
+      } else if (player.processingState == ProcessingState.completed) {
+        await player.seek(Duration.zero);
+      }
+
+      notifyListeners();
+      await player.play();
+    } catch (e) {
+      debugPrint('AudioPlaybackController.playTrack error: $e');
+      _isPlaying = false;
+      notifyListeners();
+    }
   }
 
   Future<void> toggleAsset(
@@ -128,27 +148,33 @@ class AudioPlaybackController extends ChangeNotifier {
     String? subtitle,
     bool loop = true,
   }) async {
-    final player = await _ensurePlayer();
-    if (_assetPath == path && player.playing) {
-      await player.pause();
-      return;
+    try {
+      final player = await _ensurePlayer();
+      if (_assetPath == path && player.playing) {
+        await player.pause();
+        return;
+      }
+
+      _isAsset = true;
+      _isLooping = loop;
+      await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
+
+      if (title != null) _currentTitle = title;
+      if (subtitle != null) _currentSubtitle = subtitle;
+
+      if (_assetPath != path) {
+        await _safeSetAsset(player, path);
+        _assetPath = path;
+      } else if (player.processingState == ProcessingState.completed) {
+        await player.seek(Duration.zero);
+      }
+      notifyListeners();
+      await player.play();
+    } catch (e) {
+      debugPrint('AudioPlaybackController.toggleAsset error: $e');
+      _isPlaying = false;
+      notifyListeners();
     }
-
-    _isAsset = true;
-    _isLooping = loop;
-    await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
-
-    if (title != null) _currentTitle = title;
-    if (subtitle != null) _currentSubtitle = subtitle;
-
-    if (_assetPath != path) {
-      await player.setAsset(path);
-      _assetPath = path;
-    } else if (player.processingState == ProcessingState.completed) {
-      await player.seek(Duration.zero);
-    }
-    notifyListeners();
-    player.play();
   }
 
   Future<void> toggleFile(
@@ -157,38 +183,48 @@ class AudioPlaybackController extends ChangeNotifier {
     String? subtitle,
     bool loop = false,
   }) async {
-    final player = await _ensurePlayer();
-    if (_assetPath == path && player.playing) {
-      await player.pause();
-      return;
+    try {
+      final player = await _ensurePlayer();
+      if (_assetPath == path && player.playing) {
+        await player.pause();
+        return;
+      }
+
+      _isAsset = false;
+      _isLooping = loop;
+      await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
+
+      if (title != null) _currentTitle = title;
+      if (subtitle != null) _currentSubtitle = subtitle;
+
+      if (_assetPath != path) {
+        await player.setFilePath(path);
+        _assetPath = path;
+      } else if (player.processingState == ProcessingState.completed) {
+        await player.seek(Duration.zero);
+      }
+      notifyListeners();
+      await player.play();
+    } catch (e) {
+      debugPrint('AudioPlaybackController.toggleFile error: $e');
+      _isPlaying = false;
+      notifyListeners();
     }
-
-    _isAsset = false;
-    _isLooping = loop;
-    await player.setLoopMode(loop ? LoopMode.one : LoopMode.off);
-
-    if (title != null) _currentTitle = title;
-    if (subtitle != null) _currentSubtitle = subtitle;
-
-    if (_assetPath != path) {
-      await player.setFilePath(path);
-      _assetPath = path;
-    } else if (player.processingState == ProcessingState.completed) {
-      await player.seek(Duration.zero);
-    }
-    notifyListeners();
-    player.play();
   }
 
   Future<void> togglePlayPause() async {
     if (_player == null || _assetPath == null) return;
-    if (_player!.playing) {
-      await _player!.pause();
-    } else {
-      if (_player!.processingState == ProcessingState.completed) {
-        await _player!.seek(Duration.zero);
+    try {
+      if (_player!.playing) {
+        await _player!.pause();
+      } else {
+        if (_player!.processingState == ProcessingState.completed) {
+          await _player!.seek(Duration.zero);
+        }
+        await _player!.play();
       }
-      _player!.play();
+    } catch (e) {
+      debugPrint('AudioPlaybackController.togglePlayPause error: $e');
     }
   }
 

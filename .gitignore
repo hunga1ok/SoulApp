@@ -43,6 +43,7 @@ tool_bin/
 .pub-cache/
 .pub/
 /build/
+/ios/build/
 **/failures/
 
 # Symbolication related

@@ -1,0 +1,15 @@
+{
+  "Simulator Target Bundle": "com.manifest.soul",
+  "aps": {
+    "alert": {
+      "title": "Soul App",
+      "subtitle": "Test Notification",
+      "body": "Notification hoạt động bình thường! 🎉"
+    },
+    "badge": 1,
+    "sound": "default"
+  },
+  "customData": {
+    "type": "test"
+  }
+}
