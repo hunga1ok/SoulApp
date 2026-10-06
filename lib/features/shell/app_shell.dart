@@ -19,9 +19,16 @@ class AppShell extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(appStateProvider);
     final soundEnabled = state.soundEnabled;
-    final labels = [l10n.today, l10n.vision, l10n.journal, l10n.explore];
+    final labels = [
+      l10n.today,
+      l10n.soulCardsTab,
+      l10n.vision,
+      l10n.journal,
+      l10n.explore,
+    ];
     const icons = [
       Icons.wb_sunny_outlined,
+      Icons.style_outlined,
       Icons.auto_awesome_outlined,
       Icons.menu_book_outlined,
       Icons.explore_outlined,
@@ -29,6 +36,7 @@ class AppShell extends ConsumerWidget {
     // Filled icons mark the selected tab without relying on color alone.
     const selectedIcons = [
       Icons.wb_sunny,
+      Icons.style,
       Icons.auto_awesome,
       Icons.menu_book,
       Icons.explore,

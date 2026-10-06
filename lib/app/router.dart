@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/cards/cards_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/journal/journal_screen.dart';
 import '../features/onboarding/onboarding_screens.dart';
@@ -111,6 +112,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           ),
         ],
       ),
+      GoRoute(path: '/cards', redirect: (context, route) => '/app/cards'),
+      GoRoute(
+        path: '/cards/:deckId',
+        builder:
+            (context, route) =>
+                CardsDrawScreen(deckId: route.pathParameters['deckId']!),
+      ),
       StatefulShellRoute.indexedStack(
         builder:
             (context, state, navigationShell) =>
@@ -121,6 +129,23 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/app/today',
                 builder: (context, route) => const TodayScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/app/cards',
+                builder: (context, route) => const CardDecksHubScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':deckId',
+                    builder:
+                        (context, route) => CardsDrawScreen(
+                          deckId: route.pathParameters['deckId']!,
+                        ),
+                  ),
+                ],
               ),
             ],
           ),

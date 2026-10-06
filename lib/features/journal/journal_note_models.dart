@@ -125,6 +125,7 @@ class JournalNote {
     required this.createdAt,
     required this.sentences,
     required this.rawEntries,
+    this.imagePath,
   });
 
   final String id;
@@ -133,6 +134,7 @@ class JournalNote {
   final DateTime createdAt;
   final List<String> sentences;
   final List<GratitudeEntryRow> rawEntries;
+  final String? imagePath;
 }
 
 /// Groups flat GratitudeEntryRow items into cohesive JournalNote representations.
@@ -180,6 +182,7 @@ List<JournalNote> groupGratitudeEntries(
       }
     }
 
+    String? foundImagePath;
     final sentences = <String>[];
     for (final entry in groupEntries) {
       String cleanText = entry.gratitudeText;
@@ -189,13 +192,29 @@ List<JournalNote> groupGratitudeEntries(
         final closing = cleanText.indexOf(']');
         cleanText = cleanText.substring(closing + 1).trim();
       }
-      sentences.add(
-        formatGratitudeSentence(
-          gratitude: cleanText,
-          reason: entry.reasonText,
-          locale: locale,
-        ),
-      );
+
+      String? reason = entry.reasonText;
+      if (reason.startsWith('image:')) {
+        foundImagePath ??= reason.substring('image:'.length).trim();
+        reason = null;
+      }
+
+      // If the text looks like multi-line journal freeform paragraphs, add each line/paragraph
+      if (cleanText.contains('\n')) {
+        final lines = cleanText
+            .split('\n')
+            .map((l) => l.trim())
+            .where((l) => l.isNotEmpty);
+        for (final line in lines) {
+          sentences.add(line);
+        }
+      } else {
+        if (reason != null && reason.isNotEmpty) {
+          sentences.add('$cleanText ($reason)');
+        } else {
+          sentences.add(cleanText);
+        }
+      }
     }
 
     notes.add(
@@ -206,6 +225,7 @@ List<JournalNote> groupGratitudeEntries(
         createdAt: first.createdAt,
         sentences: sentences,
         rawEntries: groupEntries,
+        imagePath: foundImagePath,
       ),
     );
   }

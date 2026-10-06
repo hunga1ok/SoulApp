@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/localization/soul_locale.dart';
 import 'audio_catalog.dart';
+import 'card_catalog.dart';
 import 'vision_catalog.dart';
 
 /// A localized onboarding intention from the content bundle.
@@ -45,6 +46,9 @@ class ContentRepository {
 
   Future<AudioCatalog> audioCatalog() async =>
       AudioCatalog.fromJson(await _load('audio_manifest.json'));
+
+  Future<CardCatalog> cardCatalog(SoulLocale locale) async =>
+      CardCatalog.fromJson(await _load('card_decks.json'), locale);
 
   Future<List<Intention>> intentions(SoulLocale locale) async {
     final json = await _load('intentions.json');

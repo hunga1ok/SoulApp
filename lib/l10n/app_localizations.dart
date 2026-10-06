@@ -1229,7 +1229,7 @@ abstract class AppLocalizations {
   /// No description provided for @notesCount.
   ///
   /// In en, this message translates to:
-  /// **'{count} notes'**
+  /// **'{count, plural, =1{1 note} other{{count} notes}}'**
   String notesCount(int count);
 
   /// No description provided for @reminderSettingsTitle.
@@ -1283,13 +1283,13 @@ abstract class AppLocalizations {
   /// No description provided for @gratitudeSentenceCount.
   ///
   /// In en, this message translates to:
-  /// **'{count} gratitudes'**
+  /// **'{count, plural, =1{1 gratitude} other{{count} gratitudes}}'**
   String gratitudeSentenceCount(int count);
 
   /// No description provided for @allGratitudesInNote.
   ///
   /// In en, this message translates to:
-  /// **'Gratitudes in this note'**
+  /// **'Note content'**
   String get allGratitudesInNote;
 
   /// No description provided for @sentencePreview.
@@ -1297,6 +1297,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Complete sentence preview:'**
   String get sentencePreview;
+
+  /// No description provided for @soulCardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul Cards'**
+  String get soulCardsTitle;
+
+  /// No description provided for @soulCardsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Receive a guiding message for your soul'**
+  String get soulCardsSubtitle;
+
+  /// No description provided for @dailyDrawRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} draws remaining today'**
+  String dailyDrawRemaining(int count);
+
+  /// No description provided for @dailyDrawLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'2 daily messages drawn today'**
+  String get dailyDrawLimitReached;
+
+  /// No description provided for @dailyDrawLimitHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Take time to reflect on today\'s messages. You can draw again tomorrow.'**
+  String get dailyDrawLimitHint;
+
+  /// No description provided for @drawCardAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a Card'**
+  String get drawCardAction;
+
+  /// No description provided for @drawAnotherCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw Another Card'**
+  String get drawAnotherCard;
+
+  /// No description provided for @reviewTodayCards.
+  ///
+  /// In en, this message translates to:
+  /// **'View Today\'s Messages'**
+  String get reviewTodayCards;
+
+  /// No description provided for @cardDrawSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Guiding Message'**
+  String get cardDrawSuccess;
+
+  /// No description provided for @todayCardDrawBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul Message'**
+  String get todayCardDrawBanner;
+
+  /// No description provided for @chooseDeckPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a deck to listen to its message'**
+  String get chooseDeckPrompt;
+
+  /// No description provided for @tapCardToReveal.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the card to reveal your message'**
+  String get tapCardToReveal;
+
+  /// No description provided for @saveToJournalAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to Journal'**
+  String get saveToJournalAction;
+
+  /// No description provided for @savedToJournalSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Message saved to journal'**
+  String get savedToJournalSuccess;
+
+  /// No description provided for @cardDrawHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw History'**
+  String get cardDrawHistory;
+
+  /// No description provided for @deckCardCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards'**
+  String deckCardCount(int count);
+
+  /// No description provided for @soulCardsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul Cards'**
+  String get soulCardsTab;
+
+  /// No description provided for @dailyDrawLimitDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Limit Reached'**
+  String get dailyDrawLimitDialogTitle;
+
+  /// No description provided for @dailyDrawLimitDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have already received 2 guiding messages today. Take time to reflect on today\'s messages. You can draw again tomorrow.'**
+  String get dailyDrawLimitDialogMessage;
+
+  /// No description provided for @understood.
+  ///
+  /// In en, this message translates to:
+  /// **'Understood'**
+  String get understood;
+
+  /// No description provided for @chooseDeckSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a deck to receive your guiding message'**
+  String get chooseDeckSubtitle;
+
+  /// No description provided for @drawFromThisDeck.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw from this deck'**
+  String get drawFromThisDeck;
+
+  /// No description provided for @gratitudeJournalPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Today you continue your gratitude journey. Take time and presence of mind to reflect on the things you are grateful for, however small. Suggested pattern:\n\"I am grateful for... because...\"\nThen re-read what you have written with a deep feeling of appreciation.'**
+  String get gratitudeJournalPrompt;
+
+  /// No description provided for @gratitudeJournalPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the things you are grateful for today like a quiet journal page...\n\nExample:\nI am grateful for the warm cup of coffee this morning because it gave me alertness and peace.\nI am grateful for a friend\'s smile because it warmed my heart...'**
+  String get gratitudeJournalPlaceholder;
+
+  /// No description provided for @addPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Add photo'**
+  String get addPhoto;
+
+  /// No description provided for @changePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Change photo'**
+  String get changePhoto;
+
+  /// No description provided for @insertPromptTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert template'**
+  String get insertPromptTemplate;
+
+  /// No description provided for @saveAndCompleteJournal.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete & Save Journal'**
+  String get saveAndCompleteJournal;
+
+  /// No description provided for @gratitudePromptTemplateText.
+  ///
+  /// In en, this message translates to:
+  /// **'I am grateful for ... because ...'**
+  String get gratitudePromptTemplateText;
+
+  /// No description provided for @chooseTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Select theme'**
+  String get chooseTheme;
+
+  /// No description provided for @editNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit note'**
+  String get editNote;
+
+  /// No description provided for @noteUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Note updated'**
+  String get noteUpdated;
+
+  /// No description provided for @gratitudeGuidanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Practice Guidance'**
+  String get gratitudeGuidanceTitle;
+
+  /// No description provided for @showGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'View guidance'**
+  String get showGuidance;
+
+  /// No description provided for @hideGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide guidance'**
+  String get hideGuidance;
 }
 
 class _AppLocalizationsDelegate

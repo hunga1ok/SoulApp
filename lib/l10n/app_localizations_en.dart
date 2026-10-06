@@ -634,7 +634,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String notesCount(int count) {
-    return '$count notes';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count notes',
+      one: '1 note',
+    );
+    return '$_temp0';
   }
 
   @override
@@ -664,12 +670,132 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String gratitudeSentenceCount(int count) {
-    return '$count gratitudes';
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count gratitudes',
+      one: '1 gratitude',
+    );
+    return '$_temp0';
   }
 
   @override
-  String get allGratitudesInNote => 'Gratitudes in this note';
+  String get allGratitudesInNote => 'Note content';
 
   @override
   String get sentencePreview => 'Complete sentence preview:';
+
+  @override
+  String get soulCardsTitle => 'Soul Cards';
+
+  @override
+  String get soulCardsSubtitle => 'Receive a guiding message for your soul';
+
+  @override
+  String dailyDrawRemaining(int count) {
+    return '$count draws remaining today';
+  }
+
+  @override
+  String get dailyDrawLimitReached => '2 daily messages drawn today';
+
+  @override
+  String get dailyDrawLimitHint =>
+      'Take time to reflect on today\'s messages. You can draw again tomorrow.';
+
+  @override
+  String get drawCardAction => 'Draw a Card';
+
+  @override
+  String get drawAnotherCard => 'Draw Another Card';
+
+  @override
+  String get reviewTodayCards => 'View Today\'s Messages';
+
+  @override
+  String get cardDrawSuccess => 'Your Guiding Message';
+
+  @override
+  String get todayCardDrawBanner => 'Soul Message';
+
+  @override
+  String get chooseDeckPrompt => 'Choose a deck to listen to its message';
+
+  @override
+  String get tapCardToReveal => 'Tap the card to reveal your message';
+
+  @override
+  String get saveToJournalAction => 'Save to Journal';
+
+  @override
+  String get savedToJournalSuccess => 'Message saved to journal';
+
+  @override
+  String get cardDrawHistory => 'Draw History';
+
+  @override
+  String deckCardCount(int count) {
+    return '$count cards';
+  }
+
+  @override
+  String get soulCardsTab => 'Soul Cards';
+
+  @override
+  String get dailyDrawLimitDialogTitle => 'Daily Limit Reached';
+
+  @override
+  String get dailyDrawLimitDialogMessage =>
+      'You have already received 2 guiding messages today. Take time to reflect on today\'s messages. You can draw again tomorrow.';
+
+  @override
+  String get understood => 'Understood';
+
+  @override
+  String get chooseDeckSubtitle =>
+      'Choose a deck to receive your guiding message';
+
+  @override
+  String get drawFromThisDeck => 'Draw from this deck';
+
+  @override
+  String get gratitudeJournalPrompt =>
+      'Today you continue your gratitude journey. Take time and presence of mind to reflect on the things you are grateful for, however small. Suggested pattern:\n\"I am grateful for... because...\"\nThen re-read what you have written with a deep feeling of appreciation.';
+
+  @override
+  String get gratitudeJournalPlaceholder =>
+      'Write the things you are grateful for today like a quiet journal page...\n\nExample:\nI am grateful for the warm cup of coffee this morning because it gave me alertness and peace.\nI am grateful for a friend\'s smile because it warmed my heart...';
+
+  @override
+  String get addPhoto => 'Add photo';
+
+  @override
+  String get changePhoto => 'Change photo';
+
+  @override
+  String get insertPromptTemplate => 'Insert template';
+
+  @override
+  String get saveAndCompleteJournal => 'Complete & Save Journal';
+
+  @override
+  String get gratitudePromptTemplateText => 'I am grateful for ... because ...';
+
+  @override
+  String get chooseTheme => 'Select theme';
+
+  @override
+  String get editNote => 'Edit note';
+
+  @override
+  String get noteUpdated => 'Note updated';
+
+  @override
+  String get gratitudeGuidanceTitle => 'Today\'s Practice Guidance';
+
+  @override
+  String get showGuidance => 'View guidance';
+
+  @override
+  String get hideGuidance => 'Hide guidance';
 }

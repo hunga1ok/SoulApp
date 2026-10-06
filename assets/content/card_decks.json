@@ -1,0 +1,1564 @@
+{
+  "decks": [
+    {
+      "id": "healing",
+      "code": "OCEAN_HEALING",
+      "title": {
+        "vi": "Đại dương xanh",
+        "en": "Blue Ocean"
+      },
+      "subtitle": {
+        "vi": "Chữa lành tâm hồn",
+        "en": "Soul Healing"
+      },
+      "description": {
+        "vi": "50 thông điệp nhẹ nhàng, tĩnh lặng và dịu dàng với chính mình.",
+        "en": "50 gentle messages nurturing stillness and self-compassion."
+      },
+      "ambientTrackId": "SO-05",
+      "cardCount": 50,
+      "cards": [
+        {
+          "id": "healing_01",
+          "number": 1,
+          "text": {
+            "vi": "Bạn không cần vội. Có những điều chỉ trở nên rõ ràng khi mình cho lòng đủ yên.",
+            "en": "You don't have to rush. Some things only become clear when you give your heart enough quiet."
+          },
+          "imagePrompt": "Mặt biển sâu / khoảng xanh trống",
+          "imagePath": "assets/images/cards/healing/card_01.webp"
+        },
+        {
+          "id": "healing_02",
+          "number": 2,
+          "text": {
+            "vi": "Hôm nay, hãy dịu dàng với chính mình như cách biển ôm lấy mọi con sóng.",
+            "en": "Today, be gentle with yourself, the way the sea holds every wave."
+          },
+          "imagePrompt": "Sóng nhẹ / nền xanh",
+          "imagePath": "assets/images/cards/healing/card_02.webp"
+        },
+        {
+          "id": "healing_03",
+          "number": 3,
+          "text": {
+            "vi": "Bạn không cần mạnh mẽ mọi lúc. Được nghỉ ngơi cũng là một phần của việc chữa lành.",
+            "en": "You don't have to be strong all the time. Rest is part of healing too."
+          },
+          "imagePrompt": "Cá voi trôi chậm",
+          "imagePath": "assets/images/cards/healing/card_03.webp"
+        },
+        {
+          "id": "healing_04",
+          "number": 4,
+          "text": {
+            "vi": "Có những ngày, chỉ cần thở sâu và đi qua ngày đó thôi cũng đã là đủ.",
+            "en": "Some days, taking a deep breath and simply making it through is enough."
+          },
+          "imagePrompt": "Bong bóng / khoảng nước rộng",
+          "imagePath": "assets/images/cards/healing/card_04.webp"
+        },
+        {
+          "id": "healing_05",
+          "number": 5,
+          "text": {
+            "vi": "Không phải mọi câu hỏi đều cần có câu trả lời ngay lúc này.",
+            "en": "Not every question needs an answer right now."
+          },
+          "imagePrompt": "Cá đuối giữa khoảng xanh",
+          "imagePath": "assets/images/cards/healing/card_05.webp"
+        },
+        {
+          "id": "healing_06",
+          "number": 6,
+          "text": {
+            "vi": "Bạn được phép rời khỏi những điều khiến lòng mình luôn phải co lại.",
+            "en": "You are allowed to step away from what keeps making your heart shrink."
+          },
+          "imagePrompt": "Cá voi bơi ra xa",
+          "imagePath": "assets/images/cards/healing/card_06.webp"
+        },
+        {
+          "id": "healing_07",
+          "number": 7,
+          "text": {
+            "vi": "Đừng quên rằng bạn cũng xứng đáng nhận được sự dịu dàng mà mình vẫn dành cho người khác.",
+            "en": "Remember that you deserve the same gentleness you so easily give to others."
+          },
+          "imagePrompt": "Sinh vật nhỏ giữa đại dương",
+          "imagePath": "assets/images/cards/healing/card_07.webp"
+        },
+        {
+          "id": "healing_08",
+          "number": 8,
+          "text": {
+            "vi": "Một bước nhỏ về phía bình yên vẫn là một bước tiến.",
+            "en": "A small step toward peace is still a step forward."
+          },
+          "imagePrompt": "Dòng bơi nhẹ / cá nhỏ",
+          "imagePath": "assets/images/cards/healing/card_08.webp"
+        },
+        {
+          "id": "healing_09",
+          "number": 9,
+          "text": {
+            "vi": "Có những nỗi buồn không cần phải xóa đi. Chỉ cần học cách đặt chúng xuống nhẹ hơn.",
+            "en": "Some sadness doesn't need to be erased. Sometimes we only need to learn how to carry it more lightly."
+          },
+          "imagePrompt": "Sứa trôi / nước sâu",
+          "imagePath": "assets/images/cards/healing/card_09.webp"
+        },
+        {
+          "id": "healing_10",
+          "number": 10,
+          "text": {
+            "vi": "Bạn không cần chứng minh giá trị của mình bằng việc luôn làm thật nhiều.",
+            "en": "You don't have to prove your worth by always doing more."
+          },
+          "imagePrompt": "Khoảng nước rộng, ít chi tiết",
+          "imagePath": "assets/images/cards/healing/card_10.webp"
+        },
+        {
+          "id": "healing_11",
+          "number": 11,
+          "text": {
+            "vi": "Đôi khi điều mình cần không phải là cố thêm, mà là dừng lại đủ lâu để nghe mình.",
+            "en": "Sometimes what you need isn't to try harder, but to pause long enough to hear yourself."
+          },
+          "imagePrompt": "Cá voi / người lặn nhỏ",
+          "imagePath": "assets/images/cards/healing/card_11.webp"
+        },
+        {
+          "id": "healing_12",
+          "number": 12,
+          "text": {
+            "vi": "Bạn được phép thay đổi suy nghĩ, thay đổi hướng đi và bắt đầu lại.",
+            "en": "You are allowed to change your mind, change direction, and begin again."
+          },
+          "imagePrompt": "Cá đuối đổi hướng",
+          "imagePath": "assets/images/cards/healing/card_12.webp"
+        },
+        {
+          "id": "healing_13",
+          "number": 13,
+          "text": {
+            "vi": "Không sao nếu hôm nay bạn chưa ổn. Ngày mai vẫn còn một khoảng trời khác.",
+            "en": "It's okay if you're not okay today. Tomorrow still holds a different sky."
+          },
+          "imagePrompt": "Xanh đậm chuyển xanh sáng",
+          "imagePath": "assets/images/cards/healing/card_13.webp"
+        },
+        {
+          "id": "healing_14",
+          "number": 14,
+          "text": {
+            "vi": "Những gì đã đi qua không quyết định toàn bộ con người bạn.",
+            "en": "What happened before does not define all of who you are."
+          },
+          "imagePrompt": "Cá voi đi qua nền nước",
+          "imagePath": "assets/images/cards/healing/card_14.webp"
+        },
+        {
+          "id": "healing_15",
+          "number": 15,
+          "text": {
+            "vi": "Bạn không cần mang theo mọi thứ chỉ vì mình đã từng quen với chúng.",
+            "en": "You don't have to keep carrying something just because you've carried it for a long time."
+          },
+          "imagePrompt": "Đuôi cá voi / khoảng trống",
+          "imagePath": "assets/images/cards/healing/card_15.webp"
+        },
+        {
+          "id": "healing_16",
+          "number": 16,
+          "text": {
+            "vi": "Có những mối quan hệ đẹp nhất khi cả hai đều được là chính mình.",
+            "en": "Some relationships become most beautiful when both people are free to be themselves."
+          },
+          "imagePrompt": "Hai cá đuối song song",
+          "imagePath": "assets/images/cards/healing/card_16.webp"
+        },
+        {
+          "id": "healing_17",
+          "number": 17,
+          "text": {
+            "vi": "Yêu thương không nên khiến bạn phải thu nhỏ mình lại.",
+            "en": "Love should not require you to make yourself smaller."
+          },
+          "imagePrompt": "Một sinh vật bơi trong khoảng rộng",
+          "imagePath": "assets/images/cards/healing/card_17.webp"
+        },
+        {
+          "id": "healing_18",
+          "number": 18,
+          "text": {
+            "vi": "Bạn được phép đặt ranh giới mà không cần cảm thấy có lỗi.",
+            "en": "You are allowed to set boundaries without feeling guilty."
+          },
+          "imagePrompt": "Hai vùng nước / khoảng cách",
+          "imagePath": "assets/images/cards/healing/card_18.webp"
+        },
+        {
+          "id": "healing_19",
+          "number": 19,
+          "text": {
+            "vi": "Có người đến để ở lại. Có người đến để dạy ta một điều rồi rời đi.",
+            "en": "Some people come to stay. Others come to teach us something and then move on."
+          },
+          "imagePrompt": "Hai sinh vật bơi khác hướng",
+          "imagePath": "assets/images/cards/healing/card_19.webp"
+        },
+        {
+          "id": "healing_20",
+          "number": 20,
+          "text": {
+            "vi": "Không phải sự im lặng nào cũng là xa cách. Đôi khi đó chỉ là lúc mỗi người cần trở về với mình.",
+            "en": "Not every silence means distance. Sometimes it is simply time for each person to return to themselves."
+          },
+          "imagePrompt": "Hai cá voi ở hai khoảng xa",
+          "imagePath": "assets/images/cards/healing/card_20.webp"
+        },
+        {
+          "id": "healing_21",
+          "number": 21,
+          "text": {
+            "vi": "Gia đình không cần hoàn hảo để vẫn có thể là một nơi ấm áp.",
+            "en": "Family doesn't have to be perfect to still feel warm."
+          },
+          "imagePrompt": "Cá voi lớn và cá voi nhỏ",
+          "imagePath": "assets/images/cards/healing/card_21.webp"
+        },
+        {
+          "id": "healing_22",
+          "number": 22,
+          "text": {
+            "vi": "Có những yêu thương không nói thành lời nhưng vẫn luôn ở đó.",
+            "en": "Some kinds of love are never spoken, yet they are always there."
+          },
+          "imagePrompt": "Đuôi cá voi / bong bóng nhỏ",
+          "imagePath": "assets/images/cards/healing/card_22.webp"
+        },
+        {
+          "id": "healing_23",
+          "number": 23,
+          "text": {
+            "vi": "Bạn không cần giữ vai trò mạnh mẽ nhất trong mọi mối quan hệ.",
+            "en": "You don't have to be the strong one in every relationship."
+          },
+          "imagePrompt": "Người lặn cạnh cá voi",
+          "imagePath": "assets/images/cards/healing/card_23.webp"
+        },
+        {
+          "id": "healing_24",
+          "number": 24,
+          "text": {
+            "vi": "Đôi khi được lắng nghe đã là một hình thức chữa lành.",
+            "en": "Sometimes being truly heard is already a form of healing."
+          },
+          "imagePrompt": "Hai sinh vật đối diện",
+          "imagePath": "assets/images/cards/healing/card_24.webp"
+        },
+        {
+          "id": "healing_25",
+          "number": 25,
+          "text": {
+            "vi": "Bạn có thể yêu một người và vẫn chọn điều tốt hơn cho chính mình.",
+            "en": "You can love someone and still choose what is better for you."
+          },
+          "imagePrompt": "Hai cá đuối tách hướng",
+          "imagePath": "assets/images/cards/healing/card_25.webp"
+        },
+        {
+          "id": "healing_26",
+          "number": 26,
+          "text": {
+            "vi": "Không phải ai hiểu mình chậm cũng có nghĩa là họ không thương mình.",
+            "en": "Someone taking longer to understand you does not always mean they care any less."
+          },
+          "imagePrompt": "Cá voi và cá đuối",
+          "imagePath": "assets/images/cards/healing/card_26.webp"
+        },
+        {
+          "id": "healing_27",
+          "number": 27,
+          "text": {
+            "vi": "Có những điều cần thời gian, không phải thêm áp lực.",
+            "en": "Some things need time, not more pressure."
+          },
+          "imagePrompt": "Sinh vật trôi chậm",
+          "imagePath": "assets/images/cards/healing/card_27.webp"
+        },
+        {
+          "id": "healing_28",
+          "number": 28,
+          "text": {
+            "vi": "Bạn không cần ép mình quên. Hãy để ký ức tự tìm một vị trí yên hơn.",
+            "en": "You don't have to force yourself to forget. Let the memory find a quieter place on its own."
+          },
+          "imagePrompt": "Sứa trôi xa",
+          "imagePath": "assets/images/cards/healing/card_28.webp"
+        },
+        {
+          "id": "healing_29",
+          "number": 29,
+          "text": {
+            "vi": "Một trái tim từng mệt mỏi vẫn có thể học lại cách tin tưởng.",
+            "en": "A tired heart can learn to trust again."
+          },
+          "imagePrompt": "Cá voi nổi lên",
+          "imagePath": "assets/images/cards/healing/card_29.webp"
+        },
+        {
+          "id": "healing_30",
+          "number": 30,
+          "text": {
+            "vi": "Bạn xứng đáng với những kết nối khiến mình cảm thấy an toàn, được tôn trọng và được là mình.",
+            "en": "You deserve connections where you feel safe, respected, and free to be yourself."
+          },
+          "imagePrompt": "Hai sinh vật hài hòa",
+          "imagePath": "assets/images/cards/healing/card_30.webp"
+        },
+        {
+          "id": "healing_31",
+          "number": 31,
+          "text": {
+            "vi": "Không phải ngày nào cũng cần rực rỡ. Có những ngày bình thường cũng rất đáng quý.",
+            "en": "Not every day needs to shine. Ordinary days can be precious too."
+          },
+          "imagePrompt": "Nền biển đơn giản",
+          "imagePath": "assets/images/cards/healing/card_31.webp"
+        },
+        {
+          "id": "healing_32",
+          "number": 32,
+          "text": {
+            "vi": "Bạn không bị chậm hơn ai cả. Mỗi người có một nhịp nước riêng để bơi.",
+            "en": "You are not behind. Everyone moves through life in their own rhythm."
+          },
+          "imagePrompt": "Cá voi một mình",
+          "imagePath": "assets/images/cards/healing/card_32.webp"
+        },
+        {
+          "id": "healing_33",
+          "number": 33,
+          "text": {
+            "vi": "Hãy để bản thân có những khoảng lặng không cần phải tạo ra kết quả.",
+            "en": "Give yourself quiet moments that do not need to produce anything."
+          },
+          "imagePrompt": "Đại dương trống",
+          "imagePath": "assets/images/cards/healing/card_33.webp"
+        },
+        {
+          "id": "healing_34",
+          "number": 34,
+          "text": {
+            "vi": "Có những điều càng cố nắm chặt càng khiến mình mệt. Thả lỏng một chút cũng không sao.",
+            "en": "Some things become heavier the tighter we hold on. It's okay to loosen your grip."
+          },
+          "imagePrompt": "Rong biển trôi",
+          "imagePath": "assets/images/cards/healing/card_34.webp"
+        },
+        {
+          "id": "healing_35",
+          "number": 35,
+          "text": {
+            "vi": "Bạn được phép vui với những điều nhỏ bé mà không cần lý do lớn lao.",
+            "en": "You are allowed to enjoy small things without needing a big reason."
+          },
+          "imagePrompt": "Bong bóng / cá nhỏ",
+          "imagePath": "assets/images/cards/healing/card_35.webp"
+        },
+        {
+          "id": "healing_36",
+          "number": 36,
+          "text": {
+            "vi": "Bình yên đôi khi bắt đầu từ việc thôi tranh luận với chính mình.",
+            "en": "Sometimes peace begins when you stop arguing with yourself."
+          },
+          "imagePrompt": "Một cá đuối giữa nền tĩnh",
+          "imagePath": "assets/images/cards/healing/card_36.webp"
+        },
+        {
+          "id": "healing_37",
+          "number": 37,
+          "text": {
+            "vi": "Bạn không cần quay lại phiên bản cũ của mình. Bạn có thể trở thành một phiên bản mới dịu dàng hơn.",
+            "en": "You don't have to become your old self again. You can become someone new and gentler."
+          },
+          "imagePrompt": "Cá voi bơi lên",
+          "imagePath": "assets/images/cards/healing/card_37.webp"
+        },
+        {
+          "id": "healing_38",
+          "number": 38,
+          "text": {
+            "vi": "Mọi cảm xúc đều có chỗ để tồn tại. Bạn không cần vội đẩy chúng đi.",
+            "en": "Every feeling is allowed to exist. You don't have to push it away too quickly."
+          },
+          "imagePrompt": "Sứa / dòng nước",
+          "imagePath": "assets/images/cards/healing/card_38.webp"
+        },
+        {
+          "id": "healing_39",
+          "number": 39,
+          "text": {
+            "vi": "Nếu hôm nay bạn chỉ làm được một việc nhỏ cho bản thân, điều đó vẫn đáng trân trọng.",
+            "en": "If all you can do today is one small thing for yourself, that still matters."
+          },
+          "imagePrompt": "Một chi tiết đơn lẻ",
+          "imagePath": "assets/images/cards/healing/card_39.webp"
+        },
+        {
+          "id": "healing_40",
+          "number": 40,
+          "text": {
+            "vi": "Bạn đã đi qua nhiều điều hơn những gì mình thường ghi nhận.",
+            "en": "You have made it through more than you usually give yourself credit for."
+          },
+          "imagePrompt": "Người lặn nhìn cá voi",
+          "imagePath": "assets/images/cards/healing/card_40.webp"
+        },
+        {
+          "id": "healing_41",
+          "number": 41,
+          "text": {
+            "vi": "Có những ngày bạn chỉ cần được ở yên trong chính cuộc sống của mình.",
+            "en": "Some days, you simply need permission to be still inside your own life."
+          },
+          "imagePrompt": "Khoảng xanh sâu",
+          "imagePath": "assets/images/cards/healing/card_41.webp"
+        },
+        {
+          "id": "healing_42",
+          "number": 42,
+          "text": {
+            "vi": "Hãy chọn những điều làm lòng mình rộng ra, không phải những điều khiến mình luôn căng lại.",
+            "en": "Choose what lets your heart expand, not what keeps it constantly tense."
+          },
+          "imagePrompt": "Cá voi trong không gian rộng",
+          "imagePath": "assets/images/cards/healing/card_42.webp"
+        },
+        {
+          "id": "healing_43",
+          "number": 43,
+          "text": {
+            "vi": "Bạn không cần biết hết con đường phía trước để tiếp tục bước.",
+            "en": "You don't need to see the whole path ahead to keep moving."
+          },
+          "imagePrompt": "Sinh vật bơi vào khoảng sâu",
+          "imagePath": "assets/images/cards/healing/card_43.webp"
+        },
+        {
+          "id": "healing_44",
+          "number": 44,
+          "text": {
+            "vi": "Chậm lại không có nghĩa là tụt lại. Đôi khi đó là cách cơ thể và tâm trí tự cân bằng.",
+            "en": "Slowing down does not mean falling behind. Sometimes it is how your body and mind find balance again."
+          },
+          "imagePrompt": "Cá đuối lướt chậm",
+          "imagePath": "assets/images/cards/healing/card_44.webp"
+        },
+        {
+          "id": "healing_45",
+          "number": 45,
+          "text": {
+            "vi": "Bạn có thể vừa biết ơn những gì đã có, vừa mong muốn một điều tốt hơn.",
+            "en": "You can be grateful for what you have and still wish for something better."
+          },
+          "imagePrompt": "Hai tầng nước / hướng đi",
+          "imagePath": "assets/images/cards/healing/card_45.webp"
+        },
+        {
+          "id": "healing_46",
+          "number": 46,
+          "text": {
+            "vi": "Có những phiên bản của bạn đã làm hết sức với những gì họ biết lúc đó.",
+            "en": "Past versions of you did the best they could with what they knew then."
+          },
+          "imagePrompt": "Cá voi / bóng xa",
+          "imagePath": "assets/images/cards/healing/card_46.webp"
+        },
+        {
+          "id": "healing_47",
+          "number": 47,
+          "text": {
+            "vi": "Đừng đánh giá cả hành trình chỉ bằng một ngày khó khăn.",
+            "en": "Don't judge the whole journey by one difficult day."
+          },
+          "imagePrompt": "Đường bơi dài",
+          "imagePath": "assets/images/cards/healing/card_47.webp"
+        },
+        {
+          "id": "healing_48",
+          "number": 48,
+          "text": {
+            "vi": "Bạn không cần trở thành ai khác để bắt đầu yêu quý chính mình hơn.",
+            "en": "You don't need to become someone else before you can start loving yourself more."
+          },
+          "imagePrompt": "Một cá voi đơn độc",
+          "imagePath": "assets/images/cards/healing/card_48.webp"
+        },
+        {
+          "id": "healing_49",
+          "number": 49,
+          "text": {
+            "vi": "Một ngày nào đó, điều từng làm bạn nghẹt thở sẽ chỉ còn là một con sóng đã đi qua.",
+            "en": "One day, what once took your breath away will feel like a wave that has already passed."
+          },
+          "imagePrompt": "Sóng / bọt nước",
+          "imagePath": "assets/images/cards/healing/card_49.webp"
+        },
+        {
+          "id": "healing_50",
+          "number": 50,
+          "text": {
+            "vi": "Mong bạn luôn nhớ: trong mình vẫn có một nơi đủ sâu, đủ yên để trở về.",
+            "en": "May you always remember: there is a place within you deep and quiet enough to return to."
+          },
+          "imagePrompt": "Đại dương sâu / cá voi xa",
+          "imagePath": "assets/images/cards/healing/card_50.webp"
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "code": "GREEN_MEADOW",
+      "title": {
+        "vi": "Đồng cỏ xanh",
+        "en": "Green Meadow"
+      },
+      "subtitle": {
+        "vi": "Học tập & Sự nghiệp",
+        "en": "Study & Growth"
+      },
+      "description": {
+        "vi": "50 thông điệp động viên, kiên định và giữ vững nhịp điệu của bạn.",
+        "en": "50 encouraging messages to keep your pace and steady rhythm."
+      },
+      "ambientTrackId": "SO-11",
+      "cardCount": 50,
+      "cards": [
+        {
+          "id": "career_01",
+          "number": 1,
+          "text": {
+            "vi": "Bạn không cần nhìn thấy toàn bộ con đường. Chỉ cần biết bước tiếp theo của mình là gì.",
+            "en": "You do not need to see the whole path. You only need to know your next step."
+          },
+          "imagePrompt": "Con đường uốn qua đồi xanh",
+          "imagePath": "assets/images/cards/career/card_01.webp"
+        },
+        {
+          "id": "career_02",
+          "number": 2,
+          "text": {
+            "vi": "Đi chậm vẫn là đang đi. Điều quan trọng là bạn chưa dừng lại.",
+            "en": "Moving slowly is still moving. What matters is that you have not stopped."
+          },
+          "imagePrompt": "Người nhỏ đi giữa đồng cỏ",
+          "imagePath": "assets/images/cards/career/card_02.webp"
+        },
+        {
+          "id": "career_03",
+          "number": 3,
+          "text": {
+            "vi": "Không phải ngày nào cũng cần thật năng suất. Có những ngày chỉ cần giữ được nhịp của mình.",
+            "en": "Not every day needs to be highly productive. Some days, simply keeping your rhythm is enough."
+          },
+          "imagePrompt": "Người ngồi nghỉ trên đồi",
+          "imagePath": "assets/images/cards/career/card_03.webp"
+        },
+        {
+          "id": "career_04",
+          "number": 4,
+          "text": {
+            "vi": "Một việc nhỏ hoàn thành hôm nay vẫn tốt hơn một kế hoạch hoàn hảo chưa bắt đầu.",
+            "en": "One small thing finished today is better than a perfect plan that never began."
+          },
+          "imagePrompt": "Một lối đi nhỏ giữa đồi",
+          "imagePath": "assets/images/cards/career/card_04.webp"
+        },
+        {
+          "id": "career_05",
+          "number": 5,
+          "text": {
+            "vi": "Bạn không cần giỏi ngay từ đầu. Mọi kỹ năng đều từng bắt đầu từ sự vụng về.",
+            "en": "You do not have to be good at it from the start. Every skill begins with being a beginner."
+          },
+          "imagePrompt": "Người đứng trước khoảng đồi rộng",
+          "imagePath": "assets/images/cards/career/card_05.webp"
+        },
+        {
+          "id": "career_06",
+          "number": 6,
+          "text": {
+            "vi": "Có những tiến bộ rất nhỏ đến mức mình không nhận ra, nhưng chúng vẫn đang cộng lại từng ngày.",
+            "en": "Some progress is too small to notice, but it is still adding up every day."
+          },
+          "imagePrompt": "Các lớp đồi xanh nối tiếp",
+          "imagePath": "assets/images/cards/career/card_06.webp"
+        },
+        {
+          "id": "career_07",
+          "number": 7,
+          "text": {
+            "vi": "Đừng để một ngày chưa tốt khiến bạn nghi ngờ cả hành trình.",
+            "en": "Do not let one difficult day make you doubt the whole journey."
+          },
+          "imagePrompt": "Người nhỏ giữa cánh đồng lớn",
+          "imagePath": "assets/images/cards/career/card_07.webp"
+        },
+        {
+          "id": "career_08",
+          "number": 8,
+          "text": {
+            "vi": "Bạn được phép học theo tốc độ phù hợp với mình.",
+            "en": "You are allowed to learn at a pace that works for you."
+          },
+          "imagePrompt": "Người ngồi giữa đồng cỏ",
+          "imagePath": "assets/images/cards/career/card_08.webp"
+        },
+        {
+          "id": "career_09",
+          "number": 9,
+          "text": {
+            "vi": "Không hiểu ngay không có nghĩa là bạn không thể hiểu.",
+            "en": "Not understanding something yet does not mean you cannot understand it."
+          },
+          "imagePrompt": "Mê cung xanh / ngã rẽ",
+          "imagePath": "assets/images/cards/career/card_09.webp"
+        },
+        {
+          "id": "career_10",
+          "number": 10,
+          "text": {
+            "vi": "Hãy để sự tò mò dẫn đường thay vì nỗi sợ phải làm đúng ngay lần đầu.",
+            "en": "Let curiosity guide you instead of the fear of getting it right the first time."
+          },
+          "imagePrompt": "Con đường mở về phía xa",
+          "imagePath": "assets/images/cards/career/card_10.webp"
+        },
+        {
+          "id": "career_11",
+          "number": 11,
+          "text": {
+            "vi": "Bạn không cần biết mọi thứ trước khi bắt đầu. Nhiều câu trả lời chỉ xuất hiện khi mình làm.",
+            "en": "You do not need to know everything before you begin. Many answers appear only once you start."
+          },
+          "imagePrompt": "Người bước trên đường xanh",
+          "imagePath": "assets/images/cards/career/card_11.webp"
+        },
+        {
+          "id": "career_12",
+          "number": 12,
+          "text": {
+            "vi": "Mỗi lần thử lại, bạn mang theo nhiều kinh nghiệm hơn lần trước.",
+            "en": "Every time you try again, you bring more experience with you than before."
+          },
+          "imagePrompt": "Người đi lại qua sườn đồi",
+          "imagePath": "assets/images/cards/career/card_12.webp"
+        },
+        {
+          "id": "career_13",
+          "number": 13,
+          "text": {
+            "vi": "Có những giai đoạn cần bứt phá, và cũng có những giai đoạn chỉ cần xây nền thật chắc.",
+            "en": "Some seasons are for breakthroughs. Others are for building a strong foundation."
+          },
+          "imagePrompt": "Các tầng đồi vững chắc",
+          "imagePath": "assets/images/cards/career/card_13.webp"
+        },
+        {
+          "id": "career_14",
+          "number": 14,
+          "text": {
+            "vi": "Đừng so sánh chương đầu của mình với chương giữa của người khác.",
+            "en": "Do not compare your first chapter with someone else's middle."
+          },
+          "imagePrompt": "Một người nhỏ giữa nhiều lớp đồi",
+          "imagePath": "assets/images/cards/career/card_14.webp"
+        },
+        {
+          "id": "career_15",
+          "number": 15,
+          "text": {
+            "vi": "Một mục tiêu lớn sẽ bớt đáng sợ khi được chia thành những việc đủ nhỏ.",
+            "en": "A big goal becomes less intimidating when you break it into small enough steps."
+          },
+          "imagePrompt": "Đường mòn chia thành nhiều đoạn",
+          "imagePath": "assets/images/cards/career/card_15.webp"
+        },
+        {
+          "id": "career_16",
+          "number": 16,
+          "text": {
+            "vi": "Bạn không cần chờ có động lực mới bắt đầu. Đôi khi bắt đầu trước, động lực sẽ đến sau.",
+            "en": "You do not have to wait for motivation to begin. Sometimes motivation comes after you start."
+          },
+          "imagePrompt": "Người đứng dậy bước tiếp",
+          "imagePath": "assets/images/cards/career/card_16.webp"
+        },
+        {
+          "id": "career_17",
+          "number": 17,
+          "text": {
+            "vi": "Tập trung vào điều mình có thể làm hôm nay sẽ nhẹ hơn việc lo cả chặng đường phía trước.",
+            "en": "Focusing on what you can do today is lighter than worrying about the whole road ahead."
+          },
+          "imagePrompt": "Một đoạn đường gần",
+          "imagePath": "assets/images/cards/career/card_17.webp"
+        },
+        {
+          "id": "career_18",
+          "number": 18,
+          "text": {
+            "vi": "Sự nhất quán không có nghĩa là ngày nào cũng giống nhau. Nó chỉ có nghĩa là bạn luôn tìm cách quay lại.",
+            "en": "Consistency does not mean every day looks the same. It means you keep finding your way back."
+          },
+          "imagePrompt": "Con đường quanh co quay về",
+          "imagePath": "assets/images/cards/career/card_18.webp"
+        },
+        {
+          "id": "career_19",
+          "number": 19,
+          "text": {
+            "vi": "Bạn có thể nghỉ một chút mà không từ bỏ mục tiêu của mình.",
+            "en": "You can rest for a while without giving up on your goal."
+          },
+          "imagePrompt": "Người nằm nghỉ trên cỏ",
+          "imagePath": "assets/images/cards/career/card_19.webp"
+        },
+        {
+          "id": "career_20",
+          "number": 20,
+          "text": {
+            "vi": "Không phải mọi cơ hội đều cần nắm lấy. Chọn đúng cũng quan trọng như cố gắng.",
+            "en": "Not every opportunity needs to be taken. Choosing well matters as much as working hard."
+          },
+          "imagePrompt": "Ngã rẽ giữa đồng cỏ",
+          "imagePath": "assets/images/cards/career/card_20.webp"
+        },
+        {
+          "id": "career_21",
+          "number": 21,
+          "text": {
+            "vi": "Đôi khi bước tiến tốt nhất là dừng lại để xem mình đang đi về đâu.",
+            "en": "Sometimes the best way forward is to pause and check where you are going."
+          },
+          "imagePrompt": "Người đứng nhìn đường phía trước",
+          "imagePath": "assets/images/cards/career/card_21.webp"
+        },
+        {
+          "id": "career_22",
+          "number": 22,
+          "text": {
+            "vi": "Một hướng đi mới không làm những gì bạn đã học trước đây trở nên vô nghĩa.",
+            "en": "A new direction does not make what you learned before meaningless."
+          },
+          "imagePrompt": "Con đường đổi hướng qua đồi",
+          "imagePath": "assets/images/cards/career/card_22.webp"
+        },
+        {
+          "id": "career_23",
+          "number": 23,
+          "text": {
+            "vi": "Bạn được phép thay đổi mục tiêu khi mình hiểu bản thân rõ hơn.",
+            "en": "You are allowed to change your goals as you understand yourself better."
+          },
+          "imagePrompt": "Lối rẽ mềm giữa đồi",
+          "imagePath": "assets/images/cards/career/card_23.webp"
+        },
+        {
+          "id": "career_24",
+          "number": 24,
+          "text": {
+            "vi": "Không có con đường nghề nghiệp nào hoàn toàn thẳng. Những khúc quanh cũng là một phần của hành trình.",
+            "en": "No career path is perfectly straight. The turns are part of the journey too."
+          },
+          "imagePrompt": "Đường uốn lượn dài",
+          "imagePath": "assets/images/cards/career/card_24.webp"
+        },
+        {
+          "id": "career_25",
+          "number": 25,
+          "text": {
+            "vi": "Một quyết định chưa hoàn hảo vẫn có thể đưa bạn đến một nơi có ích.",
+            "en": "An imperfect decision can still lead you somewhere valuable."
+          },
+          "imagePrompt": "Người bước qua mê cung",
+          "imagePath": "assets/images/cards/career/card_25.webp"
+        },
+        {
+          "id": "career_26",
+          "number": 26,
+          "text": {
+            "vi": "Bạn không cần có mọi câu trả lời để xứng đáng với cơ hội trước mắt.",
+            "en": "You do not need to have every answer to deserve the opportunity in front of you."
+          },
+          "imagePrompt": "Người nhỏ giữa khoảng rộng",
+          "imagePath": "assets/images/cards/career/card_26.webp"
+        },
+        {
+          "id": "career_27",
+          "number": 27,
+          "text": {
+            "vi": "Kỹ năng được xây bằng những lần làm thật, không chỉ bằng những lần chuẩn bị.",
+            "en": "Skills are built through doing, not only through preparing."
+          },
+          "imagePrompt": "Người đi trên lối mòn",
+          "imagePath": "assets/images/cards/career/card_27.webp"
+        },
+        {
+          "id": "career_28",
+          "number": 28,
+          "text": {
+            "vi": "Điều bạn làm chưa hoàn hảo vẫn có thể tạo ra giá trị.",
+            "en": "What you create does not have to be perfect to be valuable."
+          },
+          "imagePrompt": "Hoa nhỏ giữa đồng xanh",
+          "imagePath": "assets/images/cards/career/card_28.webp"
+        },
+        {
+          "id": "career_29",
+          "number": 29,
+          "text": {
+            "vi": "Một lần bị từ chối không phải là câu trả lời cho toàn bộ tương lai của bạn.",
+            "en": "One rejection is not an answer for your entire future."
+          },
+          "imagePrompt": "Người đứng giữa những ngọn đồi",
+          "imagePath": "assets/images/cards/career/card_29.webp"
+        },
+        {
+          "id": "career_30",
+          "number": 30,
+          "text": {
+            "vi": "Bạn có thể chưa ở nơi mình muốn, nhưng điều đó không có nghĩa là mình đang đứng yên.",
+            "en": "You may not be where you want to be yet, but that does not mean you are standing still."
+          },
+          "imagePrompt": "Người đi xa trên đồng cỏ",
+          "imagePath": "assets/images/cards/career/card_30.webp"
+        },
+        {
+          "id": "career_31",
+          "number": 31,
+          "text": {
+            "vi": "Có những thành quả cần thời gian dài hơn mình dự tính. Điều đó không làm chúng kém giá trị.",
+            "en": "Some results take longer than expected. That does not make them any less worthwhile."
+          },
+          "imagePrompt": "Đồi xanh nối dài",
+          "imagePath": "assets/images/cards/career/card_31.webp"
+        },
+        {
+          "id": "career_32",
+          "number": 32,
+          "text": {
+            "vi": "Đừng bỏ qua những điều mình đã làm được chỉ vì vẫn còn nhiều việc phía trước.",
+            "en": "Do not overlook how far you have come just because there is still more ahead."
+          },
+          "imagePrompt": "Người nhìn lại con đường",
+          "imagePath": "assets/images/cards/career/card_32.webp"
+        },
+        {
+          "id": "career_33",
+          "number": 33,
+          "text": {
+            "vi": "Bạn không cần biến mọi sở thích thành thành tích.",
+            "en": "You do not have to turn every interest into an achievement."
+          },
+          "imagePrompt": "Người ngồi giữa hoa cỏ",
+          "imagePath": "assets/images/cards/career/card_33.webp"
+        },
+        {
+          "id": "career_34",
+          "number": 34,
+          "text": {
+            "vi": "Học một điều vì mình thật sự muốn hiểu nó cũng đã là một lý do đủ tốt.",
+            "en": "Learning something simply because you want to understand it is reason enough."
+          },
+          "imagePrompt": "Cỏ xanh và bướm trắng",
+          "imagePath": "assets/images/cards/career/card_34.webp"
+        },
+        {
+          "id": "career_35",
+          "number": 35,
+          "text": {
+            "vi": "Sự tập trung cũng cần được nghỉ để quay lại rõ ràng hơn.",
+            "en": "Focus needs rest too, so it can return with more clarity."
+          },
+          "imagePrompt": "Người nằm trên sườn đồi",
+          "imagePath": "assets/images/cards/career/card_35.webp"
+        },
+        {
+          "id": "career_36",
+          "number": 36,
+          "text": {
+            "vi": "Một khoảng nghỉ không xóa đi những gì bạn đã cố gắng trước đó.",
+            "en": "A break does not erase the effort you have already made."
+          },
+          "imagePrompt": "Người nghỉ dưới tán cây",
+          "imagePath": "assets/images/cards/career/card_36.webp"
+        },
+        {
+          "id": "career_37",
+          "number": 37,
+          "text": {
+            "vi": "Bạn không cần làm mọi thứ cùng lúc để chứng minh mình nghiêm túc.",
+            "en": "You do not need to do everything at once to prove that you are serious."
+          },
+          "imagePrompt": "Cánh đồng rộng, một người nhỏ",
+          "imagePath": "assets/images/cards/career/card_37.webp"
+        },
+        {
+          "id": "career_38",
+          "number": 38,
+          "text": {
+            "vi": "Có những ngày làm ít hơn nhưng nghĩ rõ hơn cũng là một ngày có ích.",
+            "en": "Some days, doing less but thinking more clearly is still a useful day."
+          },
+          "imagePrompt": "Người ngồi nhìn xa",
+          "imagePath": "assets/images/cards/career/card_38.webp"
+        },
+        {
+          "id": "career_39",
+          "number": 39,
+          "text": {
+            "vi": "Hãy để mục tiêu hỗ trợ cuộc sống của bạn, không phải nuốt trọn nó.",
+            "en": "Let your goals support your life, not consume it."
+          },
+          "imagePrompt": "Người nằm giữa đồng hoa",
+          "imagePath": "assets/images/cards/career/card_39.webp"
+        },
+        {
+          "id": "career_40",
+          "number": 40,
+          "text": {
+            "vi": "Bạn vẫn là bạn, kể cả khi hôm nay không đạt được điều mình dự định.",
+            "en": "You are still yourself even when today does not go as planned."
+          },
+          "imagePrompt": "Một người giữa khoảng xanh yên",
+          "imagePath": "assets/images/cards/career/card_40.webp"
+        },
+        {
+          "id": "career_41",
+          "number": 41,
+          "text": {
+            "vi": "Đừng chỉ hỏi mình đã đi nhanh đến đâu. Hãy hỏi mình có đang đi đúng hướng không.",
+            "en": "Do not only ask how fast you are moving. Ask whether you are moving in the right direction."
+          },
+          "imagePrompt": "Ngã rẽ / đường dài",
+          "imagePath": "assets/images/cards/career/card_41.webp"
+        },
+        {
+          "id": "career_42",
+          "number": 42,
+          "text": {
+            "vi": "Thành công không nhất thiết phải giống với hình dung của người khác.",
+            "en": "Success does not have to look like anyone else's version of it."
+          },
+          "imagePrompt": "Người đứng một mình trên đồi",
+          "imagePath": "assets/images/cards/career/card_42.webp"
+        },
+        {
+          "id": "career_43",
+          "number": 43,
+          "text": {
+            "vi": "Bạn có thể muốn nhiều hơn cho mình mà vẫn biết ơn những gì đang có.",
+            "en": "You can want more for yourself while still being grateful for what you have."
+          },
+          "imagePrompt": "Đồng cỏ xanh với điểm hoa",
+          "imagePath": "assets/images/cards/career/card_43.webp"
+        },
+        {
+          "id": "career_44",
+          "number": 44,
+          "text": {
+            "vi": "Không phải cơ hội nào đến muộn cũng là cơ hội đã mất.",
+            "en": "An opportunity that comes later is not necessarily an opportunity lost."
+          },
+          "imagePrompt": "Con đường xuất hiện phía xa",
+          "imagePath": "assets/images/cards/career/card_44.webp"
+        },
+        {
+          "id": "career_45",
+          "number": 45,
+          "text": {
+            "vi": "Một ngày bình thường được lặp lại đủ lâu có thể tạo nên một thay đổi rất lớn.",
+            "en": "An ordinary day repeated often enough can create a remarkable change."
+          },
+          "imagePrompt": "Các lớp đồi lặp nhịp",
+          "imagePath": "assets/images/cards/career/card_45.webp"
+        },
+        {
+          "id": "career_46",
+          "number": 46,
+          "text": {
+            "vi": "Có những lúc bạn cần kiên trì. Có những lúc bạn cần đổi cách làm. Cả hai đều là tiến lên.",
+            "en": "Sometimes you need persistence. Sometimes you need a different approach. Both can move you forward."
+          },
+          "imagePrompt": "Mê cung với nhiều lối",
+          "imagePath": "assets/images/cards/career/card_46.webp"
+        },
+        {
+          "id": "career_47",
+          "number": 47,
+          "text": {
+            "vi": "Đừng để nỗi sợ bắt đầu muộn ngăn bạn bắt đầu ngay bây giờ.",
+            "en": "Do not let the fear of starting late stop you from starting now."
+          },
+          "imagePrompt": "Người bước vào con đường",
+          "imagePath": "assets/images/cards/career/card_47.webp"
+        },
+        {
+          "id": "career_48",
+          "number": 48,
+          "text": {
+            "vi": "Bạn không cần trở thành phiên bản hoàn hảo mới xứng đáng với một cơ hội tốt.",
+            "en": "You do not need to become a perfect version of yourself before you deserve a good opportunity."
+          },
+          "imagePrompt": "Người nhỏ đứng trước đồi rộng",
+          "imagePath": "assets/images/cards/career/card_48.webp"
+        },
+        {
+          "id": "career_49",
+          "number": 49,
+          "text": {
+            "vi": "Mỗi chặng đường đều có lúc nhìn như chưa đi đến đâu. Hãy cho mình thêm một chút thời gian.",
+            "en": "Every journey has moments that feel like no progress at all. Give yourself a little more time."
+          },
+          "imagePrompt": "Đường mòn khuất sau đồi",
+          "imagePath": "assets/images/cards/career/card_49.webp"
+        },
+        {
+          "id": "career_50",
+          "number": 50,
+          "text": {
+            "vi": "Mong bạn tìm được một con đường vừa giúp mình tiến về phía trước, vừa khiến mình muốn sống trọn vẹn trên đường đi.",
+            "en": "May you find a path that moves you forward while still letting you fully live along the way."
+          },
+          "imagePrompt": "Người nhỏ trên con đường giữa đồng xanh",
+          "imagePath": "assets/images/cards/career/card_50.webp"
+        }
+      ]
+    },
+    {
+      "id": "relationship",
+      "code": "FLORAL_RELATIONSHIP",
+      "title": {
+        "vi": "Hoa cỏ tình cảm",
+        "en": "Floral Relationship"
+      },
+      "subtitle": {
+        "vi": "Tình cảm & Mối quan hệ",
+        "en": "Love & Connections"
+      },
+      "description": {
+        "vi": "50 thông điệp ấm áp, chân thành cho các mối quan hệ và sự gắn kết.",
+        "en": "50 warm and honest messages for meaningful connections."
+      },
+      "ambientTrackId": "SO-18",
+      "cardCount": 50,
+      "cards": [
+        {
+          "id": "relationship_01",
+          "number": 1,
+          "text": {
+            "vi": "Một mối quan hệ lành mạnh không cần hoàn hảo, chỉ cần đủ chân thành để cả hai cùng muốn chăm sóc nó.",
+            "en": "A healthy relationship does not need to be perfect. It only needs enough honesty for both people to keep caring for it."
+          },
+          "imagePrompt": "Hai cành hoa hướng về nhau",
+          "imagePath": "assets/images/cards/relationship/card_01.webp"
+        },
+        {
+          "id": "relationship_02",
+          "number": 2,
+          "text": {
+            "vi": "Bạn không cần đoán lòng người khác. Điều rõ ràng và tử tế luôn đáng tin hơn những tín hiệu mơ hồ.",
+            "en": "You do not have to guess what someone feels. Clarity and kindness are more reliable than mixed signals."
+          },
+          "imagePrompt": "Khoảng trống giữa hai cụm hoa",
+          "imagePath": "assets/images/cards/relationship/card_02.webp"
+        },
+        {
+          "id": "relationship_03",
+          "number": 3,
+          "text": {
+            "vi": "Được yêu thương không nên khiến bạn phải liên tục nghi ngờ giá trị của mình.",
+            "en": "Being loved should not make you constantly question your worth."
+          },
+          "imagePrompt": "Một bông hoa nở trọn",
+          "imagePath": "assets/images/cards/relationship/card_03.webp"
+        },
+        {
+          "id": "relationship_04",
+          "number": 4,
+          "text": {
+            "vi": "Có những cuộc trò chuyện khó nhưng lại giúp một mối quan hệ trở nên gần gũi hơn.",
+            "en": "Some difficult conversations can bring people closer."
+          },
+          "imagePrompt": "Hai nhánh lá giao nhau",
+          "imagePath": "assets/images/cards/relationship/card_04.webp"
+        },
+        {
+          "id": "relationship_05",
+          "number": 5,
+          "text": {
+            "vi": "Bạn có thể yêu ai đó rất nhiều và vẫn cần những giới hạn của riêng mình.",
+            "en": "You can love someone deeply and still need boundaries of your own."
+          },
+          "imagePrompt": "Hai cụm hoa đứng cạnh nhưng có khoảng thở",
+          "imagePath": "assets/images/cards/relationship/card_05.webp"
+        },
+        {
+          "id": "relationship_06",
+          "number": 6,
+          "text": {
+            "vi": "Sự quan tâm thường nằm trong những điều nhỏ và đều đặn hơn là những khoảnh khắc thật lớn.",
+            "en": "Care often lives in small, consistent things rather than grand moments."
+          },
+          "imagePrompt": "Chùm hoa nhỏ",
+          "imagePath": "assets/images/cards/relationship/card_06.webp"
+        },
+        {
+          "id": "relationship_07",
+          "number": 7,
+          "text": {
+            "vi": "Không phải mọi khoảng lặng đều là xa cách. Đôi khi đó chỉ là lúc mỗi người cần một chút không gian.",
+            "en": "Not every silence means distance. Sometimes each person simply needs a little space."
+          },
+          "imagePrompt": "Hai hoa ở hai góc",
+          "imagePath": "assets/images/cards/relationship/card_07.webp"
+        },
+        {
+          "id": "relationship_08",
+          "number": 8,
+          "text": {
+            "vi": "Bạn không cần trở thành một phiên bản khác của mình để được yêu.",
+            "en": "You do not need to become someone else to be loved."
+          },
+          "imagePrompt": "Một bông hoa đơn",
+          "imagePath": "assets/images/cards/relationship/card_08.webp"
+        },
+        {
+          "id": "relationship_09",
+          "number": 9,
+          "text": {
+            "vi": "Một lời xin lỗi chân thành đi cùng thay đổi sẽ có ý nghĩa hơn rất nhiều lời hứa.",
+            "en": "A sincere apology followed by change means more than many promises."
+          },
+          "imagePrompt": "Nụ hoa và hoa nở",
+          "imagePath": "assets/images/cards/relationship/card_09.webp"
+        },
+        {
+          "id": "relationship_10",
+          "number": 10,
+          "text": {
+            "vi": "Được lắng nghe cũng là một cách được yêu thương.",
+            "en": "Being listened to is also a way of being loved."
+          },
+          "imagePrompt": "Hai bông hoa nghiêng về nhau",
+          "imagePath": "assets/images/cards/relationship/card_10.webp"
+        },
+        {
+          "id": "relationship_11",
+          "number": 11,
+          "text": {
+            "vi": "Một mối quan hệ tốt vẫn có những ngày không dễ dàng. Điều quan trọng là cách hai người đối xử với nhau trong những ngày đó.",
+            "en": "A good relationship can still have difficult days. What matters is how you treat each other through them."
+          },
+          "imagePrompt": "Cẩm tú cầu xanh và hồng",
+          "imagePath": "assets/images/cards/relationship/card_11.webp"
+        },
+        {
+          "id": "relationship_12",
+          "number": 12,
+          "text": {
+            "vi": "Bạn được phép nói điều mình cần thay vì hy vọng người khác tự hiểu.",
+            "en": "You are allowed to say what you need instead of hoping someone will simply know."
+          },
+          "imagePrompt": "Hoa hướng ra khoảng trống",
+          "imagePath": "assets/images/cards/relationship/card_12.webp"
+        },
+        {
+          "id": "relationship_13",
+          "number": 13,
+          "text": {
+            "vi": "Tình cảm không cần lúc nào cũng dữ dội để là thật.",
+            "en": "Love does not have to feel intense all the time to be real."
+          },
+          "imagePrompt": "Hoa pastel dịu",
+          "imagePath": "assets/images/cards/relationship/card_13.webp"
+        },
+        {
+          "id": "relationship_14",
+          "number": 14,
+          "text": {
+            "vi": "Sự bình yên bên một người cũng có thể là một dạng rung động rất đẹp.",
+            "en": "Feeling peaceful with someone can be a beautiful kind of connection."
+          },
+          "imagePrompt": "Một cụm hoa mềm, nhiều khoảng thở",
+          "imagePath": "assets/images/cards/relationship/card_14.webp"
+        },
+        {
+          "id": "relationship_15",
+          "number": 15,
+          "text": {
+            "vi": "Bạn không cần tranh thắng trong mọi bất đồng. Đôi khi điều cần bảo vệ là sự tôn trọng giữa hai người.",
+            "en": "You do not need to win every disagreement. Sometimes what matters most is protecting mutual respect."
+          },
+          "imagePrompt": "Hai nhánh lá cân bằng",
+          "imagePath": "assets/images/cards/relationship/card_15.webp"
+        },
+        {
+          "id": "relationship_16",
+          "number": 16,
+          "text": {
+            "vi": "Yêu thương không đồng nghĩa với việc phải chịu đựng mọi thứ.",
+            "en": "Love does not mean having to tolerate everything."
+          },
+          "imagePrompt": "Hoa tách khỏi cụm",
+          "imagePath": "assets/images/cards/relationship/card_16.webp"
+        },
+        {
+          "id": "relationship_17",
+          "number": 17,
+          "text": {
+            "vi": "Một người có thể quan trọng với bạn mà vẫn không phù hợp để đi cùng bạn ở mọi chặng đường.",
+            "en": "Someone can matter deeply to you and still not be meant to walk every part of the journey with you."
+          },
+          "imagePrompt": "Hai cành hoa khác hướng",
+          "imagePath": "assets/images/cards/relationship/card_17.webp"
+        },
+        {
+          "id": "relationship_18",
+          "number": 18,
+          "text": {
+            "vi": "Bạn có quyền thay đổi cách mình muốn được đối xử.",
+            "en": "You are allowed to change what you are willing to accept in a relationship."
+          },
+          "imagePrompt": "Hoa đang chuyển từ nụ sang nở",
+          "imagePath": "assets/images/cards/relationship/card_18.webp"
+        },
+        {
+          "id": "relationship_19",
+          "number": 19,
+          "text": {
+            "vi": "Sự an toàn trong một mối quan hệ được xây từ nhiều lần giữ lời nhỏ bé.",
+            "en": "Trust grows through many small moments of keeping your word."
+          },
+          "imagePrompt": "Nhiều hoa nhỏ kết thành chùm",
+          "imagePath": "assets/images/cards/relationship/card_19.webp"
+        },
+        {
+          "id": "relationship_20",
+          "number": 20,
+          "text": {
+            "vi": "Bạn không cần luôn mạnh mẽ trước người mình thương.",
+            "en": "You do not always have to be strong around the people you love."
+          },
+          "imagePrompt": "Một hoa lớn được lá bao quanh",
+          "imagePath": "assets/images/cards/relationship/card_20.webp"
+        },
+        {
+          "id": "relationship_21",
+          "number": 21,
+          "text": {
+            "vi": "Có những người thể hiện tình cảm khác bạn. Hiểu cách nhau yêu thương cũng cần thời gian.",
+            "en": "People can express care differently. Learning each other's language of love takes time."
+          },
+          "imagePrompt": "Hai loại hoa khác nhau cùng khung",
+          "imagePath": "assets/images/cards/relationship/card_21.webp"
+        },
+        {
+          "id": "relationship_22",
+          "number": 22,
+          "text": {
+            "vi": "Nếu một điều làm bạn buồn, cảm xúc đó vẫn xứng đáng được nói ra dù người khác không cố ý làm bạn tổn thương.",
+            "en": "If something hurts you, your feelings are still worth expressing even when the other person did not mean to hurt you."
+          },
+          "imagePrompt": "Một hoa cúi, một hoa hướng tới",
+          "imagePath": "assets/images/cards/relationship/card_22.webp"
+        },
+        {
+          "id": "relationship_23",
+          "number": 23,
+          "text": {
+            "vi": "Gần gũi không có nghĩa là phải biết mọi điều về nhau.",
+            "en": "Closeness does not mean having to know everything about each other."
+          },
+          "imagePrompt": "Các hoa gần nhau nhưng không chạm",
+          "imagePath": "assets/images/cards/relationship/card_23.webp"
+        },
+        {
+          "id": "relationship_24",
+          "number": 24,
+          "text": {
+            "vi": "Bạn vẫn có thể giữ đời sống riêng khi đang yêu một ai đó.",
+            "en": "You can keep a life of your own while loving someone."
+          },
+          "imagePrompt": "Hai cụm hoa độc lập",
+          "imagePath": "assets/images/cards/relationship/card_24.webp"
+        },
+        {
+          "id": "relationship_25",
+          "number": 25,
+          "text": {
+            "vi": "Có những mối quan hệ trưởng thành bằng cách học cách sửa chữa sau những lần hiểu lầm.",
+            "en": "Some relationships grow by learning how to repair after misunderstandings."
+          },
+          "imagePrompt": "Cành uốn cong rồi nối lại",
+          "imagePath": "assets/images/cards/relationship/card_25.webp"
+        },
+        {
+          "id": "relationship_26",
+          "number": 26,
+          "text": {
+            "vi": "Bạn không cần đáp lại mọi kỳ vọng chỉ để giữ một mối quan hệ.",
+            "en": "You do not have to meet every expectation just to keep a relationship."
+          },
+          "imagePrompt": "Một bông hoa đứng riêng",
+          "imagePath": "assets/images/cards/relationship/card_26.webp"
+        },
+        {
+          "id": "relationship_27",
+          "number": 27,
+          "text": {
+            "vi": "Sự gần gũi thật sự cho phép cả hai người được thành thật mà không phải quá sợ hãi.",
+            "en": "Real closeness makes room for honesty without constant fear."
+          },
+          "imagePrompt": "Hai hoa mở về phía nhau",
+          "imagePath": "assets/images/cards/relationship/card_27.webp"
+        },
+        {
+          "id": "relationship_28",
+          "number": 28,
+          "text": {
+            "vi": "Có những lúc yêu thương là ở lại. Có những lúc yêu thương là biết khi nào nên lùi lại.",
+            "en": "Sometimes love means staying. Sometimes it means knowing when to step back."
+          },
+          "imagePrompt": "Hai nhánh, một gần một xa",
+          "imagePath": "assets/images/cards/relationship/card_28.webp"
+        },
+        {
+          "id": "relationship_29",
+          "number": 29,
+          "text": {
+            "vi": "Không phải mọi mối quan hệ kết thúc đều là một mối quan hệ thất bại.",
+            "en": "Not every relationship that ends was a failure."
+          },
+          "imagePrompt": "Hoa rụng và nụ mới",
+          "imagePath": "assets/images/cards/relationship/card_29.webp"
+        },
+        {
+          "id": "relationship_30",
+          "number": 30,
+          "text": {
+            "vi": "Một mối quan hệ đã từng đẹp vẫn có thể được trân trọng ngay cả khi nó không còn như trước.",
+            "en": "A relationship that was once beautiful can still be cherished even if it is no longer the same."
+          },
+          "imagePrompt": "Hoa nở và hoa đã qua kỳ",
+          "imagePath": "assets/images/cards/relationship/card_30.webp"
+        },
+        {
+          "id": "relationship_31",
+          "number": 31,
+          "text": {
+            "vi": "Bạn không cần vội tha thứ để chứng minh rằng mình đã ổn.",
+            "en": "You do not have to rush forgiveness to prove that you are okay."
+          },
+          "imagePrompt": "Nụ hoa khép",
+          "imagePath": "assets/images/cards/relationship/card_31.webp"
+        },
+        {
+          "id": "relationship_32",
+          "number": 32,
+          "text": {
+            "vi": "Có những tổn thương cần thời gian trước khi có thể nói về chúng một cách nhẹ nhàng.",
+            "en": "Some hurts need time before they can be spoken about gently."
+          },
+          "imagePrompt": "Hoa mềm, nền thoáng",
+          "imagePath": "assets/images/cards/relationship/card_32.webp"
+        },
+        {
+          "id": "relationship_33",
+          "number": 33,
+          "text": {
+            "vi": "Tha thứ cho ai đó không có nghĩa là bạn phải cho họ lại vị trí cũ trong cuộc sống mình.",
+            "en": "Forgiving someone does not mean giving them the same place in your life again."
+          },
+          "imagePrompt": "Hai cụm hoa có khoảng cách",
+          "imagePath": "assets/images/cards/relationship/card_33.webp"
+        },
+        {
+          "id": "relationship_34",
+          "number": 34,
+          "text": {
+            "vi": "Bạn có thể nhớ một người mà vẫn biết rằng quay lại không phải điều mình muốn.",
+            "en": "You can miss someone and still know that going back is not what you want."
+          },
+          "imagePrompt": "Một bông hoa hướng về phía sau",
+          "imagePath": "assets/images/cards/relationship/card_34.webp"
+        },
+        {
+          "id": "relationship_35",
+          "number": 35,
+          "text": {
+            "vi": "Nỗi nhớ không phải lúc nào cũng là dấu hiệu rằng bạn đã chọn sai.",
+            "en": "Missing someone does not always mean you made the wrong choice."
+          },
+          "imagePrompt": "Một hoa đơn giữa khoảng rộng",
+          "imagePath": "assets/images/cards/relationship/card_35.webp"
+        },
+        {
+          "id": "relationship_36",
+          "number": 36,
+          "text": {
+            "vi": "Bạn được phép buồn vì một điều đã kết thúc và đồng thời biết rằng kết thúc đó là cần thiết.",
+            "en": "You are allowed to grieve what ended and still know that the ending was necessary."
+          },
+          "imagePrompt": "Hoa tàn cạnh nụ mới",
+          "imagePath": "assets/images/cards/relationship/card_36.webp"
+        },
+        {
+          "id": "relationship_37",
+          "number": 37,
+          "text": {
+            "vi": "Có những câu trả lời bạn sẽ không bao giờ nhận được. Bạn vẫn có thể tiếp tục sống nhẹ hơn.",
+            "en": "There may be answers you never receive. You can still keep moving toward a lighter life."
+          },
+          "imagePrompt": "Khoảng trống lớn, vài nhánh hoa",
+          "imagePath": "assets/images/cards/relationship/card_37.webp"
+        },
+        {
+          "id": "relationship_38",
+          "number": 38,
+          "text": {
+            "vi": "Một trái tim từng thất vọng vẫn có thể mở lòng lại theo nhịp của riêng mình.",
+            "en": "A heart that has been disappointed can open again at its own pace."
+          },
+          "imagePrompt": "Nụ và hoa nở",
+          "imagePath": "assets/images/cards/relationship/card_38.webp"
+        },
+        {
+          "id": "relationship_39",
+          "number": 39,
+          "text": {
+            "vi": "Chữa lành không có nghĩa là không còn nhớ. Chỉ là ký ức không còn giữ bạn ở nguyên một chỗ.",
+            "en": "Healing does not mean forgetting. It means the memory no longer keeps you stuck in one place."
+          },
+          "imagePrompt": "Cành hoa hướng lên",
+          "imagePath": "assets/images/cards/relationship/card_39.webp"
+        },
+        {
+          "id": "relationship_40",
+          "number": 40,
+          "text": {
+            "vi": "Bạn không cần ép mình sẵn sàng cho một mối quan hệ mới trước khi thật sự muốn.",
+            "en": "You do not have to force yourself to be ready for a new relationship before you truly are."
+          },
+          "imagePrompt": "Nụ hoa chưa nở",
+          "imagePath": "assets/images/cards/relationship/card_40.webp"
+        },
+        {
+          "id": "relationship_41",
+          "number": 41,
+          "text": {
+            "vi": "Tình bạn tốt không đòi hỏi bạn luôn phải có năng lượng để xuất hiện hoàn hảo.",
+            "en": "A good friendship does not require you to always show up at your best."
+          },
+          "imagePrompt": "Nhiều chùm hoa khác màu",
+          "imagePath": "assets/images/cards/relationship/card_41.webp"
+        },
+        {
+          "id": "relationship_42",
+          "number": 42,
+          "text": {
+            "vi": "Có những người bạn có thể lâu không gặp nhưng sự ấm áp vẫn còn nguyên khi gặp lại.",
+            "en": "Some friendships can go quiet for a while and still feel warm when you meet again."
+          },
+          "imagePrompt": "Hai cụm hoa cách xa",
+          "imagePath": "assets/images/cards/relationship/card_42.webp"
+        },
+        {
+          "id": "relationship_43",
+          "number": 43,
+          "text": {
+            "vi": "Gia đình có thể yêu nhau và vẫn cần học cách hiểu nhau tốt hơn.",
+            "en": "Family can love one another and still need to learn how to understand each other better."
+          },
+          "imagePrompt": "Nhiều hoa cùng một cành",
+          "imagePath": "assets/images/cards/relationship/card_43.webp"
+        },
+        {
+          "id": "relationship_44",
+          "number": 44,
+          "text": {
+            "vi": "Bạn được phép xây một kiểu gắn kết khác với những gì mình từng lớn lên cùng.",
+            "en": "You are allowed to build a different kind of connection from what you grew up with."
+          },
+          "imagePrompt": "Nhiều nhánh mới mọc",
+          "imagePath": "assets/images/cards/relationship/card_44.webp"
+        },
+        {
+          "id": "relationship_45",
+          "number": 45,
+          "text": {
+            "vi": "Không phải tất cả những người mình yêu đều cần có cùng một vai trò trong cuộc sống.",
+            "en": "Not everyone you love needs to hold the same role in your life."
+          },
+          "imagePrompt": "Nhiều loại hoa, nhiều vị trí",
+          "imagePath": "assets/images/cards/relationship/card_45.webp"
+        },
+        {
+          "id": "relationship_46",
+          "number": 46,
+          "text": {
+            "vi": "Một mối quan hệ có thể thay đổi hình thức mà vẫn giữ được sự trân trọng.",
+            "en": "A relationship can change shape and still keep its sense of care."
+          },
+          "imagePrompt": "Hoa khác giai đoạn nở",
+          "imagePath": "assets/images/cards/relationship/card_46.webp"
+        },
+        {
+          "id": "relationship_47",
+          "number": 47,
+          "text": {
+            "vi": "Bạn xứng đáng với những mối quan hệ nơi mình không phải liên tục chứng minh rằng mình đáng được ở lại.",
+            "en": "You deserve relationships where you do not have to constantly prove that you are worth staying for."
+          },
+          "imagePrompt": "Cẩm tú cầu tròn đầy",
+          "imagePath": "assets/images/cards/relationship/card_47.webp"
+        },
+        {
+          "id": "relationship_48",
+          "number": 48,
+          "text": {
+            "vi": "Tình cảm đẹp nhất thường để cả hai người có thêm không gian để lớn lên.",
+            "en": "The healthiest love often gives both people more room to grow."
+          },
+          "imagePrompt": "Hai cành hoa vươn theo hai hướng",
+          "imagePath": "assets/images/cards/relationship/card_48.webp"
+        },
+        {
+          "id": "relationship_49",
+          "number": 49,
+          "text": {
+            "vi": "Bạn không cần biết một mối quan hệ sẽ kéo dài bao lâu để trân trọng những gì chân thành đang có.",
+            "en": "You do not need to know how long a relationship will last to value what is genuine in it now."
+          },
+          "imagePrompt": "Hoa đang nở trong hiện tại",
+          "imagePath": "assets/images/cards/relationship/card_49.webp"
+        },
+        {
+          "id": "relationship_50",
+          "number": 50,
+          "text": {
+            "vi": "Mong những mối quan hệ bạn chọn giữ lại là những nơi khiến bạn cảm thấy được tôn trọng, được lắng nghe và được là chính mình.",
+            "en": "May the relationships you choose to keep be places where you feel respected, heard, and free to be yourself."
+          },
+          "imagePrompt": "Cụm hoa cân bằng, nhiều màu",
+          "imagePath": "assets/images/cards/relationship/card_50.webp"
+        }
+      ]
+    }
+  ]
+}

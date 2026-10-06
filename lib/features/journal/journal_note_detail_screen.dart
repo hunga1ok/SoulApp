@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/design_system/design_system.dart';
+import '../../data/local/image_store.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'journal_note_models.dart';
+import 'new_journal_note_screen.dart';
 
 class JournalNoteDetailScreen extends ConsumerWidget {
   const JournalNoteDetailScreen({super.key, required this.note});
@@ -25,6 +27,21 @@ class JournalNoteDetailScreen extends ConsumerWidget {
         title: note.title,
         onBack: () => Navigator.pop(context),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.edit_outlined, color: SoulColors.plum),
+            tooltip: l10n.editNote,
+            onPressed: () async {
+              final updated = await Navigator.push<bool>(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => NewJournalNoteScreen(existingNote: note),
+                ),
+              );
+              if (updated == true && context.mounted) {
+                Navigator.pop(context);
+              }
+            },
+          ),
           IconButton(
             icon: const Icon(
               Icons.delete_outline_rounded,
@@ -124,63 +141,50 @@ class JournalNoteDetailScreen extends ConsumerWidget {
             const Divider(color: SoulColors.line, height: 1),
             const SizedBox(height: SoulSpace.lg),
 
-            // Section label
-            Text(
-              l10n.allGratitudesInNote,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: SoulColors.muted,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: SoulSpace.md),
-
-            // List of complete combined sentences
-            for (int i = 0; i < note.sentences.length; i++) ...[
-              SoulCard(
-                color: SoulColors.surface,
-                padding: const EdgeInsets.all(SoulSpace.md),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 28,
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: SoulColors.lilac,
-                        shape: BoxShape.circle,
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${i + 1}',
-                        style: const TextStyle(
-                          color: SoulColors.plum,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                        ),
-                      ),
+            // Attached photo preview
+            if (note.imagePath != null) ...[
+              Consumer(
+                builder: (context, ref, _) {
+                  final fileAsync = ref.watch(
+                    FutureProvider.autoDispose(
+                      (ref) => ref
+                          .watch(imageStoreProvider)
+                          .resolve(note.imagePath!),
                     ),
-                    const SizedBox(width: SoulSpace.md),
-                    Expanded(
-                      child: Text(
-                        note.sentences[i],
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: SoulColors.softInk,
-                          height: 1.5,
+                  );
+                  return fileAsync.when(
+                    data: (file) {
+                      if (!file.existsSync()) return const SizedBox.shrink();
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(SoulRadius.card),
+                        child: Container(
+                          constraints: const BoxConstraints(maxHeight: 280),
+                          width: double.infinity,
+                          child: Image.file(file, fit: BoxFit.cover),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
+                      );
+                    },
+                    loading: () => const SizedBox.shrink(),
+                    error: (_, __) => const SizedBox.shrink(),
+                  );
+                },
               ),
-              const SizedBox(height: SoulSpace.sm),
+              const SizedBox(height: SoulSpace.lg),
             ],
 
-            const SizedBox(height: SoulSpace.xl),
-            SoulButton(
-              label: l10n.close,
-              variant: SoulButtonVariant.secondary,
-              onPressed: () => Navigator.pop(context),
-            ),
+            // Note text paragraphs
+            for (int i = 0; i < note.sentences.length; i++) ...[
+              Text(
+                note.sentences[i],
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: SoulColors.softInk,
+                  height: 1.65,
+                  fontSize: 16,
+                ),
+              ),
+              if (i < note.sentences.length - 1)
+                const SizedBox(height: SoulSpace.md),
+            ],
           ],
         ),
       ),

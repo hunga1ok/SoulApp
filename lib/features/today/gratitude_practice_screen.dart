@@ -1,16 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
 import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/platform/image_picking.dart';
+import '../../data/local/image_store.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../l10n/app_localizations.dart';
-
-enum _GratitudeFlowStage { intro, practicing, reviewing, completed }
+import '../journal/journal_note_models.dart';
 
 class GratitudePracticeScreen extends ConsumerStatefulWidget {
   const GratitudePracticeScreen({super.key});
@@ -22,652 +24,476 @@ class GratitudePracticeScreen extends ConsumerStatefulWidget {
 
 class _GratitudePracticeScreenState
     extends ConsumerState<GratitudePracticeScreen> {
-  static const int _totalCount = 10;
   static const String _calmTrackAsset =
       'assets/audio/music/so-11-warm-felt-piano.m4a';
 
-  _GratitudeFlowStage _stage = _GratitudeFlowStage.intro;
-  int _currentIndex = 0;
-  final List<GratitudeDraftItem> _items = List.generate(
-    _totalCount,
-    (_) => GratitudeDraftItem(),
-  );
-
-  late final TextEditingController _gratitudeController;
-  late final TextEditingController _reasonController;
+  late final TextEditingController _contentController;
   bool _isSaving = false;
+  bool _isGuidanceExpanded = false;
+  String? _attachedLocalImagePath;
 
   @override
   void initState() {
     super.initState();
-    _gratitudeController = TextEditingController();
-    _reasonController = TextEditingController();
-    _loadCurrentItemIntoControllers();
+    _contentController = TextEditingController();
+    _contentController.addListener(() => setState(() {}));
+    _loadExistingEntries();
   }
 
   @override
   void dispose() {
-    _gratitudeController.dispose();
-    _reasonController.dispose();
+    _contentController.dispose();
     super.dispose();
   }
 
-  void _loadCurrentItemIntoControllers() {
-    final item = _items[_currentIndex];
-    _gratitudeController.text = item.gratitudeText;
-    _reasonController.text = item.reasonText;
+  Future<void> _loadExistingEntries() async {
+    final entries = await ref
+        .read(gratitudeRepositoryProvider)
+        .getEntriesForDay(1);
+    if (entries.isNotEmpty && mounted) {
+      final lines = <String>[];
+      String? foundImage;
+      for (final e in entries) {
+        if (e.gratitudeText.trim().isNotEmpty) {
+          lines.add(e.gratitudeText.trim());
+        }
+        if (e.reasonText.startsWith('image:')) {
+          foundImage ??= e.reasonText.substring('image:'.length).trim();
+        }
+      }
+      if (lines.isNotEmpty && _contentController.text.isEmpty) {
+        setState(() {
+          _contentController.text = lines.join('\n\n');
+        });
+      }
+    }
   }
 
-  void _syncControllersToCurrentItem() {
-    final item = _items[_currentIndex];
-    item.gratitudeText = _gratitudeController.text;
-    item.reasonText = _reasonController.text;
-  }
-
-  bool get _hasAnyFilledItem {
-    return _items.any((item) => item.gratitudeText.trim().isNotEmpty) ||
-        _gratitudeController.text.trim().isNotEmpty;
-  }
-
-  void _onNext() {
-    _syncControllersToCurrentItem();
-    if (_currentIndex < _totalCount - 1) {
+  Future<void> _pickImage() async {
+    final picker = ref.read(imagePickingProvider);
+    final picked = await picker.pick(fromCamera: false);
+    if (picked != null && mounted) {
       setState(() {
-        _currentIndex++;
-        _loadCurrentItemIntoControllers();
+        _attachedLocalImagePath = picked;
       });
+    }
+  }
+
+  void _insertTemplatePrompt() {
+    final l10n = AppLocalizations.of(context)!;
+    final template = '${l10n.gratitudePromptTemplateText}\n';
+    final currentText = _contentController.text;
+    final selection = _contentController.selection;
+
+    if (selection.isValid && selection.start >= 0) {
+      final newText = currentText.replaceRange(
+        selection.start,
+        selection.end,
+        template,
+      );
+      _contentController.value = TextEditingValue(
+        text: newText,
+        selection: TextSelection.collapsed(
+          offset: selection.start + template.length,
+        ),
+      );
     } else {
-      setState(() {
-        _stage = _GratitudeFlowStage.reviewing;
-      });
+      _contentController.text =
+          currentText.isEmpty ? template : '$currentText\n$template';
+      _contentController.selection = TextSelection.collapsed(
+        offset: _contentController.text.length,
+      );
     }
-  }
-
-  void _onPrevious() {
-    _syncControllersToCurrentItem();
-    if (_currentIndex > 0) {
-      setState(() {
-        _currentIndex--;
-        _loadCurrentItemIntoControllers();
-      });
-    }
-  }
-
-  void _onSkipProgress() {
-    _syncControllersToCurrentItem();
-    final currentItem = _items[_currentIndex];
-    if (currentItem.gratitudeText.trim().isNotEmpty &&
-        currentItem.thankYouTaps == 0) {
-      currentItem.thankYouTaps = 1;
-    }
-    if (_hasAnyFilledItem) {
-      setState(() => _stage = _GratitudeFlowStage.reviewing);
-    } else {
-      _completePractice();
-    }
-  }
-
-  void _onEditFromReview(int index) {
-    setState(() {
-      _currentIndex = index;
-      _stage = _GratitudeFlowStage.practicing;
-      _loadCurrentItemIntoControllers();
-    });
-  }
-
-  void _onSelectLevel(int level) {
-    HapticFeedback.selectionClick();
-    setState(() {
-      _items[_currentIndex].thankYouTaps = level;
-    });
   }
 
   Future<void> _completePractice() async {
-    if (_isSaving) return;
+    final text = _contentController.text.trim();
+    if (text.isEmpty || _isSaving) return;
+
     setState(() => _isSaving = true);
+    final l10n = AppLocalizations.of(context)!;
 
     try {
       final journeyRepo = ref.read(journeyRepositoryProvider);
       final activeJourney = await journeyRepo.activeJourney();
 
-      final filledItems =
-          _items.where((i) => i.gratitudeText.trim().isNotEmpty).toList();
+      String? reasonWithImage;
+      if (_attachedLocalImagePath != null) {
+        final relPath = await ref
+            .read(imageStoreProvider)
+            .saveJournalImage(_attachedLocalImagePath!);
+        reasonWithImage = 'image:$relPath';
+      }
 
       final gratitudeRepo = ref.read(gratitudeRepositoryProvider);
-      await gratitudeRepo.saveEntries(
-        journeyDay: 1,
-        userJourneyId: activeJourney?.id,
-        items: filledItems,
-      );
+
+      // Split lines/bullet points if formatted as distinct paragraphs/lines
+      final rawLines =
+          text
+              .split('\n')
+              .map((line) => line.trim())
+              .where((line) => line.isNotEmpty)
+              .toList();
+
+      if (rawLines.length > 1) {
+        final draftItems = <GratitudeDraftItem>[];
+        for (int i = 0; i < rawLines.length; i++) {
+          draftItems.add(
+            GratitudeDraftItem(
+              gratitudeText: rawLines[i],
+              reasonText: i == 0 ? (reasonWithImage ?? '') : '',
+              thankYouTaps: 1,
+            ),
+          );
+        }
+        await gratitudeRepo.saveEntries(
+          journeyDay: 1,
+          userJourneyId: activeJourney?.id,
+          items: draftItems,
+        );
+      } else {
+        await gratitudeRepo.addSingleEntry(
+          gratitudeText: text,
+          reasonText: reasonWithImage,
+          journeyDay: 1,
+          userJourneyId: activeJourney?.id,
+        );
+      }
 
       ref.invalidate(todayGratitudeEntriesProvider);
       ref.invalidate(recentGratitudeEntriesProvider);
 
       if (!mounted) return;
-      setState(() {
-        _isSaving = false;
-        _stage = _GratitudeFlowStage.completed;
-      });
+      _showCompletionDialog(context, l10n);
     } catch (_) {
       if (!mounted) return;
       setState(() => _isSaving = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context)!.somethingWentWrong),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.somethingWentWrong)));
     }
+  }
+
+  void _showCompletionDialog(BuildContext context, AppLocalizations l10n) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) {
+        return Dialog(
+          backgroundColor: SoulColors.surface,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(SoulRadius.card),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(SoulSpace.xl),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 56,
+                  height: 56,
+                  decoration: const BoxDecoration(
+                    color: SoulColors.lilac,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.auto_awesome_rounded,
+                    color: SoulColors.plum,
+                    size: 30,
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.md),
+                Text(
+                  l10n.gratitudeCompletedTitle,
+                  style: Theme.of(
+                    dialogContext,
+                  ).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: SoulColors.softInk,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: SoulSpace.sm),
+                Text(
+                  l10n.gratitudeCompletedBody,
+                  style: Theme.of(dialogContext).textTheme.bodyMedium?.copyWith(
+                    color: SoulColors.muted,
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: SoulSpace.xl),
+                SoulButton(
+                  label: l10n.gratitudeBackToToday,
+                  onPressed: () {
+                    Navigator.pop(dialogContext); // pop dialog
+                    context.pop(); // return to Today
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
+    final dayTheme = JourneyDayThemes.getTitle(1, locale);
 
     return Scaffold(
       backgroundColor: SoulColors.paper,
       appBar: SoulAppBar(
         title: l10n.gratitudePracticeTitle,
-        onBack:
-            _stage == _GratitudeFlowStage.completed
-                ? null
-                : () {
-                  if (_stage == _GratitudeFlowStage.reviewing) {
-                    setState(() => _stage = _GratitudeFlowStage.practicing);
-                  } else if (_stage == _GratitudeFlowStage.practicing &&
-                      _currentIndex > 0) {
-                    _onPrevious();
-                  } else {
-                    context.pop();
-                  }
-                },
-        actions: [
-          if (_stage == _GratitudeFlowStage.intro ||
-              _stage == _GratitudeFlowStage.practicing)
-            TextButton(
-              onPressed: _onSkipProgress,
-              child: Text(
-                l10n.gratitudeSkipProgress,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: SoulColors.plum,
-                ),
-              ),
-            ),
-          const _AudioIndicator(assetPath: _calmTrackAsset),
-          const SizedBox(width: SoulSpace.sm),
+        onBack: () => context.pop(),
+        actions: const [
+          _AudioIndicator(assetPath: _calmTrackAsset),
+          SizedBox(width: SoulSpace.sm),
         ],
       ),
       body: SafeArea(
-        child: switch (_stage) {
-          _GratitudeFlowStage.intro => _buildIntroView(context, l10n),
-          _GratitudeFlowStage.practicing => _buildPracticingView(context, l10n),
-          _GratitudeFlowStage.reviewing => _buildReviewView(context, l10n),
-          _GratitudeFlowStage.completed => _buildCompletedView(context, l10n),
-        },
-      ),
-    );
-  }
-
-  Widget _buildIntroView(BuildContext context, AppLocalizations l10n) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
-              child: Padding(
-                padding: const EdgeInsets.all(SoulSpace.xl),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.all(SoulSpace.xl),
-                      decoration: BoxDecoration(
-                        color: SoulColors.rose,
-                        borderRadius: BorderRadius.circular(SoulRadius.card),
-                      ),
-                      child: Column(
-                        children: [
-                          const Icon(
-                            Icons.favorite_rounded,
-                            size: 48,
-                            color: SoulColors.softInk,
-                          ),
-                          const SizedBox(height: SoulSpace.md),
-                          Text(
-                            l10n.gratitudePracticeIntroTitle,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineMedium,
-                          ),
-                          const SizedBox(height: SoulSpace.sm),
-                          Text(
-                            l10n.gratitudePracticeIntroBody,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodyLarge?.copyWith(
-                              color: SoulColors.muted,
-                              height: 1.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    SoulButton(
-                      label: l10n.gratitudeStartPractice,
-                      onPressed: () {
-                        setState(() => _stage = _GratitudeFlowStage.practicing);
-                      },
-                    ),
-                    const SizedBox(height: SoulSpace.md),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildPracticingView(BuildContext context, AppLocalizations l10n) {
-    final currentItem = _items[_currentIndex];
-    final isFormValid =
-        _gratitudeController.text.trim().isNotEmpty &&
-        currentItem.thankYouTaps >= 1;
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(
-        horizontal: SoulSpace.lg,
-        vertical: SoulSpace.md,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                l10n.gratitudeItemProgress(_currentIndex + 1, _totalCount),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: SoulColors.muted,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Text(
-                '${((_currentIndex + 1) / _totalCount * 100).round()}%',
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(color: SoulColors.muted),
-              ),
-            ],
-          ),
-          const SizedBox(height: SoulSpace.xs),
-          SoulProgressBar(
-            value: (_currentIndex + 1) / _totalCount,
-            semanticsLabel: l10n.gratitudeItemProgress(
-              _currentIndex + 1,
-              _totalCount,
-            ),
-          ),
-          const SizedBox(height: SoulSpace.xl),
-
-          // Field 1: Gratitude Item
-          Text(
-            l10n.gratitudeFieldPrompt,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: SoulSpace.sm),
-          SoulTextField(
-            controller: _gratitudeController,
-            label: l10n.gratitudeFieldPrompt,
-            hint: l10n.gratitudeFieldPlaceholder,
-            maxLines: 2,
-            textCapitalization: TextCapitalization.sentences,
-            onChanged: (val) {
-              setState(() {
-                currentItem.gratitudeText = val;
-              });
-            },
-          ),
-          const SizedBox(height: SoulSpace.xl),
-
-          // Field 2: Reason ("Vì sao...")
-          Text(
-            l10n.gratitudeReasonPrompt,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: SoulSpace.sm),
-          SoulTextField(
-            controller: _reasonController,
-            label: l10n.gratitudeReasonPrompt,
-            hint: l10n.gratitudeReasonPlaceholder,
-            maxLines: 2,
-            textCapitalization: TextCapitalization.sentences,
-            onChanged: (val) {
-              setState(() {
-                currentItem.reasonText = val;
-              });
-            },
-          ),
-          const SizedBox(height: SoulSpace.xl),
-
-          // 1-click Intensity / Level selection
-          Text(
-            l10n.gratitudeTapLevelHint,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: SoulColors.muted,
-            ),
-          ),
-          const SizedBox(height: SoulSpace.sm),
-          Row(
-            children: [
-              for (int level = 1; level <= 3; level++) ...[
-                Expanded(
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(SoulRadius.card),
-                    onTap: () => _onSelectLevel(level),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: SoulSpace.md,
-                        horizontal: SoulSpace.xs,
-                      ),
-                      decoration: BoxDecoration(
-                        color:
-                            currentItem.thankYouTaps == level
-                                ? SoulColors.lilac
-                                : SoulColors.surface,
-                        borderRadius: BorderRadius.circular(SoulRadius.card),
-                        border: Border.all(
-                          color:
-                              currentItem.thankYouTaps == level
-                                  ? SoulColors.lilacStrong
-                                  : SoulColors.line,
-                          width: currentItem.thankYouTaps == level ? 2 : 1,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              for (int t = 1; t <= level; t++)
-                                const Icon(
-                                  Icons.check_circle_rounded,
-                                  size: 16,
-                                  color: SoulColors.gold,
-                                ),
-                            ],
-                          ),
-                          const SizedBox(height: SoulSpace.xs),
-                          Text(
-                            switch (level) {
-                              1 => l10n.gratitudeLevelLow,
-                              2 => l10n.gratitudeLevelMedium,
-                              _ => l10n.gratitudeLevelHigh,
-                            },
-                            textAlign: TextAlign.center,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodySmall?.copyWith(
-                              fontWeight:
-                                  currentItem.thankYouTaps == level
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
-                              color:
-                                  currentItem.thankYouTaps == level
-                                      ? SoulColors.softInk
-                                      : SoulColors.muted,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                if (level < 3) const SizedBox(width: SoulSpace.sm),
-              ],
-            ],
-          ),
-          const SizedBox(height: SoulSpace.xl),
-
-          // Primary Navigation Button
-          SoulButton(
-            label:
-                _currentIndex == _totalCount - 1
-                    ? l10n.gratitudeReviewTitle
-                    : l10n.gratitudeAddAndNext,
-            onPressed: isFormValid ? _onNext : null,
-          ),
-          const SizedBox(height: SoulSpace.sm),
-
-          Wrap(
-            alignment: WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            spacing: SoulSpace.md,
-            children: [
-              if (_currentIndex > 0)
-                TextButton(
-                  onPressed: _onPrevious,
-                  child: Text(
-                    l10n.cancel,
-                    style: const TextStyle(color: SoulColors.muted),
-                  ),
-                ),
-              TextButton(
-                onPressed: _onSkipProgress,
-                child: Text(
-                  l10n.gratitudeSkipProgress,
-                  style: const TextStyle(
-                    color: SoulColors.plum,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: SoulSpace.lg),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildReviewView(BuildContext context, AppLocalizations l10n) {
-    final filledIndices = <int>[];
-    for (int i = 0; i < _items.length; i++) {
-      if (_items[i].gratitudeText.trim().isNotEmpty) {
-        filledIndices.add(i);
-      }
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(
             SoulSpace.lg,
             SoulSpace.md,
             SoulSpace.lg,
-            SoulSpace.sm,
+            SoulSpace.xl,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                l10n.gratitudeReviewTitleCount(filledIndices.length),
-                style: Theme.of(context).textTheme.headlineSmall,
+              // Daily Guidance Card (Expandable dropdown)
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    _isGuidanceExpanded = !_isGuidanceExpanded;
+                  });
+                },
+                borderRadius: BorderRadius.circular(SoulRadius.card),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: SoulColors.surface,
+                    borderRadius: BorderRadius.circular(SoulRadius.card),
+                    border: Border.all(color: SoulColors.line),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SoulSpace.md,
+                    vertical: SoulSpace.sm,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            l10n.dayProgress(1).toUpperCase(),
+                            style: Theme.of(
+                              context,
+                            ).textTheme.labelSmall?.copyWith(
+                              color: SoulColors.plum,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.8,
+                            ),
+                          ),
+                          const SizedBox(width: SoulSpace.xs),
+                          const Text(
+                            '·',
+                            style: TextStyle(color: SoulColors.muted),
+                          ),
+                          const SizedBox(width: SoulSpace.xs),
+                          Expanded(
+                            child: Text(
+                              dayTheme,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: SoulColors.softInk,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Icon(
+                            _isGuidanceExpanded
+                                ? Icons.keyboard_arrow_up_rounded
+                                : Icons.keyboard_arrow_down_rounded,
+                            color: SoulColors.plum,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                      if (_isGuidanceExpanded) ...[
+                        const SizedBox(height: SoulSpace.xs),
+                        const Divider(color: SoulColors.line, height: 12),
+                        const SizedBox(height: SoulSpace.xs),
+                        Text(
+                          l10n.gratitudeJournalPrompt,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(
+                            color: SoulColors.softInk.withValues(alpha: 0.85),
+                            height: 1.55,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               ),
-              const SizedBox(height: SoulSpace.xs),
-              Text(
-                l10n.gratitudeReviewSubtitle,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyMedium?.copyWith(color: SoulColors.muted),
+              const SizedBox(height: SoulSpace.md),
+
+              // Journal Paper Editor Card
+              Container(
+                decoration: BoxDecoration(
+                  color: SoulColors.surface,
+                  borderRadius: BorderRadius.circular(SoulRadius.card),
+                  border: Border.all(color: SoulColors.line),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.02),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(SoulSpace.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Toolbar
+                    Wrap(
+                      spacing: SoulSpace.xs,
+                      runSpacing: SoulSpace.xxs,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        TextButton.icon(
+                          onPressed: _insertTemplatePrompt,
+                          icon: const Icon(
+                            Icons.auto_fix_high_rounded,
+                            size: 16,
+                            color: SoulColors.plum,
+                          ),
+                          label: Text(
+                            l10n.insertPromptTemplate,
+                            style: const TextStyle(
+                              color: SoulColors.plum,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: _pickImage,
+                          icon: const Icon(
+                            Icons.add_photo_alternate_outlined,
+                            size: 16,
+                            color: SoulColors.plum,
+                          ),
+                          label: Text(
+                            _attachedLocalImagePath == null
+                                ? l10n.addPhoto
+                                : l10n.changePhoto,
+                            style: const TextStyle(
+                              color: SoulColors.plum,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Divider(color: SoulColors.line, height: 12),
+
+                    // Attached image thumbnail
+                    if (_attachedLocalImagePath != null) ...[
+                      Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.card,
+                            ),
+                            child: Image.file(
+                              File(_attachedLocalImagePath!),
+                              height: 180,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            top: 8,
+                            right: 8,
+                            child: Material(
+                              color: Colors.black.withValues(alpha: 0.6),
+                              shape: const CircleBorder(),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.close_rounded,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
+                                tooltip: l10n.removePhoto,
+                                onPressed: () {
+                                  setState(() {
+                                    _attachedLocalImagePath = null;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: SoulSpace.sm),
+                    ],
+
+                    // Ruled text editing field
+                    TextField(
+                      controller: _contentController,
+                      maxLines: 15,
+                      minLines: 8,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: SoulColors.softInk,
+                        height: 1.6,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        filled: false,
+                        contentPadding: EdgeInsets.zero,
+                        hintText: l10n.gratitudeJournalPlaceholder,
+                        hintStyle: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.muted.withValues(alpha: 0.7),
+                          height: 1.5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: SoulSpace.xl),
+
+              // Save button
+              SoulButton(
+                label: l10n.saveAndCompleteJournal,
+                onPressed:
+                    _contentController.text.trim().isEmpty || _isSaving
+                        ? null
+                        : _completePractice,
               ),
             ],
           ),
         ),
-        Expanded(
-          child: ListView.separated(
-            padding: const EdgeInsets.symmetric(
-              horizontal: SoulSpace.lg,
-              vertical: SoulSpace.sm,
-            ),
-            itemCount: filledIndices.length,
-            separatorBuilder: (_, _) => const SizedBox(height: SoulSpace.sm),
-            itemBuilder: (context, displayIndex) {
-              final originalIndex = filledIndices[displayIndex];
-              final item = _items[originalIndex];
-              return SoulCard(
-                color: SoulColors.surface,
-                padding: const EdgeInsets.all(SoulSpace.md),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 14,
-                      backgroundColor: SoulColors.lilac,
-                      child: Text(
-                        '${displayIndex + 1}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: SoulColors.lilacStrong,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: SoulSpace.md),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item.gratitudeText,
-                            style: Theme.of(context).textTheme.bodyLarge
-                                ?.copyWith(fontWeight: FontWeight.w600),
-                          ),
-                          if (item.reasonText.trim().isNotEmpty) ...[
-                            const SizedBox(height: SoulSpace.xs),
-                            Text(
-                              l10n.gratitudeReasonLabel(item.reasonText),
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodyMedium?.copyWith(
-                                color: SoulColors.muted,
-                                fontStyle: FontStyle.italic,
-                              ),
-                            ),
-                          ],
-                        ],
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.edit_outlined, size: 20),
-                      color: SoulColors.muted,
-                      onPressed: () => _onEditFromReview(originalIndex),
-                      tooltip: l10n.editEntry,
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(SoulSpace.lg),
-          child: SoulButton(
-            label: l10n.gratitudeCompletePractice,
-            onPressed:
-                _isSaving || filledIndices.isEmpty ? null : _completePractice,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCompletedView(BuildContext context, AppLocalizations l10n) {
-    final filledCount =
-        _items.where((i) => i.gratitudeText.trim().isNotEmpty).length;
-    final isSkipped = filledCount == 0;
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
-              child: Padding(
-                padding: const EdgeInsets.all(SoulSpace.xl),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.all(SoulSpace.xl),
-                      decoration: BoxDecoration(
-                        color:
-                            isSkipped ? SoulColors.surface : SoulColors.lilac,
-                        borderRadius: BorderRadius.circular(SoulRadius.card),
-                        border:
-                            isSkipped
-                                ? Border.all(color: SoulColors.line)
-                                : null,
-                      ),
-                      child: Column(
-                        children: [
-                          Icon(
-                            isSkipped
-                                ? Icons.pause_circle_outline_rounded
-                                : Icons.auto_awesome_rounded,
-                            size: 56,
-                            color:
-                                isSkipped
-                                    ? SoulColors.muted
-                                    : SoulColors.lilacStrong,
-                          ),
-                          const SizedBox(height: SoulSpace.md),
-                          Text(
-                            isSkipped
-                                ? l10n.gratitudeSkippedTitle
-                                : l10n.gratitudeCompletedTitle,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headlineMedium,
-                          ),
-                          const SizedBox(height: SoulSpace.sm),
-                          Text(
-                            isSkipped
-                                ? l10n.gratitudeSkippedBody
-                                : l10n.gratitudeCompletedBodyCount(filledCount),
-                            textAlign: TextAlign.center,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.bodyLarge?.copyWith(
-                              color: SoulColors.muted,
-                              height: 1.5,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    SoulButton(
-                      label: l10n.gratitudeBackToToday,
-                      onPressed: () => context.pop(),
-                    ),
-                    const SizedBox(height: SoulSpace.md),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
+      ),
     );
   }
 }

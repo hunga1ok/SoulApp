@@ -79,6 +79,9 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/cards/healing/
+    - assets/images/cards/career/
+    - assets/images/cards/relationship/
     - assets/content/
     - assets/audio/
     - assets/audio/ambience/

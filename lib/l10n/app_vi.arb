@@ -210,6 +210,52 @@
   "close": "Đóng",
   "customNoteDefaultTheme": "Khoảnh khắc biết ơn",
   "gratitudeSentenceCount": "{count} điều biết ơn",
-  "allGratitudesInNote": "Những điều biết ơn trong bài viết này",
-  "sentencePreview": "Xem trước câu hoàn chỉnh:"
+  "allGratitudesInNote": "Nội dung ghi chú",
+  "sentencePreview": "Xem trước câu hoàn chỉnh:",
+  "soulCardsTitle": "Rút thẻ thông điệp",
+  "soulCardsSubtitle": "Lắng nghe thông điệp dẫn dắt cho tâm hồn bạn",
+  "dailyDrawRemaining": "Còn {count} lần rút hôm nay",
+  "@dailyDrawRemaining": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "dailyDrawLimitReached": "Đã rút đủ 2 thông điệp hôm nay",
+  "dailyDrawLimitHint": "Hãy lắng đọng và suy ngẫm cùng thông điệp hôm nay. Ngày mai bạn có thể rút tiếp nhé.",
+  "drawCardAction": "Rút thông điệp",
+  "drawAnotherCard": "Rút thêm thông điệp",
+  "reviewTodayCards": "Xem thông điệp hôm nay",
+  "cardDrawSuccess": "Thông điệp dành cho bạn",
+  "todayCardDrawBanner": "Thông điệp tâm hồn",
+  "chooseDeckPrompt": "Chọn một bộ thẻ để lắng nghe thông điệp",
+  "tapCardToReveal": "Chạm vào lá bài để mở thông điệp",
+  "saveToJournalAction": "Lưu vào nhật ký",
+  "savedToJournalSuccess": "Đã lưu thông điệp vào nhật ký",
+  "cardDrawHistory": "Lịch sử rút thẻ",
+  "deckCardCount": "{count} lá bài",
+  "@deckCardCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "soulCardsTab": "Rút thẻ",
+  "dailyDrawLimitDialogTitle": "Đã đủ 2 thông điệp hôm nay",
+  "dailyDrawLimitDialogMessage": "Hôm nay bạn đã nhận đủ 2 thông điệp dẫn lối rồi. Hãy lắng đọng và suy ngẫm cùng thông điệp hôm nay nhé. Ngày mai bạn có thể rút tiếp.",
+  "understood": "Đã hiểu",
+  "chooseDeckSubtitle": "Chọn một bộ thẻ để lắng nghe thông điệp dành cho bạn",
+  "drawFromThisDeck": "Rút thẻ bộ này",
+  "gratitudeJournalPrompt": "Ngày hôm nay, bạn bắt đầu trên hành trình biết ơn của mình. Hãy dành thời gian và tâm trí nghĩ về những điều khiến bạn biết ơn, dù là rất nhỏ bé. Cấu trúc gợi ý:\n\"Tôi biết ơn... vì...\"\nSau đó bạn hãy đọc lại những điều bạn vừa viết cùng với lòng biết ơn sâu sắc.",
+  "gratitudeJournalPlaceholder": "Viết những điều bạn biết ơn hôm nay như một trang nhật ký bình yên...\n\nVí dụ:\nTôi biết ơn tách cà phê ấm áp buổi sáng vì đã mang lại cho tôi sự tỉnh táo và an lành.\nTôi biết ơn nụ cười của một người bạn vì đã sưởi ấm tâm hồn tôi...",
+  "addPhoto": "Thêm ảnh",
+  "changePhoto": "Đổi ảnh",
+  "removePhoto": "Xóa ảnh",
+  "insertPromptTemplate": "Chèn mẫu câu",
+  "saveAndCompleteJournal": "Hoàn thành & Lưu nhật ký",
+  "gratitudePromptTemplateText": "Tôi biết ơn ... vì ...",
+  "chooseTheme": "Chọn chủ đề",
+  "editNote": "Chỉnh sửa ghi chú",
+  "noteUpdated": "Đã cập nhật ghi chú",
+  "gratitudeGuidanceTitle": "Hướng dẫn thực hành hôm nay",
+  "showGuidance": "Xem hướng dẫn",
+  "hideGuidance": "Thu gọn hướng dẫn"
 }

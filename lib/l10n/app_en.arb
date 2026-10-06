@@ -269,7 +269,7 @@
   "deleteNoteConfirmBody": "This note will be permanently removed from your journal.",
   "noteSaved": "Note saved to journal",
   "noteDeleted": "Note deleted",
-  "notesCount": "{count} notes",
+  "notesCount": "{count, plural, =1{1 note} other{{count} notes}}",
   "@notesCount": {
     "placeholders": {
       "count": {"type": "int"}
@@ -283,12 +283,58 @@
   "settingsSaved": "Settings saved",
   "close": "Close",
   "customNoteDefaultTheme": "Grateful Moment",
-  "gratitudeSentenceCount": "{count} gratitudes",
+  "gratitudeSentenceCount": "{count, plural, =1{1 gratitude} other{{count} gratitudes}}",
   "@gratitudeSentenceCount": {
     "placeholders": {
       "count": {"type": "int"}
     }
   },
-  "allGratitudesInNote": "Gratitudes in this note",
-  "sentencePreview": "Complete sentence preview:"
+  "allGratitudesInNote": "Note content",
+  "sentencePreview": "Complete sentence preview:",
+  "soulCardsTitle": "Soul Cards",
+  "soulCardsSubtitle": "Receive a guiding message for your soul",
+  "dailyDrawRemaining": "{count} draws remaining today",
+  "@dailyDrawRemaining": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "dailyDrawLimitReached": "2 daily messages drawn today",
+  "dailyDrawLimitHint": "Take time to reflect on today's messages. You can draw again tomorrow.",
+  "drawCardAction": "Draw a Card",
+  "drawAnotherCard": "Draw Another Card",
+  "reviewTodayCards": "View Today's Messages",
+  "cardDrawSuccess": "Your Guiding Message",
+  "todayCardDrawBanner": "Soul Message",
+  "chooseDeckPrompt": "Choose a deck to listen to its message",
+  "tapCardToReveal": "Tap the card to reveal your message",
+  "saveToJournalAction": "Save to Journal",
+  "savedToJournalSuccess": "Message saved to journal",
+  "cardDrawHistory": "Draw History",
+  "deckCardCount": "{count} cards",
+  "@deckCardCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "soulCardsTab": "Soul Cards",
+  "dailyDrawLimitDialogTitle": "Daily Limit Reached",
+  "dailyDrawLimitDialogMessage": "You have already received 2 guiding messages today. Take time to reflect on today's messages. You can draw again tomorrow.",
+  "understood": "Understood",
+  "chooseDeckSubtitle": "Choose a deck to receive your guiding message",
+  "drawFromThisDeck": "Draw from this deck",
+  "gratitudeJournalPrompt": "Today you continue your gratitude journey. Take time and presence of mind to reflect on the things you are grateful for, however small. Suggested pattern:\n\"I am grateful for... because...\"\nThen re-read what you have written with a deep feeling of appreciation.",
+  "gratitudeJournalPlaceholder": "Write the things you are grateful for today like a quiet journal page...\n\nExample:\nI am grateful for the warm cup of coffee this morning because it gave me alertness and peace.\nI am grateful for a friend's smile because it warmed my heart...",
+  "addPhoto": "Add photo",
+  "changePhoto": "Change photo",
+  "removePhoto": "Remove photo",
+  "insertPromptTemplate": "Insert template",
+  "saveAndCompleteJournal": "Complete & Save Journal",
+  "gratitudePromptTemplateText": "I am grateful for ... because ...",
+  "chooseTheme": "Select theme",
+  "editNote": "Edit note",
+  "noteUpdated": "Note updated",
+  "gratitudeGuidanceTitle": "Today's Practice Guidance",
+  "showGuidance": "View guidance",
+  "hideGuidance": "Hide guidance"
 }

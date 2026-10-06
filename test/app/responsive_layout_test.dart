@@ -74,6 +74,7 @@ void main() {
         expect(tester.takeException(), isNull);
 
         for (final icon in const [
+          Icons.style_outlined,
           Icons.auto_awesome_outlined,
           Icons.menu_book_outlined,
           Icons.explore_outlined,

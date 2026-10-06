@@ -77,6 +77,20 @@ class GratitudeRepository {
     await _database.into(_database.gratitudeEntries).insert(row);
   }
 
+  Future<void> updateSingleEntry({
+    required String id,
+    required String gratitudeText,
+    String? reasonText,
+  }) async {
+    await (_database.update(_database.gratitudeEntries)
+      ..where((row) => row.id.equals(id))).write(
+      GratitudeEntriesCompanion(
+        gratitudeText: Value(gratitudeText.trim()),
+        reasonText: Value(reasonText?.trim() ?? ''),
+      ),
+    );
+  }
+
   Future<void> deleteEntry(String id) async {
     await (_database.delete(_database.gratitudeEntries)
       ..where((row) => row.id.equals(id))).go();

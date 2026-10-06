@@ -356,7 +356,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get takePhoto => 'Chụp ảnh mới';
 
   @override
-  String get removePhoto => 'Bỏ ảnh này';
+  String get removePhoto => 'Xóa ảnh';
 
   @override
   String get visionPhoto => 'Ảnh tầm nhìn';
@@ -670,8 +670,123 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get allGratitudesInNote => 'Những điều biết ơn trong bài viết này';
+  String get allGratitudesInNote => 'Nội dung ghi chú';
 
   @override
   String get sentencePreview => 'Xem trước câu hoàn chỉnh:';
+
+  @override
+  String get soulCardsTitle => 'Rút thẻ thông điệp';
+
+  @override
+  String get soulCardsSubtitle =>
+      'Lắng nghe thông điệp dẫn dắt cho tâm hồn bạn';
+
+  @override
+  String dailyDrawRemaining(int count) {
+    return 'Còn $count lần rút hôm nay';
+  }
+
+  @override
+  String get dailyDrawLimitReached => 'Đã rút đủ 2 thông điệp hôm nay';
+
+  @override
+  String get dailyDrawLimitHint =>
+      'Hãy lắng đọng và suy ngẫm cùng thông điệp hôm nay. Ngày mai bạn có thể rút tiếp nhé.';
+
+  @override
+  String get drawCardAction => 'Rút thông điệp';
+
+  @override
+  String get drawAnotherCard => 'Rút thêm thông điệp';
+
+  @override
+  String get reviewTodayCards => 'Xem thông điệp hôm nay';
+
+  @override
+  String get cardDrawSuccess => 'Thông điệp dành cho bạn';
+
+  @override
+  String get todayCardDrawBanner => 'Thông điệp tâm hồn';
+
+  @override
+  String get chooseDeckPrompt => 'Chọn một bộ thẻ để lắng nghe thông điệp';
+
+  @override
+  String get tapCardToReveal => 'Chạm vào lá bài để mở thông điệp';
+
+  @override
+  String get saveToJournalAction => 'Lưu vào nhật ký';
+
+  @override
+  String get savedToJournalSuccess => 'Đã lưu thông điệp vào nhật ký';
+
+  @override
+  String get cardDrawHistory => 'Lịch sử rút thẻ';
+
+  @override
+  String deckCardCount(int count) {
+    return '$count lá bài';
+  }
+
+  @override
+  String get soulCardsTab => 'Rút thẻ';
+
+  @override
+  String get dailyDrawLimitDialogTitle => 'Đã đủ 2 thông điệp hôm nay';
+
+  @override
+  String get dailyDrawLimitDialogMessage =>
+      'Hôm nay bạn đã nhận đủ 2 thông điệp dẫn lối rồi. Hãy lắng đọng và suy ngẫm cùng thông điệp hôm nay nhé. Ngày mai bạn có thể rút tiếp.';
+
+  @override
+  String get understood => 'Đã hiểu';
+
+  @override
+  String get chooseDeckSubtitle =>
+      'Chọn một bộ thẻ để lắng nghe thông điệp dành cho bạn';
+
+  @override
+  String get drawFromThisDeck => 'Rút thẻ bộ này';
+
+  @override
+  String get gratitudeJournalPrompt =>
+      'Ngày hôm nay, bạn bắt đầu trên hành trình biết ơn của mình. Hãy dành thời gian và tâm trí nghĩ về những điều khiến bạn biết ơn, dù là rất nhỏ bé. Cấu trúc gợi ý:\n\"Tôi biết ơn... vì...\"\nSau đó bạn hãy đọc lại những điều bạn vừa viết cùng với lòng biết ơn sâu sắc.';
+
+  @override
+  String get gratitudeJournalPlaceholder =>
+      'Viết những điều bạn biết ơn hôm nay như một trang nhật ký bình yên...\n\nVí dụ:\nTôi biết ơn tách cà phê ấm áp buổi sáng vì đã mang lại cho tôi sự tỉnh táo và an lành.\nTôi biết ơn nụ cười của một người bạn vì đã sưởi ấm tâm hồn tôi...';
+
+  @override
+  String get addPhoto => 'Thêm ảnh';
+
+  @override
+  String get changePhoto => 'Đổi ảnh';
+
+  @override
+  String get insertPromptTemplate => 'Chèn mẫu câu';
+
+  @override
+  String get saveAndCompleteJournal => 'Hoàn thành & Lưu nhật ký';
+
+  @override
+  String get gratitudePromptTemplateText => 'Tôi biết ơn ... vì ...';
+
+  @override
+  String get chooseTheme => 'Chọn chủ đề';
+
+  @override
+  String get editNote => 'Chỉnh sửa ghi chú';
+
+  @override
+  String get noteUpdated => 'Đã cập nhật ghi chú';
+
+  @override
+  String get gratitudeGuidanceTitle => 'Hướng dẫn thực hành hôm nay';
+
+  @override
+  String get showGuidance => 'Xem hướng dẫn';
+
+  @override
+  String get hideGuidance => 'Thu gọn hướng dẫn';
 }

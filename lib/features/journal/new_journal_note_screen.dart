@@ -1,14 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../app/app_state.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/platform/image_picking.dart';
+import '../../data/local/image_store.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'journal_note_models.dart';
 
 class NewJournalNoteScreen extends ConsumerStatefulWidget {
-  const NewJournalNoteScreen({super.key});
+  const NewJournalNoteScreen({super.key, this.existingNote});
+
+  final JournalNote? existingNote;
 
   @override
   ConsumerState<NewJournalNoteScreen> createState() =>
@@ -16,10 +22,10 @@ class NewJournalNoteScreen extends ConsumerStatefulWidget {
 }
 
 class _NewJournalNoteScreenState extends ConsumerState<NewJournalNoteScreen> {
-  final _themeController = TextEditingController();
-  final _gratitudeController = TextEditingController();
-  final _reasonController = TextEditingController();
+  late final TextEditingController _contentController;
   bool _isSaving = false;
+  String? _attachedLocalImagePath;
+  String? _selectedTheme;
 
   final List<String> _suggestedThemesVi = [
     'Khoảnh khắc biết ơn',
@@ -40,43 +46,116 @@ class _NewJournalNoteScreenState extends ConsumerState<NewJournalNoteScreen> {
   @override
   void initState() {
     super.initState();
-    _gratitudeController.addListener(() => setState(() {}));
-    _reasonController.addListener(() => setState(() {}));
+    final existing = widget.existingNote;
+    if (existing != null) {
+      _selectedTheme = existing.title;
+      _attachedLocalImagePath = existing.imagePath;
+      final initialText = existing.sentences.join('\n');
+      _contentController = TextEditingController(text: initialText);
+    } else {
+      _contentController = TextEditingController();
+    }
+    _contentController.addListener(() => setState(() {}));
   }
 
   @override
   void dispose() {
-    _themeController.dispose();
-    _gratitudeController.dispose();
-    _reasonController.dispose();
+    _contentController.dispose();
     super.dispose();
   }
 
+  Future<void> _pickImage() async {
+    final picker = ref.read(imagePickingProvider);
+    final picked = await picker.pick(fromCamera: false);
+    if (picked != null && mounted) {
+      setState(() {
+        _attachedLocalImagePath = picked;
+      });
+    }
+  }
+
+  void _insertPrompt() {
+    final l10n = AppLocalizations.of(context)!;
+    final template = '${l10n.gratitudePromptTemplateText}\n';
+    final currentText = _contentController.text;
+    final selection = _contentController.selection;
+
+    if (selection.isValid && selection.start >= 0) {
+      final newText = currentText.replaceRange(
+        selection.start,
+        selection.end,
+        template,
+      );
+      _contentController.value = TextEditingValue(
+        text: newText,
+        selection: TextSelection.collapsed(
+          offset: selection.start + template.length,
+        ),
+      );
+    } else {
+      _contentController.text =
+          currentText.isEmpty ? template : '$currentText\n$template';
+      _contentController.selection = TextSelection.collapsed(
+        offset: _contentController.text.length,
+      );
+    }
+  }
+
   Future<void> _save() async {
-    final text = _gratitudeController.text.trim();
+    final text = _contentController.text.trim();
     if (text.isEmpty || _isSaving) return;
 
     setState(() => _isSaving = true);
     final l10n = AppLocalizations.of(context)!;
     try {
-      final theme = _themeController.text.trim();
-      final fullGratitude = theme.isNotEmpty ? '[$theme] $text' : text;
+      final theme = _selectedTheme?.trim() ?? '';
+      final fullGratitude = theme.isNotEmpty ? '[$theme]\n$text' : text;
 
-      await ref
-          .read(gratitudeRepositoryProvider)
-          .addSingleEntry(
-            gratitudeText: fullGratitude,
-            reasonText: _reasonController.text.trim(),
-          );
+      String? reasonWithImage;
+      if (_attachedLocalImagePath != null) {
+        if (_attachedLocalImagePath!.startsWith('journal/') ||
+            _attachedLocalImagePath!.startsWith('assets/')) {
+          reasonWithImage = 'image:$_attachedLocalImagePath';
+        } else {
+          final relPath = await ref
+              .read(imageStoreProvider)
+              .saveJournalImage(_attachedLocalImagePath!);
+          reasonWithImage = 'image:$relPath';
+        }
+      }
+
+      final existing = widget.existingNote;
+      final repo = ref.read(gratitudeRepositoryProvider);
+
+      if (existing != null && existing.rawEntries.isNotEmpty) {
+        // If updating an existing standalone note
+        final firstId = existing.rawEntries.first.id;
+        await repo.updateSingleEntry(
+          id: firstId,
+          gratitudeText: fullGratitude,
+          reasonText: reasonWithImage,
+        );
+        // Clean up remaining raw entries if note was previously split into multiples
+        for (int i = 1; i < existing.rawEntries.length; i++) {
+          await repo.deleteEntry(existing.rawEntries[i].id);
+        }
+      } else {
+        await repo.addSingleEntry(
+          gratitudeText: fullGratitude,
+          reasonText: reasonWithImage,
+        );
+      }
 
       ref.invalidate(recentGratitudeEntriesProvider);
       ref.invalidate(todayGratitudeEntriesProvider);
 
       if (mounted) {
-        Navigator.pop(context);
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(l10n.noteSaved)));
+        Navigator.pop(context, true);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(existing != null ? l10n.noteUpdated : l10n.noteSaved),
+          ),
+        );
       }
     } catch (_) {
       if (mounted) {
@@ -95,142 +174,214 @@ class _NewJournalNoteScreenState extends ConsumerState<NewJournalNoteScreen> {
     final suggestions =
         locale == SoulLocale.vi ? _suggestedThemesVi : _suggestedThemesEn;
 
-    final previewSentence = formatGratitudeSentence(
-      gratitude:
-          _gratitudeController.text.trim().isEmpty
-              ? (locale == SoulLocale.vi ? '...' : '...')
-              : _gratitudeController.text.trim(),
-      reason:
-          _reasonController.text.trim().isEmpty
-              ? null
-              : _reasonController.text.trim(),
-      locale: locale,
-    );
+    final effectiveTheme = _selectedTheme ?? suggestions.first;
 
     return Scaffold(
       backgroundColor: SoulColors.paper,
       appBar: SoulAppBar(
-        title: l10n.newGratitudeNote,
+        title:
+            widget.existingNote != null ? l10n.editNote : l10n.newGratitudeNote,
         onBack: () => Navigator.pop(context),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(SoulSpace.lg),
+          padding: const EdgeInsets.fromLTRB(
+            SoulSpace.lg,
+            SoulSpace.md,
+            SoulSpace.lg,
+            SoulSpace.xl,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Theme section
-              Text(
-                locale == SoulLocale.vi ? 'Chủ đề ghi chú' : 'Note Theme',
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: SoulColors.muted,
-                ),
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              SoulTextField(
-                controller: _themeController,
-                label: locale == SoulLocale.vi ? 'Chủ đề' : 'Theme',
-                hint: l10n.customNoteDefaultTheme,
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              Wrap(
-                spacing: SoulSpace.xs,
-                runSpacing: SoulSpace.xxs,
-                children: [
-                  for (final item in suggestions)
-                    ActionChip(
-                      label: Text(item),
-                      backgroundColor:
-                          _themeController.text == item
-                              ? SoulColors.lilac
-                              : SoulColors.surface,
-                      side: BorderSide(
-                        color:
-                            _themeController.text == item
-                                ? SoulColors.lilacStrong
-                                : SoulColors.line,
-                      ),
-                      labelStyle: TextStyle(
-                        fontSize: 12,
-                        color:
-                            _themeController.text == item
-                                ? SoulColors.plum
-                                : SoulColors.softInk,
-                        fontWeight:
-                            _themeController.text == item
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _themeController.text = item;
-                        });
-                      },
-                    ),
-                ],
-              ),
-              const SizedBox(height: SoulSpace.lg),
-
-              // Field 1: Gratitude
-              Text(
-                l10n.gratitudeFieldPrompt,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              SoulTextField(
-                controller: _gratitudeController,
-                label: l10n.gratitudeFieldPrompt,
-                hint: l10n.notePromptPlaceholder,
-                maxLines: 2,
-                textCapitalization: TextCapitalization.sentences,
-                autofocus: true,
-              ),
-              const SizedBox(height: SoulSpace.md),
-
-              // Field 2: Reason
-              Text(
-                l10n.gratitudeReasonPrompt,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              SoulTextField(
-                controller: _reasonController,
-                label: l10n.gratitudeReasonPrompt,
-                hint: l10n.noteReasonPlaceholder,
-                maxLines: 2,
-                textCapitalization: TextCapitalization.sentences,
-              ),
-              const SizedBox(height: SoulSpace.lg),
-
-              // Live sentence preview
+              // Clean Journal editing card
               Container(
-                padding: const EdgeInsets.all(SoulSpace.md),
                 decoration: BoxDecoration(
                   color: SoulColors.surface,
                   borderRadius: BorderRadius.circular(SoulRadius.card),
                   border: Border.all(color: SoulColors.line),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.sentencePreview,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: SoulColors.muted,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.02),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
                     ),
-                    const SizedBox(height: SoulSpace.xs),
-                    Text(
-                      previewSentence,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color:
-                            _gratitudeController.text.trim().isEmpty
-                                ? SoulColors.muted
-                                : SoulColors.softInk,
-                        fontStyle: FontStyle.italic,
-                        height: 1.5,
+                  ],
+                ),
+                padding: const EdgeInsets.all(SoulSpace.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Theme Row
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.label_outline_rounded,
+                          size: 18,
+                          color: SoulColors.plum,
+                        ),
+                        const SizedBox(width: SoulSpace.xs),
+                        Text(
+                          locale == SoulLocale.vi ? 'Chủ đề:' : 'Theme:',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodySmall?.copyWith(
+                            color: SoulColors.muted,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: SoulSpace.xs),
+                        Expanded(
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              value:
+                                  suggestions.contains(effectiveTheme)
+                                      ? effectiveTheme
+                                      : suggestions.first,
+                              isExpanded: true,
+                              icon: const Icon(
+                                Icons.arrow_drop_down_rounded,
+                                color: SoulColors.plum,
+                              ),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodyMedium?.copyWith(
+                                color: SoulColors.softInk,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              onChanged: (newVal) {
+                                if (newVal != null) {
+                                  setState(() => _selectedTheme = newVal);
+                                }
+                              },
+                              items: [
+                                for (final t in suggestions)
+                                  DropdownMenuItem<String>(
+                                    value: t,
+                                    child: Text(
+                                      t,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Divider(color: SoulColors.line, height: 12),
+
+                    // Minimal Toolbar
+                    Wrap(
+                      spacing: SoulSpace.xs,
+                      runSpacing: SoulSpace.xxs,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.spaceBetween,
+                      children: [
+                        TextButton.icon(
+                          onPressed: _insertPrompt,
+                          icon: const Icon(
+                            Icons.auto_fix_high_rounded,
+                            size: 16,
+                            color: SoulColors.plum,
+                          ),
+                          label: Text(
+                            l10n.insertPromptTemplate,
+                            style: const TextStyle(
+                              color: SoulColors.plum,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: _pickImage,
+                          icon: const Icon(
+                            Icons.add_photo_alternate_outlined,
+                            size: 16,
+                            color: SoulColors.plum,
+                          ),
+                          label: Text(
+                            _attachedLocalImagePath == null
+                                ? l10n.addPhoto
+                                : l10n.changePhoto,
+                            style: const TextStyle(
+                              color: SoulColors.plum,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Divider(color: SoulColors.line, height: 12),
+
+                    // Attached image thumbnail
+                    if (_attachedLocalImagePath != null) ...[
+                      Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.card,
+                            ),
+                            child: Image.file(
+                              File(_attachedLocalImagePath!),
+                              height: 180,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            top: 8,
+                            right: 8,
+                            child: Material(
+                              color: Colors.black.withValues(alpha: 0.6),
+                              shape: const CircleBorder(),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.close_rounded,
+                                  color: Colors.white,
+                                  size: 18,
+                                ),
+                                tooltip: l10n.removePhoto,
+                                onPressed: () {
+                                  setState(() {
+                                    _attachedLocalImagePath = null;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: SoulSpace.sm),
+                    ],
+
+                    // Borderless Text field (no inner outline box)
+                    TextField(
+                      controller: _contentController,
+                      maxLines: 14,
+                      minLines: 8,
+                      textCapitalization: TextCapitalization.sentences,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: SoulColors.softInk,
+                        height: 1.6,
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        filled: false,
+                        contentPadding: EdgeInsets.zero,
+                        hintText: l10n.gratitudeJournalPlaceholder,
+                        hintStyle: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.muted.withValues(alpha: 0.7),
+                          height: 1.5,
+                        ),
                       ),
                     ),
                   ],
@@ -240,9 +391,9 @@ class _NewJournalNoteScreenState extends ConsumerState<NewJournalNoteScreen> {
 
               // Save button
               SoulButton(
-                label: l10n.saveNote,
+                label: l10n.saveAndCompleteJournal,
                 onPressed:
-                    _gratitudeController.text.trim().isEmpty || _isSaving
+                    _contentController.text.trim().isEmpty || _isSaving
                         ? null
                         : _save,
               ),

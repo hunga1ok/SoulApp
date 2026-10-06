@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../app/app_state.dart';
@@ -204,6 +205,82 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
           ).textTheme.bodyMedium?.copyWith(color: SoulColors.muted),
         ),
         const SizedBox(height: SoulSpace.md),
+
+        // Soul Cards Banner
+        InkWell(
+          onTap: () => context.push('/cards'),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  SoulColors.plum,
+                  SoulColors.plum.withValues(alpha: 0.85),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(SoulRadius.card),
+              boxShadow: [
+                BoxShadow(
+                  color: SoulColors.plum.withValues(alpha: 0.15),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            padding: const EdgeInsets.all(SoulSpace.lg),
+            child: Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: SoulColors.rose.withValues(alpha: 0.25),
+                    borderRadius: BorderRadius.circular(SoulRadius.button),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.auto_awesome,
+                      color: SoulColors.surface,
+                      size: 26,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.soulCardsTitle,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleMedium?.copyWith(
+                          color: SoulColors.surface,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.soulCardsSubtitle,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: SoulColors.surface.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: SoulColors.surface,
+                  size: 16,
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: SoulSpace.lg),
 
         // Filter tabs
         SingleChildScrollView(

@@ -6,7 +6,9 @@ import '../../app/app_state.dart';
 import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../data/content/audio_catalog.dart';
+import '../../data/content/card_catalog.dart';
 import '../../data/content/content_repository.dart';
+import '../../data/repositories/card_draw_repository.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
 import '../vision/vision_controllers.dart';
@@ -34,7 +36,9 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     final todayEntries =
         ref.watch(todayGratitudeEntriesProvider).valueOrNull ?? [];
     final activeVisions = ref.watch(visionsProvider).valueOrNull ?? [];
-    final isGratitudeDone = todayEntries.length >= 10;
+    final isGratitudeDone = todayEntries.isNotEmpty;
+    final drawState = ref.watch(cardDrawProvider);
+    final cardCatalog = ref.watch(cardCatalogProvider).valueOrNull;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -163,9 +167,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 label:
                     isGratitudeDone
                         ? l10n.gratitudeCardTapToReview
-                        : (todayEntries.isNotEmpty
-                            ? l10n.todayContinuePractice
-                            : l10n.todayStartPractice),
+                        : l10n.todayStartPractice,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -336,6 +338,66 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 ),
               ),
             ],
+          ),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // 4. Soul Card Message
+        InkWell(
+          onTap: () => context.go('/app/cards'),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: SoulCard(
+            color: SoulColors.surface,
+            padding: const EdgeInsets.all(SoulSpace.md),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.auto_awesome,
+                  color: SoulColors.plum,
+                  size: 24,
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.todayCardDrawBanner,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: SoulColors.muted,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        drawState.todayEntries.isNotEmpty && cardCatalog != null
+                            ? (() {
+                              final latest = drawState.todayEntries.first;
+                              final d = cardCatalog.deck(latest.deckId);
+                              final c = d?.cards.firstWhere(
+                                (item) => item.id == latest.cardId,
+                                orElse: () => d.cards.first,
+                              );
+                              return c?.text ?? l10n.soulCardsSubtitle;
+                            })()
+                            : (drawState.canDraw
+                                ? l10n.dailyDrawRemaining(
+                                  drawState.remainingDraws,
+                                )
+                                : l10n.dailyDrawLimitReached),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.xs),
+                const Icon(Icons.chevron_right, color: SoulColors.muted),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: SoulSpace.xl),

@@ -44,9 +44,7 @@ class JournalScreen extends ConsumerWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    notes.isEmpty
-                        ? l10n.oneNote
-                        : l10n.notesCount(notes.length),
+                    l10n.notesCount(notes.length),
                     style: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.copyWith(color: SoulColors.muted),
@@ -80,7 +78,7 @@ class JournalScreen extends ConsumerWidget {
         ),
         const SizedBox(height: SoulSpace.lg),
         if (notes.isEmpty)
-          _LinedNote(
+          _EmptyJournalCard(
             onTap: () {
               Navigator.push(
                 context,
@@ -195,12 +193,14 @@ class _JournalNoteCard extends StatelessWidget {
             ),
             const SizedBox(height: SoulSpace.sm),
 
-            // Sentences preview (up to 2 sentences)
+            // Note text preview (up to 2 preview entries)
             for (int i = 0; i < note.sentences.take(2).length; i++) ...[
               Padding(
                 padding: const EdgeInsets.only(bottom: SoulSpace.xxs),
                 child: Text(
-                  '${i + 1}. ${note.sentences[i]}',
+                  note.sentences.length > 1
+                      ? '• ${note.sentences[i]}'
+                      : note.sentences[i],
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -246,18 +246,68 @@ class _JournalNoteCard extends StatelessWidget {
   }
 }
 
-class _LinedNote extends StatelessWidget {
-  const _LinedNote({required this.onTap});
+class _EmptyJournalCard extends StatelessWidget {
+  const _EmptyJournalCard({required this.onTap});
 
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    return SoulStickyNote(
-      eyebrow: l10n.gratitudeToday,
-      body: l10n.gratitudeNote,
+    return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(SoulRadius.card),
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: SoulSpace.lg,
+          vertical: SoulSpace.xl,
+        ),
+        decoration: BoxDecoration(
+          color: SoulColors.surface,
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          border: Border.all(color: SoulColors.line),
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: const BoxDecoration(
+                color: SoulColors.lilac,
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.edit_note_rounded,
+                size: 28,
+                color: SoulColors.plum,
+              ),
+            ),
+            const SizedBox(height: SoulSpace.md),
+            Text(
+              l10n.gratitudeJournalTitle,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: SoulColors.softInk,
+              ),
+            ),
+            const SizedBox(height: SoulSpace.xs),
+            Text(
+              l10n.gratitudeNotesEmpty,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: SoulColors.muted,
+                height: 1.5,
+              ),
+            ),
+            const SizedBox(height: SoulSpace.lg),
+            SoulButton(
+              label: l10n.addNote,
+              variant: SoulButtonVariant.secondary,
+              onPressed: onTap,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
