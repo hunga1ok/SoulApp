@@ -31,6 +31,7 @@ lib/
   features/
     onboarding/
     today/
+    cards/
     journey/
     vision/
     journal/
@@ -66,6 +67,8 @@ Use declarative routing with guarded route groups:
 /onboarding/intention
 /onboarding/reminders
 /today
+/cards
+/cards/draw/:deckCode
 /vision
 /vision/create
 /vision/:id

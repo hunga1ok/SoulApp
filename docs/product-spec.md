@@ -13,12 +13,13 @@ Soul is a private, bilingual wellbeing application that helps a user practice gr
 
 ## 3. Primary navigation
 
-Four bottom tabs:
+Five bottom tabs:
 
 1. Today
-2. Vision
-3. Journal
-4. Explore
+2. Soul Cards (Rút thẻ thông điệp)
+3. Vision
+4. Journal
+5. Explore
 
 Profile and settings open from the avatar in the app header. Global sound can be toggled beside the avatar.
 
@@ -63,7 +64,20 @@ Google sign-in is deferred until cross-device sync returns.
 
 Vietnamese users may hear Vietnamese spoken audio or language-neutral instrumental audio. English users may hear English spoken audio or language-neutral instrumental audio. Cross-language spoken playback is never automatically surfaced.
 
-## 6. Vision Board
+## 6. Soul Cards (Rút thẻ thông điệp)
+
+- Dedicated tab in the primary navigation.
+- 3 decks:
+  1. Sự nghiệp & Phát triển (`career`)
+  2. Chữa lành & Bình an (`healing`)
+  3. Tình yêu & Mối quan hệ (`relationship`)
+- 150 card assets (50 cards per deck) optimized in WebP format.
+- Bilingual messages (Vietnamese and English) matching the user's active app locale.
+- Interactive 3D flip card animation upon drawing.
+- Daily draw policy: maximum 2 draws per calendar day across decks; drawing a 3rd time displays an alert dialog reminding the user to reflect on drawn messages.
+- Deck Hub displays visual deck cards with illustration art, card count, and draw CTA.
+
+## 7. Vision Board
 
 ### Create Vision
 
@@ -84,13 +98,16 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 
 ### Board and detail
 
-- Multiple visions display as a Vision Board.
+- **Authentic Collage Board**: Visions display in an artistic 2-column masonry / staggered collage grid, resembling a real-world moodboard / pinboard with washi tape accents and soft paper shadows.
+- **Text on Background**: Visions without user photos have their statement printed directly on the category's signature gradient canvas (with category badge, watermark icon, translucent feeling chips, and audio pill) instead of separated white boxes.
+- **Polaroid Photo Cards**: Visions with photos are framed as clean polaroid-style cards with photo, caption, feelings, and soundtrack.
+- **Layout Switcher**: Users can toggle between the 2-column Collage Board (default) and single-column List View.
 - Tapping a Vision opens its statement, feelings, image, and assigned playlist.
 - Vision goal/statement, feelings, and image can be edited; changing category reassigns its playlist.
 - Archive is a soft delete and does not delete linked historical entries.
 - Back navigation reliably returns to the board.
 
-## 7. Vision Session
+## 8. Vision Session
 
 - Guided three-to-five-minute session for the current, selected, or all active Visions.
 - Sequence: arrival, Vision image and statement/affirmation, one small action, completion.
@@ -98,10 +115,13 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Only Soul-owned or separately licensed audio plays natively.
 - The app remembers global sound preference but does not autoplay spoken audio unexpectedly.
 
-## 8. Journal
+## 9. Journal
 
-- Gratitude and reflection entries appear as lined-paper sticky notes without a vertical margin line.
-- Tapping a note opens a readable detail view.
+- **Streamlined Writing Flow**: Clean, open paper surface for freeform journaling. Users write their authentic thoughts directly on the page without restrictive multi-step form fields.
+- **Collapsible Daily Guidance**: Guided 28-day itinerary prompt collapses cleanly into a subtle dropdown header, giving maximum visual priority to the journal paper.
+- **Theme Dropdown & Tools**: Theme selection is integrated as a compact dropdown alongside "Insert template" and "Add photo" actions directly on the paper canvas.
+- **Minimalist Aesthetic**: Eliminates nested rounded boxes, card outlines around text, and redundant labels like "Note content".
+- **Note Editing & Management**: Past notes can be viewed, edited (updating text and images), or safely deleted.
 - Notes are private and stored on the device; they work fully offline. Sync is deferred.
 
 ### Future Letter
@@ -111,13 +131,13 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Before unlock, the list shows only a sealed-envelope state and date; notification previews never expose letter text.
 - After unlock, users may record an optional mood and response to their past self.
 
-## 9. Explore
+## 10. Explore
 
 - Curated content filtered by locale and editorial status.
 - External YouTube and Spotify items open via official deep links or supported embeds.
 - External media is never downloaded, rehosted, or presented as a native Soul soundtrack without a separate license.
 
-## 10. Profile and settings
+## 11. Profile and settings
 
 - Preferred name.
 - Language.
@@ -126,7 +146,7 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Journey, Vision, and journal counts.
 - Delete all local data (sign-out and account deletion are deferred with sync).
 
-## 11. Notifications
+## 12. Notifications
 
 - Morning ritual, daily task, evening reflection, Vision Session, Future Letter, and gentle journey-return reminders.
 - Each category can be disabled independently where practical.
@@ -134,21 +154,21 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Tapping a notification opens the relevant guarded app destination.
 - Copy is localized and avoids guilt, fear, loss, and private journal/letter text.
 
-## 12. Administration
+## 13. Administration
 
 Deferred for the app-only MVP: content is authored in `Specs/` and shipped as a versioned content bundle inside the app, so content changes need an app release. A focused admin application returns together with a backend.
 
-## 13. Analytics
+## 14. Analytics
 
 When consent and privacy policy permit, emit versioned funnel events for onboarding, journey tasks, Visions, Vision Sessions, content opens, native audio, Future Letters, and notifications. Analytics payloads never contain free-form private content.
 
-## 14. Privacy and safety
+## 15. Privacy and safety
 
 - Vision images, journal entries, responses, and progress are user-owned private data.
 - Do not make medical, therapeutic, scientific-frequency, financial-outcome, or manifestation-guarantee claims.
 - Store only the user data required for the documented experience.
 
-## 15. MVP exclusions
+## 16. MVP exclusions
 
 - AI image generation.
 - Social feed, sharing, comments, or public profiles.

@@ -109,7 +109,8 @@ A user can complete and revisit all supported task types in the 28-day journey.
 ### Work
 
 - Implement category selection, guided prompt, one-to-three feelings, local image, preview, and save.
-- Render multiple Visions as a board.
+- Render multiple Visions as an authentic **Vision Board Collage**: 2-column masonry staggered grid with washi tape accents, text printed directly on artistic themed gradient background for non-photo visions, and polaroid styling for photo visions.
+- Provide a view mode switcher between Collage Board and single-column List View.
 - Implement Vision detail and reliable router-based back navigation.
 - Assign playlists from Category mappings only.
 
@@ -117,11 +118,11 @@ A user can complete and revisit all supported task types in the 28-day journey.
 
 - Widget tests enforce feeling limits and category soundtrack behavior.
 - The Vision image is stored in app storage and survives app restart.
-- Creating multiple Visions renders all of them and back returns to the board.
+- Creating multiple Visions renders all of them in collage or list mode, and back returns to the board.
 
 ### Exit criteria
 
-The full Vision create/read/archive flow works with private on-device data.
+The full Vision create/read/archive flow works with private on-device data and authentic moodboard aesthetics.
 
 ## Phase 6 — Audio and Vision Session
 
@@ -146,20 +147,43 @@ Eligible audio plays reliably and the user never receives a mismatched spoken la
 
 ### Work
 
-- Build sticky-note list and detail views.
+- Build streamlined freeform Journal writing experience without restrictive form splits, supporting optional template insertion and photo attachments.
+- Implement collapsible dropdown for daily 28-day itinerary guidance and theme selection on the paper sheet.
+- Clean up Journal UI: eliminate nested rounded outlines, redundant labels ("Note content"), and close buttons.
+- Implement in-place editing and deletion for past notes.
 - Build Explore with locale/editorial filters and official external links.
 - Implement profile, preferred-name edit, language switching, reminders, and delete-all-local-data.
 - Re-render content immediately after locale change.
 
 ### Verify
 
-- Journal privacy and offline behavior pass integration tests.
+- Journal privacy, offline behavior, and editing pass integration tests.
 - Explore excludes mismatched/unverified content.
 - Locale changes update all navigation, semantics, notifications, and content.
 
 ### Exit criteria
 
-All four tabs and avatar settings meet the MVP product specification.
+Journal, Explore, and Profile meet the updated product specification.
+
+## Phase 7B — Soul Cards (Rút thẻ thông điệp)
+
+### Work
+
+- Implement dedicated Soul Cards destination in bottom navigation.
+- Curate 3 decks: Sự nghiệp (`career`), Chữa lành (`healing`), Mối quan hệ (`relationship`) with 150 card assets optimized in WebP format.
+- Load card decks and bilingual messages (Vietnamese and English) matched to active app locale.
+- Implement interactive 3D flip card animation upon drawing.
+- Enforce daily draw policy: maximum 2 draws per calendar day; 3rd attempt surfaces gentle alert popup.
+- Build Deck Hub with visual illustration cards, card counts, and draw flows.
+
+### Verify
+
+- Unit tests for card catalog parsing, deck filtering, and daily draw repository limits.
+- Widget tests for 3D card flip animation, deck selection, and draw limit warning popup.
+
+### Exit criteria
+
+All five tabs and avatar settings meet the MVP product specification.
 
 ## Phase 8 — Quality and release readiness
 

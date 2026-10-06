@@ -33,8 +33,8 @@ The `SoulApi` repository is kept as the reference design for the future sync bac
 - Preserve the warm paper background, plum text, pearl-pink/lilac gradients, restrained gold accents, large serif emotional headings, and sans-serif controls.
 - Use the cropped transparent horizontal logo in the app header, optically aligned to the left.
 - Header actions are global sound and avatar. Both have at least a 44 by 44 logical-pixel target.
-- Bottom navigation has exactly four destinations: Today, Vision, Journal, Explore.
-- Profile/settings opens from the avatar and is not a fifth bottom tab.
+- Bottom navigation has five destinations: Today, Soul Cards (Rút thẻ), Vision, Journal, Explore.
+- Profile/settings opens from the avatar and is not a sixth bottom tab.
 - Support phone widths from 360 to 430 logical pixels, Safe Area, display scaling, keyboard insets, and both platforms.
 
 ### REQ-UX-002 Shared states
@@ -187,7 +187,23 @@ The primary CTA always resumes the first incomplete required task rather than re
 - Writes are idempotent (one response per task and run) so repeated taps never duplicate records.
 - When sync is added later, never silently overwrite user-written text during conflict resolution.
 
-## 6. Guided Vision Board
+## 6. Soul Cards (Rút thẻ thông điệp)
+
+### US-CRD-001 Browse decks and draw card
+
+- Entry is available as the 2nd destination in bottom navigation.
+- 3 decks: Sự nghiệp & Phát triển (`career`), Chữa lành & Bình an (`healing`), Tình yêu & Mối quan hệ (`relationship`).
+- Each deck contains 50 curated card images in WebP format (150 cards total).
+- Card messages are bilingual; the message displayed matches the active app locale (`vi` or `en`).
+- Interactive 3D flip card animation presents the front artwork and back reflection message.
+
+### US-CRD-002 Daily draw limit
+
+- Users may draw a maximum of 2 cards per calendar day across all decks combined.
+- Draws are recorded with timestamp and date locally.
+- On the 3rd draw attempt on the same day, the app presents a gentle alert dialog reminding the user that they have drawn enough cards for today, encouraging mindful contemplation without hard blockage on viewing already drawn cards.
+
+## 7. Guided Vision Board
 
 ### US-VIS-001 Create a Vision
 
@@ -217,11 +233,15 @@ Rules:
 - Store a path relative to the app storage directory, never an absolute path.
 - When copying fails, preserve the completed builder state and allow retry or save without image.
 
-### US-VIS-003 Vision Board and detail
+### US-VIS-003 Vision Board collage and detail
 
 - Zero Visions shows a guided create state, not an empty blank canvas.
-- One or more Visions render as the visual board used by the prototype.
-- Each card shows category, statement excerpt, optional cover, index, and soundtrack count.
+- One or more Visions render as an authentic **Vision Board Collage**:
+  - Arranged in an artistic 2-column masonry / staggered collage grid.
+  - Cards with photos render as polaroid-style framed clippings.
+  - Cards without user photos have their statement printed directly on the category's signature gradient canvas (with watermark background icon and washi tape accent).
+  - Cards feature a washi tape accent and subtle paper shadow evoking a physical pinboard.
+  - A layout switcher icon allows toggling between 2-column Collage Board and single-column List View.
 - Tapping a card opens detail with full statement, feelings, image, assigned playlist, edit, archive, and session CTA.
 - Back always returns to the same board state and scroll position.
 
@@ -232,7 +252,7 @@ Rules:
 - Archive/soft delete removes a Vision from the active board without deleting historical journal/session records.
 - Permanent deletion, if later offered, requires explicit confirmation.
 
-## 7. Native audio and Vision Session
+## 8. Native audio and Vision Session
 
 ### US-AUD-001 Global sound
 
@@ -257,15 +277,17 @@ Rules:
 - Play, pause, progress, resume, and exit are available.
 - Completion is persisted once even if the request retries.
 
-## 8. Journal and Future Letter
+## 9. Journal and Future Letter
 
 ### US-JOU-001 Journal notes
 
 - Gratitude practice answers and reflections are automatically available by date.
-- User may create a free note with non-empty trimmed body.
-- Recent notes use the prototype’s attractive paper card but with warm-white horizontal ruled paper and no vertical rule or yellow background.
-- Tapping the entire card opens a readable sticky-note detail.
-- Notes are private and available from cache after creation.
+- User may write freely as in a natural journal notebook without being forced into rigid decomposed sentence fields.
+- Daily journey itinerary prompt is housed in a collapsible dropdown header to preserve visual space for writing.
+- Theme selector is integrated as a dropdown on the journal paper sheet alongside "Insert template" and "Add photo" actions.
+- Note UI is clean and open: no nested card outlines, no redundant "Note content" labels, and no superfluous close buttons.
+- Historical notes support full viewing, in-place editing (updating text and images), and deletion.
+- Notes are private and stored on the device; they work fully offline.
 
 ### US-LET-001 Create and seal Future Letter
 
@@ -282,7 +304,7 @@ Rules:
 - Opening updates state once and may prompt optional mood and response to the past self.
 - Letter and reflection remain private.
 
-## 9. Explore
+## 10. Explore
 
 ### US-EXP-001 Browse curated content
 
@@ -293,7 +315,7 @@ Rules:
 - Show source/creator attribution for external items.
 - Never download, cache, rip, or rehost third-party audiovisual media.
 
-## 10. Profile and settings
+## 11. Profile and settings
 
 ### US-PRO-001 Avatar profile
 
@@ -303,7 +325,7 @@ Rules:
 - Language change updates UI immediately and reloads localized content without reinstall.
 - Deleting local data requires explicit confirmation, removes every private record and stored image, cancels scheduled reminders, and returns to the language gate.
 
-## 11. Notifications
+## 12. Notifications
 
 ### REQ-NTF-001 Types and deep links
 

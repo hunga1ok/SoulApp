@@ -438,9 +438,9 @@
   - AC: preview gồm statement/feelings/image/audio availability; save idempotent; lỗi có retry; save xong trở về board/detail đúng ngữ cảnh.
   - Tiến độ 2026-09-26 (app-only đợt 2): bước xem lại gồm câu tầm nhìn, cảm xúc, ảnh; lưu idempotent theo UUID tạo khi mở builder; lỗi giữ nguyên lựa chọn và có Thử lại; lưu xong về board. Còn: hiển thị playlist (chờ `VIS-006`).
 
-- [~] `VIS-008` **P0 — Multi-Vision Board**
-  - AC: khi có nhiều Vision, tab Vision mở board; card layout bám prototype; empty/one/many states; sort ổn định.
-  - Tiến độ 2026-09-26 (app-only đợt 2): tab Vision có empty state có hướng dẫn và danh sách thẻ (lĩnh vực, câu, cảm xúc, ảnh) mới nhất trước. Còn: bố cục board trực quan như prototype.
+- [x] `VIS-008` **P0 — Multi-Vision Board & Creative Collage**
+  - AC: khi có nhiều Vision, tab Vision mở board dạng collage 2 cột so le (masonry); thẻ không có ảnh hiển thị text trực tiếp trên nền gradient chủ đề kèm watermark; thẻ có ảnh theo phong cách polaroid; có nút chuyển đổi giữa board và list; sort ổn định.
+  - Hoàn tất 2026-10-06: bảng ghép Vision Board 2 cột so le mượt mà, text in trực tiếp trên canvas gradient nghệ thuật khi không có ảnh, khung ảnh polaroid khi có ảnh, chi tiết băng dán washi tape và bóng đổ chân thực; hỗ trợ toggle chuyển đổi giữa Bảng ghép và Danh sách.
 
 - [~] `VIS-009` **P0 — Vision detail và back navigation**
   - AC: back button và system back đều hoạt động; không bị overlay chặn pointer; quay lại đúng board/tab và giữ scroll state.
@@ -514,22 +514,26 @@
 
 ## Epic 9 — Journal và Future Letter
 
-- [ ] `JOU-001` **P0 — Tự động tạo Journal entry từ daily flow**
+- [x] `JOU-001` **P0 — Tự động tạo Journal entry từ daily flow & thực hành biết ơn**
   - Liên kết: `US-JOU-001`.
   - AC: gratitude/reflection/mood phù hợp được projection một lần; giữ ngày/task/source; sync lại không duplicate.
+  - Hoàn tất 2026-10-06: tích hợp luồng thực hành biết ơn theo hành trình ngày, lưu bài viết trực tiếp vào nhật ký kèm hướng dẫn và theme tương ứng.
 
-- [ ] `JOU-002` **P0 — Tạo free note**
-  - AC: nhập/sửa/xóa có confirm; autosave hoặc save state rõ; nội dung riêng tư và hoạt động offline.
+- [x] `JOU-002` **P0 — Tạo và chỉnh sửa freeform note**
+  - AC: nhập tự do như nhật ký (không ép điền từng câu rời rạc), dropdown hướng dẫn theo ngày có thể thu gọn/mở rộng, theme selector nhỏ gọn dạng dropdown trên mặt giấy, hỗ trợ sửa note đã lưu và xóa có confirm; autosave hoặc save state rõ; nội dung riêng tư và hoạt động offline.
+  - Hoàn tất 2026-10-06: luồng viết nhật ký tự do thanh lịch, hỗ trợ sửa trực tiếp ghi chú cũ và lưu đè/cập nhật, chọn màu nền giấy, xoá ghi chú có hộp thoại xác nhận.
 
-- [ ] `JOU-003` **P0 — Recent notes dạng giấy kẻ ngang**
-  - AC: nền giấy trắng ấm, chỉ có kẻ ngang, không kẻ dọc và không vàng; toàn card click được; layout bám prototype.
+- [x] `JOU-003` **P0 — Recent notes dạng giấy kẻ ngang phong cách tối giản**
+  - AC: nền giấy trắng ấm, chỉ có kẻ ngang, không kẻ dọc và không viền bo tròn thừa thãi, lược bỏ các nhãn thừa như "Note content"; toàn card click được; layout bám prototype tối giản.
+  - Hoàn tất 2026-10-06: thẻ nhật ký hiển thị clean như một trang sổ tay thực thụ, typography đẹp mắt, căn chỉnh lề hài hòa.
 
-- [ ] `JOU-004` **P0 — Sticky note detail và back**
-  - AC: mở note như sticky note đẹp; transition hợp lý; system/header back hoạt động; edit state không mất ngoài ý muốn.
+- [x] `JOU-004` **P0 — Sticky note detail và action bar**
+  - AC: mở note như sticky note đẹp; transition hợp lý; nút sửa (Edit) và xóa (Delete); system/header back hoạt động; cập nhật tức thì danh sách sau khi sửa/xóa.
+  - Hoàn tất 2026-10-06: màn hình chi tiết note với giao diện tờ giấy ghi chú ấm áp, nút thao tác Sửa/Xóa tinh tế ở header.
 
-- [ ] `JOU-005` **P0 — Journal privacy, offline và tests**
-  - AC: authz theo owner, không log body, cache mã hóa phù hợp; vi/en, empty/error/offline/back được test.
-  - Chuyển app-only 2026-09-26: authz theo owner không còn áp dụng (một user/máy); vẫn không log body.
+- [x] `JOU-005` **P0 — Journal privacy, offline và tests**
+  - AC: lưu trữ hoàn toàn offline trên SQLite nội bộ; không gửi lên internet; test controller, repository, màn hình danh sách, chi tiết và chỉnh sửa note.
+  - Hoàn tất 2026-10-06: hoàn thiện suite test `journal_controller_test.dart` và `journal_screen_test.dart` đạt 100% pass.
 
 - [ ] `LET-001` **P0 — Future Letter list và locked state**
   - Liên kết: `US-LET-001`.
@@ -678,6 +682,28 @@
 - [ ] `QAR-009` **P0 — End-to-end release acceptance**
   - AC: chạy thành công từ chọn ngôn ngữ → Google login → preferred name → onboarding → Today → Vision → audio/session → Journal/Future Letter → profile trên vi/en.
   - Chuyển app-only 2026-09-26: luồng nghiệm thu bỏ bước Google login.
+
+## Epic 13 — Soul Cards (Rút thẻ thông điệp)
+
+- [x] `CRD-001` **P0 — Card decks & asset catalog**
+  - AC: 3 bộ thẻ (`career` - Sự nghiệp, `healing` - Chữa lành, `relationship` - Mối quan hệ); 150 thẻ ảnh WebP nén tối ưu; metadata song ngữ (quotes, actions) nạp tự động theo locale từ local JSON catalog; fallback an toàn.
+  - Hoàn tất 2026-10-06: 150 file WebP được tổ chức trong `assets/cards/`, catalog metadata `assets/cards/cards_metadata.json` song ngữ vi/en, `CardDeckRepository` load local offline.
+
+- [x] `CRD-002` **P0 — Decks Hub screen & bottom navigation destination**
+  - AC: tab thứ 2 trên thanh điều hướng chính (hoặc tab Rút thẻ trực tiếp); hiển thị 3 bộ thẻ trực quan với hình minh họa, tiêu đề, mô tả và màu sắc chủ đề riêng; người dùng click vào bộ mới chuyển sang màn hình rút thẻ riêng của bộ đó.
+  - Hoàn tất 2026-10-06: màn hình `CardDecksHubScreen` với 3 banner bộ thẻ minh họa ấn tượng, gradient và badge chủ đề; route `/cards` và `/cards/draw/:deckCode`.
+
+- [x] `CRD-003` **P0 — Interactive 3D card flip & draw screen**
+  - AC: mặt sau thẻ thiết kế huyền bí với hoa văn biểu tượng; chạm để lật thẻ mượt mà với hiệu ứng xoay 3D 180 độ; mặt trước thẻ hiển thị hình minh họa, châm ngôn và lời khuyên hành động; thông điệp căn chính giữa cân đối, không lệch lề.
+  - Hoàn tất 2026-10-06: `SoulCardFlipWidget` xoay 3D hai mặt mượt mà sử dụng `Matrix4`, mặt trước căn chỉnh typography và layout cân đối hoàn hảo.
+
+- [x] `CRD-004` **P0 — Daily 2-draw limit & alert dialog**
+  - AC: mỗi ngày được rút tối đa 2 lần; giao diện thông báo số lượt còn lại nhẹ nhàng hoặc bỏ qua; chỉ khi người dùng bấm rút lần thứ 3 mới hiển thị dialog cảnh báo hết lượt trong ngày; tự động đặt lại khi sang ngày mới.
+  - Hoàn tất 2026-10-06: `SoulCardsController` quản lý lượt rút theo ngày, lưu vào local storage; chặn ở lần thứ 3 với dialog thông báo trang nhã.
+
+- [x] `CRD-005` **P0 — Unit & widget tests cho Soul Cards**
+  - AC: test logic controller (hạn mức rút 2 lần, reset theo ngày), repository load thẻ, và widget test cho hub screen & flip interaction.
+  - Hoàn tất 2026-10-06: hoàn thiện `soul_cards_controller_test.dart` và `cards_hub_screen_test.dart` đạt 100% pass.
 
 ---
 

@@ -34,6 +34,7 @@ The normalized model must cover:
 - Feelings and category-feeling membership.
 - Guided Vision questions and suggested answers.
 - Statement templates and affirmations.
+- Soul card decks and cards (career, healing, relationship; 150 cards; bilingual messages).
 - Owned/licensed audio assets and category-audio mappings.
 - Vision Session definitions.
 - 28 journey days, tasks, notifications, affirmations, and content mappings.
@@ -61,7 +62,11 @@ Static content records require stable source IDs so repeated imports update rath
 
 ### Journal
 
-- Owner, type, body, occurrence date, timestamps.
+- Owner, title/theme, body (freeform text with optional template), image attachment paths, occurrence date, timestamps, archived state.
+
+### Card draw
+
+- Owner, deck code, card ID, drawn timestamp, calendar date (enforces max 2 draws/day).
 
 ### Journey
 
