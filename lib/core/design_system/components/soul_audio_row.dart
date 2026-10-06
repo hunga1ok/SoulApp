@@ -25,51 +25,71 @@ class SoulAudioRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final textTheme = Theme.of(context).textTheme;
-    return Container(
-      padding: const EdgeInsets.fromLTRB(
-        SoulSpace.sm,
-        SoulSpace.xs,
-        SoulSpace.xxs,
-        SoulSpace.xs,
-      ),
-      decoration: BoxDecoration(
-        color: SoulColors.surface,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onPlayPause,
         borderRadius: BorderRadius.circular(SoulRadius.row),
-        border: Border.all(color: SoulColors.line),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: SoulSizes.iconTile,
-            height: SoulSizes.iconTile,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(SoulRadius.iconTile),
-              gradient: const LinearGradient(
-                colors: [SoulColors.iconTileStart, SoulColors.iconTileEnd],
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(
+            SoulSpace.sm,
+            SoulSpace.xs,
+            SoulSpace.xxs,
+            SoulSpace.xs,
+          ),
+          decoration: BoxDecoration(
+            color: isPlaying ? SoulColors.selectedFill : SoulColors.surface,
+            borderRadius: BorderRadius.circular(SoulRadius.row),
+            border: Border.all(
+              color: isPlaying ? SoulColors.selectedBorder : SoulColors.line,
+            ),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: SoulSizes.iconTile,
+                height: SoulSizes.iconTile,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(SoulRadius.iconTile),
+                  gradient: const LinearGradient(
+                    colors: [SoulColors.iconTileStart, SoulColors.iconTileEnd],
+                  ),
+                ),
+                child: Icon(
+                  isPlaying ? Icons.graphic_eq_rounded : icon,
+                  size: 18,
+                  color: SoulColors.plum,
+                ),
               ),
-            ),
-            child: Icon(icon, size: 18, color: SoulColors.plum),
+              const SizedBox(width: SoulSpace.sm),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight:
+                            isPlaying ? FontWeight.w700 : FontWeight.w600,
+                        color: isPlaying ? SoulColors.plum : null,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(subtitle, style: textTheme.bodyMedium),
+                  ],
+                ),
+              ),
+              IconButton(
+                onPressed: onPlayPause,
+                tooltip: isPlaying ? l10n.pause : l10n.play,
+                color: isPlaying ? SoulColors.plum : SoulColors.softInk,
+                icon: Icon(
+                  isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(width: SoulSpace.sm),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: textTheme.titleMedium),
-                const SizedBox(height: 2),
-                Text(subtitle, style: textTheme.bodyMedium),
-              ],
-            ),
-          ),
-          IconButton(
-            onPressed: onPlayPause,
-            tooltip: isPlaying ? l10n.pause : l10n.play,
-            color: SoulColors.softInk,
-            icon: Icon(
-              isPlaying ? Icons.pause_rounded : Icons.play_arrow_rounded,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

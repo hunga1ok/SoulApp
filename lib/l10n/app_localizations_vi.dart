@@ -146,6 +146,27 @@ class AppLocalizationsVi extends AppLocalizations {
       'Tuyển tập những thanh âm dịu nhẹ, tần số 432Hz/528Hz giúp tĩnh tâm và nâng cao tần số rung động.';
 
   @override
+  String get nowPlaying => 'Đang phát';
+
+  @override
+  String get stop => 'Dừng';
+
+  @override
+  String get allAudio => 'Tất cả';
+
+  @override
+  String get audioNature => 'Thiên nhiên & Thư giãn';
+
+  @override
+  String get audioMusicTab => 'Nhạc & Tần số';
+
+  @override
+  String get audioGuidedTab => 'Bài dẫn thiền';
+
+  @override
+  String get recommendedForVision => 'Đề xuất cho tầm nhìn này';
+
+  @override
   String get exploreTitle => 'Góc nuôi dưỡng tâm hồn';
 
   @override

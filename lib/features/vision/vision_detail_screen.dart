@@ -86,7 +86,10 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
     }
   }
 
-  Future<void> _showAdd(AudioCatalog catalog) => showSoulBottomSheet<void>(
+  Future<void> _showAdd(
+    AudioCatalog catalog, [
+    String? categoryCode,
+  ]) => showSoulBottomSheet<void>(
     context: context,
     builder: (sheetContext) {
       final l10n = AppLocalizations.of(context)!;
@@ -101,7 +104,7 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
             title: Text(l10n.chooseFromAudioLibrary),
             onTap: () {
               Navigator.pop(sheetContext);
-              _showLibrary(catalog);
+              _showLibrary(catalog, categoryCode);
             },
           ),
           ListTile(
@@ -131,45 +134,206 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
     },
   );
 
-  Future<void> _showLibrary(AudioCatalog catalog) => showSoulBottomSheet<void>(
-    context: context,
-    builder: (sheetContext) {
-      final locale = ref.read(appStateProvider).locale ?? SoulLocale.vi;
-      final l10n = AppLocalizations.of(context)!;
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.audioLibrary,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          for (final asset in catalog.assets)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: const Icon(Icons.graphic_eq),
-              title: Text(asset.titleFor(locale)),
-              subtitle:
-                  asset.delivery == AudioDelivery.published
-                      ? null
-                      : Text(l10n.audioPending),
-              trailing: const Icon(Icons.add),
-              onTap:
-                  asset.pathFor(locale) == null
-                      ? null
-                      : () {
-                        Navigator.pop(sheetContext);
-                        _add(
-                          title: asset.titleFor(locale),
-                          path: asset.pathFor(locale)!,
-                          isAsset: true,
-                        );
-                      },
+  Future<void> _showLibrary(AudioCatalog catalog, [String? categoryCode]) =>
+      showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (sheetContext) {
+          final locale = ref.read(appStateProvider).locale ?? SoulLocale.vi;
+          final l10n = AppLocalizations.of(context)!;
+          final playback = ref.watch(audioPlaybackProvider);
+
+          final bundle =
+              categoryCode != null ? catalog.bundleFor(categoryCode) : null;
+          final recommendedIds = [
+            if (bundle != null) ...bundle.soundIds,
+            if (bundle != null) bundle.guidedAudioId,
+          ];
+
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.75,
+            decoration: const BoxDecoration(
+              color: SoulColors.surface,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
             ),
-        ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Container(
+                    width: 36,
+                    height: 4,
+                    margin: const EdgeInsets.only(top: 12, bottom: 8),
+                    decoration: BoxDecoration(
+                      color: SoulColors.line,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: SoulSpace.lg),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.audioLibrary,
+                        style: Theme.of(context).textTheme.headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.audioLibraryNote,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: SoulColors.muted,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.sm),
+                const Divider(height: 1),
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: SoulSpace.lg,
+                      vertical: SoulSpace.sm,
+                    ),
+                    children: [
+                      if (recommendedIds.isNotEmpty) ...[
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.auto_awesome,
+                              size: 16,
+                              color: SoulColors.ctaStart,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              l10n.recommendedForVision,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: SoulColors.plum,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: SoulSpace.xs),
+                        for (final id in recommendedIds)
+                          if (catalog.asset(id) case final asset?)
+                            _buildLibraryItem(
+                              asset,
+                              locale,
+                              playback,
+                              sheetContext,
+                              isRecommended: true,
+                            ),
+                        const SizedBox(height: SoulSpace.md),
+                      ],
+                      Text(
+                        l10n.allAudio,
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: SoulColors.muted,
+                        ),
+                      ),
+                      const SizedBox(height: SoulSpace.xs),
+                      for (final asset in catalog.assets)
+                        if (!recommendedIds.contains(asset.id))
+                          _buildLibraryItem(
+                            asset,
+                            locale,
+                            playback,
+                            sheetContext,
+                          ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       );
-    },
-  );
+
+  Widget _buildLibraryItem(
+    SoulAudioAsset asset,
+    SoulLocale locale,
+    AudioPlaybackController playback,
+    BuildContext sheetContext, {
+    bool isRecommended = false,
+  }) {
+    final l10n = AppLocalizations.of(context)!;
+    final path = asset.pathFor(locale);
+    final title = asset.titleFor(locale);
+    final isPlaying = path != null && playback.isCurrentTrack(path);
+    final subtitle =
+        asset.isGuided
+            ? l10n.audioGuided
+            : (asset.type == 'ambience' ||
+                    asset.type == 'noise' ||
+                    asset.type == 'sound_bath'
+                ? l10n.audioNature
+                : l10n.audioMusic);
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 6),
+      decoration: BoxDecoration(
+        color: isRecommended ? SoulColors.softFill : SoulColors.surface,
+        borderRadius: BorderRadius.circular(SoulRadius.row),
+        border: Border.all(
+          color: isRecommended ? SoulColors.selectedBorder : SoulColors.line,
+        ),
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+        leading: IconButton(
+          icon: Icon(
+            isPlaying
+                ? Icons.pause_circle_filled_rounded
+                : Icons.play_circle_fill_rounded,
+            color: SoulColors.plum,
+            size: 32,
+          ),
+          onPressed:
+              path == null
+                  ? null
+                  : () {
+                    playback.playTrack(
+                      path: path,
+                      title: title,
+                      subtitle: subtitle,
+                      isAsset: true,
+                      loop: !asset.isGuided,
+                    );
+                  },
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+        ),
+        subtitle: Text(
+          subtitle,
+          style: const TextStyle(fontSize: 12, color: SoulColors.muted),
+        ),
+        trailing: IconButton(
+          tooltip: l10n.addAudio,
+          icon: const Icon(
+            Icons.check_circle_outline_rounded,
+            color: SoulColors.ctaStart,
+          ),
+          onPressed:
+              path == null
+                  ? null
+                  : () {
+                    Navigator.pop(sheetContext);
+                    _add(title: title, path: path, isAsset: true);
+                  },
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -346,7 +510,9 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                           vertical: 4,
                         ),
                       ),
-                      onPressed: () => _showAdd(audioCatalog.value!),
+                      onPressed:
+                          () =>
+                              _showAdd(audioCatalog.value!, item.categoryCode),
                       icon: const Icon(Icons.tune_rounded, size: 16),
                       label: Text(
                         isVi ? 'Đổi / Thêm' : 'Change / Add',
@@ -449,11 +615,19 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                             if (activeSoundIsAsset) {
                               ref
                                   .read(audioPlaybackProvider)
-                                  .toggleAsset(activeSoundPath);
+                                  .toggleAsset(
+                                    activeSoundPath,
+                                    title: activeSoundTitle,
+                                    subtitle: activeSoundSubtitle,
+                                  );
                             } else {
                               ref
                                   .read(audioPlaybackProvider)
-                                  .toggleFile(activeSoundPath);
+                                  .toggleFile(
+                                    activeSoundPath,
+                                    title: activeSoundTitle,
+                                    subtitle: activeSoundSubtitle,
+                                  );
                             }
                           },
                         ),
@@ -489,10 +663,24 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                               selection.isAsset
                                   ? ref
                                       .read(audioPlaybackProvider)
-                                      .toggleAsset(selection.path)
+                                      .toggleAsset(
+                                        selection.path,
+                                        title: selection.title,
+                                        subtitle:
+                                            isVi
+                                                ? 'Âm thanh Soul'
+                                                : 'Soul Audio',
+                                      )
                                   : ref
                                       .read(audioPlaybackProvider)
-                                      .toggleFile(selection.path),
+                                      .toggleFile(
+                                        selection.path,
+                                        title: selection.title,
+                                        subtitle:
+                                            isVi
+                                                ? 'Âm thanh cá nhân'
+                                                : 'Personal Audio',
+                                      ),
                       onRemove: () async {
                         await ref
                             .read(visionAudioRepositoryProvider)

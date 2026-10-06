@@ -146,6 +146,27 @@ class AppLocalizationsEn extends AppLocalizations {
       'Curated ambient soundscapes and 432Hz/528Hz frequency tracks to calm the mind and elevate your spirit.';
 
   @override
+  String get nowPlaying => 'Now Playing';
+
+  @override
+  String get stop => 'Stop';
+
+  @override
+  String get allAudio => 'All';
+
+  @override
+  String get audioNature => 'Nature & Ambience';
+
+  @override
+  String get audioMusicTab => 'Music & Soundscapes';
+
+  @override
+  String get audioGuidedTab => 'Guided Meditations';
+
+  @override
+  String get recommendedForVision => 'Recommended for this Vision';
+
+  @override
   String get exploreTitle => 'Soul Sanctuary';
 
   @override

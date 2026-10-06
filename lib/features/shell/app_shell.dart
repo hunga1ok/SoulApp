@@ -78,27 +78,33 @@ class AppShell extends ConsumerWidget {
       body: navigationShell,
       // Tab labels cap at 130% text scale, like platform tab bars, so the
       // fixed-height bar never clips them; screen content scales to 200%.
-      bottomNavigationBar: MediaQuery.withClampedTextScaling(
-        maxScaleFactor: _maxNavigationTextScale,
-        child: NavigationBar(
-          height: 76,
-          backgroundColor: SoulColors.surface,
-          indicatorColor: SoulColors.rose,
-          selectedIndex: navigationShell.currentIndex,
-          onDestinationSelected:
-              (index) => navigationShell.goBranch(
-                index,
-                initialLocation: index == navigationShell.currentIndex,
-              ),
-          destinations: [
-            for (var index = 0; index < labels.length; index++)
-              NavigationDestination(
-                icon: Icon(icons[index]),
-                selectedIcon: Icon(selectedIcons[index]),
-                label: labels[index],
-              ),
-          ],
-        ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SoulMiniPlayer(),
+          MediaQuery.withClampedTextScaling(
+            maxScaleFactor: _maxNavigationTextScale,
+            child: NavigationBar(
+              height: 76,
+              backgroundColor: SoulColors.surface,
+              indicatorColor: SoulColors.rose,
+              selectedIndex: navigationShell.currentIndex,
+              onDestinationSelected:
+                  (index) => navigationShell.goBranch(
+                    index,
+                    initialLocation: index == navigationShell.currentIndex,
+                  ),
+              destinations: [
+                for (var index = 0; index < labels.length; index++)
+                  NavigationDestination(
+                    icon: Icon(icons[index]),
+                    selectedIcon: Icon(selectedIcons[index]),
+                    label: labels[index],
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

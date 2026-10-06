@@ -356,6 +356,48 @@ abstract class AppLocalizations {
   /// **'Curated ambient soundscapes and 432Hz/528Hz frequency tracks to calm the mind and elevate your spirit.'**
   String get audioLibraryNote;
 
+  /// No description provided for @nowPlaying.
+  ///
+  /// In en, this message translates to:
+  /// **'Now Playing'**
+  String get nowPlaying;
+
+  /// No description provided for @stop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get stop;
+
+  /// No description provided for @allAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allAudio;
+
+  /// No description provided for @audioNature.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature & Ambience'**
+  String get audioNature;
+
+  /// No description provided for @audioMusicTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Music & Soundscapes'**
+  String get audioMusicTab;
+
+  /// No description provided for @audioGuidedTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Guided Meditations'**
+  String get audioGuidedTab;
+
+  /// No description provided for @recommendedForVision.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended for this Vision'**
+  String get recommendedForVision;
+
   /// No description provided for @exploreTitle.
   ///
   /// In en, this message translates to:

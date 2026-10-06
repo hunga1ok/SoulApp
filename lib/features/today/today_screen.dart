@@ -253,6 +253,8 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                       .read(audioPlaybackProvider)
                       .toggleAsset(
                         'assets/audio/music/so-11-warm-felt-piano.m4a',
+                        title: l10n.morningGratitude,
+                        subtitle: l10n.neutralInstrumentalFiveMinutes,
                       )
                   : null,
         ),
