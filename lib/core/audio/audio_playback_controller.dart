@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 
 /// One player for the whole app. Every screen delegates playback here so mute
 /// and pause behavior stay consistent across all features.
@@ -12,6 +15,8 @@ final audioPlaybackProvider = ChangeNotifierProvider<AudioPlaybackController>(
 );
 
 class AudioPlaybackController extends ChangeNotifier {
+  static bool _sessionCachePurged = false;
+
   AudioPlayer? _player;
   String? _assetPath;
   String? _currentTitle;
@@ -58,6 +63,12 @@ class AudioPlaybackController extends ChangeNotifier {
 
   Future<AudioPlayer> _ensurePlayer() async {
     if (_player != null) return _player!;
+    if (!_sessionCachePurged) {
+      _sessionCachePurged = true;
+      try {
+        await AudioPlayer.clearAssetCache();
+      } catch (_) {}
+    }
     final session = await AudioSession.instance;
     await session.configure(const AudioSessionConfiguration.music());
     final player = AudioPlayer();
@@ -88,6 +99,23 @@ class AudioPlaybackController extends ChangeNotifier {
   }
 
   Future<void> _safeSetAsset(AudioPlayer player, String path) async {
+    // Evict any stale cached version of this asset so just_audio is forced to
+    // extract the freshest audio binary directly from the application bundle.
+    if (!kIsWeb) {
+      try {
+        final tempDir = await getTemporaryDirectory();
+        final segments = Uri.parse(path).pathSegments;
+        final cached = File(
+          p.joinAll([tempDir.path, 'just_audio_cache', 'assets', ...segments]),
+        );
+        if (await cached.exists()) {
+          await cached.delete();
+        }
+      } catch (e) {
+        debugPrint('AudioPlaybackController: Cache evict note: $e');
+      }
+    }
+
     try {
       await player.setAsset(path);
     } catch (e) {
