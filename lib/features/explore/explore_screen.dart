@@ -567,16 +567,20 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                         const SizedBox(height: 6),
                         Row(
                           children: [
-                            Text(
-                              '${item.creator} · ${item.duration}',
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodySmall?.copyWith(
-                                color: SoulColors.muted,
-                                fontSize: 12,
+                            Expanded(
+                              child: Text(
+                                '${item.creator} · ${item.duration}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(
+                                  color: SoulColors.muted,
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
-                            const Spacer(),
+                            const SizedBox(width: SoulSpace.xs),
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [

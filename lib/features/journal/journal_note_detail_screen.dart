@@ -24,7 +24,7 @@ class JournalNoteDetailScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: SoulColors.paper,
       appBar: SoulAppBar(
-        title: note.title,
+        title: l10n.journal,
         onBack: () => Navigator.pop(context),
         actions: [
           IconButton(

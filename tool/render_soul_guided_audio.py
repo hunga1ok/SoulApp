@@ -511,7 +511,7 @@ TRACKS = [
     }
 ]
 
-async def render_single_paragraph(text, voice, rate, pitch, out_path, retries=3):
+async def render_single_paragraph(text, voice, rate, pitch, out_path, retries=5):
     for attempt in range(retries):
         try:
             comm = edge_tts.Communicate(
@@ -519,16 +519,16 @@ async def render_single_paragraph(text, voice, rate, pitch, out_path, retries=3)
                 voice,
                 rate=rate,
                 pitch=pitch,
-                connect_timeout=15,
-                receive_timeout=25
+                connect_timeout=20,
+                receive_timeout=30
             )
-            await asyncio.wait_for(comm.save(str(out_path)), timeout=30.0)
+            await asyncio.wait_for(comm.save(str(out_path)), timeout=40.0)
             if out_path.exists() and out_path.stat().st_size > 0:
                 return
         except Exception as e:
             if attempt == retries - 1:
                 raise
-            await asyncio.sleep(1.0)
+            await asyncio.sleep(2.0 * (attempt + 1))
 
 async def render_track_voice(paragraphs, voice, rate="-15%", pitch="-2Hz", pause_sec=2.5, temp_prefix="tmp"):
     temp_files = []
@@ -606,9 +606,9 @@ async def render_all(skip_existing=True):
             print(f"  -> Rendering VI: {vi_out.name}")
             vi_voice = await render_track_voice(
                 t["vi_paragraphs"],
-                voice="vi-VN-HoaiMyNeural",
-                rate="-15%",
-                pitch="-2Hz",
+                voice="fr-FR-VivienneMultilingualNeural",
+                rate="-10%",
+                pitch="+0Hz",
                 pause_sec=2.8,
                 temp_prefix=f"tmp_vi_{code}"
             )
