@@ -33,6 +33,7 @@ Map<String, Object> onboardedPreferences(SoulLocale locale) => {
   'onboarding_intentions': ['NURTURE_GRATITUDE'],
   'onboarding_reminders_decided': true,
   'onboarding_completed': true,
+  'subscription_plan': 'yearly',
 };
 
 const testTimezone = 'Asia/Ho_Chi_Minh';

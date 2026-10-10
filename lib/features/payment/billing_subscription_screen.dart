@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -590,6 +591,30 @@ class BillingSubscriptionScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: SoulSpace.sm),
+            ],
+
+            if (kDebugMode) ...[
+              Center(
+                child: TextButton(
+                  onPressed: () async {
+                    await ref
+                        .read(paymentControllerProvider.notifier)
+                        .resetToFree();
+                    if (context.mounted) {
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    }
+                  },
+                  child: const Text(
+                    '[Debug] Giả lập hết hạn gói (Test Paywall Gate)',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: SoulColors.error,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: SoulSpace.xs),
             ],
 
             // 6. App Store & Google Play Notice

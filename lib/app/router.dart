@@ -15,6 +15,8 @@ import '../features/today/today_screen.dart';
 import '../features/vision/vision_builder_screen.dart';
 import '../features/vision/vision_detail_screen.dart';
 import '../data/repositories/vision_repository.dart';
+import '../features/payment/payment_controller.dart';
+import '../features/payment/paywall_gate_screen.dart';
 import '../features/vision/vision_screen.dart';
 import 'app_state.dart';
 
@@ -33,12 +35,13 @@ final routerProvider = Provider<GoRouter>((ref) {
   // Re-run guards only when a routing input changes, not on every settings
   // edit (a refresh while a pushed route pops would restore that route).
   final routingChanges = ValueNotifier(0);
-  (bool, bool, bool, bool, bool) inputs() => (
+  (bool, bool, bool, bool, bool, bool) inputs() => (
     state.locale != null,
     state.hasPreferredName,
     state.intentions.isNotEmpty,
     state.remindersDecided,
     state.onboardingCompleted,
+    ref.read(paymentControllerProvider).isPremium,
   );
   var routingInputs = inputs();
   void onStateChanged() {
@@ -49,8 +52,12 @@ final routerProvider = Provider<GoRouter>((ref) {
   }
 
   state.addListener(onStateChanged);
+  final paymentListener = ref.listen(paymentControllerProvider, (_, __) {
+    onStateChanged();
+  });
   ref.onDispose(() {
     state.removeListener(onStateChanged);
+    paymentListener.close();
     routingChanges.dispose();
   });
 
@@ -79,10 +86,23 @@ final routerProvider = Provider<GoRouter>((ref) {
         }
         return only(path, '/onboarding/ready');
       }
-      if (_entryRoutes.contains(path)) return '/app/today';
+
+      // App requires active subscription (100% paywalled).
+      final isSubscribed = ref.read(paymentControllerProvider).isPremium;
+      if (!isSubscribed) {
+        return only(path, '/paywall-gate');
+      }
+
+      if (path == '/paywall-gate' || _entryRoutes.contains(path)) {
+        return '/app/today';
+      }
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/paywall-gate',
+        builder: (context, route) => const PaywallGateScreen(),
+      ),
       GoRoute(
         path: '/language',
         builder: (context, route) => const LanguageGateScreen(),
