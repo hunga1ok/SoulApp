@@ -797,7 +797,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get hideGuidance => '가이드 숨기기';
 
   @override
-  String get comfortZoneTitle => 'Comfort Zone';
+  String get comfortZoneTitle => 'Little Corner';
 
   @override
   String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
@@ -895,17 +895,17 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get homeWidgetSubtitle =>
-      'Comfort Zone 공간, 힐링 사운드 및 주파수, 비전, 오늘의 감사, Soul 카드 메시지를 홈 화면에 고정해 보세요.';
+      'Little Corner 공간, 힐링 사운드 및 주파수, 비전, 오늘의 감사, Soul 카드 메시지를 홈 화면에 고정해 보세요.';
 
   @override
   String get homeWidgetBannerSubtitle =>
-      'Comfort Zone, 힐링 사운드 및 비전을 홈 화면 위젯으로 만나보세요';
+      'Little Corner, 힐링 사운드 및 비전을 홈 화면 위젯으로 만나보세요';
 
   @override
   String get homeWidgetModeLabel => '위젯 표시 내용';
 
   @override
-  String get homeWidgetModeComfortZone => 'Comfort Zone';
+  String get homeWidgetModeComfortZone => 'Little Corner';
 
   @override
   String get homeWidgetModeSound => '사운드 & 주파수';
@@ -920,7 +920,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get homeWidgetModeCard => 'Soul 카드 메시지';
 
   @override
-  String get homeWidgetSelectSpace => 'Comfort Zone 공간 선택';
+  String get homeWidgetSelectSpace => 'Little Corner 공간 선택';
 
   @override
   String get homeWidgetSelectSound => '힐링 사운드 / 주파수 선택';

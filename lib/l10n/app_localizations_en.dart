@@ -821,7 +821,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hideGuidance => 'Hide guidance';
 
   @override
-  String get comfortZoneTitle => 'Comfort Zone';
+  String get comfortZoneTitle => 'Little Corner';
 
   @override
   String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
@@ -920,17 +920,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeWidgetSubtitle =>
-      'Pin your favorite Comfort Zone sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.';
+      'Pin your favorite Little Corner sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.';
 
   @override
   String get homeWidgetBannerSubtitle =>
-      'Pin Comfort Zone, Healing Sounds & Vision to your phone\'s home screen';
+      'Pin Little Corner, Healing Sounds & Vision to your phone\'s home screen';
 
   @override
   String get homeWidgetModeLabel => 'Widget Content Source';
 
   @override
-  String get homeWidgetModeComfortZone => 'Comfort Zone';
+  String get homeWidgetModeComfortZone => 'Little Corner';
 
   @override
   String get homeWidgetModeSound => 'Sound & Frequency';
@@ -945,7 +945,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeWidgetModeCard => 'Soul Card Message';
 
   @override
-  String get homeWidgetSelectSpace => 'Choose Comfort Zone Space';
+  String get homeWidgetSelectSpace => 'Choose Little Corner Space';
 
   @override
   String get homeWidgetSelectSound => 'Choose Healing Sound / Frequency';

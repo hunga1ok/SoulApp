@@ -151,32 +151,32 @@ class _PaywallGateScreenState extends ConsumerState<PaywallGateScreen> {
 
     final benefits = switch (locale) {
       SoulLocale.vi => const [
-        '28 không gian Comfort Zone & âm thanh tần số chữa lành',
+        '28 không gian Góc nhỏ & âm thanh tần số chữa lành',
         'Bảng tầm nhìn (Vision Board) & rút thẻ thông điệp mỗi ngày',
         'Hành trình 28 ngày chuyển hóa tâm thức & nhật ký biết ơn riêng tư',
       ],
       SoulLocale.ko => const [
-        '28개 Comfort Zone 안식처 & 주파수 치유 사운드 무제한',
+        '28개 Little Corner 안식처 & 주파수 치유 사운드 무제한',
         '무제한 비전 보드 및 데일리 소울 카드',
         '28일간의 마음챙김 감사 저널 여정',
       ],
       SoulLocale.ja => const [
-        '全28のComfort Zone癒やし空間＆ヒーリング周波数',
+        '全28のLittle Corner癒やし空間＆ヒーリング周波数',
         '無制限のビジョンボード＆毎日のソウルカード',
         '28日間のマインドフルネス感謝ジャーナル',
       ],
       SoulLocale.fr => const [
-        'Tous les 28 espaces Comfort Zone et fréquences de guérison',
+        'Tous les 28 espaces Little Corner et fréquences de guérison',
         'Vision Board illimité et tirage de cartes Soul',
         'Voyage de 28 jours de gratitude et journal intérieur',
       ],
       SoulLocale.zh => const [
-        '全部 28 个 Comfort Zone 空间与疗愈频率音频',
+        '全部 28 个 Little Corner 空间与疗愈频率音频',
         '无限愿景板与每日心灵指引卡',
         '28 天正念感恩旅程与深度内心日记',
       ],
       SoulLocale.en => const [
-        'All 28 Comfort Zone sanctuaries & healing frequency audio',
+        'All 28 Little Corner sanctuaries & healing frequency audio',
         'Unlimited Vision Board & daily Soul cards',
         '28-day mindfulness gratitude transformation journey',
       ],

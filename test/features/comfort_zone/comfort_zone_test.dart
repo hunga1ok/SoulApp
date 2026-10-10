@@ -137,8 +137,8 @@ void main() {
         await tester.tap(find.text('Khám phá'));
         await tester.pumpAndSettle();
 
-        expect(find.text('Comfort Zone'), findsOneWidget);
-        await tester.tap(find.text('Comfort Zone'));
+        expect(find.text('Góc nhỏ'), findsOneWidget);
+        await tester.tap(find.text('Góc nhỏ'));
         await tester.pumpAndSettle();
 
         expect(find.text('A Little World Where You Feel Safe'), findsOneWidget);
@@ -185,7 +185,7 @@ void main() {
         await tester.tap(find.text('Explore'));
         await tester.pumpAndSettle();
 
-        await tester.tap(find.text('Comfort Zone'));
+        await tester.tap(find.text('Little Corner'));
         await tester.pumpAndSettle();
 
         expect(find.text('A Little World Where You Feel Safe'), findsOneWidget);

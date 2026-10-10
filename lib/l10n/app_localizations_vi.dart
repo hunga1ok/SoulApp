@@ -812,7 +812,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get hideGuidance => 'Thu gọn hướng dẫn';
 
   @override
-  String get comfortZoneTitle => 'Comfort Zone';
+  String get comfortZoneTitle => 'Góc nhỏ';
 
   @override
   String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
@@ -911,17 +911,17 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeWidgetSubtitle =>
-      'Đặt không gian Comfort Zone, Âm thanh tần số chữa lành, Tầm nhìn, Thực hành biết ơn hoặc Thẻ Soul ngay trên màn hình điện thoại để chạm vào sự bình yên mỗi ngày.';
+      'Đặt không gian Góc nhỏ, Âm thanh tần số chữa lành, Tầm nhìn, Thực hành biết ơn hoặc Thẻ Soul ngay trên màn hình điện thoại để chạm vào sự bình yên mỗi ngày.';
 
   @override
   String get homeWidgetBannerSubtitle =>
-      'Ghim Comfort Zone, Âm thanh chữa lành & Tầm nhìn ra màn hình chính';
+      'Ghim Góc nhỏ, Âm thanh chữa lành & Tầm nhìn ra màn hình chính';
 
   @override
   String get homeWidgetModeLabel => 'Nội dung hiển thị trên Widget';
 
   @override
-  String get homeWidgetModeComfortZone => 'Comfort Zone';
+  String get homeWidgetModeComfortZone => 'Góc nhỏ';
 
   @override
   String get homeWidgetModeSound => 'Âm thanh & Tần số';
@@ -936,7 +936,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeWidgetModeCard => 'Thông điệp Thẻ Soul';
 
   @override
-  String get homeWidgetSelectSpace => 'Chọn không gian Comfort Zone';
+  String get homeWidgetSelectSpace => 'Chọn không gian Góc nhỏ';
 
   @override
   String get homeWidgetSelectSound => 'Chọn âm thanh / tần số chữa lành';

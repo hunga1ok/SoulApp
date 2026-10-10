@@ -1561,7 +1561,7 @@ abstract class AppLocalizations {
   /// No description provided for @comfortZoneTitle.
   ///
   /// In en, this message translates to:
-  /// **'Comfort Zone'**
+  /// **'Little Corner'**
   String get comfortZoneTitle;
 
   /// No description provided for @comfortZoneSubtitle.
@@ -1729,13 +1729,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeWidgetSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Pin your favorite Comfort Zone sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.'**
+  /// **'Pin your favorite Little Corner sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.'**
   String get homeWidgetSubtitle;
 
   /// No description provided for @homeWidgetBannerSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Pin Comfort Zone, Healing Sounds & Vision to your phone\'s home screen'**
+  /// **'Pin Little Corner, Healing Sounds & Vision to your phone\'s home screen'**
   String get homeWidgetBannerSubtitle;
 
   /// No description provided for @homeWidgetModeLabel.
@@ -1747,7 +1747,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeWidgetModeComfortZone.
   ///
   /// In en, this message translates to:
-  /// **'Comfort Zone'**
+  /// **'Little Corner'**
   String get homeWidgetModeComfortZone;
 
   /// No description provided for @homeWidgetModeSound.
@@ -1777,7 +1777,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeWidgetSelectSpace.
   ///
   /// In en, this message translates to:
-  /// **'Choose Comfort Zone Space'**
+  /// **'Choose Little Corner Space'**
   String get homeWidgetSelectSpace;
 
   /// No description provided for @homeWidgetSelectSound.

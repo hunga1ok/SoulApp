@@ -121,7 +121,7 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.text('Nội dung hiển thị trên Widget'), findsOneWidget);
-        expect(find.text('Comfort Zone'), findsOneWidget);
+        expect(find.text('Góc nhỏ'), findsOneWidget);
         expect(find.text('Âm thanh & Tần số'), findsOneWidget);
         await tester.scrollUntilVisible(
           find.text('Thực hành biết ơn'),

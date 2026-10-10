@@ -185,32 +185,32 @@ class _PaywallSheetState extends ConsumerState<_PaywallSheet> {
 
     final benefits = switch (locale) {
       SoulLocale.vi => const [
-        'Trọn bộ 28 không gian Comfort Zone & âm thanh tần số chữa lành',
+        'Trọn bộ 28 không gian Góc nhỏ & âm thanh tần số chữa lành',
         'Bảng tầm nhìn (Vision Board) không giới hạn & rút thẻ thông điệp',
         'Hành trình 28 ngày chuyển hóa tâm thức & nhật ký biết ơn',
       ],
       SoulLocale.ko => const [
-        '28개 Comfort Zone 안식처 & 주파수 치유 사운드 무제한',
+        '28개 Little Corner 안식처 & 주파수 치유 사운드 무제한',
         '무제한 비전 보드 및 데일리 소울 카드',
         '28일간의 마음챙김 감사 저널 여정',
       ],
       SoulLocale.ja => const [
-        '全28のComfort Zone癒やし空間＆ヒーリング周波数',
+        '全28のLittle Corner癒やし空間＆ヒーリング周波数',
         '無制限のビジョンボード＆毎日のソウルカード',
         '28日間のマインドフルネス感謝ジャーナル',
       ],
       SoulLocale.fr => const [
-        'Tous les 28 espaces Comfort Zone et fréquences de guérison',
+        'Tous les 28 espaces Little Corner et fréquences de guérison',
         'Vision Board illimité et tirage de cartes Soul',
         'Voyage de 28 jours de gratitude et journal intérieur',
       ],
       SoulLocale.zh => const [
-        '全部 28 个 Comfort Zone 空间与疗愈频率音频',
+        '全部 28 个 Little Corner 空间与疗愈频率音频',
         '无限愿景板与每日心灵指引卡',
         '28 天正念感恩旅程与深度内心日记',
       ],
       SoulLocale.en => const [
-        'All 28 Comfort Zone sanctuaries & healing frequency audio',
+        'All 28 Little Corner sanctuaries & healing frequency audio',
         'Unlimited Vision Board & daily Soul cards',
         '28-day mindfulness gratitude transformation journey',
       ],
@@ -644,7 +644,7 @@ class _PurchaseSuccessSheet extends ConsumerWidget {
           Text(
             switch (locale) {
               SoulLocale.vi =>
-                'Toàn bộ 28 không gian Comfort Zone, Bảng tầm nhìn không giới hạn và chuỗi thực hành biết ơn đã sẵn sàng cho bạn.',
+                'Toàn bộ 28 không gian Góc nhỏ, Bảng tầm nhìn không giới hạn và chuỗi thực hành biết ơn đã sẵn sàng cho bạn.',
               SoulLocale.ko => '28개의 안식처 공간과 무제한 비전 보드를 마음껏 이용하세요.',
               SoulLocale.ja => '28の癒やし空間と無制限のビジョンボードがご利用いただけます。',
               SoulLocale.fr =>

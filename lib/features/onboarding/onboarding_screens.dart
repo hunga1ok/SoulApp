@@ -776,32 +776,32 @@ class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
       SoulLocale.vi => const [
         'Thực hành biết ơn & nhật ký chuyển hóa tâm thức mỗi ngày',
         'Bảng tầm nhìn (Vision Board) & rút thẻ thông điệp tâm hồn',
-        'Trọn bộ 28 không gian Comfort Zone & âm thanh tần số 432Hz – 963Hz',
+        'Trọn bộ 28 không gian Góc nhỏ & âm thanh tần số 432Hz – 963Hz',
       ],
       SoulLocale.ko => const [
         '매일 감사 실천 및 마음 챙김 저널 기록',
         '무제한 비전 보드 및 데일리 소울 메시지 카드',
-        '28개의 힐링 Comfort Zone 공간 및 432Hz – 963Hz 치유 주파수 사운드',
+        '28개의 힐링 Little Corner 공간 및 432Hz – 963Hz 치유 주파수 사운드',
       ],
       SoulLocale.ja => const [
         '毎日の感謝ワークと心を整えるジャーナル記録',
         'ビジョンボード作成＆毎日のソウルメッセージカード',
-        '全28のComfort Zone癒やし空間＆432Hz〜963Hzヒーリング周波数',
+        '全28のLittle Corner癒やし空間＆432Hz〜963Hzヒーリング周波数',
       ],
       SoulLocale.fr => const [
         'Pratique quotidienne de gratitude et journal de transformation',
         'Vision Board illimité et tirage quotidien de cartes Soul',
-        'Les 28 espaces Comfort Zone et fréquences de guérison 432Hz – 963Hz',
+        'Les 28 espaces Little Corner et fréquences de guérison 432Hz – 963Hz',
       ],
       SoulLocale.zh => const [
         '每日感恩练习与正念转化日记',
         '无限愿景板 (Vision Board) 与每日心灵指引抽卡',
-        '全部 28 个 Comfort Zone 疗愈空间与 432Hz – 963Hz 疗愈频率音频',
+        '全部 28 个 Little Corner 疗愈空间与 432Hz – 963Hz 疗愈频率音频',
       ],
       SoulLocale.en => const [
         'Daily gratitude practice & mindful transformation journal',
         'Unlimited Vision Board & daily Soul guidance cards',
-        'All 28 Comfort Zone sanctuaries & 432Hz – 963Hz healing frequencies',
+        'All 28 Little Corner sanctuaries & 432Hz – 963Hz healing frequencies',
       ],
     };
 

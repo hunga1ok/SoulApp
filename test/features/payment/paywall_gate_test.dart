@@ -36,6 +36,10 @@ void main() {
         expect(find.text(r'$2 / tháng'), findsOneWidget);
         expect(find.text('Gói Trọn Đời'), findsOneWidget);
         expect(find.text(r'$50 / trọn đời'), findsOneWidget);
+        expect(
+          find.text('28 không gian Góc nhỏ & âm thanh tần số chữa lành'),
+          findsOneWidget,
+        );
         expect(find.text('Tiếp tục hành trình'), findsOneWidget);
         expect(find.text('Đăng xuất'), findsOneWidget);
       },
@@ -66,11 +70,16 @@ void main() {
       expect(find.text(r'$2 / month'), findsOneWidget);
       expect(find.text('Lifetime Plan'), findsOneWidget);
       expect(find.text(r'$50 / lifetime'), findsOneWidget);
+      expect(
+        find.text('All 28 Little Corner sanctuaries & healing frequency audio'),
+        findsOneWidget,
+      );
       expect(find.text('Continue Journey'), findsOneWidget);
       expect(find.text('Restore Purchases on this device'), findsOneWidget);
       expect(find.text('Sign Out'), findsOneWidget);
 
-      // Verify 0 Vietnamese text
+      // Verify Comfort Zone and Vietnamese text are absent
+      expect(find.textContaining('Comfort Zone'), findsNothing);
       expect(find.text('Tiếp tục nuôi dưỡng tâm hồn cùng Soul'), findsNothing);
       expect(find.text('Gói Năm'), findsNothing);
       expect(find.text('Gói Tháng'), findsNothing);

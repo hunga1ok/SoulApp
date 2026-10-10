@@ -835,7 +835,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get hideGuidance => 'Masquer le guide';
 
   @override
-  String get comfortZoneTitle => 'Comfort Zone';
+  String get comfortZoneTitle => 'Little Corner';
 
   @override
   String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
@@ -934,17 +934,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get homeWidgetSubtitle =>
-      'Épinglez votre espace Comfort Zone, vos Sons & Fréquences apaisants, votre Vision, votre Gratitude ou votre Carte Soul sur l\'écran d\'accueil.';
+      'Épinglez votre espace Little Corner, vos Sons & Fréquences apaisants, votre Vision, votre Gratitude ou votre Carte Soul sur l\'écran d\'accueil.';
 
   @override
   String get homeWidgetBannerSubtitle =>
-      'Épinglez Comfort Zone, Sons apaisants et Vision sur l\'écran d\'accueil';
+      'Épinglez Little Corner, Sons apaisants et Vision sur l\'écran d\'accueil';
 
   @override
   String get homeWidgetModeLabel => 'Contenu affiché sur le widget';
 
   @override
-  String get homeWidgetModeComfortZone => 'Comfort Zone';
+  String get homeWidgetModeComfortZone => 'Little Corner';
 
   @override
   String get homeWidgetModeSound => 'Sons & Fréquences';
@@ -959,7 +959,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeWidgetModeCard => 'Message Carte Soul';
 
   @override
-  String get homeWidgetSelectSpace => 'Choisir l\'espace Comfort Zone';
+  String get homeWidgetSelectSpace => 'Choisir l\'espace Little Corner';
 
   @override
   String get homeWidgetSelectSound => 'Choisir le son / la fréquence apaisante';

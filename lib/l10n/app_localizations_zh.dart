@@ -785,7 +785,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hideGuidance => '隐藏指引';
 
   @override
-  String get comfortZoneTitle => 'Comfort Zone';
+  String get comfortZoneTitle => 'Little Corner';
 
   @override
   String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
@@ -879,16 +879,16 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get homeWidgetSubtitle =>
-      '将你喜爱的 Comfort Zone 空间、疗愈音频与频率、我的愿景、每日感恩或 Soul 灵感卡固定在手机主屏幕上。';
+      '将你喜爱的 Little Corner 空间、疗愈音频与频率、我的愿景、每日感恩或 Soul 灵感卡固定在手机主屏幕上。';
 
   @override
-  String get homeWidgetBannerSubtitle => '在主屏幕上固定 Comfort Zone、疗愈之声与愿景';
+  String get homeWidgetBannerSubtitle => '在主屏幕上固定 Little Corner、疗愈之声与愿景';
 
   @override
   String get homeWidgetModeLabel => '小组件显示内容';
 
   @override
-  String get homeWidgetModeComfortZone => 'Comfort Zone';
+  String get homeWidgetModeComfortZone => 'Little Corner';
 
   @override
   String get homeWidgetModeSound => '疗愈音频与频率';
@@ -903,7 +903,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get homeWidgetModeCard => 'Soul 卡片寄语';
 
   @override
-  String get homeWidgetSelectSpace => '选择 Comfort Zone 空间';
+  String get homeWidgetSelectSpace => '选择 Little Corner 空间';
 
   @override
   String get homeWidgetSelectSound => '选择疗愈音频 / 频率';
