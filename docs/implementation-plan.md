@@ -185,6 +185,62 @@ Journal, Explore, and Profile meet the updated product specification.
 
 All five tabs and avatar settings meet the MVP product specification.
 
+## Phase 7C — Comfort Zone (Góc bình yên / Không gian an trú)
+
+### Work
+
+- Implement 28 mindful rooms catalog across 5 distinct emotional themes.
+- Interactive room canvas with dynamic touch ripples and looping authentic ambient audio.
+- Center-blur countdown timer with sleek white typography and dark backdrop blur.
+- Ambient soundscape selector with pre-recorded nature sounds and licensed Kevin MacLeod master recordings.
+- Zero synthetic/algorithmic noise generators; 100% verified authentic sources.
+
+### Verify
+
+- Room catalog parses correctly across all 6 supported locales.
+- Timer automatically stops audio playback upon completion.
+- Audio looping operates seamlessly without audio artifacts, clicks, or glitches.
+
+### Exit criteria
+
+Comfort Zone provides a tranquil, immersive sanctuary with authentic audio landscapes and intuitive countdown controls.
+
+## Phase 7D — Living Home Widget & System Integration
+
+### Work
+
+- Integrate `home_widget` plugin to sync daily affirmations and motivational quotes to native home screens.
+- Build Android AppWidget layout and iOS WidgetKit timeline provider.
+- Add `LivingHomeWidgetCard` into the Today feed above Soul Cards.
+- Provide step-by-step setup walkthrough screen (`/widget-setup`) with platform-specific instructions.
+
+### Verify
+
+- Affirmation updates correctly transfer to native shared storage.
+- Setup screen accurately renders instructions and deep links.
+
+### Exit criteria
+
+Users can view daily mindful affirmations directly from their phone's home screen.
+
+## Phase 7E — Tablet / iPad Responsiveness & Monetization
+
+### Work
+
+- Responsive screen layouts: apply `SoulDimensions.maxContentWidth` centering to prevent over-stretching on tablets.
+- Adaptive grid columns (1–4 columns) for Comfort Zone, Vision Collage, and Card Decks.
+- Responsive modal presentation for bottom sheets on tablet viewports.
+- Subscription and pricing screen (`/pricing`) with balanced typography and proportional tier cards across 6 locales.
+
+### Verify
+
+- UI displays without distortion or layout overflow on iPad (portrait & landscape) and Android tablets.
+- Font sizing in annual and monthly pricing tiers remains consistent across English and Vietnamese.
+
+### Exit criteria
+
+App delivers a premium, adaptive experience across both phone and tablet form factors.
+
 ## Phase 8 — Quality and release readiness
 
 ### Work

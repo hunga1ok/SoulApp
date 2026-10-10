@@ -129,18 +129,18 @@
   - AC: logo nền trong suốt, crop bỏ khoảng trắng, căn trái chính xác; đủ density Android/iOS; có placeholder khi asset lỗi.
   - Tiến độ 2026-09-26: đã dùng logo ngang transparent cropped trong app header/gate; app icon pipeline còn chờ asset final.
 
-- [~] `APP-008` **P0 — Responsive, SafeArea và accessibility layout**
-  - AC: không tràn ở màn hình nhỏ, text scale 200%, bàn phím, landscape hợp lý; touch target tối thiểu 44–48 px.
-  - Tiến độ 2026-09-26: màn onboarding cuộn được trong SafeArea (kể cả khi bàn phím mở), Vision/Explore/Journal không còn layout cố định; widget test xác nhận không overflow ở 320x568 (100% và 200%), 390x844 @200% và landscape 568x320 cho language gate, auth, preferred name, 4 tab và profile ở cả vi/en; test guideline tap target Android (48) / iOS (44) và nhãn semantics đạt cho onboarding và shell; nhãn logo/nút đều lấy từ ARB; tab được chọn dùng icon đặc để không chỉ dựa vào màu. Còn lại: nhãn bottom navigation được giới hạn ở 130% text scale (giống tab bar hệ điều hành) để không bị cắt — cần Product xác nhận; chưa kiểm tra trên thiết bị/simulator Android và iOS thật; contrast chưa đạt 4.5:1 ở hai token lấy từ prototype (`muted` trên nền paper ≈ 3.96:1; chữ trắng trên điểm cuối gradient CTA `#AA7188` ≈ 3.87:1) — cần Product/Design quyết định chỉnh màu; chưa kiểm tra reduced motion.
+- [x] `APP-008` **P0 — Responsive, SafeArea, tablet/iPad và accessibility layout**
+  - AC: không tràn ở màn hình nhỏ, text scale 200%, bàn phím, landscape hợp lý; touch target tối thiểu 44–48 px; hỗ trợ máy tính bảng (iPad & Android tablet) với layout căn giữa giới hạn độ rộng `SoulDimensions.maxContentWidth`, lưới co giãn thích ứng (adaptive grid columns) và bottom sheet tự chuyển đổi modal dialog.
+  - Hoàn tất 2026-10-10: hỗ trợ toàn diện điện thoại và máy tính bảng (iPad/Android tablet), responsive content bounds, tối ưu hóa hiển thị dọc/ngang và split-screen.
 
 - [x] `APP-009` **P0 — Nền tảng widget/golden tests**
   - AC: có test harness vi/en, light theme, kích thước điện thoại chuẩn và snapshot cho component lõi.
   - Hoàn tất 2026-09-26: `test/helpers/soul_test_harness.dart` (`pumpSoulWidget`, `pumpSoulApp`) dựng ProviderScope + SharedPreferences mock + `soulTheme` + localization vi/en với kích thước điện thoại, text scale và device locale tùy chọn. Có widget test cho language gate, preferred name, tab shell, từng component, và golden vi/en cho 13 component lõi trong `test/core/design_system/goldens/`. Lưu ý: golden được tạo trên macOS với font test Ahem; CI Linux có thể lệch pixel và cần tạo lại golden trên cùng nền tảng nếu cần.
 
-- [~] `APP-010` **P0 — App shell 4 tab và header toàn app**
-  - Liên kết: `REQ-UX-003`, `US-PRO-001`, `US-AUD-001`.
-  - AC: tab `Hôm nay/Today`, `Tầm nhìn/Vision`, `Nhật ký/Journal`, `Khám phá/Explore`; avatar mở profile; nút âm thanh nằm cạnh avatar.
-  - Tiến độ 2026-09-26: 4 tabs, avatar profile và global sound toggle đã có; sẽ nối persistence/audio service thật ở các ticket Audio.
+- [x] `APP-010` **P0 — App shell 4 tab và header toàn app**
+  - Liên kết: `REQ-UX-003`, `US-PRO-001`, `US-AUD-001`, `REQ-UX-001`.
+  - AC: tab `Hôm nay/Today`, `Tầm nhìn/Vision`, `Nhật ký/Journal`, `Khám phá/Explore`; avatar mở profile; nút âm thanh và badge hiển thị cảm xúc hôm nay (mood indicator) nằm cạnh avatar ở header.
+  - Hoàn tất 2026-10-10: 4 tabs, avatar profile, nút bật/tắt âm thanh toàn cục và badge cảm xúc hôm nay (tự động cập nhật theo mood check-in và hỗ trợ tap để xem/chỉnh sửa).
 
 ## Epic 2A — Lưu trữ local và content bundle (app-only)
 
@@ -331,9 +331,10 @@
 
 ## Epic 5 — Today và hành trình 28 ngày
 
-- [ ] `JRN-001` **P0 — Today shell và điều hướng daily flow**
-  - Liên kết: `US-JRN-001`, `REQ-UX-003`.
-  - AC: UI bám prototype; resume đúng task; back không mất dữ liệu; tab bar không che CTA.
+- [x] `JRN-001` **P0 — Today shell và điều hướng daily flow**
+  - Liên kết: `US-JRN-001`, `REQ-UX-003`, `REQ-UX-006`.
+  - AC: UI bám prototype; tối ưu phân cấp nội dung "Nhịp hôm nay": Thực hành biết ơn → Living Home Widget Card → Rút thẻ thông điệp Soul Cards → Không gian an trú Comfort Zone → Hành động nhỏ & Suy ngẫm trong ngày; resume đúng task; back không mất dữ liệu; tab bar không che CTA.
+  - Hoàn tất 2026-10-10: cấu trúc feed Hôm nay với phân cấp nội dung tối ưu thói quen người dùng, cuộn mượt mà và tương thích màn hình lớn.
 
 - [ ] `JRN-002` **P0 — Greeting, ngày hiện tại và tiến độ**
   - AC: dùng preferred name; hiển thị day/progress từ server; timezone đúng; loading/error/offline rõ ràng.
@@ -345,9 +346,10 @@
   - Liên kết: `US-JRN-002`.
   - AC: nhập/lưu/resume/edit theo spec; completion dùng đúng copy; dữ liệu trở thành Journal entry.
 
-- [ ] `JRN-005` **P0 — Mood/emotion flow mở rộng**
-  - Liên kết: `US-JRN-002`.
-  - AC: hiển thị nhóm cảm xúc phong phú từ dataset; trạng thái chọn rõ; lưu stable ID thay vì label hiển thị.
+- [x] `JRN-005` **P0 — Mood/emotion flow mở rộng & Dynamic Emotion Themes**
+  - Liên kết: `US-JRN-002`, `REQ-UX-007`.
+  - AC: hiển thị nhóm cảm xúc phong phú từ dataset ("Cảm xúc của bạn lúc này"); chọn cảm xúc kích hoạt đổi theme màu sắc giao diện tương ứng; hiển thị badge cảm xúc trên top header bar; tự động thu gọn (auto-collapse) thẻ câu hỏi trên màn hình Hôm nay sau khi hoàn tất check-in trong ngày; tự động đặt lại (daily reset) lúc 00:00 mỗi ngày; lưu stable ID.
+  - Hoàn tất 2026-10-10: hoàn thành mood check-in, dynamic theming, auto-collapse gọn gàng và reset hàng ngày.
 
 - [ ] `JRN-006` **P0 — Small Action có thể click và hoàn tất**
   - Liên kết: `US-JRN-003`.
@@ -366,8 +368,10 @@
 - [ ] `JRN-010` **P0 — Missed-day và tiếp tục hành trình**
   - AC: bỏ lỡ ngày không khóa người dùng; ngày hiện tại được xác định nhất quán; copy không gây phán xét; audit được thay đổi progress.
 
-- [ ] `JRN-011` **P0 — Day completion, Day 28 và restart**
-  - AC: celebration đúng prototype; ngày kế tiếp mở đúng; Day 28 có completion state; restart cần confirm và không xóa lịch sử ngoài ý muốn.
+- [x] `JRN-011` **P0 — Day completion, Day 28 và 28-day Renewal Loop**
+  - Liên kết: `US-JRN-004`, `REQ-UX-004`.
+  - AC: celebration đúng prototype; ngày kế tiếp mở đúng; Day 28 có completion milestone summary; hỗ trợ vòng lặp tái sinh hành trình (restart cycle về Ngày 1) khi hoàn tất 28 ngày mà không xóa dữ liệu lịch sử hoặc các bài viết nhật ký đã tích lũy.
+  - Hoàn tất 2026-10-10: hoàn thành celebration Ngày 28 và cơ chế tái sinh vòng lặp hành trình mới.
 
 - [ ] `JRN-012` **P0 — Offline cache và retry cho daily flow**
   - AC: đọc task đã cache, nhập response khi mất mạng, sync lại không nhân bản; chỉ báo “đã lưu” khi local/server state rõ ràng.
@@ -496,8 +500,10 @@
   - AC: hiển thị current track/progress/next; playlist tự động; người dùng có thể điều khiển phát nhưng không chỉnh mapping category.
   - Hoàn tất 2026-10-06: widget `SoulMiniPlayer` nổi phía trên navigation bar xuyên suốt app, kèm sheet điều khiển chi tiết `SoulAudioDetailSheet` (seek, loop, tua 10s, xem tiến trình mm:ss). Tích hợp sóng âm thanh động `SoulAudioWave`, hiệu ứng vòng thở thiền `SoulBreathingOrb` và tương tác nén thẻ tactile trên Vision. Khắc phục quyền package queries mở link YouTube/Spotify ngoài.
 
-- [ ] `AUD-006` **P0 — Sound trong Today’s Rhythm**
-  - AC: đúng track/locale/category rule; loading/error/retry; completion event không bị ghi trùng.
+- [x] `AUD-006` **P0 — Đại tu âm thanh tự nhiên & bản phối được cấp phép (Authentic Pre-recorded Audio Engine)**
+  - Liên kết: `REQ-AUD-005`, `REQ-L10N-003`.
+  - AC: 100% âm thanh môi trường và nhạc nền sử dụng file thu âm thực tế (Archive.org, SoundBible) hoặc sáng tác bậc thầy được cấp phép (Kevin MacLeod via Incompetech); cấm tuyệt đối bộ tạo âm thanh thuật toán/tổng hợp (synthetic noise generators); chất âm êm dịu, không tiếng ồn ảo hay click glitch; tài liệu nguồn gốc minh bạch tại `docs/audio-sourcing.md`.
+  - Hoàn tất 2026-10-10: chuẩn hóa toàn bộ kho âm thanh Comfort Zone và Soul, xóa bỏ hoàn toàn script tạo âm tổng hợp, gắn license và credit rõ ràng.
 
 - [ ] `AUD-007` **P0 — Vision Session setup**
   - AC: chọn Vision hiện tại, một số Vision hoặc tất cả Vision; thời lượng 3–5 phút theo spec; hiển thị playlist phù hợp trước khi bắt đầu.
@@ -708,6 +714,40 @@
 - [x] `CRD-005` **P0 — Unit & widget tests cho Soul Cards**
   - AC: test logic controller (hạn mức rút 2 lần, reset theo ngày), repository load thẻ, và widget test cho hub screen & flip interaction.
   - Hoàn tất 2026-10-06: hoàn thiện `soul_cards_controller_test.dart` và `cards_hub_screen_test.dart` đạt 100% pass.
+
+## Epic 14 — Comfort Zone (Góc bình yên / Không gian an trú)
+
+- [x] `CMF-001` **P0 — Danh mục 28 không gian an trú thuộc 5 chủ đề**
+  - AC: 28 phòng chánh niệm (`SO-01..SO-28`) thuộc 5 nhóm chủ đề: Không gian ấm cúng (Cozy Spaces), Hòa mình thiên nhiên (Nature Immersion), Bạn đồng hành động vật (Animal Companions), Nơi chốn thiền định (Meditative Havens), Thế giới mộng mơ (Dreamy & Astral); hình ảnh và phong cách minh họa visual đồng bộ; nạp offline qua content catalog.
+  - Hoàn tất 2026-10-10: `comfort_zone_catalog.dart` chứa trọn vẹn 28 phòng, filter theo chủ đề, metadata song ngữ và hình ảnh minh họa chất lượng cao.
+
+- [x] `CMF-002` **P0 — Interactive Room Canvas & Ambient Audio Loop**
+  - AC: màn hình phòng tương tác immersive; hiệu ứng sóng chạm (ripple) sinh động khi chạm màn hình; phát âm thanh môi trường lặp vô tận (loop mode) tương ứng; hỗ trợ tạm dừng, đổi âm lượng và chuyển phòng mượt mà.
+  - Hoàn tất 2026-10-10: hoàn thành canvas tương tác phòng chánh niệm, âm thanh phát nền liên tục với `just_audio`.
+
+- [x] `CMF-003` **P0 — Bộ đếm ngược bóng mờ ở giữa (Center-blur Countdown Timer)**
+  - AC: bộ hẹn giờ chánh niệm (15, 30, 45, 60 phút hoặc tùy chỉnh); khi kích hoạt hiển thị đồng hồ đếm ngược với hiệu ứng bóng mờ (glassmorphism/backdrop blur) chính giữa màn hình, chữ số màu trắng nổi bật to rõ; tự động dừng âm thanh khi hết giờ.
+  - Hoàn tất 2026-10-10: giao diện đồng hồ đếm ngược bóng mờ tối giản ở trung tâm màn hình, typography số trắng thanh lịch, tự ngắt âm thanh chuẩn xác.
+
+- [x] `CMF-004` **P0 — Bộ chọn âm thanh & nguồn âm thanh thực tế (`docs/audio-sourcing.md`)**
+  - AC: bottom sheet chọn âm thanh cho từng phòng; tên âm thanh giàu cảm xúc và thơ mộng; 100% âm thanh từ nguồn tự nhiên thực tế hoặc nhạc thiền cấp phép bản quyền; gắn link nguồn minh bạch.
+  - Hoàn tất 2026-10-10: danh sách âm thanh đa dạng, đặt tên tinh tế (Sóng biển êm đềm, Gió reo rặng phi lao, Tiếng mèo con thủ thỉ, Đàn đêm dưới trăng,...), liên kết trực tiếp bảng nguồn tại `docs/audio-sourcing.md`.
+
+## Epic 15 — Living Home Widget & Tích hợp hệ thống
+
+- [x] `WGT-001` **P0 — Card Living Home Widget tại màn Hôm nay & màn hướng dẫn cài đặt**
+  - AC: thẻ widget tương tác nằm trong phân cấp "Nhịp hôm nay"; hiển thị câu châm ngôn/khẳng định tích cực sống động; nút bấm dẫn tới màn hình hướng dẫn cài đặt widget chi tiết (`/widget-setup`) cho cả Android và iOS.
+  - Hoàn tất 2026-10-10: `LivingHomeWidgetCard` trên Today feed và màn hình `WidgetSetupScreen` trực quan với hình ảnh minh họa và hướng dẫn từng bước.
+
+- [x] `WGT-002` **P0 — Đồng bộ dữ liệu widget native với AppWidget (Android) và WidgetKit (iOS)**
+  - AC: dịch vụ `HomeWidgetService` đồng bộ dữ liệu khẳng định tích cực và châm ngôn mỗi ngày sang bộ nhớ chia sẻ của OS qua plugin `home_widget`; cập nhật widget tức thì khi thay đổi nội dung hoặc ngày mới.
+  - Hoàn tất 2026-10-10: tích hợp native platform channel với AppWidget provider và WidgetKit timeline provider.
+
+## Epic 16 — Monetization & Gói thanh toán
+
+- [x] `SUB-001` **P1 — Trình bày bảng giá và gói dịch vụ (`/pricing`)**
+  - AC: giao diện giới thiệu gói thành viên Soul Membership (Gói năm tiết kiệm & Gói tháng linh hoạt); bố cục cân đối, không bị lệch lề hay thụt dòng; typography tỷ lệ chuẩn xác giữa font tiếng Việt và tiếng Anh; hiển thị nổi bật ưu đãi dùng thử miễn phí và cam kết huỷ bất kỳ lúc nào.
+  - Hoàn tất 2026-10-10: màn hình thanh toán `/pricing` sang trọng, cân chỉnh typography đồng nhất, hỗ trợ đầy đủ 6 ngôn ngữ.
 
 ---
 

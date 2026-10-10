@@ -6,10 +6,11 @@ Soul is a private, bilingual wellbeing application that helps a user practice gr
 
 ## 2. MVP platforms and languages
 
-- Flutter mobile app for iOS and Android, app-only: no backend, no account; all user data stays on the device (decision 2026-09-26, see `requirements.md` §0). Cross-device sync is deferred.
-- Vietnamese (`vi`) and English (`en`) at launch.
-- Device locale suggests the initial language. The user explicitly confirms it.
-- Language can be changed later from profile settings.
+- Flutter mobile app for iOS, Android, and tablets/iPads (responsive layouts up to wide tablet viewports).
+- App-only: no backend, no account; all user data stays on the device (decision 2026-09-26, see `requirements.md` §0). Cross-device sync is deferred.
+- Multi-language support: Vietnamese (`vi`), English (`en`), French (`fr`), Japanese (`ja`), Korean (`ko`), and Chinese (`zh`).
+- Device locale suggests the initial language on a language-neutral gate screen; user tap confirms it.
+- Language can be changed anytime from profile settings.
 
 ## 3. Primary navigation
 
@@ -21,13 +22,22 @@ Five bottom tabs:
 4. Journal
 5. Explore
 
-Profile and settings open from the avatar in the app header. Global sound can be toggled beside the avatar.
+### Header controls
+
+The top navigation bar contains:
+- Left: Optically aligned horizontal Soul logo.
+- Right:
+  - **Mood / Theme Indicator**: Shows an emotion icon matching the user's active mood check-in; tapping opens the theme & emotion picker.
+  - **Global Sound Toggle**: Enables/disables audio across the app.
+  - **Profile Avatar**: Opens Profile, stats, settings, language chooser, and widget configuration.
+
+Comfort Zone (Góc bình yên / Little Corner) is directly accessible from the Today screen with dedicated deep links into 28 sanctuary rooms.
 
 ## 4. Onboarding
 
 ### Flow
 
-1. Language-neutral locale chooser: `Tiếng Việt` or `English` (endonyms; the device-suggested language is highlighted, and the user's tap confirms).
+1. Language-neutral locale chooser: `Tiếng Việt` or `English` (device-suggested language is highlighted as primary CTA; user tap confirms and persists).
 2. Preferred name: “Soul should call you…”.
 3. Primary intention for using Soul.
 4. Morning and evening reminder preferences.
@@ -38,31 +48,39 @@ Google sign-in is deferred until cross-device sync returns.
 
 ### Acceptance criteria
 
-- No Vietnamese or English sentence appears before language choice.
+- No language-specific sentence appears before language choice.
 - Returning users skip completed onboarding.
 - Preferred name is required, trimmed, limited to 40 characters, editable later, and used in greetings.
 
 ## 5. Today
 
 - Personalized greeting using preferred name.
-- Current day in the 28-day gratitude journey.
-- Progress and completion state.
-- Mood check-in.
-- “Today’s rhythm” with gratitude practice, a locale-compatible sound, and one small action.
-- A relevant Vision card when the user has active Visions.
-- An evening-practice preview when relevant.
+- Current day in the 28-day gratitude journey with progress ring.
+- **Mood Check-in & Dynamic Visual Themes ("Cảm xúc của bạn lúc này")**:
+  - Selecting an emotion binds to a tailored visual palette / theme across the app.
+  - Next to the speaker button in the header, a mood badge appears with the emotion's icon; tapping it allows the user to switch themes or update their emotion.
+  - Once selected for the day, the mood card automatically collapses/hides to keep the screen uncluttered. It automatically resets on the next calendar day, with an option to expand and change anytime.
+- **"Today’s Rhythm" (Nhịp hôm nay) optimized order**:
+  Arranged deliberately to drive daily engagement, habit formation, and app retention:
+  1. **Gratitude Practice of the Day**: Morning arrival, mindful prompt, and core task.
+  2. **Home Screen Widget Card**: Prompt to install/check the Living Home Widget to keep gratitude visible on the phone home screen.
+  3. **Soul Cards Draw (Rút thẻ thông điệp)**: Direct card draw widget from the active deck.
+  4. **Comfort Zone / Little Corner (Góc bình yên)**: Shortcut card to enter relaxation rooms and unwind.
+  5. **Small Actions & Reflection**: Daily actionable kindness and evening preview.
 - Completing a practice creates or updates the corresponding journey progress and journal data.
 
-### Journey continuity
+### Journey continuity & 28-day loop
 
 - Each day contains an introduction, morning gratitude, a specific daily practice, an optional contextual reminder, evening reflection, and completion.
 - Task forms are schema-driven and prefer guided/decomposed prompts over blank canvases.
 - Missing a day never resets progress or produces guilt/streak-loss copy. The return action is “Continue Day X”; catch-up is optional.
-- Day 28 offers a completion summary and the choice to return Home or begin another cycle.
+- **28-Day Cycle Loop**: Completing Day 28 triggers a celebration milestone summary. Upon finishing Day 28, the user can review achievements and choose to loop back to Day 1 to begin a fresh 28-day gratitude journey, retaining all past journal entries and vision boards.
 
 ### Audio rule
 
-Vietnamese users may hear Vietnamese spoken audio or language-neutral instrumental audio. English users may hear English spoken audio or language-neutral instrumental audio. Cross-language spoken playback is never automatically surfaced.
+- Spoken audio matches the active app locale (`vi`, `en`, `ko`, `ja`, `fr`, `zh`). Cross-language spoken playback is never automatically surfaced.
+- Language-neutral ambient soundscapes and musical arrangements play across all locales.
+- Strict audio authenticity: 100% pre-recorded real-world sounds (gentle rain on window, ocean surf, cozy fireplace, forest birds) and professionally composed royalty-free master tracks (Kevin MacLeod). Zero algorithmic or synthetic noise generators.
 
 ## 6. Soul Cards (Rút thẻ thông điệp)
 
@@ -76,6 +94,32 @@ Vietnamese users may hear Vietnamese spoken audio or language-neutral instrument
 - Interactive 3D flip card animation upon drawing.
 - Daily draw policy: maximum 2 draws per calendar day across decks; drawing a 3rd time displays an alert dialog reminding the user to reflect on drawn messages.
 - Deck Hub displays visual deck cards with illustration art, card count, and draw CTA.
+
+## 6.1. Comfort Zone / Little Corner (Góc bình yên — Không gian an trú)
+
+A dedicated sanctuary experience designed to bring instant calm, grounding, and peace:
+
+- **28 Curated Mindful Rooms** spanning 5 distinct atmosphere categories:
+  1. *Cozy Indoor (Góc nhỏ bình yên)*: Window reading nooks, tea table, fireplace hearth, starry midnight desks.
+  2. *Nature Escape (Những nơi muốn trốn đến)*: Wildflower hills, misty pine forests, moonlit lakes, wooden cabins.
+  3. *Little Companions (Bình yên bên những người bạn nhỏ)*: Sunlit cats purring, playful puppies welcoming you home, quiet sunset shoulder rests.
+  4. *Dreamy Moments (Những khoảnh khắc muốn giữ lại)*: Rainy vintage cafes, night city overlooks, nostalgic train cars.
+  5. *Seasonal Sanctuary (Không gian theo mùa)*: Winter hearth & chimes, Autumn Thanksgiving gratitude, Peaceful Tết spring mornings.
+- **Interactive Scene Canvas**: Rich dynamic visual artwork adapting to daylight/night transitions with peaceful ambient animations.
+- **Center Blur Countdown Timer**:
+  - Focus and relaxation countdown timer (e.g. 5, 10, 15, 25, 60 minutes).
+  - Floating translucent frosted glass bubble centered directly on screen, displaying high-contrast, crisp white digits without obstructing scene artwork.
+- **Atmosphere & Soundscape Controls**:
+  - Automatically loads the room's signature soundscape upon entry (when audio is enabled).
+  - Audio selector modal lets users swap between all 10 nature ambient beds (`SO-03` to `SO-10`, `SO-24` to `SO-28`) and 13 melodic instruments (`SO-11` to `SO-23`).
+
+## 6.2. Living Home Widget (Widget màn hình chính)
+
+Brings daily gratitude and mindfulness directly to the phone's lock screen and home screen:
+
+- **Live Daily Affirmation & Journey Tracker**: Displays today's gratitude intention, day progress indicator, and active mood reflection.
+- **Seamless System Integration**: Syncs with Android AppWidget and iOS WidgetKit via `HomeWidgetService`.
+- **In-App Widget Studio**: Preview widget themes (warm paper, deep plum, lilac dawn, soft pearl) and one-tap install guide from Today screen and Profile settings.
 
 ## 7. Vision Board
 
@@ -168,10 +212,23 @@ When consent and privacy policy permit, emit versioned funnel events for onboard
 - Do not make medical, therapeutic, scientific-frequency, financial-outcome, or manifestation-guarantee claims.
 - Store only the user data required for the documented experience.
 
-## 16. MVP exclusions
+## 16. Subscription & Pricing Plans Presentation
+
+- Clean, balanced card presentation for subscription tiers (Monthly, Annual, Lifetime).
+- Visual alignment: Equal margins, balanced card padding, unified font sizing across localized currencies and labels, eliminating awkward indentation or disproportionately small font scaling.
+- Highlight badges (e.g. "Tiết kiệm 30%", "Phổ biến nhất") aligned symmetrically without shifting tier descriptions.
+
+## 17. Tablet & iPad Compatibility
+
+- Adaptive layouts designed for phone (360–430 pt), foldable devices, and iPad/Android tablets (768–1024+ pt).
+- Multi-column responsive grids on large screens for Vision Board collage, Comfort Zone Hub, and Explore items.
+- Centered readable content width for Journal paper and onboarding forms (max-width constraints preventing excessive line stretching).
+- Fully supports landscape orientation and iPad split-screen multitasking.
+
+## 18. MVP exclusions
 
 - AI image generation.
 - Social feed, sharing, comments, or public profiles.
-- User-selected Vision soundtrack catalogs.
-- In-app subscription and payment.
+- Algorithmic or synthetic audio generation (all sounds are authentic recordings).
+- In-app payment processing (mock/presentation preview mode only during MVP; backend processing deferred).
 - Backend, account, cross-device sync, and Admin CMS (deferred, not excluded permanently).

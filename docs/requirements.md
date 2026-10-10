@@ -32,7 +32,11 @@ The `SoulApi` repository is kept as the reference design for the future sync bac
 
 - Preserve the warm paper background, plum text, pearl-pink/lilac gradients, restrained gold accents, large serif emotional headings, and sans-serif controls.
 - Use the cropped transparent horizontal logo in the app header, optically aligned to the left.
-- Header actions are global sound and avatar. Both have at least a 44 by 44 logical-pixel target.
+- Header actions are:
+  1. Mood / Theme badge indicator (shows current emotion icon; tapping opens theme & mood switcher).
+  2. Global sound toggle button (plays/mutes audio across the app).
+  3. Avatar (opens Profile and settings).
+  All header actions maintain at least a 44 by 44 logical-pixel touch target.
 - Bottom navigation has five destinations: Today, Soul Cards (Rút thẻ), Vision, Journal, Explore.
 - Profile/settings opens from the avatar and is not a sixth bottom tab.
 - Support phone widths from 360 to 430 logical pixels, Safe Area, display scaling, keyboard insets, and both platforms.
@@ -56,27 +60,56 @@ Every remote or persisted screen explicitly supports loading, content, empty, re
 - Selected state cannot rely on color alone.
 - Respect reduced-motion preferences; decorative animation must not block task completion.
 
+### REQ-UX-005 Tablet and iPad responsiveness
+
+- Support responsive layout scaling from compact phones up to 1024+ pt tablets and iPads.
+- On tablet viewports, grid items (Vision collage cards, Comfort Zone rooms, Soul Cards) reflow into multi-column responsive arrangements.
+- Form inputs, Journal paper surfaces, and onboarding cards respect max-width constraints (540–640 pt) centered on screen to avoid uncomfortable eye-scanning distance.
+- Full compatibility with portrait, landscape, and iPad split-screen multitasking.
+
+### REQ-UX-006 Today rhythm hierarchy (Nhịp hôm nay)
+
+To maximize active daily habit formation, user engagement, and retention, items within "Today's Rhythm" are sequenced in deliberate priority order:
+1. Core Gratitude Practice of the day.
+2. Home Screen Widget Tracker setup / status card.
+3. Soul Cards message draw (Rút thẻ thông điệp).
+4. Comfort Zone / Little Corner shortcut (Góc bình yên).
+5. Small actions & evening reflection preview.
+
+### REQ-UX-007 Mood check-in and dynamic visual themes
+
+- Mood check-in connects to a visual theme / color atmosphere across the app.
+- When the user selects a mood, the emotion icon displays prominently in the header adjacent to the sound button; tapping it allows switching themes or updating mood.
+- Upon daily mood selection, the prompt card on Today auto-collapses to keep the screen clean, with an expand toggle for manual updates.
+- Mood selection state resets cleanly at 00:00 every calendar day.
+
+### REQ-UX-008 Comfort Zone (Góc bình yên — Không gian an trú)
+
+- Hub with 28 mindful rooms organized into 5 categories: Cozy Indoor, Nature Escape, Little Companions, Dreamy Moments, Seasonal Sanctuary.
+- Interactive scene canvas with daylight/night artwork transitions and peaceful animations.
+- Center-blur countdown timer: Floating frosted glass countdown bubble centered on screen with crisp, high-contrast white typography.
+- Signature audio soundscape loaded automatically upon entry with quick audio switcher modal.
+
 ## 3. Localization and content
 
 ### REQ-L10N-001 Language gate
 
-- The first screen contains only the logo and the choices `Tiếng Việt` and `English` (each language's own name, identical in every locale); no Vietnamese or English sentence appears before selection.
+- The first screen contains only the logo and the choices `Tiếng Việt` and `English` (each language's own name, identical in every locale); no language-specific sentence appears before selection.
 - Device locale may pre-highlight a choice (shown as the primary button) but must never commit it automatically; the locale is committed only when the user taps a choice.
 - The selected locale is persisted locally immediately.
 
-### REQ-L10N-002 One application tree
+### REQ-L10N-002 Multi-language application tree
 
-- Vietnamese and English use the same routes, widgets, state machines, and validations.
+- All 6 supported languages (`vi`, `en`, `fr`, `ja`, `ko`, `zh`) share the same routes, widgets, state machines, and validations.
 - UI copy comes from generated ARB resources.
-- Journey, Vision, notification, and content-resource copy comes from the localized content bundle, never from widget constants.
+- Journey, Vision, notification, card decks, comfort zone rooms, and content-resource copy come from localized content bundles, never from widget constants.
 - Missing content translation is an editorial error; the app must not silently mix locales.
 
-### REQ-L10N-003 Audio language
+### REQ-L10N-003 Audio language and authenticity
 
-- Spoken `vi` audio is eligible only when the active content/audio locale is Vietnamese.
-- Spoken `en` audio is eligible only for English.
-- `neutral` instrumental, ambient, and nature audio may be shared.
-- Metadata is localized independently from the media file.
+- Spoken audio is eligible only when matching the active content/audio locale (`vi`, `en`, `ko`, `ja`, `fr`, `zh`).
+- Language-neutral instrumental, ambient, and nature audio plays across all locales.
+- **Strict Audio Authenticity (REQ-AUD-005)**: 100% of background soundbeds and music tracks must be pre-recorded real-world nature audio (rain on window, rolling waves, gentle fireplace, birdsong) or licensed master musical recordings (Kevin MacLeod). Algorithmic, synthetic, or noise-generator audio is strictly banned.
 
 ## 4. Authentication and onboarding
 
@@ -149,11 +182,15 @@ As a user, I want to choose gentle reminder times or skip them and begin Day 1.
 Today shows, in this order:
 
 1. Local-time greeting using preferred name.
-2. Day X of 28, day title, calm progress, and primary resume CTA.
-3. Optional mood check-in.
-4. Today’s Rhythm containing gratitude practice, one eligible sound, and one small action.
+2. Day X of 28, day title, calm progress ring, and primary resume CTA.
+3. Mood check-in ("Cảm xúc của bạn lúc này") with auto-collapse upon selection and top-bar mood badge indicator.
+4. "Today’s Rhythm" (Nhịp hôm nay), prioritized for retention and habit engagement:
+   - Core gratitude practice.
+   - Living Home Widget card (Widget màn hình chính).
+   - Soul Cards message draw (Rút thẻ thông điệp).
+   - Comfort Zone / Little Corner shortcut (Góc bình yên).
+   - Small actions & evening preview.
 5. Vision of the day when at least one active Vision exists.
-6. Evening practice preview when relevant.
 
 The primary CTA always resumes the first incomplete required task rather than restarting the day.
 
@@ -172,13 +209,13 @@ The primary CTA always resumes the first incomplete required task rather than re
 - Optional reflection may be entered after completion.
 - Completion contributes to the current day only and must be idempotent.
 
-### US-JRN-004 Missed day and completion
+### US-JRN-004 Missed day and 28-day renewal loop
 
 - Missing a calendar day never resets the journey or uses guilt/streak-loss copy.
 - Return CTA is `Continue Day X` for the first incomplete day.
 - Catch-up is optional and never requires multiple days in one session.
 - Day completes only after all required tasks complete.
-- Day 28 presents a completion summary and permits starting a new cycle or returning Home.
+- **28-Day Renewal Cycle**: Upon completing Day 28, a celebratory milestone modal summarizes practices completed. The user is offered the choice to loop back to Day 1 to begin a new 28-day gratitude cycle, preserving all existing journal entries, visions, and card draws in local storage.
 
 ### US-JRN-005 Persistence and offline
 
