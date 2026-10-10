@@ -24,10 +24,10 @@ describe a spiritual/wellness listening category only.
 
 | ID | Title | Category | Source | Creator / Artist | License | Link |
 | --- | --- | --- | --- | --- | --- | --- |
-| `SO-03` | Mưa bên cửa sổ (Window rain) | Ambience | SoundBible / Archive.org | Daniel Simion | CC-BY 3.0 / Public Domain | [SoundBible Rain](https://archive.org/details/va-sound-bible-sound-effects-opus-48) |
-| `SO-05` | Nhịp thở đại dương (Ocean breath) | Ambience | Freesound.org | SamsterBirdies | CC0 (Public Domain) | [Freesound #575306](https://freesound.org/s/575306/) |
-| `SO-07` | Căn phòng có lò sưởi (Fireplace room) | Ambience | SoundBible / Archive.org | Daniel Simion | CC-BY 3.0 / Public Domain | [SoundBible Fireplace](https://archive.org/details/va-sound-bible-sound-effects-opus-48) |
-| `SO-09` | Tiếng nhiễu nâu (Brown noise) | Ambience | Archive.org | SoundBible | CC0 / Public Domain | [Archive.org SoundBible](https://archive.org/details/va-sound-bible-sound-effects-opus-48) |
+| `SO-03` | Mưa bên cửa sổ (Window rain) | Ambience | Archive.org / SleepSounds | Storm_Rain_Gentle | CC0 / Public Domain | [Archive.org SleepSounds](https://archive.org/details/SleepSounds) |
+| `SO-05` | Nhịp thở đại dương (Ocean breath) | Ambience | Archive.org / SleepSounds | Nature_Ocean_Waves | CC0 / Public Domain | [Archive.org SleepSounds](https://archive.org/details/SleepSounds) |
+| `SO-07` | Căn phòng có lò sưởi (Fireplace room) | Ambience | SoundBible / Archive.org | Fireplace (SoundBible) | CC-BY 3.0 / Public Domain | [SoundBible Fireplace](https://archive.org/details/va-sound-bible-sound-effects-opus-48) |
+| `SO-09` | Tiếng nhiễu nâu (Brown noise) | Ambience | Archive.org / SleepSounds | Etc_Noise_Brown | CC0 / Public Domain | [Archive.org SleepSounds](https://archive.org/details/SleepSounds) |
 | `SO-10` | Tắm âm thanh dịu nhẹ (Soft sound bath) | Sound Bath | Archive.org | SingingBowlImprovisation | Public Domain | [Archive.org SingingBowl](https://archive.org/details/SingingBowlImprovisation) |
 | `SO-11` | Piano ấm áp (Warm felt piano) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Meditation Impromptu 03](https://incompetech.com/) |
 | `SO-12` | Chân trời tương lai (Future horizon) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Calmant](https://incompetech.com/) |
@@ -39,6 +39,14 @@ describe a spiritual/wellness listening category only.
 | `SO-18` | Không gian trái tim (Heart space) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Tranquility](https://incompetech.com/) |
 | `SO-19` | Động lực tĩnh lặng (Quiet momentum) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Meditation Impromptu 03](https://incompetech.com/) |
 | `SO-20` | Không gian mơ màng (Dreamy ethereal) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Ethereal Relaxation](https://incompetech.com/) |
+| `SO-21` | Lò sưởi tháp cổ & Chuông tuyết (Gryffindor hearth chimes) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Morning (Grieg)](https://incompetech.com/) |
+| `SO-22` | Mùa gặt mùa thu & Gió ấm (Autumn harvest acoustic) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Air Prelude](https://incompetech.com/) |
+| `SO-23` | Sớm xuân an lành (Peaceful Tet spring lullaby) | Music | Incompetech | Kevin MacLeod | CC-BY 4.0 | [Water Lily](https://incompetech.com/) |
+| `SO-24` | Sóng biển hoàng hôn (Ocean wind waves) | Ambience | SoundBible / Archive.org | Crisp ocean waves | CC0 / Public Domain | [Archive.org SoundBible](https://archive.org/details/va-sound-bible-sound-effects-opus-48) |
+| `SO-25` | Mèo con sưởi nắng & Dương cầm (Purring cat & piano) | Ambience | SoundBible & Incompetech | Cat Purring & Meditation Impromptu 03 | CC-BY 4.0 | [SoundBible / Incompetech](https://incompetech.com/) |
+| `SO-26` | Cún nhỏ đón về & Guitar mộc (Playful puppy & acoustic) | Ambience | SoundBible & Incompetech | Puppy & Air Prelude | CC-BY 4.0 | [SoundBible / Incompetech](https://incompetech.com/) |
+| `SO-27` | Gió ngàn đồi hoa & Chim rừng (Forest birds & breeze) | Ambience | Archive.org | naturelax_birds | CC0 / Public Domain | [Archive.org naturelax_birds](https://archive.org/details/naturelax_birds) |
+| `SO-28` | Ấm trà reo bên bếp lửa (Cozy kitchen simmer) | Ambience | SoundBible & Incompetech | Hot Tea, Fireplace & Felt Piano | CC-BY 4.0 | [SoundBible / Incompetech](https://incompetech.com/) |
 
 ## Registered Guided Audio Assets (Bilingual VI & EN)
 
