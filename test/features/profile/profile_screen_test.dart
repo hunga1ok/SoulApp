@@ -26,6 +26,7 @@ void main() {
       expect(find.text('Đăng xuất'), findsOneWidget);
 
       // Tap Sign out row
+      await tester.scrollUntilVisible(find.text('Đăng xuất'), 100);
       await tester.tap(find.text('Đăng xuất'));
       await tester.pumpAndSettle();
 

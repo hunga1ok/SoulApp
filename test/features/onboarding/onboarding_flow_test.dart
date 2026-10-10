@@ -23,6 +23,9 @@ void main() {
       next: 'Tiếp tục',
       evening: 'Nhìn lại buổi tối',
       ready: 'Đầu tư cho ước mơ và sự kiên định của bạn',
+      priceMonthly: r'$2 / tháng',
+      priceYearly: r'$20 / năm',
+      priceLifetime: r'$50 / trọn đời',
       begin: 'Cam kết & Bắt đầu hành trình',
       welcome: 'Chào An',
     ),
@@ -34,6 +37,9 @@ void main() {
       next: 'Continue',
       evening: 'Evening reflection',
       ready: 'Invest in your dreams and your perseverance',
+      priceMonthly: r'$2 / month',
+      priceYearly: r'$20 / year',
+      priceLifetime: r'$50 / lifetime',
       begin: 'Commit & Begin Journey',
       welcome: 'Welcome An',
     ),
@@ -93,13 +99,14 @@ void main() {
       expect(byKind['morning']!.timezone, testTimezone);
       expect(permissions.requests, 1);
 
-      // Onboarding Payment & Commitment screen ($2/monthly, $20/year, $50/lifetime)
+      // Onboarding Payment & Commitment screen
       expect(find.text(c.ready), findsOneWidget);
-      expect(find.text(r'$2 / monthly'), findsOneWidget);
-      expect(find.text(r'$20 / year'), findsOneWidget);
-      expect(find.text(r'$50 / lifetime'), findsOneWidget);
+      expect(find.text(c.priceMonthly), findsOneWidget);
+      expect(find.text(c.priceYearly), findsOneWidget);
+      expect(find.text(c.priceLifetime), findsOneWidget);
 
       await tester.ensureVisible(find.text(c.begin));
+      await tester.pumpAndSettle();
       await tester.tap(find.text(c.begin));
       await tester.pumpAndSettle();
 
@@ -203,6 +210,7 @@ void main() {
     await pumpSoulApp(tester, preferences: preferences, database: database);
 
     await tester.ensureVisible(find.text('Commit & Begin Journey'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Commit & Begin Journey'));
     await tester.pumpAndSettle();
 

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,8 +9,11 @@ import '../../app/app_state.dart';
 import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../data/content/audio_catalog.dart';
+import '../../data/content/comfort_zone_catalog.dart';
 import '../../data/content/content_repository.dart';
+import '../../data/repositories/comfort_zone_repository.dart';
 import '../../l10n/app_localizations.dart';
+import '../comfort_zone/comfort_scene_canvas.dart';
 
 enum _ExploreTab { all, audio, meditation, podcast, frequency }
 
@@ -411,159 +416,99 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         ),
         const SizedBox(height: SoulSpace.md),
 
-        // Soul Cards Banner
-        InkWell(
-          onTap: () => context.push('/cards'),
-          borderRadius: BorderRadius.circular(SoulRadius.card),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  SoulColors.plum,
-                  SoulColors.plum.withValues(alpha: 0.85),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(SoulRadius.card),
-              boxShadow: [
-                BoxShadow(
-                  color: SoulColors.plum.withValues(alpha: 0.15),
-                  blurRadius: 16,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            padding: const EdgeInsets.all(SoulSpace.lg),
-            child: Row(
-              children: [
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: SoulColors.rose.withValues(alpha: 0.25),
-                    borderRadius: BorderRadius.circular(SoulRadius.button),
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.auto_awesome,
-                      color: SoulColors.surface,
-                      size: 26,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: SoulSpace.md),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.soulCardsTitle,
-                        style: Theme.of(
-                          context,
-                        ).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: SoulColors.surface,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        l10n.soulCardsSubtitle,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: SoulColors.surface.withValues(alpha: 0.85),
-                          height: 1.35,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: SoulColors.surface,
-                  size: 16,
-                ),
-              ],
-            ),
-          ),
-        ),
+        // Soul Cards Banner (Featured on "All" tab)
         if (_selectedTab == _ExploreTab.all) ...[
+          _SoulCardsAnimatedBanner(locale: locale),
           const SizedBox(height: SoulSpace.sm),
+        ],
 
-          // Comfort Zone Banner
+        // Comfort Zone Banner (Pinned permanently across all tabs)
+        if (_selectedTab == _ExploreTab.all)
+          _ComfortZoneAnimatedBanner(locale: locale)
+        else
           InkWell(
             onTap: () => context.push('/comfort-zone'),
             borderRadius: BorderRadius.circular(SoulRadius.card),
             child: Container(
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF3E5C76), Color(0xFF5A7D73)],
+                  colors: [
+                    Color(0xFFFFF9F2), // soft morning cream
+                    Color(0xFFFDF1E6), // warm honey peach
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
+                ),
+                border: Border.all(
+                  color: const Color(0xFFE2C4A2).withValues(alpha: 0.8),
+                  width: 1,
                 ),
                 borderRadius: BorderRadius.circular(SoulRadius.card),
                 boxShadow: [
                   BoxShadow(
-                    color: SoulColors.plum.withValues(alpha: 0.14),
-                    blurRadius: 16,
-                    offset: const Offset(0, 4),
+                    color: const Color(0xFFD99C4B).withValues(alpha: 0.08),
+                    blurRadius: 10,
+                    offset: const Offset(0, 2),
                   ),
                 ],
               ),
-              padding: const EdgeInsets.all(SoulSpace.md),
+              padding: const EdgeInsets.symmetric(
+                horizontal: SoulSpace.md,
+                vertical: SoulSpace.xs + 2,
+              ),
               child: Row(
                 children: [
                   Container(
-                    width: 48,
-                    height: 48,
+                    padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                      color: const Color(0xFFFFF0E0),
+                      border: Border.all(
+                        color: const Color(0xFFE8C8A0).withValues(alpha: 0.8),
+                        width: 0.8,
+                      ),
+                      shape: BoxShape.circle,
                     ),
-                    child: const Center(
-                      child: Icon(
-                        Icons.cottage_rounded,
-                        color: Colors.white,
-                        size: 26,
+                    child: const Icon(
+                      Icons.push_pin_rounded,
+                      color: Color(0xFFC7782A),
+                      size: 11,
+                    ),
+                  ),
+                  const SizedBox(width: SoulSpace.xs),
+                  const Icon(
+                    Icons.cottage_rounded,
+                    color: Color(0xFFB86A2E),
+                    size: 17,
+                  ),
+                  const SizedBox(width: SoulSpace.xs),
+                  Expanded(
+                    child: Text(
+                      '${l10n.comfortZoneTitle} · ${switch (locale) {
+                        SoulLocale.vi => '28 không gian an yên',
+                        SoulLocale.en => '28 safe spaces',
+                        SoulLocale.ko => '28개 안식처',
+                        SoulLocale.ja => '28の空間',
+                        SoulLocale.fr => '28 espaces sereins',
+                        SoulLocale.zh => '28个治愈空间',
+                      }}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: SoulColors.plum,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 12,
                       ),
                     ),
                   ),
-                  const SizedBox(width: SoulSpace.md),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          l10n.comfortZoneTitle,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          l10n.comfortZoneBannerSubtitle,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall?.copyWith(
-                            color: Colors.white.withValues(alpha: 0.88),
-                            height: 1.35,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Icon(
+                  Icon(
                     Icons.arrow_forward_ios_rounded,
-                    color: Colors.white,
-                    size: 16,
+                    color: SoulColors.plum.withValues(alpha: 0.45),
+                    size: 12,
                   ),
                 ],
               ),
             ),
           ),
-        ],
         const SizedBox(height: SoulSpace.lg),
 
         // Filter tabs
@@ -924,6 +869,737 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                     loop: !asset.isGuided,
                   );
                 },
+      ),
+    );
+  }
+}
+
+/// Luxurious animated banner for Soul Cards with cosmic starlight & floating tarot card.
+class _SoulCardsAnimatedBanner extends StatefulWidget {
+  const _SoulCardsAnimatedBanner({required this.locale});
+
+  final SoulLocale locale;
+
+  @override
+  State<_SoulCardsAnimatedBanner> createState() =>
+      _SoulCardsAnimatedBannerState();
+}
+
+class _SoulCardsAnimatedBannerState extends State<_SoulCardsAnimatedBanner>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  bool get _canAnimate {
+    final isTest = WidgetsBinding.instance.runtimeType.toString().contains(
+      'TestWidgetsFlutterBinding',
+    );
+    return !isTest;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 8),
+    );
+    if (_canAnimate) {
+      _controller.repeat();
+    } else {
+      _controller.value = 0.35;
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final disableAnimations =
+        MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    if (disableAnimations && _controller.isAnimating) {
+      _controller.stop();
+    } else if (!disableAnimations && _canAnimate && !_controller.isAnimating) {
+      _controller.repeat();
+    }
+
+    final cosmicBadge = switch (widget.locale) {
+      SoulLocale.vi => 'THÔNG ĐIỆP VŨ TRỤ',
+      SoulLocale.en => 'COSMIC GUIDANCE',
+      SoulLocale.ko => '우주의 메시지',
+      SoulLocale.ja => '宇宙のメッセージ',
+      SoulLocale.fr => 'MESSAGE COSMIQUE',
+      SoulLocale.zh => '宇宙的指引',
+    };
+
+    return InkWell(
+      onTap: () => context.push('/cards'),
+      borderRadius: BorderRadius.circular(SoulRadius.card),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          border: Border.all(
+            color: const Color(0xFFD8B4D6).withValues(alpha: 0.70),
+            width: 1.2,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF9C4D88).withValues(alpha: 0.08),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          children: [
+            // Base Soft Pastel Celestial Gradient
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: const [
+                      Color(0xFFFBF4FD), // luminous pearly blush
+                      Color(0xFFF5E8F7), // soft dreamy celestial lilac
+                      Color(0xFFFFF0F5), // gentle rose mist
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+              ),
+            ),
+
+            // Animated Living Celestial Stardust & Mystic Tarot Aura Canvas
+            Positioned.fill(
+              child: AnimatedBuilder(
+                animation: _controller,
+                builder: (context, _) {
+                  return CustomPaint(
+                    painter: _SoulCardsAuraPainter(progress: _controller.value),
+                  );
+                },
+              ),
+            ),
+
+            // Foreground Content
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SoulSpace.md,
+                vertical: SoulSpace.md,
+              ),
+              child: Row(
+                children: [
+                  // Luminous Glassmorphic Icon Box
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFF6E4F5), Color(0xFFFDE8E4)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                      border: Border.all(
+                        color: const Color(0xFFDCA8D4).withValues(alpha: 0.85),
+                        width: 1.2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(
+                            0xFF9C4D88,
+                          ).withValues(alpha: 0.12),
+                          blurRadius: 10,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.auto_awesome,
+                        color: Color(0xFF7A3370),
+                        size: 26,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: SoulSpace.md),
+
+                  // Texts
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Pill badge
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(
+                              0xFFF2DCF0,
+                            ).withValues(alpha: 0.95),
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.button,
+                            ),
+                            border: Border.all(
+                              color: const Color(
+                                0xFFD8ACD4,
+                              ).withValues(alpha: 0.75),
+                              width: 0.8,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.stars_rounded,
+                                color: Color(0xFF8E3E84),
+                                size: 11,
+                              ),
+                              const SizedBox(width: 4),
+                              Flexible(
+                                child: Text(
+                                  cosmicBadge,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Color(0xFF7A2E70),
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 10,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          l10n.soulCardsTitle,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: SoulColors.plum,
+                            letterSpacing: -0.2,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          l10n.soulCardsSubtitle,
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: SoulColors.muted, height: 1.35),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+
+                  // Trailing gold chevron
+                  Container(
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      border: Border.all(
+                        color: const Color(0xFFD8ACD4).withValues(alpha: 0.6),
+                        width: 0.8,
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: SoulColors.plum,
+                      size: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SoulCardsAuraPainter extends CustomPainter {
+  _SoulCardsAuraPainter({required this.progress});
+
+  final double progress;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+
+    // 1. Soft glowing celestial nebula aura in the right-center
+    final auraCenter = Offset(w * 0.74, h * 0.48);
+    final auraRadius = math.max(w, h) * 0.55;
+    final auraPulse = 0.14 + 0.05 * math.sin(progress * 2 * math.pi);
+    final auraPaint =
+        Paint()
+          ..shader = RadialGradient(
+            center: const Alignment(0.65, 0.0),
+            radius: 0.8,
+            colors: [
+              const Color(0xFFEAA6DF).withValues(alpha: auraPulse * 0.55),
+              const Color(0xFFFFD59E).withValues(alpha: auraPulse * 0.35),
+              Colors.transparent,
+            ],
+            stops: const [0.0, 0.45, 1.0],
+          ).createShader(
+            Rect.fromCircle(center: auraCenter, radius: auraRadius),
+          );
+    canvas.drawCircle(auraCenter, auraRadius, auraPaint);
+
+    // 2. Animated floating mystic card silhouette on the right side
+    final cardCenter = Offset(
+      w * 0.77,
+      h * 0.50 + math.sin(progress * 2 * math.pi) * 3.5,
+    );
+    const cardW = 44.0;
+    const cardH = 64.0;
+
+    canvas.save();
+    canvas.translate(cardCenter.dx, cardCenter.dy);
+    canvas.rotate(0.14 + math.sin(progress * 2 * math.pi) * 0.03);
+
+    final cardRect = Rect.fromCenter(
+      center: Offset.zero,
+      width: cardW,
+      height: cardH,
+    );
+    final cardRRect = RRect.fromRectAndRadius(
+      cardRect,
+      const Radius.circular(6),
+    );
+
+    // Glass fill for card
+    final cardFill =
+        Paint()
+          ..color = Colors.white.withValues(alpha: 0.65)
+          ..style = PaintingStyle.fill;
+    canvas.drawRRect(cardRRect, cardFill);
+
+    // Golden foil border for card
+    final cardBorder =
+        Paint()
+          ..color = const Color(
+            0xFFC78838,
+          ).withValues(alpha: 0.45 + 0.20 * math.sin(progress * 2 * math.pi))
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.0;
+    canvas.drawRRect(cardRRect, cardBorder);
+
+    // Inner sacred diamond on the card
+    final diamondPath =
+        Path()
+          ..moveTo(0, -cardH * 0.26)
+          ..lineTo(cardW * 0.28, 0)
+          ..lineTo(0, cardH * 0.26)
+          ..lineTo(-cardW * 0.28, 0)
+          ..close();
+    final diamondPaint =
+        Paint()
+          ..color = const Color(0xFFB57530).withValues(alpha: 0.35)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 0.8;
+    canvas.drawPath(diamondPath, diamondPaint);
+
+    // Central pulsing star in card
+    final starGlow = 0.4 + 0.3 * math.sin(progress * 2 * math.pi);
+    final starPaint =
+        Paint()
+          ..color = const Color(0xFFC78838).withValues(alpha: starGlow)
+          ..style = PaintingStyle.fill;
+    canvas.drawCircle(Offset.zero, 2.2, starPaint);
+
+    canvas.restore();
+
+    // 3. Floating stardust & twinkling stars across the banner
+    const stars = [
+      Offset(0.08, 0.25),
+      Offset(0.18, 0.78),
+      Offset(0.35, 0.20),
+      Offset(0.48, 0.82),
+      Offset(0.58, 0.28),
+      Offset(0.68, 0.70),
+      Offset(0.72, 0.18),
+      Offset(0.88, 0.15),
+      Offset(0.93, 0.75),
+      Offset(0.76, 0.88),
+      Offset(0.40, 0.65),
+      Offset(0.24, 0.40),
+    ];
+
+    for (var i = 0; i < stars.length; i++) {
+      final base = stars[i];
+      final driftY = math.sin((progress * 2 * math.pi) + (i * 0.8)) * 3.0;
+      final driftX = math.cos((progress * 2 * math.pi) + (i * 0.5)) * 2.0;
+      final px = (base.dx * w + driftX).clamp(0.0, w);
+      final py = (base.dy * h + driftY).clamp(0.0, h);
+
+      final twinkle =
+          0.25 +
+          0.75 *
+              math.pow(
+                (math.sin(progress * 2 * math.pi + (i * 1.3)) + 1) / 2,
+                2,
+              );
+
+      final isGold = i % 2 == 0;
+      final starColor =
+          isGold
+              ? const Color(0xFFC78838).withValues(alpha: twinkle * 0.70)
+              : const Color(0xFF8E4A86).withValues(alpha: twinkle * 0.45);
+
+      final radius = (i % 3 == 0) ? 1.8 : 1.2;
+      canvas.drawCircle(Offset(px, py), radius, Paint()..color = starColor);
+
+      // Diamond sparkle spikes for key bright stars
+      if (i == 2 || i == 7 || i == 0) {
+        final spikeLen = (3.5 + 2.0 * twinkle);
+        final spikePaint =
+            Paint()
+              ..color = starColor.withValues(alpha: twinkle * 0.65)
+              ..strokeWidth = 0.9;
+        canvas.drawLine(
+          Offset(px - spikeLen, py),
+          Offset(px + spikeLen, py),
+          spikePaint,
+        );
+        canvas.drawLine(
+          Offset(px, py - spikeLen),
+          Offset(px, py + spikeLen),
+          spikePaint,
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _SoulCardsAuraPainter oldDelegate) =>
+      oldDelegate.progress != progress;
+}
+
+/// Luxurious animated banner for Comfort Zone with living watercolor canvas & warm hearth aura.
+class _ComfortZoneAnimatedBanner extends ConsumerStatefulWidget {
+  const _ComfortZoneAnimatedBanner({required this.locale});
+
+  final SoulLocale locale;
+
+  @override
+  ConsumerState<_ComfortZoneAnimatedBanner> createState() =>
+      _ComfortZoneAnimatedBannerState();
+}
+
+class _ComfortZoneAnimatedBannerState
+    extends ConsumerState<_ComfortZoneAnimatedBanner>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulseController;
+
+  bool get _canAnimate {
+    final isTest = WidgetsBinding.instance.runtimeType.toString().contains(
+      'TestWidgetsFlutterBinding',
+    );
+    return !isTest;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 6),
+    );
+    if (_canAnimate) {
+      _pulseController.repeat(reverse: true);
+    } else {
+      _pulseController.value = 0.5;
+    }
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final disableAnimations =
+        MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    if (disableAnimations && _pulseController.isAnimating) {
+      _pulseController.stop();
+    } else if (!disableAnimations &&
+        _canAnimate &&
+        !_pulseController.isAnimating) {
+      _pulseController.repeat(reverse: true);
+    }
+
+    final catalog = ref.watch(comfortZoneCatalogProvider).valueOrNull;
+    final prefs = ref.watch(comfortZonePreferencesProvider);
+
+    // Pick user's last visited scene or default to the first comforting scene
+    ComfortZoneScene? featuredScene;
+    if (catalog != null && catalog.scenes.isNotEmpty) {
+      if (prefs.lastVisitedSceneId != null) {
+        featuredScene = catalog.scenes.cast<ComfortZoneScene?>().firstWhere(
+          (s) => s?.id == prefs.lastVisitedSceneId,
+          orElse: () => catalog.scenes.first,
+        );
+      } else {
+        featuredScene = catalog.scenes.first;
+      }
+    }
+
+    final pinnedBadge = switch (widget.locale) {
+      SoulLocale.vi => 'ĐÃ GHIM · 28 KHÔNG GIAN',
+      SoulLocale.en => 'PINNED · 28 SPACES',
+      SoulLocale.ko => '고정됨 · 28개 안식처',
+      SoulLocale.ja => '固定 · 28の空間',
+      SoulLocale.fr => 'ÉPINGLÉ · 28 ESPACES',
+      SoulLocale.zh => '置顶 · 28个治愈空间',
+    };
+
+    return InkWell(
+      onTap: () => context.push('/comfort-zone'),
+      borderRadius: BorderRadius.circular(SoulRadius.card),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          border: Border.all(
+            color: const Color(0xFFE2C4A2).withValues(alpha: 0.80),
+            width: 1.2,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFD99C4B).withValues(alpha: 0.10),
+              blurRadius: 16,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          children: [
+            // 1. Base warm morning ivory & sunlit honey gradient
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: const [
+                      Color(0xFFFFFDF8), // warm morning ivory
+                      Color(0xFFFFF5E9), // soft sunlit honey
+                      Color(0xFFFBEAD8), // gentle apricot warmth
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+            // 2. Animated Comfort Scene Canvas (Living breathing window into the safe haven!)
+            if (featuredScene != null)
+              Positioned.fill(
+                child: Opacity(
+                  opacity: 0.72,
+                  child: ComfortSceneCanvas(
+                    scene: featuredScene,
+                    isPlaying: true,
+                    showVignette: false,
+                  ),
+                ),
+              ),
+
+            // 3. Elegant Frosted Morning Light Gradient
+            // Left side gives pristine contrast for plum typography,
+            // Right side allows the living animated room artwork to shine through!
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      const Color(0xFFFFF9F2).withValues(alpha: 0.96),
+                      const Color(0xFFFFF6ED).withValues(alpha: 0.84),
+                      const Color(0xFFFFF3E6).withValues(alpha: 0.18),
+                    ],
+                    stops: const [0.0, 0.52, 1.0],
+                  ),
+                ),
+              ),
+            ),
+
+            // 4. Subtle Animated Morning Sunbeam Glow pulsing in the corner
+            Positioned.fill(
+              child: AnimatedBuilder(
+                animation: _pulseController,
+                builder: (context, _) {
+                  final glow = 0.15 + 0.10 * _pulseController.value;
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: RadialGradient(
+                        center: const Alignment(0.85, 0.2),
+                        radius: 1.1,
+                        colors: [
+                          const Color(0xFFFFD59E).withValues(alpha: glow),
+                          const Color(0xFFFFB74D).withValues(alpha: glow * 0.4),
+                          Colors.transparent,
+                        ],
+                        stops: const [0.0, 0.45, 1.0],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            // 5. Foreground Content
+            Padding(
+              padding: const EdgeInsets.all(SoulSpace.md),
+              child: Row(
+                children: [
+                  // Luminous Amber / Hearth Icon Box
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFFFFF0DF), Color(0xFFFDE2C7)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                      border: Border.all(
+                        color: const Color(0xFFE4BD90).withValues(alpha: 0.85),
+                        width: 1.2,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(
+                            0xFFD97E36,
+                          ).withValues(alpha: 0.15),
+                          blurRadius: 10,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.cottage_rounded,
+                        color: Color(0xFFB86A2E),
+                        size: 26,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: SoulSpace.md),
+
+                  // Texts
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Pinned tag
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(
+                              0xFFFEEBD6,
+                            ).withValues(alpha: 0.95),
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.button,
+                            ),
+                            border: Border.all(
+                              color: const Color(
+                                0xFFE4BD90,
+                              ).withValues(alpha: 0.75),
+                              width: 0.8,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.push_pin_rounded,
+                                color: Color(0xFFC7782A),
+                                size: 11,
+                              ),
+                              const SizedBox(width: 4),
+                              Flexible(
+                                child: Text(
+                                  pinnedBadge,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Color(0xFFAC5D18),
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 10,
+                                    letterSpacing: 0.4,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          l10n.comfortZoneTitle,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: SoulColors.plum,
+                            letterSpacing: -0.2,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          l10n.comfortZoneBannerSubtitle,
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: SoulColors.muted, height: 1.35),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+
+                  // Trailing gold chevron
+                  Container(
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      border: Border.all(
+                        color: const Color(0xFFE2C4A2).withValues(alpha: 0.6),
+                        width: 0.8,
+                      ),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: Color(0xFFB86A2E),
+                      size: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

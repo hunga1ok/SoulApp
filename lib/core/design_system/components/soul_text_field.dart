@@ -14,6 +14,8 @@ class SoulTextField extends StatelessWidget {
     this.autofocus = false,
     this.textCapitalization = TextCapitalization.none,
     this.textInputAction,
+    this.keyboardType,
+    this.obscureText = false,
     this.maxLines = 1,
   });
 
@@ -26,6 +28,8 @@ class SoulTextField extends StatelessWidget {
   final bool autofocus;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
+  final TextInputType? keyboardType;
+  final bool obscureText;
   final int maxLines;
 
   @override
@@ -36,6 +40,8 @@ class SoulTextField extends StatelessWidget {
       maxLines: maxLines,
       textCapitalization: textCapitalization,
       textInputAction: textInputAction,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       decoration: InputDecoration(

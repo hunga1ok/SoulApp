@@ -7,6 +7,7 @@ import '../features/comfort_zone/comfort_zone_hub_screen.dart';
 import '../features/comfort_zone/comfort_zone_room_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/journal/journal_screen.dart';
+import '../features/onboarding/onboarding_auth_screen.dart';
 import '../features/onboarding/onboarding_screens.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/shell/app_shell.dart';
@@ -20,6 +21,7 @@ import 'app_state.dart';
 const _entryRoutes = {
   '/language',
   '/onboarding/welcome',
+  '/onboarding/auth',
   '/onboarding/name',
   '/onboarding/intention',
   '/onboarding/reminders',
@@ -62,7 +64,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       if (state.locale == null) return only(path, '/language');
       if (!state.onboardingCompleted) {
         if (!state.hasPreferredName) {
-          if (path == '/onboarding/welcome' || path == '/onboarding/name') {
+          if (path == '/onboarding/welcome' ||
+              path == '/onboarding/auth' ||
+              path == '/onboarding/name') {
             return null;
           }
           return only(path, '/onboarding/name');
@@ -86,6 +90,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/onboarding/welcome',
         builder: (context, route) => const WelcomeIntroScreen(),
+      ),
+      GoRoute(
+        path: '/onboarding/auth',
+        builder: (context, route) => const OnboardingAuthScreen(),
       ),
       GoRoute(
         path: '/onboarding/name',

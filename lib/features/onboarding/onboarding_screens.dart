@@ -7,6 +7,9 @@ import '../../core/design_system/design_system.dart';
 import '../../data/content/content_repository.dart';
 import '../../data/repositories/reminder_repository.dart';
 import '../../l10n/app_localizations.dart';
+import '../auth/auth_bottom_sheet.dart';
+import '../payment/payment_controller.dart';
+import '../payment/subscription_state.dart';
 import 'language_suggestion.dart';
 import 'onboarding_controllers.dart';
 import 'preferred_name_validation.dart';
@@ -109,12 +112,50 @@ class _LanguageGateScreenState extends ConsumerState<LanguageGateScreen> {
           constraints: const BoxConstraints(
             maxWidth: LanguageGateScreen._maxChoiceWidth,
           ),
-          child: SoulButton(
-            label: continueLabel,
-            onPressed: () async {
-              await ref.read(appStateProvider).selectLocale(effectiveLocale);
-              if (context.mounted) context.go('/onboarding/welcome');
-            },
+          child: Column(
+            children: [
+              SoulButton(
+                label: continueLabel,
+                onPressed: () async {
+                  await ref
+                      .read(appStateProvider)
+                      .selectLocale(effectiveLocale);
+                  if (context.mounted) context.go('/onboarding/welcome');
+                },
+              ),
+              const SizedBox(height: SoulSpace.xs),
+              TextButton(
+                onPressed:
+                    () => showAuthBottomSheet(
+                      context,
+                      initialMode: AuthMode.signUp,
+                      onSuccess: () {
+                        if (context.mounted) {
+                          if (ref.read(appStateProvider).onboardingCompleted) {
+                            context.go('/app/today');
+                          } else {
+                            context.go('/onboarding/welcome');
+                          }
+                        }
+                      },
+                    ),
+                child: Text(
+                  switch (effectiveLocale) {
+                    SoulLocale.vi => 'Đăng ký · Đăng nhập tài khoản',
+                    SoulLocale.ko => '회원가입 · 로그인',
+                    SoulLocale.ja => '新規登録 · ログイン',
+                    SoulLocale.fr => 'Inscription · Connexion',
+                    SoulLocale.zh => '注册 · 登录',
+                    SoulLocale.en => 'Sign Up · Sign In',
+                  },
+                  style: const TextStyle(
+                    color: SoulColors.plum,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -150,7 +191,11 @@ class _WelcomeIntroScreenState extends State<WelcomeIntroScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      _finish();
+      if (widget.isRevisiting) {
+        Navigator.pop(context);
+      } else {
+        context.go('/onboarding/auth');
+      }
     }
   }
 
@@ -392,6 +437,8 @@ class _PreferredNameScreenState extends ConsumerState<PreferredNameScreen> {
     final issue = validatePreferredName(_controller.text);
     final canSave = issue == null;
     final layout = _OnboardingLayout(
+      currentStep: widget.isEditing ? null : 1,
+      totalSteps: 4,
       children: [
         const Spacer(),
         Text(
@@ -446,6 +493,8 @@ class _IntentionScreenState extends ConsumerState<IntentionScreen> {
     final locale = ref.watch(appStateProvider).locale ?? SoulLocale.en;
     final intentions = ref.watch(intentionsProvider(locale));
     return _OnboardingLayout(
+      currentStep: 2,
+      totalSteps: 4,
       children: [
         _StepHeading(title: l10n.intentionTitle, body: l10n.intentionBody),
         const SizedBox(height: SoulSpace.lg),
@@ -535,6 +584,8 @@ class _ReminderScreenState extends ConsumerState<ReminderScreen> {
       ReminderKind.evening: l10n.reminderEvening,
     };
     return _OnboardingLayout(
+      currentStep: 3,
+      totalSteps: 4,
       children: [
         _StepHeading(title: l10n.remindersTitle, body: l10n.remindersBody),
         const SizedBox(height: SoulSpace.lg),
@@ -648,7 +699,7 @@ class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
           SoulLocale.zh => '月度计划',
           SoulLocale.en => 'Monthly Plan',
         },
-        price: r'$2 / monthly',
+        price: SubscriptionState.formatPlanPrice('monthly', locale),
         subtitle: switch (locale) {
           SoulLocale.vi => 'Khởi đầu nhẹ nhàng, rèn luyện thói quen mỗi ngày',
           SoulLocale.ko => '가볍게 시작하며 매일 감사의 습관을 기르세요',
@@ -670,7 +721,7 @@ class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
           SoulLocale.zh => '年度计划',
           SoulLocale.en => 'Yearly Plan',
         },
-        price: r'$20 / year',
+        price: SubscriptionState.formatPlanPrice('yearly', locale),
         subtitle: switch (locale) {
           SoulLocale.vi =>
             'Đồng hành bền bỉ 365 ngày cùng ước mơ · Tiết kiệm 17%',
@@ -700,7 +751,7 @@ class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
           SoulLocale.zh => '终身计划',
           SoulLocale.en => 'Lifetime Plan',
         },
-        price: r'$50 / lifetime',
+        price: SubscriptionState.formatPlanPrice('lifetime', locale),
         subtitle: switch (locale) {
           SoulLocale.vi =>
             'Cam kết một lần, sở hữu mãi mãi không gian bình yên',
@@ -754,188 +805,187 @@ class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
       ],
     };
 
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: SoulSpace.lg,
-            vertical: SoulSpace.sm,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: SoulSpace.xs,
-                            vertical: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            color: SoulColors.lilac,
-                            borderRadius: BorderRadius.circular(
-                              SoulRadius.button,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.auto_awesome_rounded,
-                                size: 13,
-                                color: SoulColors.plum,
-                              ),
-                              const SizedBox(width: 5),
-                              Flexible(
-                                child: Text(
-                                  switch (locale) {
-                                    SoulLocale.vi => 'CAM KẾT VỚI HÀNH TRÌNH',
-                                    SoulLocale.ko => '여정을 향한 약속',
-                                    SoulLocale.ja => '旅へのコミットメント',
-                                    SoulLocale.fr =>
-                                      'ENGAGEMENT ENVERS VOTRE VOYAGE',
-                                    SoulLocale.zh => '对旅程的承诺',
-                                    SoulLocale.en => 'COMMIT TO YOUR JOURNEY',
-                                  },
-                                  style: textTheme.labelSmall?.copyWith(
-                                    color: SoulColors.plum,
-                                    fontWeight: FontWeight.w800,
-                                    letterSpacing: 0.8,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: SoulSpace.xs),
-                      Text(
-                        l10n.journeyReadyTitle,
-                        style: textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: SoulColors.plum,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        l10n.journeyReadyBody,
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: SoulColors.softInk,
-                          height: 1.36,
-                        ),
-                      ),
-                      const SizedBox(height: SoulSpace.sm),
-
-                      // Compact Benefits Card
-                      SoulCard(
-                        color: SoulColors.softFill,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: SoulSpace.sm,
-                          vertical: SoulSpace.xs,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            for (var i = 0; i < benefits.length; i++) ...[
-                              if (i > 0) const SizedBox(height: 4),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 2),
-                                    child: Icon(
-                                      Icons.check_circle_rounded,
-                                      size: 15,
-                                      color: SoulColors.plum,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Expanded(
-                                    child: Text(
-                                      benefits[i],
-                                      style: textTheme.labelMedium?.copyWith(
-                                        color: SoulColors.plum,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.28,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: SoulSpace.sm),
-
-                      // 3 Pricing Tier Cards
-                      for (final plan in plans) ...[
-                        _SubscriptionPlanCard(
-                          title: plan.title,
-                          price: plan.price,
-                          subtitle: plan.subtitle,
-                          badge: plan.badge,
-                          selected: _selectedPlan == plan.id,
-                          onTap: () => setState(() => _selectedPlan = plan.id),
-                        ),
-                        const SizedBox(height: 8),
-                      ],
-                    ],
-                  ),
+    return _OnboardingLayout(
+      currentStep: 4,
+      totalSteps: 4,
+      children: [
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SoulSpace.xs,
+              vertical: 3,
+            ),
+            decoration: BoxDecoration(
+              color: SoulColors.lilac,
+              borderRadius: BorderRadius.circular(SoulRadius.button),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.auto_awesome_rounded,
+                  size: 13,
+                  color: SoulColors.plum,
                 ),
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              if (start.hasError) ...[
-                Semantics(
-                  liveRegion: true,
+                const SizedBox(width: 5),
+                Flexible(
                   child: Text(
-                    l10n.somethingWentWrong,
-                    textAlign: TextAlign.center,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: SoulColors.error,
+                    switch (locale) {
+                      SoulLocale.vi => 'CAM KẾT VỚI HÀNH TRÌNH',
+                      SoulLocale.ko => '여정을 향한 약속',
+                      SoulLocale.ja => '旅へのコミットメント',
+                      SoulLocale.fr => 'ENGAGEMENT ENVERS VOTRE VOYAGE',
+                      SoulLocale.zh => '对旅程的承诺',
+                      SoulLocale.en => 'COMMIT TO YOUR JOURNEY',
+                    },
+                    style: textTheme.labelSmall?.copyWith(
+                      color: SoulColors.plum,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.8,
                     ),
                   ),
                 ),
-                const SizedBox(height: SoulSpace.xs),
               ],
-              SoulButton(
-                label: start.hasError ? l10n.retry : l10n.beginDayOne,
-                onPressed:
-                    start.isLoading
-                        ? null
-                        : () => ref
-                            .read(journeyStartProvider.notifier)
-                            .start(_selectedPlan),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                switch (locale) {
-                  SoulLocale.vi =>
-                    'Mỗi sự cam kết hôm nay là hạt mầm cho phiên bản rạng rỡ nhất của bạn ngày mai.',
-                  SoulLocale.ko => '오늘의 작은 다짐이 내일 가장 빛나는 당신을 피워냅니다.',
-                  SoulLocale.ja => '今日の小さな誓いが、明日の最も輝くあなたを育てます。',
-                  SoulLocale.fr =>
-                    'Chaque engagement pris aujourd’hui sème la version la plus lumineuse de votre avenir.',
-                  SoulLocale.zh => '今天的每一份承诺，都是孕育明天最闪耀自己的种子。',
-                  SoulLocale.en =>
-                    'Every commitment you make today seeds the brightest version of you tomorrow.',
-                },
-                textAlign: TextAlign.center,
-                style: textTheme.labelSmall?.copyWith(
-                  color: SoulColors.softInk,
-                  fontStyle: FontStyle.italic,
-                  height: 1.3,
+            ),
+          ),
+        ),
+        const SizedBox(height: SoulSpace.xs),
+        Text(
+          l10n.journeyReadyTitle,
+          style: textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.w700,
+            color: SoulColors.plum,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          l10n.journeyReadyBody,
+          style: textTheme.bodyMedium?.copyWith(
+            color: SoulColors.softInk,
+            height: 1.36,
+          ),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // Compact Benefits Card
+        SoulCard(
+          color: SoulColors.softFill,
+          padding: const EdgeInsets.symmetric(
+            horizontal: SoulSpace.sm,
+            vertical: SoulSpace.xs,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (var i = 0; i < benefits.length; i++) ...[
+                if (i > 0) const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 2),
+                      child: Icon(
+                        Icons.check_circle_rounded,
+                        size: 15,
+                        color: SoulColors.plum,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        benefits[i],
+                        style: textTheme.labelMedium?.copyWith(
+                          color: SoulColors.plum,
+                          fontWeight: FontWeight.w600,
+                          height: 1.28,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ],
           ),
         ),
-      ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // 3 Pricing Tier Cards
+        for (final plan in plans) ...[
+          _SubscriptionPlanCard(
+            title: plan.title,
+            price: plan.price,
+            subtitle: plan.subtitle,
+            badge: plan.badge,
+            selected: _selectedPlan == plan.id,
+            onTap: () => setState(() => _selectedPlan = plan.id),
+          ),
+          const SizedBox(height: 8),
+        ],
+        const SizedBox(height: SoulSpace.xs),
+        if (start.hasError) ...[
+          Semantics(
+            liveRegion: true,
+            child: Text(
+              l10n.somethingWentWrong,
+              textAlign: TextAlign.center,
+              style: textTheme.bodyMedium?.copyWith(color: SoulColors.error),
+            ),
+          ),
+          const SizedBox(height: SoulSpace.xs),
+        ],
+        SoulButton(
+          label: start.hasError ? l10n.retry : l10n.beginDayOne,
+          onPressed:
+              start.isLoading
+                  ? null
+                  : () async {
+                    if (_selectedPlan == 'lifetime') {
+                      await ref
+                          .read(paymentControllerProvider.notifier)
+                          .purchase(_selectedPlan);
+                    } else {
+                      await ref
+                          .read(paymentControllerProvider.notifier)
+                          .startTrial(_selectedPlan);
+                    }
+                    await ref
+                        .read(journeyStartProvider.notifier)
+                        .start(_selectedPlan);
+                  },
+        ),
+        const SizedBox(height: 8),
+        Text(
+          _selectedPlan == 'lifetime'
+              ? (switch (locale) {
+                SoulLocale.vi =>
+                  'Thanh toán một lần duy nhất · Sở hữu vĩnh viễn.',
+                SoulLocale.ko => '1회 결제로 평생 소장.',
+                SoulLocale.ja => '1回のお支払いで、永久にご利用いただけます。',
+                SoulLocale.fr => 'Paiement unique · Accès à vie garanti.',
+                SoulLocale.zh => '一次性付费 · 终身永久使用。',
+                SoulLocale.en =>
+                  'One-time payment · Lifetime access guaranteed.',
+              })
+              : (switch (locale) {
+                SoulLocale.vi =>
+                  'Dùng thử 7 ngày miễn phí. Tự động thanh toán sau 7 ngày. Hủy bất cứ lúc nào.',
+                SoulLocale.ko => '7일 무료 체험 후 자동 결제. 언제든지 취소 가능.',
+                SoulLocale.ja => '7日間無料体験、その後自動更新。いつでも解約可能。',
+                SoulLocale.fr =>
+                  'Essai gratuit de 7 jours, puis facturé. Résiliable à tout moment.',
+                SoulLocale.zh => '7天免费试用，之后按期扣费。可在设置中随时取消。',
+                SoulLocale.en =>
+                  '7-day free trial, then billed. Cancel anytime.',
+              }),
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 11.5,
+            color: SoulColors.muted,
+            height: 1.35,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -1084,27 +1134,70 @@ class _OnboardingLayout extends StatelessWidget {
     required this.children,
     this.padding = const EdgeInsets.all(SoulSpace.lg),
     this.crossAxisAlignment = CrossAxisAlignment.stretch,
+    this.currentStep,
+    this.totalSteps = 4,
   });
 
   final List<Widget> children;
   final EdgeInsetsGeometry padding;
   final CrossAxisAlignment crossAxisAlignment;
+  final int? currentStep;
+  final int totalSteps;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: Padding(
-                padding: padding,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: crossAxisAlignment,
-                  children: children,
+        child: Column(
+          children: [
+            if (currentStep != null)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  SoulSpace.lg,
+                  SoulSpace.sm,
+                  SoulSpace.lg,
+                  0,
                 ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(3),
+                        child: LinearProgressIndicator(
+                          value: currentStep! / totalSteps,
+                          backgroundColor: SoulColors.line,
+                          color: SoulColors.plum,
+                          minHeight: 4,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: SoulSpace.sm),
+                    Text(
+                      '$currentStep/$totalSteps',
+                      style: const TextStyle(
+                        fontSize: 11,
+                        color: SoulColors.muted,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Padding(
+                      padding: padding,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: crossAxisAlignment,
+                        children: children,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

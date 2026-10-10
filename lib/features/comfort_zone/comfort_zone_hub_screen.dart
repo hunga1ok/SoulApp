@@ -170,11 +170,11 @@ class _ComfortZoneHubScreenState extends ConsumerState<ComfortZoneHubScreen> {
                               .toggleFavorite(scene.id),
                       onOpenRoom:
                           () => context.push('/comfort-zone/${scene.id}'),
-                      onTogglePlay:
-                          () => _toggleSceneAudio(
+                      onPlayAsset:
+                          (asset) => _playSceneAsset(
                             scene,
+                            asset,
                             locale,
-                            audioCatalog,
                             audio,
                             state,
                           ),
@@ -209,11 +209,11 @@ class _ComfortZoneHubScreenState extends ConsumerState<ComfortZoneHubScreen> {
                                 .toggleFavorite(scene.id),
                         onOpenRoom:
                             () => context.push('/comfort-zone/${scene.id}'),
-                        onTogglePlay:
-                            () => _toggleSceneAudio(
+                        onPlayAsset:
+                            (asset) => _playSceneAsset(
                               scene,
+                              asset,
                               locale,
-                              audioCatalog,
                               audio,
                               state,
                             ),
@@ -230,16 +230,15 @@ class _ComfortZoneHubScreenState extends ConsumerState<ComfortZoneHubScreen> {
     );
   }
 
-  Future<void> _toggleSceneAudio(
+  Future<void> _playSceneAsset(
     ComfortZoneScene scene,
+    SoulAudioAsset asset,
     SoulLocale locale,
-    AudioCatalog? audioCatalog,
     AudioPlaybackController audio,
     AppState state,
   ) async {
-    final asset = audioCatalog?.asset(scene.primarySoundId);
-    final path = asset?.pathFor(locale);
-    if (asset == null || path == null) return;
+    final path = asset.pathFor(locale);
+    if (path == null) return;
 
     if (!state.soundEnabled) {
       await state.setSoundEnabled(true);
@@ -252,7 +251,7 @@ class _ComfortZoneHubScreenState extends ConsumerState<ComfortZoneHubScreen> {
       title: '${scene.numberBadge}. ${scene.localizedTitle}',
       subtitle: asset.displayLabelFor(locale),
       isAsset: true,
-      loop: true,
+      loop: !asset.isGuided,
     );
   }
 
@@ -410,7 +409,7 @@ class _ComfortZoneHubScreenState extends ConsumerState<ComfortZoneHubScreen> {
   }
 }
 
-class _ComfortSceneCard extends StatelessWidget {
+class _ComfortSceneCard extends StatefulWidget {
   const _ComfortSceneCard({
     required this.scene,
     required this.category,
@@ -421,7 +420,7 @@ class _ComfortSceneCard extends StatelessWidget {
     required this.soundEnabled,
     required this.onToggleFavorite,
     required this.onOpenRoom,
-    required this.onTogglePlay,
+    required this.onPlayAsset,
   });
 
   final ComfortZoneScene scene;
@@ -433,23 +432,71 @@ class _ComfortSceneCard extends StatelessWidget {
   final bool soundEnabled;
   final VoidCallback onToggleFavorite;
   final VoidCallback onOpenRoom;
-  final VoidCallback onTogglePlay;
+  final void Function(SoulAudioAsset asset) onPlayAsset;
+
+  @override
+  State<_ComfortSceneCard> createState() => _ComfortSceneCardState();
+}
+
+class _ComfortSceneCardState extends State<_ComfortSceneCard> {
+  String? _selectedAssetId;
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final primaryAsset = audioCatalog?.asset(scene.primarySoundId);
-    final guidedAsset = audioCatalog?.asset(scene.guidedAudioId);
-    final primaryPath = primaryAsset?.pathFor(locale);
-    final guidedPath = guidedAsset?.pathFor(locale);
+    final scene = widget.scene;
+    final audio = widget.audio;
+    final locale = widget.locale;
+    final audioCatalog = widget.audioCatalog;
 
-    final isScenePlaying =
-        audio.isPlaying &&
-        ((primaryPath != null && audio.assetPath == primaryPath) ||
-            (guidedPath != null && audio.assetPath == guidedPath));
+    final seenIds = <String>{};
+    final allAudioAssets = <SoulAudioAsset>[];
+    final candidateIds = [
+      ...scene.soundIds,
+      scene.primarySoundId,
+      scene.guidedAudioId,
+    ];
+    for (final id in candidateIds) {
+      if (id.isEmpty || seenIds.contains(id)) continue;
+      seenIds.add(id);
+      final asset = audioCatalog?.asset(id);
+      if (asset != null) {
+        allAudioAssets.add(asset);
+      }
+    }
+
+    final playingAsset =
+        allAudioAssets.where((a) {
+          final path = a.pathFor(locale);
+          return path != null && audio.isPlaying && audio.assetPath == path;
+        }).firstOrNull;
+
+    final loadedAsset =
+        allAudioAssets.where((a) {
+          final path = a.pathFor(locale);
+          return path != null && audio.assetPath == path;
+        }).firstOrNull;
+
+    final activeAsset =
+        playingAsset ??
+        loadedAsset ??
+        allAudioAssets.where((a) => a.id == _selectedAssetId).firstOrNull ??
+        allAudioAssets.where((a) => a.id == scene.primarySoundId).firstOrNull ??
+        allAudioAssets.firstOrNull;
+
+    final isScenePlaying = playingAsset != null;
+
+    void togglePlay() {
+      if (activeAsset == null) return;
+      if (isScenePlaying) {
+        audio.pause();
+      } else {
+        widget.onPlayAsset(activeAsset);
+      }
+    }
 
     return InkWell(
-      onTap: onOpenRoom,
+      onTap: widget.onOpenRoom,
       borderRadius: BorderRadius.circular(SoulRadius.card),
       child: Container(
         decoration: BoxDecoration(
@@ -505,10 +552,10 @@ class _ComfortSceneCard extends StatelessWidget {
                                   letterSpacing: 0.6,
                                 ),
                               ),
-                              if (category != null) ...[
+                              if (widget.category != null) ...[
                                 const SizedBox(width: 6),
                                 Text(
-                                  category!.icon,
+                                  widget.category!.icon,
                                   style: const TextStyle(fontSize: 12),
                                 ),
                               ],
@@ -537,13 +584,13 @@ class _ComfortSceneCard extends StatelessWidget {
                           ),
                         IconButton(
                           tooltip: l10n.comfortZoneFavorites,
-                          onPressed: onToggleFavorite,
+                          onPressed: widget.onToggleFavorite,
                           icon: Icon(
-                            isFavorite
+                            widget.isFavorite
                                 ? Icons.favorite_rounded
                                 : Icons.favorite_border_rounded,
                             color:
-                                isFavorite
+                                widget.isFavorite
                                     ? const Color(0xFFFF6B8B)
                                     : Colors.white,
                           ),
@@ -579,7 +626,7 @@ class _ComfortSceneCard extends StatelessWidget {
               ),
             ),
 
-            // Healing message + Audio badges + Enter CTA
+            // Healing message + Audio bar + Enter CTA
             Padding(
               padding: const EdgeInsets.all(SoulSpace.md),
               child: Column(
@@ -595,11 +642,11 @@ class _ComfortSceneCard extends StatelessWidget {
                   ),
                   const SizedBox(height: SoulSpace.sm),
 
-                  // Sound & Audio row: Play button + Music/Frequency track aligned horizontally
+                  // Sound & Audio row: Play button + Dropdown selector
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: SoulSpace.sm,
-                      vertical: 7,
+                      vertical: 4,
                     ),
                     decoration: BoxDecoration(
                       color:
@@ -618,7 +665,7 @@ class _ComfortSceneCard extends StatelessWidget {
                       children: [
                         // Compact circular Play/Pause button
                         InkWell(
-                          onTap: onTogglePlay,
+                          onTap: togglePlay,
                           borderRadius: BorderRadius.circular(18),
                           child: Container(
                             width: 32,
@@ -659,78 +706,103 @@ class _ComfortSceneCard extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: SoulSpace.sm),
-                        // Track title & frequency info (aligned horizontally with play button)
+                        // Dropdown to choose track
                         Expanded(
-                          child: InkWell(
-                            onTap: onTogglePlay,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.music_note_rounded,
-                                      size: 13,
+                          child:
+                              allAudioAssets.isEmpty
+                                  ? Text(
+                                    l10n.comfortZoneAmbientSound,
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodySmall?.copyWith(
+                                      fontWeight: FontWeight.w600,
                                       color: SoulColors.plum,
                                     ),
-                                    const SizedBox(width: 4),
-                                    Expanded(
-                                      child: Text(
-                                        primaryAsset != null
-                                            ? primaryAsset.displayLabelFor(
-                                              locale,
-                                            )
-                                            : l10n.comfortZoneAmbientSound,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: Theme.of(
-                                          context,
-                                        ).textTheme.bodySmall?.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          color: SoulColors.plum,
-                                        ),
+                                  )
+                                  : DropdownButtonHideUnderline(
+                                    child: DropdownButton<String>(
+                                      value: activeAsset?.id,
+                                      isExpanded: true,
+                                      isDense: true,
+                                      icon: const Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: SoulColors.plum,
+                                        size: 20,
                                       ),
-                                    ),
-                                    if (isScenePlaying) ...[
-                                      const SizedBox(width: 6),
-                                      const SoulAudioWave(
-                                        isPlaying: true,
-                                        barColor: SoulColors.plum,
-                                        height: 12,
+                                      dropdownColor: SoulColors.surface,
+                                      borderRadius: BorderRadius.circular(
+                                        SoulRadius.card,
                                       ),
-                                    ],
-                                  ],
-                                ),
-                                if (guidedAsset != null) ...[
-                                  const SizedBox(height: 2),
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.record_voice_over_rounded,
-                                        size: 11,
-                                        color: SoulColors.softInk,
-                                      ),
-                                      const SizedBox(width: 4),
-                                      Expanded(
-                                        child: Text(
-                                          guidedAsset.titleFor(locale),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(
-                                            context,
-                                          ).textTheme.labelSmall?.copyWith(
-                                            color: SoulColors.softInk,
-                                            fontSize: 11,
+                                      onChanged: (selectedId) {
+                                        if (selectedId == null) return;
+                                        setState(() {
+                                          _selectedAssetId = selectedId;
+                                        });
+                                        final chosen =
+                                            allAudioAssets
+                                                .where(
+                                                  (a) => a.id == selectedId,
+                                                )
+                                                .firstOrNull;
+                                        if (chosen != null) {
+                                          widget.onPlayAsset(chosen);
+                                        }
+                                      },
+                                      items: [
+                                        for (final item in allAudioAssets)
+                                          DropdownMenuItem<String>(
+                                            value: item.id,
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  item.isGuided
+                                                      ? Icons
+                                                          .record_voice_over_rounded
+                                                      : item.type == 'music'
+                                                      ? Icons.music_note_rounded
+                                                      : Icons
+                                                          .water_drop_rounded,
+                                                  size: 15,
+                                                  color: SoulColors.plum,
+                                                ),
+                                                const SizedBox(width: 6),
+                                                Expanded(
+                                                  child: Text(
+                                                    item.displayLabelFor(
+                                                      locale,
+                                                    ),
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodySmall
+                                                        ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color:
+                                                              SoulColors.plum,
+                                                        ),
+                                                  ),
+                                                ),
+                                                if (audio.isPlaying &&
+                                                    audio.assetPath ==
+                                                        item.pathFor(
+                                                          locale,
+                                                        )) ...[
+                                                  const SizedBox(width: 4),
+                                                  const SoulAudioWave(
+                                                    isPlaying: true,
+                                                    barColor: SoulColors.plum,
+                                                    height: 11,
+                                                  ),
+                                                ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ],
-                            ),
-                          ),
                         ),
                       ],
                     ),

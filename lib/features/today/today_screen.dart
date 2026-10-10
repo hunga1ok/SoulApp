@@ -78,113 +78,197 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         ),
         const SizedBox(height: SoulSpace.lg),
 
-        // Hero Journey Card: Day 1 of 28
-        Container(
-          decoration: BoxDecoration(
-            color: SoulColors.surface,
+        // Hero Journey Card: Day 1 of 28 (compact collapsible after completion)
+        if (isGratitudeDone)
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const GratitudePracticeScreen(),
+                ),
+              ).then((_) {
+                ref.invalidate(todayGratitudeEntriesProvider);
+                ref.invalidate(recentGratitudeEntriesProvider);
+              });
+            },
             borderRadius: BorderRadius.circular(SoulRadius.card),
-            border: Border.all(color: SoulColors.line),
-            boxShadow: [
-              BoxShadow(
-                color: SoulColors.plum.withValues(alpha: 0.05),
-                blurRadius: 16,
-                offset: const Offset(0, 4),
+            child: Container(
+              decoration: BoxDecoration(
+                color: SoulColors.surface,
+                borderRadius: BorderRadius.circular(SoulRadius.card),
+                border: Border.all(
+                  color: SoulColors.lilac.withValues(alpha: 0.8),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: SoulColors.plum.withValues(alpha: 0.04),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
               ),
-            ],
-          ),
-          padding: const EdgeInsets.all(SoulSpace.lg),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: SoulSpace.xs,
-                runSpacing: SoulSpace.xs,
+              padding: const EdgeInsets.symmetric(
+                horizontal: SoulSpace.md,
+                vertical: SoulSpace.sm + 4,
+              ),
+              child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: SoulSpace.sm,
-                      vertical: SoulSpace.xxs,
-                    ),
-                    decoration: BoxDecoration(
+                    width: 38,
+                    height: 38,
+                    decoration: const BoxDecoration(
                       color: SoulColors.lilac,
-                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                      shape: BoxShape.circle,
                     ),
-                    child: MediaQuery.withClampedTextScaling(
-                      maxScaleFactor: 1.3,
-                      child: Text(
-                        l10n.dayProgress(1).toUpperCase(),
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: SoulColors.plum,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1.1,
-                        ),
-                      ),
+                    child: const Icon(
+                      Icons.check_circle_rounded,
+                      color: SoulColors.lilacStrong,
+                      size: 22,
                     ),
                   ),
-                  if (isGratitudeDone)
-                    Row(
+                  const SizedBox(width: SoulSpace.sm),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
-                          Icons.check_circle_rounded,
-                          size: 16,
-                          color: SoulColors.lilacStrong,
-                        ),
-                        const SizedBox(width: 4),
-                        MediaQuery.withClampedTextScaling(
-                          maxScaleFactor: 1.3,
-                          child: Text(
-                            l10n.todayPracticeCompleted,
-                            style: Theme.of(
-                              context,
-                            ).textTheme.labelSmall?.copyWith(
-                              color: SoulColors.lilacStrong,
-                              fontWeight: FontWeight.bold,
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: SoulSpace.xs + 2,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: SoulColors.softFill,
+                                borderRadius: BorderRadius.circular(
+                                  SoulRadius.button,
+                                ),
+                              ),
+                              child: Text(
+                                l10n.dayProgress(1).toUpperCase(),
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.labelSmall?.copyWith(
+                                  color: SoulColors.plum,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 10,
+                                  letterSpacing: 0.8,
+                                ),
+                              ),
                             ),
+                            const SizedBox(width: 6),
+                            Expanded(
+                              child: Text(
+                                l10n.todayPracticeCompleted,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.labelSmall?.copyWith(
+                                  color: SoulColors.lilacStrong,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          l10n.gratitudeCardTapToReview,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: SoulColors.plum,
                           ),
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(width: SoulSpace.xs),
+                  const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 14,
+                    color: SoulColors.softInk,
+                  ),
                 ],
               ),
-              const SizedBox(height: SoulSpace.md),
-              Text(
-                l10n.todayJourneyHeroTitle,
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
+            ),
+          )
+        else
+          Container(
+            decoration: BoxDecoration(
+              color: SoulColors.surface,
+              borderRadius: BorderRadius.circular(SoulRadius.card),
+              border: Border.all(color: SoulColors.line),
+              boxShadow: [
+                BoxShadow(
+                  color: SoulColors.plum.withValues(alpha: 0.05),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
                 ),
-              ),
-              const SizedBox(height: SoulSpace.xs),
-              Text(
-                l10n.todayJourneyHeroSubtitle,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: SoulColors.softInk.withValues(alpha: 0.8),
-                  height: 1.45,
-                ),
-              ),
-              const SizedBox(height: SoulSpace.lg),
-              SoulButton(
-                label:
-                    isGratitudeDone
-                        ? l10n.gratitudeCardTapToReview
-                        : l10n.todayStartPractice,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const GratitudePracticeScreen(),
+              ],
+            ),
+            padding: const EdgeInsets.all(SoulSpace.lg),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: SoulSpace.sm,
+                    vertical: SoulSpace.xxs,
+                  ),
+                  decoration: BoxDecoration(
+                    color: SoulColors.lilac,
+                    borderRadius: BorderRadius.circular(SoulRadius.button),
+                  ),
+                  child: MediaQuery.withClampedTextScaling(
+                    maxScaleFactor: 1.3,
+                    child: Text(
+                      l10n.dayProgress(1).toUpperCase(),
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: SoulColors.plum,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.1,
+                      ),
                     ),
-                  ).then((_) {
-                    ref.invalidate(todayGratitudeEntriesProvider);
-                    ref.invalidate(recentGratitudeEntriesProvider);
-                  });
-                },
-              ),
-            ],
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.md),
+                Text(
+                  l10n.todayJourneyHeroTitle,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.xs),
+                Text(
+                  l10n.todayJourneyHeroSubtitle,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: SoulColors.softInk.withValues(alpha: 0.8),
+                    height: 1.45,
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.lg),
+                SoulButton(
+                  label: l10n.todayStartPractice,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const GratitudePracticeScreen(),
+                      ),
+                    ).then((_) {
+                      ref.invalidate(todayGratitudeEntriesProvider);
+                      ref.invalidate(recentGratitudeEntriesProvider);
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
         const SizedBox(height: SoulSpace.xl),
 
         // Mood Check-in
