@@ -18,7 +18,9 @@ import '../../l10n/app_localizations.dart';
 import '../journal/journal_note_models.dart';
 
 class GratitudePracticeScreen extends ConsumerStatefulWidget {
-  const GratitudePracticeScreen({super.key});
+  const GratitudePracticeScreen({super.key, this.dayNumber});
+
+  final int? dayNumber;
 
   @override
   ConsumerState<GratitudePracticeScreen> createState() =>
@@ -54,9 +56,11 @@ class _GratitudePracticeScreenState
   }
 
   Future<void> _loadExistingEntries() async {
+    final int day =
+        widget.dayNumber ?? await ref.read(currentJourneyDayProvider.future);
     final entries = await ref
         .read(gratitudeRepositoryProvider)
-        .getEntriesForDay(1);
+        .getEntriesForDay(day);
     if (entries.isNotEmpty && mounted) {
       final lines = <String>[];
       String? foundImage;
@@ -196,6 +200,9 @@ class _GratitudePracticeScreenState
               .where((line) => line.isNotEmpty)
               .toList();
 
+      final int day =
+          widget.dayNumber ?? await ref.read(currentJourneyDayProvider.future);
+
       if (rawLines.length > 1) {
         final draftItems = <GratitudeDraftItem>[];
         for (int i = 0; i < rawLines.length; i++) {
@@ -208,7 +215,7 @@ class _GratitudePracticeScreenState
           );
         }
         await gratitudeRepo.saveEntries(
-          journeyDay: 1,
+          journeyDay: day,
           userJourneyId: activeJourney?.id,
           items: draftItems,
         );
@@ -216,11 +223,12 @@ class _GratitudePracticeScreenState
         await gratitudeRepo.addSingleEntry(
           gratitudeText: text,
           reasonText: encodedAttachments,
-          journeyDay: 1,
+          journeyDay: day,
           userJourneyId: activeJourney?.id,
         );
       }
 
+      ref.invalidate(currentJourneyDayProvider);
       ref.invalidate(todayGratitudeEntriesProvider);
       ref.invalidate(recentGratitudeEntriesProvider);
 
@@ -304,7 +312,10 @@ class _GratitudePracticeScreenState
     final l10n = AppLocalizations.of(context)!;
     final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
     final playback = ref.watch(audioPlaybackProvider);
-    final dayTheme = JourneyDayThemes.getTitle(1, locale);
+    final day =
+        widget.dayNumber ??
+        (ref.watch(currentJourneyDayProvider).valueOrNull ?? 1);
+    final dayTheme = JourneyDayThemes.getTitle(day, locale);
     final isPlayingAudio =
         _attachedAudioPath != null &&
         playback.isPlaying &&
@@ -355,7 +366,7 @@ class _GratitudePracticeScreenState
                       Row(
                         children: [
                           Text(
-                            l10n.dayProgress(1).toUpperCase(),
+                            l10n.dayProgress(day).toUpperCase(),
                             style: Theme.of(
                               context,
                             ).textTheme.labelSmall?.copyWith(

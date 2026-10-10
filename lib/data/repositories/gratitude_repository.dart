@@ -24,9 +24,15 @@ final gratitudeRepositoryProvider = Provider<GratitudeRepository>((ref) {
   return GratitudeRepository(ref.watch(soulDatabaseProvider));
 });
 
+final currentJourneyDayProvider = FutureProvider.autoDispose<int>((ref) async {
+  return ref.watch(gratitudeRepositoryProvider).getCurrentJourneyDay();
+});
+
 final todayGratitudeEntriesProvider =
-    FutureProvider.autoDispose<List<GratitudeEntryRow>>((ref) {
-      return ref.watch(gratitudeRepositoryProvider).getEntriesForDay(1);
+    FutureProvider.autoDispose<List<GratitudeEntryRow>>((ref) async {
+      final repo = ref.watch(gratitudeRepositoryProvider);
+      final currentDay = await ref.watch(currentJourneyDayProvider.future);
+      return repo.getEntriesForDay(currentDay);
     });
 
 final recentGratitudeEntriesProvider =
@@ -40,6 +46,38 @@ class GratitudeRepository {
 
   final SoulDatabase _database;
   final DateTime Function() _now;
+
+  /// Determines the current day (1..28) in the active gratitude journey.
+  /// If today already has entries, returns today's journey day.
+  /// Otherwise advances to the next day after the last completed day.
+  /// After completing Day 28, the cycle loops back to Day 1.
+  Future<int> getCurrentJourneyDay() async {
+    final allEntries =
+        await (_database.select(_database.gratitudeEntries)
+              ..where((row) => row.journeyDay.isNotNull())
+              ..orderBy([(row) => OrderingTerm.desc(row.createdAt)]))
+            .get();
+
+    if (allEntries.isEmpty) {
+      return 1;
+    }
+
+    final now = _now();
+    final todayStart = DateTime(now.year, now.month, now.day);
+    final todayEntries =
+        allEntries.where((e) => e.createdAt.isAfter(todayStart)).toList();
+
+    if (todayEntries.isNotEmpty && todayEntries.first.journeyDay != null) {
+      return todayEntries.first.journeyDay!;
+    }
+
+    final lastDay = allEntries.first.journeyDay ?? 1;
+    if (lastDay >= 28) {
+      // Loop back to Day 1 after Day 28 is completed!
+      return 1;
+    }
+    return lastDay + 1;
+  }
 
   Future<List<GratitudeEntryRow>> getRecentEntries({int limit = 50}) {
     return (_database.select(_database.gratitudeEntries)

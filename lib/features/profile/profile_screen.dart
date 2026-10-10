@@ -516,12 +516,12 @@ class ProfileScreen extends ConsumerWidget {
             _SettingRow(
               icon: Icons.credit_card_outlined,
               label: switch (locale) {
-                SoulLocale.vi => 'Gói đăng ký & Thanh toán',
-                SoulLocale.ko => '구독 및 결제 관리',
-                SoulLocale.ja => 'サブスクリプションと支払い',
-                SoulLocale.fr => 'Abonnement et facturation',
-                SoulLocale.zh => '订阅与账单管理',
-                SoulLocale.en => 'Subscription & Billing',
+                SoulLocale.vi => 'Gói & Thanh toán',
+                SoulLocale.ko => '구독 및 결제',
+                SoulLocale.ja => 'プランとお支払い',
+                SoulLocale.fr => 'Forfaits & Facturation',
+                SoulLocale.zh => '套餐与账单',
+                SoulLocale.en => 'Plans & Billing',
               },
               trailing: Text(
                 sub.localizedPlanTitle(locale),
@@ -673,6 +673,8 @@ class _SettingRow extends StatelessWidget {
                 child: Text(
                   label,
                   style: Theme.of(context).textTheme.bodyLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               if (trailing != null) ...[

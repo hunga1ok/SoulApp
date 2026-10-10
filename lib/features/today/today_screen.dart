@@ -11,6 +11,7 @@ import '../../data/content/content_repository.dart';
 import '../../data/repositories/card_draw_repository.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
+import '../journal/journal_note_models.dart';
 import '../profile/home_widget_screen.dart';
 import '../vision/vision_controllers.dart';
 import '../vision/vision_statement.dart';
@@ -41,6 +42,12 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     final isGratitudeDone = todayEntries.isNotEmpty;
     final drawState = ref.watch(cardDrawProvider);
     final cardCatalog = ref.watch(cardCatalogProvider).valueOrNull;
+
+    final currentDay = ref.watch(currentJourneyDayProvider).valueOrNull ?? 1;
+    final dayTheme = JourneyDayThemes.getTitle(
+      currentDay,
+      state.locale ?? SoulLocale.vi,
+    );
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -78,16 +85,18 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         ),
         const SizedBox(height: SoulSpace.lg),
 
-        // Hero Journey Card: Day 1 of 28 (compact collapsible after completion)
+        // 1. Hero Journey Card: Day X of 28 (Widget Task hàng ngày)
         if (isGratitudeDone)
           InkWell(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const GratitudePracticeScreen(),
+                  builder:
+                      (_) => GratitudePracticeScreen(dayNumber: currentDay),
                 ),
               ).then((_) {
+                ref.invalidate(currentJourneyDayProvider);
                 ref.invalidate(todayGratitudeEntriesProvider);
                 ref.invalidate(recentGratitudeEntriesProvider);
               });
@@ -147,7 +156,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                                 ),
                               ),
                               child: Text(
-                                l10n.dayProgress(1).toUpperCase(),
+                                l10n.dayProgress(currentDay).toUpperCase(),
                                 style: Theme.of(
                                   context,
                                 ).textTheme.labelSmall?.copyWith(
@@ -176,7 +185,9 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                         ),
                         const SizedBox(height: 3),
                         Text(
-                          l10n.gratitudeCardTapToReview,
+                          '$dayTheme · ${l10n.gratitudeCardTapToReview}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(
                             context,
                           ).textTheme.titleSmall?.copyWith(
@@ -227,7 +238,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                   child: MediaQuery.withClampedTextScaling(
                     maxScaleFactor: 1.3,
                     child: Text(
-                      l10n.dayProgress(1).toUpperCase(),
+                      l10n.dayProgress(currentDay).toUpperCase(),
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         color: SoulColors.plum,
                         fontWeight: FontWeight.w700,
@@ -238,7 +249,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 ),
                 const SizedBox(height: SoulSpace.md),
                 Text(
-                  l10n.todayJourneyHeroTitle,
+                  dayTheme,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                   ),
@@ -258,9 +269,12 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const GratitudePracticeScreen(),
+                        builder:
+                            (_) =>
+                                GratitudePracticeScreen(dayNumber: currentDay),
                       ),
                     ).then((_) {
+                      ref.invalidate(currentJourneyDayProvider);
                       ref.invalidate(todayGratitudeEntriesProvider);
                       ref.invalidate(recentGratitudeEntriesProvider);
                     });
@@ -269,168 +283,9 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
               ],
             ),
           ),
-        const SizedBox(height: SoulSpace.xl),
+        const SizedBox(height: SoulSpace.md),
 
-        // Mood Check-in
-        Text(
-          l10n.moodCheckInTitle,
-          style: Theme.of(
-            context,
-          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: SoulSpace.sm),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _MoodChip(
-                label: l10n.moodPeaceful,
-                selected: _selectedMood == l10n.moodPeaceful,
-                onTap: () => setState(() => _selectedMood = l10n.moodPeaceful),
-              ),
-              _MoodChip(
-                label: l10n.moodGrateful,
-                selected: _selectedMood == l10n.moodGrateful,
-                onTap: () => setState(() => _selectedMood = l10n.moodGrateful),
-              ),
-              _MoodChip(
-                label: l10n.moodEnergized,
-                selected: _selectedMood == l10n.moodEnergized,
-                onTap: () => setState(() => _selectedMood = l10n.moodEnergized),
-              ),
-              _MoodChip(
-                label: l10n.moodRelieved,
-                selected: _selectedMood == l10n.moodRelieved,
-                onTap: () => setState(() => _selectedMood = l10n.moodRelieved),
-              ),
-              _MoodChip(
-                label: l10n.moodReflective,
-                selected: _selectedMood == l10n.moodReflective,
-                onTap:
-                    () => setState(() => _selectedMood = l10n.moodReflective),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: SoulSpace.xl),
-
-        // Today's Rhythm Section
-        Text(
-          l10n.todayRhythm,
-          style: Theme.of(
-            context,
-          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
-        ),
-        const SizedBox(height: SoulSpace.sm),
-
-        // 1. Morning Soundscape
-        SoulAudioRow(
-          title: l10n.morningGratitude,
-          subtitle:
-              track?.delivery == AudioDelivery.published
-                  ? l10n.neutralInstrumentalFiveMinutes
-                  : l10n.audioPending,
-          isPlaying:
-              audio.isPlaying &&
-              audio.assetPath == 'assets/audio/music/so-11-warm-felt-piano.m4a',
-          onPlayPause:
-              soundEnabled && track?.delivery == AudioDelivery.published
-                  ? () => ref
-                      .read(audioPlaybackProvider)
-                      .toggleAsset(
-                        'assets/audio/music/so-11-warm-felt-piano.m4a',
-                        title: l10n.morningGratitude,
-                        subtitle: l10n.neutralInstrumentalFiveMinutes,
-                      )
-                  : null,
-        ),
-        const SizedBox(height: SoulSpace.sm),
-
-        // 2. One Small Action
-        InkWell(
-          onTap: () => setState(() => _smallActionDone = !_smallActionDone),
-          borderRadius: BorderRadius.circular(SoulRadius.card),
-          child: SoulCard(
-            color: _smallActionDone ? SoulColors.lilac : SoulColors.surface,
-            padding: const EdgeInsets.all(SoulSpace.md),
-            child: Row(
-              children: [
-                Icon(
-                  _smallActionDone
-                      ? Icons.check_circle_rounded
-                      : Icons.radio_button_unchecked_rounded,
-                  color:
-                      _smallActionDone
-                          ? SoulColors.lilacStrong
-                          : SoulColors.muted,
-                ),
-                const SizedBox(width: SoulSpace.sm),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.oneSmallAction,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: SoulColors.muted,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        l10n.smallActionText,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: SoulColors.softInk,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(height: SoulSpace.sm),
-
-        // 3. Evening Reflection Preview
-        SoulCard(
-          color: SoulColors.surface,
-          padding: const EdgeInsets.all(SoulSpace.md),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.nightlight_round,
-                color: SoulColors.plum,
-                size: 24,
-              ),
-              const SizedBox(width: SoulSpace.sm),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.eveningReflectionTitle,
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: SoulColors.muted,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      l10n.eveningReflectionBody,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: SoulColors.softInk,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: SoulSpace.sm),
-
-        // 4. Soul Card Message
+        // 2. Rút thẻ thông điệp (Soul Card Message) - Đưa lên ngay dưới widget task
         InkWell(
           onTap: () => context.go('/app/cards'),
           borderRadius: BorderRadius.circular(SoulRadius.card),
@@ -439,12 +294,20 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
             padding: const EdgeInsets.all(SoulSpace.md),
             child: Row(
               children: [
-                const Icon(
-                  Icons.auto_awesome,
-                  color: SoulColors.plum,
-                  size: 24,
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3E5F5),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.auto_awesome,
+                    color: SoulColors.plum,
+                    size: 22,
+                  ),
                 ),
-                const SizedBox(width: SoulSpace.sm),
+                const SizedBox(width: SoulSpace.md),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -490,7 +353,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         ),
         const SizedBox(height: SoulSpace.sm),
 
-        // 5. Comfort Zone Sanctuary
+        // 3. Little Corner (Góc nhỏ) - Đưa lên trên hành động
         InkWell(
           onTap: () => context.push('/comfort-zone'),
           borderRadius: BorderRadius.circular(SoulRadius.card),
@@ -499,12 +362,20 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
             padding: const EdgeInsets.all(SoulSpace.md),
             child: Row(
               children: [
-                const Icon(
-                  Icons.cottage_rounded,
-                  color: SoulColors.plum,
-                  size: 24,
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE8F5E9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.cottage_rounded,
+                    color: Color(0xFF2E7D32),
+                    size: 22,
+                  ),
                 ),
-                const SizedBox(width: SoulSpace.sm),
+                const SizedBox(width: SoulSpace.md),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -532,6 +403,165 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 const Icon(Icons.chevron_right, color: SoulColors.muted),
               ],
             ),
+          ),
+        ),
+        const SizedBox(height: SoulSpace.xl),
+
+        // 4. Mood Check-in: Cảm xúc của bạn lúc này
+        Text(
+          l10n.moodCheckInTitle,
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _MoodChip(
+                label: l10n.moodPeaceful,
+                selected: _selectedMood == l10n.moodPeaceful,
+                onTap: () => setState(() => _selectedMood = l10n.moodPeaceful),
+              ),
+              _MoodChip(
+                label: l10n.moodGrateful,
+                selected: _selectedMood == l10n.moodGrateful,
+                onTap: () => setState(() => _selectedMood = l10n.moodGrateful),
+              ),
+              _MoodChip(
+                label: l10n.moodEnergized,
+                selected: _selectedMood == l10n.moodEnergized,
+                onTap: () => setState(() => _selectedMood = l10n.moodEnergized),
+              ),
+              _MoodChip(
+                label: l10n.moodRelieved,
+                selected: _selectedMood == l10n.moodRelieved,
+                onTap: () => setState(() => _selectedMood = l10n.moodRelieved),
+              ),
+              _MoodChip(
+                label: l10n.moodReflective,
+                selected: _selectedMood == l10n.moodReflective,
+                onTap:
+                    () => setState(() => _selectedMood = l10n.moodReflective),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: SoulSpace.xl),
+
+        // 5. Today's Rhythm Section (Hành động & Nhịp điệu hôm nay)
+        Text(
+          l10n.todayRhythm,
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // Morning Soundscape
+        SoulAudioRow(
+          title: l10n.morningGratitude,
+          subtitle:
+              track?.delivery == AudioDelivery.published
+                  ? l10n.neutralInstrumentalFiveMinutes
+                  : l10n.audioPending,
+          isPlaying:
+              audio.isPlaying &&
+              audio.assetPath == 'assets/audio/music/so-11-warm-felt-piano.m4a',
+          onPlayPause:
+              soundEnabled && track?.delivery == AudioDelivery.published
+                  ? () => ref
+                      .read(audioPlaybackProvider)
+                      .toggleAsset(
+                        'assets/audio/music/so-11-warm-felt-piano.m4a',
+                        title: l10n.morningGratitude,
+                        subtitle: l10n.neutralInstrumentalFiveMinutes,
+                      )
+                  : null,
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // One Small Action
+        InkWell(
+          onTap: () => setState(() => _smallActionDone = !_smallActionDone),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: SoulCard(
+            color: _smallActionDone ? SoulColors.lilac : SoulColors.surface,
+            padding: const EdgeInsets.all(SoulSpace.md),
+            child: Row(
+              children: [
+                Icon(
+                  _smallActionDone
+                      ? Icons.check_circle_rounded
+                      : Icons.radio_button_unchecked_rounded,
+                  color:
+                      _smallActionDone
+                          ? SoulColors.lilacStrong
+                          : SoulColors.muted,
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.oneSmallAction,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: SoulColors.muted,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.smallActionText,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // Evening Reflection Preview
+        SoulCard(
+          color: SoulColors.surface,
+          padding: const EdgeInsets.all(SoulSpace.md),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.nightlight_round,
+                color: SoulColors.plum,
+                size: 24,
+              ),
+              const SizedBox(width: SoulSpace.sm),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.eveningReflectionTitle,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: SoulColors.muted,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      l10n.eveningReflectionBody,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: SoulColors.softInk,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: SoulSpace.sm),

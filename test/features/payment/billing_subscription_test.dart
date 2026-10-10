@@ -30,9 +30,9 @@ void main() {
 
         expect(find.byType(ProfileScreen), findsOneWidget);
 
-        // Find "Gói đăng ký & Thanh toán" setting row
-        expect(find.text('Gói đăng ký & Thanh toán'), findsOneWidget);
-        await tester.tap(find.text('Gói đăng ký & Thanh toán'));
+        // Find "Gói & Thanh toán" setting row
+        expect(find.text('Gói & Thanh toán'), findsOneWidget);
+        await tester.tap(find.text('Gói & Thanh toán'));
         await tester.pumpAndSettle();
 
         // Should be on BillingSubscriptionScreen
@@ -68,7 +68,7 @@ void main() {
         await tester.pumpAndSettle();
 
         // Open billing screen
-        await tester.tap(find.text('Gói đăng ký & Thanh toán'));
+        await tester.tap(find.text('Gói & Thanh toán'));
         await tester.pumpAndSettle();
 
         expect(find.text('DÙNG THỬ 7 NGÀY'), findsOneWidget);
@@ -113,7 +113,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Open billing screen
-      await tester.tap(find.text('Gói đăng ký & Thanh toán'));
+      await tester.tap(find.text('Gói & Thanh toán'));
       await tester.pumpAndSettle();
 
       // Find switch to Yearly Plan
@@ -154,12 +154,12 @@ void main() {
         // Make sure no Vietnamese 'Gói Năm' exists
         expect(find.textContaining('Gói Năm'), findsNothing);
 
-        // Verify Subscription & Billing row in English
-        expect(find.text('Subscription & Billing'), findsOneWidget);
+        // Verify Plans & Billing row in English
+        expect(find.text('Plans & Billing'), findsOneWidget);
         expect(find.text('Yearly Plan'), findsAtLeastNWidgets(1));
 
-        // Tap Subscription & Billing row
-        await tester.tap(find.text('Subscription & Billing'));
+        // Tap Plans & Billing row
+        await tester.tap(find.text('Plans & Billing'));
         await tester.pumpAndSettle();
 
         expect(find.byType(BillingSubscriptionScreen), findsOneWidget);
@@ -201,11 +201,11 @@ void main() {
       expect(find.textContaining('Gói Năm'), findsNothing);
 
       // Verify Subscription & Billing row in Korean
-      expect(find.text('구독 및 결제 관리'), findsOneWidget);
+      expect(find.text('구독 및 결제'), findsOneWidget);
       expect(find.text('연간 플랜'), findsAtLeastNWidgets(1));
 
       // Tap into billing
-      await tester.tap(find.text('구독 및 결제 관리'));
+      await tester.tap(find.text('구독 및 결제'));
       await tester.pumpAndSettle();
 
       expect(find.byType(BillingSubscriptionScreen), findsOneWidget);
@@ -235,7 +235,7 @@ void main() {
       expect(find.text('Soul Premium (Lifetime Plan)'), findsOneWidget);
       expect(find.text('Lifetime Access · Unlimited'), findsOneWidget);
 
-      await tester.tap(find.text('Subscription & Billing'));
+      await tester.tap(find.text('Plans & Billing'));
       await tester.pumpAndSettle();
 
       // Lifetime should not show cancel button
