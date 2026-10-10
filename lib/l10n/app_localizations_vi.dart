@@ -1002,4 +1002,12 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get moodReflectiveDesc => 'Lắng đọng, sâu sắc, tĩnh lặng';
+
+  @override
+  String todayMoodSummary(String moodName) {
+    return 'Cảm xúc hôm nay: $moodName';
+  }
+
+  @override
+  String get changeMood => 'Đổi';
 }

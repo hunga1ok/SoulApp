@@ -12,6 +12,7 @@ import '../../data/repositories/card_draw_repository.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
 import '../journal/journal_note_models.dart';
+import '../mood/mood_theme_switcher_sheet.dart';
 import '../profile/home_widget_screen.dart';
 import '../vision/vision_controllers.dart';
 import '../vision/vision_statement.dart';
@@ -407,56 +408,125 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
         const SizedBox(height: SoulSpace.xl),
 
         // 4. Mood Check-in: Cảm xúc của bạn lúc này
+        if (!state.hasCheckedInMoodToday) ...[
+          Text(
+            l10n.moodCheckInTitle,
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: SoulSpace.sm),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (final mood in SoulMood.values) ...[
+                  Builder(
+                    builder: (context) {
+                      final config = moodConfigOf(mood);
+                      final isSelected = mood == state.currentMood;
+                      return Padding(
+                        padding: const EdgeInsets.only(right: SoulSpace.xs),
+                        child: _MoodChip(
+                          label: config.localizedLabel(l10n),
+                          selected: isSelected,
+                          onTap: () async {
+                            await state.saveSelectedMood(mood.id);
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  backgroundColor: SoulColors.plum,
+                                  content: Text(
+                                    l10n.moodThemeChangedToast(
+                                      config.localizedLabel(l10n),
+                                    ),
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  duration: const Duration(milliseconds: 2200),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: SoulSpace.xl),
+        ] else ...[
+          // Collapsed state once answered today: auto-hides the big question
+          InkWell(
+            onTap: () => MoodThemeSwitcherSheet.show(context),
+            borderRadius: BorderRadius.circular(SoulRadius.card),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: SoulSpace.md,
+                vertical: SoulSpace.sm,
+              ),
+              decoration: BoxDecoration(
+                color: moodConfigOf(
+                  state.currentMood,
+                ).accent.withValues(alpha: 0.5),
+                borderRadius: BorderRadius.circular(SoulRadius.card),
+                border: Border.all(
+                  color: moodConfigOf(state.currentMood).outline,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    moodConfigOf(state.currentMood).emoji,
+                    style: const TextStyle(fontSize: 18),
+                  ),
+                  const SizedBox(width: SoulSpace.sm),
+                  Expanded(
+                    child: Text(
+                      l10n.todayMoodSummary(
+                        moodConfigOf(state.currentMood).localizedLabel(l10n),
+                      ),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: SoulColors.plum,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(width: SoulSpace.xs),
+                  Text(
+                    l10n.changeMood,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: moodConfigOf(state.currentMood).primary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(width: 2),
+                  Icon(
+                    Icons.chevron_right,
+                    size: 16,
+                    color: moodConfigOf(state.currentMood).primary,
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: SoulSpace.xl),
+        ],
+
+        // 5. Today's Rhythm Section (Nhịp của hôm nay)
         Text(
-          l10n.moodCheckInTitle,
+          l10n.todayRhythm,
           style: Theme.of(
             context,
           ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: SoulSpace.sm),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              for (final mood in SoulMood.values) ...[
-                Builder(
-                  builder: (context) {
-                    final config = moodConfigOf(mood);
-                    final isSelected = mood == state.currentMood;
-                    return Padding(
-                      padding: const EdgeInsets.only(right: SoulSpace.xs),
-                      child: _MoodChip(
-                        label: config.localizedLabel(l10n),
-                        selected: isSelected,
-                        onTap: () async {
-                          await state.saveSelectedMood(mood.id);
-                          if (context.mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                behavior: SnackBarBehavior.floating,
-                                backgroundColor: SoulColors.plum,
-                                content: Text(
-                                  l10n.moodThemeChangedToast(
-                                    config.localizedLabel(l10n),
-                                  ),
-                                  style: const TextStyle(color: Colors.white),
-                                ),
-                                duration: const Duration(milliseconds: 2200),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ],
-          ),
-        ),
-        const SizedBox(height: SoulSpace.md),
 
-        // 5. Home Screen Widget (Widget màn hình chính lên TRÊN hành động nhỏ)
+        // Widget màn hình chính (ở phía trên trong Nhịp hôm nay, trên Một hành động nhỏ)
         InkWell(
           onTap:
               () => Navigator.push(
@@ -503,15 +573,6 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
               ],
             ),
           ),
-        ),
-        const SizedBox(height: SoulSpace.xl),
-
-        // 6. Today's Rhythm Section (Hành động & Nhịp điệu hôm nay)
-        Text(
-          l10n.todayRhythm,
-          style: Theme.of(
-            context,
-          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: SoulSpace.sm),
 

@@ -27,6 +27,7 @@ class AppState extends ChangeNotifier {
       _remindersDecided = _preferences.getBool(_remindersDecidedKey) ?? false,
       _subscriptionPlan = _preferences.getString(_subscriptionPlanKey),
       _selectedMood = _preferences.getString(_moodKey) ?? 'peaceful',
+      _selectedMoodDate = _preferences.getString(_moodDateKey),
       _onboardingCompleted =
           _preferences.getBool(_onboardingCompletedKey) ?? false;
 
@@ -37,6 +38,7 @@ class AppState extends ChangeNotifier {
   static const _remindersDecidedKey = 'onboarding_reminders_decided';
   static const _subscriptionPlanKey = 'subscription_plan';
   static const _moodKey = 'selected_mood_theme';
+  static const _moodDateKey = 'selected_mood_date';
   static const _onboardingCompletedKey = 'onboarding_completed';
 
   final SharedPreferences _preferences;
@@ -47,6 +49,7 @@ class AppState extends ChangeNotifier {
   bool _remindersDecided;
   String? _subscriptionPlan;
   String _selectedMood;
+  String? _selectedMoodDate;
   bool _onboardingCompleted;
 
   SoulLocale? get locale => _locale;
@@ -57,6 +60,14 @@ class AppState extends ChangeNotifier {
   /// Selected mood theme key.
   String get selectedMood => _selectedMood;
   SoulMood get currentMood => SoulMood.fromId(_selectedMood);
+
+  static String get _todayDateKey {
+    final now = DateTime.now();
+    return '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+  }
+
+  /// Whether the user has recorded their mood check-in for today.
+  bool get hasCheckedInMoodToday => _selectedMoodDate == _todayDateKey;
 
   /// Intention codes chosen during onboarding.
   List<String> get intentions => _intentions;
@@ -110,9 +121,16 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> saveSelectedMood(String moodId) async {
-    if (_selectedMood == moodId) return;
     _selectedMood = moodId;
+    _selectedMoodDate = _todayDateKey;
     await _preferences.setString(_moodKey, moodId);
+    await _preferences.setString(_moodDateKey, _todayDateKey);
+    notifyListeners();
+  }
+
+  Future<void> resetMoodCheckInForToday() async {
+    _selectedMoodDate = null;
+    await _preferences.remove(_moodDateKey);
     notifyListeners();
   }
 
@@ -130,6 +148,7 @@ class AppState extends ChangeNotifier {
     _remindersDecided = false;
     _subscriptionPlan = null;
     _selectedMood = 'peaceful';
+    _selectedMoodDate = null;
     _onboardingCompleted = false;
     await _preferences.clear();
     notifyListeners();

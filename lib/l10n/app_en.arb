@@ -425,5 +425,12 @@
   "moodGratefulDesc": "Warm, loving, appreciative · 528Hz",
   "moodEnergizedDesc": "Fresh, inspiring, positive flow",
   "moodRelievedDesc": "Light, gentle, relaxed breath",
-  "moodReflectiveDesc": "Quiet, deep, soothing night"
+  "moodReflectiveDesc": "Quiet, deep, soothing night",
+  "todayMoodSummary": "Today's mood: {moodName}",
+  "@todayMoodSummary": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "changeMood": "Change"
 }

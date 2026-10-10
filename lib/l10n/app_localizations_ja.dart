@@ -975,4 +975,12 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get moodReflectiveDesc => '静かな思索と夜の安らぎ';
+
+  @override
+  String todayMoodSummary(String moodName) {
+    return '今日の気分: $moodName';
+  }
+
+  @override
+  String get changeMood => '変更';
 }

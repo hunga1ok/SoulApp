@@ -450,5 +450,12 @@
   "moodGratefulDesc": "温暖爱意，心怀感恩 · 528Hz",
   "moodEnergizedDesc": "清新振奋，积极活力",
   "moodRelievedDesc": "释怀轻松，自在呼吸",
-  "moodReflectiveDesc": "深沉静谧，抚慰夜晚"
+  "moodReflectiveDesc": "深沉静谧，抚慰夜晚",
+  "todayMoodSummary": "今日心情：{moodName}",
+  "@todayMoodSummary": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "changeMood": "更改"
 }

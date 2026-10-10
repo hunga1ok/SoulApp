@@ -1899,6 +1899,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Quiet, deep, soothing night'**
   String get moodReflectiveDesc;
+
+  /// No description provided for @todayMoodSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s mood: {moodName}'**
+  String todayMoodSummary(String moodName);
+
+  /// No description provided for @changeMood.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get changeMood;
 }
 
 class _AppLocalizationsDelegate

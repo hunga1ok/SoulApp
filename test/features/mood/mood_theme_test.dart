@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/features/mood/mood_theme_button.dart';
@@ -59,7 +60,11 @@ void main() {
         final widgetFinder = find.text('Widget màn hình chính');
         final actionFinder = find.text('Một hành động nhỏ');
 
-        await tester.scrollUntilVisible(widgetFinder, 200);
+        await tester.scrollUntilVisible(
+          widgetFinder,
+          200,
+          scrollable: find.byType(Scrollable).first,
+        );
         await tester.pumpAndSettle();
 
         expect(widgetFinder, findsOneWidget);
@@ -76,7 +81,11 @@ void main() {
         );
 
         // Tap on "Năng lượng ☀️" chip in TodayScreen
-        await tester.scrollUntilVisible(find.text('Năng lượng ☀️'), -200);
+        await tester.scrollUntilVisible(
+          find.text('Năng lượng ☀️'),
+          -200,
+          scrollable: find.byType(Scrollable).first,
+        );
         await tester.pumpAndSettle();
         await tester.tap(find.text('Năng lượng ☀️'));
         await tester.pumpAndSettle();
@@ -88,6 +97,17 @@ void main() {
           ),
           findsOneWidget,
         );
+
+        // Big question is now auto-hidden, replaced by compact summary
+        expect(find.text('Cảm xúc của bạn lúc này?'), findsNothing);
+        expect(
+          find.textContaining(
+            'Cảm xúc hôm nay: Năng lượng ☀️',
+            skipOffstage: false,
+          ),
+          findsOneWidget,
+        );
+        expect(find.text('Đổi', skipOffstage: false), findsOneWidget);
       },
     );
 

@@ -984,4 +984,12 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get moodReflectiveDesc => '깊은 성찰과 고요한 밤';
+
+  @override
+  String todayMoodSummary(String moodName) {
+    return '오늘의 마음 상태: $moodName';
+  }
+
+  @override
+  String get changeMood => '변경';
 }

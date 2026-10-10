@@ -346,5 +346,12 @@
   "moodGratefulDesc": "Ấm áp, yêu thương, trân trọng · 528Hz",
   "moodEnergizedDesc": "Tươi mới, hứng khởi, tích cực",
   "moodRelievedDesc": "Nhẹ nhõm, thong dong, thả lỏng",
-  "moodReflectiveDesc": "Lắng đọng, sâu sắc, tĩnh lặng"
+  "moodReflectiveDesc": "Lắng đọng, sâu sắc, tĩnh lặng",
+  "todayMoodSummary": "Cảm xúc hôm nay: {moodName}",
+  "@todayMoodSummary": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "changeMood": "Đổi"
 }

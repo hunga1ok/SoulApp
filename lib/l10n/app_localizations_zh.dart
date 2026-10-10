@@ -967,4 +967,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get moodReflectiveDesc => '深沉静谧，抚慰夜晚';
+
+  @override
+  String todayMoodSummary(String moodName) {
+    return '今日心情：$moodName';
+  }
+
+  @override
+  String get changeMood => '更改';
 }

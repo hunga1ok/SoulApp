@@ -450,5 +450,12 @@
   "moodGratefulDesc": "따뜻한 사랑과 감사 · 528Hz",
   "moodEnergizedDesc": "신선하고 활기찬 긍정의 흐름",
   "moodRelievedDesc": "가벼운 안도감과 편안한 호흡",
-  "moodReflectiveDesc": "깊은 성찰과 고요한 밤"
+  "moodReflectiveDesc": "깊은 성찰과 고요한 밤",
+  "todayMoodSummary": "오늘의 마음 상태: {moodName}",
+  "@todayMoodSummary": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "changeMood": "변경"
 }

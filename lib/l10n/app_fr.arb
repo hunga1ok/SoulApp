@@ -450,5 +450,12 @@
   "moodGratefulDesc": "Chaleureux, aimant et reconnaissant · 528Hz",
   "moodEnergizedDesc": "Frais, inspirant et plein d'énergie",
   "moodRelievedDesc": "Léger, apaisé et détendu",
-  "moodReflectiveDesc": "Calme, profond et introspectif"
+  "moodReflectiveDesc": "Calme, profond et introspectif",
+  "todayMoodSummary": "Humeur du jour : {moodName}",
+  "@todayMoodSummary": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "changeMood": "Modifier"
 }
