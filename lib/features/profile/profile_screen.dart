@@ -525,10 +525,9 @@ class ProfileScreen extends ConsumerWidget {
               },
               trailing: Text(
                 sub.localizedPlanTitle(locale),
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: SoulColors.plum,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               onTap:
