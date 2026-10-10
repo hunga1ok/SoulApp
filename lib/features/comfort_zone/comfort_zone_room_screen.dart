@@ -31,6 +31,9 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
   bool _showBreathingGuide = false;
   int _breathingPhase = 0; // 0: inhale, 1: hold, 2: exhale
   Timer? _breathingTimer;
+  Duration? _timerRemaining;
+  int? _timerTotalMinutes;
+  Timer? _countdownTimer;
 
   bool get _isTest {
     return WidgetsBinding.instance.runtimeType.toString().contains(
@@ -50,6 +53,7 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
   @override
   void dispose() {
     _breathingTimer?.cancel();
+    _countdownTimer?.cancel();
     super.dispose();
   }
 
@@ -168,6 +172,172 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
       default:
         return l10n.comfortZoneBreatheOut;
     }
+  }
+
+  void _startTimer(int minutes) {
+    _countdownTimer?.cancel();
+    setState(() {
+      _timerTotalMinutes = minutes;
+      _timerRemaining = Duration(minutes: minutes);
+    });
+    if (!_isTest) {
+      _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (!mounted) {
+          timer.cancel();
+          return;
+        }
+        if (_timerRemaining == null ||
+            _timerRemaining! <= const Duration(seconds: 1)) {
+          timer.cancel();
+          setState(() {
+            _timerRemaining = null;
+            _timerTotalMinutes = null;
+          });
+          ref.read(audioPlaybackProvider).pause();
+          final l10n = AppLocalizations.of(context);
+          if (l10n != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(l10n.comfortZoneTimerFinished),
+                behavior: SnackBarBehavior.floating,
+                duration: const Duration(seconds: 4),
+              ),
+            );
+          }
+        } else {
+          setState(() {
+            _timerRemaining = _timerRemaining! - const Duration(seconds: 1);
+          });
+        }
+      });
+    }
+  }
+
+  void _cancelTimer() {
+    _countdownTimer?.cancel();
+    setState(() {
+      _timerRemaining = null;
+      _timerTotalMinutes = null;
+    });
+  }
+
+  String _formatDuration(Duration duration) {
+    final minutes = duration.inMinutes;
+    final seconds = duration.inSeconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+  }
+
+  void _showTimerPicker(BuildContext context, AppLocalizations l10n) {
+    final presets = [5, 10, 15, 20, 30, 45, 60];
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (sheetContext) {
+        return StatefulBuilder(
+          builder: (context, setSheetState) {
+            final active = _timerRemaining != null;
+            return Container(
+              margin: const EdgeInsets.all(SoulSpace.md),
+              padding: const EdgeInsets.all(SoulSpace.lg),
+              decoration: BoxDecoration(
+                color: SoulColors.surface,
+                borderRadius: BorderRadius.circular(SoulRadius.card),
+                boxShadow: SoulShadows.card,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: SoulColors.lilac.withValues(alpha: 0.35),
+                          borderRadius: BorderRadius.circular(
+                            SoulRadius.button,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.hourglass_bottom_rounded,
+                          color: SoulColors.plum,
+                          size: 22,
+                        ),
+                      ),
+                      const SizedBox(width: SoulSpace.sm),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              l10n.comfortZoneTimerTitle,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: SoulColors.plum,
+                              ),
+                            ),
+                            Text(
+                              active
+                                  ? '${l10n.comfortZoneTimerTitle} · ${_formatDuration(_timerRemaining!)}'
+                                  : l10n.comfortZoneAmbientSound,
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(color: SoulColors.muted),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (active)
+                        TextButton(
+                          onPressed: () {
+                            _cancelTimer();
+                            Navigator.of(sheetContext).pop();
+                          },
+                          child: Text(
+                            l10n.comfortZoneTimerOff,
+                            style: const TextStyle(
+                              color: SoulColors.rose,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: SoulSpace.md),
+                  Wrap(
+                    spacing: SoulSpace.xs,
+                    runSpacing: SoulSpace.xs,
+                    children: [
+                      for (final minutes in presets)
+                        ChoiceChip(
+                          label: Text(l10n.comfortZoneTimerMinutes(minutes)),
+                          selected: _timerTotalMinutes == minutes && active,
+                          selectedColor: SoulColors.lilac,
+                          labelStyle: TextStyle(
+                            color:
+                                _timerTotalMinutes == minutes && active
+                                    ? SoulColors.plum
+                                    : SoulColors.muted,
+                            fontWeight:
+                                _timerTotalMinutes == minutes && active
+                                    ? FontWeight.w700
+                                    : FontWeight.w500,
+                          ),
+                          onSelected: (_) {
+                            _startTimer(minutes);
+                            Navigator.of(sheetContext).pop();
+                          },
+                        ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -304,7 +474,20 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                                     )
                                     .toggleFavorite(scene.id),
                           ),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 5),
+                          _GlassIconButton(
+                            icon:
+                                _timerRemaining != null
+                                    ? Icons.hourglass_top_rounded
+                                    : Icons.timer_outlined,
+                            iconColor:
+                                _timerRemaining != null
+                                    ? const Color(0xFFFFD166)
+                                    : Colors.white,
+                            tooltip: l10n.comfortZoneTimerTitle,
+                            onPressed: () => _showTimerPicker(context, l10n),
+                          ),
+                          const SizedBox(width: 5),
                           _GlassIconButton(
                             icon: Icons.air_rounded,
                             iconColor:
@@ -314,7 +497,7 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                             tooltip: l10n.comfortZoneBreathingGuide,
                             onPressed: _toggleBreathingGuide,
                           ),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 5),
                           _GlassIconButton(
                             icon: Icons.widgets_outlined,
                             tooltip: l10n.homeWidgetTitle,
@@ -332,7 +515,7 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                                   ),
                                 ),
                           ),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 5),
                           _GlassIconButton(
                             icon:
                                 _zenMode
@@ -348,6 +531,59 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                         ],
                       ),
                     ),
+
+                    if (_timerRemaining != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: GestureDetector(
+                          onTap: () => _showTimerPicker(context, l10n),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: SoulSpace.md,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withValues(alpha: 0.65),
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: const Color(
+                                  0xFFFFD166,
+                                ).withValues(alpha: 0.8),
+                                width: 1.2,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(
+                                    0xFFFFD166,
+                                  ).withValues(alpha: 0.25),
+                                  blurRadius: 10,
+                                  spreadRadius: 1,
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.hourglass_top_rounded,
+                                  size: 14,
+                                  color: Color(0xFFFFD166),
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  _formatDuration(_timerRemaining!),
+                                  style: const TextStyle(
+                                    color: Color(0xFFFFD166),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.6,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
 
                     // Center Breathing Guide or Zen Affirmation
                     Expanded(
@@ -690,15 +926,19 @@ class _GlassIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 36,
+      height: 36,
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.38),
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
       ),
       child: IconButton(
+        padding: EdgeInsets.zero,
+        constraints: const BoxConstraints(),
         tooltip: tooltip,
         onPressed: onPressed,
-        icon: Icon(icon, color: iconColor, size: 20),
+        icon: Icon(icon, color: iconColor, size: 19),
       ),
     );
   }

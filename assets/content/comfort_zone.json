@@ -279,8 +279,9 @@
         "zh": "幸福有时很简单，不过是一缕温热的面包香与不疾不徐的生活节律。"
       },
       "animationType": "warm_steam_sun",
-      "primarySoundId": "SO-13",
+      "primarySoundId": "SO-28",
       "soundIds": [
+        "SO-28",
         "SO-13",
         "SO-11",
         "SO-03"
@@ -499,8 +500,9 @@
         "zh": "在浩瀚星空下，你的心可以按照自己的节奏自由绽放。"
       },
       "animationType": "starry_meadow",
-      "primarySoundId": "SO-16",
+      "primarySoundId": "SO-27",
       "soundIds": [
+        "SO-27",
         "SO-16",
         "SO-20",
         "SO-13"
@@ -543,8 +545,9 @@
         "zh": "让思绪像天边的白云一样，自然而然地轻轻飘过。"
       },
       "animationType": "cloud_meadow",
-      "primarySoundId": "SO-16",
+      "primarySoundId": "SO-27",
       "soundIds": [
+        "SO-27",
         "SO-16",
         "SO-12",
         "SO-10"
@@ -675,8 +678,9 @@
         "zh": "吸进大海的辽阔气息，呼出那些不再属于你的负担。"
       },
       "animationType": "ocean_breeze",
-      "primarySoundId": "SO-05",
+      "primarySoundId": "SO-24",
       "soundIds": [
+        "SO-24",
         "SO-05",
         "SO-16",
         "SO-10"
@@ -763,8 +767,10 @@
         "zh": "在静谧深林的怀抱中，你能重新听见自己内心温柔的声音。"
       },
       "animationType": "forest_mist",
-      "primarySoundId": "SO-14",
+      "primarySoundId": "SO-27",
       "soundIds": [
+        "SO-27",
+        "SO-24",
         "SO-14",
         "SO-03",
         "SO-10"
@@ -807,8 +813,9 @@
         "zh": "只需在暮色余晖旁静静坐着，宁静便已经在你身边。"
       },
       "animationType": "sunset_cat",
-      "primarySoundId": "SO-11",
+      "primarySoundId": "SO-25",
       "soundIds": [
+        "SO-25",
         "SO-11",
         "SO-17",
         "SO-18"
@@ -851,8 +858,9 @@
         "zh": "有些陪伴无需言语，却足以温暖整片夜空。"
       },
       "animationType": "starlight_hill",
-      "primarySoundId": "SO-18",
+      "primarySoundId": "SO-26",
       "soundIds": [
+        "SO-26",
         "SO-18",
         "SO-16",
         "SO-20"
@@ -895,8 +903,10 @@
         "zh": "在温暖阳光下轻轻闭上双眼，外面的世界可以再等你一会儿。"
       },
       "animationType": "sunbeam_nap",
-      "primarySoundId": "SO-09",
+      "primarySoundId": "SO-25",
       "soundIds": [
+        "SO-25",
+        "SO-26",
         "SO-09",
         "SO-10",
         "SO-11"
@@ -939,8 +949,10 @@
         "zh": "最纯粹的喜悦，就藏在你全然安住于当下的这一刻。"
       },
       "animationType": "meadow_picnic",
-      "primarySoundId": "SO-13",
+      "primarySoundId": "SO-26",
       "soundIds": [
+        "SO-26",
+        "SO-27",
         "SO-13",
         "SO-16",
         "SO-18"

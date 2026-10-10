@@ -55,7 +55,7 @@ class _HomeWidgetScreenState extends ConsumerState<HomeWidgetScreen> {
     final defaultTitle =
         (name != null && name.isNotEmpty)
             ? l10n.welcome(name)
-            : 'A Little World Where You Feel Safe';
+            : l10n.comfortZoneSubtitle;
     final visions = ref.read(visionsProvider).valueOrNull ?? const [];
     final visionCatalog = ref.read(activeVisionCatalogProvider).valueOrNull;
     final drawState = ref.read(cardDrawProvider);
@@ -166,7 +166,7 @@ class _HomeWidgetScreenState extends ConsumerState<HomeWidgetScreen> {
     final footer = switch (_mode) {
       HomeWidgetMode.comfortZone => l10n.homeWidgetSpaceFooter,
       HomeWidgetMode.sound => l10n.homeWidgetSoundFooter,
-      _ => 'Soul • A Little World Where You Feel Safe ✦',
+      _ => 'Soul • ${l10n.comfortZoneSubtitle} ✦',
     };
 
     return HomeWidgetPayload(

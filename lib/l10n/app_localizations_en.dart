@@ -884,6 +884,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get comfortZoneNextSpace => 'Next space';
 
   @override
+  String get comfortZoneTimerTitle => 'Relaxation timer';
+
+  @override
+  String get comfortZoneTimerOff => 'Turn off timer';
+
+  @override
+  String comfortZoneTimerMinutes(int minutes) {
+    return '$minutes min';
+  }
+
+  @override
+  String get comfortZoneTimerFinished =>
+      'Relaxation time is up. Wishing you peace 🌿';
+
+  @override
   String get notificationPreviewSectionTitle => 'Soul Notification Format';
 
   @override

@@ -788,11 +788,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get comfortZoneTitle => 'Little Corner';
 
   @override
-  String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
+  String get comfortZoneSubtitle => '让你安心的小小世界';
 
   @override
-  String get comfortZoneBannerSubtitle =>
-      'A Little World Where You Feel Safe — 伴随动态光影与疗愈之声的宁静角落';
+  String get comfortZoneBannerSubtitle => '让你安心的小小世界 — 伴随动态光影与疗愈之声的宁静角落';
 
   @override
   String comfortZoneAllSpaces(int count) {
@@ -845,6 +844,20 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get comfortZoneNextSpace => '下一个空间';
+
+  @override
+  String get comfortZoneTimerTitle => '放松定时器';
+
+  @override
+  String get comfortZoneTimerOff => '关闭定时器';
+
+  @override
+  String comfortZoneTimerMinutes(int minutes) {
+    return '$minutes分钟';
+  }
+
+  @override
+  String get comfortZoneTimerFinished => '放松时间已结束，祝你内心安宁 🌿';
 
   @override
   String get notificationPreviewSectionTitle => 'Soul 通知格式预览';

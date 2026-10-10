@@ -366,8 +366,8 @@
   "showGuidance": "ガイドを表示",
   "hideGuidance": "ガイドを隠す",
   "comfortZoneTitle": "Little Corner",
-  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
-  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — アニメーションと癒やしの音に包まれる安らぎの空間",
+  "comfortZoneSubtitle": "心がほっと安心できる小さな世界",
+  "comfortZoneBannerSubtitle": "心がほっと安心できる小さな世界 — アニメーションと癒やしの音に包まれる安らぎの空間",
   "comfortZoneAllSpaces": "すべて ({count})",
   "@comfortZoneAllSpaces": {
     "placeholders": {
@@ -398,6 +398,17 @@
   },
   "comfortZonePreviousSpace": "前の空間",
   "comfortZoneNextSpace": "次の空間",
+  "comfortZoneTimerTitle": "リラックスタイマー",
+  "comfortZoneTimerOff": "タイマーをオフ",
+  "comfortZoneTimerMinutes": "{minutes}分",
+  "@comfortZoneTimerMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneTimerFinished": "リラックスタイムが終了しました。穏やかなひとときを 🌿",
   "notificationPreviewSectionTitle": "Soul通知フォーマットのプレビュー",
   "notificationMorningTitle": "おはようございます、{name}さん 🌿",
   "@notificationMorningTitle": {

@@ -141,7 +141,7 @@ void main() {
         await tester.tap(find.text('Góc nhỏ'));
         await tester.pumpAndSettle();
 
-        expect(find.text('A Little World Where You Feel Safe'), findsOneWidget);
+        expect(find.text('Thế giới nhỏ nơi bạn luôn an toàn'), findsOneWidget);
         expect(
           find.text('Lazy Morning — Buổi sáng lười biếng'),
           findsOneWidget,
@@ -170,6 +170,21 @@ void main() {
         await tester.tap(find.byIcon(Icons.visibility_outlined));
         await tester.pumpAndSettle();
         expect(find.byIcon(Icons.visibility_off_outlined), findsOneWidget);
+
+        // Turn off Zen mode
+        await tester.tap(find.byIcon(Icons.visibility_off_outlined));
+        await tester.pumpAndSettle();
+
+        // Open timer sheet and select 15 minutes
+        await tester.tap(find.byIcon(Icons.timer_outlined));
+        await tester.pumpAndSettle();
+        expect(find.text('Hẹn giờ thư giãn'), findsOneWidget);
+        await tester.tap(find.text('15 phút'));
+        await tester.pumpAndSettle();
+
+        // Verify countdown is active and icon updated
+        expect(find.byIcon(Icons.hourglass_top_rounded), findsWidgets);
+        expect(find.textContaining('15:00'), findsOneWidget);
       },
     );
 

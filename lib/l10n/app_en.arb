@@ -373,6 +373,15 @@
   },
   "comfortZonePreviousSpace": "Previous space",
   "comfortZoneNextSpace": "Next space",
+  "comfortZoneTimerTitle": "Relaxation timer",
+  "comfortZoneTimerOff": "Turn off timer",
+  "comfortZoneTimerMinutes": "{minutes} min",
+  "@comfortZoneTimerMinutes": {
+    "placeholders": {
+      "minutes": {"type": "int"}
+    }
+  },
+  "comfortZoneTimerFinished": "Relaxation time is up. Wishing you peace 🌿",
   "notificationPreviewSectionTitle": "Soul Notification Format",
   "notificationMorningTitle": "Good morning, {name} 🌿",
   "@notificationMorningTitle": {

@@ -815,11 +815,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get comfortZoneTitle => 'Góc nhỏ';
 
   @override
-  String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
+  String get comfortZoneSubtitle => 'Thế giới nhỏ nơi bạn luôn an toàn';
 
   @override
   String get comfortZoneBannerSubtitle =>
-      'A Little World Where You Feel Safe — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành';
+      'Thế giới nhỏ nơi bạn luôn an toàn — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành';
 
   @override
   String comfortZoneAllSpaces(int count) {
@@ -873,6 +873,21 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get comfortZoneNextSpace => 'Không gian tiếp';
+
+  @override
+  String get comfortZoneTimerTitle => 'Hẹn giờ thư giãn';
+
+  @override
+  String get comfortZoneTimerOff => 'Tắt hẹn giờ';
+
+  @override
+  String comfortZoneTimerMinutes(int minutes) {
+    return '$minutes phút';
+  }
+
+  @override
+  String get comfortZoneTimerFinished =>
+      'Đã hết thời gian thư giãn. Chúc bạn an yên 🌿';
 
   @override
   String get notificationPreviewSectionTitle => 'Định dạng thông báo của Soul';

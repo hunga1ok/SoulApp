@@ -266,8 +266,8 @@
   "showGuidance": "Xem hướng dẫn",
   "hideGuidance": "Thu gọn hướng dẫn",
   "comfortZoneTitle": "Góc nhỏ",
-  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
-  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành",
+  "comfortZoneSubtitle": "Thế giới nhỏ nơi bạn luôn an toàn",
+  "comfortZoneBannerSubtitle": "Thế giới nhỏ nơi bạn luôn an toàn — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành",
   "comfortZoneAllSpaces": "Tất cả ({count})",
   "@comfortZoneAllSpaces": {
     "placeholders": {
@@ -294,6 +294,15 @@
   },
   "comfortZonePreviousSpace": "Không gian trước",
   "comfortZoneNextSpace": "Không gian tiếp",
+  "comfortZoneTimerTitle": "Hẹn giờ thư giãn",
+  "comfortZoneTimerOff": "Tắt hẹn giờ",
+  "comfortZoneTimerMinutes": "{minutes} phút",
+  "@comfortZoneTimerMinutes": {
+    "placeholders": {
+      "minutes": {"type": "int"}
+    }
+  },
+  "comfortZoneTimerFinished": "Đã hết thời gian thư giãn. Chúc bạn an yên 🌿",
   "notificationPreviewSectionTitle": "Định dạng thông báo của Soul",
   "notificationMorningTitle": "Chào buổi sáng, {name} 🌿",
   "@notificationMorningTitle": {

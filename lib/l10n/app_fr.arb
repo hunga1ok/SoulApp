@@ -366,8 +366,8 @@
   "showGuidance": "Voir le guide",
   "hideGuidance": "Masquer le guide",
   "comfortZoneTitle": "Little Corner",
-  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
-  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — Des refuges paisibles avec animations vivantes et sons apaisants",
+  "comfortZoneSubtitle": "Un petit monde où l'on se sent en sécurité",
+  "comfortZoneBannerSubtitle": "Un petit monde où l'on se sent en sécurité — Des refuges paisibles avec animations vivantes et sons apaisants",
   "comfortZoneAllSpaces": "Tous ({count})",
   "@comfortZoneAllSpaces": {
     "placeholders": {
@@ -398,6 +398,17 @@
   },
   "comfortZonePreviousSpace": "Espace précédent",
   "comfortZoneNextSpace": "Espace suivant",
+  "comfortZoneTimerTitle": "Minuteur de relaxation",
+  "comfortZoneTimerOff": "Désactiver le minuteur",
+  "comfortZoneTimerMinutes": "{minutes} min",
+  "@comfortZoneTimerMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneTimerFinished": "Le temps de relaxation est terminé. Paix et sérénité 🌿",
   "notificationPreviewSectionTitle": "Format des notifications Soul",
   "notificationMorningTitle": "Bonjour, {name} 🌿",
   "@notificationMorningTitle": {

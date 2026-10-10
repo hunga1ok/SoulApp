@@ -366,8 +366,8 @@
   "showGuidance": "查看指引",
   "hideGuidance": "隐藏指引",
   "comfortZoneTitle": "Little Corner",
-  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
-  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — 伴随动态光影与疗愈之声的宁静角落",
+  "comfortZoneSubtitle": "让你安心的小小世界",
+  "comfortZoneBannerSubtitle": "让你安心的小小世界 — 伴随动态光影与疗愈之声的宁静角落",
   "comfortZoneAllSpaces": "全部 ({count})",
   "@comfortZoneAllSpaces": {
     "placeholders": {
@@ -398,6 +398,17 @@
   },
   "comfortZonePreviousSpace": "上一个空间",
   "comfortZoneNextSpace": "下一个空间",
+  "comfortZoneTimerTitle": "放松定时器",
+  "comfortZoneTimerOff": "关闭定时器",
+  "comfortZoneTimerMinutes": "{minutes}分钟",
+  "@comfortZoneTimerMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneTimerFinished": "放松时间已结束，祝你内心安宁 🌿",
   "notificationPreviewSectionTitle": "Soul 通知格式预览",
   "notificationMorningTitle": "早安，{name} 🌿",
   "@notificationMorningTitle": {

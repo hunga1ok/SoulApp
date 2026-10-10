@@ -793,11 +793,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String get comfortZoneTitle => 'Little Corner';
 
   @override
-  String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
+  String get comfortZoneSubtitle => '心がほっと安心できる小さな世界';
 
   @override
   String get comfortZoneBannerSubtitle =>
-      'A Little World Where You Feel Safe — アニメーションと癒やしの音に包まれる安らぎの空間';
+      '心がほっと安心できる小さな世界 — アニメーションと癒やしの音に包まれる安らぎの空間';
 
   @override
   String comfortZoneAllSpaces(int count) {
@@ -851,6 +851,20 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get comfortZoneNextSpace => '次の空間';
+
+  @override
+  String get comfortZoneTimerTitle => 'リラックスタイマー';
+
+  @override
+  String get comfortZoneTimerOff => 'タイマーをオフ';
+
+  @override
+  String comfortZoneTimerMinutes(int minutes) {
+    return '$minutes分';
+  }
+
+  @override
+  String get comfortZoneTimerFinished => 'リラックスタイムが終了しました。穏やかなひとときを 🌿';
 
   @override
   String get notificationPreviewSectionTitle => 'Soul通知フォーマットのプレビュー';

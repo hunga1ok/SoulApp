@@ -1672,6 +1672,30 @@ abstract class AppLocalizations {
   /// **'Next space'**
   String get comfortZoneNextSpace;
 
+  /// No description provided for @comfortZoneTimerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Relaxation timer'**
+  String get comfortZoneTimerTitle;
+
+  /// No description provided for @comfortZoneTimerOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off timer'**
+  String get comfortZoneTimerOff;
+
+  /// No description provided for @comfortZoneTimerMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} min'**
+  String comfortZoneTimerMinutes(int minutes);
+
+  /// No description provided for @comfortZoneTimerFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Relaxation time is up. Wishing you peace 🌿'**
+  String get comfortZoneTimerFinished;
+
   /// No description provided for @notificationPreviewSectionTitle.
   ///
   /// In en, this message translates to:
