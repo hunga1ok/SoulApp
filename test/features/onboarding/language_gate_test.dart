@@ -7,38 +7,43 @@ import 'package:soul_app/features/onboarding/onboarding_screens.dart';
 
 import '../../helpers/soul_test_harness.dart';
 
-SoulButtonVariant _variantOf(WidgetTester tester, String label) {
-  return tester
-      .widget<SoulButton>(find.widgetWithText(SoulButton, label))
-      .variant;
-}
-
 void main() {
   group('suggestLocale', () {
     test('uses the first supported device language', () {
       expect(suggestLocale(const [Locale('vi', 'VN')]), SoulLocale.vi);
       expect(suggestLocale(const [Locale('en', 'GB')]), SoulLocale.en);
+      expect(suggestLocale(const [Locale('ko', 'KR')]), SoulLocale.ko);
+      expect(suggestLocale(const [Locale('ja', 'JP')]), SoulLocale.ja);
+      expect(suggestLocale(const [Locale('fr', 'FR')]), SoulLocale.fr);
+      expect(suggestLocale(const [Locale('zh', 'CN')]), SoulLocale.zh);
       expect(
-        suggestLocale(const [Locale('fr'), Locale('en'), Locale('vi')]),
+        suggestLocale(const [Locale('es'), Locale('en'), Locale('vi')]),
         SoulLocale.en,
       );
     });
 
     test('returns no suggestion for unsupported languages', () {
-      expect(suggestLocale(const [Locale('fr'), Locale('ja')]), isNull);
+      expect(suggestLocale(const [Locale('es'), Locale('de')]), isNull);
       expect(suggestLocale(const []), isNull);
     });
   });
 
   group('LanguageGateScreen', () {
-    testWidgets('is the first route and shows endonyms, not codes', (
+    testWidgets('is the first route and shows a dropdown with endonyms', (
       tester,
     ) async {
       await pumpSoulApp(tester);
 
       expect(find.byType(LanguageGateScreen), findsOneWidget);
-      expect(find.text('Tiếng Việt'), findsOneWidget);
-      expect(find.text('English'), findsOneWidget);
+      expect(find.byType(DropdownButton<SoulLocale>), findsOneWidget);
+      await tester.tap(find.byType(DropdownButton<SoulLocale>));
+      await tester.pumpAndSettle();
+      expect(find.text('Tiếng Việt'), findsWidgets);
+      expect(find.text('English'), findsWidgets);
+      expect(find.text('한국어'), findsWidgets);
+      expect(find.text('日本語'), findsWidgets);
+      expect(find.text('Français'), findsWidgets);
+      expect(find.text('中文'), findsWidgets);
       expect(find.text('VI'), findsNothing);
       expect(find.text('EN'), findsNothing);
     });
@@ -46,47 +51,68 @@ void main() {
     const cases = [
       (
         device: Locale('vi', 'VN'),
-        suggested: 'Tiếng Việt',
-        other: 'English',
-        tap: 'English',
+        suggested: SoulLocale.vi,
+        selectLabel: 'English',
+        continueLabel: 'Continue',
         stored: 'en',
       ),
       (
         device: Locale('en', 'US'),
-        suggested: 'English',
-        other: 'Tiếng Việt',
-        tap: 'Tiếng Việt',
+        suggested: SoulLocale.en,
+        selectLabel: 'Tiếng Việt',
+        continueLabel: 'Tiếp tục',
         stored: 'vi',
       ),
       (
-        device: Locale('vi', 'VN'),
-        suggested: 'Tiếng Việt',
-        other: 'English',
-        tap: 'Tiếng Việt',
-        stored: 'vi',
+        device: Locale('ko', 'KR'),
+        suggested: SoulLocale.ko,
+        selectLabel: '한국어',
+        continueLabel: '계속하기',
+        stored: 'ko',
       ),
       (
-        device: Locale('en', 'US'),
-        suggested: 'English',
-        other: 'Tiếng Việt',
-        tap: 'English',
-        stored: 'en',
+        device: Locale('ja', 'JP'),
+        suggested: SoulLocale.ja,
+        selectLabel: '日本語',
+        continueLabel: '続ける',
+        stored: 'ja',
+      ),
+      (
+        device: Locale('fr', 'FR'),
+        suggested: SoulLocale.fr,
+        selectLabel: 'Français',
+        continueLabel: 'Continuer',
+        stored: 'fr',
+      ),
+      (
+        device: Locale('zh', 'CN'),
+        suggested: SoulLocale.zh,
+        selectLabel: '中文',
+        continueLabel: '继续',
+        stored: 'zh',
       ),
     ];
 
     for (final c in cases) {
       testWidgets(
-        'device ${c.device} highlights ${c.suggested}; tapping ${c.tap} '
-        'commits ${c.stored}',
+        'device ${c.device} pre-selects ${c.suggested.name}; choosing ${c.selectLabel} '
+        'and tapping ${c.continueLabel} commits ${c.stored}',
         (tester) async {
           final prefs = await pumpSoulApp(tester, deviceLocales: [c.device]);
 
-          expect(_variantOf(tester, c.suggested), SoulButtonVariant.primary);
-          expect(_variantOf(tester, c.other), SoulButtonVariant.secondary);
+          final dropdown = tester.widget<DropdownButton<SoulLocale>>(
+            find.byType(DropdownButton<SoulLocale>),
+          );
+          expect(dropdown.value, c.suggested);
           // The suggestion alone never finalizes the locale.
           expect(prefs.getString('selected_locale'), isNull);
 
-          await tester.tap(find.text(c.tap));
+          await tester.tap(find.byType(DropdownButton<SoulLocale>));
+          await tester.pumpAndSettle();
+          await tester.tap(find.text(c.selectLabel).last);
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.widgetWithText(SoulButton, c.continueLabel));
           await tester.pumpAndSettle();
 
           expect(prefs.getString('selected_locale'), c.stored);
@@ -95,17 +121,17 @@ void main() {
       );
     }
 
-    testWidgets('unsupported device language highlights nothing', (
-      tester,
-    ) async {
-      final prefs = await pumpSoulApp(
-        tester,
-        deviceLocales: const [Locale('fr', 'FR')],
-      );
+    testWidgets(
+      'unsupported device language defaults dropdown without saving',
+      (tester) async {
+        final prefs = await pumpSoulApp(
+          tester,
+          deviceLocales: const [Locale('es', 'ES')],
+        );
 
-      expect(_variantOf(tester, 'Tiếng Việt'), SoulButtonVariant.secondary);
-      expect(_variantOf(tester, 'English'), SoulButtonVariant.secondary);
-      expect(prefs.getString('selected_locale'), isNull);
-    });
+        expect(find.byType(DropdownButton<SoulLocale>), findsOneWidget);
+        expect(prefs.getString('selected_locale'), isNull);
+      },
+    );
   });
 }

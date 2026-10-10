@@ -35,9 +35,9 @@ void main() {
 
     await tester.tap(find.byTooltip('Profile & settings'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Language'));
+    await tester.tap(find.text('English'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Vietnamese'));
+    await tester.tap(find.text('Vietnamese').last);
     await tester.pumpAndSettle();
 
     expect(find.byType(ProfileScreen), findsOneWidget);

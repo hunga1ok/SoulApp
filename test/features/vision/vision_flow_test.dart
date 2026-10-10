@@ -283,4 +283,36 @@ void main() {
     await _tapText(tester, 'Bình an nội tâm');
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets('vi LOVE category with 8 answered questions (>500 chars) saves '
+      'to vision board without error', (tester) async {
+    final database = testDatabase();
+    await pumpSoulApp(
+      tester,
+      preferences: onboardedPreferences(SoulLocale.vi),
+      database: database,
+    );
+    await _openVisionTab(tester);
+    await _tapButton(tester, 'Tạo một tầm nhìn');
+    await _tapText(tester, 'Tình yêu & Mối quan hệ');
+    await _answerQuestions(
+      tester,
+      'Tiếp tục',
+      'Bạn muốn cảm thấy thế nào khi điều đó đang diễn ra?',
+    );
+    await tester.tap(find.byType(SoulChip).first);
+    await tester.pump();
+    await _tapButton(tester, 'Tiếp tục');
+
+    final statement = tester.widget<TextField>(find.byType(TextField));
+    expect(statement.controller!.text.length, greaterThan(450));
+    await _tapButton(tester, 'Tiếp tục');
+    await _tapButton(tester, 'Tiếp tục');
+    await _tapButton(tester, 'Lưu vào vision board');
+
+    expect(find.byType(VisionScreen), findsOneWidget);
+    final visions = await database.select(database.visions).get();
+    expect(visions, hasLength(1));
+    expect(visions.single.categoryCode, 'LOVE');
+  });
 }

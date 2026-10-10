@@ -23,6 +23,7 @@ class AppState extends ChangeNotifier {
       _soundEnabled = _preferences.getBool(_soundKey) ?? true,
       _intentions = _preferences.getStringList(_intentionsKey) ?? const [],
       _remindersDecided = _preferences.getBool(_remindersDecidedKey) ?? false,
+      _subscriptionPlan = _preferences.getString(_subscriptionPlanKey),
       _onboardingCompleted =
           _preferences.getBool(_onboardingCompletedKey) ?? false;
 
@@ -31,6 +32,7 @@ class AppState extends ChangeNotifier {
   static const _soundKey = 'sound_enabled';
   static const _intentionsKey = 'onboarding_intentions';
   static const _remindersDecidedKey = 'onboarding_reminders_decided';
+  static const _subscriptionPlanKey = 'subscription_plan';
   static const _onboardingCompletedKey = 'onboarding_completed';
 
   final SharedPreferences _preferences;
@@ -39,6 +41,7 @@ class AppState extends ChangeNotifier {
   bool _soundEnabled;
   List<String> _intentions;
   bool _remindersDecided;
+  String? _subscriptionPlan;
   bool _onboardingCompleted;
 
   SoulLocale? get locale => _locale;
@@ -51,6 +54,9 @@ class AppState extends ChangeNotifier {
 
   /// The reminder step was answered, either with times or skipped.
   bool get remindersDecided => _remindersDecided;
+
+  /// Selected commitment plan ('monthly', 'yearly', or 'lifetime').
+  String? get subscriptionPlan => _subscriptionPlan;
 
   /// Set once the journey has started; onboarding is never shown again.
   bool get onboardingCompleted => _onboardingCompleted;
@@ -88,6 +94,12 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> saveSubscriptionPlan(String plan) async {
+    _subscriptionPlan = plan;
+    await _preferences.setString(_subscriptionPlanKey, plan);
+    notifyListeners();
+  }
+
   Future<void> markOnboardingCompleted() async {
     _onboardingCompleted = true;
     await _preferences.setBool(_onboardingCompletedKey, true);
@@ -100,6 +112,7 @@ class AppState extends ChangeNotifier {
     _soundEnabled = true;
     _intentions = const [];
     _remindersDecided = false;
+    _subscriptionPlan = null;
     _onboardingCompleted = false;
     await _preferences.clear();
     notifyListeners();

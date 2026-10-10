@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../data/local/image_store.dart';
 import '../../data/repositories/gratitude_repository.dart';
@@ -140,6 +141,81 @@ class JournalNoteDetailScreen extends ConsumerWidget {
             const SizedBox(height: SoulSpace.lg),
             const Divider(color: SoulColors.line, height: 1),
             const SizedBox(height: SoulSpace.lg),
+
+            // Attached voice recording player
+            if (note.audioPath != null) ...[
+              Builder(
+                builder: (context) {
+                  final playback = ref.watch(audioPlaybackProvider);
+                  final isPlaying =
+                      playback.isPlaying &&
+                      playback.assetPath == note.audioPath;
+                  return Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: SoulSpace.md,
+                      vertical: SoulSpace.sm,
+                    ),
+                    decoration: BoxDecoration(
+                      color: SoulColors.lilac.withValues(alpha: 0.5),
+                      borderRadius: BorderRadius.circular(SoulRadius.card),
+                      border: Border.all(color: SoulColors.selectedBorder),
+                    ),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            ref
+                                .read(audioPlaybackProvider)
+                                .toggleFile(note.audioPath!);
+                          },
+                          icon: Icon(
+                            isPlaying
+                                ? Icons.pause_circle_filled_rounded
+                                : Icons.play_circle_fill_rounded,
+                            color: SoulColors.plum,
+                            size: 32,
+                          ),
+                        ),
+                        const SizedBox(width: SoulSpace.xs),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.graphic_eq_rounded,
+                                size: 18,
+                                color: SoulColors.plum,
+                              ),
+                              const SizedBox(width: 6),
+                              Flexible(
+                                child: Text(
+                                  l10n.myRecording,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.bodyMedium?.copyWith(
+                                    color: SoulColors.plum,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              if (isPlaying) ...[
+                                const SizedBox(width: 8),
+                                const SoulAudioWave(
+                                  isPlaying: true,
+                                  barColor: SoulColors.plum,
+                                  barCount: 4,
+                                  height: 14,
+                                ),
+                              ],
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: SoulSpace.lg),
+            ],
 
             // Attached photo preview
             if (note.imagePath != null) ...[

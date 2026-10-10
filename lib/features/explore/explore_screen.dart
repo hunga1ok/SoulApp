@@ -19,21 +19,38 @@ enum _ExploreItemType { youtube, spotify }
 class _ExternalItem {
   const _ExternalItem({
     required this.id,
-    required this.title,
+    required this.titles,
     required this.creator,
-    required this.category,
-    required this.duration,
+    required this.categories,
+    required this.minutes,
     required this.type,
     required this.url,
+    this.isFrequency = false,
   });
 
   final String id;
-  final String title;
+  final Map<SoulLocale, String> titles;
   final String creator;
-  final String category;
-  final String duration;
+  final Map<SoulLocale, String> categories;
+  final int minutes;
   final _ExploreItemType type;
   final String url;
+  final bool isFrequency;
+
+  String titleFor(SoulLocale locale) =>
+      titles[locale] ?? titles[SoulLocale.en]!;
+
+  String categoryFor(SoulLocale locale) =>
+      categories[locale] ?? categories[SoulLocale.en]!;
+
+  String durationFor(SoulLocale locale) => switch (locale) {
+    SoulLocale.vi => '$minutes phút',
+    SoulLocale.en => '$minutes min',
+    SoulLocale.ko => '$minutes분',
+    SoulLocale.ja => '$minutes分',
+    SoulLocale.fr => '$minutes min',
+    SoulLocale.zh => '$minutes 分钟',
+  };
 }
 
 class ExploreScreen extends ConsumerStatefulWidget {
@@ -51,99 +68,242 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
     // YouTube Meditations
     _ExternalItem(
       id: 'YT-001',
-      title: 'Thiền biết ơn & Sức mạnh của lòng trân trọng',
+      titles: {
+        SoulLocale.vi: 'Thiền biết ơn & Sức mạnh của lòng trân trọng',
+        SoulLocale.en: 'Gratitude Meditation & the Power of Appreciation',
+        SoulLocale.ko: '감사 명상 & 감사의 힘',
+        SoulLocale.ja: '感謝の瞑想と感謝の力',
+        SoulLocale.fr: 'Méditation de gratitude & pouvoir de l’appréciation',
+        SoulLocale.zh: '感恩冥想与珍惜的力量',
+      },
       creator: 'Mindful Science',
-      category: 'Thiền định',
-      duration: '15 phút',
+      categories: {
+        SoulLocale.vi: 'Thiền định',
+        SoulLocale.en: 'Meditation',
+        SoulLocale.ko: '명상',
+        SoulLocale.ja: '瞑想',
+        SoulLocale.fr: 'Méditation',
+        SoulLocale.zh: '冥想',
+      },
+      minutes: 15,
       type: _ExploreItemType.youtube,
       url: 'https://www.youtube.com/watch?v=3mFVCX2wmqw',
     ),
     _ExternalItem(
       id: 'YT-002',
-      title: 'Thiền biết ơn buổi sáng tràn ngập niềm vui',
+      titles: {
+        SoulLocale.vi: 'Thiền biết ơn buổi sáng tràn ngập niềm vui',
+        SoulLocale.en: 'Joyful Morning Gratitude Meditation',
+        SoulLocale.ko: '기쁨으로 가득한 아침 감사 명상',
+        SoulLocale.ja: '喜びに満ちた朝の感謝瞑想',
+        SoulLocale.fr: 'Méditation matinale de gratitude joyeuse',
+        SoulLocale.zh: '充满喜悦的晨间感恩冥想',
+      },
       creator: 'Great Meditation',
-      category: 'Khởi đầu ngày mới',
-      duration: '10 phút',
+      categories: {
+        SoulLocale.vi: 'Khởi đầu ngày mới',
+        SoulLocale.en: 'Morning Start',
+        SoulLocale.ko: '아침의 시작',
+        SoulLocale.ja: '一日の始まり',
+        SoulLocale.fr: 'Début de journée',
+        SoulLocale.zh: '开启新的一天',
+      },
+      minutes: 10,
       type: _ExploreItemType.youtube,
       url: 'https://www.youtube.com/watch?v=3-H4vNvealw',
     ),
     _ExternalItem(
       id: 'YT-003',
-      title: 'Khẳng định tích cực về lòng biết ơn trong 21 ngày',
+      titles: {
+        SoulLocale.vi: 'Khẳng định tích cực về lòng biết ơn trong 21 ngày',
+        SoulLocale.en: '21-Day Positive Gratitude Affirmations',
+        SoulLocale.ko: '21일 긍정 감사 확언',
+        SoulLocale.ja: '21日間のポジティブな感謝アファメーション',
+        SoulLocale.fr: 'Affirmations positives de gratitude sur 21 jours',
+        SoulLocale.zh: '21天感恩积极肯定语',
+      },
       creator: 'Bob Baker Affirmations',
-      category: 'Affirmations',
-      duration: '12 phút',
+      categories: {
+        SoulLocale.vi: 'Affirmations',
+        SoulLocale.en: 'Affirmations',
+        SoulLocale.ko: '긍정 확언',
+        SoulLocale.ja: 'アファメーション',
+        SoulLocale.fr: 'Affirmations',
+        SoulLocale.zh: '积极肯定',
+      },
+      minutes: 12,
       type: _ExploreItemType.youtube,
       url: 'https://www.youtube.com/watch?v=iHLQOHZJync',
     ),
     _ExternalItem(
       id: 'YT-004',
-      title: 'Thiền về sự đủ đầy & Tư duy thịnh vượng',
+      titles: {
+        SoulLocale.vi: 'Thiền về sự đủ đầy & Tư duy thịnh vượng',
+        SoulLocale.en: 'Abundance & Prosperity Mindset Meditation',
+        SoulLocale.ko: '풍요와 번영의 마인드셋 명상',
+        SoulLocale.ja: '豊かさと繁栄のマインドセット瞑想',
+        SoulLocale.fr: 'Méditation sur l’abondance et la prospérité',
+        SoulLocale.zh: '丰盛与富足心态冥想',
+      },
       creator: 'Proctor Gallagher Institute',
-      category: 'Đủ đầy & Thịnh vượng',
-      duration: '18 phút',
+      categories: {
+        SoulLocale.vi: 'Đủ đầy & Thịnh vượng',
+        SoulLocale.en: 'Abundance & Prosperity',
+        SoulLocale.ko: '풍요 & 번영',
+        SoulLocale.ja: '豊かさと繁栄',
+        SoulLocale.fr: 'Abondance & Prospérité',
+        SoulLocale.zh: '丰盛与富足',
+      },
+      minutes: 18,
       type: _ExploreItemType.youtube,
       url: 'https://www.youtube.com/watch?v=RKOlsS4QCRU',
     ),
     // Spotify Podcasts
     _ExternalItem(
       id: 'SP-011',
-      title: 'Tâm lý học về con người tương lai của bạn',
+      titles: {
+        SoulLocale.vi: 'Tâm lý học về con người tương lai của bạn',
+        SoulLocale.en: 'The Psychology of Your Future Self',
+        SoulLocale.ko: '미래의 나에 대한 심리학',
+        SoulLocale.ja: '未来の自分の心理学',
+        SoulLocale.fr: 'La psychologie de votre futur vous',
+        SoulLocale.zh: '未来自我的心理学',
+      },
       creator: 'Dan Gilbert (TED Talks Daily)',
-      category: 'Tâm lý & Tầm nhìn',
-      duration: '12 phút',
+      categories: {
+        SoulLocale.vi: 'Tâm lý & Tầm nhìn',
+        SoulLocale.en: 'Psychology & Vision',
+        SoulLocale.ko: '심리 & 비전',
+        SoulLocale.ja: '心理とビジョン',
+        SoulLocale.fr: 'Psychologie & Vision',
+        SoulLocale.zh: '心理与愿景',
+      },
+      minutes: 12,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/episode/5ESaeSaf4Rz56snsmlcBFs',
     ),
     _ExternalItem(
       id: 'SP-004',
-      title: 'Thiền yêu thương bản thân & Nâng cao giá trị nội tại',
+      titles: {
+        SoulLocale.vi: 'Thiền yêu thương bản thân & Nâng cao giá trị nội tại',
+        SoulLocale.en: 'Self-Love Meditation & Building Inner Worth',
+        SoulLocale.ko: '자기 사랑 명상 & 내면의 가치 높이기',
+        SoulLocale.ja: '自己愛の瞑想と内なる価値を高める',
+        SoulLocale.fr: 'Méditation d’amour de soi & valeur intérieure',
+        SoulLocale.zh: '自爱冥想与提升内在价值',
+      },
       creator: 'Wake Me Up Podcast',
-      category: 'Yêu thương bản thân',
-      duration: '13 phút',
+      categories: {
+        SoulLocale.vi: 'Yêu thương bản thân',
+        SoulLocale.en: 'Self-Love',
+        SoulLocale.ko: '자기 사랑',
+        SoulLocale.ja: 'セルフラブ',
+        SoulLocale.fr: 'Amour de soi',
+        SoulLocale.zh: '关爱自我',
+      },
+      minutes: 13,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/episode/4lpvFIhoUtCAWaWZniSb3K',
     ),
     _ExternalItem(
       id: 'SP-022',
-      title: 'Cách lòng biết ơn chữa lành một gia đình qua nghịch cảnh',
+      titles: {
+        SoulLocale.vi:
+            'Cách lòng biết ơn chữa lành một gia đình qua nghịch cảnh',
+        SoulLocale.en: 'How Gratitude Healed a Family Through Adversity',
+        SoulLocale.ko: '역경 속에서 가족을 치유한 감사의 힘',
+        SoulLocale.ja: '逆境の中で家族を癒した感謝の力',
+        SoulLocale.fr: 'Comment la gratitude a guéri une famille',
+        SoulLocale.zh: '感恩如何在逆境中疗愈一个家庭',
+      },
       creator: 'The Gratitude Podcast',
-      category: 'Câu chuyện cảm hứng',
-      duration: '25 phút',
+      categories: {
+        SoulLocale.vi: 'Câu chuyện cảm hứng',
+        SoulLocale.en: 'Inspiring Stories',
+        SoulLocale.ko: '영감을 주는 이야기',
+        SoulLocale.ja: 'インスピレーション物語',
+        SoulLocale.fr: 'Histoires inspirantes',
+        SoulLocale.zh: '灵感故事',
+      },
+      minutes: 25,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/episode/0b70Fnl008FTCKDlOGYt3L',
     ),
     _ExternalItem(
       id: 'SP-008',
-      title: 'Cách trở thành phiên bản tương lai & Nhật ký tương lai',
+      titles: {
+        SoulLocale.vi: 'Cách trở thành phiên bản tương lai & Nhật ký tương lai',
+        SoulLocale.en: 'How to Become Your Future Self & Future Journaling',
+        SoulLocale.ko: '미래의 내가 되는 법 & 미래 일기 쓰기',
+        SoulLocale.ja: '未来の自分になる方法とフューチャージャーナリング',
+        SoulLocale.fr: 'Devenir son futur soi & journal du futur',
+        SoulLocale.zh: '如何成为未来的自己与未来日记',
+      },
       creator: 'How to Like Your Life',
-      category: 'Phát triển cá nhân',
-      duration: '20 phút',
+      categories: {
+        SoulLocale.vi: 'Phát triển cá nhân',
+        SoulLocale.en: 'Personal Growth',
+        SoulLocale.ko: '자기 계발',
+        SoulLocale.ja: '自己成長',
+        SoulLocale.fr: 'Développement personnel',
+        SoulLocale.zh: '个人成长',
+      },
+      minutes: 20,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/episode/02JjKe5oUPOZWSsPflSGXF',
     ),
     // Frequency
     _ExternalItem(
       id: 'FRQ-001',
-      title: '432Hz Bình an & Cân bằng năng lượng',
+      titles: {
+        SoulLocale.vi: '432Hz Bình an & Cân bằng năng lượng',
+        SoulLocale.en: '432Hz Deep Peace & Energy Balance',
+        SoulLocale.ko: '432Hz 평온 & 에너지 밸런스',
+        SoulLocale.ja: '432Hz 深い安らぎとエネルギーバランス',
+        SoulLocale.fr: '432Hz Paix profonde & équilibre énergétique',
+        SoulLocale.zh: '432Hz 宁静与能量平衡',
+      },
       creator: 'DanaMusic Healing',
-      category: 'Tần số 432Hz',
-      duration: '7 phút',
+      categories: {
+        SoulLocale.vi: 'Tần số 432Hz',
+        SoulLocale.en: '432Hz Frequency',
+        SoulLocale.ko: '432Hz 주파수',
+        SoulLocale.ja: '432Hz 周波数',
+        SoulLocale.fr: 'Fréquence 432Hz',
+        SoulLocale.zh: '432Hz 频率',
+      },
+      minutes: 7,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/track/3oRhjjiLO6rdZOPFz6cJhJ',
+      isFrequency: true,
     ),
     _ExternalItem(
       id: 'FRQ-004',
-      title: '528Hz Chữa lành & Tình yêu thương thuần khiết',
+      titles: {
+        SoulLocale.vi: '528Hz Chữa lành & Tình yêu thương thuần khiết',
+        SoulLocale.en: '528Hz Healing & Pure Love Frequency',
+        SoulLocale.ko: '528Hz 치유 & 순수한 사랑의 주파수',
+        SoulLocale.ja: '528Hz 癒しと純粋な愛の周波数',
+        SoulLocale.fr: '528Hz Guérison & amour pur',
+        SoulLocale.zh: '528Hz 疗愈与纯净之爱',
+      },
       creator: 'The Mountain Soundscape',
-      category: 'Tần số 528Hz',
-      duration: '5 phút',
+      categories: {
+        SoulLocale.vi: 'Tần số 528Hz',
+        SoulLocale.en: '528Hz Frequency',
+        SoulLocale.ko: '528Hz 주파수',
+        SoulLocale.ja: '528Hz 周波数',
+        SoulLocale.fr: 'Fréquence 528Hz',
+        SoulLocale.zh: '528Hz 频率',
+      },
+      minutes: 5,
       type: _ExploreItemType.spotify,
       url: 'https://open.spotify.com/track/0i6EOz53YsgC13IZGz8XTW',
+      isFrequency: true,
     ),
   ];
 
-  Future<void> _openUrl(String? url) async {
+  Future<void> _openUrl(String? url, SoulLocale locale) async {
     if (url == null) return;
     final uri = Uri.parse(url);
     try {
@@ -158,9 +318,17 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
     } catch (_) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Không thể mở liên kết. Vui lòng thử lại sau.'),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(switch (locale) {
+              SoulLocale.vi => 'Không thể mở liên kết. Vui lòng thử lại sau.',
+              SoulLocale.en => 'Could not open link. Please try again later.',
+              SoulLocale.ko => '링크를 열 수 없습니다. 잠시 후 다시 시도해 주세요.',
+              SoulLocale.ja => 'リンクを開けませんでした。後でもう一度お試しください。',
+              SoulLocale.fr =>
+                'Impossible d’ouvrir le lien. Veuillez réessayer plus tard.',
+              SoulLocale.zh => '无法打开链接，请稍后再试。',
+            }),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
@@ -213,10 +381,9 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             case _ExploreTab.meditation:
               return item.type == _ExploreItemType.youtube;
             case _ExploreTab.podcast:
-              return item.type == _ExploreItemType.spotify &&
-                  !item.category.contains('Tần số');
+              return item.type == _ExploreItemType.spotify && !item.isFrequency;
             case _ExploreTab.frequency:
-              return item.category.contains('Tần số');
+              return item.isFrequency;
           }
         }).toList();
 
@@ -319,6 +486,84 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             ),
           ),
         ),
+        if (_selectedTab == _ExploreTab.all) ...[
+          const SizedBox(height: SoulSpace.sm),
+
+          // Comfort Zone Banner
+          InkWell(
+            onTap: () => context.push('/comfort-zone'),
+            borderRadius: BorderRadius.circular(SoulRadius.card),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF3E5C76), Color(0xFF5A7D73)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(SoulRadius.card),
+                boxShadow: [
+                  BoxShadow(
+                    color: SoulColors.plum.withValues(alpha: 0.14),
+                    blurRadius: 16,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.all(SoulSpace.md),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(SoulRadius.button),
+                    ),
+                    child: const Center(
+                      child: Icon(
+                        Icons.cottage_rounded,
+                        color: Colors.white,
+                        size: 26,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: SoulSpace.md),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          l10n.comfortZoneTitle,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          l10n.comfortZoneBannerSubtitle,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodySmall?.copyWith(
+                            color: Colors.white.withValues(alpha: 0.88),
+                            height: 1.35,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.white,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
         const SizedBox(height: SoulSpace.lg),
 
         // Filter tabs
@@ -437,7 +682,14 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             children: [
               Expanded(
                 child: Text(
-                  isVi ? 'Âm thanh Soul nổi bật' : 'Featured Soul Audio',
+                  switch (locale) {
+                    SoulLocale.vi => 'Âm thanh Soul nổi bật',
+                    SoulLocale.en => 'Featured Soul Audio',
+                    SoulLocale.ko => '추천 Soul 오디오',
+                    SoulLocale.ja => '注目のSoulオーディオ',
+                    SoulLocale.fr => 'Audio Soul à la une',
+                    SoulLocale.zh => '精选 Soul 音频',
+                  },
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: SoulColors.plum,
@@ -447,10 +699,14 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
               TextButton(
                 onPressed:
                     () => setState(() => _selectedTab = _ExploreTab.audio),
-                child: Text(
-                  isVi ? 'Xem tất cả' : 'View all',
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
+                child: Text(switch (locale) {
+                  SoulLocale.vi => 'Xem tất cả',
+                  SoulLocale.en => 'View all',
+                  SoulLocale.ko => '전체 보기',
+                  SoulLocale.ja => 'すべて見る',
+                  SoulLocale.fr => 'Tout voir',
+                  SoulLocale.zh => '查看全部',
+                }, style: const TextStyle(fontWeight: FontWeight.w600)),
               ),
             ],
           ),
@@ -459,7 +715,14 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
             _buildSoulAudioRow(asset, locale, audio, state, isVi, l10n),
           const SizedBox(height: SoulSpace.lg),
           Text(
-            isVi ? 'Gợi ý từ cộng đồng' : 'Community Recommendations',
+            switch (locale) {
+              SoulLocale.vi => 'Gợi ý từ cộng đồng',
+              SoulLocale.en => 'Community Recommendations',
+              SoulLocale.ko => '커뮤니티 추천',
+              SoulLocale.ja => 'コミュニティのおすすめ',
+              SoulLocale.fr => 'Recommandations de la communauté',
+              SoulLocale.zh => '社区推荐',
+            },
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w700,
               color: SoulColors.plum,
@@ -477,7 +740,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
         // External items (YouTube, Spotify, etc.)
         for (final item in filteredExternal) ...[
           InkWell(
-            onTap: () => _openUrl(item.url),
+            onTap: () => _openUrl(item.url, locale),
             borderRadius: BorderRadius.circular(SoulRadius.card),
             child: SoulCard(
               color: SoulColors.surface,
@@ -545,7 +808,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                             const SizedBox(width: SoulSpace.xs),
                             Expanded(
                               child: Text(
-                                item.category,
+                                item.categoryFor(locale),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.labelSmall
@@ -556,7 +819,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          item.title,
+                          item.titleFor(locale),
                           style: Theme.of(
                             context,
                           ).textTheme.titleSmall?.copyWith(
@@ -569,7 +832,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
                           children: [
                             Expanded(
                               child: Text(
-                                '${item.creator} · ${item.duration}',
+                                '${item.creator} · ${item.durationFor(locale)}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(
@@ -630,14 +893,7 @@ class _ExploreScreenState extends ConsumerState<ExploreScreen> {
     final title = asset.titleFor(locale);
     final isPlaying = path != null && audio.isCurrentTrack(path);
 
-    final subtitle =
-        asset.isGuided
-            ? (isVi ? 'Bài dẫn thiền định song ngữ' : 'Guided Meditation')
-            : (asset.type == 'music'
-                ? (isVi ? 'Nhạc tĩnh lặng & Tần số' : 'Healing Soundscape')
-                : (isVi
-                    ? 'Âm thanh tự nhiên & Thư giãn'
-                    : 'Nature & Ambience'));
+    final subtitle = asset.subtitleFor(locale);
 
     final icon =
         asset.isGuided

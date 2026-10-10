@@ -531,43 +531,61 @@ async def render_single_paragraph(text, voice, rate, pitch, out_path, retries=5)
             await asyncio.sleep(2.0 * (attempt + 1))
 
 async def render_track_voice(paragraphs, voice, rate="-15%", pitch="-2Hz", pause_sec=2.5, temp_prefix="tmp"):
+    wav_segments = []
     temp_files = []
-    for idx, p in enumerate(paragraphs):
-        seg_file = Path(f"{temp_prefix}_seg_{idx:02d}.mp3")
-        await render_single_paragraph(p, voice, rate, pitch, seg_file)
-        temp_files.append(seg_file)
+    try:
+        for idx, p in enumerate(paragraphs):
+            mp3_seg = Path(f"{temp_prefix}_seg_{idx:02d}.mp3")
+            wav_seg = Path(f"{temp_prefix}_seg_{idx:02d}.wav")
+            await render_single_paragraph(p, voice, rate, pitch, mp3_seg)
+            temp_files.append(mp3_seg)
+            subprocess.run([
+                str(FFMPEG), "-y",
+                "-i", str(mp3_seg),
+                "-af", "afade=t=in:ss=0:d=0.015,areverse,afade=t=in:ss=0:d=0.015,areverse",
+                "-ar", "44100",
+                "-ac", "2",
+                "-c:a", "pcm_s16le",
+                str(wav_seg)
+            ], capture_output=True, check=True)
+            wav_segments.append(wav_seg)
+            temp_files.append(wav_seg)
 
-    silence_file = Path(f"{temp_prefix}_silence.mp3")
-    subprocess.run([
-        str(FFMPEG), "-y",
-        "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
-        "-t", str(pause_sec),
-        "-c:a", "libmp3lame", "-b:a", "48k",
-        str(silence_file)
-    ], capture_output=True, check=True)
+        silence_file = Path(f"{temp_prefix}_silence.wav")
+        temp_files.append(silence_file)
+        subprocess.run([
+            str(FFMPEG), "-y",
+            "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo",
+            "-t", str(pause_sec),
+            "-c:a", "pcm_s16le",
+            str(silence_file)
+        ], capture_output=True, check=True)
 
-    concat_list = Path(f"{temp_prefix}_list.txt")
-    with open(concat_list, "w", encoding="utf-8") as f:
-        for idx, sf in enumerate(temp_files):
-            f.write(f"file '{sf.name}'\n")
-            if idx < len(temp_files) - 1:
-                f.write(f"file '{silence_file.name}'\n")
+        concat_list = Path(f"{temp_prefix}_list.txt")
+        temp_files.append(concat_list)
+        with open(concat_list, "w", encoding="utf-8") as f:
+            for idx, sf in enumerate(wav_segments):
+                f.write(f"file '{sf.resolve().as_posix()}'\n")
+                if idx < len(wav_segments) - 1:
+                    f.write(f"file '{silence_file.resolve().as_posix()}'\n")
 
-    full_voice = Path(f"{temp_prefix}_voice_full.mp3")
-    subprocess.run([
-        str(FFMPEG), "-y",
-        "-f", "concat", "-safe", "0",
-        "-i", str(concat_list),
-        "-c", "copy",
-        str(full_voice)
-    ], capture_output=True, check=True)
+        full_voice = Path(f"{temp_prefix}_voice_full.wav")
+        subprocess.run([
+            str(FFMPEG), "-y",
+            "-f", "concat", "-safe", "0",
+            "-i", str(concat_list),
+            "-c:a", "pcm_s16le",
+            str(full_voice)
+        ], capture_output=True, check=True)
 
-    # Cleanup segments
-    for sf in temp_files + [silence_file, concat_list]:
-        if sf.exists():
-            sf.unlink()
-
-    return full_voice
+        return full_voice
+    finally:
+        for sf in temp_files:
+            if sf.exists():
+                try:
+                    sf.unlink()
+                except Exception:
+                    pass
 
 def mix_voice_and_bed(voice_file, bed_file, bed_vol, output_file):
     cmd = [
@@ -575,16 +593,20 @@ def mix_voice_and_bed(voice_file, bed_file, bed_vol, output_file):
         "-i", str(voice_file),
         "-stream_loop", "-1", "-i", str(bed_file),
         "-filter_complex",
-        f"[0:a]volume=1.0[v];[1:a]volume={bed_vol:.2f}[b];[v][b]amix=inputs=2:duration=first:dropout_transition=2[outa]",
+        f"[0:a]volume=1.0[v];[1:a]volume={bed_vol:.2f}[b];[v][b]amix=inputs=2:duration=first:dropout_transition=2,alimiter=limit=0.92:attack=5:release=50[outa]",
         "-map", "[outa]",
         "-vn",
         "-c:a", "aac",
         "-b:a", "128k",
+        "-ar", "44100",
         str(output_file)
     ]
     subprocess.run(cmd, capture_output=True, check=True)
     if voice_file.exists():
-        voice_file.unlink()
+        try:
+            voice_file.unlink()
+        except Exception:
+            pass
 
 async def render_all(skip_existing=True):
     print("=== Starting Rendering Guided Meditation Voices for SoulApp ===")

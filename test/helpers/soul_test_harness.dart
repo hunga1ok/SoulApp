@@ -17,6 +17,7 @@ import 'package:soul_app/core/platform/image_picking.dart';
 import 'package:soul_app/data/content/content_repository.dart';
 import 'package:soul_app/data/local/image_store.dart';
 import 'package:soul_app/data/local/soul_database.dart';
+import 'package:soul_app/data/repositories/reminder_repository.dart';
 import 'package:soul_app/l10n/app_localizations.dart';
 
 /// Smallest supported phone used for overflow checks.
@@ -49,11 +50,32 @@ class FakeNotificationPermissions implements NotificationPermissions {
 
   bool granted;
   var requests = 0;
+  final samples = <({String title, String body, SoulLocale locale})>[];
+  final scheduledLocales = <SoulLocale>[];
 
   @override
   Future<bool> request() async {
     requests++;
     return granted;
+  }
+
+  @override
+  Future<bool> showSampleNotification({
+    required String title,
+    required String body,
+    SoulLocale locale = SoulLocale.en,
+  }) async {
+    samples.add((title: title, body: body, locale: locale));
+    return granted;
+  }
+
+  @override
+  Future<void> scheduleDailyReminders({
+    required Map<ReminderKind, ReminderChoice> choices,
+    required SoulLocale locale,
+    String? preferredName,
+  }) async {
+    scheduledLocales.add(locale);
   }
 }
 

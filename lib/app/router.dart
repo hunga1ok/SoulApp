@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/cards/cards_screen.dart';
+import '../features/comfort_zone/comfort_zone_hub_screen.dart';
+import '../features/comfort_zone/comfort_zone_room_screen.dart';
 import '../features/explore/explore_screen.dart';
 import '../features/journal/journal_screen.dart';
 import '../features/onboarding/onboarding_screens.dart';
@@ -118,6 +120,17 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder:
             (context, route) =>
                 CardsDrawScreen(deckId: route.pathParameters['deckId']!),
+      ),
+      GoRoute(
+        path: '/comfort-zone',
+        builder: (context, route) => const ComfortZoneHubScreen(),
+      ),
+      GoRoute(
+        path: '/comfort-zone/:sceneId',
+        builder:
+            (context, route) => ComfortZoneRoomScreen(
+              sceneId: route.pathParameters['sceneId']!,
+            ),
       ),
       StatefulShellRoute.indexedStack(
         builder:

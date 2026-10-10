@@ -11,22 +11,30 @@ import 'language_suggestion.dart';
 import 'onboarding_controllers.dart';
 import 'preferred_name_validation.dart';
 
-/// Language-neutral gate. Both choices are always shown as endonyms. The
-/// device-suggested language is highlighted as the primary button, but no
-/// locale is stored until the user taps one of the choices.
-class LanguageGateScreen extends ConsumerWidget {
+/// Language-neutral gate. Choices are shown as endonyms in a dropdown. The
+/// device-suggested language pre-populates the dropdown, but no locale is
+/// stored until the user confirms their choice.
+class LanguageGateScreen extends ConsumerStatefulWidget {
   const LanguageGateScreen({super.key});
 
-  static const _maxChoiceWidth = 240.0;
+  static const _maxChoiceWidth = 280.0;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LanguageGateScreen> createState() => _LanguageGateScreenState();
+}
+
+class _LanguageGateScreenState extends ConsumerState<LanguageGateScreen> {
+  SoulLocale? _selectedLocale;
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final suggested = ref.watch(suggestedLocaleProvider);
+    final effectiveLocale = _selectedLocale ?? suggested ?? SoulLocale.vi;
     final choices = {
-      SoulLocale.vi: l10n.languageEndonymVi,
-      SoulLocale.en: l10n.languageEndonymEn,
+      for (final locale in SoulLocale.values) locale: locale.endonym,
     };
+    final continueLabel = effectiveLocale.continueLabel;
 
     return _OnboardingLayout(
       padding: const EdgeInsets.all(SoulSpace.xl),
@@ -34,24 +42,81 @@ class LanguageGateScreen extends ConsumerWidget {
       children: [
         _Logo(width: 138, semanticLabel: l10n.appTitle),
         const SizedBox(height: SoulSpace.xl + SoulSpace.lg),
-        for (final MapEntry(key: locale, value: label) in choices.entries)
-          Padding(
-            padding: const EdgeInsets.only(bottom: SoulSpace.sm),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: _maxChoiceWidth),
-              child: SoulButton(
-                label: label,
-                variant:
-                    locale == suggested
-                        ? SoulButtonVariant.primary
-                        : SoulButtonVariant.secondary,
-                onPressed: () async {
-                  await ref.read(appStateProvider).selectLocale(locale);
-                  if (context.mounted) context.go('/onboarding/welcome');
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: LanguageGateScreen._maxChoiceWidth,
+          ),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: SoulSpace.md,
+              vertical: 4,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(SoulRadius.input),
+              border: Border.all(
+                color: SoulColors.plum.withValues(alpha: 0.28),
+                width: 1.4,
+              ),
+              boxShadow: SoulShadows.card,
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<SoulLocale>(
+                value: effectiveLocale,
+                isExpanded: true,
+                borderRadius: BorderRadius.circular(SoulRadius.input),
+                icon: const Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  color: SoulColors.plum,
+                ),
+                items: [
+                  for (final entry in choices.entries)
+                    DropdownMenuItem<SoulLocale>(
+                      value: entry.key,
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.language_rounded,
+                            size: 18,
+                            color: SoulColors.plum,
+                          ),
+                          const SizedBox(width: SoulSpace.sm),
+                          Expanded(
+                            child: Text(
+                              entry.value,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.titleMedium?.copyWith(
+                                color: SoulColors.plum,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+                onChanged: (value) {
+                  if (value == null) return;
+                  setState(() => _selectedLocale = value);
                 },
               ),
             ),
           ),
+        ),
+        const SizedBox(height: SoulSpace.md),
+        ConstrainedBox(
+          constraints: const BoxConstraints(
+            maxWidth: LanguageGateScreen._maxChoiceWidth,
+          ),
+          child: SoulButton(
+            label: continueLabel,
+            onPressed: () async {
+              await ref.read(appStateProvider).selectLocale(effectiveLocale);
+              if (context.mounted) context.go('/onboarding/welcome');
+            },
+          ),
+        ),
       ],
     );
   }
@@ -111,7 +176,7 @@ class _WelcomeIntroScreenState extends State<WelcomeIntroScreen> {
         icon: Icons.favorite_outline_rounded,
         title: l10n.welcomeTitle2,
         subtitle: l10n.welcomeSubtitle2,
-        tag: '28-DAY JOURNEY',
+        tag: 'GRATITUDE PRACTICE',
       ),
       (
         icon: Icons.auto_awesome_outlined,
@@ -554,42 +619,440 @@ class _ReminderRow extends StatelessWidget {
   }
 }
 
-/// Final onboarding step: starts Day 1 of the journey.
-class JourneyReadyScreen extends ConsumerWidget {
+/// Final onboarding step: Commitment & Subscription Paywall ($2/mo, $20/yr, $50/lifetime).
+class JourneyReadyScreen extends ConsumerStatefulWidget {
   const JourneyReadyScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<JourneyReadyScreen> createState() => _JourneyReadyScreenState();
+}
+
+class _JourneyReadyScreenState extends ConsumerState<JourneyReadyScreen> {
+  String _selectedPlan = 'yearly';
+
+  @override
+  Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final start = ref.watch(journeyStartProvider);
-    return _OnboardingLayout(
-      children: [
-        _StepHeading(
-          title: l10n.journeyReadyTitle,
-          body: l10n.journeyReadyBody,
-        ),
-        const SizedBox(height: SoulSpace.xl),
-        if (start.hasError) ...[
-          Semantics(
-            liveRegion: true,
-            child: Text(
-              l10n.somethingWentWrong,
-              textAlign: TextAlign.center,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: SoulColors.error),
-            ),
-          ),
-          const SizedBox(height: SoulSpace.sm),
-        ],
-        SoulButton(
-          label: start.hasError ? l10n.retry : l10n.beginDayOne,
-          onPressed:
-              start.isLoading
-                  ? null
-                  : () => ref.read(journeyStartProvider.notifier).start(),
-        ),
+    final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
+    final textTheme = Theme.of(context).textTheme;
+
+    final plans = [
+      (
+        id: 'monthly',
+        title: switch (locale) {
+          SoulLocale.vi => 'Gói Tháng',
+          SoulLocale.ko => '월간 플랜',
+          SoulLocale.ja => '月額プラン',
+          SoulLocale.fr => 'Forfait Mensuel',
+          SoulLocale.zh => '月度计划',
+          SoulLocale.en => 'Monthly Plan',
+        },
+        price: r'$2 / monthly',
+        subtitle: switch (locale) {
+          SoulLocale.vi => 'Khởi đầu nhẹ nhàng, rèn luyện thói quen mỗi ngày',
+          SoulLocale.ko => '가볍게 시작하며 매일 감사의 습관을 기르세요',
+          SoulLocale.ja => '穏やかに始めて、毎日の感謝の習慣を育む',
+          SoulLocale.fr =>
+            'Un départ en douceur pour ancrer votre habitude quotidienne',
+          SoulLocale.zh => '温和开启，养成每日感恩与正念习惯',
+          SoulLocale.en => 'Gentle start, build your daily gratitude habit',
+        },
+        badge: null as String?,
+      ),
+      (
+        id: 'yearly',
+        title: switch (locale) {
+          SoulLocale.vi => 'Gói Năm',
+          SoulLocale.ko => '연간 플랜',
+          SoulLocale.ja => '年額プラン',
+          SoulLocale.fr => 'Forfait Annuel',
+          SoulLocale.zh => '年度计划',
+          SoulLocale.en => 'Yearly Plan',
+        },
+        price: r'$20 / year',
+        subtitle: switch (locale) {
+          SoulLocale.vi =>
+            'Đồng hành bền bỉ 365 ngày cùng ước mơ · Tiết kiệm 17%',
+          SoulLocale.ko => '365일 동안 꿈과 함께하는 꾸준한 여정 · 17% 할인',
+          SoulLocale.ja => '365日、夢に寄り添う継続の旅 · 17%お得',
+          SoulLocale.fr => '365 jours de fidélité à vos rêves · Économisez 17%',
+          SoulLocale.zh => '365天坚定陪伴你的梦想 · 节省 17%',
+          SoulLocale.en =>
+            '365 days of steady devotion to your dreams · Save 17%',
+        },
+        badge: switch (locale) {
+          SoulLocale.vi => 'PHỔ BIẾN NHẤT',
+          SoulLocale.ko => '인기 플랜',
+          SoulLocale.ja => '一番人気',
+          SoulLocale.fr => 'LE PLUS POPULAIRE',
+          SoulLocale.zh => '最受欢迎',
+          SoulLocale.en => 'MOST POPULAR',
+        },
+      ),
+      (
+        id: 'lifetime',
+        title: switch (locale) {
+          SoulLocale.vi => 'Gói Trọn Đời',
+          SoulLocale.ko => '평생 소장 플랜',
+          SoulLocale.ja => 'ライフタイムプラン',
+          SoulLocale.fr => 'Accès à Vie',
+          SoulLocale.zh => '终身计划',
+          SoulLocale.en => 'Lifetime Plan',
+        },
+        price: r'$50 / lifetime',
+        subtitle: switch (locale) {
+          SoulLocale.vi =>
+            'Cam kết một lần, sở hữu mãi mãi không gian bình yên',
+          SoulLocale.ko => '한 번의 약속으로 평생 간직하는 평온한 안식처',
+          SoulLocale.ja => '一度のコミットメントで、永遠にあなたの安らぎの空間へ',
+          SoulLocale.fr => 'Un seul engagement, votre sanctuaire pour toujours',
+          SoulLocale.zh => '一次承诺，永久拥有属于你的宁静空间',
+          SoulLocale.en => 'One-time commitment, yours forever',
+        },
+        badge: switch (locale) {
+          SoulLocale.vi => 'GIÁ TRỊ NHẤT',
+          SoulLocale.ko => '최고의 가치',
+          SoulLocale.ja => 'ベストバリュー',
+          SoulLocale.fr => 'MEILLEURE VALEUR',
+          SoulLocale.zh => '超值首选',
+          SoulLocale.en => 'BEST VALUE',
+        },
+      ),
+    ];
+
+    final benefits = switch (locale) {
+      SoulLocale.vi => const [
+        'Thực hành biết ơn & nhật ký chuyển hóa tâm thức mỗi ngày',
+        'Bảng tầm nhìn (Vision Board) & rút thẻ thông điệp tâm hồn',
+        'Trọn bộ 28 không gian Comfort Zone & âm thanh tần số 432Hz – 963Hz',
       ],
+      SoulLocale.ko => const [
+        '매일 감사 실천 및 마음 챙김 저널 기록',
+        '무제한 비전 보드 및 데일리 소울 메시지 카드',
+        '28개의 힐링 Comfort Zone 공간 및 432Hz – 963Hz 치유 주파수 사운드',
+      ],
+      SoulLocale.ja => const [
+        '毎日の感謝ワークと心を整えるジャーナル記録',
+        'ビジョンボード作成＆毎日のソウルメッセージカード',
+        '全28のComfort Zone癒やし空間＆432Hz〜963Hzヒーリング周波数',
+      ],
+      SoulLocale.fr => const [
+        'Pratique quotidienne de gratitude et journal de transformation',
+        'Vision Board illimité et tirage quotidien de cartes Soul',
+        'Les 28 espaces Comfort Zone et fréquences de guérison 432Hz – 963Hz',
+      ],
+      SoulLocale.zh => const [
+        '每日感恩练习与正念转化日记',
+        '无限愿景板 (Vision Board) 与每日心灵指引抽卡',
+        '全部 28 个 Comfort Zone 疗愈空间与 432Hz – 963Hz 疗愈频率音频',
+      ],
+      SoulLocale.en => const [
+        'Daily gratitude practice & mindful transformation journal',
+        'Unlimited Vision Board & daily Soul guidance cards',
+        'All 28 Comfort Zone sanctuaries & 432Hz – 963Hz healing frequencies',
+      ],
+    };
+
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: SoulSpace.lg,
+            vertical: SoulSpace.sm,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: SoulSpace.xs,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: SoulColors.lilac,
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.button,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.auto_awesome_rounded,
+                                size: 13,
+                                color: SoulColors.plum,
+                              ),
+                              const SizedBox(width: 5),
+                              Flexible(
+                                child: Text(
+                                  switch (locale) {
+                                    SoulLocale.vi => 'CAM KẾT VỚI HÀNH TRÌNH',
+                                    SoulLocale.ko => '여정을 향한 약속',
+                                    SoulLocale.ja => '旅へのコミットメント',
+                                    SoulLocale.fr =>
+                                      'ENGAGEMENT ENVERS VOTRE VOYAGE',
+                                    SoulLocale.zh => '对旅程的承诺',
+                                    SoulLocale.en => 'COMMIT TO YOUR JOURNEY',
+                                  },
+                                  style: textTheme.labelSmall?.copyWith(
+                                    color: SoulColors.plum,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 0.8,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: SoulSpace.xs),
+                      Text(
+                        l10n.journeyReadyTitle,
+                        style: textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: SoulColors.plum,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        l10n.journeyReadyBody,
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                          height: 1.36,
+                        ),
+                      ),
+                      const SizedBox(height: SoulSpace.sm),
+
+                      // Compact Benefits Card
+                      SoulCard(
+                        color: SoulColors.softFill,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: SoulSpace.sm,
+                          vertical: SoulSpace.xs,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            for (var i = 0; i < benefits.length; i++) ...[
+                              if (i > 0) const SizedBox(height: 4),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 2),
+                                    child: Icon(
+                                      Icons.check_circle_rounded,
+                                      size: 15,
+                                      color: SoulColors.plum,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      benefits[i],
+                                      style: textTheme.labelMedium?.copyWith(
+                                        color: SoulColors.plum,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.28,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: SoulSpace.sm),
+
+                      // 3 Pricing Tier Cards
+                      for (final plan in plans) ...[
+                        _SubscriptionPlanCard(
+                          title: plan.title,
+                          price: plan.price,
+                          subtitle: plan.subtitle,
+                          badge: plan.badge,
+                          selected: _selectedPlan == plan.id,
+                          onTap: () => setState(() => _selectedPlan = plan.id),
+                        ),
+                        const SizedBox(height: 8),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: SoulSpace.xs),
+              if (start.hasError) ...[
+                Semantics(
+                  liveRegion: true,
+                  child: Text(
+                    l10n.somethingWentWrong,
+                    textAlign: TextAlign.center,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: SoulColors.error,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: SoulSpace.xs),
+              ],
+              SoulButton(
+                label: start.hasError ? l10n.retry : l10n.beginDayOne,
+                onPressed:
+                    start.isLoading
+                        ? null
+                        : () => ref
+                            .read(journeyStartProvider.notifier)
+                            .start(_selectedPlan),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                switch (locale) {
+                  SoulLocale.vi =>
+                    'Mỗi sự cam kết hôm nay là hạt mầm cho phiên bản rạng rỡ nhất của bạn ngày mai.',
+                  SoulLocale.ko => '오늘의 작은 다짐이 내일 가장 빛나는 당신을 피워냅니다.',
+                  SoulLocale.ja => '今日の小さな誓いが、明日の最も輝くあなたを育てます。',
+                  SoulLocale.fr =>
+                    'Chaque engagement pris aujourd’hui sème la version la plus lumineuse de votre avenir.',
+                  SoulLocale.zh => '今天的每一份承诺，都是孕育明天最闪耀自己的种子。',
+                  SoulLocale.en =>
+                    'Every commitment you make today seeds the brightest version of you tomorrow.',
+                },
+                textAlign: TextAlign.center,
+                style: textTheme.labelSmall?.copyWith(
+                  color: SoulColors.softInk,
+                  fontStyle: FontStyle.italic,
+                  height: 1.3,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SubscriptionPlanCard extends StatelessWidget {
+  const _SubscriptionPlanCard({
+    required this.title,
+    required this.price,
+    required this.subtitle,
+    required this.selected,
+    required this.onTap,
+    this.badge,
+  });
+
+  final String title;
+  final String price;
+  final String subtitle;
+  final String? badge;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(SoulRadius.card),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        padding: const EdgeInsets.symmetric(
+          horizontal: SoulSpace.sm,
+          vertical: 10,
+        ),
+        decoration: BoxDecoration(
+          color: selected ? SoulColors.selectedFill : SoulColors.surface,
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          border: Border.all(
+            color: selected ? SoulColors.plum : SoulColors.line,
+            width: selected ? 2.0 : 1.0,
+          ),
+          boxShadow: selected ? SoulShadows.card : const [],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Icon(
+                selected
+                    ? Icons.radio_button_checked_rounded
+                    : Icons.radio_button_off_rounded,
+                color: selected ? SoulColors.plum : SoulColors.muted,
+                size: 19,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 2,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: SoulColors.plum,
+                        ),
+                      ),
+                      if (badge != null)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 1.5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: SoulColors.plum,
+                            borderRadius: BorderRadius.circular(
+                              SoulRadius.button,
+                            ),
+                          ),
+                          child: Text(
+                            badge!,
+                            style: textTheme.labelSmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 9.5,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ),
+                      Text(
+                        price,
+                        style: textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w800,
+                          color: SoulColors.plum,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: textTheme.bodySmall?.copyWith(
+                      color: SoulColors.softInk,
+                      height: 1.25,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,50 +1,972 @@
 {
   "version": 2,
   "assets": [
-    {"id":"SO-03","titles":{"vi":"Mưa bên cửa sổ","en":"Window rain"},"type":"ambience","assetPath":"assets/audio/ambience/so-03-window-rain.m4a","delivery":"published"},
-    {"id":"SO-05","titles":{"vi":"Nhịp thở đại dương","en":"Ocean breath"},"type":"ambience","assetPath":"assets/audio/ambience/so-05-ocean-breath.m4a","delivery":"published"},
-    {"id":"SO-07","titles":{"vi":"Căn phòng có lò sưởi","en":"Fireplace room"},"type":"ambience","assetPath":"assets/audio/ambience/so-07-fireplace-room.m4a","delivery":"published"},
-    {"id":"SO-09","titles":{"vi":"Tiếng nhiễu nâu","en":"Brown noise"},"type":"noise","assetPath":"assets/audio/ambience/so-09-brown-noise.m4a","delivery":"published"},
-    {"id":"SO-10","titles":{"vi":"Tắm âm thanh dịu nhẹ","en":"Soft sound bath"},"type":"sound_bath","assetPath":"assets/audio/ambience/so-10-soft-sound-bath.m4a","delivery":"published"},
-    {"id":"SO-11","titles":{"vi":"Piano ấm áp","en":"Warm felt piano"},"type":"music","assetPath":"assets/audio/music/so-11-warm-felt-piano.m4a","delivery":"published"},
-    {"id":"SO-12","titles":{"vi":"Chân trời tương lai","en":"Future horizon"},"type":"music","assetPath":"assets/audio/music/so-12-future-horizon.m4a","delivery":"published"},
-    {"id":"SO-13","titles":{"vi":"Dòng chảy vàng","en":"Golden flow"},"type":"music","assetPath":"assets/audio/music/so-13-golden-flow.m4a","delivery":"published"},
-    {"id":"SO-14","titles":{"vi":"Bình yên vững vàng","en":"Rooted calm"},"type":"music","assetPath":"assets/audio/music/so-14-rooted-calm.m4a","delivery":"published"},
-    {"id":"SO-15","titles":{"vi":"Dòng chảy đủ đầy","en":"Abundance current"},"type":"music","assetPath":"assets/audio/music/so-15-abundance-current.m4a","delivery":"published"},
-    {"id":"SO-16","titles":{"vi":"Handpan bầu trời rộng mở","en":"Open sky handpan"},"type":"music","assetPath":"assets/audio/music/so-16-open-sky-handpan.m4a","delivery":"published"},
-    {"id":"SO-17","titles":{"vi":"R&B ambient ấm áp","en":"Warm R&B ambient"},"type":"music","assetPath":"assets/audio/music/so-17-warm-rnb-ambient.m4a","delivery":"published"},
-    {"id":"SO-18","titles":{"vi":"Không gian trái tim","en":"Heart space"},"type":"music","assetPath":"assets/audio/music/so-18-heart-space.m4a","delivery":"published"},
-    {"id":"SO-19","titles":{"vi":"Động lực tĩnh lặng","en":"Quiet momentum"},"type":"music","assetPath":"assets/audio/music/so-19-quiet-momentum.m4a","delivery":"published"},
-    {"id":"SO-20","titles":{"vi":"Không gian mơ màng","en":"Dreamy ethereal"},"type":"music","assetPath":"assets/audio/music/so-20-dreamy-ethereal.m4a","delivery":"published"},
-    {"id":"GA-01","titles":{"vi":"1 phút tái tạo","en":"1-Minute Reset"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-01-1-minute-reset.m4a","en":"assets/audio/guided/en/ga-01-1-minute-reset.m4a"},"delivery":"published"},
-    {"id":"GA-02","titles":{"vi":"Khởi đầu buổi sáng","en":"Morning Arrival"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-02-morning-arrival.m4a","en":"assets/audio/guided/en/ga-02-morning-arrival.m4a"},"delivery":"published"},
-    {"id":"GA-03","titles":{"vi":"Biết ơn buổi sáng","en":"Morning Gratitude"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-03-morning-gratitude.m4a","en":"assets/audio/guided/en/ga-03-morning-gratitude.m4a"},"delivery":"published"},
-    {"id":"GA-04","titles":{"vi":"Nhận ra điều tốt lành","en":"Notice What Is Good"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-04-notice-what-is-good.m4a","en":"assets/audio/guided/en/ga-04-notice-what-is-good.m4a"},"delivery":"published"},
-    {"id":"GA-05","titles":{"vi":"Gặp gỡ phiên bản tương lai","en":"Meet Your Future Self"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-05-meet-your-future-self.m4a","en":"assets/audio/guided/en/ga-05-meet-your-future-self.m4a"},"delivery":"published"},
-    {"id":"GA-06","titles":{"vi":"Một ngày lý tưởng của bạn","en":"Your Ideal Day"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-06-your-ideal-day.m4a","en":"assets/audio/guided/en/ga-06-your-ideal-day.m4a"},"delivery":"published"},
-    {"id":"GA-07","titles":{"vi":"Sự tự tin tĩnh lặng","en":"Quiet Confidence"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-07-quiet-confidence.m4a","en":"assets/audio/guided/en/ga-07-quiet-confidence.m4a"},"delivery":"published"},
-    {"id":"GA-08","titles":{"vi":"Yêu thương bản thân dịu dàng","en":"Soft Self-Love"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-08-soft-self-love.m4a","en":"assets/audio/guided/en/ga-08-soft-self-love.m4a"},"delivery":"published"},
-    {"id":"GA-09","titles":{"vi":"Thả lỏng buổi tối","en":"Evening Release"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-09-evening-release.m4a","en":"assets/audio/guided/en/ga-09-evening-release.m4a"},"delivery":"published"},
-    {"id":"GA-10","titles":{"vi":"Biết ơn trước giờ ngủ","en":"Gratitude Before Sleep"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-10-gratitude-before-sleep.m4a","en":"assets/audio/guided/en/ga-10-gratitude-before-sleep.m4a"},"delivery":"published"},
-    {"id":"GA-18","titles":{"vi":"Bước vào tương lai của bạn","en":"Step into your future"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-18-step-into-your-future.m4a","en":"assets/audio/guided/en/ga-18-step-into-your-future.m4a"},"delivery":"published"},
-    {"id":"GA-21","titles":{"vi":"Tương lai tài chính của tôi","en":"My financial future"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-21-my-financial-future.m4a","en":"assets/audio/guided/en/ga-21-my-financial-future.m4a"},"delivery":"published"},
-    {"id":"GA-23","titles":{"vi":"Mở lòng với tình yêu lành mạnh","en":"Open to healthy love"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-23-open-to-healthy-love.m4a","en":"assets/audio/guided/en/ga-23-open-to-healthy-love.m4a"},"delivery":"published"},
-    {"id":"GA-25","titles":{"vi":"Phiên bản sự nghiệp tương lai","en":"Future career self"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-25-future-career-self.m4a","en":"assets/audio/guided/en/ga-25-future-career-self.m4a"},"delivery":"published"},
-    {"id":"GA-27","titles":{"vi":"Cơ thể tôi chăm sóc","en":"A body I care for"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-27-a-body-i-care-for.m4a","en":"assets/audio/guided/en/ga-27-a-body-i-care-for.m4a"},"delivery":"published"},
-    {"id":"GA-28","titles":{"vi":"Trở về ngôi nhà tương lai","en":"Come home to your future"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-28-come-home-to-your-future.m4a","en":"assets/audio/guided/en/ga-28-come-home-to-your-future.m4a"},"delivery":"published"},
-    {"id":"GA-29","titles":{"vi":"Cuộc sống thêm điều kỳ diệu","en":"A life with more wonder"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-29-a-life-with-more-wonder.m4a","en":"assets/audio/guided/en/ga-29-a-life-with-more-wonder.m4a"},"delivery":"published"},
-    {"id":"GA-30","titles":{"vi":"Mái nhà giữa chúng ta","en":"A home between us"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-30-a-home-between-us.m4a","en":"assets/audio/guided/en/ga-30-a-home-between-us.m4a"},"delivery":"published"},
-    {"id":"GA-31","titles":{"vi":"Trở về với chính mình","en":"Return to yourself"},"type":"guided","localePaths":{"vi":"assets/audio/guided/vi/ga-31-return-to-yourself.m4a","en":"assets/audio/guided/en/ga-31-return-to-yourself.m4a"},"delivery":"published"}
+    {
+      "id": "SO-03",
+      "frequency": "174 Hz",
+      "titles": {
+        "vi": "Mưa bên cửa sổ",
+        "en": "Window rain",
+        "ko": "창가의 빗소리",
+        "ja": "窓辺の雨音",
+        "fr": "Pluie sur la fenêtre",
+        "zh": "窗畔细雨"
+      },
+      "subtitles": {
+        "vi": "174 Hz • Tiếng mưa thư giãn & xoa dịu căng thẳng",
+        "en": "174 Hz • Soothing Rain & Stress Relief",
+        "ko": "174 Hz • 창가의 빗소리",
+        "ja": "174 Hz • 窓辺の雨音",
+        "fr": "174 Hz • Pluie sur la fenêtre",
+        "zh": "174 Hz • 窗畔细雨"
+      },
+      "type": "ambience",
+      "assetPath": "assets/audio/ambience/so-03-window-rain.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-05",
+      "frequency": "285 Hz",
+      "titles": {
+        "vi": "Nhịp thở đại dương",
+        "en": "Ocean breath",
+        "ko": "바다의 숨결",
+        "ja": "海の吐息",
+        "fr": "Souffle de l'océan",
+        "zh": "海洋呼吸"
+      },
+      "subtitles": {
+        "vi": "285 Hz • Nhịp sóng đại dương phục hồi năng lượng",
+        "en": "285 Hz • Ocean Waves & Energy Restoration",
+        "ko": "285 Hz • 바다의 숨결",
+        "ja": "285 Hz • 海の吐息",
+        "fr": "285 Hz • Souffle de l'océan",
+        "zh": "285 Hz • 海洋呼吸"
+      },
+      "type": "ambience",
+      "assetPath": "assets/audio/ambience/so-05-ocean-breath.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-07",
+      "frequency": "396 Hz",
+      "titles": {
+        "vi": "Căn phòng có lò sưởi",
+        "en": "Fireplace room",
+        "ko": "벽난로가 있는 방",
+        "ja": "暖炉のある部屋",
+        "fr": "Au coin de la cheminée",
+        "zh": "壁炉暖室"
+      },
+      "subtitles": {
+        "vi": "396 Hz • Lửa ấm tí tách giải phóng âu lo",
+        "en": "396 Hz • Warm Fireplace & Release Tension",
+        "ko": "396 Hz • 벽난로가 있는 방",
+        "ja": "396 Hz • 暖炉のある部屋",
+        "fr": "396 Hz • Au coin de la cheminée",
+        "zh": "396 Hz • 壁炉暖室"
+      },
+      "type": "ambience",
+      "assetPath": "assets/audio/ambience/so-07-fireplace-room.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-09",
+      "frequency": "Brown Noise",
+      "titles": {
+        "vi": "Tiếng nhiễu nâu",
+        "en": "Brown noise",
+        "ko": "브라운 노이즈",
+        "ja": "ブラウンノイズ",
+        "fr": "Bruit brun apaisant",
+        "zh": "柔和棕噪音"
+      },
+      "subtitles": {
+        "vi": "Tần số trầm (Brown Noise) • Tập trung sâu & dễ ngủ",
+        "en": "Low-Frequency Brown Noise • Deep Focus & Sleep",
+        "ko": "Brown Noise • 브라운 노이즈",
+        "ja": "Brown Noise • ブラウンノイズ",
+        "fr": "Brown Noise • Bruit brun apaisant",
+        "zh": "Brown Noise • 柔和棕噪音"
+      },
+      "type": "noise",
+      "assetPath": "assets/audio/ambience/so-09-brown-noise.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-10",
+      "frequency": "432 Hz",
+      "titles": {
+        "vi": "Tắm âm thanh dịu nhẹ",
+        "en": "Soft sound bath",
+        "ko": "부드러운 사운드 배스",
+        "ja": "優しいサウンドバス",
+        "fr": "Bain sonore délicat",
+        "zh": "轻柔音疗浴"
+      },
+      "subtitles": {
+        "vi": "432 Hz • Chuông xoay thanh lọc & cân bằng năng lượng",
+        "en": "432 Hz • Singing Bowls & Energy Alignment",
+        "ko": "432 Hz • 부드러운 사운드 배스",
+        "ja": "432 Hz • 優しいサウンドバス",
+        "fr": "432 Hz • Bain sonore délicat",
+        "zh": "432 Hz • 轻柔音疗浴"
+      },
+      "type": "sound_bath",
+      "assetPath": "assets/audio/ambience/so-10-soft-sound-bath.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-11",
+      "frequency": "432 Hz",
+      "titles": {
+        "vi": "Piano ấm áp",
+        "en": "Warm felt piano",
+        "ko": "따스한 펠트 피아노",
+        "ja": "温かなフェルトピアノ",
+        "fr": "Piano feutré chaleureux",
+        "zh": "温暖毡音钢琴"
+      },
+      "subtitles": {
+        "vi": "432 Hz • Tần số bình an & xoa dịu tâm hồn",
+        "en": "432 Hz • Deep Peace & Soul Soothing",
+        "ko": "432 Hz • 따스한 펠트 피아노",
+        "ja": "432 Hz • 温かなフェルトピアノ",
+        "fr": "432 Hz • Piano feutré chaleureux",
+        "zh": "432 Hz • 温暖毡音钢琴"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-11-warm-felt-piano.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-12",
+      "frequency": "528 Hz",
+      "titles": {
+        "vi": "Chân trời tương lai",
+        "en": "Future horizon",
+        "ko": "미래의 지평선",
+        "ja": "未来の地平線",
+        "fr": "Horizon futur",
+        "zh": "未来地平线"
+      },
+      "subtitles": {
+        "vi": "528 Hz • Tần số chuyển hóa & khai mở tiềm năng",
+        "en": "528 Hz • Transformation & Miracles",
+        "ko": "528 Hz • 미래의 지평선",
+        "ja": "528 Hz • 未来の地平線",
+        "fr": "528 Hz • Horizon futur",
+        "zh": "528 Hz • 未来地平线"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-12-future-horizon.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-13",
+      "frequency": "528 Hz",
+      "titles": {
+        "vi": "Dòng chảy vàng",
+        "en": "Golden flow",
+        "ko": "황금빛 흐름",
+        "ja": "黄金のフロー",
+        "fr": "Flux doré",
+        "zh": "金色流光"
+      },
+      "subtitles": {
+        "vi": "528 Hz • Tần số tái tạo & thu hút năng lượng tích cực",
+        "en": "528 Hz • Positive Energy & Renewal",
+        "ko": "528 Hz • 황금빛 흐름",
+        "ja": "528 Hz • 黄金のフロー",
+        "fr": "528 Hz • Flux doré",
+        "zh": "528 Hz • 金色流光"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-13-golden-flow.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-14",
+      "frequency": "396 Hz",
+      "titles": {
+        "vi": "Bình yên vững vàng",
+        "en": "Rooted calm",
+        "ko": "단단한 평온",
+        "ja": "揺るぎない静けさ",
+        "fr": "Calme enraciné",
+        "zh": "笃定宁静"
+      },
+      "subtitles": {
+        "vi": "396 Hz • Giải tỏa lo âu & bình yên nội tại",
+        "en": "396 Hz • Release Anxiety & Rooted Calm",
+        "ko": "396 Hz • 단단한 평온",
+        "ja": "396 Hz • 揺るぎない静けさ",
+        "fr": "396 Hz • Calme enraciné",
+        "zh": "396 Hz • 笃定宁静"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-14-rooted-calm.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-15",
+      "frequency": "888 Hz",
+      "titles": {
+        "vi": "Dòng chảy đủ đầy",
+        "en": "Abundance current",
+        "ko": "풍요의 물결",
+        "ja": "豊かさの流れ",
+        "fr": "Courant d'abondance",
+        "zh": "丰盛之流"
+      },
+      "subtitles": {
+        "vi": "888 Hz • Tần số thịnh vượng & dòng chảy đủ đầy",
+        "en": "888 Hz • Abundance & Prosperity Flow",
+        "ko": "888 Hz • 풍요의 물결",
+        "ja": "888 Hz • 豊かさの流れ",
+        "fr": "888 Hz • Courant d'abondance",
+        "zh": "888 Hz • 丰盛之流"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-15-abundance-current.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-16",
+      "frequency": "741 Hz",
+      "titles": {
+        "vi": "Handpan bầu trời rộng mở",
+        "en": "Open sky handpan",
+        "ko": "열린 하늘 핸드팬",
+        "ja": "広い空のハンドパン",
+        "fr": "Handpan à ciel ouvert",
+        "zh": "旷野手碟"
+      },
+      "subtitles": {
+        "vi": "741 Hz • Thanh lọc tâm trí & tự do khám phá",
+        "en": "741 Hz • Mind Cleansing & Awakening",
+        "ko": "741 Hz • 열린 하늘 핸드팬",
+        "ja": "741 Hz • 広い空のハンドパン",
+        "fr": "741 Hz • Handpan à ciel ouvert",
+        "zh": "741 Hz • 旷野手碟"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-16-open-sky-handpan.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-17",
+      "frequency": "639 Hz",
+      "titles": {
+        "vi": "R&B ambient ấm áp",
+        "en": "Warm R&B ambient",
+        "ko": "따뜻한 R&B 앰비언트",
+        "ja": "温かいR&Bアンビエント",
+        "fr": "Ambiance R&B chaleureuse",
+        "zh": "温暖 R&B 氛围"
+      },
+      "subtitles": {
+        "vi": "639 Hz • Tần số hài hòa & ấm áp cảm xúc",
+        "en": "639 Hz • Emotional Warmth & Harmony",
+        "ko": "639 Hz • 따뜻한 R&B 앰비언트",
+        "ja": "639 Hz • 温かいR&Bアンビエント",
+        "fr": "639 Hz • Ambiance R&B chaleureuse",
+        "zh": "639 Hz • 温暖 R&B 氛围"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-17-warm-rnb-ambient.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-18",
+      "frequency": "639 Hz",
+      "titles": {
+        "vi": "Không gian trái tim",
+        "en": "Heart space",
+        "ko": "마음의 공간",
+        "ja": "ハートの空間",
+        "fr": "Espace du cœur",
+        "zh": "心灵空间"
+      },
+      "subtitles": {
+        "vi": "639 Hz • Tần số tình yêu & chữa lành trái tim",
+        "en": "639 Hz • Heart Healing & Love Connection",
+        "ko": "639 Hz • 마음의 공간",
+        "ja": "639 Hz • ハートの空間",
+        "fr": "639 Hz • Espace du cœur",
+        "zh": "639 Hz • 心灵空间"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-18-heart-space.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-19",
+      "frequency": "852 Hz",
+      "titles": {
+        "vi": "Động lực tĩnh lặng",
+        "en": "Quiet momentum",
+        "ko": "고요한 원동력",
+        "ja": "静かな推進力",
+        "fr": "Élan silencieux",
+        "zh": "静谧动力"
+      },
+      "subtitles": {
+        "vi": "852 Hz • Đánh thức trực giác & sự tập trung tĩnh lặng",
+        "en": "852 Hz • Intuition & Quiet Focus",
+        "ko": "852 Hz • 고요한 원동력",
+        "ja": "852 Hz • 静かな推進力",
+        "fr": "852 Hz • Élan silencieux",
+        "zh": "852 Hz • 静谧动力"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-19-quiet-momentum.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-20",
+      "frequency": "963 Hz",
+      "titles": {
+        "vi": "Không gian mơ màng",
+        "en": "Dreamy ethereal",
+        "ko": "몽환적인 에테르",
+        "ja": "夢見心地のエーテル",
+        "fr": "Éther onirique",
+        "zh": "梦幻空灵"
+      },
+      "subtitles": {
+        "vi": "963 Hz • Tần số tĩnh lặng sâu & kết nối tâm thức",
+        "en": "963 Hz • Pure Serenity & Higher Consciousness",
+        "ko": "963 Hz • 몽환적인 에테르",
+        "ja": "963 Hz • 夢見心地のエーテル",
+        "fr": "963 Hz • Éther onirique",
+        "zh": "963 Hz • 梦幻空灵"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-20-dreamy-ethereal.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-21",
+      "frequency": "528 Hz",
+      "titles": {
+        "vi": "Giai điệu Giáng Sinh & lò sưởi ấm",
+        "en": "Christmas Carols & Warm Hearth",
+        "ko": "크리스마스 캐럴 & 따뜻한 벽난로",
+        "ja": "クリスマスキャロルと暖炉の音",
+        "fr": "Mélodie de Noël & feu de cheminée",
+        "zh": "圣诞颂歌与温暖壁炉"
+      },
+      "subtitles": {
+        "vi": "528 Hz • Chuông nhạc Giáng Sinh & lửa ấm phòng riêng",
+        "en": "528 Hz • Magical Christmas Celesta & Cozy Fireplace",
+        "ko": "528 Hz • 마법 같은 크리스마스 오르골 & 벽난로",
+        "ja": "528 Hz • クリスマスのオルゴールと暖炉のぬくもり",
+        "fr": "528 Hz • Carillons de Noël & crépitement du foyer",
+        "zh": "528 Hz • 圣诞八音盒旋律与温暖壁炉火光"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-21-gryffindor-hearth-chimes.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-22",
+      "frequency": "639 Hz",
+      "titles": {
+        "vi": "Acoustic chiều thu biết ơn",
+        "en": "Autumn Thanksgiving Acoustic",
+        "ko": "감사의 가을 어쿠스틱 기타",
+        "ja": "感謝の秋のアコースティックギター",
+        "fr": "Guitare acoustique d'automne",
+        "zh": "秋日感恩木吉他"
+      },
+      "subtitles": {
+        "vi": "639 Hz • Đàn guitar mộc ấm áp & nắng thu dịu ngọt",
+        "en": "639 Hz • Warm Fingerstyle Guitar & Golden Autumn Harmony",
+        "ko": "639 Hz • 따뜻한 어쿠스틱 선율과 가을의 풍요",
+        "ja": "639 Hz • 温かいギターの調べと実りの秋の調和",
+        "fr": "639 Hz • Guitare douce & harmonie dorée d'automne",
+        "zh": "639 Hz • 温暖指弹吉他与金色秋日和弦"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-22-autumn-harvest-acoustic.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "SO-23",
+      "frequency": "432 Hz",
+      "titles": {
+        "vi": "Đàn tranh & sáo trúc đón xuân Tết",
+        "en": "Tết Spring Zither & Bamboo Flute",
+        "ko": "설날 봄빛 베트남 가야금 & 대금",
+        "ja": "春のテト（旧正月）ベトナム琴と竹笛",
+        "fr": "Cithare du Têt & flûte de bambou",
+        "zh": "新春古筝与竹笛晨曲"
+      },
+      "subtitles": {
+        "vi": "432 Hz • Ngũ cung xuân quê hương & chim hót ban mai",
+        "en": "432 Hz • Traditional Spring Pentatonic & Morning Birdsong",
+        "ko": "432 Hz • 전통 봄 오음계 선율과 아침 새소리",
+        "ja": "432 Hz • 春の伝統五音階と朝の鳥のさえずり",
+        "fr": "432 Hz • Mélodie pentatonique du Têt & oiseaux du matin",
+        "zh": "432 Hz • 传统新春五声旋律与清晨鸟鸣"
+      },
+      "type": "music",
+      "assetPath": "assets/audio/music/so-23-peaceful-tet-spring-lullaby.m4a",
+      "delivery": "published"
+    },
+    {
+      "id": "GA-01",
+      "titles": {
+        "vi": "1 phút tái tạo",
+        "en": "1-Minute Reset",
+        "ko": "1분 리셋 명상",
+        "ja": "1分間リセット",
+        "fr": "Réinitialisation d'une minute",
+        "zh": "1 分钟身心重置"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-01-1-minute-reset.m4a",
+        "en": "assets/audio/guided/en/ga-01-1-minute-reset.m4a",
+        "ko": "assets/audio/guided/ko/ga-01-1-minute-reset.m4a",
+        "ja": "assets/audio/guided/ja/ga-01-1-minute-reset.m4a",
+        "fr": "assets/audio/guided/fr/ga-01-1-minute-reset.m4a",
+        "zh": "assets/audio/guided/zh/ga-01-1-minute-reset.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-02",
+      "titles": {
+        "vi": "Khởi đầu buổi sáng",
+        "en": "Morning Arrival",
+        "ko": "아침을 여는 현존",
+        "ja": "朝の目覚め",
+        "fr": "Éveil du matin",
+        "zh": "晨间觉知"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-02-morning-arrival.m4a",
+        "en": "assets/audio/guided/en/ga-02-morning-arrival.m4a",
+        "ko": "assets/audio/guided/ko/ga-02-morning-arrival.m4a",
+        "ja": "assets/audio/guided/ja/ga-02-morning-arrival.m4a",
+        "fr": "assets/audio/guided/fr/ga-02-morning-arrival.m4a",
+        "zh": "assets/audio/guided/zh/ga-02-morning-arrival.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-03",
+      "titles": {
+        "vi": "Biết ơn buổi sáng",
+        "en": "Morning Gratitude",
+        "ko": "아침 감사 명상",
+        "ja": "朝の感謝",
+        "fr": "Gratitude du matin",
+        "zh": "晨间感恩"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-03-morning-gratitude.m4a",
+        "en": "assets/audio/guided/en/ga-03-morning-gratitude.m4a",
+        "ko": "assets/audio/guided/ko/ga-03-morning-gratitude.m4a",
+        "ja": "assets/audio/guided/ja/ga-03-morning-gratitude.m4a",
+        "fr": "assets/audio/guided/fr/ga-03-morning-gratitude.m4a",
+        "zh": "assets/audio/guided/zh/ga-03-morning-gratitude.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-04",
+      "titles": {
+        "vi": "Nhận ra điều tốt lành",
+        "en": "Notice What Is Good",
+        "ko": "좋은 것들 알아차리기",
+        "ja": "良きものに気づく",
+        "fr": "Remarquer ce qui est bon",
+        "zh": "觉察生活中的美好"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-04-notice-what-is-good.m4a",
+        "en": "assets/audio/guided/en/ga-04-notice-what-is-good.m4a",
+        "ko": "assets/audio/guided/ko/ga-04-notice-what-is-good.m4a",
+        "ja": "assets/audio/guided/ja/ga-04-notice-what-is-good.m4a",
+        "fr": "assets/audio/guided/fr/ga-04-notice-what-is-good.m4a",
+        "zh": "assets/audio/guided/zh/ga-04-notice-what-is-good.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-05",
+      "titles": {
+        "vi": "Gặp gỡ phiên bản tương lai",
+        "en": "Meet Your Future Self",
+        "ko": "미래의 나와 만나기",
+        "ja": "未来の自分に出会う",
+        "fr": "Rencontrer votre futur moi",
+        "zh": "遇见未来的自己"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-05-meet-your-future-self.m4a",
+        "en": "assets/audio/guided/en/ga-05-meet-your-future-self.m4a",
+        "ko": "assets/audio/guided/ko/ga-05-meet-your-future-self.m4a",
+        "ja": "assets/audio/guided/ja/ga-05-meet-your-future-self.m4a",
+        "fr": "assets/audio/guided/fr/ga-05-meet-your-future-self.m4a",
+        "zh": "assets/audio/guided/zh/ga-05-meet-your-future-self.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-06",
+      "titles": {
+        "vi": "Một ngày lý tưởng của bạn",
+        "en": "Your Ideal Day",
+        "ko": "나의 이상적인 하루",
+        "ja": "理想の一日",
+        "fr": "Votre journée idéale",
+        "zh": "你理想中的一天"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-06-your-ideal-day.m4a",
+        "en": "assets/audio/guided/en/ga-06-your-ideal-day.m4a",
+        "ko": "assets/audio/guided/ko/ga-06-your-ideal-day.m4a",
+        "ja": "assets/audio/guided/ja/ga-06-your-ideal-day.m4a",
+        "fr": "assets/audio/guided/fr/ga-06-your-ideal-day.m4a",
+        "zh": "assets/audio/guided/zh/ga-06-your-ideal-day.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-07",
+      "titles": {
+        "vi": "Sự tự tin tĩnh lặng",
+        "en": "Quiet Confidence",
+        "ko": "고요한 자신감",
+        "ja": "静かな自信",
+        "fr": "Confiance sereine",
+        "zh": "沉静自信"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-07-quiet-confidence.m4a",
+        "en": "assets/audio/guided/en/ga-07-quiet-confidence.m4a",
+        "ko": "assets/audio/guided/ko/ga-07-quiet-confidence.m4a",
+        "ja": "assets/audio/guided/ja/ga-07-quiet-confidence.m4a",
+        "fr": "assets/audio/guided/fr/ga-07-quiet-confidence.m4a",
+        "zh": "assets/audio/guided/zh/ga-07-quiet-confidence.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-08",
+      "titles": {
+        "vi": "Yêu thương bản thân dịu dàng",
+        "en": "Soft Self-Love",
+        "ko": "다정한 자기 사랑",
+        "ja": "優しいセルフラブ",
+        "fr": "Douce bienveillance envers soi",
+        "zh": "温柔自爱"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-08-soft-self-love.m4a",
+        "en": "assets/audio/guided/en/ga-08-soft-self-love.m4a",
+        "ko": "assets/audio/guided/ko/ga-08-soft-self-love.m4a",
+        "ja": "assets/audio/guided/ja/ga-08-soft-self-love.m4a",
+        "fr": "assets/audio/guided/fr/ga-08-soft-self-love.m4a",
+        "zh": "assets/audio/guided/zh/ga-08-soft-self-love.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-09",
+      "titles": {
+        "vi": "Thả lỏng buổi tối",
+        "en": "Evening Release",
+        "ko": "저녁의 내려놓음",
+        "ja": "夜の手放し",
+        "fr": "Relâchement du soir",
+        "zh": "晚间释怀"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-09-evening-release.m4a",
+        "en": "assets/audio/guided/en/ga-09-evening-release.m4a",
+        "ko": "assets/audio/guided/ko/ga-09-evening-release.m4a",
+        "ja": "assets/audio/guided/ja/ga-09-evening-release.m4a",
+        "fr": "assets/audio/guided/fr/ga-09-evening-release.m4a",
+        "zh": "assets/audio/guided/zh/ga-09-evening-release.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-10",
+      "titles": {
+        "vi": "Biết ơn trước giờ ngủ",
+        "en": "Gratitude Before Sleep",
+        "ko": "잠들기 전 감사",
+        "ja": "眠りにつく前の感謝",
+        "fr": "Gratitude avant le sommeil",
+        "zh": "睡前感恩"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-10-gratitude-before-sleep.m4a",
+        "en": "assets/audio/guided/en/ga-10-gratitude-before-sleep.m4a",
+        "ko": "assets/audio/guided/ko/ga-10-gratitude-before-sleep.m4a",
+        "ja": "assets/audio/guided/ja/ga-10-gratitude-before-sleep.m4a",
+        "fr": "assets/audio/guided/fr/ga-10-gratitude-before-sleep.m4a",
+        "zh": "assets/audio/guided/zh/ga-10-gratitude-before-sleep.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-18",
+      "titles": {
+        "vi": "Bước vào tương lai của bạn",
+        "en": "Step into your future",
+        "ko": "미래로 걸어 들어가기",
+        "ja": "未来へ踏み出す",
+        "fr": "Entrer dans votre avenir",
+        "zh": "步入你的未来"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-18-step-into-your-future.m4a",
+        "en": "assets/audio/guided/en/ga-18-step-into-your-future.m4a",
+        "ko": "assets/audio/guided/ko/ga-18-step-into-your-future.m4a",
+        "ja": "assets/audio/guided/ja/ga-18-step-into-your-future.m4a",
+        "fr": "assets/audio/guided/fr/ga-18-step-into-your-future.m4a",
+        "zh": "assets/audio/guided/zh/ga-18-step-into-your-future.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-21",
+      "titles": {
+        "vi": "Tương lai tài chính của tôi",
+        "en": "My financial future",
+        "ko": "나의 재정적 미래",
+        "ja": "私の豊かな未来",
+        "fr": "Mon avenir financier",
+        "zh": "我的丰盛财务未来"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-21-my-financial-future.m4a",
+        "en": "assets/audio/guided/en/ga-21-my-financial-future.m4a",
+        "ko": "assets/audio/guided/ko/ga-21-my-financial-future.m4a",
+        "ja": "assets/audio/guided/ja/ga-21-my-financial-future.m4a",
+        "fr": "assets/audio/guided/fr/ga-21-my-financial-future.m4a",
+        "zh": "assets/audio/guided/zh/ga-21-my-financial-future.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-23",
+      "titles": {
+        "vi": "Mở lòng với tình yêu lành mạnh",
+        "en": "Open to healthy love",
+        "ko": "건강한 사랑에 마음 열기",
+        "ja": "健やかな愛に心を開く",
+        "fr": "S'ouvrir à un amour sain",
+        "zh": "敞开心扉迎接健康的爱"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-23-open-to-healthy-love.m4a",
+        "en": "assets/audio/guided/en/ga-23-open-to-healthy-love.m4a",
+        "ko": "assets/audio/guided/ko/ga-23-open-to-healthy-love.m4a",
+        "ja": "assets/audio/guided/ja/ga-23-open-to-healthy-love.m4a",
+        "fr": "assets/audio/guided/fr/ga-23-open-to-healthy-love.m4a",
+        "zh": "assets/audio/guided/zh/ga-23-open-to-healthy-love.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-25",
+      "titles": {
+        "vi": "Phiên bản sự nghiệp tương lai",
+        "en": "Future career self",
+        "ko": "미래의 커리어 자아",
+        "ja": "未来のキャリアの自分",
+        "fr": "Mon futur professionnel",
+        "zh": "未来的理想职业自我"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-25-future-career-self.m4a",
+        "en": "assets/audio/guided/en/ga-25-future-career-self.m4a",
+        "ko": "assets/audio/guided/ko/ga-25-future-career-self.m4a",
+        "ja": "assets/audio/guided/ja/ga-25-future-career-self.m4a",
+        "fr": "assets/audio/guided/fr/ga-25-future-career-self.m4a",
+        "zh": "assets/audio/guided/zh/ga-25-future-career-self.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-27",
+      "titles": {
+        "vi": "Cơ thể tôi chăm sóc",
+        "en": "A body I care for",
+        "ko": "내가 아끼고 돌보는 몸",
+        "ja": "大切に育む私の身体",
+        "fr": "Un corps dont je prends soin",
+        "zh": "我温柔呵护的身体"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-27-a-body-i-care-for.m4a",
+        "en": "assets/audio/guided/en/ga-27-a-body-i-care-for.m4a",
+        "ko": "assets/audio/guided/ko/ga-27-a-body-i-care-for.m4a",
+        "ja": "assets/audio/guided/ja/ga-27-a-body-i-care-for.m4a",
+        "fr": "assets/audio/guided/fr/ga-27-a-body-i-care-for.m4a",
+        "zh": "assets/audio/guided/zh/ga-27-a-body-i-care-for.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-28",
+      "titles": {
+        "vi": "Trở về ngôi nhà tương lai",
+        "en": "Come home to your future",
+        "ko": "미래의 집으로 돌아오기",
+        "ja": "未来の我が家へ帰る",
+        "fr": "Rentrer dans votre maison future",
+        "zh": "回到未来的家"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-28-come-home-to-your-future.m4a",
+        "en": "assets/audio/guided/en/ga-28-come-home-to-your-future.m4a",
+        "ko": "assets/audio/guided/ko/ga-28-come-home-to-your-future.m4a",
+        "ja": "assets/audio/guided/ja/ga-28-come-home-to-your-future.m4a",
+        "fr": "assets/audio/guided/fr/ga-28-come-home-to-your-future.m4a",
+        "zh": "assets/audio/guided/zh/ga-28-come-home-to-your-future.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-29",
+      "titles": {
+        "vi": "Cuộc sống thêm điều kỳ diệu",
+        "en": "A life with more wonder",
+        "ko": "경이로움이 가득한 삶",
+        "ja": "驚きと感動に満ちた人生",
+        "fr": "Une vie pleine d'émerveillement",
+        "zh": "充满奇迹与美好的生活"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-29-a-life-with-more-wonder.m4a",
+        "en": "assets/audio/guided/en/ga-29-a-life-with-more-wonder.m4a",
+        "ko": "assets/audio/guided/ko/ga-29-a-life-with-more-wonder.m4a",
+        "ja": "assets/audio/guided/ja/ga-29-a-life-with-more-wonder.m4a",
+        "fr": "assets/audio/guided/fr/ga-29-a-life-with-more-wonder.m4a",
+        "zh": "assets/audio/guided/zh/ga-29-a-life-with-more-wonder.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-30",
+      "titles": {
+        "vi": "Mái nhà giữa chúng ta",
+        "en": "A home between us",
+        "ko": "우리 사이의 따뜻한 집",
+        "ja": "私たちの間の温かい家",
+        "fr": "Un foyer entre nous",
+        "zh": "我们之间的温暖家园"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-30-a-home-between-us.m4a",
+        "en": "assets/audio/guided/en/ga-30-a-home-between-us.m4a",
+        "ko": "assets/audio/guided/ko/ga-30-a-home-between-us.m4a",
+        "ja": "assets/audio/guided/ja/ga-30-a-home-between-us.m4a",
+        "fr": "assets/audio/guided/fr/ga-30-a-home-between-us.m4a",
+        "zh": "assets/audio/guided/zh/ga-30-a-home-between-us.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-31",
+      "titles": {
+        "vi": "Trở về với chính mình",
+        "en": "Return to yourself",
+        "ko": "나 자신에게로 돌아오기",
+        "ja": "自分自身に還る",
+        "fr": "Revenir à soi-même",
+        "zh": "回归内在自我"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-31-return-to-yourself.m4a",
+        "en": "assets/audio/guided/en/ga-31-return-to-yourself.m4a",
+        "ko": "assets/audio/guided/ko/ga-31-return-to-yourself.m4a",
+        "ja": "assets/audio/guided/ja/ga-31-return-to-yourself.m4a",
+        "fr": "assets/audio/guided/fr/ga-31-return-to-yourself.m4a",
+        "zh": "assets/audio/guided/zh/ga-31-return-to-yourself.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-32",
+      "titles": {
+        "vi": "Lời mẹ dịu dàng đánh thức buổi sáng",
+        "en": "A Mother's Gentle Morning Greeting",
+        "ko": "아침을 깨우는 어머니의 다정한 인사",
+        "ja": "朝を包む母の優しい呼びかけ",
+        "fr": "Le doux bonjour d'une mère au matin",
+        "zh": "清晨母亲温柔的唤醒问候"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-32-mothers-morning-greeting.m4a",
+        "en": "assets/audio/guided/en/ga-32-mothers-morning-greeting.m4a",
+        "ko": "assets/audio/guided/ko/ga-32-mothers-morning-greeting.m4a",
+        "ja": "assets/audio/guided/ja/ga-32-mothers-morning-greeting.m4a",
+        "fr": "assets/audio/guided/fr/ga-32-mothers-morning-greeting.m4a",
+        "zh": "assets/audio/guided/zh/ga-32-mothers-morning-greeting.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-33",
+      "titles": {
+        "vi": "Đêm Giáng Sinh trong tháp cổ ấm áp",
+        "en": "Christmas Night in the Tower Sanctuary",
+        "ko": "고대 탑 안식처의 크리스마스 밤",
+        "ja": "古い塔の聖域で過ごすクリスマスの夜",
+        "fr": "Nuit de Noël dans le sanctuaire de la tour",
+        "zh": "古塔避风港里的温暖圣诞夜"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-33-gryffindor-winter-sanctuary.m4a",
+        "en": "assets/audio/guided/en/ga-33-gryffindor-winter-sanctuary.m4a",
+        "ko": "assets/audio/guided/ko/ga-33-gryffindor-winter-sanctuary.m4a",
+        "ja": "assets/audio/guided/ja/ga-33-gryffindor-winter-sanctuary.m4a",
+        "fr": "assets/audio/guided/fr/ga-33-gryffindor-winter-sanctuary.m4a",
+        "zh": "assets/audio/guided/zh/ga-33-gryffindor-winter-sanctuary.m4a"
+      },
+      "delivery": "published"
+    },
+    {
+      "id": "GA-34",
+      "titles": {
+        "vi": "Chiều thu biết ơn & đủ đầy",
+        "en": "Autumn Evening of Gratitude",
+        "ko": "감사와 풍요가 머무는 가을 저녁",
+        "ja": "感謝と豊かさに満ちた秋の宵",
+        "fr": "Soirée d'automne de gratitude",
+        "zh": "感恩与丰盛的秋日傍晚"
+      },
+      "type": "guided",
+      "localePaths": {
+        "vi": "assets/audio/guided/vi/ga-34-autumn-thanksgiving-gratitude.m4a",
+        "en": "assets/audio/guided/en/ga-34-autumn-thanksgiving-gratitude.m4a",
+        "ko": "assets/audio/guided/ko/ga-34-autumn-thanksgiving-gratitude.m4a",
+        "ja": "assets/audio/guided/ja/ga-34-autumn-thanksgiving-gratitude.m4a",
+        "fr": "assets/audio/guided/fr/ga-34-autumn-thanksgiving-gratitude.m4a",
+        "zh": "assets/audio/guided/zh/ga-34-autumn-thanksgiving-gratitude.m4a"
+      },
+      "delivery": "published"
+    }
   ],
   "visionBundles": [
-    {"categoryCode":"LOVE","guidedAudioId":"GA-23","affirmationCollectionId":"AF-08","soundIds":["SO-13","SO-18","SO-11"]},
-    {"categoryCode":"MONEY","guidedAudioId":"GA-21","affirmationCollectionId":"AF-07","soundIds":["SO-15","SO-17","SO-12"]},
-    {"categoryCode":"CAREER","guidedAudioId":"GA-25","affirmationCollectionId":"AF-06","soundIds":["SO-12","SO-19","SO-15"]},
-    {"categoryCode":"HOME","guidedAudioId":"GA-28","affirmationCollectionId":"AF-09","soundIds":["SO-14","SO-07","SO-03"]},
-    {"categoryCode":"TRAVEL","guidedAudioId":"GA-29","affirmationCollectionId":"AF-12","soundIds":["SO-16","SO-05","SO-20"]},
-    {"categoryCode":"HEALTH","guidedAudioId":"GA-27","affirmationCollectionId":"AF-10","soundIds":["SO-14","SO-10"]},
-    {"categoryCode":"FAMILY","guidedAudioId":"GA-30","affirmationCollectionId":"AF-08B","soundIds":["SO-18","SO-07","SO-11"]},
-    {"categoryCode":"GROWTH","guidedAudioId":"GA-18","affirmationCollectionId":"AF-13","soundIds":["SO-13","SO-12","SO-20"]},
-    {"categoryCode":"PEACE","guidedAudioId":"GA-31","affirmationCollectionId":"AF-11","soundIds":["SO-14","SO-09","SO-10"]}
+    {
+      "categoryCode": "LOVE",
+      "guidedAudioId": "GA-23",
+      "affirmationCollectionId": "AF-08",
+      "soundIds": [
+        "SO-13",
+        "SO-18",
+        "SO-11"
+      ]
+    },
+    {
+      "categoryCode": "MONEY",
+      "guidedAudioId": "GA-21",
+      "affirmationCollectionId": "AF-07",
+      "soundIds": [
+        "SO-15",
+        "SO-17",
+        "SO-12"
+      ]
+    },
+    {
+      "categoryCode": "CAREER",
+      "guidedAudioId": "GA-25",
+      "affirmationCollectionId": "AF-06",
+      "soundIds": [
+        "SO-12",
+        "SO-19",
+        "SO-15"
+      ]
+    },
+    {
+      "categoryCode": "HOME",
+      "guidedAudioId": "GA-28",
+      "affirmationCollectionId": "AF-09",
+      "soundIds": [
+        "SO-14",
+        "SO-07",
+        "SO-03"
+      ]
+    },
+    {
+      "categoryCode": "TRAVEL",
+      "guidedAudioId": "GA-29",
+      "affirmationCollectionId": "AF-12",
+      "soundIds": [
+        "SO-16",
+        "SO-05",
+        "SO-20"
+      ]
+    },
+    {
+      "categoryCode": "HEALTH",
+      "guidedAudioId": "GA-27",
+      "affirmationCollectionId": "AF-10",
+      "soundIds": [
+        "SO-14",
+        "SO-10"
+      ]
+    },
+    {
+      "categoryCode": "FAMILY",
+      "guidedAudioId": "GA-30",
+      "affirmationCollectionId": "AF-08B",
+      "soundIds": [
+        "SO-18",
+        "SO-07",
+        "SO-11"
+      ]
+    },
+    {
+      "categoryCode": "GROWTH",
+      "guidedAudioId": "GA-18",
+      "affirmationCollectionId": "AF-13",
+      "soundIds": [
+        "SO-13",
+        "SO-12",
+        "SO-20"
+      ]
+    },
+    {
+      "categoryCode": "PEACE",
+      "guidedAudioId": "GA-31",
+      "affirmationCollectionId": "AF-11",
+      "soundIds": [
+        "SO-14",
+        "SO-09",
+        "SO-10"
+      ]
+    }
   ]
 }

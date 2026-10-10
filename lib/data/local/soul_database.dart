@@ -103,7 +103,7 @@ class ReminderPreferences extends Table {
 class Visions extends Table {
   TextColumn get id => text()();
   TextColumn get categoryCode => text()();
-  TextColumn get statement => text().withLength(min: 1, max: 500)();
+  TextColumn get statement => text().withLength(min: 1, max: 2000)();
 
   /// Image path relative to the app support directory.
   TextColumn get imagePath => text().nullable()();

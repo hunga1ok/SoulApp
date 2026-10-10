@@ -22,8 +22,8 @@ void main() {
       chooseOne: 'Chọn ít nhất một điều để bắt đầu nhé.',
       next: 'Tiếp tục',
       evening: 'Nhìn lại buổi tối',
-      ready: 'Hành trình 28 ngày đã sẵn sàng',
-      begin: 'Bắt đầu Ngày 1',
+      ready: 'Đầu tư cho ước mơ và sự kiên định của bạn',
+      begin: 'Cam kết & Bắt đầu hành trình',
       welcome: 'Chào An',
     ),
     (
@@ -33,14 +33,14 @@ void main() {
       chooseOne: 'Choose at least one to begin.',
       next: 'Continue',
       evening: 'Evening reflection',
-      ready: 'Your 28-day journey is ready',
-      begin: 'Begin Day 1',
+      ready: 'Invest in your dreams and your perseverance',
+      begin: 'Commit & Begin Journey',
       welcome: 'Welcome An',
     ),
   ];
 
   for (final c in cases) {
-    testWidgets('${c.locale.name}: intention, reminders and journey start '
+    testWidgets('${c.locale.name}: intention, reminders and commitment paywall '
         'lead to Today and are saved on the device', (tester) async {
       final database = testDatabase();
       final permissions = FakeNotificationPermissions();
@@ -93,13 +93,19 @@ void main() {
       expect(byKind['morning']!.timezone, testTimezone);
       expect(permissions.requests, 1);
 
-      // Journey ready: Day 1 starts and onboarding never shows again.
+      // Onboarding Payment & Commitment screen ($2/monthly, $20/year, $50/lifetime)
       expect(find.text(c.ready), findsOneWidget);
+      expect(find.text(r'$2 / monthly'), findsOneWidget);
+      expect(find.text(r'$20 / year'), findsOneWidget);
+      expect(find.text(r'$50 / lifetime'), findsOneWidget);
+
+      await tester.ensureVisible(find.text(c.begin));
       await tester.tap(find.text(c.begin));
       await tester.pumpAndSettle();
 
       expect(find.byType(TodayScreen), findsOneWidget);
       expect(find.text(c.welcome), findsOneWidget);
+      expect(prefs.getString('subscription_plan'), 'yearly');
       expect(prefs.getBool('onboarding_completed'), isTrue);
       final journeys = await database.select(database.userJourneys).get();
       expect(journeys, hasLength(1));
@@ -109,8 +115,8 @@ void main() {
     });
   }
 
-  testWidgets('skipping reminders saves them off and never asks for '
-      'permission', (tester) async {
+  testWidgets('skipping reminders saves them off, never asks for '
+      'permission, and moves to the commitment screen', (tester) async {
     final database = testDatabase();
     final permissions = FakeNotificationPermissions();
     await pumpSoulApp(
@@ -156,23 +162,24 @@ void main() {
     expect(find.byType(IntentionScreen), findsOneWidget);
   });
 
-  testWidgets('a relaunch after the reminder step resumes at journey ready', (
-    tester,
-  ) async {
-    await pumpSoulApp(
-      tester,
-      preferences: {
-        ..._afterName(SoulLocale.en),
-        'onboarding_intentions': ['FIND_PEACE'],
-        'onboarding_reminders_decided': true,
-      },
-    );
+  testWidgets(
+    'a relaunch after the reminder step resumes at the commitment paywall',
+    (tester) async {
+      await pumpSoulApp(
+        tester,
+        preferences: {
+          ..._afterName(SoulLocale.en),
+          'onboarding_intentions': ['FIND_PEACE'],
+          'onboarding_reminders_decided': true,
+        },
+      );
 
-    expect(find.byType(JourneyReadyScreen), findsOneWidget);
-  });
+      expect(find.byType(JourneyReadyScreen), findsOneWidget);
+    },
+  );
 
-  testWidgets('a relaunch after the journey started but before onboarding '
-      'was marked complete does not start a second run', (tester) async {
+  testWidgets('starting the journey when one already exists '
+      'does not start a second run', (tester) async {
     final database = testDatabase();
     final preferences = {
       ..._afterName(SoulLocale.en),
@@ -195,7 +202,8 @@ void main() {
         );
     await pumpSoulApp(tester, preferences: preferences, database: database);
 
-    await tester.tap(find.text('Begin Day 1'));
+    await tester.ensureVisible(find.text('Commit & Begin Journey'));
+    await tester.tap(find.text('Commit & Begin Journey'));
     await tester.pumpAndSettle();
 
     expect(find.byType(TodayScreen), findsOneWidget);

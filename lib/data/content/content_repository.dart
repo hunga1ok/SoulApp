@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/localization/soul_locale.dart';
 import 'audio_catalog.dart';
 import 'card_catalog.dart';
+import 'comfort_zone_catalog.dart';
 import 'vision_catalog.dart';
 
 /// A localized onboarding intention from the content bundle.
@@ -50,6 +51,9 @@ class ContentRepository {
   Future<CardCatalog> cardCatalog(SoulLocale locale) async =>
       CardCatalog.fromJson(await _load('card_decks.json'), locale);
 
+  Future<ComfortZoneCatalog> comfortZoneCatalog(SoulLocale locale) async =>
+      ComfortZoneCatalog.fromJson(await _load('comfort_zone.json'), locale);
+
   Future<List<Intention>> intentions(SoulLocale locale) async {
     final json = await _load('intentions.json');
     final items =
@@ -61,7 +65,10 @@ class ContentRepository {
         Intention(
           code: item['code'] as String,
           label:
-              (item['text'] as Map<String, dynamic>)[locale.name]['label']
+              (((item['text'] as Map<String, dynamic>)[locale.name] ??
+                          (item['text'] as Map<String, dynamic>)['en'] ??
+                          (item['text'] as Map<String, dynamic>)['vi'])
+                      as Map<String, dynamic>)['label']
                   as String,
         ),
     ];

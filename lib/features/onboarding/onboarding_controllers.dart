@@ -39,10 +39,17 @@ class ReminderStepController
     await ref
         .read(reminderRepositoryProvider)
         .save(choices, timezone: timezone);
+    final appState = ref.read(appStateProvider);
+    final permissions = ref.read(notificationPermissionsProvider);
     if (choices.values.any((choice) => choice.enabled)) {
-      await ref.read(notificationPermissionsProvider).request();
+      await permissions.request();
     }
-    await ref.read(appStateProvider).markRemindersDecided();
+    await permissions.scheduleDailyReminders(
+      choices: choices,
+      locale: appState.locale ?? SoulLocale.en,
+      preferredName: appState.preferredName,
+    );
+    await appState.markRemindersDecided();
   }
 }
 
@@ -51,16 +58,17 @@ final journeyStartProvider =
       JourneyStartController.new,
     );
 
-/// Starts Day 1 and completes onboarding: idle, starting, or failed.
+/// Saves the selected commitment plan, starts Day 1, and completes onboarding.
 class JourneyStartController extends AutoDisposeNotifier<AsyncValue<void>> {
   @override
   AsyncValue<void> build() => const AsyncData(null);
 
-  Future<void> start() async {
+  Future<void> start([String plan = 'yearly']) async {
     if (state.isLoading) return;
     state = const AsyncLoading();
     state = await AsyncValue.guard(() async {
       final appState = ref.read(appStateProvider);
+      await appState.saveSubscriptionPlan(plan);
       await ref
           .read(journeyRepositoryProvider)
           .startJourney(

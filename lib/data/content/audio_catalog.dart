@@ -16,25 +16,74 @@ class SoulAudioAsset {
     required this.type,
     required this.delivery,
     this.assetPath,
+    this.frequency,
     this.localePaths = const {},
     this.titles = const {},
+    this.subtitles = const {},
   });
 
   final String id;
   final String type;
   final AudioDelivery delivery;
   final String? assetPath;
+  final String? frequency;
   final Map<SoulLocale, String> localePaths;
   final Map<SoulLocale, String> titles;
+  final Map<SoulLocale, String> subtitles;
 
-  String titleFor(SoulLocale locale) => titles[locale] ?? id;
+  String titleFor(SoulLocale locale) =>
+      titles[locale] ?? titles[SoulLocale.en] ?? titles[SoulLocale.vi] ?? id;
+
+  /// Title combined with frequency tag (e.g. "Bình yên vững vàng · 396 Hz")
+  /// for compact selectors like dropdowns and pills.
+  String displayLabelFor(SoulLocale locale) {
+    final base = titleFor(locale);
+    final freq = frequency;
+    if (freq == null || freq.isEmpty || isGuided) return base;
+    return '$base · $freq';
+  }
+
+  /// Detailed frequency & healing purpose subtitle for audio lists and player.
+  String subtitleFor(SoulLocale locale) {
+    final custom =
+        subtitles[locale] ??
+        subtitles[SoulLocale.en] ??
+        subtitles[SoulLocale.vi];
+    if (custom != null && custom.isNotEmpty) return custom;
+    if (isGuided) {
+      return switch (locale) {
+        SoulLocale.vi => 'Bài dẫn thiền định • Nền tần số 432 Hz',
+        SoulLocale.en => 'Guided Meditation • 432 Hz Background',
+        SoulLocale.ko => '가이드 명상 • 432 Hz 배경 주파수',
+        SoulLocale.ja => 'ガイド付き瞑想 • 432 Hz 背景周波数',
+        SoulLocale.fr => 'Méditation guidée • Fond fréquentiel 432 Hz',
+        SoulLocale.zh => '引导冥想 • 432 Hz 背景频率',
+      };
+    }
+    if (frequency != null && frequency!.isNotEmpty) {
+      return frequency!;
+    }
+    return switch (locale) {
+      SoulLocale.vi => 'Âm thanh tự nhiên & Thư giãn',
+      SoulLocale.en => 'Nature & Ambience',
+      SoulLocale.ko => '자연의 소리 & 휴식',
+      SoulLocale.ja => '自然音＆アンビエンス',
+      SoulLocale.fr => 'Sons de la nature & Ambiance',
+      SoulLocale.zh => '自然之声与舒缓氛围',
+    };
+  }
 
   bool get isGuided => localePaths.isNotEmpty;
 
-  /// Guided voice can only resolve to the selected app language. Music and
-  /// ambience are language-neutral and use [assetPath].
+  /// Guided voice resolves to the selected app language (falling back to en/vi
+  /// if a specific localized recording is not bundled). Music and ambience are
+  /// language-neutral and use [assetPath].
   String? pathFor(SoulLocale locale) =>
-      isGuided ? localePaths[locale] : assetPath;
+      isGuided
+          ? (localePaths[locale] ??
+              localePaths[SoulLocale.en] ??
+              localePaths[SoulLocale.vi])
+          : assetPath;
 }
 
 class VisionAudioBundle {
@@ -64,9 +113,15 @@ class AudioCatalog {
           type: raw['type'] as String,
           delivery: _deliveryFromJson(raw['delivery'] as String),
           assetPath: raw['assetPath'] as String?,
+          frequency: raw['frequency'] as String?,
           titles: {
             for (final entry
                 in (raw['titles'] as Map<String, dynamic>? ?? {}).entries)
+              SoulLocale.values.byName(entry.key): entry.value as String,
+          },
+          subtitles: {
+            for (final entry
+                in (raw['subtitles'] as Map<String, dynamic>? ?? {}).entries)
               SoulLocale.values.byName(entry.key): entry.value as String,
           },
           localePaths: {

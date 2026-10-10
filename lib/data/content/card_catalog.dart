@@ -71,7 +71,9 @@ class CardCatalog {
           SoulCardItem(
             id: cj['id'] as String,
             number: cj['number'] as int,
-            text: (textMap[lang] ?? textMap['vi'] ?? '') as String,
+            text:
+                (textMap[lang] ?? textMap['en'] ?? textMap['vi'] ?? '')
+                    as String,
             imagePrompt: (cj['imagePrompt'] ?? '') as String,
             imagePath: cj['imagePath'] as String,
           ),
@@ -82,9 +84,17 @@ class CardCatalog {
         CardDeck(
           id: dj['id'] as String,
           code: dj['code'] as String,
-          title: (titleMap[lang] ?? titleMap['vi'] ?? '') as String,
-          subtitle: (subtitleMap[lang] ?? subtitleMap['vi'] ?? '') as String,
-          description: (descMap[lang] ?? descMap['vi'] ?? '') as String,
+          title:
+              (titleMap[lang] ?? titleMap['en'] ?? titleMap['vi'] ?? '')
+                  as String,
+          subtitle:
+              (subtitleMap[lang] ??
+                      subtitleMap['en'] ??
+                      subtitleMap['vi'] ??
+                      '')
+                  as String,
+          description:
+              (descMap[lang] ?? descMap['en'] ?? descMap['vi'] ?? '') as String,
           ambientTrackId: dj['ambientTrackId'] as String,
           cardCount: dj['cardCount'] as int,
           cards: List.unmodifiable(cards),

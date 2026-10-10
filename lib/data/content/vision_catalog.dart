@@ -82,10 +82,14 @@ class VisionCatalog {
   });
 
   factory VisionCatalog.fromJson(Map<String, dynamic> json, SoulLocale locale) {
-    String text(Map<String, dynamic> item, String field) =>
-        ((item['text'] as Map<String, dynamic>)[locale.name]
-                as Map<String, dynamic>)[field]
-            as String;
+    String text(Map<String, dynamic> item, String field) {
+      final textMap = item['text'] as Map<String, dynamic>;
+      final langMap =
+          (textMap[locale.name] ?? textMap['en'] ?? textMap['vi'])
+              as Map<String, dynamic>;
+      return (langMap[field] ?? '') as String;
+    }
+
     List<Map<String, dynamic>> items(String key) =>
         (json[key] as List).cast<Map<String, dynamic>>();
 

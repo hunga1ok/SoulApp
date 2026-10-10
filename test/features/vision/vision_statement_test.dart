@@ -82,7 +82,7 @@ void main() {
         locale: SoulLocale.vi,
       );
 
-      expect(statement, startsWith('Tầm nhìn của tôi'));
+      expect(statement, isNot(startsWith('Tầm nhìn của tôi')));
       expect(statement, contains(' và Viết sách'));
       for (final question in questions) {
         expect(statement, contains(question.options.first.label.toLowerCase()));

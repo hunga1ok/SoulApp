@@ -299,14 +299,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skipForNow => 'Skip for now';
 
   @override
-  String get journeyReadyTitle => 'Your 28-day journey is ready';
+  String get journeyReadyTitle => 'Invest in your dreams and your perseverance';
 
   @override
   String get journeyReadyBody =>
-      'You do not need to be perfect. Just begin with 5 mindful minutes today.';
+      'A small investment is a heartfelt promise to yourself — to stay devoted to your dreams each day, cherish the present, and walk your path of inner transformation with true commitment.';
 
   @override
-  String get beginDayOne => 'Begin Day 1';
+  String get beginDayOne => 'Commit & Begin Journey';
 
   @override
   String get chooseCategoryTitle => 'Choose an area';
@@ -426,7 +426,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'A calm, peaceful sanctuary to pause, listen, and gently nurture your spirit every day.';
 
   @override
-  String get welcomeTitle2 => '28-Day Gratitude Journey';
+  String get welcomeTitle2 => 'Gratitude Practice';
 
   @override
   String get welcomeSubtitle2 =>
@@ -819,4 +819,165 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hideGuidance => 'Hide guidance';
+
+  @override
+  String get comfortZoneTitle => 'Comfort Zone';
+
+  @override
+  String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
+
+  @override
+  String get comfortZoneBannerSubtitle =>
+      'A Little World Where You Feel Safe — Peaceful sanctuaries with live animations and healing audio';
+
+  @override
+  String comfortZoneAllSpaces(int count) {
+    return 'All ($count)';
+  }
+
+  @override
+  String get comfortZoneFavorites => 'Favorites';
+
+  @override
+  String get comfortZoneFavoritesEmpty =>
+      'No favorite spaces yet. Tap the heart icon on any space to save it here.';
+
+  @override
+  String get comfortZoneEnterSpace => 'Enter space';
+
+  @override
+  String get comfortZoneAmbientSound => 'Ambient & Music';
+
+  @override
+  String get comfortZoneGuidedAudio => 'Guided Audio';
+
+  @override
+  String get comfortZoneZenMode => 'Zen view';
+
+  @override
+  String get comfortZoneExitZenMode => 'Show controls';
+
+  @override
+  String get comfortZoneBreathingGuide => 'Breathing guide';
+
+  @override
+  String get comfortZoneBreatheIn => 'Breathe in gently...';
+
+  @override
+  String get comfortZoneBreatheHold => 'Hold softly...';
+
+  @override
+  String get comfortZoneBreatheOut => 'Breathe out slowly...';
+
+  @override
+  String get comfortZoneRecentSpace => 'Recently visited';
+
+  @override
+  String comfortZoneScenesCount(int count) {
+    return '$count spaces';
+  }
+
+  @override
+  String get comfortZonePreviousSpace => 'Previous space';
+
+  @override
+  String get comfortZoneNextSpace => 'Next space';
+
+  @override
+  String get notificationPreviewSectionTitle => 'Soul Notification Format';
+
+  @override
+  String notificationMorningTitle(String name) {
+    return 'Good morning, $name 🌿';
+  }
+
+  @override
+  String get notificationMorningBody =>
+      'Take a slow breath. What small gratitude would you like to plant for today?';
+
+  @override
+  String notificationEveningTitle(String name) {
+    return 'Wind down gently, $name 🌙';
+  }
+
+  @override
+  String get notificationEveningBody =>
+      'Before rest, hold onto one peaceful moment or quiet kindness from today.';
+
+  @override
+  String get notificationPrivacyNote =>
+      'Strict privacy: Lock-screen notifications never expose your private journal notes or future letters.';
+
+  @override
+  String get notificationSendTest => 'Send test notification';
+
+  @override
+  String get notificationTestSent =>
+      'Sample notification sent! Check your device notification shade.';
+
+  @override
+  String get homeWidgetTitle => 'Home Screen Widget';
+
+  @override
+  String get homeWidgetSubtitle =>
+      'Pin your favorite Comfort Zone sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.';
+
+  @override
+  String get homeWidgetBannerSubtitle =>
+      'Pin Comfort Zone, Healing Sounds & Vision to your phone\'s home screen';
+
+  @override
+  String get homeWidgetModeLabel => 'Widget Content Source';
+
+  @override
+  String get homeWidgetModeComfortZone => 'Comfort Zone';
+
+  @override
+  String get homeWidgetModeSound => 'Sound & Frequency';
+
+  @override
+  String get homeWidgetModeVision => 'My Vision';
+
+  @override
+  String get homeWidgetModeGratitude => 'Daily Gratitude';
+
+  @override
+  String get homeWidgetModeCard => 'Soul Card Message';
+
+  @override
+  String get homeWidgetSelectSpace => 'Choose Comfort Zone Space';
+
+  @override
+  String get homeWidgetSelectSound => 'Choose Healing Sound / Frequency';
+
+  @override
+  String get homeWidgetSpaceFooter => 'Tap to enter your safe sanctuary ✦';
+
+  @override
+  String get homeWidgetSoundFooter => 'Tap to play healing frequency ✦';
+
+  @override
+  String get homeWidgetThemeLabel => 'Widget Style';
+
+  @override
+  String get homeWidgetThemePlum => 'Plum Dusk';
+
+  @override
+  String get homeWidgetThemePaper => 'Warm Paper';
+
+  @override
+  String get homeWidgetThemeRose => 'Rose Dawn';
+
+  @override
+  String get homeWidgetPinButton => 'Add Widget to Home Screen';
+
+  @override
+  String get homeWidgetSyncButton => 'Sync Widget Now';
+
+  @override
+  String get homeWidgetSyncedSuccess => 'Home screen widget updated!';
+
+  @override
+  String get homeWidgetHowToHint =>
+      'Tip: Tap the Add button above, or long-press an empty area on your phone\'s home screen → select Widgets → choose Soul.';
 }

@@ -3,9 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app_state.dart';
+import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
+import '../../core/platform/device_services.dart';
+import '../../data/repositories/reminder_repository.dart';
 import '../../l10n/app_localizations.dart';
 import '../onboarding/onboarding_screens.dart';
+import 'home_widget_screen.dart';
 import 'reminder_settings_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -48,12 +52,100 @@ class ProfileScreen extends ConsumerWidget {
                     ? Icons.volume_up_outlined
                     : Icons.volume_off_outlined,
             label: soundEnabled ? l10n.soundOn : l10n.soundOff,
-            onTap: () => state.setSoundEnabled(!soundEnabled),
+            onTap: () async {
+              final newSound = !soundEnabled;
+              await state.setSoundEnabled(newSound);
+              if (!newSound) {
+                await ref.read(audioPlaybackProvider).stop();
+              }
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: SoulSpace.sm),
+            child: Row(
+              children: [
+                const Icon(Icons.language_rounded, color: SoulColors.plum),
+                const SizedBox(width: SoulSpace.md),
+                Expanded(
+                  child: Text(
+                    l10n.language,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Flexible(
+                  child: Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton<SoulLocale>(
+                          value: state.locale ?? SoulLocale.vi,
+                          isDense: true,
+                          alignment: AlignmentDirectional.centerEnd,
+                          borderRadius: BorderRadius.circular(
+                            SoulRadius.button,
+                          ),
+                          style: Theme.of(
+                            context,
+                          ).textTheme.bodyMedium?.copyWith(
+                            color: SoulColors.plum,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          icon: const Padding(
+                            padding: EdgeInsets.only(left: 4),
+                            child: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: SoulColors.plum,
+                              size: 20,
+                            ),
+                          ),
+                          items: [
+                            for (final itemLocale in SoulLocale.values)
+                              DropdownMenuItem(
+                                value: itemLocale,
+                                child: Text(switch (itemLocale) {
+                                  SoulLocale.vi => l10n.vietnameseLanguage,
+                                  SoulLocale.en => l10n.englishLanguage,
+                                  _ => itemLocale.endonym,
+                                }),
+                              ),
+                          ],
+                          onChanged: (locale) async {
+                            if (locale == null) return;
+                            await ref.read(audioPlaybackProvider).stop();
+                            await ref
+                                .read(appStateProvider)
+                                .selectLocale(locale);
+                            final choices =
+                                await ref
+                                    .read(reminderRepositoryProvider)
+                                    .load();
+                            await ref
+                                .read(notificationPermissionsProvider)
+                                .scheduleDailyReminders(
+                                  choices: choices,
+                                  locale: locale,
+                                  preferredName:
+                                      ref.read(appStateProvider).preferredName,
+                                );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           _SettingRow(
-            icon: Icons.language_rounded,
-            label: l10n.language,
-            onTap: () => _showLanguagePicker(context, ref),
+            icon: Icons.widgets_outlined,
+            label: l10n.homeWidgetTitle,
+            onTap:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HomeWidgetScreen()),
+                ),
           ),
           _SettingRow(
             icon: Icons.notifications_none_rounded,
@@ -100,36 +192,11 @@ class ProfileScreen extends ConsumerWidget {
       confirmLabel: l10n.signOut,
     );
     if (!confirmed) return;
+    await ref.read(audioPlaybackProvider).stop();
     await ref.read(appStateProvider).resetAll();
     if (context.mounted) {
       context.go('/language');
     }
-  }
-
-  Future<void> _showLanguagePicker(BuildContext context, WidgetRef ref) async {
-    await showSoulBottomSheet<void>(
-      context: context,
-      builder:
-          (sheetContext) => Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                title: Text(AppLocalizations.of(context)!.vietnameseLanguage),
-                onTap: () {
-                  Navigator.pop(sheetContext);
-                  ref.read(appStateProvider).selectLocale(SoulLocale.vi);
-                },
-              ),
-              ListTile(
-                title: Text(AppLocalizations.of(context)!.englishLanguage),
-                onTap: () {
-                  Navigator.pop(sheetContext);
-                  ref.read(appStateProvider).selectLocale(SoulLocale.en);
-                },
-              ),
-            ],
-          ),
-    );
   }
 }
 

@@ -1,0 +1,440 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Soul",
+  "today": "今日",
+  "vision": "ビジョン",
+  "journal": "ジャーナル",
+  "explore": "探索",
+  "continueLabel": "次へ",
+  "welcome": "ようこそ、{name}さん",
+  "@welcome": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "whatShouldWeCallYou": "Soulから何とお呼びしましょうか？",
+  "nameHint": "お名前またはニックネーム",
+  "saveAndContinue": "保存して次へ",
+  "todayRhythm": "今日のリズム",
+  "oneSmallAction": "ひとつの小さな行動",
+  "smallActionText": "今日出会う誰かに、心の中でそっと感謝を送るか、温かい笑顔を向けてみましょう。",
+  "recent": "最近のノート",
+  "oneNote": "1件のノート",
+  "gratitudeToday": "感謝 · 今日",
+  "gratitudeNote": "この人生に感謝しています",
+  "gratitudeJournalTitle": "感謝ジャーナル",
+  "gratitudeJournalHint": "感謝の想いはすべて、あなたの心に蒔かれる安らぎの種です。",
+  "gratitudeNoteLabel": "今日、何に感謝していますか？",
+  "saveNote": "ノートを保存",
+  "gratitudeNotesEmpty": "まだノートがありません。下のボタンから最初のノートを作成しましょう。",
+  "yourVisions": "あなたのビジョンボード",
+  "createVision": "ビジョンを作成",
+  "visionEmptyTitle": "夢のための空間を作りましょう",
+  "visionEmptyBody": "意味のあるビジョンは、あなたの心の奥底にある純粋な願いから始まります。",
+  "audioPending": "オーディオ準備中",
+  "visionAudio": "ビジョン・サウンドトラック",
+  "visionAudioBody": "Soulの音楽や端末内のオーディオファイルを選ぶか、あなた自身のアファメーションを録音しましょう。",
+  "visionAudioEmpty": "サウンドトラックはまだ追加されていません。",
+  "visionAudioPersonal": "この端末のみに保存",
+  "addAudio": "オーディオを追加",
+  "audioLibrary": "オーディオライブラリ",
+  "chooseFromAudioLibrary": "Soulライブラリから選択",
+  "chooseAudioFile": "端末からオーディオファイルを選択",
+  "recordAudio": "音声アファメーションを録音",
+  "stopRecording": "録音を停止して保存",
+  "myRecording": "マイ録音",
+  "removeAudio": "オーディオを削除",
+  "audioGuided": "ガイド付き瞑想",
+  "audioMusic": "ヒーリング＆周波数音楽",
+  "audioRest": "自然音＆深いリラクゼーション",
+  "audioLibraryNote": "心を鎮め、魂を高めるために厳選されたアンビエントサウンドと432Hz/528Hz周波数トラック。",
+  "nowPlaying": "再生中",
+  "stop": "停止",
+  "allAudio": "すべて",
+  "audioNature": "自然音＆アンビエンス",
+  "audioMusicTab": "音楽＆サウンドスケープ",
+  "audioGuidedTab": "ガイド付き瞑想",
+  "recommendedForVision": "このビジョンへのおすすめ",
+  "exploreTitle": "Soul サンクチュアリ",
+  "exploreBody": "内なる自分を育むヒーリングサウンド、ガイド付き瞑想、心に響く知恵を見つけましょう。",
+  "exploreTabAll": "すべて",
+  "exploreTabAudio": "Soul オーディオ",
+  "exploreTabMeditation": "瞑想",
+  "exploreTabPodcast": "ポッドキャスト",
+  "exploreTabFrequency": "周波数",
+  "exploreOpenYouTube": "YouTubeで見る",
+  "exploreOpenSpotify": "Spotifyで聴く",
+  "profile": "プロフィールと設定",
+  "soundOn": "サウンド ON",
+  "soundOff": "サウンド OFF",
+  "language": "言語",
+  "editName": "呼び名を編集",
+  "signOut": "サインアウト",
+  "back": "戻る",
+  "dayProgress": "28日中の{day}日目",
+  "@dayProgress": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "authTagline": "あなたの魂のための、静かでプライベートな聖域。",
+  "morningGratitude": "朝の感謝ワーク",
+  "neutralInstrumentalFiveMinutes": "穏やかなピアノ · 5分",
+  "play": "再生",
+  "vietnameseLanguage": "ベトナム語",
+  "englishLanguage": "英語",
+  "languageEndonymVi": "Tiếng Việt",
+  "languageEndonymEn": "English",
+  "retry": "再試行",
+  "loading": "読み込み中...",
+  "pause": "一時停止",
+  "cancel": "キャンセル",
+  "somethingWentWrong": "問題が発生しました。もう一度お試しください。",
+  "save": "保存",
+  "nameTooLong": "{max}文字以内で入力してください。",
+  "@nameTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "intentionTitle": "今日、どんな想いでSoulを訪れましたか？",
+  "intentionBody": "今あなたにとって最も大切なものを選んでください。間違いはありません。",
+  "intentionChooseOne": "始めるには少なくとも1つ選択してください。",
+  "remindersTitle": "毎日の小さなリズム",
+  "remindersBody": "一日を穏やかに始め、優しく締めくくる2つの時間を選びましょう。",
+  "reminderMorning": "朝のリマインダー",
+  "reminderEvening": "夜の振り返り",
+  "changeReminderTime": "{reminder}の時間を変更（現在 {time}）",
+  "@changeReminderTime": {
+    "placeholders": {
+      "reminder": {},
+      "time": {}
+    }
+  },
+  "skipForNow": "今はスキップ",
+  "journeyReadyTitle": "あなたの夢と継続する力に投資しましょう",
+  "journeyReadyBody": "小さな投資は、毎日自分の夢に向き合い、今この瞬間を大切にし、確かな決意をもって内なる変化の旅を歩むという自分自身への心の約束です。",
+  "beginDayOne": "コミットして旅を始める",
+  "chooseCategoryTitle": "テーマを選択",
+  "chooseCategoryBody": "今、あなたの意図とエネルギーをどこに向けたいですか？",
+  "visionStepLabel": "{category} · {step}/{total}",
+  "@visionStepLabel": {
+    "placeholders": {
+      "category": {},
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseUpTo": "最大{max}つまで選択できます。",
+  "@chooseUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "answerRequiredHint": "インスピレーションを与える提案を選ぶか、あなた自身の願いを書き留めましょう。",
+  "visionQuickStart": "感情の選択へ進む",
+  "feelingsTitle": "このビジョンが叶ったとき、どんな気持ちを感じたいですか？",
+  "feelingsHint": "最も心に響く感情を1〜3つ選んでください。",
+  "feelingsLimitReached": "3つの感情が選択されています。変更する場合は1つ解除してください。",
+  "statementTitle": "あなたのビジョン・アファメーション",
+  "statementBody": "あなたの選択をもとにSoulがアファメーションを作成しました。心にフィットするよう自由に整えてください。",
+  "statementLabel": "ビジョン・ステートメント",
+  "statementEmpty": "1〜2文であなたのビジョンを書きましょう。",
+  "statementTooLong": "{max}文字以内で入力してください。",
+  "@statementTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "visionImageTitle": "ビジョンに命を吹き込む",
+  "visionImageBody": "心に情景を描き、その感情を味わえるよう、インスピレーションを与える写真を追加しましょう。",
+  "chooseFromLibrary": "ライブラリから選択",
+  "takePhoto": "写真を撮る",
+  "removePhoto": "写真を削除",
+  "visionPhoto": "ビジョン写真",
+  "photoUnavailable": "この写真は表示できません。",
+  "reviewVisionTitle": "ビジョンの確認",
+  "saveToVisionBoard": "ビジョンボードに保存",
+  "visionSaveFailed": "ビジョンを保存できませんでした。選択内容は保持されていますので、もう一度お試しください。",
+  "archiveVision": "ビジョンをアーカイブ",
+  "archiveVisionTitle": "このビジョンをアーカイブしますか？",
+  "archiveVisionBody": "ボードから外れ、アーカイブに安全に保管されます。",
+  "archive": "アーカイブ",
+  "visionNotFound": "このビジョンはボード上にありません。",
+  "visionSoundtrack": "コンパニオン・サウンドトラック",
+  "visionBoardSubtitle": "あなたが日々歩み出している意図、感情、そして人生のための聖域。",
+  "welcomeTitle1": "Soulへようこそ",
+  "welcomeSubtitle1": "毎日少し立ち止まり、耳を傾け、あなたの心を優しく育む穏やかな聖域です。",
+  "welcomeTitle2": "感謝の実践",
+  "welcomeSubtitle2": "内なる喜びを呼び覚ますシンプルで心地よい習慣で、日々のマインドセットを整えましょう。",
+  "welcomeTitle3": "ビジョンボード＆サウンドスケープ",
+  "welcomeSubtitle3": "心躍るビジョンボードと癒やしの周波数サウンドで、あなたの夢を鮮明に描きましょう。",
+  "startJourney": "旅を始める",
+  "revisitOnboarding": "ウェルカムツアーをもう一度見る",
+  "todayGreeting": "穏やかで心満たされる一日になりますように ✨",
+  "todayJourneyHeroTitle": "今日の10の感謝",
+  "todayJourneyHeroSubtitle": "朝の数分間、人生の恵みを数え、それがなぜ大切なのかを味わいましょう。",
+  "todayStartPractice": "ワークを始める",
+  "todayContinuePractice": "ワークを続ける",
+  "todayPracticeCompleted": "今日のワーク完了 ✨",
+  "moodCheckInTitle": "今の気分はいかがですか？",
+  "moodPeaceful": "穏やか 🕊️",
+  "moodGrateful": "感謝 🌸",
+  "moodEnergized": "元気 ☀️",
+  "moodRelieved": "ほっとする 🍃",
+  "moodReflective": "静かな内省 🌙",
+  "eveningReflectionTitle": "夜の振り返り",
+  "eveningReflectionBody": "眠りにつく前に、今日起きた最も心温まる出来事をひとつ思い出してみましょう。",
+  "gratitudePracticeTitle": "朝の感謝ワーク",
+  "gratitudePracticeIntroTitle": "感謝とともに一日を始めましょう",
+  "gratitudePracticeIntroBody": "今日感謝している10のことを見つけ、それぞれがなぜ大切なのかを書き留めましょう。",
+  "gratitudeStartPractice": "実践を始める",
+  "gratitudeItemProgress": "{total}件中 {current}件目",
+  "@gratitudeItemProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeFieldPrompt": "感謝していること...",
+  "gratitudeFieldPlaceholder": "今日感謝していることを書きましょう",
+  "gratitudeReasonPrompt": "その理由は...",
+  "gratitudeReasonPlaceholder": "なぜそれがあなたにとって大切なのですか？",
+  "gratitudeTapThankYou": "「ありがとう」と伝える ({count}/3)",
+  "@gratitudeTapThankYou": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeTapHint": "3回タップして感謝の気持ちを心に刻みましょう",
+  "gratitudeAddAndNext": "追加して次へ",
+  "gratitudeReviewTitle": "今日の10の感謝",
+  "gratitudeReviewSubtitle": "今日の記録を完了する前にリストを振り返りましょう。",
+  "gratitudeCompletePractice": "実践を完了する",
+  "gratitudeCompletedTitle": "実践が完了しました ✨",
+  "gratitudeCompletedBody": "今日という日に10個の感謝の種を蒔きました。内容はジャーナルに保存されました。",
+  "gratitudeBackToToday": "今日へ戻る",
+  "gratitudeStatusIncomplete": "未完了",
+  "gratitudeStatusCompleted": "10件中10件完了",
+  "gratitudeCardTapToStart": "朝のワークを始める",
+  "gratitudeCardTapToReview": "今日の感謝を見る",
+  "editEntry": "編集",
+  "done": "完了",
+  "gratitudeReasonLabel": "理由: {reason}",
+  "@gratitudeReasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "gratitudeFinishEarly": "早めに終了する",
+  "gratitudeSkipItem": "この項目をスキップ",
+  "gratitudeSkipProgress": "スキップする",
+  "gratitudeSkippedTitle": "実践をスキップしました",
+  "gratitudeSkippedBody": "今日の感謝ワークをスキップしました。いつでも戻って実践できます。",
+  "gratitudeReviewTitleCount": "今日の{count}つの感謝",
+  "@gratitudeReviewTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeCompletedBodyCount": "今日という日に{count}個の感謝の種を蒔きました。内容はジャーナルに保存されました。",
+  "@gratitudeCompletedBodyCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeStatusCompletedCount": "{count}件の感謝を完了",
+  "@gratitudeStatusCompletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeLevelLow": "ありがとう",
+  "gratitudeLevelMedium": "心から感謝",
+  "gratitudeLevelHigh": "深い感謝",
+  "gratitudeTapLevelHint": "感謝の深さを選んでください",
+  "signOutConfirmTitle": "Soulからサインアウトしますか？",
+  "signOutConfirmBody": "サインアウトしてもよろしいですか？ウェルカム画面に戻ります。",
+  "addNote": "新しいノートを追加",
+  "newGratitudeNote": "新しい感謝ノート",
+  "notePromptPlaceholder": "今日、何に感謝していますか？",
+  "noteReasonPlaceholder": "なぜそれが大切なのですか？（任意）",
+  "deleteNote": "ノートを削除",
+  "deleteNoteConfirmTitle": "このノートを削除しますか？",
+  "deleteNoteConfirmBody": "このノートはジャーナルから完全に削除されます。",
+  "noteSaved": "ジャーナルに保存しました",
+  "noteDeleted": "ノートを削除しました",
+  "notesCount": "{count, plural, =1{1件のノート} other{{count}件のノート}}",
+  "@notesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderSettingsTitle": "リマインダー通知",
+  "reminderSettingsSubtitle": "設定した時間にSoulが優しいリマインダーをお届けします。",
+  "settingsSectionTitle": "設定",
+  "accountSectionTitle": "アカウント",
+  "saveSettings": "変更を保存",
+  "settingsSaved": "設定を保存しました",
+  "close": "閉じる",
+  "customNoteDefaultTheme": "感謝の瞬間",
+  "gratitudeSentenceCount": "{count, plural, =1{1つの感謝} other{{count}つの感謝}}",
+  "@gratitudeSentenceCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allGratitudesInNote": "ノートの内容",
+  "sentencePreview": "文章のプレビュー:",
+  "soulCardsTitle": "Soul カード",
+  "soulCardsSubtitle": "あなたの魂への導きのメッセージを受け取る",
+  "dailyDrawRemaining": "今日あと{count}回引けます",
+  "@dailyDrawRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyDrawLimitReached": "今日のメッセージ（2枚）を受け取りました",
+  "dailyDrawLimitHint": "今日のメッセージをゆっくり味わいましょう。明日また引くことができます。",
+  "drawCardAction": "カードを引く",
+  "drawAnotherCard": "もう一枚引く",
+  "reviewTodayCards": "今日のメッセージを見る",
+  "cardDrawSuccess": "あなたへの導きのメッセージ",
+  "todayCardDrawBanner": "Soul メッセージ",
+  "chooseDeckPrompt": "メッセージを受け取るデッキを選んでください",
+  "tapCardToReveal": "カードをタップしてメッセージを開く",
+  "saveToJournalAction": "ジャーナルに保存",
+  "savedToJournalSuccess": "メッセージをジャーナルに保存しました",
+  "cardDrawHistory": "引いた履歴",
+  "deckCardCount": "{count}枚のカード",
+  "@deckCardCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "soulCardsTab": "Soul カード",
+  "dailyDrawLimitDialogTitle": "本日の上限に達しました",
+  "dailyDrawLimitDialogMessage": "今日はすでに2つのメッセージを受け取りました。今日のメッセージを心に留め、また明日お越しください。",
+  "understood": "了解しました",
+  "chooseDeckSubtitle": "導きのメッセージを受け取るデッキを選択してください",
+  "drawFromThisDeck": "このデッキから引く",
+  "gratitudeJournalPrompt": "今日も感謝の旅を続けましょう。どんなに小さなことでも、感謝していることに心を向けてみてください。おすすめの書き方:\n「私は…に感謝しています。なぜなら…だからです。」\n書き終えたら、深い感謝の気持ちで読み返してみましょう。",
+  "gratitudeJournalPlaceholder": "静かな日記帳のように、今日感謝していることを書き留めましょう...\n\n例:\n今朝の温かいコーヒーが心にゆとりと安らぎをくれたことに感謝しています。\n友人の笑顔が心を温めてくれたことに感謝しています...",
+  "addPhoto": "写真を追加",
+  "changePhoto": "写真を変更",
+  "insertPromptTemplate": "テンプレートを挿入",
+  "saveAndCompleteJournal": "完了してジャーナルを保存",
+  "gratitudePromptTemplateText": "私は…に感謝しています。なぜなら…だからです。",
+  "chooseTheme": "テーマを選択",
+  "editNote": "ノートを編集",
+  "noteUpdated": "ノートを更新しました",
+  "gratitudeGuidanceTitle": "今日のワークガイド",
+  "showGuidance": "ガイドを表示",
+  "hideGuidance": "ガイドを隠す",
+  "comfortZoneTitle": "Comfort Zone",
+  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
+  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — アニメーションと癒やしの音に包まれる安らぎの空間",
+  "comfortZoneAllSpaces": "すべて ({count})",
+  "@comfortZoneAllSpaces": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneFavorites": "お気に入り",
+  "comfortZoneFavoritesEmpty": "お気に入りの空間はまだありません。ハートアイコンをタップしてここに保存しましょう。",
+  "comfortZoneEnterSpace": "空間に入る",
+  "comfortZoneAmbientSound": "環境音＆音楽",
+  "comfortZoneGuidedAudio": "ガイド音声",
+  "comfortZoneZenMode": "禅モード",
+  "comfortZoneExitZenMode": "コントロールを表示",
+  "comfortZoneBreathingGuide": "呼吸ガイド",
+  "comfortZoneBreatheIn": "ゆっくりと息を吸って...",
+  "comfortZoneBreatheHold": "そっと息を止めて...",
+  "comfortZoneBreatheOut": "ゆっくりと息を吐いて...",
+  "comfortZoneRecentSpace": "最近訪れた空間",
+  "comfortZoneScenesCount": "{count}つの空間",
+  "@comfortZoneScenesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZonePreviousSpace": "前の空間",
+  "comfortZoneNextSpace": "次の空間",
+  "notificationPreviewSectionTitle": "Soul通知フォーマットのプレビュー",
+  "notificationMorningTitle": "おはようございます、{name}さん 🌿",
+  "@notificationMorningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationMorningBody": "深く息を吸いましょう。今日はどんな小さな感謝の種を蒔きたいですか？",
+  "notificationEveningTitle": "今日を優しく締めくくりましょう、{name}さん 🌙",
+  "@notificationEveningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationEveningBody": "眠りにつく前に、今日訪れた穏やかな瞬間や小さな優しさを心に留めてみましょう。",
+  "notificationPrivacyNote": "プライバシー保護：ロック画面の通知に日記や未来への手紙の内容が表示されることはありません。",
+  "notificationSendTest": "テスト通知を送信",
+  "notificationTestSent": "サンプル通知を送信しました！端末の通知バーをご確認ください。",
+  "homeWidgetTitle": "ホーム画面ウィジェット",
+  "homeWidgetSubtitle": "Comfort Zoneの空間、癒やしのサウンド＆周波数、ビジョン、今日の感謝、Soulカードをホーム画面に配置しましょう。",
+  "homeWidgetBannerSubtitle": "Comfort Zone・癒やしの音・ビジョンをホーム画面に表示",
+  "homeWidgetModeLabel": "ウィジェットの表示内容",
+  "homeWidgetModeComfortZone": "Comfort Zone",
+  "homeWidgetModeSound": "サウンド＆周波数",
+  "homeWidgetModeVision": "マイビジョン",
+  "homeWidgetModeGratitude": "今日の感謝",
+  "homeWidgetModeCard": "Soulカードメッセージ",
+  "homeWidgetSelectSpace": "Comfort Zoneの空間を選択",
+  "homeWidgetSelectSound": "癒やしのサウンド／周波数を選択",
+  "homeWidgetSpaceFooter": "タップして安らぎの空間へ入る ✦",
+  "homeWidgetSoundFooter": "タップして癒やしの周波数を聴く ✦",
+  "homeWidgetThemeLabel": "ウィジェットのスタイル",
+  "homeWidgetThemePlum": "プラムダスク",
+  "homeWidgetThemePaper": "ウォームペーパー",
+  "homeWidgetThemeRose": "ローズドーン",
+  "homeWidgetPinButton": "ホーム画面にウィジェットを追加",
+  "homeWidgetSyncButton": "ウィジェットを今すぐ更新",
+  "homeWidgetSyncedSuccess": "ホーム画面ウィジェットを更新しました！",
+  "homeWidgetHowToHint": "ヒント：上の追加ボタンをタップするか、ホーム画面の空きスペースを長押し →「ウィジェット」→「Soul」を選択して配置できます。"
+}

@@ -13,6 +13,14 @@ SoulLocale? suggestLocale(Iterable<Locale> deviceLocales) {
         return SoulLocale.vi;
       case 'en':
         return SoulLocale.en;
+      case 'ko':
+        return SoulLocale.ko;
+      case 'ja':
+        return SoulLocale.ja;
+      case 'fr':
+        return SoulLocale.fr;
+      case 'zh':
+        return SoulLocale.zh;
     }
   }
   return null;

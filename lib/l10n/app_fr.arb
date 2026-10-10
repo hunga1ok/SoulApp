@@ -1,0 +1,440 @@
+{
+  "@@locale": "fr",
+  "appTitle": "Soul",
+  "today": "Aujourd'hui",
+  "vision": "Vision",
+  "journal": "Journal",
+  "explore": "Explorer",
+  "continueLabel": "Continuer",
+  "welcome": "Bienvenue {name}",
+  "@welcome": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "whatShouldWeCallYou": "Comment Soul doit-il vous appeler ?",
+  "nameHint": "Votre prénom ou surnom préféré",
+  "saveAndContinue": "Enregistrer et continuer",
+  "todayRhythm": "Le rythme d'aujourd'hui",
+  "oneSmallAction": "Une petite intention",
+  "smallActionText": "Envoyez silencieusement de la gratitude ou offrez un sourire chaleureux à quelqu'un aujourd'hui.",
+  "recent": "Notes récentes",
+  "oneNote": "1 note",
+  "gratitudeToday": "GRATITUDE · AUJOURD'HUI",
+  "gratitudeNote": "Je suis reconnaissant(e) pour cette vie",
+  "gratitudeJournalTitle": "Journal de Gratitude",
+  "gratitudeJournalHint": "Chaque pensée de gratitude est une douce graine de paix semée dans votre cœur.",
+  "gratitudeNoteLabel": "Pour quoi êtes-vous reconnaissant(e) aujourd'hui ?",
+  "saveNote": "Enregistrer la note",
+  "gratitudeNotesEmpty": "Vous n'avez pas encore de notes. Appuyez ci-dessous pour créer la première.",
+  "yourVisions": "Votre tableau de vision",
+  "createVision": "Créer une vision",
+  "visionEmptyTitle": "Créez un espace pour vos rêves",
+  "visionEmptyBody": "Une vision profonde commence par les désirs les plus sincères de votre cœur.",
+  "audioPending": "Audio bientôt disponible",
+  "visionAudio": "Bande-son de Vision",
+  "visionAudioBody": "Choisissez une musique de Soul, un fichier audio de votre appareil ou enregistrez votre propre affirmation.",
+  "visionAudioEmpty": "Aucune bande-son d'accompagnement ajoutée.",
+  "visionAudioPersonal": "Enregistré sur cet appareil uniquement",
+  "addAudio": "Ajouter un audio",
+  "audioLibrary": "Bibliothèque Audio",
+  "chooseFromAudioLibrary": "Choisir dans la bibliothèque Soul",
+  "chooseAudioFile": "Choisir un fichier sur l'appareil",
+  "recordAudio": "Enregistrer une affirmation vocale",
+  "stopRecording": "Arrêter et enregistrer",
+  "myRecording": "Mon enregistrement",
+  "removeAudio": "Supprimer l'audio",
+  "audioGuided": "Méditations guidées",
+  "audioMusic": "Musique de guérison et fréquences",
+  "audioRest": "Nature et relaxation profonde",
+  "audioLibraryNote": "Paysages sonores apaisants et fréquences 432Hz/528Hz pour calmer l'esprit et élever l'âme.",
+  "nowPlaying": "En lecture",
+  "stop": "Arrêter",
+  "allAudio": "Tout",
+  "audioNature": "Nature & Ambiance",
+  "audioMusicTab": "Musique & Paysages sonores",
+  "audioGuidedTab": "Méditations guidées",
+  "recommendedForVision": "Recommandé pour cette Vision",
+  "exploreTitle": "Sanctuaire Soul",
+  "exploreBody": "Découvrez des paysages sonores apaisants, des méditations guidées et des sagesses inspirantes.",
+  "exploreTabAll": "Tout",
+  "exploreTabAudio": "Audio Soul",
+  "exploreTabMeditation": "Méditation",
+  "exploreTabPodcast": "Podcasts",
+  "exploreTabFrequency": "Fréquences",
+  "exploreOpenYouTube": "Regarder sur YouTube",
+  "exploreOpenSpotify": "Écouter sur Spotify",
+  "profile": "Profil & paramètres",
+  "soundOn": "Son activé",
+  "soundOff": "Son désactivé",
+  "language": "Langue",
+  "editName": "Modifier le nom préféré",
+  "signOut": "Se déconnecter",
+  "back": "Retour",
+  "dayProgress": "Jour {day} sur 28",
+  "@dayProgress": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "authTagline": "Un espace doux et privé pour votre âme.",
+  "morningGratitude": "Gratitude du matin",
+  "neutralInstrumentalFiveMinutes": "Piano doux · 5 min",
+  "play": "Lire",
+  "vietnameseLanguage": "Vietnamien",
+  "englishLanguage": "Anglais",
+  "languageEndonymVi": "Tiếng Việt",
+  "languageEndonymEn": "English",
+  "retry": "Réessayer",
+  "loading": "Chargement...",
+  "pause": "Pause",
+  "cancel": "Annuler",
+  "somethingWentWrong": "Une erreur est survenue. Veuillez réessayer.",
+  "save": "Enregistrer",
+  "nameTooLong": "Veuillez utiliser {max} caractères ou moins.",
+  "@nameTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "intentionTitle": "Qu'est-ce qui vous amène sur Soul aujourd'hui ?",
+  "intentionBody": "Choisissez ce qui compte le plus pour vous en ce moment. Il n'y a pas de mauvaise réponse.",
+  "intentionChooseOne": "Choisissez au moins une intention pour commencer.",
+  "remindersTitle": "Un doux rythme pour chaque jour",
+  "remindersBody": "Choisissez deux moments paisibles pour commencer et clore doucement votre journée.",
+  "reminderMorning": "Rappel du matin",
+  "reminderEvening": "Réflexion du soir",
+  "changeReminderTime": "Modifier l'heure de {reminder}, actuellement {time}",
+  "@changeReminderTime": {
+    "placeholders": {
+      "reminder": {},
+      "time": {}
+    }
+  },
+  "skipForNow": "Passer pour l'instant",
+  "journeyReadyTitle": "Investissez dans vos rêves et votre persévérance",
+  "journeyReadyBody": "Un petit investissement est une promesse sincère envers vous-même : rester fidèle à vos rêves chaque jour, chérir le présent et cheminer avec engagement.",
+  "beginDayOne": "S'engager et commencer le voyage",
+  "chooseCategoryTitle": "Choisissez un domaine",
+  "chooseCategoryBody": "Où souhaitez-vous placer votre intention et votre énergie maintenant ?",
+  "visionStepLabel": "{category} · {step}/{total}",
+  "@visionStepLabel": {
+    "placeholders": {
+      "category": {},
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseUpTo": "Choisissez jusqu'à {max} réponses.",
+  "@chooseUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "answerRequiredHint": "Choisissez une suggestion inspirante ou écrivez votre propre désir.",
+  "visionQuickStart": "Continuer avec les émotions",
+  "feelingsTitle": "Comment voulez-vous vous sentir lorsque cette vision se réalisera ?",
+  "feelingsHint": "Choisissez 1 à 3 émotions qui résonnent le plus en vous.",
+  "feelingsLimitReached": "Vous avez choisi 3 émotions. Désélectionnez-en une pour modifier.",
+  "statementTitle": "Votre affirmation de vision",
+  "statementBody": "Soul a composé cette affirmation à partir de vos choix. Ajustez-la librement selon votre cœur.",
+  "statementLabel": "Déclaration de vision",
+  "statementEmpty": "Écrivez votre vision en 1 ou 2 phrases inspirantes.",
+  "statementTooLong": "Veuillez utiliser {max} caractères ou moins.",
+  "@statementTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "visionImageTitle": "Donnez vie à votre vision",
+  "visionImageBody": "Ajoutez une photo inspirante pour aider votre esprit à visualiser et ressentir l'émotion.",
+  "chooseFromLibrary": "Choisir dans la galerie",
+  "takePhoto": "Prendre une photo",
+  "removePhoto": "Supprimer la photo",
+  "visionPhoto": "Photo de vision",
+  "photoUnavailable": "Cette photo ne peut pas être affichée.",
+  "reviewVisionTitle": "Vérifiez votre vision",
+  "saveToVisionBoard": "Enregistrer sur le tableau de vision",
+  "visionSaveFailed": "Votre vision n'a pas pu être enregistrée. Vos choix sont conservés — veuillez réessayer.",
+  "archiveVision": "Archiver la vision",
+  "archiveVisionTitle": "Archiver cette vision ?",
+  "archiveVisionBody": "Elle quittera votre tableau et sera conservée dans vos archives.",
+  "archive": "Archiver",
+  "visionNotFound": "Cette vision n'est plus sur votre tableau.",
+  "visionSoundtrack": "Bande-son d'accompagnement",
+  "visionBoardSubtitle": "Un sanctuaire pour les intentions, les émotions et la vie que vous cultivez chaque jour.",
+  "welcomeTitle1": "Bienvenue sur Soul",
+  "welcomeSubtitle1": "Un sanctuaire calme et paisible pour faire une pause, écouter et nourrir doucement votre esprit chaque jour.",
+  "welcomeTitle2": "Pratique de la Gratitude",
+  "welcomeSubtitle2": "Transformez votre état d'esprit quotidien grâce à des pratiques simples qui éveillent la joie intérieure.",
+  "welcomeTitle3": "Tableau de Vision & Paysages Sonores",
+  "welcomeSubtitle3": "Clarifiez vos rêves avec des tableaux de vision inspirants et des fréquences sonores apaisantes.",
+  "startJourney": "Commencer le voyage",
+  "revisitOnboarding": "Revoir la présentation",
+  "todayGreeting": "Je vous souhaite une journée paisible et lumineuse ✨",
+  "todayJourneyHeroTitle": "10 Gratitudes Aujourd'hui",
+  "todayJourneyHeroSubtitle": "Prenez quelques minutes ce matin pour nommer les bienfaits de votre vie et ressentir pourquoi ils comptent.",
+  "todayStartPractice": "Commencer la pratique",
+  "todayContinuePractice": "Continuer la pratique",
+  "todayPracticeCompleted": "Terminé aujourd'hui ✨",
+  "moodCheckInTitle": "Comment vous sentez-vous en ce moment ?",
+  "moodPeaceful": "Paisible 🕊️",
+  "moodGrateful": "Reconnaissant(e) 🌸",
+  "moodEnergized": "Énergisé(e) ☀️",
+  "moodRelieved": "Soulagé(e) 🍃",
+  "moodReflective": "Pensif(ve) 🌙",
+  "eveningReflectionTitle": "Réflexion du soir",
+  "eveningReflectionBody": "Avant de dormir, repensez à la chose la plus réconfortante qui soit arrivée aujourd'hui.",
+  "gratitudePracticeTitle": "Gratitude du matin",
+  "gratitudePracticeIntroTitle": "Commencez votre journée avec reconnaissance",
+  "gratitudePracticeIntroBody": "Prenez un moment pour noter 10 choses pour lesquelles vous êtes reconnaissant(e) aujourd'hui, et pourquoi chacune compte.",
+  "gratitudeStartPractice": "Commencer la pratique",
+  "gratitudeItemProgress": "Élément {current} sur {total}",
+  "@gratitudeItemProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeFieldPrompt": "Je suis reconnaissant(e) pour...",
+  "gratitudeFieldPlaceholder": "Nommez quelque chose qui vous inspire de la gratitude",
+  "gratitudeReasonPrompt": "Parce que...",
+  "gratitudeReasonPlaceholder": "Pourquoi est-ce important pour vous ?",
+  "gratitudeTapThankYou": "Dites « Merci » ({count}/3)",
+  "@gratitudeTapThankYou": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeTapHint": "Appuyez 3 fois pour ancrer le sentiment de gratitude",
+  "gratitudeAddAndNext": "Ajouter et suivant",
+  "gratitudeReviewTitle": "Vos 10 Gratitudes d'Aujourd'hui",
+  "gratitudeReviewSubtitle": "Relisez votre liste avant de la sceller pour la journée.",
+  "gratitudeCompletePractice": "Terminer la pratique",
+  "gratitudeCompletedTitle": "Pratique terminée ✨",
+  "gratitudeCompletedBody": "Vous avez semé 10 graines de gratitude dans votre journée. Elles sont enregistrées dans votre journal.",
+  "gratitudeBackToToday": "Retour à Aujourd'hui",
+  "gratitudeStatusIncomplete": "Pas encore terminé",
+  "gratitudeStatusCompleted": "10 sur 10 complétés",
+  "gratitudeCardTapToStart": "Commencer la pratique du matin",
+  "gratitudeCardTapToReview": "Voir les gratitudes du jour",
+  "editEntry": "Modifier",
+  "done": "Terminé",
+  "gratitudeReasonLabel": "Raison : {reason}",
+  "@gratitudeReasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "gratitudeFinishEarly": "Terminer plus tôt",
+  "gratitudeSkipItem": "Passer cet élément",
+  "gratitudeSkipProgress": "Passer l'étape",
+  "gratitudeSkippedTitle": "Pratique passée",
+  "gratitudeSkippedBody": "Vous avez passé la pratique d'aujourd'hui. Vous pouvez y revenir à tout moment.",
+  "gratitudeReviewTitleCount": "Vos {count} Gratitudes d'Aujourd'hui",
+  "@gratitudeReviewTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeCompletedBodyCount": "Vous avez semé {count} graines de gratitude aujourd'hui. Elles ont été enregistrées dans votre journal.",
+  "@gratitudeCompletedBodyCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeStatusCompletedCount": "{count} gratitudes complétées",
+  "@gratitudeStatusCompletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeLevelLow": "Merci",
+  "gratitudeLevelMedium": "Profondément reconnaissant",
+  "gratitudeLevelHigh": "Gratitude infinie",
+  "gratitudeTapLevelHint": "Choisissez l'intensité de votre gratitude",
+  "signOutConfirmTitle": "Se déconnecter de Soul ?",
+  "signOutConfirmBody": "Voulez-vous vraiment vous déconnecter ? Vous reviendrez à l'écran d'accueil.",
+  "addNote": "Ajouter une note",
+  "newGratitudeNote": "Nouvelle note de gratitude",
+  "notePromptPlaceholder": "Pour quoi êtes-vous reconnaissant(e) aujourd'hui ?",
+  "noteReasonPlaceholder": "Pourquoi est-ce important pour vous ? (facultatif)",
+  "deleteNote": "Supprimer la note",
+  "deleteNoteConfirmTitle": "Supprimer cette note ?",
+  "deleteNoteConfirmBody": "Cette note sera définitivement supprimée de votre journal.",
+  "noteSaved": "Note enregistrée dans le journal",
+  "noteDeleted": "Note supprimée",
+  "notesCount": "{count, plural, =1{1 note} other{{count} notes}}",
+  "@notesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderSettingsTitle": "Rappels de notification",
+  "reminderSettingsSubtitle": "Soul vous enverra de doux rappels aux heures choisies.",
+  "settingsSectionTitle": "Paramètres",
+  "accountSectionTitle": "Compte",
+  "saveSettings": "Enregistrer les modifications",
+  "settingsSaved": "Paramètres enregistrés",
+  "close": "Fermer",
+  "customNoteDefaultTheme": "Moment de gratitude",
+  "gratitudeSentenceCount": "{count, plural, =1{1 gratitude} other{{count} gratitudes}}",
+  "@gratitudeSentenceCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allGratitudesInNote": "Contenu de la note",
+  "sentencePreview": "Aperçu de la phrase complète :",
+  "soulCardsTitle": "Cartes Soul",
+  "soulCardsSubtitle": "Recevez un message inspirant pour votre âme",
+  "dailyDrawRemaining": "{count} tirages restants aujourd'hui",
+  "@dailyDrawRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyDrawLimitReached": "2 messages quotidiens tirés aujourd'hui",
+  "dailyDrawLimitHint": "Prenez le temps de méditer sur les messages du jour. Vous pourrez tirer à nouveau demain.",
+  "drawCardAction": "Tirer une carte",
+  "drawAnotherCard": "Tirer une autre carte",
+  "reviewTodayCards": "Voir les messages du jour",
+  "cardDrawSuccess": "Votre message guide",
+  "todayCardDrawBanner": "Message Soul",
+  "chooseDeckPrompt": "Choisissez un jeu pour écouter son message",
+  "tapCardToReveal": "Appuyez sur la carte pour révéler votre message",
+  "saveToJournalAction": "Enregistrer dans le journal",
+  "savedToJournalSuccess": "Message enregistré dans le journal",
+  "cardDrawHistory": "Historique des tirages",
+  "deckCardCount": "{count} cartes",
+  "@deckCardCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "soulCardsTab": "Cartes Soul",
+  "dailyDrawLimitDialogTitle": "Limite quotidienne atteinte",
+  "dailyDrawLimitDialogMessage": "Vous avez déjà reçu 2 messages guides aujourd'hui. Prenez le temps de les méditer et revenez demain.",
+  "understood": "Compris",
+  "chooseDeckSubtitle": "Choisissez un jeu pour recevoir votre message guide",
+  "drawFromThisDeck": "Tirer de ce jeu",
+  "gratitudeJournalPrompt": "Aujourd'hui, vous poursuivez votre voyage de gratitude. Prenez un moment de présence pour réfléchir aux choses pour lesquelles vous êtes reconnaissant(e). Modèle suggéré :\n« Je suis reconnaissant(e) pour... parce que... »\nRelisez ensuite vos mots avec une profonde appréciation.",
+  "gratitudeJournalPlaceholder": "Écrivez vos gratitudes du jour comme dans un journal intime...\n\nExemple :\nJe suis reconnaissant(e) pour la tasse de café chaud ce matin parce qu'elle m'a apporté calme et clarté.\nJe suis reconnaissant(e) pour le sourire d'un ami...",
+  "addPhoto": "Ajouter une photo",
+  "changePhoto": "Changer la photo",
+  "insertPromptTemplate": "Insérer le modèle",
+  "saveAndCompleteJournal": "Terminer et enregistrer",
+  "gratitudePromptTemplateText": "Je suis reconnaissant(e) pour ... parce que ...",
+  "chooseTheme": "Choisir un thème",
+  "editNote": "Modifier la note",
+  "noteUpdated": "Note mise à jour",
+  "gratitudeGuidanceTitle": "Guide de pratique du jour",
+  "showGuidance": "Voir le guide",
+  "hideGuidance": "Masquer le guide",
+  "comfortZoneTitle": "Comfort Zone",
+  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
+  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — Des refuges paisibles avec animations vivantes et sons apaisants",
+  "comfortZoneAllSpaces": "Tous ({count})",
+  "@comfortZoneAllSpaces": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneFavorites": "Favoris",
+  "comfortZoneFavoritesEmpty": "Aucun espace favori pour l'instant. Appuyez sur le cœur d'un espace pour l'enregistrer ici.",
+  "comfortZoneEnterSpace": "Entrer dans l'espace",
+  "comfortZoneAmbientSound": "Ambiance & Musique",
+  "comfortZoneGuidedAudio": "Audio guidé",
+  "comfortZoneZenMode": "Mode Zen",
+  "comfortZoneExitZenMode": "Afficher les contrôles",
+  "comfortZoneBreathingGuide": "Guide respiratoire",
+  "comfortZoneBreatheIn": "Inspirez doucement...",
+  "comfortZoneBreatheHold": "Retenez délicatement...",
+  "comfortZoneBreatheOut": "Expirez lentement...",
+  "comfortZoneRecentSpace": "Récemment visité",
+  "comfortZoneScenesCount": "{count} espaces",
+  "@comfortZoneScenesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZonePreviousSpace": "Espace précédent",
+  "comfortZoneNextSpace": "Espace suivant",
+  "notificationPreviewSectionTitle": "Format des notifications Soul",
+  "notificationMorningTitle": "Bonjour, {name} 🌿",
+  "@notificationMorningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationMorningBody": "Prenez une grande inspiration. Quelle petite graine de gratitude souhaitez-vous semer aujourd'hui ?",
+  "notificationEveningTitle": "Terminez la journée en douceur, {name} 🌙",
+  "@notificationEveningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationEveningBody": "Avant de vous reposer, gardez en mémoire un instant paisible ou une douceur d'aujourd'hui.",
+  "notificationPrivacyNote": "Confidentialité absolue : Les notifications sur l'écran verrouillé n'affichent jamais vos notes ou lettres privées.",
+  "notificationSendTest": "Envoyer une notification test",
+  "notificationTestSent": "Notification test envoyée ! Vérifiez votre barre de notifications.",
+  "homeWidgetTitle": "Widget d'écran d'accueil",
+  "homeWidgetSubtitle": "Épinglez votre espace Comfort Zone, vos Sons & Fréquences apaisants, votre Vision, votre Gratitude ou votre Carte Soul sur l'écran d'accueil.",
+  "homeWidgetBannerSubtitle": "Épinglez Comfort Zone, Sons apaisants et Vision sur l'écran d'accueil",
+  "homeWidgetModeLabel": "Contenu affiché sur le widget",
+  "homeWidgetModeComfortZone": "Comfort Zone",
+  "homeWidgetModeSound": "Sons & Fréquences",
+  "homeWidgetModeVision": "Ma Vision",
+  "homeWidgetModeGratitude": "Gratitude du jour",
+  "homeWidgetModeCard": "Message Carte Soul",
+  "homeWidgetSelectSpace": "Choisir l'espace Comfort Zone",
+  "homeWidgetSelectSound": "Choisir le son / la fréquence apaisante",
+  "homeWidgetSpaceFooter": "Appuyez pour entrer dans votre refuge ✦",
+  "homeWidgetSoundFooter": "Appuyez pour écouter la fréquence apaisante ✦",
+  "homeWidgetThemeLabel": "Style du widget",
+  "homeWidgetThemePlum": "Prune Crépuscule",
+  "homeWidgetThemePaper": "Papier Ivoire",
+  "homeWidgetThemeRose": "Rose Aurore",
+  "homeWidgetPinButton": "Ajouter le widget à l'écran d'accueil",
+  "homeWidgetSyncButton": "Actualiser le widget",
+  "homeWidgetSyncedSuccess": "Contenu du widget mis à jour !",
+  "homeWidgetHowToHint": "Astuce : Appuyez sur le bouton ci-dessus, ou maintenez le doigt sur un espace vide de votre écran d'accueil → Widgets → Soul."
+}

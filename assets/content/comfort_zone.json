@@ -1,0 +1,1360 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "cozy_indoor",
+      "number": 1,
+      "code": "COZY_INDOOR",
+      "icon": "🛋️",
+      "title": {
+        "vi": "Góc nhỏ bình yên",
+        "en": "Cozy Indoor",
+        "ko": "아늑한 실내 안식처",
+        "ja": "心地よい部屋の片隅",
+        "fr": "Intérieur douillet",
+        "zh": "温馨室内角落"
+      },
+      "subtitle": {
+        "vi": "Cozy Indoor — Ấm áp trong căn phòng nhỏ",
+        "en": "Warmth and stillness inside your own little room",
+        "ko": "Cozy Indoor — 작은 방 안의 따스함과 고요함",
+        "ja": "Cozy Indoor — 小さな部屋に満ちる温もりと静けさ",
+        "fr": "Cozy Indoor — Chaleur et quiétude dans votre petit cocon",
+        "zh": "Cozy Indoor — 小小房间里的温暖与静谧"
+      },
+      "description": {
+        "vi": "Những góc phòng ngập tràn sự êm ái, nơi bạn được cuộn mình trong chăn ấm, nghe tiếng mưa rơi ngoài hiên hay đọc một trang sách dưới ánh đèn vàng.",
+        "en": "Soft indoor sanctuaries where you can curl up under a warm blanket, listen to rain on the window, or read quietly by golden lamplight.",
+        "ko": "따뜻한 담요 속에 몸을 말고 창밖의 빗소리를 듣거나, 노란 조명 아래 조용히 책을 읽을 수 있는 포근한 실내 공간입니다.",
+        "ja": "温かい毛布にくるまって窓辺の雨音に耳を傾けたり、優しい灯りの下で静かに読書を楽しめる心地よい室内空間です。",
+        "fr": "Des refuges intérieurs douillets où vous blottir sous un plaid chaud, écouter la pluie sur la vitre ou lire à la lueur dorée d'une lampe.",
+        "zh": "温柔舒适的室内角落，你可以蜷缩在温暖的毛毯里，倾听窗外的雨声，或在柔和灯光下静静阅读。"
+      }
+    },
+    {
+      "id": "nature_escape",
+      "number": 2,
+      "code": "NATURE_ESCAPE",
+      "icon": "🌿",
+      "title": {
+        "vi": "Những nơi muốn trốn đến",
+        "en": "Nature Escape",
+        "ko": "자연 속 도피처",
+        "ja": "自然へのエスケープ",
+        "fr": "Évasion dans la nature",
+        "zh": "自然逃离之地"
+      },
+      "subtitle": {
+        "vi": "Nature Escape — Hòa mình giữa thiên nhiên rộng mở",
+        "en": "Breathe deeply among hills, lakes, and quiet forests",
+        "ko": "Nature Escape — 언덕과 호수, 고요한 숲속의 깊은 호흡",
+        "ja": "Nature Escape — 丘や湖、静かな森の中で深呼吸を",
+        "fr": "Nature Escape — Respirez profondément entre collines, lacs et forêts",
+        "zh": "Nature Escape — 在山丘、湖泊与静谧森林间深呼吸"
+      },
+      "description": {
+        "vi": "Đồi hoa dại dưới bầu trời sao, mặt hồ phẳng lặng dưới ánh trăng hay căn nhà gỗ nhỏ ẩn mình giữa rừng thông mờ sương.",
+        "en": "Wildflower hills beneath starry skies, still moonlit lakes, and tiny wooden cabins tucked away in misty pine forests.",
+        "ko": "별이 쏟아지는 야생화 언덕, 달빛이 비치는 잔잔한 호수, 안개 낀 소나무 숲속에 숨겨진 작은 오두막을 만나보세요.",
+        "ja": "星空の下の野花の丘、月明かりを映す静かな湖、霧の松林に佇む小さな木のキャビン。",
+        "fr": "Des collines fleuries sous les étoiles, des lacs paisibles au clair de lune et de petites cabanes nichées dans la brume des pins.",
+        "zh": "星空下的野花山丘、月光映照的平静湖面，以及隐匿在薄雾松林中的小小木屋。"
+      }
+    },
+    {
+      "id": "little_companions",
+      "number": 3,
+      "code": "LITTLE_COMPANIONS",
+      "icon": "🐾",
+      "title": {
+        "vi": "Bình yên bên những người bạn nhỏ",
+        "en": "Little Companions",
+        "ko": "작은 친구들과의 평온",
+        "ja": "小さな仲間との安らぎ",
+        "fr": "Petits compagnons",
+        "zh": "与小生命相伴的宁静"
+      },
+      "subtitle": {
+        "vi": "Little Companions — Sự hiện diện dịu dàng, không cần lời nói",
+        "en": "Gentle warmth alongside furry friends and loved ones",
+        "ko": "Little Companions — 말없이도 전해지는 다정한 온기",
+        "ja": "Little Companions — 言葉はいらない、優しいぬくもり",
+        "fr": "Little Companions — Une présence douce et chaleureuse sans mots",
+        "zh": "Little Companions — 无需言语的温柔陪伴"
+      },
+      "description": {
+        "vi": "Tiếng thở đều của chú mèo bên bệ cửa sổ, người bạn bốn chân nằm cạnh trên đồi cỏ, hay cái tựa vai bình yên khi có nhau.",
+        "en": "A cat purring on the windowsill, a loyal dog resting beside you on a grassy hill, or leaning quietly on someone you love.",
+        "ko": "창가에서 고르릉거리는 고양이, 풀언덕에 나란히 누운 강아지, 사랑하는 사람과 어깨를 기대는 평화로운 순간입니다.",
+        "ja": "窓辺で丸くなる猫、草の丘で寄り添う犬、大切な人と肩を寄せ合う穏やかなひととき。",
+        "fr": "Un chat qui ronronne sur le rebord de la fenêtre, un chien fidèle à vos côtés sur la colline ou une épaule aimante sur laquelle s'appuyer.",
+        "zh": "窗台上蜷缩酣睡的猫咪、草坡上并肩依偎的小狗，或是与挚爱轻轻靠肩的安心时刻。"
+      }
+    },
+    {
+      "id": "dreamy_moments",
+      "number": 4,
+      "code": "DREAMY_MOMENTS",
+      "icon": "✨",
+      "title": {
+        "vi": "Những khoảnh khắc muốn giữ lại",
+        "en": "Dreamy Moments",
+        "ko": "간직하고 싶은 꿈같은 순간",
+        "ja": "心に留めたい夢のような瞬間",
+        "fr": "Instants de rêve",
+        "zh": "想要珍藏的梦幻时刻"
+      },
+      "subtitle": {
+        "vi": "Dreamy Moments — Lắng đọng giữa mây trời, hoàng hôn và đêm sao",
+        "en": "Poetic pauses under starlight, rain, and clouds",
+        "ko": "Dreamy Moments — 별빛과 비, 구름 아래의 시적인 휴식",
+        "ja": "Dreamy Moments — 星明かりや雨、雲の下での詩的なひととき",
+        "fr": "Dreamy Moments — Pauses poétiques sous les étoiles, la pluie et les nuages",
+        "zh": "Dreamy Moments — 星光、微雨与云海间的诗意停驻"
+      },
+      "description": {
+        "vi": "Ngồi trên mái nhà ngắm dải ngân hà, tách cà phê bên khung cửa mưa phố cổ, hay chuyến tàu bình yên lướt qua cánh đồng xanh.",
+        "en": "Stargazing from a quiet rooftop, sipping coffee by a rainy cafe window, or watching green fields drift past a train window.",
+        "ko": "조용한 옥상에서 바라보는 은하수, 비 오는 날 카페 창가의 커피 한 잔, 푸른 들판을 스쳐 지나가는 평온한 기차 여행입니다.",
+        "ja": "静かな屋上からの星空眺め、雨のカフェの窓辺のコーヒー、緑の野原を駆け抜ける穏やかな列車の旅。",
+        "fr": "Contempler les étoiles depuis un toit paisible, savourer un café près d'une vitre sous la pluie ou regarder les prairies défiler depuis un train.",
+        "zh": "在静谧屋顶仰望璀璨银河、雨天咖啡馆窗边的一杯热咖啡，或是乘着安静列车掠过青翠原野。"
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cz_01",
+      "number": 1,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Lazy Morning",
+      "titleVi": "Buổi sáng lười biếng",
+      "description": {
+        "vi": "Một chiếc giường trắng mềm, cửa sổ lớn mở ra đồi xanh mờ sương, rèm mỏng lay nhẹ, một người vừa thức dậy.",
+        "en": "A soft white bed, a large window opening to misty green hills, sheer curtains gently swaying, someone just waking up.",
+        "ko": "부드러운 하얀 침대, 안개 낀 푸른 언덕으로 열린 커다란 창문, 살랑이는 얇은 커튼, 막 잠에서 깨어난 한 사람.",
+        "ja": "柔らかな白いベッド、霧がかる緑の丘へと開かれた大きな窓、そよぐ薄いカーテン、目覚めたばかりの誰か。",
+        "fr": "Un lit blanc moelleux, une grande fenêtre ouverte sur des collines vertes embrumées, de fins rideaux qui ondulent doucement et quelqu'un qui s'éveille à peine.",
+        "zh": "一张柔软的白色床铺，敞向薄雾青山的大窗，轻纱窗帘微微摇曳，有人刚刚从梦中醒来。"
+      },
+      "affirmation": {
+        "vi": "Hôm nay, bạn được phép thức dậy thật chậm và dịu dàng với chính mình.",
+        "en": "Today, you are allowed to wake up slowly and be gentle with yourself.",
+        "ko": "오늘 당신은 아주 천천히 깨어나 자신에게 다정해질 자격이 있습니다.",
+        "ja": "今日はゆっくりと目覚め、自分自身に優しくしていい日です。",
+        "fr": "Aujourd'hui, vous avez le droit de vous réveiller lentement et avec douceur.",
+        "zh": "今天，你可以慢慢醒来，温柔地对待自己。"
+      },
+      "animationType": "curtain_breeze",
+      "primarySoundId": "SO-11",
+      "soundIds": [
+        "SO-11",
+        "SO-23",
+        "SO-13",
+        "SO-10"
+      ],
+      "guidedAudioId": "GA-32",
+      "palette": [
+        "#CFE4DF",
+        "#EBF3EF",
+        "#5A7D73"
+      ],
+      "title": {
+        "vi": "Buổi sáng lười biếng",
+        "en": "Lazy Morning",
+        "ko": "게으른 아침",
+        "ja": "まどろみの朝",
+        "fr": "Matin paresseux",
+        "zh": "慵懒清晨"
+      }
+    },
+    {
+      "id": "cz_02",
+      "number": 2,
+      "categoryId": "cozy_indoor",
+      "titleEn": "The Book Room",
+      "titleVi": "Căn phòng của những cuốn sách",
+      "description": {
+        "vi": "Phòng đọc với kệ sách gỗ, sofa nhỏ, cửa sổ vòm nhìn ra bầu trời đầy sao, một người cuộn mình đọc sách.",
+        "en": "A reading room with wooden bookshelves, a small sofa, an arched window looking out at a starry sky, someone curled up reading a book.",
+        "ko": "나무 책장이 있는 서재, 작은 소파, 별이 가득한 밤하늘이 보이는 아치형 창문, 몸을 웅크리고 책을 읽는 한 사람.",
+        "ja": "木製の本棚がある読書室、小さなソファ、満天の星空を望むアーチ窓、丸くなって本を読む誰か。",
+        "fr": "Un salon de lecture avec des étagères en bois, un petit canapé, une fenêtre voûtée donnant sur un ciel étoilé et quelqu'un blotti avec un livre.",
+        "zh": "摆着木质书架的阅读室、小巧的沙发、望向满天繁星的拱形窗，有人正蜷缩着安静读书。"
+      },
+      "affirmation": {
+        "vi": "Giữa những trang sách và bầu trời sao, tâm trí bạn tìm thấy một góc trú ẩn an toàn.",
+        "en": "Between quiet pages and a starry sky, your mind finds a safe haven.",
+        "ko": "조용한 책장들과 별이 빛나는 밤하늘 사이에서 당신의 마음은 안전한 안식처를 찾습니다.",
+        "ja": "静かなページと星空の間で、あなたの心は安全な隠れ家を見つけます。",
+        "fr": "Entre les pages silencieuses et le ciel étoilé, votre esprit trouve un refuge sûr.",
+        "zh": "在静谧书页与璀璨星空之间，你的心找到了安全的港湾。"
+      },
+      "animationType": "starlight_lamp",
+      "primarySoundId": "SO-14",
+      "soundIds": [
+        "SO-14",
+        "SO-09",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-31",
+      "palette": [
+        "#232946",
+        "#4A4E69",
+        "#E0A96D"
+      ],
+      "title": {
+        "vi": "Căn phòng của những cuốn sách",
+        "en": "The Book Room",
+        "ko": "책들의 방",
+        "ja": "本のある部屋",
+        "fr": "La chambre des livres",
+        "zh": "书香房间"
+      }
+    },
+    {
+      "id": "cz_03",
+      "number": 3,
+      "categoryId": "cozy_indoor",
+      "titleEn": "The Softest Sofa",
+      "titleVi": "Chiếc sofa êm nhất",
+      "description": {
+        "vi": "Sofa lớn phủ chăn len, cửa kính nhìn ra trời mưa, tách trà trên bàn và một chú mèo đang ngủ.",
+        "en": "A large sofa draped with a wool blanket, glass window looking out at the rain, a cup of tea on the table, and a sleeping cat.",
+        "ko": "양모 담요가 덮인 커다란 소파, 비 내리는 풍경이 보이는 유리창, 테이블 위의 차 한 잔과 잠든 고양이 한 마리.",
+        "ja": "ウールのブランケットが掛けられた大きなソファ、雨を映すガラス窓、テーブルの上のお茶、そして眠る猫。",
+        "fr": "Un grand canapé drapé d'un plaid en laine, une vitre donnant sur la pluie, une tasse de thé sur la table et un chat endormi.",
+        "zh": "披着羊毛毯的宽大沙发、望向窗外雨景的玻璃窗、桌上的热茶，还有一只熟睡的猫咪。"
+      },
+      "affirmation": {
+        "vi": "Ngoài kia mưa cứ rơi, còn ở đây bạn đã đủ ấm áp và bình an.",
+        "en": "Let the rain fall outside; in here, you are warm, held, and at peace.",
+        "ko": "밖에는 비가 내리지만, 이곳에서 당신은 충분히 따뜻하고 평온합니다.",
+        "ja": "外は雨が降っていても、ここでは温もりと安らぎに包まれています。",
+        "fr": "Laissez la pluie tomber dehors ; ici, vous êtes au chaud et en paix.",
+        "zh": "任凭窗外细雨飘落，此刻在这里的你温暖、安稳而平静。"
+      },
+      "animationType": "rain_steam",
+      "primarySoundId": "SO-03",
+      "soundIds": [
+        "SO-03",
+        "SO-11",
+        "SO-18"
+      ],
+      "guidedAudioId": "GA-08",
+      "palette": [
+        "#5C6B73",
+        "#9DB4C0",
+        "#D4A373"
+      ],
+      "title": {
+        "vi": "Chiếc sofa êm nhất",
+        "en": "The Softest Sofa",
+        "ko": "가장 포근한 소파",
+        "ja": "一番やわらかなソファ",
+        "fr": "Le canapé le plus doux",
+        "zh": "最柔软的沙发"
+      }
+    },
+    {
+      "id": "cz_04",
+      "number": 4,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Slow Kitchen",
+      "titleVi": "Căn bếp chậm rãi",
+      "description": {
+        "vi": "Bếp nhỏ màu kem và xanh lá, bánh mì vừa nướng, bình hoa cúc, cửa sổ nhìn ra khu vườn sau mưa.",
+        "en": "A small cream and sage green kitchen, freshly baked bread, a vase of daisies, a window overlooking the garden after the rain.",
+        "ko": "크림색과 세이지 그린 톤의 작은 부엌, 갓 구운 빵, 데이지 꽃병, 비 개인 정원이 내려다보이는 창문.",
+        "ja": "クリーム色とセージグリーンの小さなキッチン、焼きたてのパン、デイジーの花瓶、雨上がりの庭を望む窓。",
+        "fr": "Une petite cuisine crème et vert sauge, du pain fraîchement cuit, un vase de marguerites et une fenêtre donnant sur le jardin après la pluie.",
+        "zh": "奶油色与鼠尾草绿的小厨房、刚出炉的面包、一瓶雏菊，以及望向雨后花园的窗。"
+      },
+      "affirmation": {
+        "vi": "Hạnh phúc đôi khi chỉ là hương bánh ấm và một nhịp sống thật chậm rãi.",
+        "en": "Happiness can be as simple as warm bread and a slow, unhurried rhythm.",
+        "ko": "행복은 때로 갓 구운 따뜻한 빵 내음과 서두르지 않는 리듬 속에 있습니다.",
+        "ja": "幸せとは、焼きたてのパンの香りとゆったりとしたリズムのようにシンプルなものです。",
+        "fr": "Le bonheur est parfois aussi simple que du pain chaud et un rythme sans hâte.",
+        "zh": "幸福有时很简单，不过是一缕温热的面包香与不疾不徐的生活节律。"
+      },
+      "animationType": "warm_steam_sun",
+      "primarySoundId": "SO-13",
+      "soundIds": [
+        "SO-13",
+        "SO-11",
+        "SO-03"
+      ],
+      "guidedAudioId": "GA-04",
+      "palette": [
+        "#CCD5AE",
+        "#FAEDCD",
+        "#6B705C"
+      ],
+      "title": {
+        "vi": "Căn bếp chậm rãi",
+        "en": "Slow Kitchen",
+        "ko": "느릿한 부엌",
+        "ja": "ゆっくり流れるキッチン",
+        "fr": "Cuisine au rythme lent",
+        "zh": "慢时光厨房"
+      }
+    },
+    {
+      "id": "cz_05",
+      "number": 5,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Rainy Window",
+      "titleVi": "Ngày mưa không cần đi đâu",
+      "description": {
+        "vi": "Một phòng ngủ tối giản với chăn trắng, cửa kính phủ những giọt mưa, bên ngoài là rừng thông xanh thẫm.",
+        "en": "A minimalist bedroom with white bedding, glass window covered in raindrops, deep green pine forest outside.",
+        "ko": "하얀 침구가 놓인 미니멀한 침실, 빗방울이 맺힌 유리창, 창밖으로 펼쳐진 짙푸른 소나무 숲.",
+        "ja": "白い寝具のミニマルな寝室、雨粒に濡れたガラス窓、その外に広がる深い緑の松林。",
+        "fr": "Une chambre minimaliste aux draps blancs, une vitre couverte de gouttes de pluie et une forêt de pins d'un vert profond au-dehors.",
+        "zh": "铺着纯白床品的极简卧室，玻璃窗上缀满雨滴，窗外是深邃苍翠的松林。"
+      },
+      "affirmation": {
+        "vi": "Bạn không cần phải vội vã đi đâu cả. Nghỉ ngơi cũng là một điều trọn vẹn.",
+        "en": "You do not have to rush anywhere today. Simply resting is enough.",
+        "ko": "오늘 어디로든 서둘러 갈 필요가 없습니다. 그저 쉬어가는 것만으로도 충분합니다.",
+        "ja": "今日はどこへも急ぐ必要はありません。ただ休むだけで十分なのです。",
+        "fr": "Vous n'avez besoin de courir nulle part aujourd'hui. Se reposer suffit amplement.",
+        "zh": "今天你不必匆忙赶往任何地方，安然休息本身就是一种圆满。"
+      },
+      "animationType": "rain_forest",
+      "primarySoundId": "SO-03",
+      "soundIds": [
+        "SO-03",
+        "SO-09",
+        "SO-14"
+      ],
+      "guidedAudioId": "GA-01",
+      "palette": [
+        "#2F4858",
+        "#5C768D",
+        "#A3B18A"
+      ],
+      "title": {
+        "vi": "Ngày mưa không cần đi đâu",
+        "en": "Rainy Window",
+        "ko": "어디도 가지 않아도 되는 비 오는 날",
+        "ja": "どこへも行かなくていい雨の日",
+        "fr": "Fenêtre sous la pluie",
+        "zh": "无需远行的雨天"
+      }
+    },
+    {
+      "id": "cz_06",
+      "number": 6,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Little Attic",
+      "titleVi": "Căn gác mái bí mật",
+      "description": {
+        "vi": "Gác mái dưới mái nhà nghiêng, nệm nhỏ, sách và gối ôm, ô cửa sổ nhìn thấy mây trôi qua.",
+        "en": "An attic under a sloped roof, a small mattress, books and throw pillows, a skylight watching clouds drift by.",
+        "ko": "경사진 지붕 아래의 다락방, 작은 매트리스와 책, 포근한 쿠션들, 구름이 흘러가는 모습을 바라보는 천창.",
+        "ja": "傾斜した屋根の下の屋根裏部屋、小さなマットレス、本とクッション、流れる雲を映す天窓。",
+        "fr": "Un grenier sous un toit en pente, un petit matelas, des livres et des coussins, une lucarne d'où l'on voit glisser les nuages.",
+        "zh": "倾斜屋顶下的小阁楼，铺着小床垫、书籍与抱枕，透过天窗可以看见浮云缓缓掠过。"
+      },
+      "affirmation": {
+        "vi": "Một thế giới nhỏ bé của riêng bạn, nơi mọi ồn ào đều dừng lại phía sau.",
+        "en": "A quiet little world of your own, where all the noise stays far behind.",
+        "ko": "모든 소음이 멀리 물러나는, 오직 당신만을 위한 조용하고 작은 세계입니다.",
+        "ja": "すべての喧騒を遠くに置いた、あなただけの静かで小さな世界です。",
+        "fr": "Un petit monde paisible bien à vous, loin de tout le bruit extérieur.",
+        "zh": "属于你自己的小小世界，所有的喧嚣都被轻轻挡在身后。"
+      },
+      "animationType": "drifting_clouds",
+      "primarySoundId": "SO-20",
+      "soundIds": [
+        "SO-20",
+        "SO-11",
+        "SO-09"
+      ],
+      "guidedAudioId": "GA-28",
+      "palette": [
+        "#D8E2DC",
+        "#FFE5D9",
+        "#9D8189"
+      ],
+      "title": {
+        "vi": "Căn gác mái bí mật",
+        "en": "Little Attic",
+        "ko": "비밀스러운 다락방",
+        "ja": "秘密の屋根裏部屋",
+        "fr": "Le petit grenier",
+        "zh": "秘密小阁楼"
+      }
+    },
+    {
+      "id": "cz_07",
+      "number": 7,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Winter Fireplace",
+      "titleVi": "Mùa đông bên lò sưởi",
+      "description": {
+        "vi": "Một chiếc ghế bành và chăn dày cạnh lò sưởi, cửa sổ trông ra khu rừng tuyết, ánh lửa vừa đủ.",
+        "en": "An armchair and thick blanket beside the fireplace, a window looking out at a snowy forest, a warm gentle firelight.",
+        "ko": "벽난로 옆의 안락의자와 두툼한 담요, 눈 덮인 숲이 보이는 창문, 은은하고 따뜻한 불빛.",
+        "ja": "暖炉のそばのアームチェアと厚手の毛布、雪の森を望む窓、優しく温かな炎の灯り。",
+        "fr": "Un fauteuil et une couverture épaisse près de la cheminée, une fenêtre donnant sur une forêt enneigée, la douce lueur chaleureuse du feu.",
+        "zh": "壁炉旁的扶手椅与厚毛毯，窗外是白雪皑皑的森林，室内跃动着温柔而恰到好处的火光。"
+      },
+      "affirmation": {
+        "vi": "Ngọn lửa ấm áp nhắc bạn rằng trong lòng mình luôn có một nơi chở che.",
+        "en": "The gentle firelight reminds you that warmth always lives within.",
+        "ko": "부드러운 불빛은 당신의 내면에 언제나 따뜻한 온기가 살아 있음을 일깨워 줍니다.",
+        "ja": "優しい炎の灯りは、あなたの中にいつも温もりがあることを教えてくれます。",
+        "fr": "La douce lueur du feu vous rappelle que la chaleur vit toujours en vous.",
+        "zh": "跃动的温暖火光提醒着你，内心深处始终有一处庇护的暖意。"
+      },
+      "animationType": "fireplace_snow",
+      "primarySoundId": "SO-07",
+      "soundIds": [
+        "SO-07",
+        "SO-11",
+        "SO-14"
+      ],
+      "guidedAudioId": "GA-09",
+      "palette": [
+        "#3D2C2E",
+        "#6E473B",
+        "#E07A5F"
+      ],
+      "title": {
+        "vi": "Mùa đông bên lò sưởi",
+        "en": "Winter Fireplace",
+        "ko": "벽난로 옆의 겨울",
+        "ja": "暖炉のそばの冬",
+        "fr": "Au coin du feu d'hiver",
+        "zh": "冬日壁炉旁"
+      }
+    },
+    {
+      "id": "cz_08",
+      "number": 8,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Midnight Bath",
+      "titleVi": "Bồn tắm dưới ánh trăng",
+      "description": {
+        "vi": "Phòng tắm có cửa sổ vòm lớn, bồn tắm ngập nước ấm và vài cánh hoa, bên ngoài là mặt hồ dưới trăng.",
+        "en": "A bathroom with a large arched window, a tub filled with warm water and flower petals, a moonlit lake outside.",
+        "ko": "커다란 아치형 창문이 있는 욕실, 따뜻한 물과 꽃잎이 띄워진 욕조, 창밖으로 펼쳐진 달빛 아래의 호수.",
+        "ja": "大きなアーチ窓のあるバスルーム、温かいお湯と花びらを満たしたバスタブ、外に広がる月明かりの湖。",
+        "fr": "Une salle de bain avec une grande fenêtre voûtée, une baignoire remplie d'eau chaude et de pétales de fleurs, un lac au clair de lune au-dehors.",
+        "zh": "有着高大拱形窗的浴室，浴缸盛满温水与几片花瓣，窗外是月光映照的静谧湖面。"
+      },
+      "affirmation": {
+        "vi": "Hãy để làn nước ấm cuốn trôi mọi mỏi mệt của ngày dài.",
+        "en": "Let the warm water gently wash away the weight of the day.",
+        "ko": "따뜻한 물결이 긴 하루의 피로와 무게를 부드럽게 씻어내도록 맡겨 보세요.",
+        "ja": "温かいお湯が、長い一日の疲れを優しく洗い流してくれますように。",
+        "fr": "Laissez l'eau chaude emporter doucement toute la fatigue de la journée.",
+        "zh": "让温热的水流轻轻洗去这一整天的疲惫与重量。"
+      },
+      "animationType": "moonlight_steam",
+      "primarySoundId": "SO-10",
+      "soundIds": [
+        "SO-10",
+        "SO-20",
+        "SO-05"
+      ],
+      "guidedAudioId": "GA-27",
+      "palette": [
+        "#1D2D44",
+        "#3E5C76",
+        "#F2BAC9"
+      ],
+      "title": {
+        "vi": "Bồn tắm dưới ánh trăng",
+        "en": "Midnight Bath",
+        "ko": "달빛 아래의 목욕",
+        "ja": "月明かりのバスタイム",
+        "fr": "Bain de minuit",
+        "zh": "月光下的沐浴"
+      }
+    },
+    {
+      "id": "cz_09",
+      "number": 9,
+      "categoryId": "nature_escape",
+      "titleEn": "The Flower Hill",
+      "titleVi": "Ngôi nhà giữa đồi hoa",
+      "description": {
+        "vi": "Ngôi nhà gỗ bé xíu trên ngọn đồi phủ hoa dại, phía sau là những lớp núi mềm dưới trời sao.",
+        "en": "A tiny wooden house on a hill covered in wildflowers, soft mountain layers under a starry sky behind.",
+        "ko": "야생화로 뒤덮인 언덕 위의 아주 작은 나무집, 그 뒤로 별이 빛나는 하늘 아래 겹겹이 이어진 부드러운 산자락.",
+        "ja": "野花に覆われた丘の上の小さな木の家、その背後に星空の下で幾重にも重なる柔らかな山並み。",
+        "fr": "Une toute petite maison en bois sur une colline couverte de fleurs sauvages, avec de douces chaînes de montagnes sous un ciel étoilé en arrière-plan.",
+        "zh": "开满野花的山丘上矗立着一座小小木屋，身后是星空下层峦叠嶂的柔和山影。"
+      },
+      "affirmation": {
+        "vi": "Dưới bầu trời sao rộng lớn, trái tim bạn được tự do nở hoa theo cách riêng.",
+        "en": "Beneath the vast starry sky, your heart is free to bloom in its own time.",
+        "ko": "드넓은 별빛 아래, 당신의 마음은 자신만의 속도로 자유롭게 꽃피울 수 있습니다.",
+        "ja": "広大な星空の下、あなたの心は自分のペースで自由に花開くことができます。",
+        "fr": "Sous le vaste ciel étoilé, votre cœur est libre de s'épanouir à son propre rythme.",
+        "zh": "在浩瀚星空下，你的心可以按照自己的节奏自由绽放。"
+      },
+      "animationType": "starry_meadow",
+      "primarySoundId": "SO-16",
+      "soundIds": [
+        "SO-16",
+        "SO-20",
+        "SO-13"
+      ],
+      "guidedAudioId": "GA-29",
+      "palette": [
+        "#2B2D42",
+        "#5C5470",
+        "#F4A261"
+      ],
+      "title": {
+        "vi": "Ngôi nhà giữa đồi hoa",
+        "en": "The Flower Hill",
+        "ko": "꽃언덕 위의 작은 집",
+        "ja": "花の丘の小さな家",
+        "fr": "La colline aux fleurs",
+        "zh": "花丘上的小木屋"
+      }
+    },
+    {
+      "id": "cz_10",
+      "number": 10,
+      "categoryId": "nature_escape",
+      "titleEn": "Cloud Watching",
+      "titleVi": "Nằm ngắm mây",
+      "description": {
+        "vi": "Một người nằm trên bãi cỏ xanh mướt giữa đồng hoa cúc, phía trên là những đám mây trắng khổng lồ.",
+        "en": "Someone lying on lush green grass in a daisy meadow, giant white clouds drifting overhead.",
+        "ko": "데이지 꽃밭 한가운데 푸른 잔디 위에 누운 한 사람, 머리 위로 유유히 흘러가는 거대한 흰 구름들.",
+        "ja": "デイジーの咲く草原の青々とした芝生に寝転ぶ誰か、頭上をゆったりと流れる大きな白い雲。",
+        "fr": "Quelqu'un allongé dans l'herbe verte au milieu d'un pré de marguerites, d'immenses nuages blancs dérivant au-dessus.",
+        "zh": "有人躺在雏菊花田间翠绿的草地上，头顶是缓缓飘过的巨大白云。"
+      },
+      "affirmation": {
+        "vi": "Hãy để những suy nghĩ trôi qua nhẹ nhàng như đám mây trắng trên bầu trời.",
+        "en": "Let your thoughts drift by as effortlessly as white clouds across the sky.",
+        "ko": "하늘을 흐르는 흰 구름처럼 당신의 생각들도 가볍게 흘러가도록 두세요.",
+        "ja": "空を流れる白い雲のように、思考も軽やかに流れていくままにしましょう。",
+        "fr": "Laissez vos pensées glisser aussi légèrement que les nuages blancs dans le ciel.",
+        "zh": "让思绪像天边的白云一样，自然而然地轻轻飘过。"
+      },
+      "animationType": "cloud_meadow",
+      "primarySoundId": "SO-16",
+      "soundIds": [
+        "SO-16",
+        "SO-12",
+        "SO-10"
+      ],
+      "guidedAudioId": "GA-01",
+      "palette": [
+        "#8ECAE6",
+        "#CAE9FF",
+        "#588157"
+      ],
+      "title": {
+        "vi": "Nằm ngắm mây",
+        "en": "Cloud Watching",
+        "ko": "누워서 구름 바라보기",
+        "ja": "雲を眺める午後",
+        "fr": "Contempler les nuages",
+        "zh": "躺看云卷云舒"
+      }
+    },
+    {
+      "id": "cz_11",
+      "number": 11,
+      "categoryId": "nature_escape",
+      "titleEn": "The Lakeside Cabin",
+      "titleVi": "Căn nhà bên hồ",
+      "description": {
+        "vi": "Nhà gỗ bên mặt hồ phẳng lặng, một bến thuyền nhỏ, ánh trăng phản chiếu và những ngọn đồi xa.",
+        "en": "A wooden cabin beside a still lake, a small dock, moonlight reflecting on the water and distant hills.",
+        "ko": "잔잔한 호숫가의 통나무집, 작은 선착장, 물결 위에 비치는 달빛과 멀리 보이는 언덕들.",
+        "ja": "静かな湖のほとりの木のキャビン、小さな桟橋、水面に映る月明かりと遠くの丘。",
+        "fr": "Une cabane en bois au bord d'un lac paisible, un petit ponton, le clair de lune se reflétant sur l'eau et les collines lointaines.",
+        "zh": "平静湖畔的木屋、小小的栈桥、倒映在水面上的月光，以及远方的连绵山丘。"
+      },
+      "affirmation": {
+        "vi": "Khi lòng lắng lại như mặt hồ đêm, ánh trăng bình yên sẽ tự khắc hiện rõ.",
+        "en": "When your heart grows still like a night lake, peaceful moonlight naturally appears.",
+        "ko": "마음이 밤호수처럼 고요해질 때, 평화로운 달빛이 저절로 선명하게 비춰집니다.",
+        "ja": "心が夜の湖のように静まるとき、穏やかな月明かりが自然と映し出されます。",
+        "fr": "Quand votre cœur s'apaise comme un lac nocturne, la douce lune se révèle d'elle-même.",
+        "zh": "当心如夜湖般澄澈平静，宁静的月光便会自然浮现。"
+      },
+      "animationType": "moonlit_lake",
+      "primarySoundId": "SO-14",
+      "soundIds": [
+        "SO-14",
+        "SO-05",
+        "SO-20"
+      ],
+      "guidedAudioId": "GA-09",
+      "palette": [
+        "#1B263B",
+        "#415A77",
+        "#E0E1DD"
+      ],
+      "title": {
+        "vi": "Căn nhà bên hồ",
+        "en": "The Lakeside Cabin",
+        "ko": "호숫가의 오두막",
+        "ja": "湖畔のキャビン",
+        "fr": "La cabane au bord du lac",
+        "zh": "湖畔木屋"
+      }
+    },
+    {
+      "id": "cz_12",
+      "number": 12,
+      "categoryId": "nature_escape",
+      "titleEn": "Under the Old Tree",
+      "titleVi": "Dưới tán cây già",
+      "description": {
+        "vi": "Một chiếc xích đu gỗ dưới tán cây lớn, thảm cỏ lấm tấm hoa trắng, nhìn xuống hồ nước lúc hoàng hôn.",
+        "en": "A wooden swing beneath an old tree, grass dotted with white flowers, looking down at a lake at sunset.",
+        "ko": "커다란 고목 아래의 나무 그네, 하얀 꽃들이 점점이 피어난 잔디밭, 해 질 녘 호수를 내려다보는 풍경.",
+        "ja": "大きな古木の下の木のブランコ、白い花が点々と咲く草地、夕暮れの湖を見下ろす風景。",
+        "fr": "Une balançoire en bois sous un vieil arbre, l'herbe parsemée de fleurs blanches, surplombant un lac au coucher du soleil.",
+        "zh": "古树浓荫下的木秋千，草坪上点缀着朵朵白花，俯瞰着日落时分的湖水。"
+      },
+      "affirmation": {
+        "vi": "Dưới bóng cây vững chãi, bạn luôn có một điểm tựa để thả lỏng đôi vai.",
+        "en": "Beneath the steady shade of the old tree, you can finally let your shoulders drop.",
+        "ko": "든든한 나무 그늘 아래에서 이제 어깨의 긴장을 천천히 내려놓아도 좋습니다.",
+        "ja": "頼もしい木陰の下で、肩の力をすっと抜いて休んでいいのです。",
+        "fr": "Sous l'ombre protectrice du vieil arbre, vous pouvez enfin relâcher vos épaules.",
+        "zh": "在古老大树稳稳的树荫下，你可以安心卸下双肩的紧绷。"
+      },
+      "animationType": "sunset_swing",
+      "primarySoundId": "SO-13",
+      "soundIds": [
+        "SO-13",
+        "SO-14",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-04",
+      "palette": [
+        "#E5989B",
+        "#FFB4A2",
+        "#6D6875"
+      ],
+      "title": {
+        "vi": "Dưới tán cây già",
+        "en": "Under the Old Tree",
+        "ko": "오래된 나무 아래",
+        "ja": "大きな古木の下で",
+        "fr": "Sous le vieil arbre",
+        "zh": "老树浓荫下"
+      }
+    },
+    {
+      "id": "cz_13",
+      "number": 13,
+      "categoryId": "nature_escape",
+      "titleEn": "Seaside Hideaway",
+      "titleVi": "Góc nhỏ bên biển",
+      "description": {
+        "vi": "Một căn nhà trắng đơn sơ trên vách đá thấp, cửa sổ mở ra đại dương xanh, chiếc ghế ngoài hiên.",
+        "en": "A simple white house on a low cliff, windows opening to the blue ocean, a chair on the porch.",
+        "ko": "낮은 절벽 위의 소박한 하얀 집, 푸른 바다를 향해 열린 창문들, 현관 포치에 놓인 의자 하나.",
+        "ja": "低い崖の上にある素朴な白い家、青い海へと開かれた窓、ポーチに置かれた一脚の椅子。",
+        "fr": "Une maison blanche toute simple sur une falaise basse, des fenêtres ouvertes sur l'océan bleu et une chaise sous le porche.",
+        "zh": "低矮崖边一座简朴的白房子，窗户敞向蔚蓝大海，门廊上放着一把安静的椅子。"
+      },
+      "affirmation": {
+        "vi": "Hít vào hơi thở của biển cả, thở ra những điều không còn thuộc về bạn.",
+        "en": "Breathe in the vastness of the sea; breathe out what you no longer need to carry.",
+        "ko": "바다의 드넓은 숨결을 들이마시고, 더 이상 짊어질 필요 없는 것들을 내쉬어 보세요.",
+        "ja": "海の広大な息吹を吸い込み、もう抱えなくていいものを吐き出しましょう。",
+        "fr": "Inspirez l'immensité de l'océan, expirez ce que vous n'avez plus besoin de porter.",
+        "zh": "吸进大海的辽阔气息，呼出那些不再属于你的负担。"
+      },
+      "animationType": "ocean_breeze",
+      "primarySoundId": "SO-05",
+      "soundIds": [
+        "SO-05",
+        "SO-16",
+        "SO-10"
+      ],
+      "guidedAudioId": "GA-31",
+      "palette": [
+        "#457B9D",
+        "#A8DADC",
+        "#1D3557"
+      ],
+      "title": {
+        "vi": "Góc nhỏ bên biển",
+        "en": "Seaside Hideaway",
+        "ko": "바닷가의 작은 은신처",
+        "ja": "海辺の隠れ家",
+        "fr": "Refuge en bord de mer",
+        "zh": "海畔静谧一隅"
+      }
+    },
+    {
+      "id": "cz_14",
+      "number": 14,
+      "categoryId": "nature_escape",
+      "titleEn": "The Secret Garden",
+      "titleVi": "Khu vườn bí mật",
+      "description": {
+        "vi": "Khu vườn nhỏ có hàng rào gỗ, ghế dài dưới giàn hoa, lối đi đá và những bông hoa dại.",
+        "en": "A small garden with a wooden fence, a bench beneath a flower trellis, a stone path and wildflowers.",
+        "ko": "나무 울타리가 있는 작은 정원, 꽃시렁 아래의 벤치, 돌길과 소박하게 피어난 야생화들.",
+        "ja": "木の柵に囲まれた小さな庭、花棚の下のベンチ、石の小道と咲き誇る野花。",
+        "fr": "Un petit jardin avec une clôture en bois, un banc sous une treille fleurie, un sentier de pierre et des fleurs sauvages.",
+        "zh": "有着木栅栏的小花园、花架下的长椅、石板小径与随风摇曳的野花。"
+      },
+      "affirmation": {
+        "vi": "Khu vườn trong tâm hồn bạn vẫn đang âm thầm nảy nở những điều dịu đẹp.",
+        "en": "The secret garden within your soul is quietly blooming with gentle beauty.",
+        "ko": "당신의 영혼 속 비밀 정원에는 지금도 고요하고 아름다운 꽃들이 피어나고 있습니다.",
+        "ja": "あなたの心の中の秘密の庭では、今も静かに優しい美しさが花開いています。",
+        "fr": "Le jardin secret de votre âme continue de fleurir doucement en silence.",
+        "zh": "你灵魂深处的秘密花园，正悄然盛开着温柔而美好的花朵。"
+      },
+      "animationType": "garden_petals",
+      "primarySoundId": "SO-18",
+      "soundIds": [
+        "SO-18",
+        "SO-13",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-08",
+      "palette": [
+        "#D8F3DC",
+        "#FCEFB4",
+        "#52B788"
+      ],
+      "title": {
+        "vi": "Khu vườn bí mật",
+        "en": "The Secret Garden",
+        "ko": "비밀의 화원",
+        "ja": "秘密の花園",
+        "fr": "Le jardin secret",
+        "zh": "秘密花园"
+      }
+    },
+    {
+      "id": "cz_15",
+      "number": 15,
+      "categoryId": "nature_escape",
+      "titleEn": "Forest Hideout",
+      "titleVi": "Chốn trú ẩn trong rừng",
+      "description": {
+        "vi": "Cabin bé xíu giữa những cây thông cao, con đường phủ rêu, sương mỏng và con suối nhỏ.",
+        "en": "A tiny cabin among tall pine trees, a moss-covered path, thin mist and a small stream.",
+        "ko": "키 큰 소나무들 사이의 아주 작은 오두막, 이끼 덮인 오솔길, 옅은 안개와 졸졸 흐르는 작은 시내.",
+        "ja": "背の高い松の木々に囲まれた小さなキャビン、苔むした小道、薄い霧と小さなせせらぎ。",
+        "fr": "Une minuscule cabane parmi de grands pins, un sentier couvert de mousse, une fine brume et un petit ruisseau.",
+        "zh": "高大松林间的小小木屋，覆满青苔的小径、薄薄晨雾与潺潺流淌的小溪。"
+      },
+      "affirmation": {
+        "vi": "Giữa rừng sâu tĩnh lặng, bạn nghe lại được tiếng nói dịu dàng của chính mình.",
+        "en": "In the quiet depths of the forest, you can hear your own gentle voice again.",
+        "ko": "고요한 숲의 깊은 품 안에서 당신은 자신의 다정한 목소리를 다시 듣게 됩니다.",
+        "ja": "静かな森の奥深くで、あなた自身の優しい声がまた聞こえてきます。",
+        "fr": "Dans le calme profond de la forêt, vous réapprendrez à entendre votre propre voix douce.",
+        "zh": "在静谧深林的怀抱中，你能重新听见自己内心温柔的声音。"
+      },
+      "animationType": "forest_mist",
+      "primarySoundId": "SO-14",
+      "soundIds": [
+        "SO-14",
+        "SO-03",
+        "SO-10"
+      ],
+      "guidedAudioId": "GA-31",
+      "palette": [
+        "#2D6A4F",
+        "#74C69D",
+        "#1B4332"
+      ],
+      "title": {
+        "vi": "Chốn trú ẩn trong rừng",
+        "en": "Forest Hideout",
+        "ko": "숲속의 은신처",
+        "ja": "森の隠れ家",
+        "fr": "Cachette dans la forêt",
+        "zh": "森林隐居处"
+      }
+    },
+    {
+      "id": "cz_16",
+      "number": 16,
+      "categoryId": "little_companions",
+      "titleEn": "Good Cat",
+      "titleVi": "Một chiều bên mèo",
+      "description": {
+        "vi": "Một chú mèo cuộn tròn trên bệ cửa sổ, một người ngồi cạnh, phía ngoài là hoàng hôn màu hồng tím.",
+        "en": "A cat curled up on the windowsill, someone sitting nearby, a pink and lavender sunset outside.",
+        "ko": "창가에 둥글게 몸을 말고 누운 고양이, 그 곁에 앉은 한 사람, 창밖으로 물드는 분홍빛과 연보라색 노을.",
+        "ja": "窓辺で丸くなる猫、そのそばに座る誰か、窓の外に広がるピンクとラベンダー色の夕焼け。",
+        "fr": "Un chat roulé en boule sur le rebord de la fenêtre, quelqu'un assis tout près, un coucher de soleil rose et lavande au-dehors.",
+        "zh": "一只猫咪蜷缩在窗台上，有人静坐身旁，窗外是粉紫交织的温柔晚霞。"
+      },
+      "affirmation": {
+        "vi": "Chỉ cần ngồi yên bên ánh chiều buông, sự bình yên đã ở ngay cạnh bạn.",
+        "en": "Simply sitting quietly by the fading light, peace is already right beside you.",
+        "ko": "저물어 가는 노을빛 옆에 가만히 앉아 있는 것만으로도 평온은 이미 당신 곁에 있습니다.",
+        "ja": "夕暮れの光のそばに静かに座るだけで、安らぎはもうあなたの隣にあります。",
+        "fr": "Assis paisiblement dans la lumière du soir, la paix est déjà tout près de vous.",
+        "zh": "只需在暮色余晖旁静静坐着，宁静便已经在你身边。"
+      },
+      "animationType": "sunset_cat",
+      "primarySoundId": "SO-11",
+      "soundIds": [
+        "SO-11",
+        "SO-17",
+        "SO-18"
+      ],
+      "guidedAudioId": "GA-04",
+      "palette": [
+        "#CDB4DB",
+        "#FFC8DD",
+        "#6D597A"
+      ],
+      "title": {
+        "vi": "Một chiều bên mèo",
+        "en": "Good Cat",
+        "ko": "고양이와 함께한 오후",
+        "ja": "猫と過ごす午後",
+        "fr": "Un après-midi avec le chat",
+        "zh": "与猫相伴的午后"
+      }
+    },
+    {
+      "id": "cz_17",
+      "number": 17,
+      "categoryId": "little_companions",
+      "titleEn": "Dog Friend",
+      "titleVi": "Người bạn bốn chân",
+      "description": {
+        "vi": "Một người và chú chó nằm cạnh nhau trên đồi cỏ, nhìn những ngôi sao đầu tiên xuất hiện.",
+        "en": "A person and their dog lying side by side on a grassy hill, watching the first stars appear.",
+        "ko": "풀언덕 위에 나란히 누운 사람과 강아지, 밤하늘에 떠오르는 첫 별들을 함께 바라보는 순간.",
+        "ja": "草の丘に並んで寝転ぶ人と犬、夜空に最初の星々が浮かび上がるのを眺めるひととき。",
+        "fr": "Une personne et son chien allongés côte à côte sur une colline herbeuse, regardant apparaître les premières étoiles.",
+        "zh": "一人一狗在青草山坡上并肩躺着，静静守望夜空中最早亮起的星辰。"
+      },
+      "affirmation": {
+        "vi": "Có những sự đồng hành không cần lời nói mà vẫn sưởi ấm cả bầu trời đêm.",
+        "en": "Some companionship needs no words to warm the entire night sky.",
+        "ko": "어떤 동행은 말 한마디 없이도 밤하늘 전체를 따뜻하게 데워 줍니다.",
+        "ja": "言葉がなくても、夜空全体を温めてくれる寄り添いがあります。",
+        "fr": "Certaines présences n'ont besoin d'aucun mot pour réchauffer tout le ciel nocturne.",
+        "zh": "有些陪伴无需言语，却足以温暖整片夜空。"
+      },
+      "animationType": "starlight_hill",
+      "primarySoundId": "SO-18",
+      "soundIds": [
+        "SO-18",
+        "SO-16",
+        "SO-20"
+      ],
+      "guidedAudioId": "GA-10",
+      "palette": [
+        "#355070",
+        "#6D597A",
+        "#EAAC8B"
+      ],
+      "title": {
+        "vi": "Người bạn bốn chân",
+        "en": "Dog Friend",
+        "ko": "네 발 달린 친구",
+        "ja": "四つ足の親友",
+        "fr": "L'ami fidèle",
+        "zh": "四足挚友"
+      }
+    },
+    {
+      "id": "cz_18",
+      "number": 18,
+      "categoryId": "little_companions",
+      "titleEn": "Afternoon Nap",
+      "titleVi": "Giấc ngủ trưa",
+      "description": {
+        "vi": "Ghế sofa thấp phủ chăn mềm, một chú chó nằm dưới chân, nắng dịu lọt qua rèm cửa.",
+        "en": "A low sofa draped in a soft blanket, a dog resting at their feet, gentle sunlight filtering through the curtains.",
+        "ko": "부드러운 담요가 덮인 낮은 소파, 발치에서 쉬고 있는 강아지, 커튼 사이로 스며드는 따스한 햇살.",
+        "ja": "柔らかな毛布を掛けた低いソファ、足元で休む犬、カーテン越しに差し込む優しい日差し。",
+        "fr": "Un canapé bas drapé d'une couverture douce, un chien assoupi au pied, une lumière tendre filtrant à travers les rideaux.",
+        "zh": "铺着软毯的低矮沙发，小狗安静趴在脚边，柔和的阳光透过窗帘洒进屋内。"
+      },
+      "affirmation": {
+        "vi": "Khép đôi mắt lại trong nắng ấm, thế giới ngoài kia có thể đợi bạn thêm một chút.",
+        "en": "Close your eyes in the warm sunlight; the outside world can wait a little while.",
+        "ko": "따스한 햇살 속에 두 눈을 감으세요. 바깥세상은 잠시 당신을 기다려 줄 수 있습니다.",
+        "ja": "柔らかな日差しの中で目を閉じましょう。外の世界は少し待っていてくれます。",
+        "fr": "Fermez les yeux dans la douce lumière ; le monde extérieur peut attendre un instant.",
+        "zh": "在温暖阳光下轻轻闭上双眼，外面的世界可以再等你一会儿。"
+      },
+      "animationType": "sunbeam_nap",
+      "primarySoundId": "SO-09",
+      "soundIds": [
+        "SO-09",
+        "SO-10",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-01",
+      "palette": [
+        "#F9DCC4",
+        "#FEC89A",
+        "#8D6E63"
+      ],
+      "title": {
+        "vi": "Giấc ngủ trưa",
+        "en": "Afternoon Nap",
+        "ko": "오후의 낮잠",
+        "ja": "午後のうたた寝",
+        "fr": "Sieste d'après-midi",
+        "zh": "午后小憩"
+      }
+    },
+    {
+      "id": "cz_19",
+      "number": 19,
+      "categoryId": "little_companions",
+      "titleEn": "Little Picnic",
+      "titleVi": "Buổi picnic của hai người bạn",
+      "description": {
+        "vi": "Tấm khăn trải trên đồng cỏ, giỏ bánh mì và trái cây, một người ngồi cùng chú chó nhỏ ngắm mây.",
+        "en": "A blanket spread across the meadow, a basket of bread and fruit, sitting with a small dog watching the clouds.",
+        "ko": "풀밭 위에 펼쳐진 피크닉 매트, 빵과 과일이 담긴 바구니, 작은 강아지와 나란히 앉아 구름을 바라보는 시간.",
+        "ja": "草原に広げたブランケット、パンと果物のバスケット、小さな犬と一緒に座って雲を眺めるひととき。",
+        "fr": "Une couverture étendue dans la prairie, un panier de pain et de fruits, assis avec un petit chien à regarder les nuages.",
+        "zh": "草地上铺着野餐垫，篮里装着面包与水果，与小狗并肩坐着仰望天边流云。"
+      },
+      "affirmation": {
+        "vi": "Niềm vui giản dị nhất luôn nằm ở khoảnh khắc bạn trọn vẹn hiện diện nơi này.",
+        "en": "The simplest joy lives in the moment you are fully present right here.",
+        "ko": "가장 순수한 기쁨은 지금 이 자리에 온전히 머무는 순간 속에 살아 있습니다.",
+        "ja": "最もシンプルな喜びは、今この瞬間に心を満たして存在する中にあります。",
+        "fr": "La joie la plus simple réside dans l'instant où vous êtes pleinement présent ici.",
+        "zh": "最纯粹的喜悦，就藏在你全然安住于当下的这一刻。"
+      },
+      "animationType": "meadow_picnic",
+      "primarySoundId": "SO-13",
+      "soundIds": [
+        "SO-13",
+        "SO-16",
+        "SO-18"
+      ],
+      "guidedAudioId": "GA-03",
+      "palette": [
+        "#A9DEF9",
+        "#E4C1F9",
+        "#4D908E"
+      ],
+      "title": {
+        "vi": "Buổi picnic của hai người bạn",
+        "en": "Little Picnic",
+        "ko": "두 친구의 작은 피크닉",
+        "ja": "ふたりの小さなピクニック",
+        "fr": "Petit pique-nique",
+        "zh": "两个好朋友的野餐"
+      }
+    },
+    {
+      "id": "cz_20",
+      "number": 20,
+      "categoryId": "little_companions",
+      "titleEn": "Home Together",
+      "titleVi": "Có nhau là đủ",
+      "description": {
+        "vi": "Phòng khách nhỏ với chiếc sofa rộng, hai người tựa vai bên nhau, một chú mèo ngủ trên thảm.",
+        "en": "A cozy living room with a wide sofa, two people leaning on each other's shoulders, a cat sleeping on the rug.",
+        "ko": "넓은 소파가 있는 아늑한 거실, 서로의 어깨에 다정히 기댄 두 사람, 카펫 위에서 잠든 고양이.",
+        "ja": "広いソファのある居心地のよいリビング、肩を寄せ合うふたり、ラグの上で眠る猫。",
+        "fr": "Un salon douillet avec un grand canapé, deux personnes appuyées l'une contre l'autre et un chat endormi sur le tapis.",
+        "zh": "摆着宽敞沙发的温馨客厅，两个人轻轻靠着彼此的肩膀，猫咪在地毯上酣然入睡。"
+      },
+      "affirmation": {
+        "vi": "Bình yên không phải là nơi chốn xa xôi, mà là cảm giác an toàn khi ở bên nhau.",
+        "en": "Peace is not a distant place, but the quiet safety of being together.",
+        "ko": "평온은 먼 곳이 아니라, 서로의 곁에서 느끼는 고요한 안전함입니다.",
+        "ja": "安らぎとは遠い場所ではなく、共にいることの静かな安心感です。",
+        "fr": "La paix n'est pas un lieu lointain, mais la douce sécurité d'être ensemble.",
+        "zh": "宁静并非遥不可及的远方，而是彼此依偎时那份踏实的心安。"
+      },
+      "animationType": "warm_hearth",
+      "primarySoundId": "SO-18",
+      "soundIds": [
+        "SO-18",
+        "SO-07",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-30",
+      "palette": [
+        "#E8D8C8",
+        "#F7EDE2",
+        "#845EC2"
+      ],
+      "title": {
+        "vi": "Có nhau là đủ",
+        "en": "Home Together",
+        "ko": "함께여서 충분한 집",
+        "ja": "一緒にいるだけで十分",
+        "fr": "Ensemble à la maison",
+        "zh": "相伴便是圆满"
+      }
+    },
+    {
+      "id": "cz_21",
+      "number": 21,
+      "categoryId": "dreamy_moments",
+      "titleEn": "Stargazing Rooftop",
+      "titleVi": "Đêm trên mái nhà",
+      "description": {
+        "vi": "Một người ngồi trên mái nhà nhỏ giữa đồng cỏ, bầu trời sao rộng bất tận.",
+        "en": "Someone sitting on a small rooftop in a meadow, an endless starry sky above.",
+        "ko": "초원 한가운데 작은 지붕 위에 앉은 한 사람, 머리 위로 끝없이 펼쳐진 별들의 하늘.",
+        "ja": "草原の中の小さな屋根の上に座る誰か、頭上に果てしなく広がる満天の星空。",
+        "fr": "Quelqu'un assis sur un petit toit au milieu d'une prairie, sous un ciel étoilé infini.",
+        "zh": "有人坐在草地中央的小屋屋顶上，头顶是一望无际的璀璨星空。"
+      },
+      "affirmation": {
+        "vi": "Giữa vũ trụ bao la, mọi muộn phiền của hôm nay đều trở nên thật nhỏ bé.",
+        "en": "Under the endless cosmos, today's worries gently fade into something small.",
+        "ko": "끝없는 우주 아래에서 오늘의 모든 걱정은 아주 작고 가벼워집니다.",
+        "ja": "果てしない宇宙の下では、今日の悩みも小さく優しく溶けていきます。",
+        "fr": "Sous le cosmos infini, les soucis d'aujourd'hui deviennent tout petits.",
+        "zh": "在浩瀚无垠的宇宙之下，今天所有的烦恼都变得渺小而轻盈。"
+      },
+      "animationType": "rooftop_stars",
+      "primarySoundId": "SO-20",
+      "soundIds": [
+        "SO-20",
+        "SO-10",
+        "SO-16"
+      ],
+      "guidedAudioId": "GA-10",
+      "palette": [
+        "#0F172A",
+        "#312E81",
+        "#FDE68A"
+      ],
+      "title": {
+        "vi": "Đêm trên mái nhà",
+        "en": "Stargazing Rooftop",
+        "ko": "지붕 위의 별밤",
+        "ja": "星空のルーフトップ",
+        "fr": "Toit sous les étoiles",
+        "zh": "屋顶观星之夜"
+      }
+    },
+    {
+      "id": "cz_22",
+      "number": 22,
+      "categoryId": "dreamy_moments",
+      "titleEn": "Sunset Balcony",
+      "titleVi": "Ban công lúc chiều buông",
+      "description": {
+        "vi": "Ban công nhỏ với ghế mây, tách trà, vài chậu hoa, nhìn ra những ngọn núi tím xa xa.",
+        "en": "A small balcony with a rattan chair, a cup of tea, potted flowers, looking out at distant purple mountains.",
+        "ko": "라탄 의자와 차 한 잔, 몇 개의 화분이 놓인 작은 발코니, 저 멀리 펼쳐진 보랏빛 산봉우리들.",
+        "ja": "ラタンの椅子とお茶、いくつかの鉢植えがある小さなバルコニー、遠くに連なる紫色の山々。",
+        "fr": "Un petit balcon avec un fauteuil en rotin, une tasse de thé et des fleurs en pot, face aux montagnes violettes au loin.",
+        "zh": "摆着藤椅、热茶与几盆花草的小阳台，远眺着天边淡紫色的群山。"
+      },
+      "affirmation": {
+        "vi": "Hoàng hôn dịu dàng khép lại ngày cũ, nhắc bạn trân trọng từng nhịp thở êm đềm.",
+        "en": "The gentle dusk closes the day, reminding you to cherish each quiet breath.",
+        "ko": "부드러운 황혼이 하루를 닫으며, 고요한 숨결 하나하나를 소중히 여기라고 속삭입니다.",
+        "ja": "優しい夕暮れが一日を閉じ、静かな呼吸のひとつひとつを慈しむよう囁きます。",
+        "fr": "Le doux crépuscule clôt la journée et vous invite à chérir chaque souffle.",
+        "zh": "温柔的暮色轻轻合上一天，提醒你珍视每一次平静的呼吸。"
+      },
+      "animationType": "dusk_balcony",
+      "primarySoundId": "SO-17",
+      "soundIds": [
+        "SO-17",
+        "SO-11",
+        "SO-13"
+      ],
+      "guidedAudioId": "GA-09",
+      "palette": [
+        "#9D8189",
+        "#F4ACB7",
+        "#4A4E69"
+      ],
+      "title": {
+        "vi": "Ban công lúc chiều buông",
+        "en": "Sunset Balcony",
+        "ko": "해 질 녘 발코니",
+        "ja": "夕暮れのバルコニー",
+        "fr": "Balcon au coucher du soleil",
+        "zh": "日落阳台"
+      }
+    },
+    {
+      "id": "cz_23",
+      "number": 23,
+      "categoryId": "dreamy_moments",
+      "titleEn": "Coffee & Rain",
+      "titleVi": "Cà phê ngày mưa",
+      "description": {
+        "vi": "Quán cà phê nhỏ gần như vắng người, một góc ghế bên cửa sổ, bên ngoài mưa rơi xuống phố cổ.",
+        "en": "A nearly empty little cafe, a window seat, rain falling softly on the old street outside.",
+        "ko": "거의 텅 빈 작은 카페, 창가의 아늑한 자리, 창밖 오래된 거리 위로 소리 없이 내리는 비.",
+        "ja": "ほとんど人のいない小さなカフェ、窓際の席、外の古い街並みに静かに降り注ぐ雨。",
+        "fr": "Un petit café presque désert, une place près de la fenêtre, la pluie tombant doucement sur la vieille rue au-dehors.",
+        "zh": "几乎空无一人的小咖啡馆，靠窗的一隅座位，窗外细雨正轻轻落在古老街巷上。"
+      },
+      "affirmation": {
+        "vi": "Ngồi yên bên tách cà phê ấm, nhìn mưa rơi và để lòng mình lắng lại.",
+        "en": "Sit quietly with a warm cup, watch the rain fall, and let your heart settle.",
+        "ko": "따뜻한 커피 한 잔과 함께 창밖의 빗줄기를 바라보며 마음을 가만히 가라앉혀 보세요.",
+        "ja": "温かいカップを手に雨を眺め、心を静かに落ち着かせましょう。",
+        "fr": "Asseyez-vous avec une tasse chaude, regardez la pluie tomber et apaisez votre cœur.",
+        "zh": "伴着一杯温热咖啡静坐窗前，看细雨落下，让心慢慢沉淀。"
+      },
+      "animationType": "cafe_rain",
+      "primarySoundId": "SO-03",
+      "soundIds": [
+        "SO-03",
+        "SO-17",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-07",
+      "palette": [
+        "#4A3B32",
+        "#7F6A5B",
+        "#E6B89C"
+      ],
+      "title": {
+        "vi": "Cà phê ngày mưa",
+        "en": "Coffee & Rain",
+        "ko": "비 오는 날의 커피",
+        "ja": "雨の日のコーヒー",
+        "fr": "Café sous la pluie",
+        "zh": "雨日咖啡馆"
+      }
+    },
+    {
+      "id": "cz_24",
+      "number": 24,
+      "categoryId": "dreamy_moments",
+      "titleEn": "The Quiet Train",
+      "titleVi": "Chuyến tàu bình yên",
+      "description": {
+        "vi": "Khoang tàu có ghế bọc vải mềm, một người tựa đầu bên cửa kính, ngắm cánh đồng xanh và những đám mây.",
+        "en": "A train compartment with soft fabric seats, someone resting their head against the window, watching green fields and clouds.",
+        "ko": "부드러운 패브릭 좌석이 있는 기차 객실, 창가에 머리를 기대어 푸른 들판과 구름을 바라보는 한 사람.",
+        "ja": "柔らかな布張りの座席がある列車のコンパートメント、窓に頭をもたれて緑の野原と雲を眺める誰か。",
+        "fr": "Un compartiment de train aux sièges en tissu doux, quelqu'un la tête posée contre la vitre, regardant défiler les champs verts et les nuages.",
+        "zh": "有着柔软布艺座椅的列车车厢，有人将头轻靠在车窗边，静静看着翠绿田野与流云掠过。"
+      },
+      "affirmation": {
+        "vi": "Cuộc đời là một hành trình dài — đôi khi bạn chỉ cần tựa đầu và ngắm nhìn phong cảnh.",
+        "en": "Life is a long journey—sometimes all you need is to rest your head and watch the view.",
+        "ko": "삶은 긴 여정입니다. 때로는 그저 창가에 기대어 흘러가는 풍경을 바라보기만 해도 좋습니다.",
+        "ja": "人生は長い旅。ときには窓に頭をもたれ、流れる景色を眺めるだけでいいのです。",
+        "fr": "La vie est un long voyage — parfois, il suffit de poser sa tête et d'admirer le paysage.",
+        "zh": "人生是一场漫长的旅途，有时你只需轻轻靠窗，静看风景流转。"
+      },
+      "animationType": "moving_train",
+      "primarySoundId": "SO-12",
+      "soundIds": [
+        "SO-12",
+        "SO-09",
+        "SO-19"
+      ],
+      "guidedAudioId": "GA-05",
+      "palette": [
+        "#7EA8BE",
+        "#C2D8B9",
+        "#455E6B"
+      ],
+      "title": {
+        "vi": "Chuyến tàu bình yên",
+        "en": "The Quiet Train",
+        "ko": "평온한 기차 여행",
+        "ja": "静かな列車の旅",
+        "fr": "Le train paisible",
+        "zh": "宁静列车之旅"
+      }
+    },
+    {
+      "id": "cz_25",
+      "number": 25,
+      "categoryId": "dreamy_moments",
+      "titleEn": "A Place Above the Clouds",
+      "titleVi": "Ngôi nhà trên mây",
+      "description": {
+        "vi": "Một căn nhà bé xíu trên đỉnh đồi nhô lên khỏi biển mây trắng, bầu trời xanh nhạt lúc bình minh.",
+        "en": "A tiny house on a hilltop rising above a sea of white clouds, pale blue sky at dawn.",
+        "ko": "하얀 운해 위로 솟아오른 언덕 꼭대기의 아주 작은 집, 새벽녘의 옅은 푸른빛 하늘.",
+        "ja": "白い雲海の上に浮かぶ丘の頂の小さな家、夜明けの淡い青空。",
+        "fr": "Une toute petite maison au sommet d'une colline émergeant d'une mer de nuages blancs, sous le ciel bleu pâle de l'aube.",
+        "zh": "一座矗立在山巅、浮于白色云海之上的小小房屋，头顶是黎明时分浅淡的蓝天。"
+      },
+      "affirmation": {
+        "vi": "Phía trên những tầng mây dày luôn là bầu trời bình minh trong trẻo và dịu êm.",
+        "en": "Above every layer of clouds, a clear and gentle dawn is always waiting.",
+        "ko": "두터운 구름층 위에는 언제나 맑고 부드러운 새벽하늘이 당신을 기다리고 있습니다.",
+        "ja": "どれほど厚い雲の上にも、いつも澄んだ優しい夜明けの空が待っています。",
+        "fr": "Au-dessus de chaque couche de nuages, une aube claire et douce vous attend toujours.",
+        "zh": "无论云层多厚，云端之上总有澄澈而温柔的黎明在等待着你。"
+      },
+      "animationType": "cloud_sea_dawn",
+      "primarySoundId": "SO-20",
+      "soundIds": [
+        "SO-20",
+        "SO-16",
+        "SO-12"
+      ],
+      "guidedAudioId": "GA-06",
+      "palette": [
+        "#BDE0FE",
+        "#FFAFCC",
+        "#457B9D"
+      ],
+      "title": {
+        "vi": "Ngôi nhà trên mây",
+        "en": "A Place Above the Clouds",
+        "ko": "구름 위의 작은 집",
+        "ja": "雲の上の小さな家",
+        "fr": "Une maison au-dessus des nuages",
+        "zh": "云端之上的小屋"
+      }
+    },
+    {
+      "id": "cz_26",
+      "number": 26,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Christmas in a Gryffindor Private Room",
+      "titleVi": "Giáng sinh trong phòng riêng Gryffindor",
+      "description": {
+        "vi": "Một căn phòng phù thủy riêng tư trong tháp Gryffindor, có lò sưởi, cây thông nhỏ, sách, chăn len và cửa sổ nhìn ra đêm đông.",
+        "en": "A private wizard room inside Gryffindor tower with a crackling hearth, a small Christmas tree, spellbooks, a wool blanket, and an arched window looking out at a snowy winter night.",
+        "ko": "장작불이 타오르는 벽난로, 작은 크리스마스트리, 마법서들과 양모 담요, 그리고 눈 내리는 겨울밤이 보이는 아치형 창문이 있는 그리핀도르 탑 안의 아늑한 개인실.",
+        "ja": "パチパチと燃える暖炉、小さなクリスマスツリー、魔法の本、ウールの毛布、そして雪の冬夜を望むアーチ窓があるグリフィンドール塔のプライベートな部屋。",
+        "fr": "Une chambre de sorcier privée dans la tour de Gryffondor avec un âtre crépitant, un petit sapin de Noël, des grimoires, un plaid en laine et une fenêtre voûtée donnant sur une nuit d'hiver enneigée.",
+        "zh": "格兰芬多塔楼里的一间私人巫师房间，有着噼啪作响的壁炉、小巧的圣诞树、魔法书、羊毛毯，以及望向飘雪冬夜的拱形窗。"
+      },
+      "affirmation": {
+        "vi": "Trong căn phòng tháp cổ ấm áp này, phép thuật của sự bình yên luôn che chở và sưởi ấm cho riêng bạn.",
+        "en": "Inside this warm tower sanctuary, the magic of peace and belonging wraps around you alone.",
+        "ko": "이 따뜻한 고대 탑의 안식처 안에서, 평온과 소속감의 마법이 오직 당신만을 포근히 감싸줍니다.",
+        "ja": "この温かい塔の聖域で、安らぎと安心の魔法があなただけを優しく包み込みます。",
+        "fr": "Dans ce sanctuaire chaleureux de la tour, la magie de la paix vous enveloppe tout entier.",
+        "zh": "在这座温暖的古塔房间里，宁静与归属的魔法只为你一人温柔环绕。"
+      },
+      "animationType": "gryffindor_christmas",
+      "primarySoundId": "SO-21",
+      "soundIds": [
+        "SO-21",
+        "SO-07",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-33",
+      "palette": [
+        "#5A1D24",
+        "#8B3A2B",
+        "#D9A441"
+      ],
+      "title": {
+        "vi": "Giáng sinh trong phòng riêng Gryffindor",
+        "en": "Christmas in a Gryffindor Private Room",
+        "ko": "그리핀도르 개인실의 크리스마스",
+        "ja": "グリフィンドール個室のクリスマス",
+        "fr": "Noël dans une chambre privée de Gryffondor",
+        "zh": "格兰芬多私人房间的圣诞夜"
+      }
+    },
+    {
+      "id": "cz_27",
+      "number": 27,
+      "categoryId": "cozy_indoor",
+      "titleEn": "Autumn Thanksgiving",
+      "titleVi": "Chiều thu biết ơn",
+      "description": {
+        "vi": "Một căn bếp/phòng ăn nhỏ vào chiều thu, có bánh pie, trà nóng, nến và khung cửa sổ nhìn ra rừng lá đỏ cam.",
+        "en": "A cozy kitchen and dining nook on an autumn afternoon with warm pie, hot tea, glowing candles, and a window overlooking a forest of red and amber leaves.",
+        "ko": "따뜻한 파이와 뜨거운 차, 은은한 촛불, 그리고 붉고 노란 단풍 숲이 내려다보이는 창문이 있는 가을 오후의 아늑한 부엌 겸 식사 공간.",
+        "ja": "温かいパイ、熱い紅茶、灯るキャンドル、そして赤や琥珀色に染まる森を望む窓がある、秋の午後の心地よいキッチンとダイニング。",
+        "fr": "Un coin cuisine et salle à manger douillet par un après-midi d'automne, avec une tarte chaude, du thé fumant, des bougies allumées et une fenêtre donnant sur une forêt aux feuilles rouges et ambrées.",
+        "zh": "秋日午后温馨的小厨房与餐角，摆着温热的果派、热茶与烛光，窗外是一片红橙交织的秋叶林。"
+      },
+      "affirmation": {
+        "vi": "Giữa hương bánh nướng và nắng thu dịu ngọt, trái tim bạn ngập tràn lòng biết ơn và sự đủ đầy.",
+        "en": "Amid the warmth of baked pie and golden autumn light, your heart rests in quiet gratitude and abundance.",
+        "ko": "구운 파이의 온기와 황금빛 가을 햇살 속에서 당신의 마음은 고요한 감사와 풍요로움에 머뭅니다.",
+        "ja": "焼きたてのパイの温もりと黄金色の秋の光の中、心は静かな感謝と豊かさに満たされます。",
+        "fr": "Parmi le parfum de tarte chaude et la lumière dorée d'automne, votre cœur repose dans la gratitude.",
+        "zh": "在烘焙果派的暖香与金色秋光里，你的心安住于宁静的感恩与丰盛之中。"
+      },
+      "animationType": "autumn_thanksgiving",
+      "primarySoundId": "SO-22",
+      "soundIds": [
+        "SO-22",
+        "SO-17",
+        "SO-11"
+      ],
+      "guidedAudioId": "GA-34",
+      "palette": [
+        "#7B3F26",
+        "#C86D3B",
+        "#F2C57C"
+      ],
+      "title": {
+        "vi": "Chiều thu biết ơn",
+        "en": "Autumn Thanksgiving",
+        "ko": "감사로 물든 가을 오후",
+        "ja": "感謝に満ちた秋の午後",
+        "fr": "Après-midi d'automne et de gratitude",
+        "zh": "感恩的秋日午后"
+      }
+    },
+    {
+      "id": "cz_28",
+      "number": 28,
+      "categoryId": "dreamy_moments",
+      "titleEn": "A Peaceful Tết Morning",
+      "titleVi": "Sáng Tết bình yên",
+      "description": {
+        "vi": "Một buổi sáng Tết yên tĩnh trong ngôi nhà Việt, có cành đào, bàn trà, nắng xuân và khoảng sân nhỏ.",
+        "en": "A quiet Tết morning in a Vietnamese home with blossoming peach branches, a warm tea table, spring sunlight, and a peaceful little courtyard.",
+        "ko": "활짝 핀 복숭아꽃 가지와 따뜻한 찻상, 봄 햇살과 평화로운 작은 마당이 어우러진 베트남 가정집의 고요한 설날 아침.",
+        "ja": "咲き誇る桃の枝、温かいお茶のテーブル、春の陽気、そして穏やかな小さな中庭があるベトナムの家の静かなテト（旧正月）の朝。",
+        "fr": "Un matin de Têt paisible dans une maison vietnamienne avec des branches de pêcher en fleurs, une table à thé chaleureuse, le soleil printanier et une petite cour tranquille.",
+        "zh": "越南人家中宁静的新春清晨，盛开的桃花枝、温热的茶桌、和煦的春光与平和的小院相映成趣。"
+      },
+      "affirmation": {
+        "vi": "Một khởi đầu mới thật dịu dàng, thân thuộc và bình yên đang nở hoa ngay trong ngôi nhà của bạn.",
+        "en": "A gentle, familiar, and peaceful new beginning is blooming right here at home.",
+        "ko": "다정하고 친숙하며 평화로운 새로운 시작이 바로 당신의 집 안에서 꽃피어나고 있습니다.",
+        "ja": "優しく馴染み深い、穏やかな新しい始まりが、今あなたの家で花開いています。",
+        "fr": "Un nouveau départ doux, familier et paisible s'épanouit ici même chez vous.",
+        "zh": "一个温柔、熟悉而宁静的崭新开始，正在你的家中悄然绽放。"
+      },
+      "animationType": "tet_morning",
+      "primarySoundId": "SO-23",
+      "soundIds": [
+        "SO-23",
+        "SO-11",
+        "SO-13"
+      ],
+      "guidedAudioId": "GA-32",
+      "palette": [
+        "#8C3B32",
+        "#E88D8A",
+        "#F6D58E"
+      ],
+      "title": {
+        "vi": "Sáng Tết bình yên",
+        "en": "A Peaceful Tết Morning",
+        "ko": "평화로운 설날 아침",
+        "ja": "穏やかなテト（旧正月）の朝",
+        "fr": "Un matin de Têt paisible",
+        "zh": "宁静的新春清晨"
+      }
+    }
+  ]
+}

@@ -15,6 +15,8 @@ class Vision {
     required this.feelingCodes,
     required this.imagePath,
     required this.createdAt,
+    this.locale = 'vi',
+    this.answers = const {},
   });
 
   final String id;
@@ -25,6 +27,8 @@ class Vision {
   /// Relative to the app support directory.
   final String? imagePath;
   final DateTime createdAt;
+  final String locale;
+  final Map<String, ({List<String> valueCodes, String customText})> answers;
 }
 
 /// Everything needed to save a new Vision.
@@ -155,6 +159,17 @@ class VisionRepository {
               ..where((feeling) => feeling.visionId.equals(row.id))
               ..orderBy([(feeling) => OrderingTerm.asc(feeling.position)]))
             .get();
+    final answerRows =
+        await (_database.select(_database.visionAnswers)
+          ..where((answer) => answer.visionId.equals(row.id))).get();
+    final answers = <String, ({List<String> valueCodes, String customText})>{
+      for (final answer in answerRows)
+        answer.questionCode: (
+          valueCodes:
+              (jsonDecode(answer.valueCodes) as List<dynamic>).cast<String>(),
+          customText: answer.customText ?? '',
+        ),
+    };
     return Vision(
       id: row.id,
       categoryCode: row.categoryCode,
@@ -162,6 +177,8 @@ class VisionRepository {
       feelingCodes: [for (final feeling in feelings) feeling.feelingCode],
       imagePath: row.imagePath,
       createdAt: row.createdAt,
+      locale: row.locale,
+      answers: answers,
     );
   }
 }

@@ -17,6 +17,7 @@ import '../../data/repositories/vision_audio_repository.dart';
 import '../../data/repositories/vision_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'vision_controllers.dart';
+import 'vision_statement.dart';
 import 'vision_widgets.dart';
 
 class VisionDetailScreen extends ConsumerStatefulWidget {
@@ -82,7 +83,16 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
     );
     final file = result?.files.singleOrNull;
     if (file?.path != null) {
-      await _add(title: file!.name, path: file.path!, isAsset: false);
+      final documents = await getApplicationDocumentsDirectory();
+      final directory = Directory(path.join(documents.path, 'vision_audio'));
+      await directory.create(recursive: true);
+      final extension = path.extension(file!.path!);
+      final persistentPath = path.join(
+        directory.path,
+        'vision-imported-${widget.id}-${DateTime.now().millisecondsSinceEpoch}$extension',
+      );
+      await File(file.path!).copy(persistentPath);
+      await _add(title: file.name, path: persistentPath, isAsset: false);
     }
   }
 
@@ -268,14 +278,7 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
     final path = asset.pathFor(locale);
     final title = asset.titleFor(locale);
     final isPlaying = path != null && playback.isCurrentTrack(path);
-    final subtitle =
-        asset.isGuided
-            ? l10n.audioGuided
-            : (asset.type == 'ambience' ||
-                    asset.type == 'noise' ||
-                    asset.type == 'sound_bath'
-                ? l10n.audioNature
-                : l10n.audioMusic);
+    final subtitle = asset.subtitleFor(locale);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 6),
@@ -300,13 +303,32 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
               path == null
                   ? null
                   : () {
-                    playback.playTrack(
-                      path: path,
-                      title: title,
-                      subtitle: subtitle,
-                      isAsset: true,
-                      loop: !asset.isGuided,
-                    );
+                    final soundEnabled =
+                        ref.read(appStateProvider).soundEnabled;
+                    if (!soundEnabled && !isPlaying) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            locale == SoulLocale.vi
+                                ? 'Âm thanh đang tắt trong cài đặt'
+                                : 'Sound is turned off in settings',
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                      return;
+                    }
+                    if (isPlaying) {
+                      playback.stop();
+                    } else {
+                      playback.playTrack(
+                        path: path,
+                        title: title,
+                        subtitle: subtitle,
+                        isAsset: true,
+                        loop: !asset.isGuided,
+                      );
+                    }
                   },
         ),
         title: Text(
@@ -377,8 +399,8 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
       final item = vision.value!;
       final visionCatalog = catalog.value!;
       title = visionCatalog.category(item.categoryCode)?.name ?? '';
-      final locale = ref.read(appStateProvider).locale ?? SoulLocale.vi;
-      final isVi = Localizations.localeOf(context).languageCode == 'vi';
+      final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
+      final isVi = locale == SoulLocale.vi;
       final selectionList =
           selections.valueOrNull ?? const <VisionAudioSelection>[];
 
@@ -387,7 +409,14 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
           audioCatalog.value!.playableSoundsFor(item.categoryCode).firstOrNull;
       final defaultTitle =
           defaultAsset?.titleFor(locale) ??
-          (isVi ? 'Âm thanh tĩnh lặng' : 'Calm ambience');
+          switch (locale) {
+            SoulLocale.vi => 'Âm thanh tĩnh lặng',
+            SoulLocale.en => 'Calm ambience',
+            SoulLocale.ko => '평온한 앰비언스',
+            SoulLocale.ja => '穏やかな環境音',
+            SoulLocale.fr => 'Ambiance paisible',
+            SoulLocale.zh => '宁静氛围音',
+          };
       final defaultPath = defaultAsset?.pathFor(locale);
       final categoryTheme = CategoryArtTheme.forCategory(item.categoryCode);
 
@@ -401,8 +430,22 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
       final activeSoundSubtitle =
           hasPersonalSelection
               ? (selectionList.first.isAsset
-                  ? (isVi ? 'Âm thanh từ thư viện' : 'Library audio')
-                  : (isVi ? 'Âm thanh cá nhân' : 'Personal audio'))
+                  ? switch (locale) {
+                    SoulLocale.vi => 'Âm thanh từ thư viện',
+                    SoulLocale.en => 'Library audio',
+                    SoulLocale.ko => '라이브러리 오디오',
+                    SoulLocale.ja => 'ライブラリ音声',
+                    SoulLocale.fr => 'Audio de la bibliothèque',
+                    SoulLocale.zh => '音频库声音',
+                  }
+                  : switch (locale) {
+                    SoulLocale.vi => 'Âm thanh cá nhân',
+                    SoulLocale.en => 'Personal audio',
+                    SoulLocale.ko => '개인 오디오',
+                    SoulLocale.ja => '個人オーディオ',
+                    SoulLocale.fr => 'Audio personnel',
+                    SoulLocale.zh => '个人音频',
+                  })
               : categoryTheme.frequencyTag(isVi);
 
       final isSoundActivePlaying =
@@ -441,7 +484,14 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                     ),
                     const SizedBox(width: SoulSpace.xs),
                     Text(
-                      isVi ? 'TUYÊN NGÔN TẦM NHÌN' : 'VISION MANIFESTO',
+                      switch (locale) {
+                        SoulLocale.vi => 'TUYÊN NGÔN TẦM NHÌN',
+                        SoulLocale.en => 'VISION MANIFESTO',
+                        SoulLocale.ko => '비전 선언문',
+                        SoulLocale.ja => 'ビジョン・マニフェスト',
+                        SoulLocale.fr => 'MANIFESTE DE VISION',
+                        SoulLocale.zh => '愿景宣言',
+                      },
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         letterSpacing: 1.2,
                         fontSize: 12,
@@ -453,7 +503,11 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                 ),
                 const SizedBox(height: SoulSpace.sm),
                 Text(
-                  item.statement,
+                  resolveVisionStatement(
+                    vision: item,
+                    catalog: visionCatalog,
+                    locale: locale,
+                  ),
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 17,
                     height: 1.55,
@@ -489,9 +543,17 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            isVi
-                                ? 'Âm thanh chữa lành gắn liền với tầm nhìn'
-                                : 'Healing soundtrack connected to your vision',
+                            switch (locale) {
+                              SoulLocale.vi =>
+                                'Âm thanh chữa lành gắn liền với tầm nhìn',
+                              SoulLocale.en =>
+                                'Healing soundtrack connected to your vision',
+                              SoulLocale.ko => '비전과 연결된 치유 사운드트랙',
+                              SoulLocale.ja => 'ビジョンに寄り添う癒しのサウンドトラック',
+                              SoulLocale.fr =>
+                                'Bande-son apaisante liée à votre vision',
+                              SoulLocale.zh => '与你的愿景相连的疗愈配乐',
+                            },
                             style: Theme.of(
                               context,
                             ).textTheme.bodyMedium?.copyWith(
@@ -515,7 +577,14 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                               _showAdd(audioCatalog.value!, item.categoryCode),
                       icon: const Icon(Icons.tune_rounded, size: 16),
                       label: Text(
-                        isVi ? 'Đổi / Thêm' : 'Change / Add',
+                        switch (locale) {
+                          SoulLocale.vi => 'Đổi / Thêm',
+                          SoulLocale.en => 'Change / Add',
+                          SoulLocale.ko => '변경 / 추가',
+                          SoulLocale.ja => '変更 / 追加',
+                          SoulLocale.fr => 'Changer / Ajouter',
+                          SoulLocale.zh => '更换 / 添加',
+                        },
                         style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -601,8 +670,22 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                         child: IconButton(
                           tooltip:
                               isSoundActivePlaying
-                                  ? (isVi ? 'Tạm dừng' : 'Pause')
-                                  : (isVi ? 'Phát âm thanh' : 'Play audio'),
+                                  ? switch (locale) {
+                                    SoulLocale.vi => 'Tạm dừng',
+                                    SoulLocale.en => 'Pause',
+                                    SoulLocale.ko => '일시정지',
+                                    SoulLocale.ja => '一時停止',
+                                    SoulLocale.fr => 'Pause',
+                                    SoulLocale.zh => '暂停',
+                                  }
+                                  : switch (locale) {
+                                    SoulLocale.vi => 'Phát âm thanh',
+                                    SoulLocale.en => 'Play audio',
+                                    SoulLocale.ko => '오디오 재생',
+                                    SoulLocale.ja => 'オーディオを再生',
+                                    SoulLocale.fr => 'Lire l’audio',
+                                    SoulLocale.zh => '播放音频',
+                                  },
                           icon: Icon(
                             isSoundActivePlaying
                                 ? Icons.pause_rounded
@@ -612,6 +695,27 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                           ),
                           onPressed: () {
                             if (activeSoundPath == null) return;
+                            final soundEnabled =
+                                ref.read(appStateProvider).soundEnabled;
+                            if (!soundEnabled && !isSoundActivePlaying) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(switch (locale) {
+                                    SoulLocale.vi =>
+                                      'Âm thanh đang tắt trong cài đặt',
+                                    SoulLocale.en =>
+                                      'Sound is turned off in settings',
+                                    SoulLocale.ko => '설정에서 사운드가 꺼져 있습니다',
+                                    SoulLocale.ja => '設定でサウンドがオフになっています',
+                                    SoulLocale.fr =>
+                                      'Le son est désactivé dans les paramètres',
+                                    SoulLocale.zh => '设置中已关闭声音',
+                                  }),
+                                  duration: const Duration(seconds: 2),
+                                ),
+                              );
+                              return;
+                            }
                             if (activeSoundIsAsset) {
                               ref
                                   .read(audioPlaybackProvider)
@@ -638,7 +742,14 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                 if (selectionList.length > 1) ...[
                   const SizedBox(height: SoulSpace.sm),
                   Text(
-                    isVi ? 'Âm thanh khác đã lưu:' : 'Other saved audio:',
+                    switch (locale) {
+                      SoulLocale.vi => 'Âm thanh khác đã lưu:',
+                      SoulLocale.en => 'Other saved audio:',
+                      SoulLocale.ko => '저장된 다른 오디오:',
+                      SoulLocale.ja => 'その他の保存済みオーディオ：',
+                      SoulLocale.fr => 'Autres audios enregistrés :',
+                      SoulLocale.zh => '其他已保存音频：',
+                    },
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -666,20 +777,21 @@ class _VisionDetailScreenState extends ConsumerState<VisionDetailScreen> {
                                       .toggleAsset(
                                         selection.path,
                                         title: selection.title,
-                                        subtitle:
-                                            isVi
-                                                ? 'Âm thanh Soul'
-                                                : 'Soul Audio',
+                                        subtitle: l10n.exploreTabAudio,
                                       )
                                   : ref
                                       .read(audioPlaybackProvider)
                                       .toggleFile(
                                         selection.path,
                                         title: selection.title,
-                                        subtitle:
-                                            isVi
-                                                ? 'Âm thanh cá nhân'
-                                                : 'Personal Audio',
+                                        subtitle: switch (locale) {
+                                          SoulLocale.vi => 'Âm thanh cá nhân',
+                                          SoulLocale.en => 'Personal Audio',
+                                          SoulLocale.ko => '개인 오디오',
+                                          SoulLocale.ja => '個人オーディオ',
+                                          SoulLocale.fr => 'Audio personnel',
+                                          SoulLocale.zh => '个人音频',
+                                        },
                                       ),
                       onRemove: () async {
                         await ref

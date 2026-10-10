@@ -1,0 +1,440 @@
+{
+  "@@locale": "zh",
+  "appTitle": "Soul",
+  "today": "今日",
+  "vision": "愿景",
+  "journal": "日记",
+  "explore": "探索",
+  "continueLabel": "继续",
+  "welcome": "欢迎你，{name}",
+  "@welcome": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "whatShouldWeCallYou": "Soul 该如何称呼你？",
+  "nameHint": "你喜欢的名字或昵称",
+  "saveAndContinue": "保存并继续",
+  "todayRhythm": "今日节律",
+  "oneSmallAction": "一个微小的行动",
+  "smallActionText": "今天，在心里默默向遇到的人送上感恩，或传递一个温暖的微笑。",
+  "recent": "近期笔记",
+  "oneNote": "1 篇笔记",
+  "gratitudeToday": "感恩 · 今日",
+  "gratitudeNote": "我感恩这一生",
+  "gratitudeJournalTitle": "感恩日记",
+  "gratitudeJournalHint": "每一个感恩的念头，都是播撒在心田里的一颗宁静种子。",
+  "gratitudeNoteLabel": "今天你为什么心怀感恩？",
+  "saveNote": "保存笔记",
+  "gratitudeNotesEmpty": "还没有感恩笔记。点击下方创建你的第一篇吧。",
+  "yourVisions": "你的愿景板",
+  "createVision": "创建愿景",
+  "visionEmptyTitle": "为你的梦想留出空间",
+  "visionEmptyBody": "真正有意义的愿景，始于你内心深处最真实、最纯粹的渴望。",
+  "audioPending": "音频即将上线",
+  "visionAudio": "愿景伴奏",
+  "visionAudioBody": "从 Soul 曲库选择音乐、从设备导入音频，或录制专属于你的肯定语。",
+  "visionAudioEmpty": "尚未添加伴奏音频。",
+  "visionAudioPersonal": "仅保存在此设备上",
+  "addAudio": "添加音频",
+  "audioLibrary": "音频库",
+  "chooseFromAudioLibrary": "从 Soul 音频库选择",
+  "chooseAudioFile": "从设备选择音频文件",
+  "recordAudio": "录制语音肯定语",
+  "stopRecording": "停止并保存录音",
+  "myRecording": "我的录音",
+  "removeAudio": "移除音频",
+  "audioGuided": "引导冥想",
+  "audioMusic": "疗愈与频率音乐",
+  "audioRest": "自然之声与深度放松",
+  "audioLibraryNote": "精选环境音景与 432Hz/528Hz 疗愈频率曲目，助你平静思绪、提升内在能量。",
+  "nowPlaying": "正在播放",
+  "stop": "停止",
+  "allAudio": "全部",
+  "audioNature": "自然与氛围",
+  "audioMusicTab": "音乐与音景",
+  "audioGuidedTab": "引导冥想",
+  "recommendedForVision": "为此愿景推荐",
+  "exploreTitle": "Soul 心灵栖息地",
+  "exploreBody": "探索疗愈音景、引导冥想与启发智慧，温柔滋养你的内在自我。",
+  "exploreTabAll": "全部",
+  "exploreTabAudio": "Soul 音频",
+  "exploreTabMeditation": "冥想",
+  "exploreTabPodcast": "播客",
+  "exploreTabFrequency": "疗愈频率",
+  "exploreOpenYouTube": "在 YouTube 上观看",
+  "exploreOpenSpotify": "在 Spotify 上收听",
+  "profile": "个人资料与设置",
+  "soundOn": "声音已开启",
+  "soundOff": "声音已关闭",
+  "language": "语言",
+  "editName": "修改称呼",
+  "signOut": "退出登录",
+  "back": "返回",
+  "dayProgress": "第 {day} / 28 天",
+  "@dayProgress": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "authTagline": "属于你灵魂的私密、温柔空间。",
+  "morningGratitude": "晨间感恩练习",
+  "neutralInstrumentalFiveMinutes": "轻柔钢琴 · 5 分钟",
+  "play": "播放",
+  "vietnameseLanguage": "越南语",
+  "englishLanguage": "英语",
+  "languageEndonymVi": "Tiếng Việt",
+  "languageEndonymEn": "English",
+  "retry": "重试",
+  "loading": "加载中...",
+  "pause": "暂停",
+  "cancel": "取消",
+  "somethingWentWrong": "出错了，请稍后重试。",
+  "save": "保存",
+  "nameTooLong": "请保持在 {max} 个字符以内。",
+  "@nameTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "intentionTitle": "今天是什么指引你来到 Soul？",
+  "intentionBody": "选择此刻对你最重要的心愿，这里没有标准答案。",
+  "intentionChooseOne": "请至少选择一项以开始。",
+  "remindersTitle": "每日的温柔节律",
+  "remindersBody": "选择两个安静的时刻，开启并温柔收尾你的一天。",
+  "reminderMorning": "晨间提醒",
+  "reminderEvening": "晚间回顾",
+  "changeReminderTime": "更改{reminder}时间，当前为 {time}",
+  "@changeReminderTime": {
+    "placeholders": {
+      "reminder": {},
+      "time": {}
+    }
+  },
+  "skipForNow": "暂时跳过",
+  "journeyReadyTitle": "为你的梦想与坚持投资",
+  "journeyReadyBody": "一份小小的投入，是对自己真挚的承诺——每天忠于梦想、珍惜当下，并以坚定的心走过内在蜕变之旅。",
+  "beginDayOne": "许下承诺并开启旅程",
+  "chooseCategoryTitle": "选择一个领域",
+  "chooseCategoryBody": "此刻，你最想把心意与能量倾注在哪里？",
+  "visionStepLabel": "{category} · {step}/{total}",
+  "@visionStepLabel": {
+    "placeholders": {
+      "category": {},
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "chooseUpTo": "最多可选择 {max} 项。",
+  "@chooseUpTo": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "answerRequiredHint": "选择一个给你灵感的建议，或写下你内心的真实愿望。",
+  "visionQuickStart": "继续选择感受",
+  "feelingsTitle": "当这个愿景实现时，你希望拥有怎样的感受？",
+  "feelingsHint": "选择 1 到 3 个最触动你的感受。",
+  "feelingsLimitReached": "你已选择了 3 个感受。如需更换，请先取消其中一个。",
+  "statementTitle": "你的愿景肯定语",
+  "statementBody": "Soul 根据你的选择生成了这段充满力量的肯定语。你可以自由润色，让它更贴合你的心意。",
+  "statementLabel": "愿景宣言",
+  "statementEmpty": "用 1 到 2 句充满灵感的话写下你的愿景。",
+  "statementTooLong": "请保持在 {max} 个字符以内。",
+  "@statementTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "visionImageTitle": "让你的愿景栩栩如生",
+  "visionImageBody": "添加一张给你灵感的照片，帮助你在脑海中描绘画面并感受那份喜悦。",
+  "chooseFromLibrary": "从相册选择",
+  "takePhoto": "拍照",
+  "removePhoto": "移除照片",
+  "visionPhoto": "愿景照片",
+  "photoUnavailable": "无法显示此照片。",
+  "reviewVisionTitle": "预览你的愿景",
+  "saveToVisionBoard": "保存到愿景板",
+  "visionSaveFailed": "无法保存你的愿景。你的选择已保留，请重试。",
+  "archiveVision": "归档愿景",
+  "archiveVisionTitle": "归档此愿景？",
+  "archiveVisionBody": "它将从愿景板移出，并安全保存在归档中。",
+  "archive": "归档",
+  "visionNotFound": "此愿景已不在你的愿景板上。",
+  "visionSoundtrack": "伴奏音轨",
+  "visionBoardSubtitle": "安放你每日奔赴的心愿、感受与理想生活的静谧空间。",
+  "welcomeTitle1": "欢迎来到 Soul",
+  "welcomeSubtitle1": "一个宁静祥和的心灵栖息地，让你每天驻足、倾听，温柔滋养内在精神。",
+  "welcomeTitle2": "感恩练习",
+  "welcomeSubtitle2": "通过简单而笃定的日常练习唤醒内在喜悦，转变你的每日心态。",
+  "welcomeTitle3": "愿景板与疗愈音景",
+  "welcomeSubtitle3": "借助充满灵感的愿景板与疗愈频率音景，让你的梦想清晰可见。",
+  "startJourney": "开启旅程",
+  "revisitOnboarding": "重温欢迎导览",
+  "todayGreeting": "愿你拥有宁静而充实的一天 ✨",
+  "todayJourneyHeroTitle": "今日 10 件感恩之事",
+  "todayJourneyHeroSubtitle": "花几分钟晨间时光，细数生活中的美好馈赠，并体会它们为何珍贵。",
+  "todayStartPractice": "开始练习",
+  "todayContinuePractice": "继续练习",
+  "todayPracticeCompleted": "今日已完成 ✨",
+  "moodCheckInTitle": "此刻你的感受如何？",
+  "moodPeaceful": "平静 🕊️",
+  "moodGrateful": "感恩 🌸",
+  "moodEnergized": "充满活力 ☀️",
+  "moodRelieved": "释然 🍃",
+  "moodReflective": "沉思 🌙",
+  "eveningReflectionTitle": "晚间回顾",
+  "eveningReflectionBody": "在入睡前，回想今天发生的最令你感到温暖和振奋的一件事。",
+  "gratitudePracticeTitle": "晨间感恩练习",
+  "gratitudePracticeIntroTitle": "怀着感恩开启新的一天",
+  "gratitudePracticeIntroBody": "静下心来觉察今天令你感恩的 10 件事，并写下每一件事对你的意义。",
+  "gratitudeStartPractice": "开始练习",
+  "gratitudeItemProgress": "第 {current} / {total} 项",
+  "@gratitudeItemProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeFieldPrompt": "我心怀感恩的是...",
+  "gratitudeFieldPlaceholder": "写下一件今天让你感恩的事",
+  "gratitudeReasonPrompt": "因为...",
+  "gratitudeReasonPlaceholder": "为什么这件事对你很重要？",
+  "gratitudeTapThankYou": "轻触说出“谢谢”（{count}/3）",
+  "@gratitudeTapThankYou": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeTapHint": "轻触 3 次，将感恩的喜悦深深锚定在心底",
+  "gratitudeAddAndNext": "添加并下一项",
+  "gratitudeReviewTitle": "今日的 10 份感恩",
+  "gratitudeReviewSubtitle": "在封存今日记录前，回顾你写下的感恩清单。",
+  "gratitudeCompletePractice": "完成练习",
+  "gratitudeCompletedTitle": "练习已完成 ✨",
+  "gratitudeCompletedBody": "你已在今天播下了 10 颗感恩的种子，这些记录已保存到你的日记中。",
+  "gratitudeBackToToday": "返回今日",
+  "gratitudeStatusIncomplete": "尚未完成",
+  "gratitudeStatusCompleted": "已完成 10 / 10 项",
+  "gratitudeCardTapToStart": "开始晨间练习",
+  "gratitudeCardTapToReview": "查看今日感恩",
+  "editEntry": "编辑",
+  "done": "完成",
+  "gratitudeReasonLabel": "原因：{reason}",
+  "@gratitudeReasonLabel": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "gratitudeFinishEarly": "提前结束",
+  "gratitudeSkipItem": "跳过此项",
+  "gratitudeSkipProgress": "跳过当前进度",
+  "gratitudeSkippedTitle": "已跳过练习",
+  "gratitudeSkippedBody": "你已跳过今天的感恩练习，随时可以回来继续完成。",
+  "gratitudeReviewTitleCount": "今日的 {count} 份感恩",
+  "@gratitudeReviewTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeCompletedBodyCount": "你已在今天播下了 {count} 颗感恩的种子，这些记录已保存到你的日记中。",
+  "@gratitudeCompletedBodyCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeStatusCompletedCount": "已完成 {count} 项感恩",
+  "@gratitudeStatusCompletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "gratitudeLevelLow": "感谢",
+  "gratitudeLevelMedium": "由衷感激",
+  "gratitudeLevelHigh": "深深感恩",
+  "gratitudeTapLevelHint": "选择感恩的深度",
+  "signOutConfirmTitle": "退出 Soul？",
+  "signOutConfirmBody": "确定要退出吗？你将返回欢迎页面。",
+  "addNote": "添加新笔记",
+  "newGratitudeNote": "新建感恩笔记",
+  "notePromptPlaceholder": "今天你为什么心怀感恩？",
+  "noteReasonPlaceholder": "为什么它对你很重要？（可选）",
+  "deleteNote": "删除笔记",
+  "deleteNoteConfirmTitle": "删除这篇笔记？",
+  "deleteNoteConfirmBody": "这篇笔记将从你的日记中永久移除。",
+  "noteSaved": "笔记已保存到日记",
+  "noteDeleted": "笔记已删除",
+  "notesCount": "{count, plural, =1{1 篇笔记} other{{count} 篇笔记}}",
+  "@notesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderSettingsTitle": "通知提醒",
+  "reminderSettingsSubtitle": "Soul 会在你选定的时间发送温柔提醒。",
+  "settingsSectionTitle": "设置",
+  "accountSectionTitle": "账户",
+  "saveSettings": "保存更改",
+  "settingsSaved": "设置已保存",
+  "close": "关闭",
+  "customNoteDefaultTheme": "感恩时刻",
+  "gratitudeSentenceCount": "{count, plural, =1{1 条感恩} other{{count} 条感恩}}",
+  "@gratitudeSentenceCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "allGratitudesInNote": "笔记内容",
+  "sentencePreview": "完整句子预览：",
+  "soulCardsTitle": "Soul 灵感卡",
+  "soulCardsSubtitle": "为你的灵魂抽取一张指引寄语",
+  "dailyDrawRemaining": "今日剩余 {count} 次抽取机会",
+  "@dailyDrawRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyDrawLimitReached": "今日已抽取 2 张寄语卡",
+  "dailyDrawLimitHint": "静心体会今天的寄语吧，明天可以再次抽取。",
+  "drawCardAction": "抽取卡片",
+  "drawAnotherCard": "再抽一张",
+  "reviewTodayCards": "查看今日寄语",
+  "cardDrawSuccess": "给你的指引寄语",
+  "todayCardDrawBanner": "Soul 寄语",
+  "chooseDeckPrompt": "选择一副牌组，倾听它的讯息",
+  "tapCardToReveal": "轻触卡片揭晓你的寄语",
+  "saveToJournalAction": "保存到日记",
+  "savedToJournalSuccess": "寄语已保存到日记",
+  "cardDrawHistory": "抽取记录",
+  "deckCardCount": "{count} 张卡片",
+  "@deckCardCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "soulCardsTab": "Soul 灵感卡",
+  "dailyDrawLimitDialogTitle": "已达今日上限",
+  "dailyDrawLimitDialogMessage": "你今天已经收到了 2 条指引寄语。请静心感受今日的讯息，明天再来抽取吧。",
+  "understood": "知道了",
+  "chooseDeckSubtitle": "选择一副牌组以接收你的指引寄语",
+  "drawFromThisDeck": "从此牌组抽取",
+  "gratitudeJournalPrompt": "今天，你继续踏上感恩之旅。请带着觉知回顾生活中令你感恩的事物，无论多么微小。建议句式：\n“我感恩……因为……”\n写完后，带着深深的感激之情重新品读你写下的文字。",
+  "gratitudeJournalPlaceholder": "像写安静的日记一样，记录今天令你感恩的事吧……\n\n例如：\n我感恩今天早晨那杯温热的咖啡，因为它带给我清醒与宁静。\n我感恩朋友的微笑，因为它温暖了我的心房……",
+  "addPhoto": "添加照片",
+  "changePhoto": "更换照片",
+  "insertPromptTemplate": "插入模板",
+  "saveAndCompleteJournal": "完成并保存日记",
+  "gratitudePromptTemplateText": "我感恩……因为……",
+  "chooseTheme": "选择主题",
+  "editNote": "编辑笔记",
+  "noteUpdated": "笔记已更新",
+  "gratitudeGuidanceTitle": "今日练习指引",
+  "showGuidance": "查看指引",
+  "hideGuidance": "隐藏指引",
+  "comfortZoneTitle": "Comfort Zone",
+  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
+  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — 伴随动态光影与疗愈之声的宁静角落",
+  "comfortZoneAllSpaces": "全部 ({count})",
+  "@comfortZoneAllSpaces": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZoneFavorites": "收藏",
+  "comfortZoneFavoritesEmpty": "还没有收藏的空间。点击任意空间上的爱心图标即可保存在这里。",
+  "comfortZoneEnterSpace": "进入空间",
+  "comfortZoneAmbientSound": "环境音与音乐",
+  "comfortZoneGuidedAudio": "引导音频",
+  "comfortZoneZenMode": "禅意视图",
+  "comfortZoneExitZenMode": "显示控制栏",
+  "comfortZoneBreathingGuide": "呼吸引导",
+  "comfortZoneBreatheIn": "轻轻吸气...",
+  "comfortZoneBreatheHold": "柔和屏息...",
+  "comfortZoneBreatheOut": "缓缓呼气...",
+  "comfortZoneRecentSpace": "最近造访",
+  "comfortZoneScenesCount": "{count} 个空间",
+  "@comfortZoneScenesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "comfortZonePreviousSpace": "上一个空间",
+  "comfortZoneNextSpace": "下一个空间",
+  "notificationPreviewSectionTitle": "Soul 通知格式预览",
+  "notificationMorningTitle": "早安，{name} 🌿",
+  "@notificationMorningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationMorningBody": "深呼吸一下。今天你想播下哪一颗微小的感恩种子？",
+  "notificationEveningTitle": "温柔地结束今天吧，{name} 🌙",
+  "@notificationEveningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationEveningBody": "入睡前，留住今天降临在你身上的一个宁静瞬间或微小善意。",
+  "notificationPrivacyNote": "严格隐私保护：锁屏通知绝不会显示你的私人日记或未来信件内容。",
+  "notificationSendTest": "发送测试通知",
+  "notificationTestSent": "已发送示例通知！请查看设备通知栏。",
+  "homeWidgetTitle": "主屏幕小组件",
+  "homeWidgetSubtitle": "将你喜爱的 Comfort Zone 空间、疗愈音频与频率、我的愿景、每日感恩或 Soul 灵感卡固定在手机主屏幕上。",
+  "homeWidgetBannerSubtitle": "在主屏幕上固定 Comfort Zone、疗愈之声与愿景",
+  "homeWidgetModeLabel": "小组件显示内容",
+  "homeWidgetModeComfortZone": "Comfort Zone",
+  "homeWidgetModeSound": "疗愈音频与频率",
+  "homeWidgetModeVision": "我的愿景",
+  "homeWidgetModeGratitude": "每日感恩",
+  "homeWidgetModeCard": "Soul 卡片寄语",
+  "homeWidgetSelectSpace": "选择 Comfort Zone 空间",
+  "homeWidgetSelectSound": "选择疗愈音频 / 频率",
+  "homeWidgetSpaceFooter": "轻触进入你的宁静角落 ✦",
+  "homeWidgetSoundFooter": "轻触聆听疗愈频率 ✦",
+  "homeWidgetThemeLabel": "小组件外观",
+  "homeWidgetThemePlum": "暮色紫梅",
+  "homeWidgetThemePaper": "暖米纸笺",
+  "homeWidgetThemeRose": "晨雾玫瑰",
+  "homeWidgetPinButton": "将小组件添加到主屏幕",
+  "homeWidgetSyncButton": "立即更新小组件",
+  "homeWidgetSyncedSuccess": "主屏幕小组件内容已更新！",
+  "homeWidgetHowToHint": "提示：你可以点击上方的添加按钮，或长按手机主屏幕空白处 → 选择“小组件 (Widgets)” → 选择 Soul 放置到桌面。"
+}

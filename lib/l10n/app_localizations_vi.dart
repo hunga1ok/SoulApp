@@ -300,14 +300,14 @@ class AppLocalizationsVi extends AppLocalizations {
   String get skipForNow => 'Để sau';
 
   @override
-  String get journeyReadyTitle => 'Hành trình 28 ngày đã sẵn sàng';
+  String get journeyReadyTitle => 'Đầu tư cho ước mơ và sự kiên định của bạn';
 
   @override
   String get journeyReadyBody =>
-      'Bạn không cần phải hoàn hảo. Chỉ cần mỗi ngày dành ra 5 phút quay về với chính mình.';
+      'Một khoản đầu tư nhỏ là lời hứa nghiêm túc bạn dành cho chính mình — để mỗi ngày đều kiên trì nuôi dưỡng ước mơ, trân quý hiện tại và đi trọn hành trình chuyển hóa tâm thức.';
 
   @override
-  String get beginDayOne => 'Bắt đầu Ngày 1';
+  String get beginDayOne => 'Cam kết & Bắt đầu hành trình';
 
   @override
   String get chooseCategoryTitle => 'Chọn một lĩnh vực';
@@ -426,7 +426,7 @@ class AppLocalizationsVi extends AppLocalizations {
       'Một không gian dịu lành để bạn lắng lại, kết nối sâu sắc và nuôi dưỡng sự bình an trong tâm hồn mỗi ngày.';
 
   @override
-  String get welcomeTitle2 => '28 Ngày Nuôi Dưỡng Lòng Biết Ơn';
+  String get welcomeTitle2 => 'Thực hành biết ơn';
 
   @override
   String get welcomeSubtitle2 =>
@@ -810,4 +810,166 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get hideGuidance => 'Thu gọn hướng dẫn';
+
+  @override
+  String get comfortZoneTitle => 'Comfort Zone';
+
+  @override
+  String get comfortZoneSubtitle => 'A Little World Where You Feel Safe';
+
+  @override
+  String get comfortZoneBannerSubtitle =>
+      'A Little World Where You Feel Safe — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành';
+
+  @override
+  String comfortZoneAllSpaces(int count) {
+    return 'Tất cả ($count)';
+  }
+
+  @override
+  String get comfortZoneFavorites => 'Yêu thích';
+
+  @override
+  String get comfortZoneFavoritesEmpty =>
+      'Chưa có không gian yêu thích nào. Chạm biểu tượng trái tim ở mỗi không gian để lưu lại nơi bạn muốn thuộc về.';
+
+  @override
+  String get comfortZoneEnterSpace => 'Bước vào không gian';
+
+  @override
+  String get comfortZoneAmbientSound => 'Âm thanh & Nhạc nền';
+
+  @override
+  String get comfortZoneGuidedAudio => 'Audio dẫn thiền';
+
+  @override
+  String get comfortZoneZenMode => 'Chế độ ngắm cảnh';
+
+  @override
+  String get comfortZoneExitZenMode => 'Hiện điều khiển';
+
+  @override
+  String get comfortZoneBreathingGuide => 'Nhịp thở bình yên';
+
+  @override
+  String get comfortZoneBreatheIn => 'Hít vào nhẹ nhàng...';
+
+  @override
+  String get comfortZoneBreatheHold => 'Giữ hơi êm ái...';
+
+  @override
+  String get comfortZoneBreatheOut => 'Thở ra chậm rãi...';
+
+  @override
+  String get comfortZoneRecentSpace => 'Không gian vừa ghé';
+
+  @override
+  String comfortZoneScenesCount(int count) {
+    return '$count không gian';
+  }
+
+  @override
+  String get comfortZonePreviousSpace => 'Không gian trước';
+
+  @override
+  String get comfortZoneNextSpace => 'Không gian tiếp';
+
+  @override
+  String get notificationPreviewSectionTitle => 'Định dạng thông báo của Soul';
+
+  @override
+  String notificationMorningTitle(String name) {
+    return 'Chào buổi sáng, $name 🌿';
+  }
+
+  @override
+  String get notificationMorningBody =>
+      'Hít một hơi thật sâu. Bạn muốn gieo điều biết ơn nhỏ bé nào cho ngày hôm nay?';
+
+  @override
+  String notificationEveningTitle(String name) {
+    return 'Khép lại ngày hôm nay nhé, $name 🌙';
+  }
+
+  @override
+  String get notificationEveningBody =>
+      'Trước khi nghỉ ngơi, hãy giữ lại một khoảnh khắc bình yên hoặc điều tốt đẹp đã đến với bạn hôm nay.';
+
+  @override
+  String get notificationPrivacyNote =>
+      'Quyền riêng tư tuyệt đối: Thông báo trên màn hình khóa luôn ẩn nội dung nhật ký và thư cá nhân của bạn.';
+
+  @override
+  String get notificationSendTest => 'Gửi thử thông báo ngay';
+
+  @override
+  String get notificationTestSent =>
+      'Đã gửi thông báo mẫu! Hãy kiểm tra thanh thông báo trên thiết bị.';
+
+  @override
+  String get homeWidgetTitle => 'Widget màn hình chính';
+
+  @override
+  String get homeWidgetSubtitle =>
+      'Đặt không gian Comfort Zone, Âm thanh tần số chữa lành, Tầm nhìn, Thực hành biết ơn hoặc Thẻ Soul ngay trên màn hình điện thoại để chạm vào sự bình yên mỗi ngày.';
+
+  @override
+  String get homeWidgetBannerSubtitle =>
+      'Ghim Comfort Zone, Âm thanh chữa lành & Tầm nhìn ra màn hình chính';
+
+  @override
+  String get homeWidgetModeLabel => 'Nội dung hiển thị trên Widget';
+
+  @override
+  String get homeWidgetModeComfortZone => 'Comfort Zone';
+
+  @override
+  String get homeWidgetModeSound => 'Âm thanh & Tần số';
+
+  @override
+  String get homeWidgetModeVision => 'Tầm nhìn (Vision)';
+
+  @override
+  String get homeWidgetModeGratitude => 'Thực hành biết ơn';
+
+  @override
+  String get homeWidgetModeCard => 'Thông điệp Thẻ Soul';
+
+  @override
+  String get homeWidgetSelectSpace => 'Chọn không gian Comfort Zone';
+
+  @override
+  String get homeWidgetSelectSound => 'Chọn âm thanh / tần số chữa lành';
+
+  @override
+  String get homeWidgetSpaceFooter => 'Chạm để bước vào góc nhỏ bình yên ✦';
+
+  @override
+  String get homeWidgetSoundFooter => 'Chạm để lắng nghe tần số chữa lành ✦';
+
+  @override
+  String get homeWidgetThemeLabel => 'Giao diện Widget';
+
+  @override
+  String get homeWidgetThemePlum => 'Tím Hoàng Hôn';
+
+  @override
+  String get homeWidgetThemePaper => 'Giấy Kem Ấm';
+
+  @override
+  String get homeWidgetThemeRose => 'Hồng Sương Mai';
+
+  @override
+  String get homeWidgetPinButton => 'Ghim Widget ra màn hình chính';
+
+  @override
+  String get homeWidgetSyncButton => 'Cập nhật dữ liệu Widget';
+
+  @override
+  String get homeWidgetSyncedSuccess =>
+      'Đã cập nhật nội dung cho Widget màn hình chính!';
+
+  @override
+  String get homeWidgetHowToHint =>
+      'Mẹo: Bạn có thể bấm nút Ghim bên trên, hoặc nhấn giữ khoảng trống ngoài màn hình chính điện thoại → chọn Tiện ích (Widgets) → chọn Soul để đặt lên màn hình.';
 }

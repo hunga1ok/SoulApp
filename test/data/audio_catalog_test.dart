@@ -15,14 +15,21 @@ void main() {
     expect(catalog.bundleFor('LOVE')!.guidedAudioId, 'GA-23');
   });
 
-  test('guided tracks retain separate Vietnamese and English paths', () async {
-    final catalog = await ContentRepository(rootBundle).audioCatalog();
-    final guided = catalog.asset('GA-31')!;
-
-    expect(guided.pathFor(SoulLocale.vi), contains('/vi/'));
-    expect(guided.pathFor(SoulLocale.en), contains('/en/'));
-    expect(guided.pathFor(SoulLocale.vi), isNot(guided.pathFor(SoulLocale.en)));
-  });
+  test(
+    'guided tracks retain separate native paths for all 6 locales',
+    () async {
+      final catalog = await ContentRepository(rootBundle).audioCatalog();
+      for (final asset in catalog.assets.where((a) => a.isGuided)) {
+        for (final locale in SoulLocale.values) {
+          expect(
+            asset.pathFor(locale),
+            contains('/${locale.name}/'),
+            reason: '${asset.id} should have native path for ${locale.name}',
+          );
+        }
+      }
+    },
+  );
 
   test('unreviewed files are excluded from playback', () {
     const unreviewed = AudioCatalog(

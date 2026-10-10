@@ -11,7 +11,9 @@ import '../../data/content/content_repository.dart';
 import '../../data/repositories/card_draw_repository.dart';
 import '../../data/repositories/gratitude_repository.dart';
 import '../../l10n/app_localizations.dart';
+import '../profile/home_widget_screen.dart';
 import '../vision/vision_controllers.dart';
+import '../vision/vision_statement.dart';
 import 'gratitude_practice_screen.dart';
 
 class TodayScreen extends ConsumerStatefulWidget {
@@ -402,6 +404,102 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
             ),
           ),
         ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // 5. Comfort Zone Sanctuary
+        InkWell(
+          onTap: () => context.push('/comfort-zone'),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: SoulCard(
+            color: SoulColors.surface,
+            padding: const EdgeInsets.all(SoulSpace.md),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.cottage_rounded,
+                  color: SoulColors.plum,
+                  size: 24,
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.comfortZoneTitle,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: SoulColors.muted,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.comfortZoneBannerSubtitle,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.xs),
+                const Icon(Icons.chevron_right, color: SoulColors.muted),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: SoulSpace.sm),
+
+        // 6. Home Screen Widget
+        InkWell(
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HomeWidgetScreen()),
+              ),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: SoulCard(
+            color: SoulColors.surface,
+            padding: const EdgeInsets.all(SoulSpace.md),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.widgets_outlined,
+                  color: SoulColors.plum,
+                  size: 24,
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.homeWidgetTitle,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: SoulColors.muted,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.homeWidgetBannerSubtitle,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.xs),
+                const Icon(Icons.chevron_right, color: SoulColors.muted),
+              ],
+            ),
+          ),
+        ),
         const SizedBox(height: SoulSpace.xl),
 
         // Vision Spotlight
@@ -432,7 +530,14 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          activeVisions.first.statement,
+                          resolveVisionStatement(
+                            vision: activeVisions.first,
+                            catalog:
+                                ref
+                                    .watch(activeVisionCatalogProvider)
+                                    .valueOrNull,
+                            locale: state.locale ?? SoulLocale.vi,
+                          ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodyLarge

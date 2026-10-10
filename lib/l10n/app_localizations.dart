@@ -6,7 +6,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_ko.dart';
 import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -95,7 +99,11 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
+    Locale('fr'),
+    Locale('ja'),
+    Locale('ko'),
     Locale('vi'),
+    Locale('zh'),
   ];
 
   /// No description provided for @appTitle.
@@ -647,19 +655,19 @@ abstract class AppLocalizations {
   /// No description provided for @journeyReadyTitle.
   ///
   /// In en, this message translates to:
-  /// **'Your 28-day journey is ready'**
+  /// **'Invest in your dreams and your perseverance'**
   String get journeyReadyTitle;
 
   /// No description provided for @journeyReadyBody.
   ///
   /// In en, this message translates to:
-  /// **'You do not need to be perfect. Just begin with 5 mindful minutes today.'**
+  /// **'A small investment is a heartfelt promise to yourself — to stay devoted to your dreams each day, cherish the present, and walk your path of inner transformation with true commitment.'**
   String get journeyReadyBody;
 
   /// No description provided for @beginDayOne.
   ///
   /// In en, this message translates to:
-  /// **'Begin Day 1'**
+  /// **'Commit & Begin Journey'**
   String get beginDayOne;
 
   /// No description provided for @chooseCategoryTitle.
@@ -863,7 +871,7 @@ abstract class AppLocalizations {
   /// No description provided for @welcomeTitle2.
   ///
   /// In en, this message translates to:
-  /// **'28-Day Gratitude Journey'**
+  /// **'Gratitude Practice'**
   String get welcomeTitle2;
 
   /// No description provided for @welcomeSubtitle2.
@@ -1549,6 +1557,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hide guidance'**
   String get hideGuidance;
+
+  /// No description provided for @comfortZoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort Zone'**
+  String get comfortZoneTitle;
+
+  /// No description provided for @comfortZoneSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A Little World Where You Feel Safe'**
+  String get comfortZoneSubtitle;
+
+  /// No description provided for @comfortZoneBannerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A Little World Where You Feel Safe — Peaceful sanctuaries with live animations and healing audio'**
+  String get comfortZoneBannerSubtitle;
+
+  /// No description provided for @comfortZoneAllSpaces.
+  ///
+  /// In en, this message translates to:
+  /// **'All ({count})'**
+  String comfortZoneAllSpaces(int count);
+
+  /// No description provided for @comfortZoneFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get comfortZoneFavorites;
+
+  /// No description provided for @comfortZoneFavoritesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No favorite spaces yet. Tap the heart icon on any space to save it here.'**
+  String get comfortZoneFavoritesEmpty;
+
+  /// No description provided for @comfortZoneEnterSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter space'**
+  String get comfortZoneEnterSpace;
+
+  /// No description provided for @comfortZoneAmbientSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Ambient & Music'**
+  String get comfortZoneAmbientSound;
+
+  /// No description provided for @comfortZoneGuidedAudio.
+  ///
+  /// In en, this message translates to:
+  /// **'Guided Audio'**
+  String get comfortZoneGuidedAudio;
+
+  /// No description provided for @comfortZoneZenMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Zen view'**
+  String get comfortZoneZenMode;
+
+  /// No description provided for @comfortZoneExitZenMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Show controls'**
+  String get comfortZoneExitZenMode;
+
+  /// No description provided for @comfortZoneBreathingGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathing guide'**
+  String get comfortZoneBreathingGuide;
+
+  /// No description provided for @comfortZoneBreatheIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe in gently...'**
+  String get comfortZoneBreatheIn;
+
+  /// No description provided for @comfortZoneBreatheHold.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold softly...'**
+  String get comfortZoneBreatheHold;
+
+  /// No description provided for @comfortZoneBreatheOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out slowly...'**
+  String get comfortZoneBreatheOut;
+
+  /// No description provided for @comfortZoneRecentSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Recently visited'**
+  String get comfortZoneRecentSpace;
+
+  /// No description provided for @comfortZoneScenesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} spaces'**
+  String comfortZoneScenesCount(int count);
+
+  /// No description provided for @comfortZonePreviousSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous space'**
+  String get comfortZonePreviousSpace;
+
+  /// No description provided for @comfortZoneNextSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Next space'**
+  String get comfortZoneNextSpace;
+
+  /// No description provided for @notificationPreviewSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul Notification Format'**
+  String get notificationPreviewSectionTitle;
+
+  /// No description provided for @notificationMorningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning, {name} 🌿'**
+  String notificationMorningTitle(String name);
+
+  /// No description provided for @notificationMorningBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a slow breath. What small gratitude would you like to plant for today?'**
+  String get notificationMorningBody;
+
+  /// No description provided for @notificationEveningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wind down gently, {name} 🌙'**
+  String notificationEveningTitle(String name);
+
+  /// No description provided for @notificationEveningBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Before rest, hold onto one peaceful moment or quiet kindness from today.'**
+  String get notificationEveningBody;
+
+  /// No description provided for @notificationPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Strict privacy: Lock-screen notifications never expose your private journal notes or future letters.'**
+  String get notificationPrivacyNote;
+
+  /// No description provided for @notificationSendTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Send test notification'**
+  String get notificationSendTest;
+
+  /// No description provided for @notificationTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample notification sent! Check your device notification shade.'**
+  String get notificationTestSent;
+
+  /// No description provided for @homeWidgetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Home Screen Widget'**
+  String get homeWidgetTitle;
+
+  /// No description provided for @homeWidgetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin your favorite Comfort Zone sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone\'s home screen.'**
+  String get homeWidgetSubtitle;
+
+  /// No description provided for @homeWidgetBannerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin Comfort Zone, Healing Sounds & Vision to your phone\'s home screen'**
+  String get homeWidgetBannerSubtitle;
+
+  /// No description provided for @homeWidgetModeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Content Source'**
+  String get homeWidgetModeLabel;
+
+  /// No description provided for @homeWidgetModeComfortZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Comfort Zone'**
+  String get homeWidgetModeComfortZone;
+
+  /// No description provided for @homeWidgetModeSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound & Frequency'**
+  String get homeWidgetModeSound;
+
+  /// No description provided for @homeWidgetModeVision.
+  ///
+  /// In en, this message translates to:
+  /// **'My Vision'**
+  String get homeWidgetModeVision;
+
+  /// No description provided for @homeWidgetModeGratitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Gratitude'**
+  String get homeWidgetModeGratitude;
+
+  /// No description provided for @homeWidgetModeCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul Card Message'**
+  String get homeWidgetModeCard;
+
+  /// No description provided for @homeWidgetSelectSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Comfort Zone Space'**
+  String get homeWidgetSelectSpace;
+
+  /// No description provided for @homeWidgetSelectSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Healing Sound / Frequency'**
+  String get homeWidgetSelectSound;
+
+  /// No description provided for @homeWidgetSpaceFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to enter your safe sanctuary ✦'**
+  String get homeWidgetSpaceFooter;
+
+  /// No description provided for @homeWidgetSoundFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to play healing frequency ✦'**
+  String get homeWidgetSoundFooter;
+
+  /// No description provided for @homeWidgetThemeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Widget Style'**
+  String get homeWidgetThemeLabel;
+
+  /// No description provided for @homeWidgetThemePlum.
+  ///
+  /// In en, this message translates to:
+  /// **'Plum Dusk'**
+  String get homeWidgetThemePlum;
+
+  /// No description provided for @homeWidgetThemePaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm Paper'**
+  String get homeWidgetThemePaper;
+
+  /// No description provided for @homeWidgetThemeRose.
+  ///
+  /// In en, this message translates to:
+  /// **'Rose Dawn'**
+  String get homeWidgetThemeRose;
+
+  /// No description provided for @homeWidgetPinButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Widget to Home Screen'**
+  String get homeWidgetPinButton;
+
+  /// No description provided for @homeWidgetSyncButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync Widget Now'**
+  String get homeWidgetSyncButton;
+
+  /// No description provided for @homeWidgetSyncedSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Home screen widget updated!'**
+  String get homeWidgetSyncedSuccess;
+
+  /// No description provided for @homeWidgetHowToHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip: Tap the Add button above, or long-press an empty area on your phone\'s home screen → select Widgets → choose Soul.'**
+  String get homeWidgetHowToHint;
 }
 
 class _AppLocalizationsDelegate
@@ -1561,8 +1857,14 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'vi'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+    'en',
+    'fr',
+    'ja',
+    'ko',
+    'vi',
+    'zh',
+  ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -1573,8 +1875,16 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'ja':
+      return AppLocalizationsJa();
+    case 'ko':
+      return AppLocalizationsKo();
     case 'vi':
       return AppLocalizationsVi();
+    case 'zh':
+      return AppLocalizationsZh();
   }
 
   throw FlutterError(

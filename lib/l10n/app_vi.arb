@@ -103,9 +103,9 @@
   "reminderEvening": "Nhìn lại buổi tối",
   "changeReminderTime": "Đổi giờ nhắc {reminder}, hiện là {time}",
   "skipForNow": "Để sau",
-  "journeyReadyTitle": "Hành trình 28 ngày đã sẵn sàng",
-  "journeyReadyBody": "Bạn không cần phải hoàn hảo. Chỉ cần mỗi ngày dành ra 5 phút quay về với chính mình.",
-  "beginDayOne": "Bắt đầu Ngày 1",
+  "journeyReadyTitle": "Đầu tư cho ước mơ và sự kiên định của bạn",
+  "journeyReadyBody": "Một khoản đầu tư nhỏ là lời hứa nghiêm túc bạn dành cho chính mình — để mỗi ngày đều kiên trì nuôi dưỡng ước mơ, trân quý hiện tại và đi trọn hành trình chuyển hóa tâm thức.",
+  "beginDayOne": "Cam kết & Bắt đầu hành trình",
   "chooseCategoryTitle": "Chọn một lĩnh vực",
   "chooseCategoryBody": "Bạn muốn hướng trọn sự chú ý và năng lượng vào điều gì lúc này?",
   "visionStepLabel": "{category} · {step}/{total}",
@@ -139,7 +139,7 @@
   "visionBoardSubtitle": "Nơi neo giữ những mục tiêu, hình ảnh và cảm xúc tươi đẹp bạn muốn chạm tới mỗi ngày.",
   "welcomeTitle1": "Chào mừng bạn đến với Soul",
   "welcomeSubtitle1": "Một không gian dịu lành để bạn lắng lại, kết nối sâu sắc và nuôi dưỡng sự bình an trong tâm hồn mỗi ngày.",
-  "welcomeTitle2": "28 Ngày Nuôi Dưỡng Lòng Biết Ơn",
+  "welcomeTitle2": "Thực hành biết ơn",
   "welcomeSubtitle2": "Thực hành chuyển hóa tư duy từ những điều dung dị, đánh thức nguồn năng lượng an vui và tích cực.",
   "welcomeTitle3": "Bảng Tầm Nhìn & Âm Thanh Trị Liệu",
   "welcomeSubtitle3": "Hiện thực hóa ước mơ bằng bảng tầm nhìn sống động cùng những bản nhạc tần số nâng cao rung cảm.",
@@ -264,5 +264,73 @@
   "noteUpdated": "Đã cập nhật ghi chú",
   "gratitudeGuidanceTitle": "Hướng dẫn thực hành hôm nay",
   "showGuidance": "Xem hướng dẫn",
-  "hideGuidance": "Thu gọn hướng dẫn"
+  "hideGuidance": "Thu gọn hướng dẫn",
+  "comfortZoneTitle": "Comfort Zone",
+  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
+  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — Bước vào những góc nhỏ bình yên để lắng nghe và chữa lành",
+  "comfortZoneAllSpaces": "Tất cả ({count})",
+  "@comfortZoneAllSpaces": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "comfortZoneFavorites": "Yêu thích",
+  "comfortZoneFavoritesEmpty": "Chưa có không gian yêu thích nào. Chạm biểu tượng trái tim ở mỗi không gian để lưu lại nơi bạn muốn thuộc về.",
+  "comfortZoneEnterSpace": "Bước vào không gian",
+  "comfortZoneAmbientSound": "Âm thanh & Nhạc nền",
+  "comfortZoneGuidedAudio": "Audio dẫn thiền",
+  "comfortZoneZenMode": "Chế độ ngắm cảnh",
+  "comfortZoneExitZenMode": "Hiện điều khiển",
+  "comfortZoneBreathingGuide": "Nhịp thở bình yên",
+  "comfortZoneBreatheIn": "Hít vào nhẹ nhàng...",
+  "comfortZoneBreatheHold": "Giữ hơi êm ái...",
+  "comfortZoneBreatheOut": "Thở ra chậm rãi...",
+  "comfortZoneRecentSpace": "Không gian vừa ghé",
+  "comfortZoneScenesCount": "{count} không gian",
+  "@comfortZoneScenesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "comfortZonePreviousSpace": "Không gian trước",
+  "comfortZoneNextSpace": "Không gian tiếp",
+  "notificationPreviewSectionTitle": "Định dạng thông báo của Soul",
+  "notificationMorningTitle": "Chào buổi sáng, {name} 🌿",
+  "@notificationMorningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationMorningBody": "Hít một hơi thật sâu. Bạn muốn gieo điều biết ơn nhỏ bé nào cho ngày hôm nay?",
+  "notificationEveningTitle": "Khép lại ngày hôm nay nhé, {name} 🌙",
+  "@notificationEveningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationEveningBody": "Trước khi nghỉ ngơi, hãy giữ lại một khoảnh khắc bình yên hoặc điều tốt đẹp đã đến với bạn hôm nay.",
+  "notificationPrivacyNote": "Quyền riêng tư tuyệt đối: Thông báo trên màn hình khóa luôn ẩn nội dung nhật ký và thư cá nhân của bạn.",
+  "notificationSendTest": "Gửi thử thông báo ngay",
+  "notificationTestSent": "Đã gửi thông báo mẫu! Hãy kiểm tra thanh thông báo trên thiết bị.",
+  "homeWidgetTitle": "Widget màn hình chính",
+  "homeWidgetSubtitle": "Đặt không gian Comfort Zone, Âm thanh tần số chữa lành, Tầm nhìn, Thực hành biết ơn hoặc Thẻ Soul ngay trên màn hình điện thoại để chạm vào sự bình yên mỗi ngày.",
+  "homeWidgetBannerSubtitle": "Ghim Comfort Zone, Âm thanh chữa lành & Tầm nhìn ra màn hình chính",
+  "homeWidgetModeLabel": "Nội dung hiển thị trên Widget",
+  "homeWidgetModeComfortZone": "Comfort Zone",
+  "homeWidgetModeSound": "Âm thanh & Tần số",
+  "homeWidgetModeVision": "Tầm nhìn (Vision)",
+  "homeWidgetModeGratitude": "Thực hành biết ơn",
+  "homeWidgetModeCard": "Thông điệp Thẻ Soul",
+  "homeWidgetSelectSpace": "Chọn không gian Comfort Zone",
+  "homeWidgetSelectSound": "Chọn âm thanh / tần số chữa lành",
+  "homeWidgetSpaceFooter": "Chạm để bước vào góc nhỏ bình yên ✦",
+  "homeWidgetSoundFooter": "Chạm để lắng nghe tần số chữa lành ✦",
+  "homeWidgetThemeLabel": "Giao diện Widget",
+  "homeWidgetThemePlum": "Tím Hoàng Hôn",
+  "homeWidgetThemePaper": "Giấy Kem Ấm",
+  "homeWidgetThemeRose": "Hồng Sương Mai",
+  "homeWidgetPinButton": "Ghim Widget ra màn hình chính",
+  "homeWidgetSyncButton": "Cập nhật dữ liệu Widget",
+  "homeWidgetSyncedSuccess": "Đã cập nhật nội dung cho Widget màn hình chính!",
+  "homeWidgetHowToHint": "Mẹo: Bạn có thể bấm nút Ghim bên trên, hoặc nhấn giữ khoảng trống ngoài màn hình chính điện thoại → chọn Tiện ích (Widgets) → chọn Soul để đặt lên màn hình."
 }

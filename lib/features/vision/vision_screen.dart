@@ -11,6 +11,7 @@ import '../../data/repositories/vision_audio_repository.dart';
 import '../../data/repositories/vision_repository.dart';
 import '../../l10n/app_localizations.dart';
 import 'vision_controllers.dart';
+import 'vision_statement.dart';
 import 'vision_widgets.dart';
 
 /// Vision tab: an inspiring collage board or clean list of active Visions.
@@ -48,7 +49,7 @@ class _VisionScreenState extends ConsumerState<VisionScreen> {
         action: SoulButton(label: l10n.createVision, onPressed: create),
       );
     }
-    final isVi = Localizations.localeOf(context).languageCode == 'vi';
+    final locale = ref.watch(appStateProvider).locale ?? SoulLocale.vi;
     final items = visions.value!;
 
     return ListView(
@@ -75,7 +76,15 @@ class _VisionScreenState extends ConsumerState<VisionScreen> {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    '${items.length} ${isVi ? 'tầm nhìn đang hoạt động' : 'active visions'}',
+                    switch (locale) {
+                      SoulLocale.vi =>
+                        '${items.length} tầm nhìn đang hoạt động',
+                      SoulLocale.en => '${items.length} active visions',
+                      SoulLocale.ko => '진행 중인 비전 ${items.length}개',
+                      SoulLocale.ja => '進行中のビジョン ${items.length}件',
+                      SoulLocale.fr => '${items.length} visions actives',
+                      SoulLocale.zh => '${items.length} 个进行中的愿景',
+                    },
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontSize: 13,
                       color: SoulColors.muted,
@@ -87,10 +96,22 @@ class _VisionScreenState extends ConsumerState<VisionScreen> {
             IconButton(
               tooltip:
                   _isCollageMode
-                      ? (isVi ? 'Chuyển sang danh sách' : 'Switch to list view')
-                      : (isVi
-                          ? 'Chuyển sang bảng ghép'
-                          : 'Switch to collage board'),
+                      ? switch (locale) {
+                        SoulLocale.vi => 'Chuyển sang danh sách',
+                        SoulLocale.en => 'Switch to list view',
+                        SoulLocale.ko => '목록 보기로 전환',
+                        SoulLocale.ja => 'リスト表示に切り替え',
+                        SoulLocale.fr => 'Passer en vue liste',
+                        SoulLocale.zh => '切换到列表视图',
+                      }
+                      : switch (locale) {
+                        SoulLocale.vi => 'Chuyển sang bảng ghép',
+                        SoulLocale.en => 'Switch to collage board',
+                        SoulLocale.ko => '콜라주 보드로 전환',
+                        SoulLocale.ja => 'コラージュボードに切り替え',
+                        SoulLocale.fr => 'Passer au tableau collage',
+                        SoulLocale.zh => '切换到拼贴看板',
+                      },
               icon: Icon(
                 _isCollageMode
                     ? Icons.view_agenda_outlined
@@ -270,6 +291,11 @@ class _VisionBoardCard extends ConsumerWidget {
     }
 
     final hasImage = vision.imagePath != null && vision.imagePath!.isNotEmpty;
+    final displayStatement = resolveVisionStatement(
+      vision: vision,
+      catalog: catalog,
+      locale: locale,
+    );
 
     return _InteractiveCardPress(
       onTap: () => context.push('/app/vision/${vision.id}', extra: vision),
@@ -277,6 +303,7 @@ class _VisionBoardCard extends ConsumerWidget {
           hasImage
               ? _PhotoBoardCard(
                 vision: vision,
+                displayStatement: displayStatement,
                 catalog: catalog,
                 category: category,
                 theme: theme,
@@ -288,6 +315,7 @@ class _VisionBoardCard extends ConsumerWidget {
               )
               : _ArtisticTextBoardCard(
                 vision: vision,
+                displayStatement: displayStatement,
                 catalog: catalog,
                 category: category,
                 theme: theme,
@@ -335,6 +363,7 @@ class _InteractiveCardPressState extends State<_InteractiveCardPress> {
 class _ArtisticTextBoardCard extends StatelessWidget {
   const _ArtisticTextBoardCard({
     required this.vision,
+    required this.displayStatement,
     required this.catalog,
     required this.category,
     required this.theme,
@@ -346,6 +375,7 @@ class _ArtisticTextBoardCard extends StatelessWidget {
   });
 
   final Vision vision;
+  final String displayStatement;
   final VisionCatalog catalog;
   final VisionCategory? category;
   final CategoryArtTheme theme;
@@ -465,7 +495,7 @@ class _ArtisticTextBoardCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   // Statement text directly on background canvas!
                   Text(
-                    vision.statement,
+                    displayStatement,
                     maxLines: isFullWidth ? 6 : 6,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -528,6 +558,7 @@ class _ArtisticTextBoardCard extends StatelessWidget {
 class _PhotoBoardCard extends StatelessWidget {
   const _PhotoBoardCard({
     required this.vision,
+    required this.displayStatement,
     required this.catalog,
     required this.category,
     required this.theme,
@@ -539,6 +570,7 @@ class _PhotoBoardCard extends StatelessWidget {
   });
 
   final Vision vision;
+  final String displayStatement;
   final VisionCatalog catalog;
   final VisionCategory? category;
   final CategoryArtTheme theme;
@@ -629,7 +661,7 @@ class _PhotoBoardCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          vision.statement,
+                          displayStatement,
                           maxLines: isFullWidth ? 4 : 4,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(

@@ -47,7 +47,11 @@ void main() {
         'device', (tester) async {
       final prefs = await pumpSoulApp(tester);
 
-      await tester.tap(find.text(c.language));
+      await tester.tap(find.byType(DropdownButton<SoulLocale>));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(c.language).last);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byType(SoulButton));
       await tester.pumpAndSettle();
 
       if (find.byType(WelcomeIntroScreen).evaluate().isNotEmpty) {

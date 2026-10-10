@@ -116,9 +116,9 @@
     }
   },
   "skipForNow": "Skip for now",
-  "journeyReadyTitle": "Your 28-day journey is ready",
-  "journeyReadyBody": "You do not need to be perfect. Just begin with 5 mindful minutes today.",
-  "beginDayOne": "Begin Day 1",
+  "journeyReadyTitle": "Invest in your dreams and your perseverance",
+  "journeyReadyBody": "A small investment is a heartfelt promise to yourself — to stay devoted to your dreams each day, cherish the present, and walk your path of inner transformation with true commitment.",
+  "beginDayOne": "Commit & Begin Journey",
   "chooseCategoryTitle": "Choose an area",
   "chooseCategoryBody": "Where would you like to place your intention and energy right now?",
   "visionStepLabel": "{category} · {step}/{total}",
@@ -177,7 +177,7 @@
   "visionBoardSubtitle": "A sanctuary for the intentions, feelings, and life you are stepping into every day.",
   "welcomeTitle1": "Welcome to Soul",
   "welcomeSubtitle1": "A calm, peaceful sanctuary to pause, listen, and gently nurture your spirit every day.",
-  "welcomeTitle2": "28-Day Gratitude Journey",
+  "welcomeTitle2": "Gratitude Practice",
   "welcomeSubtitle2": "Transform your daily mindset through simple, grounding practices that awaken inner joy.",
   "welcomeTitle3": "Vision Board & Soundscapes",
   "welcomeSubtitle3": "Bring your dreams into focus with inspiring vision boards and therapeutic frequency soundscapes.",
@@ -343,5 +343,73 @@
   "noteUpdated": "Note updated",
   "gratitudeGuidanceTitle": "Today's Practice Guidance",
   "showGuidance": "View guidance",
-  "hideGuidance": "Hide guidance"
+  "hideGuidance": "Hide guidance",
+  "comfortZoneTitle": "Comfort Zone",
+  "comfortZoneSubtitle": "A Little World Where You Feel Safe",
+  "comfortZoneBannerSubtitle": "A Little World Where You Feel Safe — Peaceful sanctuaries with live animations and healing audio",
+  "comfortZoneAllSpaces": "All ({count})",
+  "@comfortZoneAllSpaces": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "comfortZoneFavorites": "Favorites",
+  "comfortZoneFavoritesEmpty": "No favorite spaces yet. Tap the heart icon on any space to save it here.",
+  "comfortZoneEnterSpace": "Enter space",
+  "comfortZoneAmbientSound": "Ambient & Music",
+  "comfortZoneGuidedAudio": "Guided Audio",
+  "comfortZoneZenMode": "Zen view",
+  "comfortZoneExitZenMode": "Show controls",
+  "comfortZoneBreathingGuide": "Breathing guide",
+  "comfortZoneBreatheIn": "Breathe in gently...",
+  "comfortZoneBreatheHold": "Hold softly...",
+  "comfortZoneBreatheOut": "Breathe out slowly...",
+  "comfortZoneRecentSpace": "Recently visited",
+  "comfortZoneScenesCount": "{count} spaces",
+  "@comfortZoneScenesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "comfortZonePreviousSpace": "Previous space",
+  "comfortZoneNextSpace": "Next space",
+  "notificationPreviewSectionTitle": "Soul Notification Format",
+  "notificationMorningTitle": "Good morning, {name} 🌿",
+  "@notificationMorningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationMorningBody": "Take a slow breath. What small gratitude would you like to plant for today?",
+  "notificationEveningTitle": "Wind down gently, {name} 🌙",
+  "@notificationEveningTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "notificationEveningBody": "Before rest, hold onto one peaceful moment or quiet kindness from today.",
+  "notificationPrivacyNote": "Strict privacy: Lock-screen notifications never expose your private journal notes or future letters.",
+  "notificationSendTest": "Send test notification",
+  "notificationTestSent": "Sample notification sent! Check your device notification shade.",
+  "homeWidgetTitle": "Home Screen Widget",
+  "homeWidgetSubtitle": "Pin your favorite Comfort Zone sanctuary, Healing Sound & Frequency, Vision, Daily Gratitude, or Soul Card right on your phone's home screen.",
+  "homeWidgetBannerSubtitle": "Pin Comfort Zone, Healing Sounds & Vision to your phone's home screen",
+  "homeWidgetModeLabel": "Widget Content Source",
+  "homeWidgetModeComfortZone": "Comfort Zone",
+  "homeWidgetModeSound": "Sound & Frequency",
+  "homeWidgetModeVision": "My Vision",
+  "homeWidgetModeGratitude": "Daily Gratitude",
+  "homeWidgetModeCard": "Soul Card Message",
+  "homeWidgetSelectSpace": "Choose Comfort Zone Space",
+  "homeWidgetSelectSound": "Choose Healing Sound / Frequency",
+  "homeWidgetSpaceFooter": "Tap to enter your safe sanctuary ✦",
+  "homeWidgetSoundFooter": "Tap to play healing frequency ✦",
+  "homeWidgetThemeLabel": "Widget Style",
+  "homeWidgetThemePlum": "Plum Dusk",
+  "homeWidgetThemePaper": "Warm Paper",
+  "homeWidgetThemeRose": "Rose Dawn",
+  "homeWidgetPinButton": "Add Widget to Home Screen",
+  "homeWidgetSyncButton": "Sync Widget Now",
+  "homeWidgetSyncedSuccess": "Home screen widget updated!",
+  "homeWidgetHowToHint": "Tip: Tap the Add button above, or long-press an empty area on your phone's home screen → select Widgets → choose Soul."
 }

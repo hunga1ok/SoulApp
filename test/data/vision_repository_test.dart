@@ -84,4 +84,31 @@ void main() {
     await store.delete(relative);
     expect((await store.resolve(relative)).existsSync(), isFalse);
   });
+
+  test('saves multi-paragraph drafted Vision statements over 500 characters '
+      '(up to 2000 characters)', () async {
+    final database = testDatabase();
+    final repository = VisionRepository(database);
+    final longStatement = List.filled(
+      8,
+      'Mỗi ngày của tôi được lấp đầy bởi: Một tình yêu bình yên, sự thấu hiểu sâu sắc và cảm giác an toàn trọn vẹn.',
+    ).join('\n\n');
+    expect(longStatement.length, greaterThan(500));
+    expect(longStatement.length, lessThanOrEqualTo(2000));
+
+    await repository.create(
+      NewVision(
+        id: 'vision-long',
+        categoryCode: 'LOVE',
+        statement: longStatement,
+        feelingCodes: const ['LOVED', 'SAFE', 'PEACEFUL'],
+        answers: const {},
+        locale: SoulLocale.vi,
+      ),
+    );
+
+    final visions = await repository.active();
+    expect(visions, hasLength(1));
+    expect(visions.single.statement, longStatement);
+  });
 }

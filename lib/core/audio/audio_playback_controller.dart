@@ -240,6 +240,15 @@ class AudioPlaybackController extends ChangeNotifier {
     }
   }
 
+  Future<void> pause() async {
+    if (_player == null) return;
+    try {
+      await _player!.pause();
+    } catch (e) {
+      debugPrint('AudioPlaybackController.pause error: $e');
+    }
+  }
+
   Future<void> togglePlayPause() async {
     if (_player == null || _assetPath == null) return;
     try {

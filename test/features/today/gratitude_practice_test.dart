@@ -39,8 +39,11 @@ void main() {
         findsOneWidget,
       );
 
-      // Tap Insert Template
-      await tester.tap(find.text('Chèn mẫu câu'));
+      // Toolbar uses icon-only buttons for Insert Template, Add Photo, and Record Audio
+      expect(find.text('Chèn mẫu câu'), findsNothing);
+      expect(find.text('Thêm ảnh'), findsNothing);
+      expect(find.byTooltip('Tự ghi âm giọng nói'), findsOneWidget);
+      await tester.tap(find.byTooltip('Chèn mẫu câu'));
       await tester.pumpAndSettle();
 
       // Enter journal text

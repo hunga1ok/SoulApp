@@ -16,6 +16,17 @@ class AppShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<AppState>(appStateProvider, (previous, current) {
+      if (previous != null) {
+        if (previous.soundEnabled && !current.soundEnabled) {
+          ref.read(audioPlaybackProvider).stop();
+        }
+        if (previous.locale != current.locale) {
+          ref.read(audioPlaybackProvider).stop();
+        }
+      }
+    });
+
     final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(appStateProvider);
     final soundEnabled = state.soundEnabled;

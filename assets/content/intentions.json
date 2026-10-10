@@ -5,22 +5,98 @@
     {
       "code": "FIND_PEACE",
       "sortOrder": 1,
-      "text": { "vi": { "label": "Tìm lại sự bình an" }, "en": { "label": "Find more peace" } }
+      "text": {
+        "vi": {
+          "label": "Tìm lại sự bình an"
+        },
+        "en": {
+          "label": "Find more peace"
+        },
+        "ko": {
+          "label": "마음의 평온 되찾기"
+        },
+        "ja": {
+          "label": "心の安らぎを取り戻す"
+        },
+        "fr": {
+          "label": "Retrouver la paix intérieure"
+        },
+        "zh": {
+          "label": "寻回内心平静"
+        }
+      }
     },
     {
       "code": "NURTURE_GRATITUDE",
       "sortOrder": 2,
-      "text": { "vi": { "label": "Nuôi dưỡng lòng biết ơn" }, "en": { "label": "Nurture gratitude" } }
+      "text": {
+        "vi": {
+          "label": "Nuôi dưỡng lòng biết ơn"
+        },
+        "en": {
+          "label": "Nurture gratitude"
+        },
+        "ko": {
+          "label": "감사의 마음 가꾸기"
+        },
+        "ja": {
+          "label": "感謝の心を育む"
+        },
+        "fr": {
+          "label": "Cultiver la gratitude"
+        },
+        "zh": {
+          "label": "滋养感恩之心"
+        }
+      }
     },
     {
       "code": "BUILD_FUTURE_SELF",
       "sortOrder": 3,
-      "text": { "vi": { "label": "Xây dựng phiên bản tương lai" }, "en": { "label": "Build my future self" } }
+      "text": {
+        "vi": {
+          "label": "Xây dựng phiên bản tương lai"
+        },
+        "en": {
+          "label": "Build my future self"
+        },
+        "ko": {
+          "label": "미래의 나 만들어가기"
+        },
+        "ja": {
+          "label": "理想の未来の自分を築く"
+        },
+        "fr": {
+          "label": "Construire mon futur moi"
+        },
+        "zh": {
+          "label": "塑造未来的自己"
+        }
+      }
     },
     {
       "code": "CARE_FOR_RELATIONSHIPS",
       "sortOrder": 4,
-      "text": { "vi": { "label": "Chăm sóc các mối quan hệ" }, "en": { "label": "Care for my relationships" } }
+      "text": {
+        "vi": {
+          "label": "Chăm sóc các mối quan hệ"
+        },
+        "en": {
+          "label": "Care for my relationships"
+        },
+        "ko": {
+          "label": "소중한 관계 돌보기"
+        },
+        "ja": {
+          "label": "大切な人間関係を育む"
+        },
+        "fr": {
+          "label": "Prendre soin de mes relations"
+        },
+        "zh": {
+          "label": "呵护珍贵的关系"
+        }
+      }
     }
   ]
 }

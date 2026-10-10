@@ -21,7 +21,7 @@ class SoulApp extends ConsumerWidget {
       theme: soulTheme,
       routerConfig: router,
       locale: state.locale == null ? null : Locale(state.locale!.name),
-      supportedLocales: const [Locale('vi'), Locale('en')],
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

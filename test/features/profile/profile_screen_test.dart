@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:soul_app/app/app_state.dart';
 import 'package:soul_app/core/design_system/design_system.dart';
@@ -36,8 +37,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Should be redirected to language gate screen!
-      expect(find.text('Tiếng Việt'), findsOneWidget);
-      expect(find.text('English'), findsOneWidget);
+      expect(find.byType(DropdownButton<SoulLocale>), findsOneWidget);
     });
 
     testWidgets('allows viewing and updating reminder times', (tester) async {
@@ -75,5 +75,80 @@ void main() {
       // Back on profile screen
       expect(find.byType(ProfileScreen), findsOneWidget);
     });
+
+    testWidgets('switching language in Profile updates AppLocalizations', (
+      tester,
+    ) async {
+      final db = testDatabase();
+      await pumpSoulApp(
+        tester,
+        database: db,
+        preferences: onboardedPreferences(SoulLocale.vi),
+      );
+
+      await tester.tap(find.byTooltip('Hồ sơ & cài đặt'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Ngôn ngữ'), findsOneWidget);
+      expect(find.byType(DropdownButton<SoulLocale>), findsOneWidget);
+
+      await tester.tap(find.byType(DropdownButton<SoulLocale>));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('한국어').last);
+      await tester.pumpAndSettle();
+
+      expect(find.text('프로필 & 설정'), findsOneWidget);
+      expect(find.text('이름 수정'), findsOneWidget);
+      expect(find.text('언어'), findsOneWidget);
+    });
+
+    testWidgets(
+      'opens HomeWidgetScreen and syncs widget mode and theme to preferences',
+      (tester) async {
+        final db = testDatabase();
+        final prefs = await pumpSoulApp(
+          tester,
+          database: db,
+          preferences: onboardedPreferences(SoulLocale.vi),
+        );
+
+        await tester.tap(find.byTooltip('Hồ sơ & cài đặt'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Widget màn hình chính'), findsOneWidget);
+        await tester.tap(find.text('Widget màn hình chính'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Nội dung hiển thị trên Widget'), findsOneWidget);
+        expect(find.text('Comfort Zone'), findsOneWidget);
+        expect(find.text('Âm thanh & Tần số'), findsOneWidget);
+        await tester.scrollUntilVisible(
+          find.text('Thực hành biết ơn'),
+          120,
+          scrollable: find.byType(Scrollable).last,
+        );
+        await tester.tap(find.text('Thực hành biết ơn'));
+        await tester.pumpAndSettle();
+        await tester.scrollUntilVisible(
+          find.text('Giấy Kem Ấm'),
+          120,
+          scrollable: find.byType(Scrollable).last,
+        );
+        await tester.tap(find.text('Giấy Kem Ấm'));
+        await tester.pumpAndSettle();
+
+        await tester.scrollUntilVisible(
+          find.text('Cập nhật dữ liệu Widget'),
+          200,
+          scrollable: find.byType(Scrollable).last,
+        );
+        await tester.tap(find.text('Cập nhật dữ liệu Widget'));
+        await tester.pumpAndSettle();
+
+        expect(prefs.getString('widget_mode'), 'gratitude');
+        expect(prefs.getString('widget_theme'), 'paper');
+        expect(prefs.getString('widget_body'), isNotEmpty);
+      },
+    );
   });
 }

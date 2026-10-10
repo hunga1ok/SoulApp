@@ -226,11 +226,32 @@ class _JournalNoteCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  l10n.gratitudeSentenceCount(note.sentences.length),
-                  style: Theme.of(
-                    context,
-                  ).textTheme.labelSmall?.copyWith(color: SoulColors.muted),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      l10n.gratitudeSentenceCount(note.sentences.length),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.labelSmall?.copyWith(color: SoulColors.muted),
+                    ),
+                    if (note.audioPath != null) ...[
+                      const SizedBox(width: SoulSpace.xs),
+                      const Icon(
+                        Icons.mic_rounded,
+                        size: 14,
+                        color: SoulColors.plum,
+                      ),
+                    ],
+                    if (note.imagePath != null) ...[
+                      const SizedBox(width: SoulSpace.xxs),
+                      const Icon(
+                        Icons.photo_outlined,
+                        size: 14,
+                        color: SoulColors.plum,
+                      ),
+                    ],
+                  ],
                 ),
                 const Icon(
                   Icons.arrow_forward_ios_rounded,

@@ -948,7 +948,7 @@ class $VisionsTable extends Visions with TableInfo<$VisionsTable, VisionRow> {
     false,
     additionalChecks: GeneratedColumn.checkTextLength(
       minTextLength: 1,
-      maxTextLength: 500,
+      maxTextLength: 2000,
     ),
     type: DriftSqlType.string,
     requiredDuringInsert: true,
