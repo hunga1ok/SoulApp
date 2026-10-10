@@ -151,5 +151,57 @@ void main() {
         expect(prefs.getString('widget_body'), isNotEmpty);
       },
     );
+
+    testWidgets(
+      'Setting row with trailing widget (Plans & Billing) aligns chevron to right edge',
+      (tester) async {
+        await pumpSoulApp(
+          tester,
+          preferences: onboardedPreferences(SoulLocale.vi),
+        );
+
+        // Navigate to profile
+        await tester.tap(find.byTooltip('Hồ sơ & cài đặt'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(ProfileScreen), findsOneWidget);
+
+        final billingRowFinder = find.widgetWithText(
+          InkWell,
+          'Gói & Thanh toán',
+        );
+        final editNameRowFinder = find.widgetWithText(
+          InkWell,
+          'Đổi tên xưng hô',
+        );
+
+        expect(billingRowFinder, findsOneWidget);
+        expect(editNameRowFinder, findsOneWidget);
+
+        // Find chevron icon inside billing row and inside edit name row
+        final billingChevron = find.descendant(
+          of: billingRowFinder,
+          matching: find.byIcon(Icons.chevron_right),
+        );
+        final editNameChevron = find.descendant(
+          of: editNameRowFinder,
+          matching: find.byIcon(Icons.chevron_right),
+        );
+
+        expect(billingChevron, findsOneWidget);
+        expect(editNameChevron, findsOneWidget);
+
+        final billingChevronRight = tester.getTopRight(billingChevron).dx;
+        final editNameChevronRight = tester.getTopRight(editNameChevron).dx;
+
+        // Both chevrons MUST have the exact same right alignment (not indented inward)
+        expect(
+          billingChevronRight,
+          equals(editNameChevronRight),
+          reason:
+              'Billing row chevron must align to the far right, matching other setting rows',
+        );
+      },
+    );
   });
 }

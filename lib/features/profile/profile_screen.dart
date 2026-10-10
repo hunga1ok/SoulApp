@@ -679,7 +679,16 @@ class _SettingRow extends StatelessWidget {
               ),
               if (trailing != null) ...[
                 const SizedBox(width: SoulSpace.xs),
-                Flexible(child: trailing!),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.sizeOf(context).width * 0.35,
+                  ),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: trailing!,
+                  ),
+                ),
               ],
               const SizedBox(width: 4),
               const Icon(Icons.chevron_right, color: SoulColors.muted),
