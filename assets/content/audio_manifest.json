@@ -419,15 +419,15 @@
       "id": "SO-24",
       "frequency": "285 Hz",
       "titles": {
-        "vi": "Sóng biển rì rào & Gió lộng",
-        "en": "Ocean Wind & Rolling Waves",
-        "ko": "파도 소리와 바닷바람",
-        "ja": "波の音と潮風",
-        "fr": "Vagues de l'océan & vent du large",
-        "zh": "海浪潮涌与清风"
+        "vi": "Sóng biển vỗ bờ hoàng hôn",
+        "en": "Sunset Waves & Ocean Breeze",
+        "ko": "황혼의 파도와 바닷바람",
+        "ja": "夕暮れの波音と潮風",
+        "fr": "Vagues au crépuscule & brise marine",
+        "zh": "黄昏浪涌与海风"
       },
       "subtitles": {
-        "vi": "285 Hz • Nhịp sóng biển vỗ bờ & tiếng gió thoáng đãng",
+        "vi": "285 Hz • Nhịp sóng biển rì rào & làn gió mát lành bên bờ cát",
         "en": "285 Hz • Calming Coastal Breeze & Rhythmic Ocean Waves",
         "ko": "285 Hz • 잔잔한 파도와 부드러운 해안 바람",
         "ja": "285 Hz • 穏やかな波音と心地よい潮風の響き",
@@ -442,16 +442,16 @@
       "id": "SO-25",
       "frequency": "432 Hz",
       "titles": {
-        "vi": "Tiếng mèo rừ rừ & Piano ấm áp",
-        "en": "Cat Purring & Gentle Piano",
-        "ko": "고양이 골골송과 따뜻한 피아노",
-        "ja": "猫のゴロゴロ音と優しいピアノ",
-        "fr": "Ronronnement de chat & piano doux",
-        "zh": "猫咪咕噜声与温暖钢琴"
+        "vi": "Mèo con lười sưởi nắng & phím dương cầm",
+        "en": "Sunlit Cat Purr & Gentle Piano",
+        "ko": "햇살 아래 고양이 골골송 & 피아노",
+        "ja": "日向ぼっこの猫の鳴き声と優しいピアノ",
+        "fr": "Ronronnement au soleil & piano doux",
+        "zh": "阳光下的猫咪咕噜声与温暖钢琴"
       },
       "subtitles": {
-        "vi": "432 Hz • Nhịp thở rừ rừ êm dịu của bé mèo & nốt piano",
-        "en": "432 Hz • Soothing Cat Purr & Relaxing Felt Piano",
+        "vi": "432 Hz • Tiếng mèo rừ rừ bình yên hòa cùng nốt nhạc êm đềm",
+        "en": "432 Hz • Gentle Cat Purring & Warm Felt Piano Harmony",
         "ko": "432 Hz • 포근한 고양이의 골골 소리와 피아노 선율",
         "ja": "432 Hz • 心安らぐ猫の喉鳴らしとフェルトピアノの音色",
         "fr": "432 Hz • Doux ronronnement apaisant et notes de piano",
@@ -465,16 +465,16 @@
       "id": "SO-26",
       "frequency": "528 Hz",
       "titles": {
-        "vi": "Bạn cún ngoan & Giai điệu mộc mạc",
-        "en": "Playful Puppy & Cozy Acoustic",
-        "ko": "착한 강아지와 포근한 어쿠스틱",
-        "ja": "お利口な子犬と素朴なアコースティック",
-        "fr": "Chiot affectueux & mélodie acoustique",
-        "zh": "乖巧小狗与质朴木吉他"
+        "vi": "Cún nhỏ đón bạn về & guitar mộc",
+        "en": "Welcoming Puppy & Warm Acoustic",
+        "ko": "반겨주는 강아지 & 따뜻한 어쿠스틱 기타",
+        "ja": "お出迎えのワンちゃんと温かいアコースティック",
+        "fr": "Chiot joueur & guitare acoustique chaleureuse",
+        "zh": "欢快小狗与温暖木吉他"
       },
       "subtitles": {
-        "vi": "528 Hz • Nhịp thở ngoan ngoãn của cún cưng & nhạc mộc",
-        "en": "528 Hz • Comforting Puppy Breathing & Warm Strings",
+        "vi": "528 Hz • Nhịp điệu ấm áp, vui tươi bên người bạn bốn chân",
+        "en": "528 Hz • Joyful Fingerstyle Guitar & Playful Warmth",
         "ko": "528 Hz • 곁을 지키는 강아지의 숨결과 따스한 선율",
         "ja": "528 Hz • 寄り添う子犬の温もりと優しいアコースティック",
         "fr": "528 Hz • Présence réconfortante d'un chiot et cordes douces",
@@ -488,16 +488,16 @@
       "id": "SO-27",
       "frequency": "528 Hz",
       "titles": {
-        "vi": "Tiếng chim hót & Gió thông rừng sâu",
-        "en": "Forest Birds & Whispering Breeze",
-        "ko": "숲속 새소리와 부드러운 바람",
-        "ja": "森の小鳥のさえずりとそよ風",
-        "fr": "Chant des oiseaux & brise forestière",
-        "zh": "清晨林间鸟鸣与松风"
+        "vi": "Gió ngàn đồi hoa & chim rừng ban mai",
+        "en": "Wildflower Breeze & Forest Birdsong",
+        "ko": "꽃 언덕의 바람과 아침 숲새 소리",
+        "ja": "花の丘のそよ風と朝の森の鳥のさえずり",
+        "fr": "Brise des collines fleuries & chant des oiseaux",
+        "zh": "花丘清风与清晨森林鸟鸣"
       },
       "subtitles": {
-        "vi": "528 Hz • Tiếng chim líu lo giữa đồi thông & gió mát lành",
-        "en": "528 Hz • Gentle Pine Breeze & Morning Forest Birdsong",
+        "vi": "528 Hz • Làn gió nhẹ qua đồi thông hòa tiếng chim hót trong trẻo",
+        "en": "528 Hz • Mountain Pine Breeze & Gentle Morning Birds",
         "ko": "528 Hz • 솔바람 소리와 숲속 아침 새들의 지저귐",
         "ja": "528 Hz • 松の木を渡る風と澄んだ小鳥のさえずり",
         "fr": "528 Hz • Brise parmi les pins et doux chants d'oiseaux",
@@ -511,16 +511,16 @@
       "id": "SO-28",
       "frequency": "396 Hz",
       "titles": {
-        "vi": "Bếp ấm & Ấm nước sôi liu riu",
-        "en": "Cozy Kitchen & Simmering Kettle",
-        "ko": "따뜻한 주방과 끓는 주전자",
-        "ja": "あたたかな台所と沸くやかんの音",
-        "fr": "Cuisine chaleureuse & bouilloire frémissante",
-        "zh": "温暖厨房与茶水沸腾声"
+        "vi": "Ấm trà reo bên bếp lửa mùa đông",
+        "en": "Winter Hearth & Simmering Tea",
+        "ko": "겨울 벽난로 옆 끓는 찻주전자",
+        "ja": "冬の暖炉のそばで沸くお茶の音",
+        "fr": "Thé fumant près du feu de cheminée d'hiver",
+        "zh": "冬日壁炉边沸腾的茶壶"
       },
       "subtitles": {
-        "vi": "396 Hz • Nước sôi tí tách pha trà & hơi ấm căn bếp",
-        "en": "396 Hz • Gentle Kettle Bubbling, Steam & Cozy Warmth",
+        "vi": "396 Hz • Tiếng nước sôi liu riu và hơi ấm dịu dàng nơi gian bếp",
+        "en": "396 Hz • Cozy Tea Kettle Simmer & Fireside Warmth",
         "ko": "396 Hz • 차를 끓이는 주전자의 보글거림과 부엌의 온기",
         "ja": "396 Hz • お茶を淹れるやかんの蒸気と台所のぬくもり",
         "fr": "396 Hz • Eau qui frémit pour le thé et chaleur du foyer",

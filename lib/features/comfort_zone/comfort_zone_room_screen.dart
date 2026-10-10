@@ -532,60 +532,7 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                       ),
                     ),
 
-                    if (_timerRemaining != null)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
-                        child: GestureDetector(
-                          onTap: () => _showTimerPicker(context, l10n),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: SoulSpace.md,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.black.withValues(alpha: 0.65),
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(
-                                color: const Color(
-                                  0xFFFFD166,
-                                ).withValues(alpha: 0.8),
-                                width: 1.2,
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(
-                                    0xFFFFD166,
-                                  ).withValues(alpha: 0.25),
-                                  blurRadius: 10,
-                                  spreadRadius: 1,
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Icon(
-                                  Icons.hourglass_top_rounded,
-                                  size: 14,
-                                  color: Color(0xFFFFD166),
-                                ),
-                                const SizedBox(width: 6),
-                                Text(
-                                  _formatDuration(_timerRemaining!),
-                                  style: const TextStyle(
-                                    color: Color(0xFFFFD166),
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: 0.6,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-
-                    // Center Breathing Guide or Zen Affirmation
+                    // Center Breathing Guide, Zen Affirmation, or Center Countdown Timer
                     Expanded(
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
@@ -596,6 +543,68 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                                   ? Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
+                                      if (_timerRemaining != null) ...[
+                                        GestureDetector(
+                                          onTap:
+                                              () => _showTimerPicker(
+                                                context,
+                                                l10n,
+                                              ),
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: SoulSpace.md,
+                                              vertical: SoulSpace.xs,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: Colors.black.withValues(
+                                                alpha: 0.42,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              border: Border.all(
+                                                color: Colors.white.withValues(
+                                                  alpha: 0.20,
+                                                ),
+                                                width: 1.0,
+                                              ),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.black
+                                                      .withValues(alpha: 0.35),
+                                                  blurRadius: 18,
+                                                  offset: const Offset(0, 4),
+                                                ),
+                                              ],
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(
+                                                  Icons.hourglass_top_rounded,
+                                                  size: 16,
+                                                  color: Colors.white,
+                                                ),
+                                                const SizedBox(width: 6),
+                                                Text(
+                                                  _formatDuration(
+                                                    _timerRemaining!,
+                                                  ),
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.0,
+                                                    fontFeatures: [
+                                                      FontFeature.tabularFigures(),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: SoulSpace.md),
+                                      ],
                                       SoulBreathingOrb(
                                         isPlaying: true,
                                         size: 132,
@@ -632,6 +641,84 @@ class _ComfortZoneRoomScreenState extends ConsumerState<ComfortZoneRoomScreen> {
                                         ),
                                       ),
                                     ],
+                                  )
+                                  : _timerRemaining != null
+                                  ? GestureDetector(
+                                    onTap:
+                                        () => _showTimerPicker(context, l10n),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: SoulSpace.xl,
+                                        vertical: SoulSpace.md,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withValues(
+                                          alpha: 0.42,
+                                        ),
+                                        borderRadius: BorderRadius.circular(24),
+                                        border: Border.all(
+                                          color: Colors.white.withValues(
+                                            alpha: 0.20,
+                                          ),
+                                          width: 1.0,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.black.withValues(
+                                              alpha: 0.35,
+                                            ),
+                                            blurRadius: 22,
+                                            offset: const Offset(0, 8),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Icon(
+                                                Icons.hourglass_top_rounded,
+                                                size: 16,
+                                                color: Colors.white.withValues(
+                                                  alpha: 0.85,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 6),
+                                              Text(
+                                                l10n.comfortZoneTimerTitle,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelMedium
+                                                    ?.copyWith(
+                                                      color: Colors.white
+                                                          .withValues(
+                                                            alpha: 0.85,
+                                                          ),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      letterSpacing: 0.5,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 6),
+                                          Text(
+                                            _formatDuration(_timerRemaining!),
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 38,
+                                              fontWeight: FontWeight.w600,
+                                              letterSpacing: 2.0,
+                                              fontFeatures: [
+                                                FontFeature.tabularFigures(),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   )
                                   : _zenMode
                                   ? Padding(
