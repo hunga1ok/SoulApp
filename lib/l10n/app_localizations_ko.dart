@@ -955,4 +955,33 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get homeWidgetHowToHint =>
       '팁: 위의 추가 버튼을 누르거나, 휴대폰 홈 화면의 빈 공간을 길게 눌러 위젯(Widgets) 메뉴에서 Soul을 선택해 배치할 수 있습니다.';
+
+  @override
+  String get moodThemeButtonTooltip => '기분 & 테마';
+
+  @override
+  String get moodThemeSheetTitle => '마음 상태 & 분위기 테마';
+
+  @override
+  String get moodThemeSheetSubtitle => '지금 마음을 선택하여 Soul의 색상과 음악을 맞추어 보세요.';
+
+  @override
+  String moodThemeChangedToast(String moodName) {
+    return 'Soul이 $moodName 분위기로 전환했습니다 ✨';
+  }
+
+  @override
+  String get moodPeacefulDesc => '마음의 평온과 안정 · 432Hz';
+
+  @override
+  String get moodGratefulDesc => '따뜻한 사랑과 감사 · 528Hz';
+
+  @override
+  String get moodEnergizedDesc => '신선하고 활기찬 긍정의 흐름';
+
+  @override
+  String get moodRelievedDesc => '가벼운 안도감과 편안한 호흡';
+
+  @override
+  String get moodReflectiveDesc => '깊은 성찰과 고요한 밤';
 }

@@ -1845,6 +1845,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tip: Tap the Add button above, or long-press an empty area on your phone\'s home screen → select Widgets → choose Soul.'**
   String get homeWidgetHowToHint;
+
+  /// No description provided for @moodThemeButtonTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Mood & Theme'**
+  String get moodThemeButtonTooltip;
+
+  /// No description provided for @moodThemeSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mood & Ambiance'**
+  String get moodThemeSheetTitle;
+
+  /// No description provided for @moodThemeSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your mood to tune Soul\'s colors and music to your heart.'**
+  String get moodThemeSheetSubtitle;
+
+  /// No description provided for @moodThemeChangedToast.
+  ///
+  /// In en, this message translates to:
+  /// **'Soul tuned the ambiance to {moodName} ✨'**
+  String moodThemeChangedToast(String moodName);
+
+  /// No description provided for @moodPeacefulDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Serene, calms the mind · 432Hz'**
+  String get moodPeacefulDesc;
+
+  /// No description provided for @moodGratefulDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Warm, loving, appreciative · 528Hz'**
+  String get moodGratefulDesc;
+
+  /// No description provided for @moodEnergizedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Fresh, inspiring, positive flow'**
+  String get moodEnergizedDesc;
+
+  /// No description provided for @moodRelievedDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Light, gentle, relaxed breath'**
+  String get moodRelievedDesc;
+
+  /// No description provided for @moodReflectiveDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet, deep, soothing night'**
+  String get moodReflectiveDesc;
 }
 
 class _AppLocalizationsDelegate

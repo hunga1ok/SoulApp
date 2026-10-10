@@ -7,6 +7,8 @@ import '../../core/audio/audio_playback_controller.dart';
 import '../../core/design_system/design_system.dart';
 import '../../l10n/app_localizations.dart';
 
+import '../mood/mood_theme_button.dart';
+
 class AppShell extends ConsumerWidget {
   const AppShell({super.key, required this.navigationShell});
 
@@ -56,6 +58,7 @@ class AppShell extends ConsumerWidget {
     return Scaffold(
       appBar: SoulAppBar(
         actions: [
+          const MoodThemeButton(),
           IconButton(
             tooltip: soundEnabled ? l10n.soundOn : l10n.soundOff,
             onPressed: () async {

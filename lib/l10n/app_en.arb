@@ -411,5 +411,19 @@
   "homeWidgetPinButton": "Add Widget to Home Screen",
   "homeWidgetSyncButton": "Sync Widget Now",
   "homeWidgetSyncedSuccess": "Home screen widget updated!",
-  "homeWidgetHowToHint": "Tip: Tap the Add button above, or long-press an empty area on your phone's home screen → select Widgets → choose Soul."
+  "homeWidgetHowToHint": "Tip: Tap the Add button above, or long-press an empty area on your phone's home screen → select Widgets → choose Soul.",
+  "moodThemeButtonTooltip": "Mood & Theme",
+  "moodThemeSheetTitle": "Mood & Ambiance",
+  "moodThemeSheetSubtitle": "Choose your mood to tune Soul's colors and music to your heart.",
+  "moodThemeChangedToast": "Soul tuned the ambiance to {moodName} ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "Serene, calms the mind · 432Hz",
+  "moodGratefulDesc": "Warm, loving, appreciative · 528Hz",
+  "moodEnergizedDesc": "Fresh, inspiring, positive flow",
+  "moodRelievedDesc": "Light, gentle, relaxed breath",
+  "moodReflectiveDesc": "Quiet, deep, soothing night"
 }

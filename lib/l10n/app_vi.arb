@@ -332,5 +332,19 @@
   "homeWidgetPinButton": "Ghim Widget ra màn hình chính",
   "homeWidgetSyncButton": "Cập nhật dữ liệu Widget",
   "homeWidgetSyncedSuccess": "Đã cập nhật nội dung cho Widget màn hình chính!",
-  "homeWidgetHowToHint": "Mẹo: Bạn có thể bấm nút Ghim bên trên, hoặc nhấn giữ khoảng trống ngoài màn hình chính điện thoại → chọn Tiện ích (Widgets) → chọn Soul để đặt lên màn hình."
+  "homeWidgetHowToHint": "Mẹo: Bạn có thể bấm nút Ghim bên trên, hoặc nhấn giữ khoảng trống ngoài màn hình chính điện thoại → chọn Tiện ích (Widgets) → chọn Soul để đặt lên màn hình.",
+  "moodThemeButtonTooltip": "Cảm xúc & Theme",
+  "moodThemeSheetTitle": "Không gian cảm xúc & Giao diện",
+  "moodThemeSheetSubtitle": "Chọn cảm xúc để Soul điều chỉnh gam màu và thanh âm đồng điệu với bạn.",
+  "moodThemeChangedToast": "Soul đã chuyển không gian sang sắc màu {moodName} ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "Thanh thản, xoa dịu tâm trí · 432Hz",
+  "moodGratefulDesc": "Ấm áp, yêu thương, trân trọng · 528Hz",
+  "moodEnergizedDesc": "Tươi mới, hứng khởi, tích cực",
+  "moodRelievedDesc": "Nhẹ nhõm, thong dong, thả lỏng",
+  "moodReflectiveDesc": "Lắng đọng, sâu sắc, tĩnh lặng"
 }

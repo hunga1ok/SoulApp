@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/mood/mood_theme.dart';
+
 /// Colors from the prototype brand system (`styles.css`, "Soul brand system").
 abstract final class SoulColors {
   static const paper = Color(0xFFFFFAF7);
@@ -88,88 +90,98 @@ abstract final class SoulTypography {
   static const serifFallback = ['Georgia', 'Noto Serif'];
 }
 
-final soulTheme = ThemeData(
-  useMaterial3: true,
-  scaffoldBackgroundColor: SoulColors.paper,
-  materialTapTargetSize: MaterialTapTargetSize.padded,
-  colorScheme: const ColorScheme.light(
-    primary: SoulColors.lilacStrong,
-    onPrimary: Colors.white,
-    surface: SoulColors.surface,
-    onSurface: SoulColors.plum,
-    outline: SoulColors.line,
-    error: SoulColors.error,
-  ),
-  textTheme: const TextTheme(
-    displaySmall: TextStyle(
-      color: SoulColors.plum,
-      fontFamily: SoulTypography.serif,
-      fontFamilyFallback: SoulTypography.serifFallback,
-      fontSize: 31,
-      height: 1.08,
-      fontWeight: FontWeight.w600,
+ThemeData buildSoulTheme([SoulMood? mood]) {
+  final config = mood != null ? moodConfigOf(mood) : null;
+  final scaffoldBg = config?.scaffoldBackground ?? SoulColors.paper;
+  final primary = config?.primary ?? SoulColors.lilacStrong;
+  final surface = config?.surface ?? SoulColors.surface;
+  final outline = config?.outline ?? SoulColors.line;
+
+  return ThemeData(
+    useMaterial3: true,
+    scaffoldBackgroundColor: scaffoldBg,
+    materialTapTargetSize: MaterialTapTargetSize.padded,
+    colorScheme: ColorScheme.light(
+      primary: primary,
+      onPrimary: Colors.white,
+      surface: surface,
+      onSurface: SoulColors.plum,
+      outline: outline,
+      error: SoulColors.error,
     ),
-    headlineSmall: TextStyle(
-      color: SoulColors.plum,
-      fontFamily: SoulTypography.serif,
-      fontFamilyFallback: SoulTypography.serifFallback,
-      fontSize: 25,
-      height: 1.12,
-      fontWeight: FontWeight.w600,
+    textTheme: const TextTheme(
+      displaySmall: TextStyle(
+        color: SoulColors.plum,
+        fontFamily: SoulTypography.serif,
+        fontFamilyFallback: SoulTypography.serifFallback,
+        fontSize: 31,
+        height: 1.08,
+        fontWeight: FontWeight.w600,
+      ),
+      headlineSmall: TextStyle(
+        color: SoulColors.plum,
+        fontFamily: SoulTypography.serif,
+        fontFamilyFallback: SoulTypography.serifFallback,
+        fontSize: 25,
+        height: 1.12,
+        fontWeight: FontWeight.w600,
+      ),
+      titleLarge: TextStyle(
+        color: SoulColors.plum,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+      ),
+      titleMedium: TextStyle(
+        color: SoulColors.plum,
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+      ),
+      bodyLarge: TextStyle(color: SoulColors.plum, fontSize: 16, height: 1.45),
+      bodyMedium: TextStyle(color: SoulColors.muted, fontSize: 14, height: 1.4),
+      labelLarge: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
     ),
-    titleLarge: TextStyle(
-      color: SoulColors.plum,
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
+    appBarTheme: AppBarTheme(
+      backgroundColor: scaffoldBg,
+      foregroundColor: SoulColors.plum,
+      elevation: 0,
+      scrolledUnderElevation: 0,
     ),
-    titleMedium: TextStyle(
-      color: SoulColors.plum,
-      fontSize: 16,
-      fontWeight: FontWeight.w700,
-    ),
-    bodyLarge: TextStyle(color: SoulColors.plum, fontSize: 16, height: 1.45),
-    bodyMedium: TextStyle(color: SoulColors.muted, fontSize: 14, height: 1.4),
-    labelLarge: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-  ),
-  appBarTheme: const AppBarTheme(
-    backgroundColor: SoulColors.paper,
-    foregroundColor: SoulColors.plum,
-    elevation: 0,
-    scrolledUnderElevation: 0,
-  ),
-  inputDecorationTheme: InputDecorationTheme(
-    filled: true,
-    fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(
-      horizontal: SoulSpace.md,
-      vertical: SoulSpace.md,
-    ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(SoulRadius.input),
-      borderSide: const BorderSide(color: SoulColors.inputBorder),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(SoulRadius.input),
-      borderSide: const BorderSide(color: SoulColors.inputBorder),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(SoulRadius.input),
-      borderSide: const BorderSide(color: SoulColors.lilacStrong, width: 1.5),
-    ),
-  ),
-  bottomSheetTheme: const BottomSheetThemeData(
-    backgroundColor: SoulColors.surface,
-    showDragHandle: true,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(
-        top: Radius.circular(SoulRadius.sheet),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: Colors.white,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: SoulSpace.md,
+        vertical: SoulSpace.md,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(SoulRadius.input),
+        borderSide: const BorderSide(color: SoulColors.inputBorder),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(SoulRadius.input),
+        borderSide: const BorderSide(color: SoulColors.inputBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(SoulRadius.input),
+        borderSide: const BorderSide(color: SoulColors.lilacStrong, width: 1.5),
       ),
     ),
-  ),
-  dialogTheme: DialogThemeData(
-    backgroundColor: SoulColors.surface,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(SoulRadius.sheet),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: SoulColors.surface,
+      showDragHandle: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(SoulRadius.sheet),
+        ),
+      ),
     ),
-  ),
-);
+    dialogTheme: DialogThemeData(
+      backgroundColor: SoulColors.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(SoulRadius.sheet),
+      ),
+    ),
+  );
+}
+
+final soulTheme = buildSoulTheme();

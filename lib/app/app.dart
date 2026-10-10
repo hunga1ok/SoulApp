@@ -18,7 +18,7 @@ class SoulApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Soul',
       debugShowCheckedModeBanner: false,
-      theme: soulTheme,
+      theme: buildSoulTheme(state.currentMood),
       routerConfig: router,
       locale: state.locale == null ? null : Locale(state.locale!.name),
       supportedLocales: AppLocalizations.supportedLocales,

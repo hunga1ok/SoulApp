@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/localization/soul_locale.dart';
+import '../features/mood/mood_theme.dart';
 
 export '../core/localization/soul_locale.dart';
+export '../features/mood/mood_theme.dart';
 
 final preferencesProvider = Provider<SharedPreferences>((ref) {
   throw UnimplementedError('SharedPreferences must be provided at bootstrap.');
@@ -24,6 +26,7 @@ class AppState extends ChangeNotifier {
       _intentions = _preferences.getStringList(_intentionsKey) ?? const [],
       _remindersDecided = _preferences.getBool(_remindersDecidedKey) ?? false,
       _subscriptionPlan = _preferences.getString(_subscriptionPlanKey),
+      _selectedMood = _preferences.getString(_moodKey) ?? 'peaceful',
       _onboardingCompleted =
           _preferences.getBool(_onboardingCompletedKey) ?? false;
 
@@ -33,6 +36,7 @@ class AppState extends ChangeNotifier {
   static const _intentionsKey = 'onboarding_intentions';
   static const _remindersDecidedKey = 'onboarding_reminders_decided';
   static const _subscriptionPlanKey = 'subscription_plan';
+  static const _moodKey = 'selected_mood_theme';
   static const _onboardingCompletedKey = 'onboarding_completed';
 
   final SharedPreferences _preferences;
@@ -42,12 +46,17 @@ class AppState extends ChangeNotifier {
   List<String> _intentions;
   bool _remindersDecided;
   String? _subscriptionPlan;
+  String _selectedMood;
   bool _onboardingCompleted;
 
   SoulLocale? get locale => _locale;
   String? get preferredName => _preferredName;
   bool get hasPreferredName => _preferredName?.trim().isNotEmpty ?? false;
   bool get soundEnabled => _soundEnabled;
+
+  /// Selected mood theme key.
+  String get selectedMood => _selectedMood;
+  SoulMood get currentMood => SoulMood.fromId(_selectedMood);
 
   /// Intention codes chosen during onboarding.
   List<String> get intentions => _intentions;
@@ -100,6 +109,13 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> saveSelectedMood(String moodId) async {
+    if (_selectedMood == moodId) return;
+    _selectedMood = moodId;
+    await _preferences.setString(_moodKey, moodId);
+    notifyListeners();
+  }
+
   Future<void> markOnboardingCompleted() async {
     _onboardingCompleted = true;
     await _preferences.setBool(_onboardingCompletedKey, true);
@@ -113,6 +129,7 @@ class AppState extends ChangeNotifier {
     _intentions = const [];
     _remindersDecided = false;
     _subscriptionPlan = null;
+    _selectedMood = 'peaceful';
     _onboardingCompleted = false;
     await _preferences.clear();
     notifyListeners();

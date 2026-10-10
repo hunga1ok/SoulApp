@@ -26,7 +26,6 @@ class TodayScreen extends ConsumerStatefulWidget {
 
 class _TodayScreenState extends ConsumerState<TodayScreen> {
   var _smallActionDone = false;
-  String? _selectedMood;
 
   @override
   Widget build(BuildContext context) {
@@ -419,38 +418,95 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _MoodChip(
-                label: l10n.moodPeaceful,
-                selected: _selectedMood == l10n.moodPeaceful,
-                onTap: () => setState(() => _selectedMood = l10n.moodPeaceful),
-              ),
-              _MoodChip(
-                label: l10n.moodGrateful,
-                selected: _selectedMood == l10n.moodGrateful,
-                onTap: () => setState(() => _selectedMood = l10n.moodGrateful),
-              ),
-              _MoodChip(
-                label: l10n.moodEnergized,
-                selected: _selectedMood == l10n.moodEnergized,
-                onTap: () => setState(() => _selectedMood = l10n.moodEnergized),
-              ),
-              _MoodChip(
-                label: l10n.moodRelieved,
-                selected: _selectedMood == l10n.moodRelieved,
-                onTap: () => setState(() => _selectedMood = l10n.moodRelieved),
-              ),
-              _MoodChip(
-                label: l10n.moodReflective,
-                selected: _selectedMood == l10n.moodReflective,
-                onTap:
-                    () => setState(() => _selectedMood = l10n.moodReflective),
-              ),
+              for (final mood in SoulMood.values) ...[
+                Builder(
+                  builder: (context) {
+                    final config = moodConfigOf(mood);
+                    final isSelected = mood == state.currentMood;
+                    return Padding(
+                      padding: const EdgeInsets.only(right: SoulSpace.xs),
+                      child: _MoodChip(
+                        label: config.localizedLabel(l10n),
+                        selected: isSelected,
+                        onTap: () async {
+                          await state.saveSelectedMood(mood.id);
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: SoulColors.plum,
+                                content: Text(
+                                  l10n.moodThemeChangedToast(
+                                    config.localizedLabel(l10n),
+                                  ),
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                duration: const Duration(milliseconds: 2200),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ],
             ],
+          ),
+        ),
+        const SizedBox(height: SoulSpace.md),
+
+        // 5. Home Screen Widget (Widget màn hình chính lên TRÊN hành động nhỏ)
+        InkWell(
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HomeWidgetScreen()),
+              ),
+          borderRadius: BorderRadius.circular(SoulRadius.card),
+          child: SoulCard(
+            color: SoulColors.surface,
+            padding: const EdgeInsets.all(SoulSpace.md),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.widgets_outlined,
+                  color: SoulColors.plum,
+                  size: 24,
+                ),
+                const SizedBox(width: SoulSpace.sm),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        l10n.homeWidgetTitle,
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: SoulColors.muted,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        l10n.homeWidgetBannerSubtitle,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: SoulColors.softInk,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: SoulSpace.xs),
+                const Icon(Icons.chevron_right, color: SoulColors.muted),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: SoulSpace.xl),
 
-        // 5. Today's Rhythm Section (Hành động & Nhịp điệu hôm nay)
+        // 6. Today's Rhythm Section (Hành động & Nhịp điệu hôm nay)
         Text(
           l10n.todayRhythm,
           style: Theme.of(
@@ -562,56 +618,6 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 ),
               ),
             ],
-          ),
-        ),
-        const SizedBox(height: SoulSpace.sm),
-
-        // 6. Home Screen Widget
-        InkWell(
-          onTap:
-              () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const HomeWidgetScreen()),
-              ),
-          borderRadius: BorderRadius.circular(SoulRadius.card),
-          child: SoulCard(
-            color: SoulColors.surface,
-            padding: const EdgeInsets.all(SoulSpace.md),
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.widgets_outlined,
-                  color: SoulColors.plum,
-                  size: 24,
-                ),
-                const SizedBox(width: SoulSpace.sm),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.homeWidgetTitle,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: SoulColors.muted,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        l10n.homeWidgetBannerSubtitle,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: SoulColors.softInk,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: SoulSpace.xs),
-                const Icon(Icons.chevron_right, color: SoulColors.muted),
-              ],
-            ),
           ),
         ),
         const SizedBox(height: SoulSpace.xl),

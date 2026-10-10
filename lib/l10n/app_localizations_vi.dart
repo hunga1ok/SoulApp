@@ -972,4 +972,34 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get homeWidgetHowToHint =>
       'Mẹo: Bạn có thể bấm nút Ghim bên trên, hoặc nhấn giữ khoảng trống ngoài màn hình chính điện thoại → chọn Tiện ích (Widgets) → chọn Soul để đặt lên màn hình.';
+
+  @override
+  String get moodThemeButtonTooltip => 'Cảm xúc & Theme';
+
+  @override
+  String get moodThemeSheetTitle => 'Không gian cảm xúc & Giao diện';
+
+  @override
+  String get moodThemeSheetSubtitle =>
+      'Chọn cảm xúc để Soul điều chỉnh gam màu và thanh âm đồng điệu với bạn.';
+
+  @override
+  String moodThemeChangedToast(String moodName) {
+    return 'Soul đã chuyển không gian sang sắc màu $moodName ✨';
+  }
+
+  @override
+  String get moodPeacefulDesc => 'Thanh thản, xoa dịu tâm trí · 432Hz';
+
+  @override
+  String get moodGratefulDesc => 'Ấm áp, yêu thương, trân trọng · 528Hz';
+
+  @override
+  String get moodEnergizedDesc => 'Tươi mới, hứng khởi, tích cực';
+
+  @override
+  String get moodRelievedDesc => 'Nhẹ nhõm, thong dong, thả lỏng';
+
+  @override
+  String get moodReflectiveDesc => 'Lắng đọng, sâu sắc, tĩnh lặng';
 }

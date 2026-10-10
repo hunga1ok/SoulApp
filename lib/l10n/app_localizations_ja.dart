@@ -946,4 +946,33 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get homeWidgetHowToHint =>
       'ヒント：上の追加ボタンをタップするか、ホーム画面の空きスペースを長押し →「ウィジェット」→「Soul」を選択して配置できます。';
+
+  @override
+  String get moodThemeButtonTooltip => '気分とテーマ';
+
+  @override
+  String get moodThemeSheetTitle => '気分と雰囲気テーマ';
+
+  @override
+  String get moodThemeSheetSubtitle => '今の気分を選んで、Soulの色彩と音楽を心に寄り添わせましょう。';
+
+  @override
+  String moodThemeChangedToast(String moodName) {
+    return 'Soulの空間を$moodNameに切り替えました ✨';
+  }
+
+  @override
+  String get moodPeacefulDesc => '穏やかで心が落ち着く · 432Hz';
+
+  @override
+  String get moodGratefulDesc => '温かい感謝と愛 · 528Hz';
+
+  @override
+  String get moodEnergizedDesc => '新鮮で前向きなエネルギー';
+
+  @override
+  String get moodRelievedDesc => '安心感と軽やかな呼吸';
+
+  @override
+  String get moodReflectiveDesc => '静かな思索と夜の安らぎ';
 }

@@ -938,4 +938,33 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get homeWidgetHowToHint =>
       '提示：你可以点击上方的添加按钮，或长按手机主屏幕空白处 → 选择“小组件 (Widgets)” → 选择 Soul 放置到桌面。';
+
+  @override
+  String get moodThemeButtonTooltip => '心情与主题';
+
+  @override
+  String get moodThemeSheetTitle => '情绪与氛围主题';
+
+  @override
+  String get moodThemeSheetSubtitle => '选择您此刻的心情，让Soul的色彩与音乐与您的内心共鸣。';
+
+  @override
+  String moodThemeChangedToast(String moodName) {
+    return 'Soul已将空间切换至$moodName ✨';
+  }
+
+  @override
+  String get moodPeacefulDesc => '平和宁静，抚平思绪 · 432Hz';
+
+  @override
+  String get moodGratefulDesc => '温暖爱意，心怀感恩 · 528Hz';
+
+  @override
+  String get moodEnergizedDesc => '清新振奋，积极活力';
+
+  @override
+  String get moodRelievedDesc => '释怀轻松，自在呼吸';
+
+  @override
+  String get moodReflectiveDesc => '深沉静谧，抚慰夜晚';
 }

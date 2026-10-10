@@ -980,4 +980,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get homeWidgetHowToHint =>
       'Tip: Tap the Add button above, or long-press an empty area on your phone\'s home screen → select Widgets → choose Soul.';
+
+  @override
+  String get moodThemeButtonTooltip => 'Mood & Theme';
+
+  @override
+  String get moodThemeSheetTitle => 'Mood & Ambiance';
+
+  @override
+  String get moodThemeSheetSubtitle =>
+      'Choose your mood to tune Soul\'s colors and music to your heart.';
+
+  @override
+  String moodThemeChangedToast(String moodName) {
+    return 'Soul tuned the ambiance to $moodName ✨';
+  }
+
+  @override
+  String get moodPeacefulDesc => 'Serene, calms the mind · 432Hz';
+
+  @override
+  String get moodGratefulDesc => 'Warm, loving, appreciative · 528Hz';
+
+  @override
+  String get moodEnergizedDesc => 'Fresh, inspiring, positive flow';
+
+  @override
+  String get moodRelievedDesc => 'Light, gentle, relaxed breath';
+
+  @override
+  String get moodReflectiveDesc => 'Quiet, deep, soothing night';
 }

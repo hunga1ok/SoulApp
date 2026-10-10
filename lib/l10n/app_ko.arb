@@ -436,5 +436,19 @@
   "homeWidgetPinButton": "홈 화면에 위젯 추가",
   "homeWidgetSyncButton": "위젯 데이터 동기화",
   "homeWidgetSyncedSuccess": "홈 화면 위젯 내용이 업데이트되었습니다!",
-  "homeWidgetHowToHint": "팁: 위의 추가 버튼을 누르거나, 휴대폰 홈 화면의 빈 공간을 길게 눌러 위젯(Widgets) 메뉴에서 Soul을 선택해 배치할 수 있습니다."
+  "homeWidgetHowToHint": "팁: 위의 추가 버튼을 누르거나, 휴대폰 홈 화면의 빈 공간을 길게 눌러 위젯(Widgets) 메뉴에서 Soul을 선택해 배치할 수 있습니다.",
+  "moodThemeButtonTooltip": "기분 & 테마",
+  "moodThemeSheetTitle": "마음 상태 & 분위기 테마",
+  "moodThemeSheetSubtitle": "지금 마음을 선택하여 Soul의 색상과 음악을 맞추어 보세요.",
+  "moodThemeChangedToast": "Soul이 {moodName} 분위기로 전환했습니다 ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "마음의 평온과 안정 · 432Hz",
+  "moodGratefulDesc": "따뜻한 사랑과 감사 · 528Hz",
+  "moodEnergizedDesc": "신선하고 활기찬 긍정의 흐름",
+  "moodRelievedDesc": "가벼운 안도감과 편안한 호흡",
+  "moodReflectiveDesc": "깊은 성찰과 고요한 밤"
 }

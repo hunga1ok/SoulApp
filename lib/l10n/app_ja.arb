@@ -436,5 +436,19 @@
   "homeWidgetPinButton": "ホーム画面にウィジェットを追加",
   "homeWidgetSyncButton": "ウィジェットを今すぐ更新",
   "homeWidgetSyncedSuccess": "ホーム画面ウィジェットを更新しました！",
-  "homeWidgetHowToHint": "ヒント：上の追加ボタンをタップするか、ホーム画面の空きスペースを長押し →「ウィジェット」→「Soul」を選択して配置できます。"
+  "homeWidgetHowToHint": "ヒント：上の追加ボタンをタップするか、ホーム画面の空きスペースを長押し →「ウィジェット」→「Soul」を選択して配置できます。",
+  "moodThemeButtonTooltip": "気分とテーマ",
+  "moodThemeSheetTitle": "気分と雰囲気テーマ",
+  "moodThemeSheetSubtitle": "今の気分を選んで、Soulの色彩と音楽を心に寄り添わせましょう。",
+  "moodThemeChangedToast": "Soulの空間を{moodName}に切り替えました ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "穏やかで心が落ち着く · 432Hz",
+  "moodGratefulDesc": "温かい感謝と愛 · 528Hz",
+  "moodEnergizedDesc": "新鮮で前向きなエネルギー",
+  "moodRelievedDesc": "安心感と軽やかな呼吸",
+  "moodReflectiveDesc": "静かな思索と夜の安らぎ"
 }

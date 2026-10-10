@@ -436,5 +436,19 @@
   "homeWidgetPinButton": "将小组件添加到主屏幕",
   "homeWidgetSyncButton": "立即更新小组件",
   "homeWidgetSyncedSuccess": "主屏幕小组件内容已更新！",
-  "homeWidgetHowToHint": "提示：你可以点击上方的添加按钮，或长按手机主屏幕空白处 → 选择“小组件 (Widgets)” → 选择 Soul 放置到桌面。"
+  "homeWidgetHowToHint": "提示：你可以点击上方的添加按钮，或长按手机主屏幕空白处 → 选择“小组件 (Widgets)” → 选择 Soul 放置到桌面。",
+  "moodThemeButtonTooltip": "心情与主题",
+  "moodThemeSheetTitle": "情绪与氛围主题",
+  "moodThemeSheetSubtitle": "选择您此刻的心情，让Soul的色彩与音乐与您的内心共鸣。",
+  "moodThemeChangedToast": "Soul已将空间切换至{moodName} ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "平和宁静，抚平思绪 · 432Hz",
+  "moodGratefulDesc": "温暖爱意，心怀感恩 · 528Hz",
+  "moodEnergizedDesc": "清新振奋，积极活力",
+  "moodRelievedDesc": "释怀轻松，自在呼吸",
+  "moodReflectiveDesc": "深沉静谧，抚慰夜晚"
 }

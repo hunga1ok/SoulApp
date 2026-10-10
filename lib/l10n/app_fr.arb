@@ -436,5 +436,19 @@
   "homeWidgetPinButton": "Ajouter le widget à l'écran d'accueil",
   "homeWidgetSyncButton": "Actualiser le widget",
   "homeWidgetSyncedSuccess": "Contenu du widget mis à jour !",
-  "homeWidgetHowToHint": "Astuce : Appuyez sur le bouton ci-dessus, ou maintenez le doigt sur un espace vide de votre écran d'accueil → Widgets → Soul."
+  "homeWidgetHowToHint": "Astuce : Appuyez sur le bouton ci-dessus, ou maintenez le doigt sur un espace vide de votre écran d'accueil → Widgets → Soul.",
+  "moodThemeButtonTooltip": "Humeur & Thème",
+  "moodThemeSheetTitle": "Humeur & Ambiance",
+  "moodThemeSheetSubtitle": "Choisissez votre humeur pour accorder les couleurs et la musique de Soul à votre cœur.",
+  "moodThemeChangedToast": "Soul a harmonisé l'ambiance avec {moodName} ✨",
+  "@moodThemeChangedToast": {
+    "placeholders": {
+      "moodName": {"type": "String"}
+    }
+  },
+  "moodPeacefulDesc": "Serein, apaise l'esprit · 432Hz",
+  "moodGratefulDesc": "Chaleureux, aimant et reconnaissant · 528Hz",
+  "moodEnergizedDesc": "Frais, inspirant et plein d'énergie",
+  "moodRelievedDesc": "Léger, apaisé et détendu",
+  "moodReflectiveDesc": "Calme, profond et introspectif"
 }
